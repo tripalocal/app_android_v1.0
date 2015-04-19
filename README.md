@@ -3,9 +3,10 @@
 Beta version of teh tripalocal app for android
 
 Basic version highly subjected to change.
-Contains lotsf of Hardocde strings and print statements for pddebugging purposes
-
+Contains lots of Hardocded strings and print statements for debugging purposes.
 
 -----------------------------
 launcher screen has been done  and when the user clicks on a city,
 that will take the user to the experiences list for that city.
+
+
