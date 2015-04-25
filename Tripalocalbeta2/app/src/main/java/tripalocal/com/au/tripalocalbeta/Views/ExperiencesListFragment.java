@@ -25,6 +25,7 @@ public class ExperiencesListFragment extends Fragment{
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycle_view_exp_list);
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
+        ExperienceListAdapter elist_adapter = new ExperienceListAdapter();
         rv.setAdapter(new ExperienceListAdapter());
         return view;
     }

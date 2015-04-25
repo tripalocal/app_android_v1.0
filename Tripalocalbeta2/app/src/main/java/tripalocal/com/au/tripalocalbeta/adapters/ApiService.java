@@ -1,22 +1,19 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
-import java.util.List;
-
 import retrofit.Callback;
-import retrofit.client.Response;
 import retrofit.http.Body;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
-import retrofit.http.GET;
 import retrofit.http.POST;
-import retrofit.http.Path;
 import tripalocal.com.au.tripalocalbeta.models.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 /**
  * Created by naveen on 4/6/2015.
  */
 public interface ApiService {
+
     @POST("/service_search/")
-    void getSearchResults(@Body SearchRequest data_json, Callback<String> cb);
+    void getSearchResults(@Body SearchRequest data_json, Callback<Search_Result[]> cb);
 
     @FormUrlEncoded
     @POST("/service_login")

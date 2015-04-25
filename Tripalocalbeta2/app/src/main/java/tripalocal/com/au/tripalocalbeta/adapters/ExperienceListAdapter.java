@@ -6,14 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 /**
  * Created by naveen on 4/18/2015.
  */
 public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAdapter.ListViewHolder> {
+
+    public static Search_Result[] searchResult;
+
 
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -23,6 +26,10 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
+        ///Search_Result result =  searchResult[position];
+        holder.bannerTxt.setText("banner title of the results");
+        holder.titleTxt.setText("title of the result");
+        holder.infoTxt.setText("info of the resultss.....some more info..more info???");
         holder.itemView.setTag(position);
     }
 
@@ -49,7 +56,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
         @Override
         public void onClick(View v) {
-
         }
     }
 }

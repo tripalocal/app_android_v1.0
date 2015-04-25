@@ -1,19 +1,14 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -21,8 +16,10 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.adapters.SimpleRecycleAdapter;
 import tripalocal.com.au.tripalocalbeta.models.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 
 /**
@@ -46,12 +43,6 @@ public class HomeActivityFragment extends Fragment {
     }
 
     public void displayListFrag(String city){
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://www.tripalocal.com")
-                .build();
-        ApiService apiService = restAdapter.create(ApiService.class);
-        //ArrayList<String> temp = new ArrayList<String>();
         StringBuilder temp = new StringBuilder();
         temp.append("Sports");
         temp.append("Arts");
@@ -60,11 +51,18 @@ public class HomeActivityFragment extends Fragment {
                 city,"2",temp.toString());
         Gson gson = new Gson();
         String json = gson.toJson(req_obj);
-        apiService.getSearchResults(req_obj, new Callback<String>() {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("https://www.tripalocal.com")
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+        //ArrayList<String> temp = new ArrayList<String>();
+
+        apiService.getSearchResults(req_obj, new Callback<Search_Result[]>() {
+
             @Override
-            public void success(String s, Response response) {
-                System.out.println("HomeActivityFragment.success");
-                System.out.println("s = [" + s + "], response = [" + response + "]");
+            public void success(Search_Result[] search_results, Response response) {
+                ExperienceListAdapter.searchResult = search_results;
             }
 
             @Override

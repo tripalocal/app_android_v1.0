@@ -1,7 +1,5 @@
 package tripalocal.com.au.tripalocalbeta.models;
 
-import java.util.ArrayList;
-
 /**
  * Created by naveen on 4/6/2015.
  */
@@ -13,9 +11,9 @@ public class SearchRequest {
     private String keywords;
 
 
-    public SearchRequest(String start_datetime, String end_datetime, String city, String guest_number, String keywords) {
-        this.start_datetime = start_datetime;
-        this.end_datetime = end_datetime;
+    public SearchRequest(String start_date, String end_date, String city, String guest_number, String keywords) {
+        this.start_datetime = start_date;
+        this.end_datetime = end_date;
         this.city = city;
         this.guest_number = guest_number;
         this.keywords = keywords;
