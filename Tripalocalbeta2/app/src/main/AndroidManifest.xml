@@ -17,7 +17,8 @@
 
         <activity
             android:name=".Views.HomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,11 +29,13 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Views.ExpDetailActivity"
             android:label="@string/title_activity_exp_detail"
-            android:parentActivityName=".Views.HomeActivity" >
+            android:parentActivityName=".Views.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />

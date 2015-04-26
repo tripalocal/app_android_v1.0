@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.gson.Gson;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -25,7 +25,6 @@ import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
 
 public class LoginFragment extends Fragment {
 
@@ -106,16 +105,23 @@ public class LoginFragment extends Fragment {
                     .setEndpoint("https://www.tripalocal.com")
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
-            Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
-            Gson gson = new Gson();
+
+            //Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
+            //Gson gson = new Gson();
             //String log_json = gson.toJson(log_req);
-        //String log_json = "{ \"email\" : \"ravnav44@gmail.com\",\"password\":\"omegastar\" }";
+             //String log_json = "{ \"email\" : \"ravnav44@gmail.com\",\"password\":\"omegastar\" }";
             //apiService.login_user(log_json , new Callback<String>() {
-            apiService.loginUser("ravnav44@gmail.com", "omegastar", new Callback<Login_Result>() {
+
+        String username = ((EditText) getActivity().findViewById(R.id.login_email)).getText().toString();
+        String pwd = ((EditText) getActivity().findViewById(R.id.login_password)).getText().toString();
+
+            apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
-                    ToastHelper.shortToast("log in success");
+                    ToastHelper.longToast("log in success");
                     System.out.println("result = [" + result + "], response = [" + response + "]");
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override

@@ -1,11 +1,13 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -32,7 +34,15 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        Button signupBtn = (Button) view.findViewById(R.id.normal_signup_btn);
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signup();
+            }
+        });
+        return view;
     }
 
     public void signup(){
@@ -58,8 +68,10 @@ public class SignUpFragment extends Fragment {
         apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
-                ToastHelper.shortToast("sign up success");
+                ToastHelper.longToast("sign up success");
                 System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
+                Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
             }
 
             @Override
