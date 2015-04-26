@@ -4,6 +4,8 @@
     <string name="action_login">Log In</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="title_activity_exp_detail">ExpDetailActivity</string>
-
+    <string name="hello_blank_fragment">Blank</string>
+    <string name="title_activity_my_trip">MyTripActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
