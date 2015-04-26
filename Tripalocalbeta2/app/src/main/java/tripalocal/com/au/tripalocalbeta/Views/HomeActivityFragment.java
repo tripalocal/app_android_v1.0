@@ -18,8 +18,9 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.adapters.SimpleRecycleAdapter;
-import tripalocal.com.au.tripalocalbeta.models.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
+import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.helpers.Search_Result;
 
 
 /**
@@ -71,11 +72,7 @@ public class HomeActivityFragment extends Fragment {
                 System.out.println("error = [" + error + "]");
             }
         });
-        android.support.v4.app.FragmentManager fragManager = getActivity().getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction transaction = fragManager.beginTransaction();
-        transaction.replace(R.id.fragment_container, new ExperiencesListFragment());
-        transaction.addToBackStack("homeTOlist");
-        transaction.commit();
+        FragHelper.addReplace(getActivity().getSupportFragmentManager(), new ExperiencesListFragment());
     }
 
 }

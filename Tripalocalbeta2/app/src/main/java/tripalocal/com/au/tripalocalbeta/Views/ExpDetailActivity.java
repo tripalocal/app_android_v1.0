@@ -1,37 +1,25 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.facebook.FacebookSdk;
-
 import tripalocal.com.au.tripalocalbeta.R;
-import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
-import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 
-import static tripalocal.com.au.tripalocalbeta.R.layout;
-
-
-public class HomeActivity extends ActionBarActivity {
-
+public class ExpDetailActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ToastHelper.appln_context = getApplicationContext();
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(layout.activity_home);
-        HomeActivityFragment homeFrag = new HomeActivityFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
+        setContentView(R.layout.activity_exp_detail);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
         return true;
     }
 
@@ -44,8 +32,6 @@ public class HomeActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            ToastHelper.shortToast("menu called");
-            FragHelper.addReplace(getSupportFragmentManager(),new LoginFragment());
             return true;
         }
 

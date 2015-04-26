@@ -1,46 +1,43 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.gson.Gson;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
+import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
+import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LoginFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private CallbackManager callbackManager;
+    private static Boolean login_status = false;
 
+    public static Boolean isLogin_status() {
+        return login_status;
+    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static void setLogin_status(Boolean login_status) {
+        LoginFragment.login_status = login_status;
     }
 
     public LoginFragment() {
@@ -48,20 +45,84 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        loginButton.setReadPermissions("user_friends");
+        // If using in a fragment
+        loginButton.setFragment(this);
+        // Other app specific specialization
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                ToastHelper.longToast("FB Login success");
+                setLogin_status(true);
+            }
+
+            @Override
+            public void onCancel() {
+                ToastHelper.warnToast("FB Login cancelled");
+                setLogin_status(false);
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                ToastHelper.errorToast("FB Login error!");
+                setLogin_status(false);
+            }
+        });
+        Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser();
+            }
+        });
+
+
+        Button sign_up_btn = (Button) view.findViewById(R.id.login_signup);
+        sign_up_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragHelper.addReplace(getActivity().getSupportFragmentManager(), new SignUpFragment());
+            }
+        });
+        return view;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void loginUser(){
+         RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
+                    .setEndpoint("https://www.tripalocal.com")
+                    .build();
+            ApiService apiService = restAdapter.create(ApiService.class);
+            Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
+            Gson gson = new Gson();
+            //String log_json = gson.toJson(log_req);
+        //String log_json = "{ \"email\" : \"ravnav44@gmail.com\",\"password\":\"omegastar\" }";
+            //apiService.login_user(log_json , new Callback<String>() {
+            apiService.loginUser("ravnav44@gmail.com", "omegastar", new Callback<Login_Result>() {
+                @Override
+                public void success(Login_Result result, Response response) {
+                    ToastHelper.shortToast("log in success");
+                    System.out.println("result = [" + result + "], response = [" + response + "]");
+                }
 
+                @Override
+                public void failure(RetrofitError error) {
+                    ToastHelper.errorToast("log in failed");
+                    System.out.println("error = [" + error + "]");
+                }
+            });
+    }
 }

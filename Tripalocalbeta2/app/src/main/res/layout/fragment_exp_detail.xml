@@ -1,0 +1,265 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
+
+
+
+        <!-- <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Titlead pdpasm dpasdkasdasd das"
+             android:textSize="20sp"
+             android:id="@+id/exp_detail_top_title"
+             android:padding="20dp"
+             />-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/blue"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/exp_detail_profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="bottom|center"
+                android:src="@drawable/dracula"
+                app:border_width="2dp"
+                app:border_color="#FF000000"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_title"
+            android:textSize="23sp"
+            android:gravity="center"
+            android:layout_marginTop="220dp"
+            android:textStyle="italic"
+            android:text="dasd asdasdasd asdas sa dsad sadasdasdasd dasdasd"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:id="@+id/exp_detail_lang"
+            android:layout_below="@id/exp_detail_title"
+            android:text="Italian"
+            android:gravity="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_price_container"
+            android:layout_below="@id/exp_detail_lang"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_price"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:text="from 35$"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_price_person"
+                android:textSize="23sp"
+                android:text="per person for 3 hours"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <!-- info on the experience-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_info_title"
+            android:layout_below="@id/exp_detail_price_container"
+            android:textSize="21sp"
+            android:text="this is the ssub heading of infor textasdda da"
+            android:gravity="left|center"
+            android:padding="20dp"
+            android:password="false" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_info_content_less"
+            android:layout_below="@id/exp_detail_info_title"
+            android:textSize="18sp"
+            android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exp_detail_info_content_less"
+            android:id="@+id/exp_detail_info_read_more_container"
+            >
+            <!--    <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_info_read_more"
+                    android:text="Read More"
+                    android:layout_gravity="center"
+                    />-->
+
+        </FrameLayout>
+
+        <!-- about the host-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_host_title"
+            android:layout_below="@id/exp_detail_info_read_more_container"
+            android:textSize="21sp"
+            android:text="About the host"
+            android:gravity="center"
+            android:padding="20dp"
+            android:password="false" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_host_profile_image_container"
+            android:layout_below="@id/exp_detail_host_title"
+            android:paddingBottom="10dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/exp_detail_host_profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/dracula"
+                android:layout_gravity="center"
+                app:border_width="2dp"
+                app:border_color="#FF000000" />
+        </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_host_info_less"
+            android:layout_below="@id/exp_detail_host_profile_image_container"
+            android:textSize="18sp"
+            android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp" />
+        <!-- reviews-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_review_title"
+            android:layout_below="@id/exp_detail_host_info_less"
+            android:textSize="21sp"
+            android:text="5 reviews"
+            android:gravity="center"
+            android:padding="20dp"
+            android:password="false" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_review_profile_image_container"
+            android:layout_below="@id/exp_detail_review_title"
+            android:paddingBottom="10dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:id="@+id/exp_detail_review_stars"
+                android:background="@android:drawable/btn_star_big_on"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/exp_detail_review_profile_image"
+                android:paddingTop="30dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/dracula"
+                android:layout_gravity="center"
+                app:border_width="2dp"
+                app:border_color="#FF000000" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="coutnt D."
+                android:textAlignment="center"
+                android:gravity="center" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_review_content_less"
+            android:layout_below="@id/exp_detail_review_profile_image_container"
+            android:textSize="18sp"
+            android:text="well i went for this experience and i am also a vampire now. It is awesome and think everyone should try this."
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp" />
+
+        <!--end of reviews -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/exp_detail_add_expenses_banner"
+            android:layout_below="@id/exp_detail_review_content_less"
+            android:background="@color/accent_material_light"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_grid"
+            android:layout_below="@id/exp_detail_add_expenses_banner"
+            android:columnCount="2"
+            android:padding="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_grid_food_icon"
+                android:scaleType="fitXY"
+                android:background="@android:drawable/ic_dialog_info"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Food: optional purchase and drinks"
+                android:id="@+id/exp_detail_grid_food_info"/>
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_grid_ticket_icon"
+                android:scaleType="fitXY"
+                android:background="@android:drawable/ic_dialog_info"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Tickets : Not required"
+                android:id="@+id/exp_detail_grid_ticket_info"/>
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_grid_transport_icon"
+                android:scaleType="fitXY"
+                android:background="@android:drawable/ic_dialog_info"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Transport : we are going to make you walk all the way !!"
+                android:id="@+id/exp_detail_grid_transport_info"/>
+        </GridLayout>
+
+    <!--    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/exp_detail_related_exp_recycle"
+            />-->
+    </RelativeLayout>
+</ScrollView>

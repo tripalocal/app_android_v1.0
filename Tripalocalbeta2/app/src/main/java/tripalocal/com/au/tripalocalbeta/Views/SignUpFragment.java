@@ -1,0 +1,74 @@
+package tripalocal.com.au.tripalocalbeta.Views;
+
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+
+import com.google.gson.Gson;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
+import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
+import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+
+public class SignUpFragment extends Fragment {
+
+
+    public SignUpFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_sign_up, container, false);
+    }
+
+    public void signup(){
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("https://www.tripalocal.com")
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+        Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
+        Gson gson = new Gson();
+        //String log_json = gson.toJson(log_req);
+
+        EditText edit_email = (EditText) getActivity().findViewById(R.id.signup_email);
+        EditText edit_pwd = (EditText) getActivity().findViewById(R.id.signup_password);
+        EditText edit_firstname = (EditText) getActivity().findViewById(R.id.signup_firstname);
+        EditText edit_lastname = (EditText) getActivity().findViewById(R.id.signup_lastname);
+
+        String email = edit_email.getText().toString();
+        String pwd = edit_pwd.getText().toString();
+        String first_name = edit_firstname.getText().toString();
+        String last_name = edit_lastname.getText().toString();
+
+        apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
+            @Override
+            public void success(Login_Result result, Response response) {
+                ToastHelper.shortToast("sign up success");
+                System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                ToastHelper.errorToast("sign up failed");
+                System.out.println("error = [" + error + "]");
+            }
+        });
+    }
+
+
+}

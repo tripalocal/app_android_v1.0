@@ -171,7 +171,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/profile_Address_postcode"
         android:layout_below="@+id/profile_Address_suburb"
-        android:text="Suburb"
+        android:text="Postcode"
         android:background="@color/white"
         android:layout_marginLeft="20dp"
         android:textSize="20sp"
