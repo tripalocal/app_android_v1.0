@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     card_view:cardCornerRadius="4dp"
     android:paddingBottom="10dp"
+    android:fontFamily="light"
     >
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/banner_txt"
             android:text="from $40 Aud per person"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="70dp"
             android:paddingLeft="8dp"
@@ -33,7 +34,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:padding="8dp"
         android:id="@+id/title_txt"
         android:text="title of the experience sadsad dasdass"
@@ -82,6 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="Saved . 2hrs . English"/>
     </LinearLayout>
     <!-- end of card-->
