@@ -40,9 +40,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.infoTxt.setText("info of the resultss.....some more info..more info???");
         holder.itemView.setTag(position);*/
 
-        holder.bannerTxt.setText("banner title of the results");
+        /*holder.bannerTxt.setText("banner title of the results");
         holder.titleTxt.setText("title of the result");
-        holder.infoTxt.setText("info of the resultss.....some more info..more info???");
+        holder.infoTxt.setText("info of the resultss.....some more info..more info???");*/
         holder.itemView.setTag(position);
     }
 

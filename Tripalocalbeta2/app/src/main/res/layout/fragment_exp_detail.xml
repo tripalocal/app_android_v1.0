@@ -5,9 +5,8 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="light"
         tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
-
-
 
         <!-- <TextView
              android:layout_width="match_parent"
@@ -39,18 +38,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_title"
-            android:textSize="23sp"
+            android:textSize="20sp"
             android:gravity="center"
+            android:padding="15dp"
             android:layout_marginTop="220dp"
             android:textStyle="italic"
             android:text="dasd asdasdasd asdas sa dsad sadasdasdasd dasdasd"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="19sp"
+            android:textSize="14sp"
             android:id="@+id/exp_detail_lang"
             android:layout_below="@id/exp_detail_title"
             android:text="Italian"
+            android:paddingBottom="10dp"
             android:gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,14 +64,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price"
-                android:textSize="28sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="from 35$"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_person"
-                android:textSize="23sp"
+                android:textSize="16sp"
                 android:text="per person for 3 hours"
                 android:paddingLeft="10dp" />
         </LinearLayout>
@@ -80,7 +81,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_title"
             android:layout_below="@id/exp_detail_price_container"
-            android:textSize="21sp"
+            android:textSize="16sp"
             android:text="this is the ssub heading of infor textasdda da"
             android:gravity="left|center"
             android:padding="20dp"
@@ -90,7 +91,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_content_less"
             android:layout_below="@id/exp_detail_info_title"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -117,8 +118,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_host_title"
             android:layout_below="@id/exp_detail_info_read_more_container"
-            android:textSize="21sp"
+            android:textSize="20sp"
             android:text="About the host"
+            android:textStyle="italic"
             android:gravity="center"
             android:padding="20dp"
             android:password="false" />
@@ -143,7 +145,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_host_info_less"
             android:layout_below="@id/exp_detail_host_profile_image_container"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -154,7 +156,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_review_title"
             android:layout_below="@id/exp_detail_host_info_less"
-            android:textSize="21sp"
+            android:textSize="20sp"
+            android:textStyle="italic"
             android:text="5 reviews"
             android:gravity="center"
             android:padding="20dp"
@@ -195,7 +198,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_review_content_less"
             android:layout_below="@id/exp_detail_review_profile_image_container"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="well i went for this experience and i am also a vampire now. It is awesome and think everyone should try this."
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -223,6 +226,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_grid_food_icon"
                 android:scaleType="fitXY"
+                android:paddingBottom="10dp"
                 android:background="@android:drawable/ic_dialog_info"/>
             <TextView
                 android:layout_height="wrap_content"
@@ -234,6 +238,7 @@
                 android:layout_width="32dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_grid_ticket_icon"
+                android:paddingTop="10dp"
                 android:scaleType="fitXY"
                 android:background="@android:drawable/ic_dialog_info"/>
             <TextView
@@ -247,6 +252,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_grid_transport_icon"
                 android:scaleType="fitXY"
+                android:paddingTop="10dp"
                 android:background="@android:drawable/ic_dialog_info"/>
             <TextView
                 android:layout_height="wrap_content"
