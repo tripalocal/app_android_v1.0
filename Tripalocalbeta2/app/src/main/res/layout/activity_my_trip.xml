@@ -5,10 +5,10 @@
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
         <RelativeLayout android:background="@color/blue" android:id="@+id/relativeLayout1" android:layout_height="45dp" android:layout_width="fill_parent">
-            <ImageButton android:id="@+id/homeButton" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/home_s"></ImageButton>
-            <ImageButton android:id="@+id/searchButton" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_toRightOf="@+id/homeButton" android:layout_width="wrap_content" android:src="@drawable/search_s"></ImageButton>
-            <ImageButton android:id="@+id/tripButton" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_toRightOf="@+id/searchButton" android:layout_width="wrap_content" android:src="@drawable/mytrip_s"></ImageButton>
-            <ImageButton android:id="@+id/profileButton" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_toRightOf="@+id/tripButton" android:layout_width="wrap_content" android:src="@drawable/myprofile_s"></ImageButton>
+            <ImageButton android:id="@+id/homeButton" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_width="45dp" android:src="@drawable/home_s"></ImageButton>
+            <ImageButton android:id="@+id/searchButton" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_toRightOf="@+id/homeButton" android:layout_width="45dp" android:src="@drawable/search_s"></ImageButton>
+            <ImageButton android:id="@+id/myTripButton" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_toRightOf="@+id/searchButton" android:layout_width="45dp" android:src="@drawable/mytrip_s"></ImageButton>
+            <ImageButton android:id="@+id/myProfileButton" android:layout_alignParentRight="true" android:layout_alignParentTop="true" android:layout_height="wrap_content" android:layout_width="45dp" android:src="@drawable/myprofile_s"></ImageButton>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
