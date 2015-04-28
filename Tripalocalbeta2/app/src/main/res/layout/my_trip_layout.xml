@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/exp_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/dracula"
+        app:border_width="2dp"
+        app:border_color="@color/white"/>
+
+    <TextView
+        android:id="@+id/booking_status"
+        android:layout_width="96dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/booking_date"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/booking_time"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/guest_number"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/exp_title"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/host_name"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/host_phone_number"
+        android:layout_width="50dp"
+        android:layout_height="20dp" />
+</LinearLayout>

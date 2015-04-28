@@ -1,9 +1,12 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.facebook.FacebookSdk;
 
@@ -16,6 +19,7 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 
 public class HomeActivity extends ActionBarActivity {
 
+    private ImageButton mytrip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,18 @@ public class HomeActivity extends ActionBarActivity {
         ToastHelper.appln_context = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
+
+        mytrip = (ImageButton)findViewById(R.id.myTripButton);
+        mytrip.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
+                startActivity(intent);
+            }
+        });
+
         HomeActivityFragment homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
     }
