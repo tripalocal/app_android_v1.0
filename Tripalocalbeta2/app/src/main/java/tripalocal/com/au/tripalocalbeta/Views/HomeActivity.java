@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.facebook.FacebookSdk;
 
@@ -19,7 +19,7 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 
 public class HomeActivity extends ActionBarActivity {
 
-    private ImageButton mytrip;
+    private ImageView mytrip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class HomeActivity extends ActionBarActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
 
-        mytrip = (ImageButton)findViewById(R.id.myTripButton);
+        mytrip = (ImageView)findViewById(R.id.myTripButton);
         mytrip.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -38,7 +38,6 @@ public class HomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
         HomeActivityFragment homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
     }

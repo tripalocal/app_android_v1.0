@@ -35,14 +35,11 @@
             android:name=".Views.ExpDetailActivity"
             android:label="@string/title_activity_exp_detail"
             android:screenOrientation="portrait">
-<<<<<<< HEAD
-=======
         </activity>
         <activity
             android:name=".Views.MyTripActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
->>>>>>> origin/master
         </activity>
     </application>
 

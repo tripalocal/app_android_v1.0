@@ -40,6 +40,14 @@ public class HomeActivityFragment extends Fragment {
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
         rv.setAdapter(new SimpleRecycleAdapter(this));
+
+        //LayoutInflater inflater = getLayoutInflater();
+
+       /* getActivity().getWindow().addContentView(inflater.inflate(R.layout.abyi, null),
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));*/
+
         return view;
     }
 
