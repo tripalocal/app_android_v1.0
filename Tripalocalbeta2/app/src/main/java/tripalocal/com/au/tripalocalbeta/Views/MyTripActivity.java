@@ -12,6 +12,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.adapters.MyTripAdapter;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 
 public class MyTripActivity extends ActionBarActivity {
@@ -65,7 +66,8 @@ public class MyTripActivity extends ActionBarActivity {
         apiService.getMyTrip(new Callback<MyTrip[]>() {
 
             @Override
-            public void success(MyTrip[] search_results, Response response) {
+            public void success(MyTrip[] my_trip, Response response) {
+                MyTripAdapter.myTrip = my_trip;
                 System.out.println("MyTripActivity.Success");
             }
 
