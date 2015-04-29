@@ -59,7 +59,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 ToastHelper.longToast("FB Login success");
-                setLogin_status(true);
+
             }
 
             @Override

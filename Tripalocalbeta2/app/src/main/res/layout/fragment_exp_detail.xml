@@ -1,5 +1,4 @@
-<com.gc.materialdesign.views.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
@@ -9,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
         android:fontFamily="light"
         tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
 
@@ -272,7 +270,7 @@
             android:layout_height="match_parent"
             android:id="@+id/exp_detail_related_exp_recycle"
             />-->
-        <com.gc.materialdesign.views.ButtonFloat
+        <!--<com.gc.materialdesign.views.ButtonFloat
             android:id="@+id/buttonFloat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -281,10 +279,8 @@
             android:layout_marginRight="24dp"
             android:background="#1E88E5"
             materialdesign:animate="true"
-            materialdesign:iconDrawable="@drawable/instant_booking" />
+            materialdesign:iconDrawable="@drawable/instant_booking" />-->
 
     </RelativeLayout>
 
-
-
-</com.gc.materialdesign.views.ScrollView>
+</ScrollView>
