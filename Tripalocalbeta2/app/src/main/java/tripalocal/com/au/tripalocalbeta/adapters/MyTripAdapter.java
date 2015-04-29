@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
@@ -32,13 +36,40 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
 
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
+        MyTrip result =  myTrip[position];
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'");
+        Date dt = new Date();
+        try {
+            dt = sdf.parse(result.getDatetime().substring(0,20));
+        }
+        catch(ParseException pe)
+        {
+            System.out.println(pe.toString());
+        }
+
+        sdf = new SimpleDateFormat("dd-MM-yyyy");
+        holder.bookingDate.setText(sdf.format(dt));
+        sdf = new SimpleDateFormat("HH:mm");
+        holder.bookingTime.setText(sdf.format(dt));
+        holder.expTitle.setText(result.getExperienceTitle());
+        holder.guestNumber.setText(Integer.toString(result.getGuestNumber()));
+        holder.hostName.setText(result.getHostName());
+        holder.hostPhoneNumber.setText(result.getHostPhoneNumber());
+        holder.status.setText(result.getStatus());
+
         holder.itemView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
-        //return searchResult.length;
-        return 5;
+        if(myTrip!=null)
+        {
+            return myTrip.length;
+        }
+        else
+        {
+            return  0;
+        }
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder{

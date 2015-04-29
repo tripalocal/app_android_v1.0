@@ -2,6 +2,8 @@ package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,11 +19,17 @@ import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 
 public class MyTripActivity extends ActionBarActivity {
 
+    private RecyclerView rv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_trip);
         getMyTrip("ca1188e53130b1af884918f797bac9aeb89ef7d2");
+        rv = (RecyclerView) findViewById(R.id.recycle_view);
+        rv.setHasFixedSize(true);
+        LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(LLM);
     }
 
 
@@ -68,6 +76,7 @@ public class MyTripActivity extends ActionBarActivity {
             @Override
             public void success(MyTrip[] my_trip, Response response) {
                 MyTripAdapter.myTrip = my_trip;
+                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 System.out.println("MyTripActivity.Success");
             }
 

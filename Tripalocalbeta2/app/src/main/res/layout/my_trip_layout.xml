@@ -19,12 +19,12 @@
 
     <TextView
         android:id="@+id/booking_status"
-        android:layout_width="96dp"
+        android:layout_width="120dp"
         android:layout_height="20dp" />
 
     <TextView
         android:id="@+id/booking_date"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="20dp" />
 
     <TextView
@@ -39,16 +39,16 @@
 
     <TextView
         android:id="@+id/exp_title"
-        android:layout_width="50dp"
-        android:layout_height="20dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/host_name"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="20dp" />
 
     <TextView
         android:id="@+id/host_phone_number"
-        android:layout_width="50dp"
+        android:layout_width="150dp"
         android:layout_height="20dp" />
 </LinearLayout>
