@@ -1,6 +1,7 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         if(sdf.format(dt) == sdf.format(Calendar.getInstance().getTime()))
         {
             holder.bookingDate.setText("Today");
+            holder.bookingDate.setTextColor(Color.RED);
         }
         else
         {
@@ -61,10 +63,37 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         sdf = new SimpleDateFormat("HH:mm");
         holder.bookingTime.setText(sdf.format(dt));
         holder.expTitle.setText(result.getExperienceTitle());
+        holder.expTitle.setTextColor(Color.GREEN);
         holder.guestNumber.setText(Integer.toString(result.getGuestNumber()));
         holder.hostName.setText("with "+result.getHostName());
         holder.hostPhoneNumber.setText(result.getHostPhoneNumber());
-        holder.status.setText(result.getStatus());
+
+        String st = result.getStatus();
+        if(result.getStatus().equalsIgnoreCase("accepted"))
+        {
+            st="Confirmed";
+            holder.status.setBackgroundColor(Color.parseColor("#89e052"));
+            holder.status.setTextColor(Color.WHITE);
+        }
+        else if(result.getStatus().equalsIgnoreCase("paid"))
+        {
+            st="Requested";
+            holder.status.setBackgroundColor(Color.parseColor("#08ae56"));
+            holder.status.setTextColor(Color.WHITE);
+        }
+        else if(result.getStatus().equalsIgnoreCase("rejected"))
+        {
+            st="Cancelled";
+            holder.status.setBackgroundColor(Color.LTGRAY);
+            holder.status.setTextColor(Color.WHITE);
+        }
+        else
+        {
+            //TODO
+        }
+        holder.status.setText(st);
+        holder.meetupSpot.setText(result.getMeetupSpot());
+
         new ImageDownloader(holder.expImage).execute("http://adventure007.cloudapp.net/images/thumbnails/experiences/experience"
                 +result.getExperienceId()+"_1.jpg");
         new ImageDownloader(holder.profileImage).execute("http://adventure007.cloudapp.net/images/"
@@ -95,6 +124,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         public TextView hostName;
         public TextView hostPhoneNumber;
         public CircleImageView profileImage;
+        public TextView meetupSpot;
 
         public ListViewHolder(View itemView) {
             super(itemView);
@@ -107,6 +137,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             hostName = (TextView) itemView.findViewById(R.id.host_name);
             hostPhoneNumber = (TextView) itemView.findViewById(R.id.host_phone_number);
             profileImage = (CircleImageView) itemView.findViewById(R.id.profile_image);
+            meetupSpot = (TextView) itemView.findViewById(R.id.my_trip_meetup_instruction);
         }
     }
 }
