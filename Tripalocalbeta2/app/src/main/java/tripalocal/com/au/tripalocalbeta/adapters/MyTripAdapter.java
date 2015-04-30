@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -24,10 +25,11 @@ import tripalocal.com.au.tripalocalbeta.models.MyTrip;
  */
 public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHolder> {
 
-    public static MyTrip[] myTrip;
+    public static ArrayList<MyTrip> myTrip;
     public static Context mContext;
 
-    public MyTripAdapter(Context applicationContext) {
+    public MyTripAdapter(Context applicationContext)
+    {
         mContext = applicationContext;
     }
 
@@ -39,7 +41,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
 
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
-        MyTrip result =  myTrip[position];
+        MyTrip result =  myTrip.get(position);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'");
         Date dt = new Date();
         try {
@@ -106,7 +108,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
     public int getItemCount() {
         if(myTrip!=null)
         {
-            return myTrip.length;
+            return myTrip.size();
         }
         else
         {

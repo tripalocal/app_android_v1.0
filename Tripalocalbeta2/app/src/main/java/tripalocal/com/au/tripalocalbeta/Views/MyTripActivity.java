@@ -6,6 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -20,12 +27,36 @@ import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 public class MyTripActivity extends ActionBarActivity {
 
     private RecyclerView rv;
+    private Button upcomingTripButton;
+    private Button pastTripButton;
+
+    public static ArrayList<MyTrip> upcomingTrip = new ArrayList<>();
+    public static ArrayList<MyTrip> pastTrip = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_trip);
         getMyTrip(getUserToken());
+
+        upcomingTripButton = (Button)findViewById(R.id.my_trip_upcoming);
+        upcomingTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyTripAdapter.myTrip = upcomingTrip;
+                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+            }
+        });
+
+        pastTripButton = (Button)findViewById(R.id.my_trip_past);
+        pastTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyTripAdapter.myTrip = pastTrip;
+                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+            }
+        });
+
         rv = (RecyclerView) findViewById(R.id.recycle_view);
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
@@ -76,11 +107,12 @@ public class MyTripActivity extends ActionBarActivity {
 
         ApiService apiService = restAdapter.create(ApiService.class);
 
-        apiService.getMyTrip(new Callback<MyTrip[]>() {
+        apiService.getMyTrip(new Callback<ArrayList<MyTrip>>() {
 
             @Override
-            public void success(MyTrip[] my_trip, Response response) {
-                MyTripAdapter.myTrip = my_trip;
+            public void success(ArrayList<MyTrip> my_trip, Response response) {
+                classifyTrip(my_trip);
+                MyTripAdapter.myTrip = upcomingTrip;
                 rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 System.out.println("MyTripActivity.Success");
             }
@@ -91,5 +123,30 @@ public class MyTripActivity extends ActionBarActivity {
                 System.out.println("error = [" + error + "]");
             }
         });
+    }
+
+    private void classifyTrip(ArrayList<MyTrip> my_trip)
+    {
+        for(int i=0;i<my_trip.size();i++)
+        {
+            MyTrip result =  my_trip.get(i);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'");
+            Date dt = new Date();
+            try {
+                dt = sdf.parse(result.getDatetime().substring(0,20));
+            }
+            catch(ParseException pe)
+            {
+                System.out.println(pe.toString());
+            }
+            if(dt.after(new Date()))
+            {
+                upcomingTrip.add(result);
+            }
+            else
+            {
+                pastTrip.add(result);
+            }
+        }
     }
 }

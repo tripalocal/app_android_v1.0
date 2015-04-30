@@ -1,15 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_mytrip"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:stretchColumns="*"
+    android:shrinkColumns="*">
 
-    <android.support.v7.widget.RecyclerView
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycle_view"/>
+        android:id="@+id/my_trip_tableRow_categories">
 
- </LinearLayout>
+        <Button
+            android:id="@+id/my_trip_upcoming"
+            android:text="Upcoming"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/my_trip_past"
+            android:text="Past"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/recycle_view"/>
+    </TableRow>
+ </TableLayout>
 <!--
 <LinearLayout android:background="#0000" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:background="#0000" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="fill_parent">
