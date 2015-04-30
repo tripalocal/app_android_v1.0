@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.models.ImageDownloader;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 
 /**
@@ -48,14 +50,25 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         }
 
         sdf = new SimpleDateFormat("dd-MM-yyyy");
-        holder.bookingDate.setText(sdf.format(dt));
+        if(sdf.format(dt) == sdf.format(Calendar.getInstance().getTime()))
+        {
+            holder.bookingDate.setText("Today");
+        }
+        else
+        {
+            holder.bookingDate.setText(sdf.format(dt));
+        }
         sdf = new SimpleDateFormat("HH:mm");
         holder.bookingTime.setText(sdf.format(dt));
         holder.expTitle.setText(result.getExperienceTitle());
         holder.guestNumber.setText(Integer.toString(result.getGuestNumber()));
-        holder.hostName.setText(result.getHostName());
+        holder.hostName.setText("with "+result.getHostName());
         holder.hostPhoneNumber.setText(result.getHostPhoneNumber());
         holder.status.setText(result.getStatus());
+        new ImageDownloader(holder.expImage).execute("http://adventure007.cloudapp.net/images/thumbnails/experiences/experience"
+                +result.getExperienceId()+"_1.jpg");
+        new ImageDownloader(holder.profileImage).execute("http://adventure007.cloudapp.net/images/"
+                +result.getHostImage());
 
         holder.itemView.setTag(position);
     }

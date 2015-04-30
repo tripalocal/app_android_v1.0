@@ -25,13 +25,12 @@ public class MyTripActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_trip);
-        getMyTrip("ca1188e53130b1af884918f797bac9aeb89ef7d2");
+        getMyTrip(getUserToken());
         rv = (RecyclerView) findViewById(R.id.recycle_view);
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(LLM);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,6 +52,12 @@ public class MyTripActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getUserToken()
+    {
+        //TODO
+        return "ca1188e53130b1af884918f797bac9aeb89ef7d2";
     }
 
     private void getMyTrip(final String token)

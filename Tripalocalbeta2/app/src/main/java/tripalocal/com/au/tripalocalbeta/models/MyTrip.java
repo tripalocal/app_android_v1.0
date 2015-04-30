@@ -8,10 +8,12 @@ public class MyTrip {
     private String datetime;
     private String status;
     private int guest_number;
+    private int experience_id;
     private String experience_title;
     private String meetup_spot;
     private String host_name;
     private String host_phone_number;
+    private String host_image;
 
     public String getDatetime() {
         return datetime;
@@ -27,6 +29,14 @@ public class MyTrip {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getExperienceId() {
+        return experience_id;
+    }
+
+    public void setExperienceId(int experience_id) {
+        this.experience_id = experience_id;
     }
 
     public int getGuestNumber() {
@@ -67,5 +77,13 @@ public class MyTrip {
 
     public void setHostPhoneNumber(String host_phone_number) {
         this.host_phone_number = host_phone_number;
+    }
+
+    public String getHostImage() {
+        return host_image;
+    }
+
+    public void setHostImage(String host_image) {
+        this.host_image = host_image;
     }
 }

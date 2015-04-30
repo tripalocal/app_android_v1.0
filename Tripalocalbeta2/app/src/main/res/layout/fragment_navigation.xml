@@ -22,7 +22,7 @@
         android:layout_height="96dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:src="@drawable/dracula"
+        android:src="@drawable/profile_default"
         app:border_width="2dp"
         app:border_color="#FF000000"
         android:layout_marginBottom="30dp"

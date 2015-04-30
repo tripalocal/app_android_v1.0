@@ -32,7 +32,7 @@
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:layout_gravity="bottom|center"
-                android:src="@drawable/dracula"
+                android:src="@drawable/profile_default"
                 app:border_width="2dp"
                 app:border_color="#FF000000"/>
         </FrameLayout>
@@ -138,7 +138,7 @@
                 android:id="@+id/exp_detail_host_profile_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:src="@drawable/dracula"
+                android:src="@drawable/profile_default"
                 android:layout_gravity="center"
                 app:border_width="2dp"
                 app:border_color="#FF000000" />
@@ -185,7 +185,7 @@
                 android:paddingTop="30dp"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:src="@drawable/dracula"
+                android:src="@drawable/profile_default"
                 android:layout_gravity="center"
                 app:border_width="2dp"
                 app:border_color="#FF000000" />
