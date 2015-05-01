@@ -7,40 +7,41 @@ import java.util.ArrayList;
  */
 public class Search_Result {
 
-    private ArrayList<Experience> experiences;
-    private String date;
-    private String city;
+        private ArrayList<Experience> experiences;
+        private String date;
+        private String city;
 
-    public Search_Result(ArrayList<Experience> exp, String City, String Date){
-        experiences = new ArrayList<>();
-        if(exp.size() > 0){
-            this.experiences = exp;
+        public Search_Result (ArrayList<Experience> exp, String City, String Date){
+            experiences = new ArrayList<>();
+            if(exp.size() > 0){
+                this.experiences = exp;
+            }
+            this.city = City;
+            this.date = Date;
         }
-        this.city = City;
-        this.date = Date;
-    }
-    public ArrayList<Experience> getExperiences() {
-        return experiences;
-    }
 
-    public void setExperiences(ArrayList<Experience> experiences) {
-        this.experiences = experiences;
-    }
+        public ArrayList<Experience> getExperiences() {
+            return experiences;
+        }
 
-    public String getCity() {
-        return city;
-    }
+        public void setExperiences(ArrayList<Experience> experiences) {
+            this.experiences = experiences;
+        }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+        public String getCity() {
+            return city;
+        }
 
-    public String getDate() {
-        return date;
-    }
+        public void setCity(String city) {
+            this.city = city;
+        }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+        public String getDate() {
+            return date;
+        }
 
-}
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+    }
