@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,9 +31,12 @@ public class MyTripActivity extends ActionBarActivity {
     private RecyclerView rv;
     private Button upcomingTripButton;
     private Button pastTripButton;
+    private TableLayout tl;
 
     public static ArrayList<MyTrip> upcomingTrip = new ArrayList<>();
     public static ArrayList<MyTrip> pastTrip = new ArrayList<>();
+
+    private float initialX, initialY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,67 @@ public class MyTripActivity extends ActionBarActivity {
             public void onClick(View v) {
                 MyTripAdapter.myTrip = pastTrip;
                 rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+            }
+        });
+
+        tl = (TableLayout)findViewById(R.id.my_trip_table);
+        tl.setOnTouchListener(new View.OnTouchListener() {
+            //http://codetheory.in/android-ontouchevent-ontouchlistener-motionevent-to-detect-common-gestures/
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getActionMasked();
+
+                switch (action) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        initialX = event.getX();
+                        initialY = event.getY();
+
+                        //Log.d(TAG, "Action was DOWN");
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        //Log.d(TAG, "Action was MOVE");
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        float finalX = event.getX();
+                        float finalY = event.getY();
+
+                        //Log.d(TAG, "Action was UP");
+
+                        if (initialX < finalX) {
+                            //Log.d(TAG, "Left to Right swipe performed");
+                            MyTripAdapter.myTrip = pastTrip;
+                            rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                        }
+
+                        if (initialX > finalX) {
+                            //Log.d(TAG, "Right to Left swipe performed");
+                            MyTripAdapter.myTrip = upcomingTrip;
+                            rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                        }
+
+                        if (initialY < finalY) {
+                            //Log.d(TAG, "Up to Down swipe performed");
+                        }
+
+                        if (initialY > finalY) {
+                            //Log.d(TAG, "Down to Up swipe performed");
+                        }
+
+                        break;
+
+                    case MotionEvent.ACTION_CANCEL:
+                        //Log.d(TAG,"Action was CANCEL");
+                        break;
+
+                    case MotionEvent.ACTION_OUTSIDE:
+                        //Log.d(TAG, "Movement occurred outside bounds of current screen element");
+                        break;
+                }
+
+                return true;
             }
         });
 
