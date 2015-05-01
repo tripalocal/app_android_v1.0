@@ -8,17 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity;
-import tripalocal.com.au.tripalocalbeta.helpers.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 /**
  * Created by naveen on 4/18/2015.
  */
 public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAdapter.ListViewHolder> {
 
-    public static Search_Result[] searchResult;
+    public static List<Search_Result> search_result;
     public static Context mContext;
 
     public ExperienceListAdapter(Context applicationContext) {

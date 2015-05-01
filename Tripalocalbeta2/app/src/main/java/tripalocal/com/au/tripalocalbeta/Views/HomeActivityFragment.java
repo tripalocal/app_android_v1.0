@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -20,7 +22,7 @@ import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.adapters.SimpleRecycleAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.helpers.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 
 /**
@@ -54,24 +56,29 @@ public class HomeActivityFragment extends Fragment {
     public void displayListFrag(String city){
         StringBuilder temp = new StringBuilder();
         temp.append("Sports");
+        temp.append(",");
         temp.append("Arts");
+        temp.append(",");
         temp.append("Food");
-        SearchRequest req_obj = new SearchRequest("2015-04-19", "2015-05-22",
+        SearchRequest req_obj = new SearchRequest("2015-05-30", "2015-06-3",
                 city,"2",temp.toString());
         Gson gson = new Gson();
         String json = gson.toJson(req_obj);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("https://www.tripalocal.com")
+                .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         //ArrayList<String> temp = new ArrayList<String>();
 
-        apiService.getSearchResults(req_obj, new Callback<Search_Result[]>() {
+
+        apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
 
             @Override
-            public void success(Search_Result[] search_results, Response response) {
-                ExperienceListAdapter.searchResult = search_results;
+            public void success(List<Search_Result> search_results, Response response) {
+                ExperienceListAdapter.search_result = search_results;
+                System.out.println("search_results = " + search_results);
+
             }
 
             @Override
@@ -80,7 +87,6 @@ public class HomeActivityFragment extends Fragment {
                 System.out.println("error = [" + error + "]");
             }
         });
-        FragHelper.addReplace(getActivity().getSupportFragmentManager(), new ExperiencesListFragment());
+        FragHelper.replace(getActivity().getSupportFragmentManager(), new ExperienceDetailFragment());
     }
-
 }

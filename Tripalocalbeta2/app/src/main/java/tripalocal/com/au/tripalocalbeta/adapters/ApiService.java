@@ -1,5 +1,7 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.Field;
@@ -8,8 +10,8 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.helpers.Search_Result;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
+import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 /**
  * Created by naveen on 4/6/2015.
@@ -17,7 +19,11 @@ import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 public interface ApiService {
 
     @POST("/service_search/")
-    void getSearchResults(@Body SearchRequest data_json, Callback<Search_Result[]> cb);
+    void getSearchResults(@Body SearchRequest data_json, Callback<List<Search_Result>> cb);
+
+    @POST("/service_search/")
+    void testgetSearchResults(@Body SearchRequest data_json, Callback<String[]> cb);
+
 
     @FormUrlEncoded
     @POST("/service_login/")

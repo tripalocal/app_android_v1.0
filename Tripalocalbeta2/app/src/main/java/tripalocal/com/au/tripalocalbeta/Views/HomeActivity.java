@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,9 +25,16 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 public class HomeActivity extends ActionBarActivity {
 
     private ImageView mytrip;
-
+    private static Context home_context;
     private static FragmentManager frag_manager;
 
+    public static Context getHome_context() {
+        return home_context;
+    }
+
+    public static void setHome_context(Context home_context) {
+        HomeActivity.home_context = home_context;
+    }
 
     public static FragmentManager getFrag_manager() {
         return frag_manager;
@@ -63,7 +71,7 @@ public class HomeActivity extends ActionBarActivity {
             actionBar.hide();
         }
 
-
+        home_context = getApplicationContext();
         frag_manager = getSupportFragmentManager();
         ToastHelper.appln_context = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -110,5 +118,9 @@ public class HomeActivity extends ActionBarActivity {
     public static void callLoginFrag(){
         ToastHelper.shortToast("calling login frag");
         FragHelper.addReplace(frag_manager ,new LoginFragment());
+    }
+
+    public static Context getContextInstance(){
+        return home_context;
     }
 }

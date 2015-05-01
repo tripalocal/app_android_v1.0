@@ -1,14 +1,15 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
-import android.app.FragmentManager;
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
@@ -22,6 +23,9 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
     private static final String[] places = {"Melbourne", "Sydney"};
     private static HomeActivityFragment HomeFrag;
 
+    private static final String[] bg_urls = {"https://www.tripalocal.com/images/mobile/home/Melbourne.jpg",
+                                               "https://www.tripalocal.com/images/mobile/home/Sydney.jpg"};
+
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_card_layout, viewGroup, false);
@@ -31,6 +35,8 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
     @Override
     public void onBindViewHolder(SimpleViewHolder simpleViewHolder, int i) {
         simpleViewHolder.text.setText(places[i]);
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[i]).centerCrop()
+                .crossFade().into(simpleViewHolder.image);
         simpleViewHolder.itemView.setTag(places[i]);
     }
 
@@ -48,10 +54,12 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
     public static class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView text;
+        public ImageView image;
 
         public SimpleViewHolder(View item_view){
             super(item_view);
             text = (TextView) item_view.findViewById(R.id.card_text);
+            image = (ImageView) item_view.findViewById(R.id.card_bg_image);
             item_view.setOnClickListener(this);
         }
 
