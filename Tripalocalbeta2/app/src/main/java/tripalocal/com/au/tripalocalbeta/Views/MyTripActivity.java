@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -31,9 +32,10 @@ public class MyTripActivity extends ActionBarActivity {
 
     private RecyclerView rv;
     private Button upcomingTripButton;
-    private Button pastTripButton;
+    private Button previousTripButton;
+    private Button exploreButton;
     private int category = 0;//0:upcoming, 1:past
-    private TableLayout tl;
+    private TableLayout tl,tl_none;
 
     public static ArrayList<MyTrip> upcomingTrip = new ArrayList<>();
     public static ArrayList<MyTrip> previousTrip = new ArrayList<>();
@@ -56,29 +58,39 @@ public class MyTripActivity extends ActionBarActivity {
                     category=0;
                     upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
                     upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
-                    pastTripButton.setTextColor(Color.parseColor("#33cccc"));
-                    pastTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    previousTripButton.setTextColor(Color.parseColor("#33cccc"));
+                    previousTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
                     rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 }
             }
         });
 
-        pastTripButton = (Button)findViewById(R.id.my_trip_previous);
-        pastTripButton.setOnClickListener(new View.OnClickListener() {
+        previousTripButton = (Button)findViewById(R.id.my_trip_previous);
+        previousTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category==0)
-                {
+                if (category == 0) {
                     MyTripAdapter.myTrip = previousTrip;
-                    category=1;
+                    category = 1;
                     upcomingTripButton.setTextColor(Color.parseColor("#33cccc"));
                     upcomingTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
-                    pastTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                    pastTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    previousTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                    previousTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
                     rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 }
             }
         });
+
+        exploreButton = (Button)findViewById(R.id.my_trip_explore_button);
+        exploreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tl_none = (TableLayout)findViewById(R.id.my_trip_table_none);
 
         tl = (TableLayout)findViewById(R.id.my_trip_table);
         tl.setOnTouchListener(new View.OnTouchListener() {
@@ -172,14 +184,14 @@ public class MyTripActivity extends ActionBarActivity {
     private String getUserToken()
     {
         //TODO
-        return "ca1188e53130b1af884918f797bac9aeb89ef7d2";
+        return "73487d0eb131a6822e08cd74612168cf6e0755dc";//"ca1188e53130b1af884918f797bac9aeb89ef7d2";//
     }
 
     private void getMyTrip(final String token)
     {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net")//https://www.tripalocal.com
+                .setEndpoint("http://adventure007.cloudapp.net")// https://www.tripalocal.com
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
@@ -196,12 +208,31 @@ public class MyTripActivity extends ActionBarActivity {
             @Override
             public void success(ArrayList<MyTrip> my_trip, Response response) {
                 classifyTrip(my_trip);
-                MyTripAdapter.myTrip = upcomingTrip;
-                category=0;
-                upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
-                pastTripButton.setTextColor(Color.parseColor("#33cccc"));
-                pastTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                if(!upcomingTrip.isEmpty()) {
+                    MyTripAdapter.myTrip = upcomingTrip;
+                    category = 0;
+                    upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                    upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    previousTripButton.setTextColor(Color.parseColor("#33cccc"));
+                    previousTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    tl_none.setVisibility(View.GONE);
+                }
+                else if(!previousTrip.isEmpty())
+                {
+                    MyTripAdapter.myTrip = previousTrip;
+                    category = 1;
+                    previousTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                    previousTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    upcomingTripButton.setTextColor(Color.parseColor("#33cccc"));
+                    upcomingTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    tl_none.setVisibility(View.GONE);
+                }
+                else
+                {
+                    upcomingTripButton.setVisibility(View.INVISIBLE);
+                    previousTripButton.setVisibility(View.INVISIBLE);
+                }
+
                 rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 System.out.println("MyTripActivity.Success");
             }

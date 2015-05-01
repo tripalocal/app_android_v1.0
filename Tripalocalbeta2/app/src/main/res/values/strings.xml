@@ -13,5 +13,7 @@
     <string name="my_trip_call">Call</string>
     <string name="my_trip_message">Free Message</string>
     <string name="my_trip_meetup_title">Meet up instruction</string>
-
+    <string name="my_trip_myTrip">My Trips</string>
+    <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
+    <string name="my_trip_explore">Start Exploring</string>
 </resources>

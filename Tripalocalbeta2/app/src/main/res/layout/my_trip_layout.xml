@@ -15,19 +15,18 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:id="@+id/my_trip_tableRow_images">
+            android:id="@+id/my_trip_tableRow_images"
+            android:layout_height="150dp">
 
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:minHeight="150dp"
                 android:layout_weight="1">
 
                 <ImageView
                     android:id="@+id/my_trip_exp_image"
                     android:layout_width="match_parent"
-                    android:minHeight="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:contentDescription="@string/experience_image"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
