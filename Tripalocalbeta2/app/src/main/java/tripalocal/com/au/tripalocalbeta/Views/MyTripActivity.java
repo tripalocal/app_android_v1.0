@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,10 +32,11 @@ public class MyTripActivity extends ActionBarActivity {
     private RecyclerView rv;
     private Button upcomingTripButton;
     private Button pastTripButton;
+    private int category = 0;//0:upcoming, 1:past
     private TableLayout tl;
 
     public static ArrayList<MyTrip> upcomingTrip = new ArrayList<>();
-    public static ArrayList<MyTrip> pastTrip = new ArrayList<>();
+    public static ArrayList<MyTrip> previousTrip = new ArrayList<>();
 
     private float initialX, initialY;
 
@@ -48,17 +50,33 @@ public class MyTripActivity extends ActionBarActivity {
         upcomingTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyTripAdapter.myTrip = upcomingTrip;
-                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                if(category==1)
+                {
+                    MyTripAdapter.myTrip = upcomingTrip;
+                    category=0;
+                    upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                    upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    pastTripButton.setTextColor(Color.parseColor("#33cccc"));
+                    pastTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                }
             }
         });
 
-        pastTripButton = (Button)findViewById(R.id.my_trip_past);
+        pastTripButton = (Button)findViewById(R.id.my_trip_previous);
         pastTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyTripAdapter.myTrip = pastTrip;
-                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                if(category==0)
+                {
+                    MyTripAdapter.myTrip = previousTrip;
+                    category=1;
+                    upcomingTripButton.setTextColor(Color.parseColor("#33cccc"));
+                    upcomingTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    pastTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                    pastTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                }
             }
         });
 
@@ -90,7 +108,7 @@ public class MyTripActivity extends ActionBarActivity {
 
                         if (initialX < finalX) {
                             //Log.d(TAG, "Left to Right swipe performed");
-                            MyTripAdapter.myTrip = pastTrip;
+                            MyTripAdapter.myTrip = previousTrip;
                             rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                         }
 
@@ -123,7 +141,7 @@ public class MyTripActivity extends ActionBarActivity {
             }
         });
 
-        rv = (RecyclerView) findViewById(R.id.recycle_view);
+        rv = (RecyclerView) findViewById(R.id.my_trip_recycle_view);
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(LLM);
@@ -179,6 +197,11 @@ public class MyTripActivity extends ActionBarActivity {
             public void success(ArrayList<MyTrip> my_trip, Response response) {
                 classifyTrip(my_trip);
                 MyTripAdapter.myTrip = upcomingTrip;
+                category=0;
+                upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
+                upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                pastTripButton.setTextColor(Color.parseColor("#33cccc"));
+                pastTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
                 rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 System.out.println("MyTripActivity.Success");
             }
@@ -193,6 +216,8 @@ public class MyTripActivity extends ActionBarActivity {
 
     private void classifyTrip(ArrayList<MyTrip> my_trip)
     {
+        upcomingTrip.clear();
+        previousTrip.clear();
         for(int i=0;i<my_trip.size();i++)
         {
             MyTrip result =  my_trip.get(i);
@@ -211,7 +236,7 @@ public class MyTripActivity extends ActionBarActivity {
             }
             else
             {
-                pastTrip.add(result);
+                previousTrip.add(result);
             }
         }
     }

@@ -11,17 +11,21 @@
 
         <Button
             android:id="@+id/my_trip_upcoming"
-            android:text="Upcoming"
+            android:text="@string/my_trip_upcoming"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@color/tripalocal_green_blue"
+            android:textColor="@color/tripalocal_light_grey"/>
 
         <Button
-            android:id="@+id/my_trip_past"
-            android:text="Past"
+            android:id="@+id/my_trip_previous"
+            android:text="@string/my_trip_previous"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@color/tripalocal_light_grey"
+            android:textColor="@color/tripalocal_green_blue"/>
 
     </TableRow>
 
@@ -32,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:id="@+id/recycle_view"/>
+            android:id="@+id/my_trip_recycle_view"/>
     </TableRow>
  </TableLayout>
 <!--

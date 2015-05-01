@@ -1,11 +1,14 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,7 +68,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         sdf = new SimpleDateFormat("HH:mm");
         holder.bookingTime.setText(sdf.format(dt));
         holder.expTitle.setText(result.getExperienceTitle());
-        holder.expTitle.setTextColor(Color.GREEN);
+        holder.expTitle.setTextColor(Color.parseColor("#33cccc"));
         holder.guestNumber.setText(Integer.toString(result.getGuestNumber()));
         holder.hostName.setText("with "+result.getHostName());
         holder.hostPhoneNumber.setText(result.getHostPhoneNumber());
@@ -74,13 +77,13 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         if(result.getStatus().equalsIgnoreCase("accepted"))
         {
             st="Confirmed";
-            holder.status.setBackgroundColor(Color.parseColor("#89e052"));
+            holder.status.setBackgroundColor(Color.parseColor("#99cc33"));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("paid"))
         {
             st="Requested";
-            holder.status.setBackgroundColor(Color.parseColor("#08ae56"));
+            holder.status.setBackgroundColor(Color.parseColor("#33cccc"));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("rejected"))
@@ -102,6 +105,28 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                 +result.getHostImage());
 
         holder.itemView.setTag(position);
+
+        holder.callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                TextView b = ((TextView)((View)v.getParent().getParent()).findViewById(R.id.my_trip_host_phone_number));
+                intent.setData(Uri.parse("tel:" + b.getText()));
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                TextView b = ((TextView)((View)v.getParent().getParent()).findViewById(R.id.my_trip_host_phone_number));
+                intent.setData(Uri.parse("sms:" + b.getText()));
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -127,19 +152,23 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         public TextView hostPhoneNumber;
         public CircleImageView profileImage;
         public TextView meetupSpot;
+        public Button callButton;
+        public Button messageButton;
 
         public ListViewHolder(View itemView) {
             super(itemView);
-            expTitle = (TextView) itemView.findViewById(R.id.exp_title);
-            expImage = (ImageView) itemView.findViewById(R.id.exp_image);
-            bookingDate = (TextView) itemView.findViewById(R.id.booking_date);
-            bookingTime = (TextView) itemView.findViewById(R.id.booking_time);
-            guestNumber = (TextView) itemView.findViewById(R.id.guest_number);
-            status = (TextView) itemView.findViewById(R.id.booking_status);
-            hostName = (TextView) itemView.findViewById(R.id.host_name);
-            hostPhoneNumber = (TextView) itemView.findViewById(R.id.host_phone_number);
-            profileImage = (CircleImageView) itemView.findViewById(R.id.profile_image);
+            expTitle = (TextView) itemView.findViewById(R.id.my_trip_exp_title);
+            expImage = (ImageView) itemView.findViewById(R.id.my_trip_exp_image);
+            bookingDate = (TextView) itemView.findViewById(R.id.my_trip_booking_date);
+            bookingTime = (TextView) itemView.findViewById(R.id.my_trip_booking_time);
+            guestNumber = (TextView) itemView.findViewById(R.id.my_trip_guest_number);
+            status = (TextView) itemView.findViewById(R.id.my_trip_booking_status);
+            hostName = (TextView) itemView.findViewById(R.id.my_trip_host_name);
+            hostPhoneNumber = (TextView) itemView.findViewById(R.id.my_trip_host_phone_number);
+            profileImage = (CircleImageView) itemView.findViewById(R.id.my_trip_profile_image);
             meetupSpot = (TextView) itemView.findViewById(R.id.my_trip_meetup_instruction);
+            callButton = (Button)itemView.findViewById(R.id.my_trip_call_button);
+            messageButton = (Button)itemView.findViewById(R.id.my_trip_message_button);
         }
     }
 }
