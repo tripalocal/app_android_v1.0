@@ -8,4 +8,10 @@
     <string name="title_activity_my_trip">MyTripActivity</string>
     <string name="action_settings">Settings</string>
     <string name="experience_image">Experience Image</string>
+    <string name="my_trip_upcoming">Upcoming</string>
+    <string name="my_trip_previous">Previous</string>
+    <string name="my_trip_call">Call</string>
+    <string name="my_trip_message">Free Message</string>
+    <string name="my_trip_meetup_title">Meet up instruction</string>
+
 </resources>

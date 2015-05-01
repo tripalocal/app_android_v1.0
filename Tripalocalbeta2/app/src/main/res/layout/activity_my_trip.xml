@@ -1,15 +1,44 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_mytrip"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_trip_table"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:stretchColumns="*"
+    android:shrinkColumns="*">
 
-    <android.support.v7.widget.RecyclerView
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycle_view"/>
+        android:id="@+id/my_trip_tableRow_categories">
 
- </LinearLayout>
+        <Button
+            android:id="@+id/my_trip_upcoming"
+            android:text="@string/my_trip_upcoming"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@color/tripalocal_green_blue"
+            android:textColor="@color/tripalocal_light_grey"/>
+
+        <Button
+            android:id="@+id/my_trip_previous"
+            android:text="@string/my_trip_previous"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@color/tripalocal_light_grey"
+            android:textColor="@color/tripalocal_green_blue"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/my_trip_recycle_view"/>
+    </TableRow>
+ </TableLayout>
 <!--
 <LinearLayout android:background="#0000" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:background="#0000" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="fill_parent">

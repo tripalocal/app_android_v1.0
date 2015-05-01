@@ -1,6 +1,10 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
+<<<<<<< HEAD
 import java.util.List;
+=======
+import java.util.ArrayList;
+>>>>>>> origin/master
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -35,6 +39,6 @@ public interface ApiService {
     String firstName, @Field("last_name")String lastName,Callback<Login_Result> response);
 
     @GET("/service_mytrip/")
-    void getMyTrip(Callback<MyTrip[]> response);
+    void getMyTrip(Callback<ArrayList<MyTrip>> response);
 
 }

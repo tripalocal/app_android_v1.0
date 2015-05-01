@@ -13,6 +13,10 @@
     <item name="darkred" type="color">#FFCC0000</item>
     <item name="white" type="color">#FFFFFF</item>
 
+    <item name="tripalocal_green_blue" type="color">#33cccc</item>
+    <item name="tripalocal_light_green" type="color">#99cc33</item>
+    <item name="tripalocal_light_grey" type="color">#f7f7f7</item>
+
     <integer-array name="androidcolors">
         <item>@color/blue</item>
         <item>@color/purple</item>
