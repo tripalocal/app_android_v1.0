@@ -1,10 +1,7 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
-<<<<<<< HEAD
 import java.util.List;
-=======
 import java.util.ArrayList;
->>>>>>> origin/master
 
 import retrofit.Callback;
 import retrofit.http.Body;
