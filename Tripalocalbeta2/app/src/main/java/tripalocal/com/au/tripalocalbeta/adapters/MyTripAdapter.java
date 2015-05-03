@@ -56,7 +56,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         }
 
         sdf = new SimpleDateFormat("dd-MM-yyyy");
-        if(sdf.format(dt) == sdf.format(Calendar.getInstance().getTime()))
+        if(sdf.format(dt).equalsIgnoreCase(sdf.format(Calendar.getInstance().getTime())))
         {
             holder.bookingDate.setText("Today");
             holder.bookingDate.setTextColor(Color.RED);
