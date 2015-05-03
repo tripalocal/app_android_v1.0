@@ -184,13 +184,7 @@ public class MyTripActivity extends ActionBarActivity {
     private String getUserToken()
     {
         //TODO
-<<<<<<< HEAD
-        //{"token":"a5e89305bdd0abdb84fb01bf3f6bf33220e16920","user_id":284}
-        return "73487d0eb131a6822e08cd74612168cf6e0755dc";
-        //return "ca1188e53130b1af884918f797bac9aeb89ef7d2";
-=======
         return "73487d0eb131a6822e08cd74612168cf6e0755dc";//"ca1188e53130b1af884918f797bac9aeb89ef7d2";//
->>>>>>> origin/master
     }
 
     private void getMyTrip(final String token)
