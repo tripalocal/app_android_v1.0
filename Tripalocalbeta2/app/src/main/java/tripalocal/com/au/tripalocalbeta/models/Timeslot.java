@@ -4,6 +4,12 @@ package tripalocal.com.au.tripalocalbeta.models;
  * Created by naveen on 4/30/2015.
  */
 public class Timeslot {
+
+    private String timeString;
+    private Boolean instantBooking;
+    private Integer availableSeat;
+
+
     public String getTimeString() {
         return timeString;
     }
@@ -28,7 +34,4 @@ public class Timeslot {
         this.availableSeat = availableSeat;
     }
 
-    private String timeString;
-        private Boolean instantBooking;
-        private Integer availableSeat;
 }

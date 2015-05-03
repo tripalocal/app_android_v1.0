@@ -17,18 +17,24 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@android:color/holo_blue_light"
-        android:backgroundTint="@android:color/darker_gray"
-        android:backgroundTintMode="add">
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:background="@color/background_floating_material_dark"
+            android:id="@+id/exp_list_banner_image"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/banner_txt"
-            android:text="from $40 Aud per person"
+            android:id="@+id/exp_list_banner_txt"
+            android:text="from 40$ Aud per person"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="22sp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="70dp"
-            android:paddingLeft="8dp"
+            android:layout_marginLeft="30dp"
             />
     </FrameLayout>
     <TextView
@@ -36,7 +42,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:padding="8dp"
-        android:id="@+id/title_txt"
+        android:id="@+id/exp_list_title_txt"
         android:text="title of the experience sadsad dasdass"
         />
 
@@ -48,8 +54,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/info_txt"
-            android:text="some infor about the expe..dads.da.dasd.asd.asblah blah adas das dasd asd asd asd as da sd asd asd as da sd asd as dasda"
+            android:id="@+id/exp_list_info_txt"
+            android:text="some infor about the expe.."
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
             android:textSize="16sp"
@@ -58,7 +64,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/exp_list_profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/profile_default"
@@ -75,16 +81,28 @@
         android:orientation="horizontal"
         android:paddingTop="10dp">
         <ImageView
+            android:id="@+id/exp_list_wish_image"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitXY"
             android:paddingRight="10dp"
-            android:background="@drawable/heart"/>
+            android:background="@drawable/abc_ratingbar_full_material"/>
         <TextView
+            android:id="@+id/exp_list_wish_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
-            android:text="Saved . 2hrs . English"/>
+            />
+        <TextView
+            android:id="@+id/exp_list_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"/>
+        <TextView
+            android:id="@+id/exp_list_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"/>
     </LinearLayout>
     <!-- end of card-->
     </LinearLayout>

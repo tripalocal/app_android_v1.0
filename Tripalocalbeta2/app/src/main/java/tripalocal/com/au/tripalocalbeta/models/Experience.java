@@ -10,12 +10,12 @@ public class Experience {
 
     private String title;
     private List<Timeslot> timeslots = new ArrayList<Timeslot>();
-    private String meetupSpot;
+    private String meetup_spot;
     private Double rate;
     private Double price;
-    private Boolean instantBooking;
+    private Boolean instant_booking;
     private String host;
-    private String hostImage;
+    private String host_image;
     private Integer duration;
     private Integer id;
 
@@ -36,11 +36,11 @@ public class Experience {
     }
 
     public String getMeetupSpot() {
-        return meetupSpot;
+        return meetup_spot;
     }
 
     public void setMeetupSpot(String meetupSpot) {
-        this.meetupSpot = meetupSpot;
+        this.meetup_spot = meetupSpot;
     }
 
     public Double getRate() {
@@ -60,11 +60,11 @@ public class Experience {
     }
 
     public Boolean isInstantBooking() {
-        return instantBooking;
+        return instant_booking;
     }
 
     public void setInstantBooking(Boolean instantBooking) {
-        this.instantBooking = instantBooking;
+        this.instant_booking = instantBooking;
     }
 
     public String getHost() {
@@ -76,11 +76,11 @@ public class Experience {
     }
 
     public String getHostImage() {
-        return hostImage;
+        return host_image;
     }
 
     public void setHostImage(String hostImage) {
-        this.hostImage = hostImage;
+        this.host_image = hostImage;
     }
 
     public Integer getDuration() {

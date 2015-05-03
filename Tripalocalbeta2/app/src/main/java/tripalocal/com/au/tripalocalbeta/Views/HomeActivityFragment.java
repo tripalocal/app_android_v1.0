@@ -55,11 +55,12 @@ public class HomeActivityFragment extends Fragment {
 
     public void displayListFrag(String city){
         StringBuilder temp = new StringBuilder();
-        temp.append("Sports");
+        //Food&Wine,Education,History&Culture,Architecture,For Couples,Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure,Host with Car,Extreme Fun,Events,Health&Beauty
+        temp.append("Shopping");
         temp.append(",");
-        temp.append("Arts");
+        temp.append("Education");
         temp.append(",");
-        temp.append("Food");
+        temp.append("Architecture");
         SearchRequest req_obj = new SearchRequest("2015-05-30", "2015-06-3",
                 city,"2",temp.toString());
         Gson gson = new Gson();
@@ -69,16 +70,13 @@ public class HomeActivityFragment extends Fragment {
                 .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        //ArrayList<String> temp = new ArrayList<String>();
-
-
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
 
             @Override
             public void success(List<Search_Result> search_results, Response response) {
-                ExperienceListAdapter.search_result = search_results;
+                ExperienceListAdapter.prepareSearchResults(search_results);
                 System.out.println("search_results = " + search_results);
-
+                FragHelper.replace(getActivity().getSupportFragmentManager(), new ExperiencesListFragment());
             }
 
             @Override
@@ -87,6 +85,5 @@ public class HomeActivityFragment extends Fragment {
                 System.out.println("error = [" + error + "]");
             }
         });
-        FragHelper.replace(getActivity().getSupportFragmentManager(), new ExperienceDetailFragment());
     }
 }

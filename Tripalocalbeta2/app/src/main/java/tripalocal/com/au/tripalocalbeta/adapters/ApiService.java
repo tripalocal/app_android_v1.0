@@ -1,10 +1,7 @@
 package tripalocal.com.au.tripalocalbeta.adapters;
 
-<<<<<<< HEAD
-import java.util.List;
-=======
 import java.util.ArrayList;
->>>>>>> origin/master
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -25,10 +22,9 @@ public interface ApiService {
     @POST("/service_search/")
     void getSearchResults(@Body SearchRequest data_json, Callback<List<Search_Result>> cb);
 
-    @POST("/service_search/")
-    void testgetSearchResults(@Body SearchRequest data_json, Callback<String[]> cb);
-
-
+   /* @POST("/service_search/")
+    void testSearchResults(@Body SearchRequest data_json, Callback<Search_Result2> cb);
+*/
     @FormUrlEncoded
     @POST("/service_login/")
     void loginUser(@Field("email")String email,@Field("password")String pwd, Callback<Login_Result> response);

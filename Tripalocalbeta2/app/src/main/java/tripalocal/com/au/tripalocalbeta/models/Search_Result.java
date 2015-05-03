@@ -1,13 +1,14 @@
 package tripalocal.com.au.tripalocalbeta.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by naveen on 4/19/2015.
  */
 public class Search_Result {
 
-        private ArrayList<Experience> experiences;
+        private List<Experience> experiences;
         private String date;
         private String city;
 
@@ -20,7 +21,7 @@ public class Search_Result {
             this.date = Date;
         }
 
-        public ArrayList<Experience> getExperiences() {
+        public List<Experience> getExperiences() {
             return experiences;
         }
 

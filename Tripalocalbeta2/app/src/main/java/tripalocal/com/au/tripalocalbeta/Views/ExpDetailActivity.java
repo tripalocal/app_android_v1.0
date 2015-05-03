@@ -1,17 +1,29 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
+import tripalocal.com.au.tripalocalbeta.models.Experience;
+
+import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class ExpDetailActivity extends ActionBarActivity {
+
+    public static Experience experience_to_display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        if(intent != null){
+            int position = intent.getIntExtra(INT_EXTRA,0);
+            experience_to_display = ExperienceListAdapter.all_experiences.get(position);
+        }
         setContentView(R.layout.activity_exp_detail);
     }
 
