@@ -16,7 +16,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:id="@+id/my_trip_tableRow_images"
-            android:layout_height="150dp">
+            android:layout_height="wrap_content">
 
             <FrameLayout
                 android:layout_width="0dp"
@@ -26,8 +26,9 @@
                 <ImageView
                     android:id="@+id/my_trip_exp_image"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:contentDescription="@string/experience_image"/>
+                    android:layout_height="180dp"
+                    android:contentDescription="@string/experience_image"
+                    android:scaleType="fitXY"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +37,7 @@
                     android:layout_height="96dp"
                     android:layout_gravity="bottom|center"
                     android:src="@drawable/profile_default"
-                    app:border_width="2dp"
+                    app:border_width="4dp"
                     app:border_color="@color/white"/>
             </FrameLayout>
          </TableRow>
@@ -171,7 +172,7 @@
             android:text="@string/my_trip_call"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/my_trip_call_button_shape"
@@ -181,7 +182,7 @@
             android:id="@+id/my_trip_message_button"
             android:text="@string/my_trip_message"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -213,9 +214,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp"
             android:layout_weight="1"/>
     </TableRow>
     </TableLayout>
