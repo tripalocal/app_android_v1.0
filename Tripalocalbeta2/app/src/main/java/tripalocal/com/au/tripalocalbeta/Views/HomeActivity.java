@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,17 +79,41 @@ public class HomeActivity extends ActionBarActivity {
         setContentView(layout.activity_home);
 
         mytrip = (ImageView)findViewById(R.id.myTripButton);
-        mytrip.setOnClickListener(new View.OnClickListener()
-        {
+        mytrip.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
                 startActivity(intent);
             }
         });
         HomeActivityFragment homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
+
+        ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView searchbtn = (ImageView) findViewById(R.id.searchButton);
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
+            }
+        });
+
+        ImageView myprofilebtn = (ImageView) findViewById(R.id.myProfileButton);
+        myprofilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawerLayout.openDrawer(R.id.navigation_drawer);
+            }
+        });
     }
 
 

@@ -18,6 +18,15 @@ public class Experience {
     private String host_image;
     private Integer duration;
     private Integer id;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getTitle() {
         return title;

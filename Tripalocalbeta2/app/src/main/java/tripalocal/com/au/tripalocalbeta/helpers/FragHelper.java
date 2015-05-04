@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.Views.ExperiencesListFragment;
 
 /**
  * Created by naveen on 4/25/2015.
@@ -27,4 +28,9 @@ public class FragHelper {
         transaction.commit();
     }
 
+    public static void replace(FragmentManager managea, ExperiencesListFragment experiencesListFragment, int container) {
+        FragmentTransaction transaction = managea.beginTransaction();
+        transaction.replace(container, experiencesListFragment);
+        transaction.commit();
+    }
 }

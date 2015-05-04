@@ -26,11 +26,12 @@ import tripalocal.com.au.tripalocalbeta.models.Search_Result;
  */
 public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAdapter.ListViewHolder> {
 
-    public static List<Search_Result> search_result;
+    //public static List<Search_Result> search_result;
     public static List<Experience> all_experiences = new ArrayList<Experience>();;
     public static Context mContext;
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
     public static final String INT_EXTRA = "POSITION";
+    public static int current_city;
 
 
     public ExperienceListAdapter(Context applicationContext) {
@@ -39,6 +40,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
 
     public static void prepareSearchResults(List<Search_Result> results){
+        all_experiences.clear();
         for(Search_Result res : results)
         {
             all_experiences.addAll(res.getExperiences());
@@ -58,11 +60,10 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
         holder.bannerTxt.setText("from "+exp_to_display.getPrice()+" Aud per person");
         holder.titleTxt.setText(exp_to_display.getTitle());
-        holder.infoTxt.setText("Hosted by : " + exp_to_display.getHost() + ". Meetupspot : " + exp_to_display.getMeetupSpot());
-
+        holder.infoTxt.setText(exp_to_display.getDescription());
         // todo @naveen check if the experience in favoutites and set the image
-        holder.wishimage.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_000);
-        holder.durationTxt.setText(exp_to_display.getDuration().toString());
+        //holder.wishimage.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_000);
+        holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
         // todo @naveen get the language from the experience
         holder.languageTxt.setText("English");
         holder.itemView.setTag(position);

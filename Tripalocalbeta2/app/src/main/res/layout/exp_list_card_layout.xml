@@ -3,10 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    card_view:cardCornerRadius="4dp"
-    android:paddingBottom="10dp"
+    android:layout_width="fill_parent"
     android:fontFamily="light"
+    card_view:cardElevation="0dp"
     >
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,6 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_list_banner_txt"
+            android:paddingLeft="10dp"
+            android:paddingBottom="7dp"
             android:text="from 40$ Aud per person"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -35,7 +36,7 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="70dp"
             android:layout_marginLeft="30dp"
-            />
+            android:background="#720a0a0a" />
     </FrameLayout>
     <TextView
         android:layout_width="match_parent"
@@ -67,9 +68,10 @@
             android:id="@+id/exp_list_profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/profile_default"
             app:border_width="2dp"
-            app:border_color="#FF000000"/>
+            app:border_color="#ffffff"/>
 
     </LinearLayout>
 
@@ -86,11 +88,12 @@
             android:layout_height="30dp"
             android:scaleType="fitXY"
             android:paddingRight="10dp"
-            android:background="@drawable/abc_ratingbar_full_material"/>
+            android:background="@drawable/heart"/>
         <TextView
             android:id="@+id/exp_list_wish_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=" Saved"
             android:paddingLeft="5dp"
             />
         <TextView

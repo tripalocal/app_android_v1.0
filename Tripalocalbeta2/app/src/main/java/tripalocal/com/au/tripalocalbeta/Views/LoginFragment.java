@@ -4,6 +4,7 @@ package tripalocal.com.au.tripalocalbeta.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,15 +30,6 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 public class LoginFragment extends Fragment {
 
     private CallbackManager callbackManager;
-    private static Boolean login_status = false;
-
-    public static Boolean isLogin_status() {
-        return login_status;
-    }
-
-    public static void setLogin_status(Boolean login_status) {
-        LoginFragment.login_status = login_status;
-    }
 
     public LoginFragment() {
         // Required empty public constructor
@@ -59,19 +51,21 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 ToastHelper.longToast("FB Login success");
-
+                HomeActivity.getCurrent_user().setLoggedin(true);
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.openDrawer(R.id.navigation_drawer);
             }
 
             @Override
             public void onCancel() {
                 ToastHelper.warnToast("FB Login cancelled");
-                setLogin_status(false);
+                HomeActivity.getCurrent_user().setLoggedin(false);
             }
 
             @Override
             public void onError(FacebookException exception) {
                 ToastHelper.errorToast("FB Login error!");
-                setLogin_status(false);
+                HomeActivity.getCurrent_user().setLoggedin(false);
             }
         });
         Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
@@ -119,15 +113,17 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void success(Login_Result result, Response response) {
                     ToastHelper.longToast("log in success");
+                    HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.openDrawer(R.id.navigation_drawer);
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     ToastHelper.errorToast("log in failed");
                     System.out.println("error = [" + error + "]");
+                    HomeActivity.getCurrent_user().setLoggedin(false);
                 }
             });
     }

@@ -36,7 +36,7 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
     public void onBindViewHolder(SimpleViewHolder simpleViewHolder, int i) {
         simpleViewHolder.text.setText(places[i]);
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[i]).centerCrop()
-                .crossFade().into(simpleViewHolder.image);
+                .into(simpleViewHolder.image);
         simpleViewHolder.itemView.setTag(places[i]);
     }
 

@@ -16,4 +16,12 @@
     <string name="my_trip_myTrip">My Trips</string>
     <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
     <string name="my_trip_explore">Start Exploring</string>
+
+
+        <string-array name="cities_array">
+            <item>Melbourne</item>
+            <item>Sydney</item>
+        </string-array>
+    <string name="title_activity_exp_list_actvity2">ExpListActvity2</string>
+
 </resources>
