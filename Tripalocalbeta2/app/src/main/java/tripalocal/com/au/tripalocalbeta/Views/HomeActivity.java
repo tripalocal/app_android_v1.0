@@ -121,7 +121,9 @@ public class HomeActivity extends ActionBarActivity {
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastHelper.longToast(ExperienceListAdapter.current_city + " experiences");
+                if (ExperienceListAdapter.current_city == 1)
+                        ToastHelper.longToast("Sydney experiences");
+                else ToastHelper.longToast("Melbourne experiences");
                 FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
             }
         });
