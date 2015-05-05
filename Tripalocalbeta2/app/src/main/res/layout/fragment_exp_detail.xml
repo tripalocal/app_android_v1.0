@@ -23,8 +23,12 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/blue"
             >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/exp_detail_bg"
+                android:scaleType="fitXY"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -53,7 +57,7 @@
             android:textSize="14sp"
             android:id="@+id/exp_detail_lang"
             android:layout_below="@id/exp_detail_title"
-            android:text="Italian"
+            android:text="English"
             android:paddingBottom="10dp"
             android:gravity="center" />
         <LinearLayout
@@ -66,20 +70,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/exp_detail_price"
-                android:textSize="22sp"
+                android:id="@+id/exp_detail_price1"
+                android:textSize="16sp"
+                android:text="from"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_price2"
+                android:textSize="23sp"
                 android:textStyle="bold"
-                android:text="from 35$"/>
+                android:text="$35"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_person"
                 android:textSize="16sp"
+                android:layout_marginRight="30dp"
                 android:text="per person for 3 hours"
                 android:paddingLeft="10dp" />
         </LinearLayout>
         <!-- info on the experience-->
-        <TextView
+        <!--<TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_title"
@@ -88,14 +99,17 @@
             android:text="this is the ssub heading of infor textasdda da"
             android:gravity="left|center"
             android:padding="20dp"
-            android:password="false" />
+            android:password="false" />-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_content_less"
-            android:layout_below="@id/exp_detail_info_title"
+            android:layout_below="@id/exp_detail_price_container"
             android:textSize="16sp"
-            android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
+            android:text="dlkasdjka dalksdjalsk dalksdjalskdj alksjdlkajd lkajdlakjdlkajd lkaj dlkasjd lakdjalkdj alkdjadjakdjlaksjdlaksjdlaksjdlkasdjalkdj lkjdalsk jdalks djlakdjaslk djlkj"
+            android:maxLines="6"
+            android:ellipsize="end"
+            android:singleLine="false"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp" />
@@ -112,6 +126,11 @@
                     android:text="Read More"
                     android:layout_gravity="center"
                     />-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_info_content_more"
+                android:visibility="invisible"/>
 
         </FrameLayout>
 
@@ -133,7 +152,7 @@
             android:id="@+id/exp_detail_host_profile_image_container"
             android:layout_below="@id/exp_detail_host_title"
             android:paddingBottom="10dp">
-            <de.hdodenhof.circleimageview.CircleImageView
+             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/exp_detail_host_profile_image"
                 android:layout_width="96dp"
@@ -142,6 +161,14 @@
                 android:layout_gravity="center"
                 app:border_width="2dp"
                 app:border_color="#FF000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="coutnt D."
+                android:id="@+id/exp_detail_hostname"
+                android:textAlignment="center"
+                android:gravity="center" />
         </FrameLayout>
         <TextView
             android:layout_width="match_parent"
@@ -193,6 +220,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="coutnt D."
+                android:id="@+id/exp_detail_review_reviewername"
                 android:textAlignment="center"
                 android:gravity="center" />
         </LinearLayout>
@@ -211,6 +239,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:scaleType="fitXY"
             android:id="@+id/exp_detail_add_expenses_banner"
             android:layout_below="@id/exp_detail_review_content_less"
             android:background="@color/accent_material_light"/>
@@ -261,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:paddingLeft="10dp"
-                android:text="Transport : we are going to make you walk all the way !!"
+                android:text="Transport : Can be arranged if required"
                 android:id="@+id/exp_detail_grid_transport_info"/>
         </GridLayout>
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
+import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
 import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
@@ -58,7 +60,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         Experience exp_to_display = all_experiences.get(position);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + exp_to_display.getId()+ "_1.jpg").fitCenter().into(holder.bannerImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
-        holder.bannerTxt.setText("from "+exp_to_display.getPrice()+" Aud per person");
+        holder.bannerTxt.setText("from $" + exp_to_display.getPrice()+ "AUD/person");
+        /*holder.bannerTxt2.setText("$" + exp_to_display.getPrice());
+        holder.bannerTxt3.setText("AUD/person");*/
         holder.titleTxt.setText(exp_to_display.getTitle());
         holder.infoTxt.setText(exp_to_display.getDescription());
         // todo @naveen check if the experience in favoutites and set the image
@@ -66,7 +70,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
         // todo @naveen get the language from the experience
         holder.languageTxt.setText("English");
-        holder.itemView.setTag(position);
+        holder.bannerContainer.setTag(exp_to_display.getId());
     }
 
 
@@ -79,6 +83,8 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     public static class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView bannerTxt;
+        //public TextView bannerTxt2;
+        //public TextView bannerTxt3;
         public TextView titleTxt;
         public TextView infoTxt;
         public CircleImageView profileImage;
@@ -87,19 +93,44 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         public TextView durationTxt;
         public TextView languageTxt;
         public ImageView bannerImage;
+        public boolean wish = false;
+        public FrameLayout bannerContainer;
+
 
         public ListViewHolder(View itemView) {
             super(itemView);
             bannerImage = (ImageView) itemView.findViewById(R.id.exp_list_banner_image);
             bannerTxt = (TextView) itemView.findViewById(R.id.exp_list_banner_txt);
+           // bannerTxt2 = (TextView) itemView.findViewById(R.id.exp_list_banner_txt2);
+           // bannerTxt3 = (TextView) itemView.findViewById(R.id.exp_list_banner_txt3);
             titleTxt = (TextView) itemView.findViewById(R.id.exp_list_title_txt);
             infoTxt = (TextView) itemView.findViewById(R.id.exp_list_info_txt);
             profileImage = (CircleImageView) itemView.findViewById(R.id.exp_list_profile_image);
             wishimage = (ImageView) itemView.findViewById(R.id.exp_list_wish_image);
+            wishimage.setImageResource(R.drawable.unwishlisted);
             wishTxt = (TextView) itemView.findViewById(R.id.exp_list_wish_text);
             durationTxt = (TextView) itemView.findViewById(R.id.exp_list_duration);
             languageTxt = (TextView) itemView.findViewById(R.id.exp_list_language);
-            bannerTxt.setOnClickListener(this);
+            bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
+            bannerContainer.setOnClickListener(this);
+            wishimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(wish) {
+                        wishimage.setImageResource(R.drawable.unwishlisted);
+                        wish = false;
+                        wishTxt.setText("Save to wishlist");
+                        ToastHelper.shortToast("removed from wishlist");
+                    }
+                    else{
+                        wish = true;
+                        wishimage.setImageResource(R.drawable.heart);
+                        wishTxt.setText("Saved to wishlist");
+                        ToastHelper.shortToast("saved to wishlist");
+                    }
+
+                }
+            });
         }
 
         @Override

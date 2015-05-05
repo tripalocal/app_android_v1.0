@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.facebook.FacebookSdk;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.User;
@@ -113,6 +114,7 @@ public class HomeActivity extends ActionBarActivity {
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ToastHelper.longToast(ExperienceListAdapter.current_city + " experiences");
                 FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
             }
         });
@@ -152,7 +154,7 @@ public class HomeActivity extends ActionBarActivity {
     }
 
     public static void callLoginFrag(){
-        ToastHelper.shortToast("calling login frag");
+        //ToastHelper.shortToast("calling login frag");
         FragHelper.addReplace(frag_manager ,new LoginFragment());
     }
 

@@ -88,11 +88,12 @@ public class HomeActivityFragment extends Fragment {
     }
 
     public void displayListFrag(final String city){
+
         String keywords = "Food&Wine,Education,History&Culture,Architecture,For Couples," +
                 "Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure," +
                 "Host with Car,Extreme Fun,Events,Health&Beauty";
 
-        SearchRequest req_obj = new SearchRequest("2015-05-08", "2015-05-11",
+        SearchRequest req_obj = new SearchRequest("2015-05-08", "2015-05-09",
                 city,"2", keywords);
         Gson gson = new Gson();
         String json = gson.toJson(req_obj);
@@ -101,18 +102,20 @@ public class HomeActivityFragment extends Fragment {
                 .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
+        ToastHelper.longToast("Contacting Server...");
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
 
             @Override
             public void success(List<Search_Result> search_results, Response response) {
+                ToastHelper.shortToast("Experiences for :" + city);
                 ExperienceListAdapter.prepareSearchResults(search_results);
                 System.out.println("search_results = " + search_results);
-                ToastHelper.shortToast("HOME FRAG :" + city);
                 FragHelper.replace(getActivity().getSupportFragmentManager(), new ExperiencesListFragment());
             }
 
             @Override
             public void failure(RetrofitError error) {
+                ToastHelper.errorToast("Error occurred!");
                 System.out.println("HomeActivityFragment.failure");
                 System.out.println("error = [" + error + "]");
             }

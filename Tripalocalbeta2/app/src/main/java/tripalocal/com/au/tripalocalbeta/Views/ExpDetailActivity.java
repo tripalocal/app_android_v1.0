@@ -7,22 +7,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import tripalocal.com.au.tripalocalbeta.R;
-import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
-import tripalocal.com.au.tripalocalbeta.models.Experience;
 
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class ExpDetailActivity extends ActionBarActivity {
 
-    public static Experience experience_to_display;
+    public static int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if(intent != null){
-            int position = intent.getIntExtra(INT_EXTRA,0);
-            experience_to_display = ExperienceListAdapter.all_experiences.get(position);
+            position = intent.getIntExtra(INT_EXTRA,0);
         }
         setContentView(R.layout.activity_exp_detail);
     }
@@ -46,7 +43,6 @@ public class ExpDetailActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

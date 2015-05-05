@@ -13,6 +13,8 @@ import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
+import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 
 /**
  * Created by naveen on 4/6/2015.
@@ -21,6 +23,9 @@ public interface ApiService {
 
     @POST("/service_search/")
     void getSearchResults(@Body SearchRequest data_json, Callback<List<Search_Result>> cb);
+
+    @POST("/service_experience/")
+    void getExpDetails(@Body request data_json, Callback<Experience_Detail> cb);
 
    /* @POST("/service_search/")
     void testSearchResults(@Body SearchRequest data_json, Callback<Search_Result2> cb);

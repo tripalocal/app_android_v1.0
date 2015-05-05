@@ -115,6 +115,8 @@ public class LoginFragment extends Fragment {
                     ToastHelper.longToast("log in success");
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
+                    View nav_view = getActivity().findViewById(R.id.navigation_drawer);
+                    nav_view.invalidate();
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.openDrawer(R.id.navigation_drawer);
                 }

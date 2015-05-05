@@ -16,6 +16,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:id="@+id/banner_container"
         >
         <ImageView
             android:layout_width="match_parent"
@@ -41,7 +42,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="19sp"
         android:padding="8dp"
         android:id="@+id/exp_list_title_txt"
         android:text="title of the experience sadsad dasdass"
@@ -60,6 +61,9 @@
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
             android:textSize="16sp"
+            android:maxLines="6"
+            android:singleLine="false"
+            android:ellipsize="end"
             android:layout_gravity="left"
             android:layout_weight=".6"/>
 
@@ -81,19 +85,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
         android:paddingTop="10dp">
         <ImageView
             android:id="@+id/exp_list_wish_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="27dp"
+            android:layout_height="22dp"
             android:scaleType="fitXY"
             android:paddingRight="10dp"
-            android:background="@drawable/heart"/>
+            />
         <TextView
             android:id="@+id/exp_list_wish_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Saved"
+            android:text="Save to wishlist"
             android:paddingLeft="5dp"
             />
         <TextView
