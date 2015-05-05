@@ -34,7 +34,8 @@
         <activity
             android:name=".Views.ExpDetailActivity"
             android:label="@string/title_activity_exp_detail"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".Views.MyTripActivity"

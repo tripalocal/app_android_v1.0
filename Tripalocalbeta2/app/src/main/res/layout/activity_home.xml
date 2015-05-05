@@ -32,7 +32,7 @@
         <ImageView android:id="@+id/homeButton"
             android:layout_height="55dp"
             android:layout_width="55dp"
-            android:src="@drawable/home_s"
+            android:src="@drawable/home"
             android:scaleType="fitCenter" />
         <ImageView android:id="@+id/searchButton"
             android:layout_height="55dp"

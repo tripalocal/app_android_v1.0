@@ -26,7 +26,7 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 
 public class HomeActivity extends ActionBarActivity {
 
-    private ImageView mytrip;
+
     private static Context home_context;
     private static FragmentManager frag_manager;
 
@@ -79,21 +79,19 @@ public class HomeActivity extends ActionBarActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
 
-        mytrip = (ImageView)findViewById(R.id.myTripButton);
-        mytrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         HomeActivityFragment homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
-        //0:home, 1:search, 3: profile
+        //0:home, 1:search, 2:mytrip, 3: profile
         if(getIntent().getIntExtra("fragmentNumber",0)==1)
         {
             FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
+        }
+        else if(getIntent().getIntExtra("fragmentNumber",0)==2)
+        {
+            Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
+            startActivity(intent);
         }
         else if(getIntent().getIntExtra("fragmentNumber",0)==3)
         {
@@ -101,7 +99,16 @@ public class HomeActivity extends ActionBarActivity {
             drawerLayout.openDrawer(R.id.navigation_drawer);
         }
 
+        ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
+        searchbtn.setImageResource(R.drawable.search);
+        ImageView myprofilebtn = (ImageView) findViewById(R.id.myProfileButton);
+        myprofilebtn.setImageResource(R.drawable.myprofile);
         ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
+        homebtn.setImageResource(R.drawable.home_s);
+        ImageView mytrip = (ImageView)findViewById(R.id.myTripButton);
+        mytrip.setImageResource(R.drawable.mytrip);
+
+
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +117,7 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        ImageView searchbtn = (ImageView) findViewById(R.id.searchButton);
+
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +126,14 @@ public class HomeActivity extends ActionBarActivity {
             }
         });
 
-        ImageView myprofilebtn = (ImageView) findViewById(R.id.myProfileButton);
+        mytrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
+                startActivity(intent);
+            }
+        });
+
         myprofilebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -50,7 +50,7 @@
             android:padding="15dp"
             android:layout_marginTop="220dp"
             android:textStyle="italic"
-            android:text="dasd asdasdasd asdas sa dsad sadasdasdasd dasdasd"/>
+            android:text="Loading title"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:id="@+id/exp_detail_price2"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                android:text="$35"/>
+                android:text="$$$$"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,13 +106,13 @@
             android:id="@+id/exp_detail_info_content_less"
             android:layout_below="@id/exp_detail_price_container"
             android:textSize="16sp"
-            android:text="dlkasdjka dalksdjalsk dalksdjalskdj alksjdlkajd lkajdlakjdlkajd lkaj dlkasjd lakdjalkdj alkdjadjakdjlaksjdlaksjdlaksjdlkasdjalkdj lkjdalsk jdalks djlakdjaslk djlkj"
+            android:text="dlkasdjka"
             android:maxLines="6"
             android:ellipsize="end"
             android:singleLine="false"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp" />
+            android:paddingLeft = "20dp"
+            android:paddingRight= "20dp"
+            android:paddingTop="20dp"/>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
             android:gravity="center"
             android:padding="20dp"
             android:password="false" />
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_host_profile_image_container"
@@ -155,28 +155,29 @@
              <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/exp_detail_host_profile_image"
+                 android:layout_centerHorizontal="true"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/profile_default"
                 android:layout_gravity="center"
                 app:border_width="2dp"
                 app:border_color="#FF000000" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/exp_detail_host_profile_image"
                 android:text="coutnt D."
                 android:id="@+id/exp_detail_hostname"
-                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
                 android:gravity="center" />
-        </FrameLayout>
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_host_info_less"
             android:layout_below="@id/exp_detail_host_profile_image_container"
             android:textSize="16sp"
-            android:text="Hi evreyone, My name is count dracula, born and raised in europe , I have a vast knowledge about the humans and their arts. I have acccumulated this knowledge by living a very long and healthy life!! I am perfectly nice during the night and not available during the day."
+            android:text="placeholder content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp" />
@@ -219,7 +220,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="coutnt D."
+                android:text=""
                 android:id="@+id/exp_detail_review_reviewername"
                 android:textAlignment="center"
                 android:gravity="center" />
@@ -230,7 +231,7 @@
             android:id="@+id/exp_detail_review_content_less"
             android:layout_below="@id/exp_detail_review_profile_image_container"
             android:textSize="16sp"
-            android:text="well i went for this experience and i am also a vampire now. It is awesome and think everyone should try this."
+            android:text="No review content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp" />

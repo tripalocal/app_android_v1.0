@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
@@ -49,6 +50,14 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
         rv.setAdapter(new ExperienceListAdapter(getActivity().getApplicationContext()));
+        ImageView searchbtn = (ImageView)getActivity().findViewById(R.id.searchButton);
+        searchbtn.setImageResource(R.drawable.search_s);
+        ImageView myprofilebtn = (ImageView) getActivity().findViewById(R.id.myProfileButton);
+        myprofilebtn.setImageResource(R.drawable.myprofile);
+        ImageView homebtn = (ImageView)getActivity().findViewById(R.id.homeButton);
+        homebtn.setImageResource(R.drawable.home);
+        ImageView mytrip = (ImageView)getActivity().findViewById(R.id.myTripButton);
+        mytrip.setImageResource(R.drawable.mytrip);
         /*spinner = (Spinner) view.findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.cities_array, android.R.layout.simple_spinner_item);
