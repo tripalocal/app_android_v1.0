@@ -1,94 +1,136 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/my_trip_table"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="*"
-    android:shrinkColumns="*">
+    android:layout_height="match_parent">
 
-    <TableRow
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/my_trip_table"
         android:layout_width="match_parent"
-        android:id="@+id/my_trip_tableRow_categories">
-
-        <Button
-            android:id="@+id/my_trip_upcoming"
-            android:text="@string/my_trip_upcoming"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/tripalocal_green_blue"
-            android:textColor="@color/tripalocal_light_grey"/>
-
-        <Button
-            android:id="@+id/my_trip_previous"
-            android:text="@string/my_trip_previous"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@color/tripalocal_light_grey"
-            android:textColor="@color/tripalocal_green_blue"/>
-
-    </TableRow>
-
-    <TableLayout
-        android:id="@+id/my_trip_table_none"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp">
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        android:shrinkColumns="*"
+        android:background="@color/tripalocal_light_grey">
 
         <TableRow
             android:layout_width="match_parent"
-            android:id="@+id/my_trip_tableRow_none"
-            android:gravity="center">
-
-            <TextView
-                android:text="@string/my_trip_myTrip"
-                android:textSize="30sp"
-                android:layout_gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:id="@+id/my_trip_tableRow_hint"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:gravity="center">
-
-            <TextView
-                android:text="@string/my_trip_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:id="@+id/my_trip_tableRow_explore"
-            android:layout_marginTop="40dp"
-            android:gravity="center">
+            android:id="@+id/my_trip_tableRow_categories">
 
             <Button
-                android:layout_width="match_parent"
+                android:id="@+id/my_trip_upcoming"
+                android:text="@string/my_trip_upcoming"
                 android:layout_height="wrap_content"
-                android:id="@+id/my_trip_explore_button"
-                android:background="@drawable/my_trip_message_button_shape"
-                android:text="@string/my_trip_explore"
-                android:textColor="@color/tripalocal_light_grey"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/tripalocal_green_blue"
+                android:textColor="@color/tripalocal_light_grey"/>
+
+            <Button
+                android:id="@+id/my_trip_previous"
+                android:text="@string/my_trip_previous"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@color/tripalocal_light_grey"
+                android:textColor="@color/tripalocal_green_blue"/>
+
+        </TableRow>
+
+        <TableLayout
+            android:id="@+id/my_trip_table_none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:id="@+id/my_trip_tableRow_none"
+                android:gravity="center">
+
+                <TextView
+                    android:text="@string/my_trip_myTrip"
+                    android:textSize="30sp"
+                    android:layout_gravity="center"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:id="@+id/my_trip_tableRow_hint"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center">
+
+                <TextView
+                    android:text="@string/my_trip_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:id="@+id/my_trip_tableRow_explore"
+                android:layout_marginTop="40dp"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_trip_explore_button"
+                    android:background="@drawable/my_trip_message_button_shape"
+                    android:text="@string/my_trip_explore"
+                    android:textColor="@color/tripalocal_light_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+            </TableRow>
+        </TableLayout>
+
+        <TableRow
+            android:layout_width="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:id="@+id/my_trip_recycle_view"/>
         </TableRow>
     </TableLayout>
 
-    <TableRow
-        android:layout_width="match_parent">
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/relativeLayout1"
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:elevation="3dp"
+        >
+        <ImageView android:id="@+id/homeButton"
+            android:layout_height="55dp"
+            android:layout_width="55dp"
+            android:src="@drawable/home"
+            android:scaleType="fitCenter" />
+        <ImageView android:id="@+id/searchButton"
+            android:layout_height="55dp"
+            android:layout_width="55dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search"
+            android:layout_marginLeft="12dp" />
+        <ImageView android:id="@+id/myTripButton"
+            android:layout_height="55dp"
+            android:layout_width="55dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mytrip_s"
+            android:layout_marginLeft="12dp" />
+        <ImageView android:id="@+id/myProfileButton"
+            android:layout_height="55dp"
+            android:layout_width="55dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/myprofile"
+            android:layout_marginLeft="12dp" />
+    </LinearLayout>
+</RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/my_trip_recycle_view"/>
-    </TableRow>
- </TableLayout>
+
 <!--
 <LinearLayout android:background="#0000" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:background="#0000" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="fill_parent">

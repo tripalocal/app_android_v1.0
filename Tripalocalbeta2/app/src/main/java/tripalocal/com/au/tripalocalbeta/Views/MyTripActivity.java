@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 
 import java.text.ParseException;
@@ -157,6 +158,35 @@ public class MyTripActivity extends ActionBarActivity {
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(LLM);
+
+        ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
+        searchbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
+                intent.putExtra("fragmentNumber", 1);
+                startActivity(intent);
+            }
+        });
+
+        ImageView profilebtn = (ImageView)findViewById(R.id.myProfileButton);
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
+                intent.putExtra("fragmentNumber",3);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

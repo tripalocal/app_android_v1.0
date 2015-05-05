@@ -86,8 +86,19 @@ public class HomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
         HomeActivityFragment homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
+        //0:home, 1:search, 3: profile
+        if(getIntent().getIntExtra("fragmentNumber",0)==1)
+        {
+            FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
+        }
+        else if(getIntent().getIntExtra("fragmentNumber",0)==3)
+        {
+            DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawerLayout.openDrawer(R.id.navigation_drawer);
+        }
 
         ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
         homebtn.setOnClickListener(new View.OnClickListener() {

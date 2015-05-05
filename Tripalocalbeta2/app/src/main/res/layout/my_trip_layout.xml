@@ -9,7 +9,7 @@
         android:id="@+id/my_trip_tableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:stretchColumns="*"
         android:shrinkColumns="*">
 
