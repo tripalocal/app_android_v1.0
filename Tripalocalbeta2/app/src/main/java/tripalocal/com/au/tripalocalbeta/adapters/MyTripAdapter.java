@@ -77,19 +77,19 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         if(result.getStatus().equalsIgnoreCase("accepted"))
         {
             st="Confirmed";
-            holder.status.setBackgroundColor(Color.parseColor("#99cc33"));
+            holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_confirmed_shape));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("paid"))
         {
             st="Requested";
-            holder.status.setBackgroundColor(Color.parseColor("#33cccc"));
+            holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_requested_shape));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("rejected"))
         {
             st="Cancelled";
-            holder.status.setBackgroundColor(Color.LTGRAY);
+            holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_cancelled_shape));
             holder.status.setTextColor(Color.WHITE);
         }
         else

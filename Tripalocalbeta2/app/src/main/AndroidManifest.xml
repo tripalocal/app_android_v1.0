@@ -38,13 +38,15 @@
         </activity>
         <activity
             android:name=".Views.MyTripActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:label="@string/title_activity_my_trip"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".Views.ExpListActvity2"
             android:label="@string/title_activity_exp_list_actvity2"
-            android:parentActivityName=".Views.HomeActivity" >
+            android:parentActivityName=".Views.HomeActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
