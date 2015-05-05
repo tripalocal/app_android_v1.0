@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -30,6 +32,8 @@ public class ExpDetailActivityFragment extends Fragment {
 
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
     private static Experience_Detail exp_to_display;
+    private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
+
     ImageView exp_bg;
     CircleImageView profileImage;
     CircleImageView profileHostImage;
@@ -104,7 +108,7 @@ public class ExpDetailActivityFragment extends Fragment {
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
 
         exp_title.setText(exp_to_display.getExperience_title());
-        price_title.setText(" $"+exp_to_display.getExperience_price());
+        price_title.setText(" $"+ REAL_FORMATTER.format(exp_to_display.getExperience_price()));
         if (exp_to_display.getExperience_duration() > 1)
         price_hours.setText("per person for "+exp_to_display.getExperience_duration()+"hrs");
         else

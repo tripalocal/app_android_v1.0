@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
     public static final String INT_EXTRA = "POSITION";
     public static int current_city;
+    private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
 
 
     public ExperienceListAdapter(Context applicationContext) {
@@ -60,7 +62,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         Experience exp_to_display = all_experiences.get(position);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + exp_to_display.getId()+ "_1.jpg").fitCenter().into(holder.bannerImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
-        holder.bannerTxt.setText("from $" + exp_to_display.getPrice()+ "AUD/person");
+        holder.bannerTxt.setText("from $" + REAL_FORMATTER.format(exp_to_display.getPrice())+ " AUD/person");
         /*holder.bannerTxt2.setText("$" + exp_to_display.getPrice());
         holder.bannerTxt3.setText("AUD/person");*/
         holder.titleTxt.setText(exp_to_display.getTitle());
