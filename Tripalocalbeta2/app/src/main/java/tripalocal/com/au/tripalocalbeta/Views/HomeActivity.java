@@ -26,9 +26,22 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 
 public class HomeActivity extends ActionBarActivity {
 
-
     private static Context home_context;
     private static FragmentManager frag_manager;
+    private static User current_user = new User();
+    private static String current_userid;
+
+    public static String getCurrent_userid() {
+        return current_userid;
+    }
+
+    public static void setCurrent_userid(String current_userid) {
+        HomeActivity.current_userid = current_userid;
+    }
+
+    public static FragmentManager getFrag_manager() {
+        return frag_manager;
+    }
 
     public static Context getHome_context() {
         return home_context;
@@ -36,10 +49,6 @@ public class HomeActivity extends ActionBarActivity {
 
     public static void setHome_context(Context home_context) {
         HomeActivity.home_context = home_context;
-    }
-
-    public static FragmentManager getFrag_manager() {
-        return frag_manager;
     }
 
     public static void setFrag_manager(FragmentManager frag_manager) {
@@ -53,8 +62,6 @@ public class HomeActivity extends ActionBarActivity {
     public static void setCurrent_user(User current_user) {
         HomeActivity.current_user = current_user;
     }
-
-    private static User current_user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

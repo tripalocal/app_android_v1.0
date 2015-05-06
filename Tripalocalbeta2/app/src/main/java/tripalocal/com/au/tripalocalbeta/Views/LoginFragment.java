@@ -113,8 +113,12 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void success(Login_Result result, Response response) {
                     ToastHelper.longToast("log in success");
+                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                    HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
+                    Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
+                    startActivity(intent);
                     View nav_view = getActivity().findViewById(R.id.navigation_drawer);
                     nav_view.invalidate();
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);

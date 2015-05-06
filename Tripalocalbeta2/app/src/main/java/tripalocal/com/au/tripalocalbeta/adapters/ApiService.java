@@ -11,6 +11,7 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
@@ -27,9 +28,6 @@ public interface ApiService {
     @POST("/service_experience/")
     void getExpDetails(@Body request data_json, Callback<Experience_Detail> cb);
 
-   /* @POST("/service_search/")
-    void testSearchResults(@Body SearchRequest data_json, Callback<Search_Result2> cb);
-*/
     @FormUrlEncoded
     @POST("/service_login/")
     void loginUser(@Field("email")String email,@Field("password")String pwd, Callback<Login_Result> response);
@@ -42,4 +40,6 @@ public interface ApiService {
     @GET("/service_mytrip/")
     void getMyTrip(Callback<ArrayList<MyTrip>> response);
 
+    @GET("/service_myprofile/")
+    void getMyProfileDetails(Callback<MyProfile_result> response);
 }
