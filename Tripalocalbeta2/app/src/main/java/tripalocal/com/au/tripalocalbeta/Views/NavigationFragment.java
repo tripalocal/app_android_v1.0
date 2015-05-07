@@ -20,6 +20,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
 
@@ -65,7 +66,7 @@ public class NavigationFragment extends Fragment {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    HomeActivity.callLoginFrag();
+                    FragHelper.replace(HomeActivity.getFrag_manager(), new LoginFragment());
                     DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawer.closeDrawer(GravityCompat.END);
                 }

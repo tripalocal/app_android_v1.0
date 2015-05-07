@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="60dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -106,7 +107,8 @@
             android:id="@+id/exp_detail_info_content_less"
             android:layout_below="@id/exp_detail_price_container"
             android:textSize="16sp"
-            android:text="dlkasdjka"
+            android:text="dlkasdjka f fsdf sdfs df sfdsd fsd sf sf sdf sdfsdfsdfsdfs f sdf sdfsdfsdf sfsdf sdf sdfsdf sdfsdf sfsd fsd sdfsdfsdfdsfsdf fsdfsdf fsdfsdfsddfs  sd fsdf sfds"
+            android:textAlignment="center"
             android:maxLines="6"
             android:ellipsize="end"
             android:singleLine="false"

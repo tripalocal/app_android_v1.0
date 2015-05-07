@@ -34,7 +34,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     public static Context mContext;
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
     public static final String INT_EXTRA = "POSITION";
-    public static int current_city;
+    public static int current_city = 0;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
 
 

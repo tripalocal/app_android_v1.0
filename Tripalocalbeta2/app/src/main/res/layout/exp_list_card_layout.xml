@@ -90,7 +90,7 @@
         <ImageView
             android:id="@+id/exp_list_wish_image"
             android:layout_width="27dp"
-            android:layout_height="22dp"
+            android:layout_height="20dp"
             android:scaleType="fitXY"
             android:paddingRight="10dp"
             />

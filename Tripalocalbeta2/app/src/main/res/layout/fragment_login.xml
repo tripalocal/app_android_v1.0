@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     tools:context="tripalocal.com.au.tripalocalbeta.Views.LoginFragment">
 
-    <TextView
+   <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -11,15 +11,29 @@
         android:id="@+id/tripalocaltitle"
         android:text="TripaLocal Login"
         android:layout_centerHorizontal="true"
-        />
+        />-->
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/fb_login_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tripalocaltitle"
-        android:paddingTop="10dp" />
+        android:padding="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"/>
+        <!--android:layout_below="@id/tripalocaltitle"-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/divider_login"
+        android:layout_marginTop="20dp"
+        android:text="or"
+        android:gravity="center"
+        android:layout_below="@id/fb_login_button"/>
+
 
    <!--<LinearLayout
         android:layout_width="match_parent"
@@ -51,8 +65,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
-        android:layout_below="@id/login_button"
+        android:layout_below="@id/divider_login"
         android:orientation="vertical"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp">
 
@@ -63,7 +78,9 @@
         android:paddingBottom="15dp"
         android:paddingLeft="35dp"
         android:paddingRight="35dp"
-        android:text="Email address" />
+        android:hint="Email address"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/tripalocal_green_blue"/>
 
     <EditText
        android:layout_width="match_parent"
@@ -72,34 +89,41 @@
        android:paddingBottom="15dp"
        android:paddingLeft="35dp"
        android:paddingRight="35dp"
-       android:text="Password" />
+       android:hint="Password"
+       android:inputType="textPassword"
+       android:textColorHint="@color/tripalocal_green_blue"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_forgot_pwd"
+            android:text="Forgot password?"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="right"
+            android:textColor="@color/tripalocal_green_blue"
+            android:textSize="15sp"
+            android:paddingLeft="5dp" />
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Remember Me"
-        android:onClick="onCheckboxClicked" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Remember Me"
+            android:onClick="onCheckboxClicked" />
 
-     <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Forgot password"
-         android:textColor="@color/blue"
-         android:textSize="15sp"
-         android:paddingLeft="5dp" />
-    </LinearLayout>
+
+    </LinearLayout>-->
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@color/tripalocal_green_blue"
         android:id="@+id/normal_login_btn"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"

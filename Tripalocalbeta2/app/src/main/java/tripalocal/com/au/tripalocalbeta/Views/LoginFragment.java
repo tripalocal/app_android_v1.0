@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -40,7 +41,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
         callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
         // If using in a fragment
         loginButton.setFragment(this);
@@ -51,7 +52,13 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 ToastHelper.longToast("FB Login success");
+                HomeActivity.setAccessToken(loginResult.getAccessToken());
+                HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
+                Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
+                startActivity(intent);
+                View nav_view = getActivity().findViewById(R.id.navigation_drawer);
+                nav_view.invalidate();
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.openDrawer(R.id.navigation_drawer);
             }
@@ -66,6 +73,14 @@ public class LoginFragment extends Fragment {
             public void onError(FacebookException exception) {
                 ToastHelper.errorToast("FB Login error!");
                 HomeActivity.getCurrent_user().setLoggedin(false);
+            }
+        });
+
+        TextView forgotBtn = (TextView) view.findViewById(R.id.login_forgot_pwd);
+        forgotBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastHelper.warnToast("Service temporarily down");
             }
         });
         Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
@@ -94,6 +109,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginUser(){
+        ToastHelper.shortToast("Contacting Server....");
          RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint("https://www.tripalocal.com")

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 
 import tripalocal.com.au.tripalocalbeta.R;
@@ -30,6 +31,15 @@ public class HomeActivity extends ActionBarActivity {
     private static FragmentManager frag_manager;
     private static User current_user = new User();
     private static String current_userid;
+    private static AccessToken accessToken;
+
+    public static AccessToken getAccessToken() {
+        return accessToken;
+    }
+
+    public static void setAccessToken(AccessToken accessToken) {
+        HomeActivity.accessToken = accessToken;
+    }
 
     public static String getCurrent_userid() {
         return current_userid;
@@ -129,8 +139,11 @@ public class HomeActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (ExperienceListAdapter.current_city == 1)
-                        ToastHelper.longToast("Sydney experiences");
-                else ToastHelper.longToast("Melbourne experiences");
+                        ToastHelper.longToast("experiences from Melbourne");
+                else if(ExperienceListAdapter.current_city == 101)
+                    ToastHelper.longToast("Showing Default experiences from Melbourne");
+                else
+                    ToastHelper.longToast("experiences from Melbourne");
                 FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
             }
         });
@@ -169,16 +182,11 @@ public class HomeActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            callLoginFrag();
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public static void callLoginFrag(){
-        //ToastHelper.shortToast("calling login frag");
-        FragHelper.addReplace(frag_manager ,new LoginFragment());
     }
 
     public static Context getContextInstance(){
