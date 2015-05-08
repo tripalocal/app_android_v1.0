@@ -214,14 +214,14 @@ public class MyTripActivity extends ActionBarActivity {
     private String getUserToken()
     {
         //TODO
-        return "73487d0eb131a6822e08cd74612168cf6e0755dc";//"ca1188e53130b1af884918f797bac9aeb89ef7d2";//
+        return HomeActivity.getCurrent_user().getLogin_token();//"73487d0eb131a6822e08cd74612168cf6e0755dc";//
     }
 
     private void getMyTrip(final String token)
     {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net")// https://www.tripalocal.com
+                .setEndpoint("https://www.tripalocal.com")//http://adventure007.cloudapp.net
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
