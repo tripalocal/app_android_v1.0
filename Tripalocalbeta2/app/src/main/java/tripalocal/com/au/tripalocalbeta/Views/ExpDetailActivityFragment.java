@@ -40,9 +40,10 @@ public class ExpDetailActivityFragment extends Fragment {
     TextView exp_title;
     TextView price_title;
     TextView price_hours;
+    TextView info_title;
     TextView info_less;
     TextView info_more;
-    TextView host_name;
+    TextView host_title;
     TextView host_info_less;
     TextView review_title;
     CircleImageView reviewProfileImage;
@@ -63,10 +64,11 @@ public class ExpDetailActivityFragment extends Fragment {
          exp_title = (TextView) view.findViewById(R.id.exp_detail_title);
          price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
          price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
+          info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
           info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
           info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
          host_info_less = (TextView) view.findViewById(R.id.exp_detail_host_info_less);
-         host_name = (TextView) view.findViewById(R.id.exp_detail_hostname);
+         host_title = (TextView) view.findViewById(R.id.exp_detail_about_host_title);
          review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
          reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
          review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
@@ -107,13 +109,13 @@ public class ExpDetailActivityFragment extends Fragment {
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
 
-        exp_title.setText(exp_to_display.getExperience_title());
+        exp_title.setText("Reservation with " + exp_to_display.getHost_firstname());
         price_title.setText(" $"+ REAL_FORMATTER.format(exp_to_display.getExperience_price()));
         if (exp_to_display.getExperience_duration() > 1)
         price_hours.setText("per person for "+exp_to_display.getExperience_duration()+"hrs");
         else
         price_hours.setText("per person for "+exp_to_display.getExperience_duration()+"hr");
-
+        info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
         /*info_more.setText(exp_to_display.getExperience_description());
         info_less.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +126,7 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         });*/
 
-        host_name.setText(exp_to_display.getHost_firstname());
+        host_title.setText("About the Host, " +exp_to_display.getHost_firstname());
         host_info_less.setText(exp_to_display.getHost_bio());
         review_title.setText(exp_to_display.getExperience_reviews().size()+" Reviews");
         if(exp_to_display.getExperience_reviews().size() > 0){

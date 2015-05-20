@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tripalocal.com.au.tripalocalbeta.Views.LoginFragment">
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.LoginFragment"
+    android:background="@color/white"
+    >
 
    <!-- <TextView
         android:layout_width="wrap_content"
@@ -145,9 +147,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/login_signup"
+            android:textStyle="normal"
             android:text="Sign Up"
             android:background="@android:color/transparent"
-            android:textColor="@color/blue"
+            android:textColor="@color/tripalocal_green_blue"
             android:textSize="15sp"
             android:paddingLeft="15dp"
             android:clickable="true" />

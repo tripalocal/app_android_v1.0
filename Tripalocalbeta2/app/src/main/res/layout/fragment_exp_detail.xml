@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:fontFamily="light"
         tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
@@ -24,13 +24,13 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:id="@+id/exp_detail_top_part"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:id="@+id/exp_detail_bg"
                 android:scaleType="fitXY"/>
-
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/exp_detail_profile_image"
@@ -39,18 +39,19 @@
                 android:layout_gravity="bottom|center"
                 android:src="@drawable/profile_default"
                 app:border_width="2dp"
-                app:border_color="#FF000000"/>
-        </FrameLayout>
+                app:border_color="#ffffffff"/>
 
+        </FrameLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_title"
+            android:layout_below="@id/exp_detail_top_part"
             android:textSize="20sp"
             android:gravity="center"
             android:padding="15dp"
-            android:layout_marginTop="220dp"
             android:textStyle="italic"
+            android:background="@color/white"
             android:text="Loading title"/>
         <TextView
             android:layout_width="match_parent"
@@ -59,6 +60,7 @@
             android:id="@+id/exp_detail_lang"
             android:layout_below="@id/exp_detail_title"
             android:text="English"
+            android:background="@color/white"
             android:paddingBottom="10dp"
             android:gravity="center" />
         <LinearLayout
@@ -67,6 +69,7 @@
             android:id="@+id/exp_detail_price_container"
             android:layout_below="@id/exp_detail_lang"
             android:orientation="horizontal"
+            android:background="@color/white"
             android:gravity="center">
             <TextView
                 android:layout_width="wrap_content"
@@ -91,21 +94,26 @@
                 android:paddingLeft="10dp" />
         </LinearLayout>
         <!-- info on the experience-->
-        <!--<TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/exp_detail_price_container"
+            android:id="@+id/exp_detail_info_container"
+            android:background="@color/tripalocal_light_grey">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_title"
-            android:layout_below="@id/exp_detail_price_container"
             android:textSize="16sp"
             android:text="this is the ssub heading of infor textasdda da"
-            android:gravity="left|center"
+            android:gravity="center"
             android:padding="20dp"
-            android:password="false" />-->
+            android:password="false" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_content_less"
-            android:layout_below="@id/exp_detail_price_container"
+            android:layout_below="@id/exp_detail_info_title"
             android:textSize="16sp"
             android:text="dlkasdjka f fsdf sdfs df sfdsd fsd sf sf sdf sdfsdfsdfsdfs f sdf sdfsdfsdf sfsdf sdf sdfsdf sdfsdf sfsd fsd sdfsdfsdfdsfsdf fsdfsdf fsdfsdfsddfs  sd fsdf sfds"
             android:textAlignment="center"
@@ -135,73 +143,77 @@
                 android:visibility="invisible"/>
 
         </FrameLayout>
+        </RelativeLayout>
 
         <!-- about the host-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/exp_detail_host_title"
-            android:layout_below="@id/exp_detail_info_read_more_container"
-            android:textSize="20sp"
-            android:text="About the host"
-            android:textStyle="italic"
-            android:gravity="center"
-            android:padding="20dp"
-            android:password="false" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_host_profile_image_container"
-            android:layout_below="@id/exp_detail_host_title"
-            android:paddingBottom="10dp">
+            android:layout_below="@id/exp_detail_info_container"
+            android:paddingBottom="10dp"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_about_host_title"
+                android:textSize="20sp"
+                android:text="About the host"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:padding="20dp"
+                android:password="false" />
              <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/exp_detail_host_profile_image"
                  android:layout_centerHorizontal="true"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
+                 android:layout_below="@id/exp_detail_about_host_title"
                 android:src="@drawable/profile_default"
                 android:layout_gravity="center"
                 app:border_width="2dp"
-                app:border_color="#FF000000" />
-            <TextView
+                app:border_color="#ffffffff" />
+            <!--<TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/exp_detail_host_profile_image"
                 android:text="coutnt D."
                 android:id="@+id/exp_detail_hostname"
                 android:layout_centerHorizontal="true"
-                android:gravity="center" />
+                android:gravity="center" />-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_host_info_less"
+                android:layout_below="@id/exp_detail_host_profile_image"
+                android:textSize="16sp"
+                android:text="placeholder content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp" />
         </RelativeLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/exp_detail_host_info_less"
-            android:layout_below="@id/exp_detail_host_profile_image_container"
-            android:textSize="16sp"
-            android:text="placeholder content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp" />
+
         <!-- reviews-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/exp_detail_review_title"
-            android:layout_below="@id/exp_detail_host_info_less"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:text="5 reviews"
-            android:gravity="center"
-            android:padding="20dp"
-            android:password="false" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_review_profile_image_container"
-            android:layout_below="@id/exp_detail_review_title"
+            android:layout_below="@id/exp_detail_host_profile_image_container"
             android:paddingBottom="10dp"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_review_title"
+                android:layout_below="@id/exp_detail_host_info_less"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:text="5 reviews"
+                android:gravity="center"
+                android:padding="20dp"
+                android:password="false" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -218,7 +230,7 @@
                 android:src="@drawable/profile_default"
                 android:layout_gravity="center"
                 app:border_width="2dp"
-                app:border_color="#FF000000" />
+                app:border_color="#ffffffff" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -246,12 +258,22 @@
             android:id="@+id/exp_detail_add_expenses_banner"
             android:layout_below="@id/exp_detail_review_content_less"
             android:background="@color/accent_material_light"/>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_detail_add_expenses_title"
+            android:layout_below="@id/exp_detail_add_expenses_banner"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:text="Additional Expenses"
+            android:gravity="center"
+            android:padding="20dp"
+            android:password="false" />
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_grid"
-            android:layout_below="@id/exp_detail_add_expenses_banner"
+            android:layout_below="@id/exp_detail_add_expenses_title"
             android:columnCount="2"
             android:padding="20dp"
             android:orientation="horizontal">

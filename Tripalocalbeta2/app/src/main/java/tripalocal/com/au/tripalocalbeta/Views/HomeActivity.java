@@ -32,6 +32,7 @@ public class HomeActivity extends ActionBarActivity {
     private static User current_user = new User();
     private static String current_userid;
     private static AccessToken accessToken;
+    HomeActivityFragment homeFrag;
 
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -98,7 +99,7 @@ public class HomeActivity extends ActionBarActivity {
 
 
 
-        HomeActivityFragment homeFrag = new HomeActivityFragment();
+        homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
         //0:home, 1:search, 2:mytrip, 3: profile
         if(getIntent().getIntExtra("fragmentNumber",0)==1)
@@ -139,12 +140,16 @@ public class HomeActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (ExperienceListAdapter.current_city == 1)
+                homeFrag.displayListFrag("Sydney");
+                else
+                    homeFrag.displayListFrag("Melbourne");
+                /*if (ExperienceListAdapter.current_city == 0)
                         ToastHelper.longToast("experiences from Melbourne");
                 else if(ExperienceListAdapter.current_city == 101)
                     ToastHelper.longToast("Showing Default experiences from Melbourne");
                 else
                     ToastHelper.longToast("experiences from Melbourne");
-                FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
+                FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());*/
             }
         });
 
