@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by naveen on 5/5/2015.
  */
-public class Experience_Detail {
+public class Experience_Detail{
 
     private Boolean included_ticket;
     private Integer experience_duration;

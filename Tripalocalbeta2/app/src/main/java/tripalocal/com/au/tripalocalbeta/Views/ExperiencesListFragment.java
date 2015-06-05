@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
@@ -23,7 +22,6 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 
 
@@ -36,7 +34,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             "Host with Car,Extreme Fun,Events,Health&Beauty";
 
     private static final String city[] = {"melbourne", "sydney"};
-    private int spinner_last_selection = 99;
+    //private int spinner_last_selection = 99;
 
 
     public ExperiencesListFragment(){
@@ -50,7 +48,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
         rv.setAdapter(new ExperienceListAdapter(getActivity().getApplicationContext()));
-        ImageView searchbtn = (ImageView)getActivity().findViewById(R.id.searchButton);
+
+       /* ImageView searchbtn = (ImageView)getActivity().findViewById(R.id.searchButton);
         searchbtn.setImageResource(R.drawable.search_s);
         ImageView myprofilebtn = (ImageView) getActivity().findViewById(R.id.myProfileButton);
         myprofilebtn.setImageResource(R.drawable.myprofile);
@@ -58,11 +57,12 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         homebtn.setImageResource(R.drawable.home);
         ImageView mytrip = (ImageView)getActivity().findViewById(R.id.myTripButton);
         mytrip.setImageResource(R.drawable.mytrip);
-        /*spinner = (Spinner) view.findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) view.findViewById(R.id.city_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
                 R.array.cities_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setVisibility(View.VISIBLE);
         spinner.setOnItemSelectedListener(this);*/
         return view;
     }
@@ -85,7 +85,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
 
     public void displayListFrag(final String city){
 
-        SearchRequest req_obj = new SearchRequest("2015-05-08", "2015-05-11",
+        SearchRequest req_obj = new SearchRequest("2015-06-08", "2015-06-09",
                 city,"2",keywords);
         Gson gson = new Gson();
         String json = gson.toJson(req_obj);
@@ -101,7 +101,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 ExperienceListAdapter.prepareSearchResults(search_results);
                 System.out.println("######################################");
                 System.out.println("search_results = " + search_results);
-                ToastHelper.shortToast("spinner select :" + city);
+                //ToastHelper.shortToast("spinner select :" + city);
             }
 
             @Override

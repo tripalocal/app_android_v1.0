@@ -1,6 +1,13 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking_super_container">
+
+<ScrollView
     android:id="@+id/scroll"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="60dp">
@@ -9,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:fontFamily="light"
         tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
 
@@ -96,9 +104,10 @@
         <!-- info on the experience-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/exp_detail_price_container"
             android:id="@+id/exp_detail_info_container"
+            android:paddingBottom="10dp"
             android:background="@color/tripalocal_light_grey">
         <TextView
             android:layout_width="match_parent"
@@ -129,20 +138,24 @@
             android:layout_below="@id/exp_detail_info_content_less"
             android:id="@+id/exp_detail_info_read_more_container"
             >
-            <!--    <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_info_read_more"
-                    android:text="Read More"
-                    android:layout_gravity="center"
-                    />-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:paddingLeft = "20dp"
+                android:paddingRight= "20dp"
+                android:paddingTop="20dp"
                 android:id="@+id/exp_detail_info_content_more"
-                android:visibility="invisible"/>
-
+                android:visibility="gone"/>
         </FrameLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_info_view_more_btn"
+                android:layout_below="@id/exp_detail_info_read_more_container"
+                android:background="@drawable/read_more_btn_shape_white"
+                android:layout_centerHorizontal="true"
+                android:text="View More"/>
         </RelativeLayout>
 
         <!-- about the host-->
@@ -174,14 +187,6 @@
                 android:layout_gravity="center"
                 app:border_width="2dp"
                 app:border_color="#ffffffff" />
-            <!--<TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/exp_detail_host_profile_image"
-                android:text="coutnt D."
-                android:id="@+id/exp_detail_hostname"
-                android:layout_centerHorizontal="true"
-                android:gravity="center" />-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -189,9 +194,36 @@
                 android:layout_below="@id/exp_detail_host_profile_image"
                 android:textSize="16sp"
                 android:text="placeholder content"
+                android:maxLines="6"
+                android:ellipsize="end"
+                android:singleLine="false"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exp_detail_host_info_less"
+                android:id="@+id/exp_detail_host_info_read_more_container"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp"
+                    android:id="@+id/exp_detail_host_info_more"
+                    android:visibility="gone"/>
+            </FrameLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_host_view_more_btn"
+                android:layout_below="@id/exp_detail_host_info_read_more_container"
+                android:background="@drawable/read_more_btn_shape_white"
+                android:layout_centerHorizontal="true"
+                android:text="View More"/>
         </RelativeLayout>
 
         <!-- reviews-->
@@ -199,10 +231,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/exp_detail_review_profile_image_container"
+            android:id="@+id/exp_detail_review_container"
             android:layout_below="@id/exp_detail_host_profile_image_container"
             android:paddingBottom="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/tripalocal_light_grey">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -238,17 +271,24 @@
                 android:id="@+id/exp_detail_review_reviewername"
                 android:textAlignment="center"
                 android:gravity="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_review_content_less"
+                android:textSize="16sp"
+                android:text="No review content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_review_view_more_btn"
+                android:background="@drawable/read_more_btn_shape_grey"
+                android:layout_gravity="center"
+                android:text="View More"/>
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/exp_detail_review_content_less"
-            android:layout_below="@id/exp_detail_review_profile_image_container"
-            android:textSize="16sp"
-            android:text="No review content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp" />
+
 
         <!--end of reviews -->
         <ImageView
@@ -256,7 +296,7 @@
             android:layout_height="150dp"
             android:scaleType="fitXY"
             android:id="@+id/exp_detail_add_expenses_banner"
-            android:layout_below="@id/exp_detail_review_content_less"
+            android:layout_below="@id/exp_detail_review_container"
             android:background="@color/accent_material_light"/>
         <TextView
             android:layout_width="match_parent"
@@ -338,3 +378,12 @@
     </RelativeLayout>
 
 </ScrollView>
+<Button
+android:id="@+id/exp_detail_booking_btn"
+android:text="Request to book"
+android:layout_alignParentBottom="true"
+android:layout_height="wrap_content"
+android:layout_width="match_parent"
+android:background="@drawable/booking_btn_shape"
+android:textColor="@color/white"/>
+</RelativeLayout>

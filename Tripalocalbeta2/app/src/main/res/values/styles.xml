@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -9,21 +9,18 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
     </style>
-    <style name="Divider_padded">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">?android:attr/listDivider</item>
-    </style>
-    <style name="Divider_white">
+    <style name="DarkDivider">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/background_floating_material_light</item>
-    </style>
-    <style name="HalfDivider">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">?android:attr/listDivider</item>
-        <item name="android:layout_weight">0.25</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/tripalocal_light_grey</item>
     </style>
 
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+
 </resources>
+<!--TextAppearance.Holo.Widget.ActionBar.Title">-->

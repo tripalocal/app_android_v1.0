@@ -84,8 +84,8 @@ public class HomeActivityFragment extends Fragment {
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
         rv.setAdapter(new SimpleRecycleAdapter(this));*/
-        ImageView homebtn = (ImageView)getActivity().findViewById(R.id.homeButton);
-        homebtn.setImageResource(R.drawable.home_s);
+        /*ImageView homebtn = (ImageView)getActivity().findViewById(R.id.homeButton);
+        homebtn.setImageResource(R.drawable.home_s);*/
 
         return view;
     }

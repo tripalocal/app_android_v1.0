@@ -21,7 +21,18 @@
         <string-array name="cities_array">
             <item>Melbourne</item>
             <item>Sydney</item>
+            <item>Mktng 1</item>
+            <item>Mktng 2</item>
         </string-array>
     <string name="title_activity_exp_list_actvity2">ExpListActvity2</string>
+    <string name="title_activity_checkout">CheckoutActivity</string>
+    <string name="nav_item1">nav item1</string>
+    <string name="navigation_item_2">Home</string>
+    <string name="navigation_subheader">Subheader</string>
+    <string name="nav_item_2">Home</string>
+    <string name="nav_profile_title">profile title</string>
+    <string name="nav_profile_image">nav profile image</string>
+    <string name="action_search">Search</string>
+    <string name="title_activity_payment">PaymentActivity</string>
 
 </resources>

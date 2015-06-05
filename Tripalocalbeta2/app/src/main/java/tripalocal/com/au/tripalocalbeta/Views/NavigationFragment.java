@@ -68,7 +68,7 @@ public class NavigationFragment extends Fragment {
                 public void onClick(View v) {
                     FragHelper.replace(HomeActivity.getFrag_manager(), new LoginFragment());
                     DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawer.closeDrawer(GravityCompat.END);
+                    drawer.closeDrawer(GravityCompat.START);
                 }
             });
         }
@@ -85,12 +85,12 @@ public class NavigationFragment extends Fragment {
         EditText postcode = (EditText) view.findViewById(R.id.profile_Address_postcode);
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
-        localno.setText("0439876753");
-        roamingno.setText("+91-77439876753");
-        address1.setText("100, williams st");
-        address2.setText("Windsor");
-        suburb.setText("Prahran");
-        postcode.setText("3145");
+        localno.setText(result.getPhone_number());
+        roamingno.setText("##########");
+        address1.setText("##########");
+        address2.setText("##########");
+        suburb.setText("##########");
+        postcode.setText("##########");
     }
 
     public void getProfileDetails(final View view){

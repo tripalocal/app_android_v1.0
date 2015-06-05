@@ -2,11 +2,13 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="start">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -43,9 +45,28 @@
             android:textSize="23sp" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_mktng_spot"
+            android:background="@color/tripalocal_green_blue"
+            android:contentDescription="background_image_city" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Mktng Spot1"
+            android:id="@+id/home_mktng_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
 
-<!--
-    <ImageView
+
+<!--    <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/purple"
@@ -55,9 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/dark_gray"
-        android:id="@+id/home_tasmania"/>
--->
+        android:id="@+id/home_tasmania"/>-->
+
 
 
 </LinearLayout>
 </ScrollView>
+
+

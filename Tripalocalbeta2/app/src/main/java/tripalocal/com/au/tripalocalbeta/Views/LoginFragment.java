@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,10 +58,10 @@ public class LoginFragment extends Fragment {
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                 startActivity(intent);
-                View nav_view = getActivity().findViewById(R.id.navigation_drawer);
-                nav_view.invalidate();
+                /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
+                nav_view.invalidate();*/
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.openDrawer(R.id.navigation_drawer);
+                drawerLayout.openDrawer(Gravity.START);
             }
 
             @Override
@@ -135,10 +136,10 @@ public class LoginFragment extends Fragment {
                     System.out.println("result = [" + result + "], response = [" + response + "]");
                     Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                     startActivity(intent);
-                    View nav_view = getActivity().findViewById(R.id.navigation_drawer);
-                    nav_view.invalidate();
+                   /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
+                    nav_view.invalidate();*/
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawerLayout.openDrawer(R.id.navigation_drawer);
+                    drawerLayout.openDrawer(Gravity.START);
                 }
 
                 @Override

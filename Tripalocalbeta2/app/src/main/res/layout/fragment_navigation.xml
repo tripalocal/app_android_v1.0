@@ -1,17 +1,18 @@
 <ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    >
 <FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:fontFamily="light"
     android:background="#ffe5e5e5">
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context="tripalocal.com.au.tripalocalbeta.Views.NavigationFragment"
     android:background="@color/button_material_light">
 
@@ -24,7 +25,7 @@
         android:layout_marginTop="40dp"
         android:src="@drawable/profile_default"
         app:border_width="2dp"
-        app:border_color="#FF000000"
+        app:border_color="#ffffffff"
         android:layout_marginBottom="30dp"
         />
     <View style="@style/Divider"
@@ -37,26 +38,29 @@
         android:id="@+id/profile_middle_sect"
     android:background="@color/white">
     <ImageView
-        android:layout_width="70dp"
+        android:layout_width="75dp"
         android:layout_height="70dp"
+        android:scaleType="fitXY"
         android:id="@+id/profile_group"
         android:src="@drawable/group"
         android:paddingLeft="30dp"
         android:paddingTop="10dp"
         />
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
             android:id="@+id/profile_heart"
             android:src="@drawable/heart"
+            android:scaleType="fitXY"
             android:layout_toRightOf="@+id/profile_group"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             />
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
             android:id="@+id/profile_settings"
             android:src="@drawable/time"
             android:layout_toRightOf="@+id/profile_heart"

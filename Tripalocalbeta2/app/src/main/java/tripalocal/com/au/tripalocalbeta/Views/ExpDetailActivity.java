@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
 import tripalocal.com.au.tripalocalbeta.R;
 
@@ -25,7 +23,7 @@ public class ExpDetailActivity extends ActionBarActivity {
         }
         setContentView(R.layout.activity_exp_detail);
 
-        ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
+      /*  ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
         searchbtn.setImageResource(R.drawable.search_s);
         ImageView myprofilebtn = (ImageView) findViewById(R.id.myProfileButton);
         myprofilebtn.setImageResource(R.drawable.myprofile);
@@ -69,7 +67,7 @@ public class ExpDetailActivity extends ActionBarActivity {
                 intent.putExtra("fragmentNumber", 3);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 

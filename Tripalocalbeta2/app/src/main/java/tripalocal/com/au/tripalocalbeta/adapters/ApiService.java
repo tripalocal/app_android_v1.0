@@ -42,4 +42,8 @@ public interface ApiService {
 
     @GET("/service_myprofile/")
     void getMyProfileDetails(Callback<MyProfile_result> response);
+
+    @POST("/service_booking/")
+    void bookExperience(@Body String data_json, Callback<String> response);
+
 }

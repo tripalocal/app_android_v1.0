@@ -34,23 +34,38 @@
         <activity
             android:name=".Views.ExpDetailActivity"
             android:label="@string/title_activity_exp_detail"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Views.MyTripActivity"
             android:label="@string/title_activity_my_trip"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".Views.ExpListActvity2"
             android:label="@string/title_activity_exp_list_actvity2"
-            android:parentActivityName=".Views.HomeActivity"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:parentActivityName=".Views.HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".Views.CheckoutActivity"
+            android:label="@string/title_activity_checkout"
+            android:parentActivityName=".Views.ExpDetailActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity" />
+        </activity>
+        <activity
+            android:name=".Views.PaymentActivity"
+            android:label="@string/title_activity_payment"
+            android:parentActivityName=".Views.CheckoutActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tripalocal.com.au.tripalocalbeta.Views.CheckoutActivity" />
         </activity>
     </application>
 
