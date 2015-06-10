@@ -38,6 +38,13 @@
             android:layout_marginBottom="70dp"
             android:layout_marginLeft="30dp"
             android:background="#720a0a0a" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exp_list_wish_image"
+            android:src="@drawable/heart_sw"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"/>
     </FrameLayout>
     <TextView
         android:layout_width="match_parent"
@@ -88,7 +95,8 @@
         android:layout_marginLeft="10dp"
         android:paddingTop="10dp">
         <ImageView
-            android:id="@+id/exp_list_wish_image"
+            android:id="@+id/exp_list_small_wish"
+            android:src="@drawable/heart_sw"
             android:layout_width="27dp"
             android:layout_height="20dp"
             android:scaleType="fitXY"
@@ -111,6 +119,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/data_txt"
+            android:visibility="gone"/>
     </LinearLayout>
     <!-- end of card-->
     </LinearLayout>

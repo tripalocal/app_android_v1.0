@@ -63,12 +63,19 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + exp_to_display.getId()+ "_1.jpg").fitCenter().into(holder.bannerImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
         holder.bannerTxt.setText("from $" + REAL_FORMATTER.format(exp_to_display.getPrice())+ " AUD/person");
-        /*holder.bannerTxt2.setText("$" + exp_to_display.getPrice());
-        holder.bannerTxt3.setText("AUD/person");*/
         holder.titleTxt.setText(exp_to_display.getTitle());
         holder.infoTxt.setText(exp_to_display.getDescription());
+        holder.dataTxt.setText(exp_to_display.getId().toString());
+        holder.dataTxt.setText(exp_to_display.getId().toString());
         // todo @naveen check if the experience in favoutites and set the image
-        //holder.wishimage.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_000);
+        if(HomeActivity.wish_list != null) {
+            //if (HomeActivity.wish_map.containsKey(String.valueOf(ExpListActvity2.city_position) + String.valueOf(position))) {
+            if(HomeActivity.wish_list.contains(exp_to_display.getId())){
+                holder.wishimage.setImageResource(R.drawable.heart_sr);
+                holder.smallwishimage.setImageResource(R.drawable.heart_sr);
+                holder.wishTxt.setText("Saved to wishlist");
+            }
+        }
         holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
         // todo @naveen get the language from the experience
         holder.languageTxt.setText("English");
@@ -85,54 +92,57 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     public static class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView bannerTxt;
-        //public TextView bannerTxt2;
-        //public TextView bannerTxt3;
         public TextView titleTxt;
         public TextView infoTxt;
         public CircleImageView profileImage;
         public ImageView wishimage;
         public TextView wishTxt;
+        public ImageView smallwishimage;
         public TextView durationTxt;
         public TextView languageTxt;
         public ImageView bannerImage;
-        public boolean wish = false;
         public FrameLayout bannerContainer;
+        public TextView dataTxt;
 
 
-        public ListViewHolder(View itemView) {
+        public ListViewHolder(final View itemView) {
             super(itemView);
             bannerImage = (ImageView) itemView.findViewById(R.id.exp_list_banner_image);
             bannerTxt = (TextView) itemView.findViewById(R.id.exp_list_banner_txt);
-           // bannerTxt2 = (TextView) itemView.findViewById(R.id.exp_list_banner_txt2);
-           // bannerTxt3 = (TextView) itemView.findViewById(R.id.exp_list_banner_txt3);
             titleTxt = (TextView) itemView.findViewById(R.id.exp_list_title_txt);
             infoTxt = (TextView) itemView.findViewById(R.id.exp_list_info_txt);
             profileImage = (CircleImageView) itemView.findViewById(R.id.exp_list_profile_image);
             wishimage = (ImageView) itemView.findViewById(R.id.exp_list_wish_image);
-            wishimage.setImageResource(R.drawable.unwishlisted);
+            smallwishimage = (ImageView) itemView.findViewById(R.id.exp_list_small_wish);
+            dataTxt = (TextView) itemView.findViewById(R.id.data_txt);
+            wishimage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String test = dataTxt.getText().toString();
+                    if (HomeActivity.wish_list.contains(test)) {
+                        wishimage.setImageResource(R.drawable.heart_sw);
+                        smallwishimage.setImageResource(R.drawable.heart_sw);
+                        wishTxt.setText("Save to wishlist");
+                        HomeActivity.wish_list.remove(test);
+                        /*HomeActivity.wish_map.remove("*"+String.valueOf(ExpListActvity2.city_position)
+                                + String.valueOf(getAdapterPosition()));*/
+                        ToastHelper.shortToast("removed from wishlist");
+                    } else {
+                        wishimage.setImageResource(R.drawable.heart_sr);
+                        smallwishimage.setImageResource(R.drawable.heart_sr);
+                        wishTxt.setText("Saved to wishlist");
+                        HomeActivity.wish_list.add(test);
+                        /*HomeActivity.wish_map.put("*"+String.valueOf(ExpListActvity2.city_position) + String.valueOf(getAdapterPosition()),
+                                all_experiences.get(getAdapterPosition()));*/
+                        ToastHelper.shortToast("saved to wishlist");
+                    }
+                }
+            });
             wishTxt = (TextView) itemView.findViewById(R.id.exp_list_wish_text);
             durationTxt = (TextView) itemView.findViewById(R.id.exp_list_duration);
             languageTxt = (TextView) itemView.findViewById(R.id.exp_list_language);
             bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
             bannerContainer.setOnClickListener(this);
-            wishimage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(wish) {
-                        wishimage.setImageResource(R.drawable.unwishlisted);
-                        wish = false;
-                        wishTxt.setText("Save to wishlist");
-                        ToastHelper.shortToast("removed from wishlist");
-                    }
-                    else{
-                        wish = true;
-                        wishimage.setImageResource(R.drawable.heart);
-                        wishTxt.setText("Saved to wishlist");
-                        ToastHelper.shortToast("saved to wishlist");
-                    }
-
-                }
-            });
         }
 
         @Override

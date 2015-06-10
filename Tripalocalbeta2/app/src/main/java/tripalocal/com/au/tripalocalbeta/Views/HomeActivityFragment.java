@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,22 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
-import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
-import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
-import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.Search_Result;
-
+import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -33,7 +22,7 @@ public class HomeActivityFragment extends Fragment {
 
     private static final String[] bg_urls = {"https://www.tripalocal.com/images/mobile/home/Melbourne.jpg",
             "https://www.tripalocal.com/images/mobile/home/Sydney.jpg"};
-    public static final String INT_EXTRA = "POSITION";
+
 
 
     public HomeActivityFragment() {
@@ -60,68 +49,22 @@ public class HomeActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 0;
-                        displayListFrag("melbourne");
-                /*Intent intent = new Intent(getActivity().getApplicationContext(), ExpListActvity2.class);
-                intent.putExtra(INT_EXTRA, 0);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().getApplicationContext().startActivity(intent);*/
+                        displayListFrag2(0);
             }
         });
         syd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 1;
-                displayListFrag("sydney");
-                /*Intent intent = new Intent(getActivity().getApplicationContext(), ExpListActvity2.class);
-                intent.putExtra(INT_EXTRA, 1);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().getApplicationContext().startActivity(intent);*/
+                displayListFrag2(1);
             }
         });
-
-        /*RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycle_view);
-        rv.setHasFixedSize(true);
-        LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
-        rv.setLayoutManager(LLM);
-        rv.setAdapter(new SimpleRecycleAdapter(this));*/
-        /*ImageView homebtn = (ImageView)getActivity().findViewById(R.id.homeButton);
-        homebtn.setImageResource(R.drawable.home_s);*/
-
         return view;
     }
 
-    public void displayListFrag(final String city){
-
-        String keywords = "Food&Wine,Education,History&Culture,Architecture,For Couples," +
-                "Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure," +
-                "Host with Car,Extreme Fun,Events,Health&Beauty";
-
-        SearchRequest req_obj = new SearchRequest("2015-05-08", "2015-05-09",
-                city,"2", keywords);
-        Gson gson = new Gson();
-        String json = gson.toJson(req_obj);
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net/")
-                .build();
-        ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast("Contacting Server...");
-        apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
-
-            @Override
-            public void success(List<Search_Result> search_results, Response response) {
-                ToastHelper.shortToast("Experiences for :" + city);
-                ExperienceListAdapter.prepareSearchResults(search_results);
-                System.out.println("search_results = " + search_results);
-                FragHelper.replace(getActivity().getSupportFragmentManager(), new ExperiencesListFragment());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                ToastHelper.errorToast("Error occurred!");
-                System.out.println("HomeActivityFragment.failure");
-                System.out.println("error = [" + error + "]");
-            }
-        });
+    public void displayListFrag2(int position) {
+        Intent intent = new Intent(HomeActivity.getHome_context(), ExpListActvity2.class);
+        intent.putExtra(INT_EXTRA,position);
+        startActivity(intent);
     }
 }

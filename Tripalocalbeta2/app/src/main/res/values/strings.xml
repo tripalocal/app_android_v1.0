@@ -17,13 +17,33 @@
     <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
     <string name="my_trip_explore">Start Exploring</string>
 
+    <string-array name="db_cities_array">
+        <item>Melbourne</item>
+        <item>Sydney</item>
+        <item>Brisbane</item>
+        <item>Cairns</item>
+        <item>Goldcoast</item>
+        <item>Hobart</item>
+        <item>Adelaide</item>
+        <item>GRVIC</item>
+        <item>GRQLD</item>
+        <item>GRNSW</item>
+    </string-array>
 
-        <string-array name="cities_array">
-            <item>Melbourne</item>
-            <item>Sydney</item>
-            <item>Mktng 1</item>
-            <item>Mktng 2</item>
-        </string-array>
+    <string-array name="poi_array">
+        <item>Melbourne, VIC</item>
+        <item>Sydney, NSW</item>
+        <item>Brisbane, QLD</item>
+        <item>Cairns, QLD</item>
+        <item>Gold Coast, QLD</item>
+        <item>Hobart, TAS</item>
+        <item>Adelaide, SA</item>
+        <item>Greater Region, VIC</item>
+        <item>Greater Region, QLD</item>
+        <item>Greater Region, NSW</item>
+    </string-array>
+
+
     <string name="title_activity_exp_list_actvity2">ExpListActvity2</string>
     <string name="title_activity_checkout">CheckoutActivity</string>
     <string name="nav_item1">nav item1</string>
@@ -34,5 +54,23 @@
     <string name="nav_profile_image">nav profile image</string>
     <string name="action_search">Search</string>
     <string name="title_activity_payment">PaymentActivity</string>
+    <string name="search_hint">search here</string>
+    <string name="search_title">Search title</string>
+    <string name="exp_detail_food">Food: optional purchase and drinks</string>
+    <string name="exp_detail_tickets">Tickets : Not required</string>
+    <string name="exp_detail_transport">Transport : Can be arranged if required</string>
+    <string name="exp_detail_add_expenses_label">Additional Expenses</string>
+    <string name="view_more">View More</string>
+    <string name="no_review_content">No review content</string>
+    <string name="placeholder_content">placeholder content</string>
+    <string name="exp_detail_about_the_host">About the host</string>
+    <string name="gibber">dlkasdjka f fsdf sdfs df sfdsd fsd sf sf sdf sdfsdfsdfsdfs f sdf sdfsdfsdf sfsdf sdf sdfsdf sdfsdf sfsd fsd sdfsdfsdfdsfsdf fsdfsdf fsdfsdfsddfs sd fsdf sfds</string>
+    <string name="sub_head_gibber">this is the ssub heading of infor textasdda da</string>
+    <string name="exp_detail_per_person_placeholder">per person for 3 hours</string>
+    <string name="from">from</string>
+    <string name="dollar_placeholder">$$$$</string>
+    <string name="loading_title">Loading title</string>
+    <string name="checkout_title_placeholder">Add expenses dasdadsasda dad dasbjdkjahsdk kjdha kdjhakjdhakjdhvcvc</string>
+
 
 </resources>

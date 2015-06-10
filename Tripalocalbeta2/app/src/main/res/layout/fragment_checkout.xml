@@ -43,7 +43,7 @@
                 android:layout_height="75dp"
                 android:paddingLeft="15dp"
                 android:id="@+id/booking_title"
-                android:text="Add expenses dasdadsasda dad dasbjdkjahsdk kjdha kdjhakjdhakjdhvcvc"/>
+                android:text="@string/checkout_title_placeholder"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,24 +64,6 @@
 
 
     </LinearLayout>
-
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/booking_top_part"
-        android:id="@+id/booking_content_out_container"
-        android:gravity="center">
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.15"/>
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/booking_content_container"
-            android:orientation="horizontal"
-            android:layout_weight="0.7">-->
 
 
     <TableLayout
@@ -137,10 +119,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_date_txt1"
+                android:background="#ff0c7c4a"
                 android:text="dd/mm/yy"
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp" />
             <LinearLayout
                 android:layout_weight="1"
@@ -177,12 +161,14 @@
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp" />
+            <!--android:background="#ff0c7c4a"-->
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:background="#ff0c7c4a"
+                android:background="@color/white"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="wrap_content"
@@ -195,7 +181,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_time_txt2"
                     android:text="hh:mm"
-                    android:textColor="@color/white"
                     android:layout_gravity="end"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="6dp"/>
@@ -213,12 +198,13 @@
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
+                android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp" />
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:background="#ff0c7c4a"
+                android:background="@color/white"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="wrap_content"
@@ -231,7 +217,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_time_txt3"
                     android:text="hh:mm"
-                    android:textColor="@color/white"
                     android:layout_gravity="end"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="6dp"/>
@@ -265,7 +250,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_marginTop="15dp">
-            <TextView
+           <TextView
                android:id="@+id/booking_guests_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -276,18 +261,24 @@
         </TableRow>
 
         <TableRow
-            android:background="@color/abc_search_url_text_normal"
             android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            >
-            <TextView
+            android:layout_marginTop="15dp">
+            <!--<TextView
                 android:id="@+id/booking_date_selector"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Date selector"
                 android:gravity="center"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/>-->
+            <NumberPicker
+                android:id="@+id/numberPicker1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="0.7"
+                />
+
         </TableRow>
 
         <TableRow
@@ -379,110 +370,6 @@
                     android:gravity="end"/>
             </LinearLayout>
         </TableRow>
-
-        <!--PAyment -->
-        <!--<TableRow
-            android:layout_width="wrap_content"
-            android:layout_marginTop="15dp">
-            <TextView
-                android:id="@+id/booking_payment_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Payment"
-                android:gravity="center"
-                android:textStyle="bold"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="20dp">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/booking_payment_card_number_edit"
-                    android:text="Number"
-
-                    android:textColor="@color/tripalocal_green_blue"
-                    android:gravity="start"/>
-
-                <View style="@style/DarkDivider"
-                    android:layout_marginTop="15dp"
-                    android:id="@+id/booking_divider_2"
-                    />
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="40dp"
-            android:background="@color/white">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/booking_payment_Expiry_txt"
-                    android:text="Expiry"
-                    android:gravity="start"/>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/booking_expiry_month_edit"
-                    android:layout_marginLeft="5dp"
-                    android:text="mm"
-                    android:textColor="@color/tripalocal_green_blue"
-                    android:gravity="start"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    />
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/booking_expiry_year_edit"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="yy"
-                    android:textColor="@color/tripalocal_green_blue"
-                    android:gravity="start"/>
-
-                <View
-                    android:layout_height="fill_parent"
-                    android:layout_width="1dp"
-                    android:layout_margin="4dp"
-                    android:background="@color/tripalocal_light_grey" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/booking_cvv_edit"
-                    android:layout_marginLeft="10dp"
-                    android:text="cvv"
-                    android:textColor="@color/tripalocal_green_blue"
-                    />
-            </LinearLayout>
-        </TableRow>-->
         <TableRow
         android:layout_width="match_parent"
             android:layout_marginTop="20dp"
@@ -491,7 +378,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:src="@drawable/home_s"
+        android:src="@drawable/money"
         android:contentDescription="pay_ok_to_change_image"/>
     </TableRow>
         <TableRow

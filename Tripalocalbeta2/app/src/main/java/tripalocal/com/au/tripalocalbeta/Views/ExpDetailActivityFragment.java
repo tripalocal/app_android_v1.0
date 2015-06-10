@@ -27,14 +27,18 @@ import tripalocal.com.au.tripalocalbeta.models.exp_detail.ExperienceReview;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 
+import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
+
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ExpDetailActivityFragment extends Fragment {
 
+
     public static final String BASE_URL ="https://www.tripalocal.com/images/";
     private static Experience_Detail exp_to_display;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
+
 
     ImageView exp_bg;
     CircleImageView profileImage;
@@ -50,6 +54,11 @@ public class ExpDetailActivityFragment extends Fragment {
     TextView host_info_less;
     TextView host_info_more;
     TextView review_title;
+    ImageView rating_str_1;
+    ImageView rating_str_2;
+    ImageView rating_str_3;
+    ImageView rating_str_4;
+    ImageView rating_str_5;
     CircleImageView reviewProfileImage;
     TextView review_username;
     TextView review_content_less;
@@ -58,12 +67,14 @@ public class ExpDetailActivityFragment extends Fragment {
     ImageView expenses_banner_img;
     Button request_to_book_btn;
 
+
     public ExpDetailActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
          profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
@@ -81,15 +92,21 @@ public class ExpDetailActivityFragment extends Fragment {
          reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
          review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
          review_content_less = (TextView) view.findViewById(R.id.exp_detail_review_content_less);
+        rating_str_1 = (ImageView) view.findViewById(R.id.exp_detail_review_star_1);
+        rating_str_2 = (ImageView) view.findViewById(R.id.exp_detail_review_star_2);
+        rating_str_3 = (ImageView) view.findViewById(R.id.exp_detail_review_star_3);
+        rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
+        rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
          expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
          request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
+
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), CheckoutActivity.class);
-                CheckoutActivity.experience_to_book = exp_to_display;
+                Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
+                intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().getApplicationContext().startActivity(intent);
+                HomeActivity.getHome_context().startActivity(intent);
             }
         });
 
@@ -139,10 +156,14 @@ public class ExpDetailActivityFragment extends Fragment {
                }
             }
         });
-
-        getExpDetails(ExpDetailActivity.position);
+        /*if(CheckoutActivity.experience_to_book != null){
+            exp_to_display = CheckoutActivity.experience_to_book;
+            fillDetails();
+        }else*/
+            getExpDetails(ExpDetailActivity.position);
         return view;
     }
+
 
     public void getExpDetails(int exp_id){
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -187,6 +208,21 @@ public class ExpDetailActivityFragment extends Fragment {
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
         review_title.setText(exp_to_display.getExperience_reviews().size()+" Reviews");
+        int rate = Math.round(exp_to_display.getExperience_rate());
+        if(rate < 5){
+            if(rate <=4){
+                rating_str_5.setVisibility(View.GONE);
+                if(rate <=3) {
+                    rating_str_4.setVisibility(View.GONE);
+                    if(rate <=2){
+                        rating_str_3.setVisibility(View.GONE);
+                        if(rate <=1){
+                            rating_str_2.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+        }
         if(exp_to_display.getExperience_reviews().size() > 0){
             ExperienceReview top_review  = exp_to_display.getExperience_reviews().get(0);
             if(top_review.getReviewer_image().length() > 2)

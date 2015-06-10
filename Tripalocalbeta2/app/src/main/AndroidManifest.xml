@@ -19,9 +19,10 @@
             android:name=".Views.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,23 +33,27 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".Views.ExpDetailActivity"
-            android:label="@string/title_activity_exp_detail"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".Views.MyTripActivity"
-            android:label="@string/title_activity_my_trip"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        </activity>
-        <activity
             android:name=".Views.ExpListActvity2"
             android:label="@string/title_activity_exp_list_actvity2"
-            android:parentActivityName=".Views.HomeActivity" >
+            android:screenOrientation="portrait"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
+
+        </activity>
+        <activity
+            android:name=".Views.ExpDetailActivity"
+            android:label="@string/title_activity_exp_detail"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2" />
         </activity>
         <activity
             android:name=".Views.CheckoutActivity"
@@ -66,6 +71,12 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.CheckoutActivity" />
+        </activity>
+        <activity
+            android:name=".Views.MyTripActivity"
+            android:label="@string/title_activity_my_trip"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
     </application>
 

@@ -19,16 +19,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:fontFamily="light"
         tools:context="tripalocal.com.au.tripalocalbeta.Views.ExperienceDetail">
-
-        <!-- <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Titlead pdpasm dpasdkasdasd das"
-             android:textSize="20sp"
-             android:id="@+id/exp_detail_top_title"
-             android:padding="20dp"
-             />-->
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -60,7 +50,7 @@
             android:padding="15dp"
             android:textStyle="italic"
             android:background="@color/white"
-            android:text="Loading title"/>
+            android:text="@string/loading_title"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,21 +74,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price1"
                 android:textSize="16sp"
-                android:text="from"/>
+                android:text="@string/from"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price2"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                android:text="$$$$"/>
+                android:text="@string/dollar_placeholder"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_person"
                 android:textSize="16sp"
                 android:layout_marginRight="30dp"
-                android:text="per person for 3 hours"
+                android:text="@string/exp_detail_per_person_placeholder"
                 android:paddingLeft="10dp" />
         </LinearLayout>
         <!-- info on the experience-->
@@ -114,7 +104,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/exp_detail_info_title"
             android:textSize="16sp"
-            android:text="this is the ssub heading of infor textasdda da"
+            android:text="@string/sub_head_gibber"
             android:gravity="center"
             android:padding="20dp"
             android:password="false" />
@@ -124,14 +114,15 @@
             android:id="@+id/exp_detail_info_content_less"
             android:layout_below="@id/exp_detail_info_title"
             android:textSize="16sp"
-            android:text="dlkasdjka f fsdf sdfs df sfdsd fsd sf sf sdf sdfsdfsdfsdfs f sdf sdfsdfsdf sfsdf sdf sdfsdf sdfsdf sfsd fsd sdfsdfsdfdsfsdf fsdfsdf fsdfsdfsddfs  sd fsdf sfds"
+            android:text="@string/gibber"
             android:textAlignment="center"
             android:maxLines="6"
             android:ellipsize="end"
             android:singleLine="false"
             android:paddingLeft = "20dp"
             android:paddingRight= "20dp"
-            android:paddingTop="20dp"/>
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"/>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,7 +146,7 @@
                 android:layout_below="@id/exp_detail_info_read_more_container"
                 android:background="@drawable/read_more_btn_shape_white"
                 android:layout_centerHorizontal="true"
-                android:text="View More"/>
+                android:text="@string/view_more"/>
         </RelativeLayout>
 
         <!-- about the host-->
@@ -171,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_about_host_title"
                 android:textSize="20sp"
-                android:text="About the host"
+                android:text="@string/exp_detail_about_the_host"
                 android:textStyle="italic"
                 android:gravity="center"
                 android:padding="20dp"
@@ -193,7 +184,7 @@
                 android:id="@+id/exp_detail_host_info_less"
                 android:layout_below="@id/exp_detail_host_profile_image"
                 android:textSize="16sp"
-                android:text="placeholder content"
+                android:text="@string/placeholder_content"
                 android:maxLines="6"
                 android:ellipsize="end"
                 android:singleLine="false"
@@ -221,9 +212,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_host_view_more_btn"
                 android:layout_below="@id/exp_detail_host_info_read_more_container"
-                android:background="@drawable/read_more_btn_shape_white"
+                android:background="@drawable/read_more_btn_shape_grey"
                 android:layout_centerHorizontal="true"
-                android:text="View More"/>
+                android:text="@string/view_more"/>
         </RelativeLayout>
 
         <!-- reviews-->
@@ -247,13 +238,50 @@
                 android:gravity="center"
                 android:padding="20dp"
                 android:password="false" />
-            <ImageView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:padding="20dp"
-                android:id="@+id/exp_detail_review_stars"
-                android:background="@android:drawable/btn_star_big_on"/>
+                android:id="@+id/exp_detail_review_stars_container">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:id="@+id/exp_detail_review_star_1"
+                    android:background="@android:drawable/btn_star_big_on"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:id="@+id/exp_detail_review_star_2"
+                    android:background="@android:drawable/btn_star_big_on"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:id="@+id/exp_detail_review_star_3"
+                    android:background="@android:drawable/btn_star_big_on"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:id="@+id/exp_detail_review_star_4"
+                    android:background="@android:drawable/btn_star_big_on"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:id="@+id/exp_detail_review_star_5"
+                    android:background="@android:drawable/btn_star_big_on"/>
+            </LinearLayout>
+
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/exp_detail_review_profile_image"
@@ -276,7 +304,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_review_content_less"
                 android:textSize="16sp"
-                android:text="No review content"
+                android:text="@string/no_review_content"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp" />
@@ -284,9 +312,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_review_view_more_btn"
-                android:background="@drawable/read_more_btn_shape_grey"
+                android:background="@drawable/read_more_btn_shape_white"
                 android:layout_gravity="center"
-                android:text="View More"/>
+                android:text="@string/view_more"/>
         </LinearLayout>
 
 
@@ -305,7 +333,7 @@
             android:layout_below="@id/exp_detail_add_expenses_banner"
             android:textSize="20sp"
             android:textStyle="italic"
-            android:text="Additional Expenses"
+            android:text="@string/exp_detail_add_expenses_label"
             android:gravity="center"
             android:padding="20dp"
             android:password="false" />
@@ -324,12 +352,13 @@
                 android:id="@+id/exp_detail_grid_food_icon"
                 android:scaleType="fitXY"
                 android:paddingBottom="10dp"
-                android:background="@android:drawable/ic_dialog_info"/>
+                android:src="@drawable/meals"/>
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:paddingTop="25dp"
                 android:paddingLeft="10dp"
-                android:text="Food: optional purchase and drinks"
+                android:text="@string/exp_detail_food"
                 android:id="@+id/exp_detail_grid_food_info"/>
             <ImageView
                 android:layout_width="32dp"
@@ -337,12 +366,13 @@
                 android:id="@+id/exp_detail_grid_ticket_icon"
                 android:paddingTop="10dp"
                 android:scaleType="fitXY"
-                android:background="@android:drawable/ic_dialog_info"/>
+                android:src="@drawable/tickets"/>
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:paddingTop="25dp"
                 android:paddingLeft="10dp"
-                android:text="Tickets : Not required"
+                android:text="@string/exp_detail_tickets"
                 android:id="@+id/exp_detail_grid_ticket_info"/>
             <ImageView
                 android:layout_width="32dp"
@@ -350,30 +380,15 @@
                 android:id="@+id/exp_detail_grid_transport_icon"
                 android:scaleType="fitXY"
                 android:paddingTop="10dp"
-                android:background="@android:drawable/ic_dialog_info"/>
+                android:src="@drawable/bus"/>
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:paddingTop="25dp"
                 android:paddingLeft="10dp"
-                android:text="Transport : Can be arranged if required"
+                android:text="@string/exp_detail_transport"
                 android:id="@+id/exp_detail_grid_transport_info"/>
         </GridLayout>
-
-    <!--    <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/exp_detail_related_exp_recycle"
-            />-->
-        <!--<com.gc.materialdesign.views.ButtonFloat
-            android:id="@+id/buttonFloat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="24dp"
-            android:background="#1E88E5"
-            materialdesign:animate="true"
-            materialdesign:iconDrawable="@drawable/instant_booking" />-->
 
     </RelativeLayout>
 

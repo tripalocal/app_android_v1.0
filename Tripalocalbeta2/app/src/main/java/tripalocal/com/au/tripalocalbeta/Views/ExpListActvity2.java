@@ -1,13 +1,20 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import retrofit.Callback;
@@ -27,15 +34,19 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 
 public class ExpListActvity2 extends ActionBarActivity {
 
-    private static final String city[] = {"melbourne", "sydney"};
+    public static int city_position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if(intent != null){
-            int position = intent.getIntExtra(INT_EXTRA,0);
-            displayListFrag(city[position]);
+            city_position = intent.getIntExtra(INT_EXTRA,0);
+            displayListFrag(city_position);
+            setTitle(HomeActivity.poi_data[city_position]);
         }
+        if(CheckoutActivity.experience_to_book != null)
+            CheckoutActivity.experience_to_book = null;
         setContentView(R.layout.activity_exp_list_actvity2);
     }
 
@@ -44,6 +55,34 @@ public class ExpListActvity2 extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exp_list_actvity2, menu);
         return true;
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveData();
+    }
+
+    public void saveData() {
+        if(!HomeActivity.wish_map.isEmpty()){
+            SharedPreferences settings = getSharedPreferences(HomeActivity.PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.clear();
+            Gson gson = new Gson();
+            editor.putString("wish_map", gson.toJson(HomeActivity.wish_map));
+            /*for(String s : wish_map.keySet()){
+                String hashString = gson.toJson(wish_map.get(s));
+                editor.putString(s, hashString);
+            }*/
+            editor.commit();
+        }
+        if(HomeActivity.getCurrent_user().getLogin_token() != null) {
+            SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor_l = settings_l.edit();
+            editor_l.clear();
+            editor_l.putString("token", HomeActivity.getCurrent_user().getLogin_token());
+            editor_l.putBoolean("login", true);
+            editor_l.commit();
+        }
     }
 
     @Override
@@ -61,49 +100,31 @@ public class ExpListActvity2 extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void displayListFrag(final String city){
-        StringBuilder temp = new StringBuilder();
-        //Food&Wine,Education,History&Culture,Architecture,For Couples,Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure,Host with Car,Extreme Fun,Events,Health&Beauty
-        temp.append("Shopping");
-        temp.append(",");
-        temp.append("Education");
-        temp.append(",");
-        temp.append("Architecture");
-        temp.append(",");
-        temp.append("Food&Wine");
-        temp.append(",");
-        temp.append("History&Culture");
-        temp.append(",");
-        temp.append("For Couples");
-        temp.append(",");
-        temp.append("Photography Worthy");
-        temp.append(",");
-        temp.append("Liveability Research");
-        temp.append(",");
-        temp.append("Kids Friendly");
-        temp.append(",");
-        temp.append("Outdoor&Nature");
-        temp.append(",");
-
-        SearchRequest req_obj = new SearchRequest("2015-05-08", "2015-05-11",
-                city,"2",temp.toString());
-        Gson gson = new Gson();
-        String json = gson.toJson(req_obj);
+    public void displayListFrag(final int position){
+        String keywords = "Food&Wine,Education,History&Culture,Architecture,For Couples," +
+                "Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure," +
+                "Host with Car,Extreme Fun,Events,Health&Beauty";
+        Calendar cal = new GregorianCalendar();
+        Date today = cal.getTime();
+        cal.add(Calendar.DAY_OF_MONTH,1);
+        Date tommorow = cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SearchRequest req_obj = new SearchRequest(dateFormat.format(today), dateFormat.format(tommorow),
+                HomeActivity.db_poi_data[position],"2", keywords);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
+        ToastHelper.longToast("Contacting Server...");
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
-
             @Override
             public void success(List<Search_Result> search_results, Response response) {
                 ExperienceListAdapter.prepareSearchResults(search_results);
                 System.out.println("search_results = " + search_results);
-                ToastHelper.shortToast("HOME FRAG :" + city);
+                ToastHelper.shortToast("Showing experiences for " + HomeActivity.poi_data[position]);
                 FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
             }
-
             @Override
             public void failure(RetrofitError error) {
                 System.out.println("HomeActivityFragment.failure");

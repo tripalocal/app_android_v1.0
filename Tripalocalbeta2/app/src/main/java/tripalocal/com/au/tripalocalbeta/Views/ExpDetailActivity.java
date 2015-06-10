@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
@@ -19,58 +21,15 @@ public class ExpDetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if(intent != null){
-            position = intent.getIntExtra(INT_EXTRA,0);
+            if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                String query = intent.getStringExtra(SearchManager.QUERY);
+                ToastHelper.shortToast("Searched with " + query);
+            }else{
+                position = intent.getIntExtra(INT_EXTRA,0);
+            }
         }
         setContentView(R.layout.activity_exp_detail);
-
-      /*  ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
-        searchbtn.setImageResource(R.drawable.search_s);
-        ImageView myprofilebtn = (ImageView) findViewById(R.id.myProfileButton);
-        myprofilebtn.setImageResource(R.drawable.myprofile);
-        ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
-        homebtn.setImageResource(R.drawable.home);
-        ImageView mytrip = (ImageView)findViewById(R.id.myTripButton);
-        mytrip.setImageResource(R.drawable.mytrip);
-
-
-        homebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExpDetailActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        searchbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExpDetailActivity.this, HomeActivity.class);
-                intent.putExtra("fragmentNumber", 1);
-                startActivity(intent);
-            }
-        });
-
-
-        mytrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExpDetailActivity.this, HomeActivity.class);
-                intent.putExtra("fragmentNumber", 2);
-                startActivity(intent);
-            }
-        });
-
-        myprofilebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExpDetailActivity.this, HomeActivity.class);
-                intent.putExtra("fragmentNumber", 3);
-                startActivity(intent);
-            }
-        });*/
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

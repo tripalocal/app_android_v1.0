@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -30,12 +31,11 @@ public class NavigationFragment extends Fragment {
     private static MyProfile_result result;
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
 
-    public static NavigationFragment newInstance(String param1, String param2) {
-        NavigationFragment fragment = new NavigationFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+    private static CircleImageView profile_img;
+    private static EditText localno;
+    private static EditText roamingno;
+    private static TextView hostname;
 
     public NavigationFragment() {
         // Required empty public constructor
@@ -44,9 +44,6 @@ public class NavigationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
@@ -76,7 +73,7 @@ public class NavigationFragment extends Fragment {
     }
 
     private void prepareProfile(View view) {
-        CircleImageView profile_img = (CircleImageView) view.findViewById(R.id.nav_profile_image);
+        /*CircleImageView profile_img = (CircleImageView) view.findViewById(R.id.nav_profile_image);
         EditText localno = (EditText) view.findViewById(R.id.profile_local_no);
         EditText roamingno = (EditText) view.findViewById(R.id.profile_roaming_no);
         EditText address1 = (EditText) view.findViewById(R.id.profile_Address_line_1);
@@ -90,7 +87,18 @@ public class NavigationFragment extends Fragment {
         address1.setText("##########");
         address2.setText("##########");
         suburb.setText("##########");
-        postcode.setText("##########");
+        postcode.setText("##########");*/
+
+        profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
+        hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
+        localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
+        roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
+
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
+        hostname.setText(result.getFirst_name() + result.getLast_name());
+        localno.setText(result.getPhone_number());
+        roamingno.setText(result.getPhone_number());
+
     }
 
     public void getProfileDetails(final View view){

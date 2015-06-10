@@ -37,7 +37,7 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
         simpleViewHolder.text.setText(places[i]);
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[i]).centerCrop()
                 .into(simpleViewHolder.image);
-        simpleViewHolder.itemView.setTag(places[i]);
+        simpleViewHolder.itemView.setTag(i);
     }
 
 
@@ -67,7 +67,7 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
         public void onClick(View v) {
           if(v instanceof CardView){
               Toast.makeText(v.getContext(), v.getTag().toString(),Toast.LENGTH_SHORT).show();
-              HomeFrag.displayListFrag(v.getTag().toString());
+              HomeFrag.displayListFrag2((int)v.getTag());
           }else{
               Toast.makeText(v.getContext(), "vada poche",Toast.LENGTH_SHORT).show();
           }
