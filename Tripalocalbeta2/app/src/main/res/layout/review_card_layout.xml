@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/exp_detail_review_container"
+android:layout_below="@id/exp_detail_host_profile_image_container"
+android:paddingBottom="10dp"
+android:orientation="vertical"
+android:background="@color/tripalocal_light_grey">
+
+<de.hdodenhof.circleimageview.CircleImageView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/review_card_profile_image"
+    android:paddingTop="30dp"
+    android:layout_width="96dp"
+    android:layout_height="96dp"
+    android:src="@drawable/profile_default"
+    android:layout_gravity="center"
+    app:border_width="2dp"
+    app:border_color="#ffffffff" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/review_card_name"
+    android:textAlignment="center"
+    android:gravity="center" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ereview_card_content"
+    android:textSize="16sp"
+    android:text="@string/no_review_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="20dp" />
+</LinearLayout>

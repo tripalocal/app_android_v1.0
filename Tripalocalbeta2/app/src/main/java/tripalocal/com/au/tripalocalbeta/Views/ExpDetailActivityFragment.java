@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
@@ -22,6 +23,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.adapters.ReviewAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.ExperienceReview;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
@@ -130,13 +132,9 @@ public class ExpDetailActivityFragment extends Fragment {
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (review_more_btn.getText().equals("View More")) {
-                    review_more_btn.setText("View Less");
-                    ToastHelper.shortToast("more review");
-                }else{
-                    review_more_btn.setText("View More");
-                    ToastHelper.shortToast("less review");
-                }
+                    ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
+                    Intent intent = new Intent(getActivity().getApplicationContext(),ReviewActivity.class);
+                    startActivity(intent);
             }
         });
 
@@ -208,6 +206,9 @@ public class ExpDetailActivityFragment extends Fragment {
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
         review_title.setText(exp_to_display.getExperience_reviews().size()+" Reviews");
+        if(exp_to_display.getExperience_reviews().isEmpty()){
+            review_more_btn.setVisibility(View.INVISIBLE);
+        }
         int rate = Math.round(exp_to_display.getExperience_rate());
         if(rate < 5){
             if(rate <=4){

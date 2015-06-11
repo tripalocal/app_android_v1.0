@@ -32,7 +32,7 @@
         android:scaleType="fitXY"
         android:id="@+id/nav_drawer_phone_img"
         android:layout_below="@id/nav_drawer_host_name"
-        android:src="@drawable/home_s"
+        android:src="@drawable/phone"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"/>
 

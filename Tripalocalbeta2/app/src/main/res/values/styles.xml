@@ -4,9 +4,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light">
     </style>
     <style name="Divider">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">?android:attr/listDivider</item>
+    </style>
+    <style name="DividerLight">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">?android:attr/listDivider</item>
+        <!--<item name="android:background">?android:attr/listDivider</item>-->
+        <item name="android:background">@color/primary_dark_material_light</item>
     </style>
     <style name="DarkDivider">
         <item name="android:layout_width">match_parent</item>

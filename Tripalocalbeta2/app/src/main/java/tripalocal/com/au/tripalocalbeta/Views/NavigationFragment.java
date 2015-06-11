@@ -1,6 +1,7 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,13 +30,16 @@ import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
 public class NavigationFragment extends Fragment {
 
     private static MyProfile_result result;
-    private static final String BASE_URL ="https://www.tripalocal.com/images/";
+   // private static boolean my_profile = false;
+
+    public static final String BASE_URL ="https://www.tripalocal.com/images/";
 
 
-    private static CircleImageView profile_img;
-    private static EditText localno;
-    private static EditText roamingno;
-    private static TextView hostname;
+    private CircleImageView profile_img;
+    private EditText localno;
+    private EditText roamingno;
+    private TextView hostname;
+
 
     public NavigationFragment() {
         // Required empty public constructor
@@ -53,7 +57,10 @@ public class NavigationFragment extends Fragment {
         Button loginBtn;
 
         if(HomeActivity.getCurrent_user().isLoggedin()) {
-            view = inflater.inflate(R.layout.fragment_navigation, container, false);
+            /*if(my_profile)
+                view = inflater.inflate(R.layout.myprofile_navigation, container, false);
+            else*/
+            view = inflater.inflate(R.layout.user_sidebar_navigation, container, false);
             getProfileDetails(view);
         }
         else
@@ -69,41 +76,83 @@ public class NavigationFragment extends Fragment {
                 }
             });
         }
+
         return view;
     }
 
     private void prepareProfile(View view) {
-        /*CircleImageView profile_img = (CircleImageView) view.findViewById(R.id.nav_profile_image);
-        EditText localno = (EditText) view.findViewById(R.id.profile_local_no);
-        EditText roamingno = (EditText) view.findViewById(R.id.profile_roaming_no);
-        EditText address1 = (EditText) view.findViewById(R.id.profile_Address_line_1);
-        EditText address2 = (EditText) view.findViewById(R.id.profile_Address_line_2);
-        EditText suburb = (EditText) view.findViewById(R.id.profile_Address_suburb);
-        EditText postcode = (EditText) view.findViewById(R.id.profile_Address_postcode);
-
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
-        localno.setText(result.getPhone_number());
-        roamingno.setText("##########");
-        address1.setText("##########");
-        address2.setText("##########");
-        suburb.setText("##########");
-        postcode.setText("##########");*/
 
         profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
-        localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
-        roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
+       /// if(!my_profile){
+            view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
+            view.findViewById(R.id.nav_my_trips_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MyTripActivity.class);
+                    startActivity(intent);
+                }
+            });
+            view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ToastHelper.warnToast("Feature coming soon..");
+                /*Intent intent = new Intent(getActivity().getApplicationContext(), .class);
+                startActivity(intent);*/
+                }
+            });
+            view.findViewById(R.id.nav_my_messages_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ToastHelper.warnToast("Feature coming soon..");
+
+                }
+            });
+            view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //ToastHelper.shortToast("my profile nav");
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
+                    //my_profile = true;
+                    /*Fragment current_nav = getFragmentManager().findFragmentById(R.id.nav_drawer);
+                    getFragmentManager().beginTransaction().replace(R.id.nav_drawer, current_nav).commit();*/
+                /*Fragment current_nav = getFragmentManager().findFragmentById(R.id.nav_drawer);
+                getFragmentManager().beginTransaction().detach(current_nav).attach(current_nav).commit();*/
+                    //drawerLayout.openDrawer(drawerLayout);
+                     Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
+                startActivity(intent);
+                }
+            });
+            view.findViewById(R.id.nav_my_account_container).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ToastHelper.warnToast("Feature coming soon..");
+                /*Intent intent = new Intent(getActivity().getApplicationContext(), .class);
+                startActivity(intent);*/
+                }
+            });
+      //  }else{
+            /*localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
+            localno.setText(result.getPhone_number());
+            roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
+            roamingno.setText(result.getPhone_number());*/
+       // }
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
         hostname.setText(result.getFirst_name() + result.getLast_name());
-        localno.setText(result.getPhone_number());
-        roamingno.setText(result.getPhone_number());
 
     }
 
     public void getProfileDetails(final View view){
 
-        final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
+        //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint("http://adventure007.cloudapp.net")// https://www.tripalocal.com
@@ -111,8 +160,8 @@ public class NavigationFragment extends Fragment {
                     @Override
                     public void intercept(RequestFacade request) {
                         request.addHeader("Accept", "application/json");
-                        //request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
-                        request.addHeader("Authorization", "Token " + temp_token);
+                        request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+                        //request.addHeader("Authorization", "Token " + temp_token);
                     }
                 })
                 .build();
@@ -123,13 +172,12 @@ public class NavigationFragment extends Fragment {
             public void success(MyProfile_result res, Response response) {
                 result = res;
                 prepareProfile(view);
-                ToastHelper.shortToast("success from my profile");
+                ToastHelper.shortToast("success for profile");
             }
-
             @Override
             public void failure(RetrofitError error) {
                 System.out.println("error = [" + error + "]");
-                ToastHelper.shortToast("error from my profile");
+                ToastHelper.shortToast("error getting profile");
             }
         });
     }

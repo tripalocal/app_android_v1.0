@@ -34,15 +34,43 @@ public class HomeActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_v2, container, false);
         ImageView melb = (ImageView) view.findViewById(R.id.home_melbourne);
         ImageView syd = (ImageView) view.findViewById(R.id.home_sydney);
+        ImageView brisb = (ImageView) view.findViewById(R.id.home_brisbane);
+        ImageView hobart = (ImageView) view.findViewById(R.id.home_hobart);
+        ImageView cairns = (ImageView) view.findViewById(R.id.home_cairns);
+        ImageView goldcoast= (ImageView) view.findViewById(R.id.home_gold_coast);
+        ImageView adelaide = (ImageView) view.findViewById(R.id.home_adelaide);
+        ImageView gc_vic = (ImageView) view.findViewById(R.id.home_greater_reg_vic);
+        ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
+        ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
+
+
         TextView melb_txt = (TextView) view.findViewById(R.id.home_melbourne_text);
         TextView syd_txt = (TextView) view.findViewById(R.id.home_sydney_text);
-        melb_txt.setText("Melbourne");
-        syd_txt.setText("Sydney");
-       /* ImageView brisb = (ImageView) view.findViewById(R.id.home_brisbane);
-        ImageView tas = (ImageView) view.findViewById(R.id.home_tasmania);*/
+        TextView bris_txt = (TextView) view.findViewById(R.id.home_brisbane_text);
+        TextView cairnstxt = (TextView) view.findViewById(R.id.home_cairns_text);
+        TextView goldcoasttxt = (TextView) view.findViewById(R.id.home_gold_coast_text);
+        TextView hobart_txt = (TextView) view.findViewById(R.id.home_hobart_text);
+        TextView adelaidetxt = (TextView) view.findViewById(R.id.home_adelaide_text);
+        TextView grtvictxt = (TextView) view.findViewById(R.id.home_greater_reg_vic_text);
+        TextView grtqldtxt = (TextView) view.findViewById(R.id.home_greater_reg_qld_text);
+        TextView grtnswtxt = (TextView) view.findViewById(R.id.home_greater_reg_nsw_text);
+
+
+        melb_txt.setText(HomeActivity.poi_data[0]);
+        syd_txt.setText(HomeActivity.poi_data[1]);
+        bris_txt.setText(HomeActivity.poi_data[2]);
+        cairnstxt.setText(HomeActivity.poi_data[3]);
+        goldcoasttxt.setText(HomeActivity.poi_data[4]);
+        hobart_txt.setText(HomeActivity.poi_data[5]);
+        adelaidetxt.setText(HomeActivity.poi_data[6]);
+        grtvictxt.setText(HomeActivity.poi_data[7]);
+        grtqldtxt.setText(HomeActivity.poi_data[8]);
+        grtnswtxt.setText(HomeActivity.poi_data[9]);
+
+
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[1]).centerCrop().crossFade().into(syd);
-      /*  Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).crossFade().into(brisb);
+        /*Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).crossFade().into(brisb);
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).crossFade().into(tas);*/
 
         melb.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +85,62 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 1;
                 displayListFrag2(1);
+            }
+        });
+        brisb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(2);
+            }
+        });
+        cairns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(3);
+            }
+        });
+        goldcoast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(4);
+            }
+        });
+        hobart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(5);
+            }
+        });
+        adelaide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(6);
+            }
+        });
+        gc_vic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(7);
+            }
+        });
+        gc_qld.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(8);
+            }
+        });
+        gc_nsw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(9);
             }
         });
         return view;

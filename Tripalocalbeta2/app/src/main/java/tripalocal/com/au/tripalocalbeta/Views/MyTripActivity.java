@@ -159,7 +159,7 @@ public class MyTripActivity extends ActionBarActivity {
         LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(LLM);
 
-        ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
+      /*  ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +186,7 @@ public class MyTripActivity extends ActionBarActivity {
                 intent.putExtra("fragmentNumber",3);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override

@@ -71,6 +71,10 @@
     <string name="dollar_placeholder">$$$$</string>
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses dasdadsasda dad dasbjdkjahsdk kjdha kdjhakjdhakjdhvcvc</string>
+    <string name="title_activity_review">Reviews</string>
+    <string name="nav_my_account">My Account</string>
+    <string name="title_activity_my_profile">MyProfile</string>
+    <string name="home_bg_city_content_desc">background_image_city</string>
 
 
 </resources>

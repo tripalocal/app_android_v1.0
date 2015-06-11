@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +34,7 @@ import static tripalocal.com.au.tripalocalbeta.R.layout;
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private static Context home_context;
     private static FragmentManager frag_manager;
@@ -108,7 +108,7 @@ public class HomeActivity extends ActionBarActivity {
                 String hashString = gson.toJson(wish_map.get(s));
                 editor.putString(s, hashString);
             }*/
-            editor.commit();
+            editor.apply();
         }
         if(getCurrent_user().getLogin_token() != null) {
             SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
@@ -116,13 +116,14 @@ public class HomeActivity extends ActionBarActivity {
             editor_l.clear();
             editor_l.putString("token", getCurrent_user().getLogin_token());
             editor_l.putBoolean("login", true);
-            editor_l.commit();
+            editor_l.apply();
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(wish_list.isEmpty()){
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             Gson gson = new Gson();

@@ -3,7 +3,7 @@ package tripalocal.com.au.tripalocalbeta.Views;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,7 +12,7 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
-public class ExpDetailActivity extends ActionBarActivity {
+public class ExpDetailActivity extends AppCompatActivity {
 
     public static int position;
 
