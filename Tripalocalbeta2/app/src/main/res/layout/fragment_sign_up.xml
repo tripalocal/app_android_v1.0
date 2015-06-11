@@ -118,8 +118,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/signup_disclaimer"
         android:layout_below="@id/signup_fields"
-        android:padding="30dp"
-        android:textSize="17sp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp"
         android:text="@string/signup_term"/>
 
     <Button
