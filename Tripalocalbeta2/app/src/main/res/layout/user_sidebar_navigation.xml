@@ -2,188 +2,196 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fontFamily="light"
-    >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nav_top_container"
-        android:background="#f7f7f7">
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/nav_drawer_host_profile_image"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/profile_default"
-        android:layout_gravity="center"
-        app:border_width="2dp"
-        app:border_color="#ffffffff" />
+        android:background="@color/white"
+        android:fontFamily="light">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_drawer_host_name"
-        android:layout_below="@id/nav_drawer_host_profile_image"
-        android:text="placeholder host name"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-        <View style="@style/DividerLight"
-            android:id="@+id/nav_drawer_divider_1"
-            android:layout_marginTop="35dp"
-            android:layout_below="@+id/nav_drawer_host_name"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_top_container"
+                android:background="#f7f7f7">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/nav_drawer_host_profile_image"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/profile_default"
+                    android:layout_gravity="center"
+                    app:border_width="2dp"
+                    app:border_color="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nav_drawer_host_name"
+                    android:layout_below="@id/nav_drawer_host_profile_image"
+                    android:text="@string/myprofile_placeholder_host_name"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"/>
+
+                <View style="@style/DividerLight"
+                    android:id="@+id/nav_drawer_divider_1"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/nav_drawer_host_name"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_home_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_top_container"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/tripalocal"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_home"/>
+            </LinearLayout>
+
+            <View style="@style/DividerLight"
+                android:id="@+id/nav_drawer_divider_2"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/nav_home_container"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_my_trips_container"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_home_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/calendar"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_mytrips"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_wishlist_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_my_trips_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/heart_lg"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_wishlist"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_my_messages_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_wishlist_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/message"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_messages"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_my_profile_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_my_messages_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/myprofile"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_myprofile"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_my_account_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:paddingBottom="35dp"
+                android:layout_below="@id/nav_my_profile_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/setting"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_my_account"/>
+            </LinearLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_home_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@id/nav_top_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/tripalocal"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginLeft="35dp"
-            android:text="Home"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_my_trips_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@id/nav_home_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/calendar"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="35dp"
-            android:text="My trips"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_wishlist_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@id/nav_my_trips_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/heart_lg"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="35dp"
-            android:text="Wishlist"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_my_messages_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@id/nav_wishlist_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/message"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="35dp"
-            android:text="Messages"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_my_profile_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@id/nav_my_messages_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/myprofile"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="35dp"
-            android:text="My Profile"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_my_account_container"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginBottom="35dp"
-        android:layout_below="@id/nav_my_profile_container"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/setting"
-            android:scaleType="fitXY"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="35dp"
-            android:text="@string/nav_my_account"/>
-    </LinearLayout>
-
-</RelativeLayout>
-
 </ScrollView>
