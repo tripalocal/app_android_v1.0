@@ -16,6 +16,7 @@
     <item name="tripalocal_green_blue" type="color">#33cccc</item>
     <item name="tripalocal_light_green" type="color">#99cc33</item>
     <item name="tripalocal_light_grey" type="color">#f7f7f7</item>
+    <item name="tripalocal_hint" type="color">#E8E6E7</item>
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>

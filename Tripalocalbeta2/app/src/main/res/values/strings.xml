@@ -75,6 +75,16 @@
     <string name="nav_my_account">My Account</string>
     <string name="title_activity_my_profile">MyProfile</string>
     <string name="home_bg_city_content_desc">background_image_city</string>
-
+    <string name="login_or">or</string>
+    <string name="login_email">Email address</string>
+    <string name="login_password">Password</string>
+    <string name="login_forget_password">Forgot password?</string>
+    <string name="login_login">Log In</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_signup">Sign Up</string>
+    <string name="signup_first_name">First name</string>
+    <string name="signup_last_name">Last name</string>
+    <string name="signup_term">By signing up, I agree to tripalocal\'s Terms of service, Privacy policy and Refund policy</string>
+    <string name="signup_has_account">Already with us?</string>
 
 </resources>
