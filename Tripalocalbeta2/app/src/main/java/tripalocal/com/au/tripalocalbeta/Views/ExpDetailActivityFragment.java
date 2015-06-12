@@ -69,10 +69,6 @@ public class ExpDetailActivityFragment extends Fragment {
     Button host_more_btn;
     ImageView expenses_banner_img;
     Button request_to_book_btn;
-    TextView food_info;
-    TextView transport_info;
-    TextView tickets_info;
-
 
 
     public ExpDetailActivityFragment() {
@@ -106,11 +102,7 @@ public class ExpDetailActivityFragment extends Fragment {
         rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
         rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
         expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
-        food_info = (TextView) view.findViewById(R.id.exp_detail_grid_food_info);
-        transport_info = (TextView) view.findViewById(R.id.exp_detail_grid_transport_info);
-        tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
-
 
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +119,11 @@ public class ExpDetailActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(info_less.getVisibility() == View.GONE){
+                    info_view_more_btn.setText(getResources().getString(R.string.view_more));
                     info_less.setVisibility(View.VISIBLE);
                     info_more.setVisibility(View.GONE);
                 }else{
+                    info_view_more_btn.setText(getResources().getString(R.string.view_less));
                     info_less.setVisibility(View.GONE);
                     info_more.setVisibility(View.VISIBLE);
                 }
@@ -154,9 +148,11 @@ public class ExpDetailActivityFragment extends Fragment {
                if(host_info_less.getVisibility() == View.GONE){
                    host_info_less.setVisibility(View.VISIBLE);
                    host_info_more.setVisibility(View.GONE);
+                   host_more_btn.setText(getResources().getString(R.string.view_more));
                }else{
                    host_info_less.setVisibility(View.GONE);
                    host_info_more.setVisibility(View.VISIBLE);
+                   host_more_btn.setText(getResources().getString(R.string.view_less));
                }
             }
         });
@@ -215,8 +211,10 @@ public class ExpDetailActivityFragment extends Fragment {
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
         info_more.setText(exp_to_display.getExperience_description());
+        host_title.setText(getResources().getString(R.string.exp_detail_about_the_host) + " " + exp_to_display.getHost_firstname());
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
+        review_title.setText(exp_to_display.getExperience_reviews().size()+" " + getResources().getString(R.string.exp_detail_reviews));
         if(exp_to_display.getExperience_reviews().isEmpty()){
             review_more_btn.setVisibility(View.INVISIBLE);
         }
@@ -241,15 +239,6 @@ public class ExpDetailActivityFragment extends Fragment {
                 Glide.with(HomeActivity.getHome_context()).load(BASE_URL+top_review.getReviewer_image()).fitCenter().into(reviewProfileImage);
             review_username.setText(top_review.getReviewer_firstname());
             review_content_less.setText(top_review.getReview_comment());
-        }
-        if(exp_to_display.isIncludedFood()){
-            food_info.setText("Food : "+exp_to_display.getIncluded_food_detail());
-        }
-        if(exp_to_display.isIncludedTransport()){
-            transport_info.setText("Transport : "+exp_to_display.getIncluded_transport_detail());
-        }
-        if(exp_to_display.isIncludedTicket()){
-            tickets_info.setText("Tickets : "+exp_to_display.getIncluded_ticket_detail());
         }
         getActivity().setTitle(exp_to_display.getExperience_title());
     }

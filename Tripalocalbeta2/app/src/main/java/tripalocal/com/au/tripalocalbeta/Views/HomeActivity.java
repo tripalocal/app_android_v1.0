@@ -17,8 +17,6 @@ import android.view.MenuItem;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     HomeActivityFragment homeFrag;
     public static String[] poi_data;
     public static String[] db_poi_data;
-    public static ArrayList<String> wish_list = new ArrayList<>();
     public static HashMap<String, Experience> wish_map = new HashMap<>();
+    public static ArrayList<String> wish_list = new ArrayList<>();
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
 
@@ -98,15 +96,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public static void saveData() {
-        if(wish_map != null && !wish_map.isEmpty()){
+        /*if(wish_list != null && !wish_list.isEmpty()){
             SharedPreferences settings = home_context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
             editor.clear();
-            editor.putBoolean("empty_check", true);
             Gson gson = new Gson();
-            editor.putString("wish_list", gson.toJson(wish_map));
+            editor.putString("wish_map", gson.toJson(wish_list));
             editor.apply();
-        }
+        }*/
         if(getCurrent_user().getLogin_token() != null) {
             SharedPreferences settings_l = home_context.getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
             if(!settings_l.getBoolean("login", false)){
@@ -121,12 +118,15 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        if(wish_map.isEmpty() && settings.getBoolean("empty_check", false)) {
+
+        /*if(wish_list.isEmpty()){
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             Gson gson = new Gson();
-            java.lang.reflect.Type type = new TypeToken<HashMap<String,Experience>>(){}.getType();
-            wish_map =  gson.fromJson(settings.getString("wish_list", "null"),type);
-        }
+            //java.lang.reflect.Type type = new TypeToken<HashMap<String, Experience>>(){}.getType();
+            java.lang.reflect.Type type = new TypeToken<ArrayList<String>>(){}.getType();
+            if(!settings.getBoolean("new", true))
+            wish_list =  gson.fromJson(settings.getString("wish_map", "null"),type);
+        }*/
 
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
         if(settings_l.getBoolean("login", false)){
@@ -167,9 +167,11 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         if(menu_ref == null)
             menu_ref= menu;
+        // Associate searchable configuration with the SearchView
         SearchView searchView =  getSearchView(menu);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -177,6 +179,7 @@ public class HomeActivity extends AppCompatActivity {
                 ToastHelper.shortToast("search submitted");
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 Object[] temp = new Object[]{0, "default"};
@@ -194,12 +197,13 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
             @Override
             public boolean onSuggestionSelect(int position) {
-                //ToastHelper.shortToast("sugg select "+position);
+                ToastHelper.shortToast("sugg select "+position);
                 return false;
             }
+
             @Override
             public boolean onSuggestionClick(int position) {
-                //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
+                ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
                 Intent intent = new Intent(HomeActivity.getHome_context(), ExpListActvity2.class);
                 intent.putExtra(INT_EXTRA,position);
                 startActivity(intent);

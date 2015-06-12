@@ -22,6 +22,9 @@ public class HomeActivityFragment extends Fragment {
 
     private static final String[] bg_urls = {"https://www.tripalocal.com/images/mobile/home/Melbourne.jpg",
             "https://www.tripalocal.com/images/mobile/home/Sydney.jpg"};
+
+
+
     public HomeActivityFragment() {
     }
 
@@ -48,6 +51,9 @@ public class HomeActivityFragment extends Fragment {
         TextView goldcoasttxt = (TextView) view.findViewById(R.id.home_gold_coast_text);
         TextView hobart_txt = (TextView) view.findViewById(R.id.home_hobart_text);
         TextView adelaidetxt = (TextView) view.findViewById(R.id.home_adelaide_text);
+        TextView grtvictxt = (TextView) view.findViewById(R.id.home_greater_reg_vic_text);
+        TextView grtqldtxt = (TextView) view.findViewById(R.id.home_greater_reg_qld_text);
+        TextView grtnswtxt = (TextView) view.findViewById(R.id.home_greater_reg_nsw_text);
 
 
         melb_txt.setText(HomeActivity.poi_data[0]);
@@ -57,6 +63,9 @@ public class HomeActivityFragment extends Fragment {
         goldcoasttxt.setText(HomeActivity.poi_data[4]);
         hobart_txt.setText(HomeActivity.poi_data[5]);
         adelaidetxt.setText(HomeActivity.poi_data[6]);
+        grtvictxt.setText(HomeActivity.poi_data[7]);
+        grtqldtxt.setText(HomeActivity.poi_data[8]);
+        grtnswtxt.setText(HomeActivity.poi_data[9]);
 
 
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
@@ -113,7 +122,27 @@ public class HomeActivityFragment extends Fragment {
                 displayListFrag2(6);
             }
         });
-
+        gc_vic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(7);
+            }
+        });
+        gc_qld.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(8);
+            }
+        });
+        gc_nsw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(9);
+            }
+        });
         return view;
     }
 

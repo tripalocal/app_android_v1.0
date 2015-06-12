@@ -83,12 +83,15 @@
                 android:paddingBottom="10dp"
                 android:gravity="center"/>
 
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_container"
                 android:layout_below="@id/exp_detail_lang"
                 android:orientation="horizontal"
                 android:background="@color/white"
+                android:gravity="center"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,44 +103,71 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_money_sign"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="3dp"
+                    android:text="@string/dollar_placeholder"
+                    android:layout_toRightOf="@id/exp_detail_price1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price2"
+                    android:textSize="36sp"
                     android:textStyle="bold"
                     android:layout_marginRight="3dp"
+                    android:text=""
+                    android:layout_toRightOf="@id/exp_detail_money_sign"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_person_text"
                     android:textSize="16sp"
+                    android:text="@string/exp_detail_per_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price_person_for"
+                    android:textSize="16sp"
+                    android:text="@string/exp_detail_per_person_for"
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price2"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_person"
                     android:textSize="16sp"
                     android:layout_marginLeft="3dp"
+                    android:text=""
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price_person_for"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_hour"
                     android:textSize="16sp"
                     android:text="@string/exp_detail_per_person_hour"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price_person"/>
+            </RelativeLayout>
             <!-- info on the experience-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/exp_detail_price_container"
                 android:id="@+id/exp_detail_info_container"
+                android:paddingBottom="20dp"
                 android:background="@color/tripalocal_light_grey">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_info_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     android:text="@string/sub_head_gibber"
+                    android:gravity="left"
                     android:padding="20dp"
                     android:password="false"/>
 
@@ -154,7 +184,6 @@
                     android:singleLine="false"
                     android:paddingLeft = "20dp"
                     android:paddingRight= "20dp"
-                    android:paddingTop="20dp"
                     android:paddingBottom="20dp"/>
 
                 <FrameLayout
@@ -169,6 +198,7 @@
                         android:textSize="16sp"
                         android:paddingLeft = "20dp"
                         android:paddingRight= "20dp"
+                        android:paddingBottom="20dp"
                         android:id="@+id/exp_detail_info_content_more"
                         android:visibility="gone"/>
                 </FrameLayout>
@@ -189,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_host_profile_image_container"
                 android:layout_below="@id/exp_detail_info_container"
+                android:paddingBottom="20dp"
                 android:background="@color/white">
 
                 <TextView
@@ -197,6 +228,7 @@
                     android:id="@+id/exp_detail_about_host_title"
                     android:textSize="20sp"
                     android:text="@string/exp_detail_about_the_host"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:padding="20dp"
                     android:password="false" />
@@ -225,6 +257,7 @@
                     android:singleLine="false"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    android:paddingTop="20dp"
                     android:paddingBottom="20dp" />
 
                 <FrameLayout
@@ -259,6 +292,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_review_container"
                 android:layout_below="@id/exp_detail_host_profile_image_container"
+                android:paddingBottom="20dp"
                 android:orientation="vertical"
                 android:background="@color/tripalocal_light_grey">
                 <TextView
@@ -267,6 +301,8 @@
                     android:id="@+id/exp_detail_review_title"
                     android:layout_below="@id/exp_detail_host_info_less"
                     android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="@string/exp_detail_reviews"
                     android:gravity="center"
                     android:padding="20dp"
                     android:password="false" />
@@ -330,11 +366,15 @@
                     android:text=""
                     android:id="@+id/exp_detail_review_reviewername"
                     android:textAlignment="center"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_review_content_less"
                     android:textSize="16sp"
+                    android:gravity="left"
                     android:text="@string/no_review_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
@@ -361,6 +401,7 @@
                 android:id="@+id/exp_detail_add_expenses_title"
                 android:layout_below="@id/exp_detail_add_expenses_banner"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="@string/exp_detail_add_expenses_label"
                 android:gravity="center"
                 android:padding="20dp"
@@ -371,9 +412,14 @@
                 android:id="@+id/exp_detail_grid"
                 android:layout_below="@id/exp_detail_add_expenses_title"
                 android:columnCount="2"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/exp_detail_grid_food_icon"
                     android:scaleType="fitXY"
                     android:paddingBottom="10dp"
@@ -381,10 +427,13 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:paddingTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_food"
                     android:id="@+id/exp_detail_grid_food_info"/>
                 <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/exp_detail_grid_ticket_icon"
                     android:paddingTop="10dp"
                     android:scaleType="fitXY"
@@ -392,10 +441,13 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_tickets"
                     android:id="@+id/exp_detail_grid_ticket_info"/>
                 <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:id="@+id/exp_detail_grid_transport_icon"
                     android:scaleType="fitXY"
                     android:paddingTop="10dp"
@@ -403,6 +455,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_transport"
                     android:id="@+id/exp_detail_grid_transport_info"/>
@@ -412,6 +465,7 @@
 
     <Button
     android:id="@+id/exp_detail_booking_btn"
+    android:text="@string/exp_detail_request"
     android:layout_alignParentBottom="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
