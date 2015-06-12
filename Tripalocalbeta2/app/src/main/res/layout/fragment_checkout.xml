@@ -53,12 +53,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_duration"
-                    android:text="2hrs ."/>
+                    android:text="@string/checkout_duration_placeholder"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_language"
-                    android:text="english"/>
+                    android:text="@string/checkout_english"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -82,14 +82,14 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
-                android:contentDescription="date_img" />
+                android:contentDescription="@string/checkout_date_content_desc" />
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/time"
                 android:layout_gravity="end"
                 android:layout_weight="1"
-                android:contentDescription="time_img" />
+                android:contentDescription="@string/checkout_time_content_desc" />
             </TableRow>
         <TableRow
                 android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_date_label"
-                android:text="Date"
+                android:text="@string/checkout_date"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
@@ -107,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_time_label"
-                android:text="Time"
+                android:text="@string/checkout_time"
                 android:layout_weight="1"
                 android:gravity="center_horizontal" />
                 </TableRow>
@@ -119,8 +119,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_date_txt1"
-                android:background="#ff0c7c4a"
-                android:text="dd/mm/yy"
+                android:background="@color/tripalocal_selection_highlight"
+                android:text="@string/checkout_date_placeholder"
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -130,7 +130,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
-                android:background="#ff0c7c4a"
+                android:id="@+id/checkout_time_1_container"
+                android:background="@color/tripalocal_selection_highlight"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="wrap_content"
@@ -142,8 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_time_txt1"
-                    android:text="hh:mm"
-                    android:textColor="@color/white"
+                    android:text="@string/checkout_time_placeholder"
                     android:layout_gravity="end"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="6dp"/>
@@ -157,17 +157,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_date_txt2"
-                android:text="dd/mm/yy"
+                android:text="@string/checkout_date_placeholder"
+                android:background="@color/white"
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp" />
-            <!--android:background="#ff0c7c4a"-->
+
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:id="@+id/checkout_time_2_container"
                 android:background="@color/white"
                 android:orientation="horizontal">
                 <ImageView
@@ -180,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_time_txt2"
-                    android:text="hh:mm"
+                    android:text="@string/checkout_time_placeholder"
                     android:layout_gravity="end"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="6dp"/>
@@ -194,7 +196,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_date_txt3"
-                android:text="dd/mm/yy"
+                android:text="@string/checkout_date_placeholder"
+                android:background="@color/white"
                 android:padding="5dp"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -203,6 +206,7 @@
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:id="@+id/checkout_time_3_container"
                 android:layout_width="0dp"
                 android:background="@color/white"
                 android:orientation="horizontal">
@@ -216,7 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_time_txt3"
-                    android:text="hh:mm"
+                    android:text="@string/checkout_time_placeholder"
                     android:layout_gravity="end"
                     android:layout_marginLeft="20dp"
                     android:paddingTop="6dp"/>
@@ -228,7 +232,7 @@
             android:layout_marginRight="25dp">
             <Button
                 android:id="@+id/booking_Select_Date_Btn"
-                android:text="Select Date"
+                android:text="@string/checkout_select_date_label"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_width="0dp"
@@ -238,7 +242,7 @@
 
             <Button
                 android:id="@+id/booking_Select_Time_Btn"
-                android:text="Select Time"
+                android:text="@string/checkout_select_time_label"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_width="0dp"
@@ -255,7 +259,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Guests"
+                android:text="@string/checkout_guests_label"
                 android:gravity="center"
                 android:textStyle="bold"/>
         </TableRow>
@@ -263,14 +267,6 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_marginTop="15dp">
-            <!--<TextView
-                android:id="@+id/booking_date_selector"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date selector"
-                android:gravity="center"
-                android:textStyle="bold"/>-->
             <NumberPicker
                 android:id="@+id/numberPicker1"
                 android:layout_width="0dp"
@@ -289,7 +285,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Price"
+                android:text="@string/checkout_price_label"
                 android:gravity="center"
                 android:textStyle="bold"/>
         </TableRow>
@@ -320,14 +316,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/booking_price_and_person_txt"
-                    android:text="$35 AUD x 3 pp"
+                    android:text="@string/checkout_price_placeholder"
                     android:gravity="start"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/booking_price_total_amt_txt"
-                    android:text="$ 105 AUD"
+                    android:text="@string/checkout_amount_placeholder"
                     android:layout_marginLeft="15dp"
                     android:textColor="@color/tripalocal_green_blue"
                     android:gravity="end"/>
@@ -364,7 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/booking_price_coupon_edit"
-                    android:text="code"
+                    android:text="@string/checkout_coupon_label"
                     android:layout_marginLeft="45dp"
                     android:textColor="@color/tripalocal_green_blue"
                     android:gravity="end"/>
@@ -379,7 +375,7 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:src="@drawable/money"
-        android:contentDescription="pay_ok_to_change_image"/>
+        android:contentDescription="@string/checkout_content_desc_pay_ok"/>
     </TableRow>
         <TableRow
         android:layout_width="match_parent"
@@ -389,7 +385,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="It's ok to change your mind"
+        android:text="@string/checkout_ok_tochange_text"
         android:gravity="center"/>
     </TableRow>
         <TableRow
@@ -400,7 +396,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you cancel at least 7 calendar dats in advance, there is no cancellation fee."
+                android:text="@string/checkout_disclaim_1"
                 />
         </TableRow>
         <TableRow android:layout_width="match_parent"
@@ -408,7 +404,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee."
+                android:text="@string/checkout_disclaim_2"
                 />
         </TableRow>
         <TableRow android:layout_width="match_parent"
@@ -417,7 +413,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee."
+                android:text="@string/checkout_disclaim_3"
                 />
         </TableRow>
         <TableRow
@@ -430,13 +426,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="You can also view our "
+                    android:text="@string/checkout_refund_text"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/tripalocal_green_blue"
-                    android:text="Refund policy"
+                    android:text="@string/checkout_refund_link"
                     />
             </LinearLayout>
         </TableRow>
@@ -446,7 +442,7 @@
 </ScrollView>
 <Button
 android:id="@+id/booking_bottom_Btn"
-android:text="Proceed to Payment"
+android:text="@string/checkout_proceed_to_payment"
 android:layout_alignParentBottom="true"
 android:layout_height="wrap_content"
 android:layout_width="match_parent"

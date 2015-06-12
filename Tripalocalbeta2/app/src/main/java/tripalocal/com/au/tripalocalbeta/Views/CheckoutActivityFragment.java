@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
 import java.text.DecimalFormat;
 
 import retrofit.Callback;
@@ -49,6 +47,10 @@ public class CheckoutActivityFragment extends Fragment {
     static int guests = 1;
     static String price_s = null;
     static Double price_i = null;
+    static int date_sel = 0;
+    static int time_sel = 0;
+    static Experience_Detail temp_detail_exp;
+
 
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
 
@@ -63,18 +65,96 @@ public class CheckoutActivityFragment extends Fragment {
         thumbnail = (ImageView) view.findViewById(R.id.booking_thumbnail);
         duration = (TextView) view.findViewById(R.id.booking_duration);
         booking_date_1 = (TextView) view.findViewById(R.id.booking_date_txt1);
+        booking_date_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(date_sel != 0) {
+                    if(date_sel == 1){
+                        booking_date_2.setBackgroundResource(R.color.white);
+                    }else booking_date_3.setBackgroundResource(R.color.white);
+                    booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    date_sel = 0;
+                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
+                }
+            }
+        });
         booking_date_2 = (TextView) view.findViewById(R.id.booking_date_txt2);
+        booking_date_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(date_sel != 1) {
+                    if(date_sel == 2){
+                        booking_date_3.setBackgroundResource(R.color.white);
+                    }else booking_date_1.setBackgroundResource(R.color.white);
+                    booking_date_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    date_sel = 1;
+                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
+                }
+            }
+        });
         booking_date_3 = (TextView) view.findViewById(R.id.booking_date_txt3);
+        booking_date_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(date_sel != 2) {
+                    if(date_sel == 0){
+                        booking_date_1.setBackgroundResource(R.color.white);
+                    }else booking_date_2.setBackgroundResource(R.color.white);
+                    booking_date_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    date_sel = 2;
+                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
+                }
+            }
+        });
         booking_time_1 = (TextView)view.findViewById(R.id.booking_time_txt1);
         booking_time_2 = (TextView)view.findViewById(R.id.booking_time_txt2);
         booking_time_3 = (TextView)view.findViewById(R.id.booking_time_txt3);
+        final View time_container_1 = view.findViewById(R.id.checkout_time_1_container);
+        final View time_container_2 = view.findViewById(R.id.checkout_time_2_container);
+        final View time_container_3 = view.findViewById(R.id.checkout_time_3_container);
+        time_container_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(time_sel != 0) {
+                    if(time_sel == 1){
+                        time_container_2.setBackgroundResource(R.color.white);
+                }else time_container_3.setBackgroundResource(R.color.white);
+                    time_container_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_sel = 0;
+                }
+            }
+        });
+
+        time_container_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(time_sel != 1) {
+                    if(time_sel == 2){
+                        time_container_3.setBackgroundResource(R.color.white);
+                    }else time_container_1.setBackgroundResource(R.color.white);
+                    time_container_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_sel = 1;
+                }
+            }
+        });
+        time_container_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(time_sel != 2) {
+                    if(time_sel == 0){
+                        time_container_1.setBackgroundResource(R.color.white);
+                    }else time_container_2.setBackgroundResource(R.color.white);
+                    time_container_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_sel = 2;
+                }
+            }
+        });
+
         booking_price_and_person = (TextView) view.findViewById(R.id.booking_price_and_person_txt);
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
         np.setMinValue(1);
-        np.setMaxValue(50);
         np.setWrapSelectorWheel(false);
-
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -119,7 +199,7 @@ public class CheckoutActivityFragment extends Fragment {
     }
 
     public void updateDetails(){
-        Experience_Detail temp_detail_exp = CheckoutActivity.experience_to_book;
+        temp_detail_exp = CheckoutActivity.experience_to_book;
         if(temp_detail_exp != null){
             Glide.with(HomeActivity.getHome_context()).load(ExpDetailActivityFragment.BASE_URL+
                     "thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(thumbnail);
@@ -140,6 +220,7 @@ public class CheckoutActivityFragment extends Fragment {
             price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
             booking_price_and_person.setText("$"+ price_s+ " AUD x "+ guests+" pp");
             booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
+            np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
         }
     }
 

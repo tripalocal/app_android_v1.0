@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        final View view =  inflater.inflate(R.layout.fragment_login, container, false);
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
@@ -52,7 +51,6 @@ public class LoginFragment extends Fragment {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                ToastHelper.longToast("FB Login success");
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
@@ -60,8 +58,8 @@ public class LoginFragment extends Fragment {
                 startActivity(intent);
                 /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
                 nav_view.invalidate();*/
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.openDrawer(GravityCompat.START);
+                ToastHelper.longToast("FB Login success");
+                HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
             }
 
             @Override
@@ -129,7 +127,6 @@ public class LoginFragment extends Fragment {
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
-                    ToastHelper.longToast("log in success");
                     HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                     HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
@@ -137,9 +134,11 @@ public class LoginFragment extends Fragment {
                     Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                     startActivity(intent);
                    /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
-                    nav_view.invalidate();*/
+                    nav_view.invalidate();
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawerLayout.openDrawer(GravityCompat.START);
+                    drawerLayout.openDrawer(GravityCompat.START);*/
+                    ToastHelper.longToast("log in success");
+                    HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
                 }
 
                 @Override

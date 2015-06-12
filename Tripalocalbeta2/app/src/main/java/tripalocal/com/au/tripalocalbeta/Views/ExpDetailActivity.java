@@ -1,7 +1,10 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,6 +18,13 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 public class ExpDetailActivity extends AppCompatActivity {
 
     public static int position;
+    public static final String PREFS_NAME_L = "TPPrefs_L";
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        HomeActivity.saveData();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +45,29 @@ public class ExpDetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
+        if(HomeActivity.getCurrent_user().isLoggedin()){
+            menu.findItem(R.id.action_login).setTitle("Log Out");
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_login) {
+            if(HomeActivity.getCurrent_user().isLoggedin()){
+                HomeActivity.getCurrent_user().setLogin_token(null);
+                HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.setAccessToken(null);
+                SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor_l = settings_l.edit();
+                editor_l.clear();
+                editor_l.apply();
+                ToastHelper.shortToast("Logged out");
+            }else
+            getSupportFragmentManager().beginTransaction().replace(R.id.detail_frag_container,new LoginFragment()).commit();
             return true;
         }
         return super.onOptionsItemSelected(item);

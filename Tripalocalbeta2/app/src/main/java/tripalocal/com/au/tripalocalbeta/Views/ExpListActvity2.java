@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.gson.Gson;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -52,40 +50,38 @@ public class ExpListActvity2 extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
+        if(HomeActivity.getCurrent_user().isLoggedin()){
+            menu.findItem(R.id.action_login).setTitle("Log Out");
+        }
         return true;
     }
     @Override
     protected void onStop() {
         super.onStop();
-        saveData();
-    }
-
-    public void saveData() {
-        if(!HomeActivity.wish_map.isEmpty()){
-            SharedPreferences settings = getSharedPreferences(HomeActivity.PREFS_NAME, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.clear();
-            Gson gson = new Gson();
-            editor.putString("wish_map", gson.toJson(HomeActivity.wish_map));
-            /*for(String s : wish_map.keySet()){
-                String hashString = gson.toJson(wish_map.get(s));
-                editor.putString(s, hashString);
-            }*/
-            editor.commit();
-        }
-        if(HomeActivity.getCurrent_user().getLogin_token() != null) {
-            SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor_l = settings_l.edit();
-            editor_l.clear();
-            editor_l.putString("token", HomeActivity.getCurrent_user().getLogin_token());
-            editor_l.putBoolean("login", true);
-            editor_l.commit();
-        }
+        HomeActivity.saveData();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_login) {
+            if(HomeActivity.getCurrent_user().isLoggedin()){
+                HomeActivity.getCurrent_user().setLogin_token(null);
+                HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.setAccessToken(null);
+                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor_l = settings_l.edit();
+                editor_l.clear();
+                editor_l.apply();
+                ToastHelper.shortToast("Logged out");
+            }else {
+                getSupportFragmentManager().beginTransaction().replace(R.id.exp_list_fragment_container, new LoginFragment()).commit();
+            }
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

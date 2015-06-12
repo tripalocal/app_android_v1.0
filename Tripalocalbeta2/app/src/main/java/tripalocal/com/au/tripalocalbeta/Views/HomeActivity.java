@@ -17,8 +17,6 @@ import android.view.MenuItem;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
     private static String current_userid;
     private static AccessToken accessToken;
     private static Menu menu_ref = null;
-
+    public static DrawerLayout tpDrawer ;
     HomeActivityFragment homeFrag;
     public static String[] poi_data;
     public static String[] db_poi_data;
@@ -97,26 +95,23 @@ public class HomeActivity extends AppCompatActivity {
         saveData();
     }
 
-    public void saveData() {
-        if(wish_list != null && !wish_list.isEmpty()){
-            SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    public static void saveData() {
+        /*if(wish_list != null && !wish_list.isEmpty()){
+            SharedPreferences settings = home_context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
             editor.clear();
             Gson gson = new Gson();
             editor.putString("wish_map", gson.toJson(wish_list));
-            /*for(String s : wish_map.keySet()){
-                String hashString = gson.toJson(wish_map.get(s));
-                editor.putString(s, hashString);
-            }*/
             editor.apply();
-        }
+        }*/
         if(getCurrent_user().getLogin_token() != null) {
-            SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor_l = settings_l.edit();
-            editor_l.clear();
-            editor_l.putString("token", getCurrent_user().getLogin_token());
-            editor_l.putBoolean("login", true);
-            editor_l.apply();
+            SharedPreferences settings_l = home_context.getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
+            if(!settings_l.getBoolean("login", false)){
+                SharedPreferences.Editor editor_l = settings_l.edit();
+                editor_l.putString("token", getCurrent_user().getLogin_token());
+                editor_l.putBoolean("login", true);
+                editor_l.apply();
+            }
         }
     }
 
@@ -124,16 +119,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(wish_list.isEmpty()){
+        /*if(wish_list.isEmpty()){
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             Gson gson = new Gson();
             //java.lang.reflect.Type type = new TypeToken<HashMap<String, Experience>>(){}.getType();
             java.lang.reflect.Type type = new TypeToken<ArrayList<String>>(){}.getType();
             if(!settings.getBoolean("new", true))
             wish_list =  gson.fromJson(settings.getString("wish_map", "null"),type);
-        }
+        }*/
 
-        SharedPreferences settings_l = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
         if(settings_l.getBoolean("login", false)){
             getCurrent_user().setLogin_token(settings_l.getString("token", null));
             getCurrent_user().setLoggedin(true);
@@ -149,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
         ToastHelper.appln_context = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
+        tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
         //0:home, 1:search, 2:mytrip, 3: profile
@@ -216,6 +212,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         return true;
     }
+
 
     @NonNull
     private SearchView getSearchView(Menu menu) {

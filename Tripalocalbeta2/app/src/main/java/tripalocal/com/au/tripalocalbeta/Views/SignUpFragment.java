@@ -18,6 +18,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
@@ -40,6 +41,13 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 signup();
+            }
+        });
+        Button signupLoginBtn = (Button) view.findViewById(R.id.signup_login);
+        signupLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragHelper.replace(getFragmentManager(),new LoginFragment());
             }
         });
         return view;

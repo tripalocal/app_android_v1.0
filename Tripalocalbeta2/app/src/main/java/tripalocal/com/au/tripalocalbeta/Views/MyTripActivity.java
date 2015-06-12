@@ -44,6 +44,12 @@ public class MyTripActivity extends ActionBarActivity {
     private float initialX, initialY;
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        HomeActivity.saveData();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_trip);
