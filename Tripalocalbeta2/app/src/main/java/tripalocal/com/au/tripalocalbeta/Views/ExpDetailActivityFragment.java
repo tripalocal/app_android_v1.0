@@ -207,7 +207,7 @@ public class ExpDetailActivityFragment extends Fragment {
         }
         exp_detail_lang.setText(l);
         price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
-        price_hours.setText(exp_to_display.getExperience_duration());
+        price_hours.setText(REAL_FORMATTER.format(exp_to_display.getExperience_duration()));
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
         info_more.setText(exp_to_display.getExperience_description());
