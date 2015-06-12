@@ -96,6 +96,7 @@
     <string name="navigation_wishlist">Wishlist</string>
     <string name="navigation_messages">Messages</string>
     <string name="navigation_myprofile">My Profile</string>
+<<<<<<< HEAD
     <string name="checkout_date_placeholder">dd/mm/yy</string>
     <string name="checkout_time_placeholder">hh:mm</string>
     <string name="checkout_select_date_label">Select Date</string>
@@ -119,5 +120,7 @@
     <string name="checkout_time_content_desc">time_img</string>
     <string name="checkout_english">english</string>
     <string name="checkout_duration_placeholder">2hrs .</string>
+=======
+>>>>>>> origin/master
 
 </resources>
