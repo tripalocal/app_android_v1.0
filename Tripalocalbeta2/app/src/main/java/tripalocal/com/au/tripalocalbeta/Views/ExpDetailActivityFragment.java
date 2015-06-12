@@ -119,11 +119,11 @@ public class ExpDetailActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(info_less.getVisibility() == View.GONE){
-                    info_view_more_btn.setText("View More");
+                    info_view_more_btn.setText(getResources().getString(R.string.view_more));
                     info_less.setVisibility(View.VISIBLE);
                     info_more.setVisibility(View.GONE);
                 }else{
-                    info_view_more_btn.setText("View Less");
+                    info_view_more_btn.setText(getResources().getString(R.string.view_less));
                     info_less.setVisibility(View.GONE);
                     info_more.setVisibility(View.VISIBLE);
                 }
@@ -148,11 +148,11 @@ public class ExpDetailActivityFragment extends Fragment {
                if(host_info_less.getVisibility() == View.GONE){
                    host_info_less.setVisibility(View.VISIBLE);
                    host_info_more.setVisibility(View.GONE);
-                   host_more_btn.setText("View More");
+                   host_more_btn.setText(getResources().getString(R.string.view_more));
                }else{
                    host_info_less.setVisibility(View.GONE);
                    host_info_more.setVisibility(View.VISIBLE);
-                   host_more_btn.setText("View Less");
+                   host_more_btn.setText(getResources().getString(R.string.view_less));
                }
             }
         });
@@ -211,10 +211,10 @@ public class ExpDetailActivityFragment extends Fragment {
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
         info_more.setText(exp_to_display.getExperience_description());
-        host_title.setText("About the Host, " +exp_to_display.getHost_firstname());
+        host_title.setText(getResources().getString(R.string.exp_detail_about_the_host) + " " + exp_to_display.getHost_firstname());
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
-        review_title.setText(exp_to_display.getExperience_reviews().size()+" Reviews");
+        review_title.setText(exp_to_display.getExperience_reviews().size()+" " + getResources().getString(R.string.exp_detail_reviews));
         if(exp_to_display.getExperience_reviews().isEmpty()){
             review_more_btn.setVisibility(View.INVISIBLE);
         }

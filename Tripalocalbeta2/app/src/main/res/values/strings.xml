@@ -51,10 +51,13 @@
     <string name="exp_detail_tickets">Tickets : Not required</string>
     <string name="exp_detail_transport">Transport : Can be arranged if required</string>
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
-    <string name="view_more">View More</string>
+    <string name="view_more">Read More</string>
+    <string name="view_less">Less</string>
     <string name="no_review_content">No review</string>
-    <string name="exp_detail_about_the_host">About the host</string>
-    <string name="exp_detail_per_person_text">per person for </string>
+    <string name="exp_detail_reviews">Reviews</string>
+    <string name="exp_detail_about_the_host">About the host, </string>
+    <string name="exp_detail_per_person_text">per person </string>
+    <string name="exp_detail_per_person_for">for </string>
     <string name="exp_detail_per_person_hour">hour(s)</string>
     <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
