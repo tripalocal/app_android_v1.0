@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/booking_super_container">
 
@@ -84,6 +85,7 @@
                 android:gravity="center"/>
 
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_container"
@@ -151,6 +153,7 @@
                     android:layout_below="@id/exp_detail_price_person_text"
                     android:layout_toRightOf="@id/exp_detail_price_person"/>
             </RelativeLayout>
+
             <!-- info on the experience-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -166,6 +169,7 @@
                     android:id="@+id/exp_detail_info_title"
                     android:textSize="18sp"
                     android:textStyle="bold"
+
                     android:text="@string/sub_head_gibber"
                     android:gravity="left"
                     android:padding="20dp"
@@ -184,6 +188,7 @@
                     android:singleLine="false"
                     android:paddingLeft = "20dp"
                     android:paddingRight= "20dp"
+
                     android:paddingBottom="20dp"/>
 
                 <FrameLayout
@@ -199,6 +204,7 @@
                         android:paddingLeft = "20dp"
                         android:paddingRight= "20dp"
                         android:paddingBottom="20dp"
+
                         android:id="@+id/exp_detail_info_content_more"
                         android:visibility="gone"/>
                 </FrameLayout>
@@ -303,6 +309,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:text="@string/exp_detail_reviews"
+
                     android:gravity="center"
                     android:padding="20dp"
                     android:password="false" />
@@ -415,6 +422,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp"
+
                 android:orientation="horizontal">
 
                 <ImageView
@@ -466,6 +474,7 @@
     <Button
     android:id="@+id/exp_detail_booking_btn"
     android:text="@string/exp_detail_request"
+
     android:layout_alignParentBottom="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
