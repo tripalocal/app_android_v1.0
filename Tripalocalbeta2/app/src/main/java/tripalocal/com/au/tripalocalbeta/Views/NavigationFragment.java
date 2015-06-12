@@ -22,6 +22,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
+import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
@@ -70,7 +71,7 @@ public class NavigationFragment extends Fragment {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragHelper.replace(HomeActivity.getFrag_manager(), new LoginFragment());
+                    FragHelper.addReplace(HomeActivity.getFrag_manager(), new LoginFragment());
                     DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawer.closeDrawer(GravityCompat.START);
                 }
@@ -102,16 +103,13 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastHelper.warnToast("Feature coming soon..");
-                /*Intent intent = new Intent(getActivity().getApplicationContext(), .class);
-                startActivity(intent);*/
+
                 }
             });
             view.findViewById(R.id.nav_my_messages_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ToastHelper.warnToast("Feature coming soon..");
-
                 }
             });
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
@@ -120,12 +118,6 @@ public class NavigationFragment extends Fragment {
                     //ToastHelper.shortToast("my profile nav");
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.closeDrawers();
-                    //my_profile = true;
-                    /*Fragment current_nav = getFragmentManager().findFragmentById(R.id.nav_drawer);
-                    getFragmentManager().beginTransaction().replace(R.id.nav_drawer, current_nav).commit();*/
-                /*Fragment current_nav = getFragmentManager().findFragmentById(R.id.nav_drawer);
-                getFragmentManager().beginTransaction().detach(current_nav).attach(current_nav).commit();*/
-                    //drawerLayout.openDrawer(drawerLayout);
                      Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
                 startActivity(intent);
                 }
@@ -134,16 +126,8 @@ public class NavigationFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     ToastHelper.warnToast("Feature coming soon..");
-                /*Intent intent = new Intent(getActivity().getApplicationContext(), .class);
-                startActivity(intent);*/
                 }
             });
-      //  }else{
-            /*localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
-            localno.setText(result.getPhone_number());
-            roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
-            roamingno.setText(result.getPhone_number());*/
-       // }
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
         hostname.setText(result.getFirst_name() + result.getLast_name());

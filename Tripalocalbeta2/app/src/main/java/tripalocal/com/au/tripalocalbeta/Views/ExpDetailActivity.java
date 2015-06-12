@@ -67,7 +67,8 @@ public class ExpDetailActivity extends AppCompatActivity {
                 editor_l.apply();
                 ToastHelper.shortToast("Logged out");
             }else
-            getSupportFragmentManager().beginTransaction().replace(R.id.detail_frag_container,new LoginFragment()).commit();
+            getSupportFragmentManager().beginTransaction().addToBackStack("login")
+                    .replace(R.id.detail_frag_container,new LoginFragment()).commit();
             return true;
         }
         return super.onOptionsItemSelected(item);
