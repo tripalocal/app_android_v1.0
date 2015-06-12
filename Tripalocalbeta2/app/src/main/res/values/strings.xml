@@ -47,23 +47,22 @@
     <string name="navigation_myprofile">My Profile</string>
 
     <string name="exp_reservation">Reservation with </string>
-    <string name="exp_detail_food">Food: optional purchase and drinks</string>
-    <string name="exp_detail_tickets">Tickets : Not required</string>
-    <string name="exp_detail_transport">Transport : Can be arranged if required</string>
+    <string name="exp_detail_food">Food: NA</string>
+    <string name="exp_detail_tickets">Tickets : NA</string>
+    <string name="exp_detail_transport">Transport : NA </string>
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
-    <string name="view_more">Read More</string>
-    <string name="view_less">Less</string>
     <string name="no_review_content">No review</string>
     <string name="exp_detail_reviews">Reviews</string>
     <string name="exp_detail_about_the_host">About the host, </string>
     <string name="exp_detail_per_person_text">per person </string>
     <string name="exp_detail_per_person_for">for </string>
+    <string name="exp_detail_about_the_host">About the host</string>
+    <string name="exp_detail_per_person_text">per person for </string>
     <string name="exp_detail_per_person_hour">hour(s)</string>
     <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses</string>
-    <string name="exp_detail_request">Request to Book</string>
 
     <string name="home_bg_city_content_desc">background_image_city</string>
     <string name="login_or">or</string>
