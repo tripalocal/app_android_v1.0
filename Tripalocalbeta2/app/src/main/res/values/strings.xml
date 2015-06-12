@@ -54,8 +54,9 @@
     <string name="view_more">View More</string>
     <string name="no_review_content">No review</string>
     <string name="exp_detail_about_the_host">About the host</string>
-    <string name="exp_detail_per_person_placeholder">per person for 3 hours</string>
-    <string name="from">from</string>
+    <string name="exp_detail_per_person_text">per person for </string>
+    <string name="exp_detail_per_person_hour">hour(s)</string>
+    <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses</string>
