@@ -90,7 +90,8 @@
                 android:layout_below="@id/exp_detail_lang"
                 android:orientation="horizontal"
                 android:background="@color/white"
-                android:gravity="center">
+                android:gravity="center"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -156,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/exp_detail_price_container"
                 android:id="@+id/exp_detail_info_container"
-                android:paddingBottom="10dp"
+                android:paddingBottom="20dp"
                 android:background="@color/tripalocal_light_grey">
 
                 <TextView
@@ -218,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_host_profile_image_container"
                 android:layout_below="@id/exp_detail_info_container"
-                android:paddingBottom="10dp"
+                android:paddingBottom="20dp"
                 android:background="@color/white">
 
                 <TextView
@@ -291,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_review_container"
                 android:layout_below="@id/exp_detail_host_profile_image_container"
-                android:paddingBottom="10dp"
+                android:paddingBottom="20dp"
                 android:orientation="vertical"
                 android:background="@color/tripalocal_light_grey">
                 <TextView
@@ -367,7 +368,7 @@
                     android:textAlignment="center"
                     android:gravity="center"
                     android:paddingTop="10dp"
-                    android:paddingBottom="20dp"/>
+                    android:paddingBottom="10dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -377,7 +378,7 @@
                     android:text="@string/no_review_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingBottom="10dp" />
+                    android:paddingBottom="20dp" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -464,7 +465,7 @@
 
     <Button
     android:id="@+id/exp_detail_booking_btn"
-    android:text="Request to book"
+    android:text="@string/exp_detail_request"
     android:layout_alignParentBottom="true"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"

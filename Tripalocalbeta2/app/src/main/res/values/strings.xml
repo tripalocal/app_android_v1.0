@@ -63,6 +63,7 @@
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses</string>
+    <string name="exp_detail_request">Request to Book</string>
 
     <string name="home_bg_city_content_desc">background_image_city</string>
     <string name="login_or">or</string>
