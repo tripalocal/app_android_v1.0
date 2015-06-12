@@ -115,12 +115,6 @@ public class LoginFragment extends Fragment {
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
 
-            //Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
-            //Gson gson = new Gson();
-            //String log_json = gson.toJson(log_req);
-             //String log_json = "{ \"email\" : \"ravnav44@gmail.com\",\"password\":\"omegastar\" }";
-            //apiService.login_user(log_json , new Callback<String>() {
-
         String username = ((EditText) getActivity().findViewById(R.id.login_email)).getText().toString();
         String pwd = ((EditText) getActivity().findViewById(R.id.login_password)).getText().toString();
 
@@ -133,10 +127,6 @@ public class LoginFragment extends Fragment {
                     System.out.println("result = [" + result + "], response = [" + response + "]");
                     Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                     startActivity(intent);
-                   /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
-                    nav_view.invalidate();
-                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawerLayout.openDrawer(GravityCompat.START);*/
                     ToastHelper.longToast("log in success");
                     HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
                 }

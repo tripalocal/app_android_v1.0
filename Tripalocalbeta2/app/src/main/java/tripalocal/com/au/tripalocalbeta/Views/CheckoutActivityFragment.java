@@ -64,6 +64,9 @@ public class CheckoutActivityFragment extends Fragment {
         title = (TextView) view.findViewById(R.id.booking_title);
         thumbnail = (ImageView) view.findViewById(R.id.booking_thumbnail);
         duration = (TextView) view.findViewById(R.id.booking_duration);
+        final View time_container_1 = view.findViewById(R.id.checkout_time_1_container);
+        final View time_container_2 = view.findViewById(R.id.checkout_time_2_container);
+        final View time_container_3 = view.findViewById(R.id.checkout_time_3_container);
         booking_date_1 = (TextView) view.findViewById(R.id.booking_date_txt1);
         booking_date_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +74,7 @@ public class CheckoutActivityFragment extends Fragment {
                 if(date_sel != 0) {
                     if(date_sel == 1){
                         booking_date_2.setBackgroundResource(R.color.white);
+
                     }else booking_date_3.setBackgroundResource(R.color.white);
                     booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     date_sel = 0;
@@ -109,9 +113,6 @@ public class CheckoutActivityFragment extends Fragment {
         booking_time_1 = (TextView)view.findViewById(R.id.booking_time_txt1);
         booking_time_2 = (TextView)view.findViewById(R.id.booking_time_txt2);
         booking_time_3 = (TextView)view.findViewById(R.id.booking_time_txt3);
-        final View time_container_1 = view.findViewById(R.id.checkout_time_1_container);
-        final View time_container_2 = view.findViewById(R.id.checkout_time_2_container);
-        final View time_container_3 = view.findViewById(R.id.checkout_time_3_container);
         time_container_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

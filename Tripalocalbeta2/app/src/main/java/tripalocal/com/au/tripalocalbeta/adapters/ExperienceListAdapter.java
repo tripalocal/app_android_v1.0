@@ -30,7 +30,7 @@ import tripalocal.com.au.tripalocalbeta.models.Search_Result;
 public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAdapter.ListViewHolder> {
 
     //public static List<Search_Result> search_result;
-    public static List<Experience> all_experiences = new ArrayList<Experience>();;
+    public static List<Experience> all_experiences = new ArrayList<Experience>();
     public static Context mContext;
     private static final String BASE_URL ="https://www.tripalocal.com/images/";
     public static final String INT_EXTRA = "POSITION";
@@ -68,12 +68,18 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.dataTxt.setText(exp_to_display.getId().toString());
         holder.dataTxt.setText(exp_to_display.getId().toString());
         // todo @naveen check if the experience in favoutites and set the image
-        if(HomeActivity.wish_list != null) {
+        //if(HomeActivity.wish_list != null) {
+        if(HomeActivity.wish_map != null){
             //if (HomeActivity.wish_map.containsKey(String.valueOf(ExpListActvity2.city_position) + String.valueOf(position))) {
-            if(HomeActivity.wish_list.contains(exp_to_display.getId())){
+            if(HomeActivity.wish_map.containsKey(exp_to_display.getId().toString())){
+            //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
                 holder.wishTxt.setText("Saved to wishlist");
+            }else{
+                holder.wishimage.setImageResource(R.drawable.heart_sw);
+                holder.smallwishimage.setImageResource(R.drawable.heart_sw);
+                holder.wishTxt.setText("Save to wishlist");
             }
         }
         holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
@@ -119,22 +125,27 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 @Override
                 public void onClick(View v) {
                     String test = dataTxt.getText().toString();
-                    if (HomeActivity.wish_list.contains(test)) {
+                    //if (HomeActivity.wish_list.contains(test)) {
+                    if(HomeActivity.wish_map.containsKey(test)){
                         wishimage.setImageResource(R.drawable.heart_sw);
                         smallwishimage.setImageResource(R.drawable.heart_sw);
                         wishTxt.setText("Save to wishlist");
-                        HomeActivity.wish_list.remove(test);
-                        /*HomeActivity.wish_map.remove("*"+String.valueOf(ExpListActvity2.city_position)
-                                + String.valueOf(getAdapterPosition()));*/
+                        //HomeActivity.wish_list.remove(test);
+                        HomeActivity.wish_map.remove(test);
                         ToastHelper.shortToast("removed from wishlist");
                     } else {
                         wishimage.setImageResource(R.drawable.heart_sr);
                         smallwishimage.setImageResource(R.drawable.heart_sr);
                         wishTxt.setText("Saved to wishlist");
-                        HomeActivity.wish_list.add(test);
-                        /*HomeActivity.wish_map.put("*"+String.valueOf(ExpListActvity2.city_position) + String.valueOf(getAdapterPosition()),
-                                all_experiences.get(getAdapterPosition()));*/
-                        ToastHelper.shortToast("saved to wishlist");
+                        //HomeActivity.wish_list.add(test);
+                        Experience exp = getExperience(Integer.parseInt(test));
+                        if(exp != null)
+                        {
+                            HomeActivity.wish_map.put(test,exp);
+                            ToastHelper.shortToast("saved to wishlist");
+                        }
+                        else
+                        ToastHelper.errorToast("unable to save");
                     }
                 }
             });
@@ -144,6 +155,16 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
             bannerContainer.setOnClickListener(this);
         }
+
+        public Experience getExperience(int id){
+            for(Experience exp : all_experiences){
+                if(exp.getId() == id){
+                    return exp;
+                }
+            }
+            return null;
+        }
+
 
         @Override
         public void onClick(View v) {
