@@ -45,7 +45,8 @@ public class ExpDetailActivityFragment extends Fragment {
     ImageView exp_bg;
     CircleImageView profileImage;
     CircleImageView profileHostImage;
-    TextView exp_title;
+    TextView exp_host_name;
+    TextView exp_detail_lang;
     TextView price_title;
     TextView price_hours;
     TextView info_title;
@@ -79,28 +80,29 @@ public class ExpDetailActivityFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
-         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
-         profileHostImage = (CircleImageView) view.findViewById(R.id.exp_detail_host_profile_image);
-         exp_title = (TextView) view.findViewById(R.id.exp_detail_title);
-         price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
-         price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
-          info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
-          info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
-          info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
-         host_info_less = (TextView) view.findViewById(R.id.exp_detail_host_info_less);
-         host_info_more = (TextView) view.findViewById(R.id.exp_detail_host_info_more);
-         host_title = (TextView) view.findViewById(R.id.exp_detail_about_host_title);
-         review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
-         reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
-         review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
-         review_content_less = (TextView) view.findViewById(R.id.exp_detail_review_content_less);
+        profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
+        profileHostImage = (CircleImageView) view.findViewById(R.id.exp_detail_host_profile_image);
+        exp_host_name = (TextView) view.findViewById(R.id.exp_host_name);
+        exp_detail_lang = (TextView) view.findViewById(R.id.exp_detail_lang);
+        price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
+        price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
+        info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
+        info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
+        info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
+        host_info_less = (TextView) view.findViewById(R.id.exp_detail_host_info_less);
+        host_info_more = (TextView) view.findViewById(R.id.exp_detail_host_info_more);
+        host_title = (TextView) view.findViewById(R.id.exp_detail_about_host_title);
+        review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
+        reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
+        review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
+        review_content_less = (TextView) view.findViewById(R.id.exp_detail_review_content_less);
         rating_str_1 = (ImageView) view.findViewById(R.id.exp_detail_review_star_1);
         rating_str_2 = (ImageView) view.findViewById(R.id.exp_detail_review_star_2);
         rating_str_3 = (ImageView) view.findViewById(R.id.exp_detail_review_star_3);
         rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
         rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
-         expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
-         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
+        expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
+        request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
 
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,14 +188,24 @@ public class ExpDetailActivityFragment extends Fragment {
         });
     }
 
-    //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_title, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
+    //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
     public void fillDetails(){
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(exp_bg);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(expenses_banner_img);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
 
-        exp_title.setText("Reservation with " + exp_to_display.getHost_firstname());
+        exp_host_name.setText(" " + exp_to_display.getHost_firstname() + " " + exp_to_display.getHost_lastname().substring(0, 1) + ".");
+        String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
+        String l= "";
+        for(int i=0;language!=null && i<language.length;i++)
+        {
+            switch(language[i]) {
+                case "english": l = "English";
+                case "english;mandarin": l = "English / 中文";
+            }
+        }
+        exp_detail_lang.setText(l);
         price_title.setText(" $"+ REAL_FORMATTER.format(exp_to_display.getExperience_price()));
         if (exp_to_display.getExperience_duration() > 1)
         price_hours.setText("per person for "+exp_to_display.getExperience_duration()+"hrs");

@@ -31,6 +31,7 @@ public class Experience_Detail{
     private String host_firstname;
     private String host_lastname;
     private Boolean included_food;
+    private String experience_language;
 
     public Boolean isIncludedTicket() {
         return included_ticket;
@@ -215,4 +216,8 @@ public class Experience_Detail{
     public void setIncluded_food(Boolean included_food) {
         this.included_food = included_food;
     }
+
+    public String getLanguage() {return experience_language;}
+
+    public void setLanguage(String language) {this.experience_language = language;}
 }

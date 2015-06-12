@@ -19,6 +19,7 @@ public class Experience {
     private Integer duration;
     private Integer id;
     private String description;
+    private String language;
 
     public String getDescription() {
         return description;
@@ -108,6 +109,7 @@ public class Experience {
         this.id = id;
     }
 
+    public String getLanguage() {return language;}
 
-
+    public void setLanguage(String language) {this.language = language;}
 }
