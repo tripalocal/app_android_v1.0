@@ -39,13 +39,23 @@ public class ExpListActvity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if(intent != null){
-            city_position = intent.getIntExtra(INT_EXTRA,0);
-            displayListFrag(city_position);
-            setTitle(HomeActivity.poi_data[city_position]);
+            if(intent.getIntExtra(INT_EXTRA,0) != 9999) {
+                city_position = intent.getIntExtra(INT_EXTRA, 0);
+                displayListFrag(city_position);
+                setTitle(HomeActivity.poi_data[city_position]);
+            }else{
+                displayWishList();
+                setTitle(getResources().getString(R.string.wishlist_title));
+            }
         }
         if(CheckoutActivity.experience_to_book != null)
             CheckoutActivity.experience_to_book = null;
         setContentView(R.layout.activity_exp_list_actvity2);
+    }
+
+    private void displayWishList() {
+        ToastHelper.shortToast("Showing your wishlist");
+        FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
     }
 
     @Override

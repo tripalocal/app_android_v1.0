@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,9 @@ public class NavigationFragment extends Fragment {
     private EditText localno;
     private EditText roamingno;
     private TextView hostname;
+    TextView tos_txt;
+    TextView privacy_txt;
+    TextView about_txt;
 
 
     public NavigationFragment() {
@@ -85,6 +90,18 @@ public class NavigationFragment extends Fragment {
 
         profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
+        tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
+        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String tos_text_content = "<a href='https://www.tripalocal.com/termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
+        tos_txt.setText(Html.fromHtml(tos_text_content));
+        privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
+        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String priv_text_content = "<a href='https://www.tripalocal.com/privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
+        privacy_txt.setText(Html.fromHtml(priv_text_content));
+        about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
+        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String about_text_content = "<a href='https://www.tripalocal.com/aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
+        about_txt.setText(Html.fromHtml(about_text_content));
        /// if(!my_profile){
             view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,7 +120,11 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    ExperienceListAdapter.all_experiences.clear();
+                    ExperienceListAdapter.all_experiences.addAll(HomeActivity.wish_map.values());
+                    Intent intent = new Intent(getActivity().getApplicationContext(), ExpListActvity2.class);
+                    intent.putExtra(ExperienceListAdapter.INT_EXTRA,9999);
+                    startActivity(intent);
                 }
             });
             view.findViewById(R.id.nav_my_messages_container).setOnClickListener(new View.OnClickListener() {
@@ -118,8 +139,8 @@ public class NavigationFragment extends Fragment {
                     //ToastHelper.shortToast("my profile nav");
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.closeDrawers();
-                     Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
+                    startActivity(intent);
                 }
             });
             view.findViewById(R.id.nav_my_account_container).setOnClickListener(new View.OnClickListener() {

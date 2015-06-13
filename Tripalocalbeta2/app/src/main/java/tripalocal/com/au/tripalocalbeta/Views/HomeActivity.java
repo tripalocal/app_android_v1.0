@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
             editor.clear();
             editor.putBoolean("empty_check", true);
             Gson gson = new Gson();
-            editor.putString("wish_list", gson.toJson(wish_map));
+            editor.putString("wish_map", gson.toJson(wish_map));
             editor.apply();
         }
         if(getCurrent_user().getLogin_token() != null) {
@@ -125,7 +125,7 @@ public class HomeActivity extends AppCompatActivity {
         if(wish_map.isEmpty() && settings.getBoolean("empty_check", false)) {
             Gson gson = new Gson();
             java.lang.reflect.Type type = new TypeToken<HashMap<String,Experience>>(){}.getType();
-            wish_map =  gson.fromJson(settings.getString("wish_list", "null"),type);
+            wish_map =  gson.fromJson(settings.getString("wish_map", "null"),type);
         }
 
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);

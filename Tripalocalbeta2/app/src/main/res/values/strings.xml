@@ -51,14 +51,15 @@
     <string name="exp_detail_tickets">Tickets : NA</string>
     <string name="exp_detail_transport">Transport : NA </string>
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
+    <string name="view_more">View More</string>
+    <string name="view_less">Less</string>
     <string name="no_review_content">No review</string>
     <string name="exp_detail_reviews">Reviews</string>
     <string name="exp_detail_about_the_host">About the host, </string>
     <string name="exp_detail_per_person_text">per person </string>
     <string name="exp_detail_per_person_for">for </string>
-    <string name="exp_detail_about_the_host">About the host</string>
-    <string name="exp_detail_per_person_text">per person for </string>
     <string name="exp_detail_per_person_hour">hour(s)</string>
+    <string name="exp_detail_request">Request to Book</string>
     <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
@@ -97,8 +98,8 @@
     <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
     <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
     <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
-    <string name="checkout_refund_text">You can also view our</string>
-    <string name="checkout_refund_link">Refund policy</string>
+    <string name="checkout_refund_text">You can also view our </string>
+    <string name="checkout_refund_link"> refund policy</string>
     <string name="checkout_proceed_to_payment">Proceed to Payment</string>
     <string name="checkout_date">Date</string>
     <string name="checkout_time">Time</string>
@@ -106,6 +107,11 @@
     <string name="checkout_time_content_desc">time_img</string>
     <string name="checkout_english">English</string>
     <string name="checkout_duration_placeholder">0hrs .</string>
+    
+    <string name="wishlist_title">Your Wishlist</string>
+    <string name="nav_terms_of_service_link">Terms of Service</string>
+    <string name="nav_privacy_policy">Privacy Policy</string>
+    <string name="nav_about_us">About Us</string>
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>
@@ -132,4 +138,6 @@
         <item>Greater Region, QLD</item>
         <item>Greater Region, NSW</item>
     </string-array>
+
+
 </resources>

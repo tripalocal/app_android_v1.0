@@ -3,18 +3,24 @@ package tripalocal.com.au.tripalocalbeta.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -35,14 +41,21 @@ public class CheckoutActivityFragment extends Fragment {
     ImageView thumbnail;
     TextView title;
     TextView duration;
+    TextView language_txt;
     TextView booking_date_1;
     TextView booking_time_1;
     TextView booking_date_2;
     TextView booking_time_2;
     TextView booking_date_3;
     TextView booking_time_3;
+    View booking_row_3;
+    View booking_row_4;
+    View booking_row_5;
     TextView booking_price_and_person;
     TextView booking_price_and_person_amt;
+    TextView refund;
+    Spinner date_spin;
+    Spinner time_spin;
     NumberPicker np;
     static int guests = 1;
     static String price_s = null;
@@ -64,9 +77,15 @@ public class CheckoutActivityFragment extends Fragment {
         title = (TextView) view.findViewById(R.id.booking_title);
         thumbnail = (ImageView) view.findViewById(R.id.booking_thumbnail);
         duration = (TextView) view.findViewById(R.id.booking_duration);
+        language_txt = (TextView) view.findViewById(R.id.booking_language);
+        date_spin = (Spinner) view.findViewById(R.id.booking_Select_Date_spinner);
+        time_spin = (Spinner) view.findViewById(R.id.booking_Select_Time_spinner);
         final View time_container_1 = view.findViewById(R.id.checkout_time_1_container);
         final View time_container_2 = view.findViewById(R.id.checkout_time_2_container);
         final View time_container_3 = view.findViewById(R.id.checkout_time_3_container);
+        booking_row_3 = view.findViewById(R.id.booking_row_3);
+        booking_row_4 = view.findViewById(R.id.booking_row_4);
+        booking_row_5 = view.findViewById(R.id.booking_row_5);
         booking_date_1 = (TextView) view.findViewById(R.id.booking_date_txt1);
         booking_date_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +93,13 @@ public class CheckoutActivityFragment extends Fragment {
                 if(date_sel != 0) {
                     if(date_sel == 1){
                         booking_date_2.setBackgroundResource(R.color.white);
-
-                    }else booking_date_3.setBackgroundResource(R.color.white);
+                        time_container_2.setBackgroundResource(R.color.white);
+                    }else{
+                        booking_date_3.setBackgroundResource(R.color.white);
+                        time_container_3.setBackgroundResource(R.color.white);
+                    }
                     booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_container_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     date_sel = 0;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
                 }
@@ -89,8 +112,13 @@ public class CheckoutActivityFragment extends Fragment {
                 if(date_sel != 1) {
                     if(date_sel == 2){
                         booking_date_3.setBackgroundResource(R.color.white);
-                    }else booking_date_1.setBackgroundResource(R.color.white);
+                        time_container_3.setBackgroundResource(R.color.white);
+                    }else{
+                        booking_date_1.setBackgroundResource(R.color.white);
+                        time_container_1.setBackgroundResource(R.color.white);
+                    }
                     booking_date_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_container_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     date_sel = 1;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
                 }
@@ -103,8 +131,13 @@ public class CheckoutActivityFragment extends Fragment {
                 if(date_sel != 2) {
                     if(date_sel == 0){
                         booking_date_1.setBackgroundResource(R.color.white);
-                    }else booking_date_2.setBackgroundResource(R.color.white);
+                        time_container_1.setBackgroundResource(R.color.white);
+                    }else {
+                        booking_date_2.setBackgroundResource(R.color.white);
+                        time_container_2.setBackgroundResource(R.color.white);
+                    }
                     booking_date_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_container_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     date_sel = 2;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
                 }
@@ -118,8 +151,13 @@ public class CheckoutActivityFragment extends Fragment {
             public void onClick(View view) {
                 if(time_sel != 0) {
                     if(time_sel == 1){
+                        booking_date_2.setBackgroundResource(R.color.white);
                         time_container_2.setBackgroundResource(R.color.white);
-                }else time_container_3.setBackgroundResource(R.color.white);
+                }else {
+                        booking_date_3.setBackgroundResource(R.color.white);
+                        time_container_3.setBackgroundResource(R.color.white);
+                    }
+                    booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     time_container_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     time_sel = 0;
                 }
@@ -131,9 +169,14 @@ public class CheckoutActivityFragment extends Fragment {
             public void onClick(View view) {
                 if(time_sel != 1) {
                     if(time_sel == 2){
+                        booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
-                    }else time_container_1.setBackgroundResource(R.color.white);
+                    }else {
+                        booking_date_1.setBackgroundResource(R.color.white);
+                        time_container_1.setBackgroundResource(R.color.white);
+                    }
                     time_container_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     time_sel = 1;
                 }
             }
@@ -143,8 +186,13 @@ public class CheckoutActivityFragment extends Fragment {
             public void onClick(View view) {
                 if(time_sel != 2) {
                     if(time_sel == 0){
+                        booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
-                    }else time_container_2.setBackgroundResource(R.color.white);
+                    }else {
+                        time_container_2.setBackgroundResource(R.color.white);
+                        booking_date_2.setBackgroundResource(R.color.white);
+                    }
+                    booking_date_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     time_container_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
                     time_sel = 2;
                 }
@@ -174,6 +222,7 @@ public class CheckoutActivityFragment extends Fragment {
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });
+        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
 
         if(CheckoutActivity.position != 999){
             RestAdapter restAdapter = new RestAdapter.Builder()
@@ -206,22 +255,46 @@ public class CheckoutActivityFragment extends Fragment {
                     "thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(thumbnail);
             title.setText(temp_detail_exp.getExperience_title());
             duration.setText(temp_detail_exp.getExperience_duration().toString()+" hrs . ");
-            // ### option to change language in future
-            //TextView language = (TextView) view.findViewById(R.id.booking_language);
-            //title.setText(CheckoutActivity.experience_to_book.ge);
-            if(temp_detail_exp.getAvailable_options().size() >= 3){
-                booking_date_1.setText(temp_detail_exp.getAvailable_options().get(0).getDate_string());
-                booking_date_2.setText(temp_detail_exp.getAvailable_options().get(1).getDate_string());
-                booking_date_3.setText(temp_detail_exp.getAvailable_options().get(2).getDate_string());
-                booking_time_1.setText(temp_detail_exp.getAvailable_options().get(0).getTime_string());
-                booking_time_2.setText(temp_detail_exp.getAvailable_options().get(1).getTime_string());
-                booking_time_3.setText(temp_detail_exp.getAvailable_options().get(2).getTime_string());
+            String[] language = temp_detail_exp.getLanguage()!=null?temp_detail_exp.getLanguage().split(";"):new String[1];
+            String l= "";
+            for(int i=0;language!=null && i<language.length;i++)
+            {
+                switch(language[i]) {
+                    case "english": l = "English";
+                    case "english;mandarin": l = "English / 中文";
+                }
+            }
+            language_txt.setText(l);
+
+            if(temp_detail_exp.getAvailable_options().get(0).isInstantBooking()){
+                if(temp_detail_exp.getAvailable_options().size() >= 3){
+                    booking_date_1.setText(temp_detail_exp.getAvailable_options().get(0).getDate_string());
+                    booking_date_2.setText(temp_detail_exp.getAvailable_options().get(1).getDate_string());
+                    booking_date_3.setText(temp_detail_exp.getAvailable_options().get(2).getDate_string());
+                    booking_time_1.setText(temp_detail_exp.getAvailable_options().get(0).getTime_string());
+                    booking_time_2.setText(temp_detail_exp.getAvailable_options().get(1).getTime_string());
+                    booking_time_3.setText(temp_detail_exp.getAvailable_options().get(2).getTime_string());
+                }
+            }else{
+                booking_row_3.setVisibility(View.GONE);
+                booking_row_4.setVisibility(View.GONE);
+                booking_row_5.setVisibility(View.GONE);
             }
             price_i = temp_detail_exp.getExperience_price();
             price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
             booking_price_and_person.setText("$"+ price_s+ " AUD x "+ guests+" pp");
             booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
             np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
+            List<String> temp_dates = new ArrayList<>();
+            for(List<String> str : temp_detail_exp.getAvailable_date()){
+                temp_dates.add(str.get(0));
+            }
+            ArrayAdapter<String> date_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_dates);
+            date_spin.setAdapter(date_adapter);
+            time_spin.setAdapter(date_adapter);
+            refund.setMovementMethod(LinkMovementMethod.getInstance());
+            String text = "<a href='https://www.tripalocal.com/refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
+            refund.setText(Html.fromHtml(text));
         }
     }
 

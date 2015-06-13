@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:fontFamily="light">
 
@@ -175,7 +175,6 @@
                 android:id="@+id/nav_my_account_container"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
-                android:paddingBottom="35dp"
                 android:layout_below="@id/nav_my_profile_container"
                 android:orientation="horizontal">
                 <ImageView
@@ -193,5 +192,37 @@
                     android:layout_marginLeft="25dp"
                     android:text="@string/nav_my_account"/>
             </LinearLayout>
+        <View style="@style/DividerLight"
+            android:id="@+id/nav_drawer_divider_3"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/nav_my_account_container"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/nav_drawer_divider_3"
+            android:textStyle="bold"
+            android:id="@+id/nav_tos_txt"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_privacy_txt"
+            android:layout_below="@id/nav_tos_txt"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="35dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_about_us_txt"
+            android:layout_below="@id/nav_privacy_txt"
+            android:clickable="true"/>
     </RelativeLayout>
 </ScrollView>

@@ -67,7 +67,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.infoTxt.setText(exp_to_display.getDescription());
         holder.dataTxt.setText(exp_to_display.getId().toString());
         holder.dataTxt.setText(exp_to_display.getId().toString());
-        // todo @naveen check if the experience in favoutites and set the image
         //if(HomeActivity.wish_list != null) {
         if(HomeActivity.wish_map != null){
             //if (HomeActivity.wish_map.containsKey(String.valueOf(ExpListActvity2.city_position) + String.valueOf(position))) {
