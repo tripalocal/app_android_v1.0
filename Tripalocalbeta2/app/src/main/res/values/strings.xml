@@ -7,10 +7,14 @@
     <string name="placeholder_content">Loading</string>
     <string name="gibber"> </string>
     <string name="sub_head_gibber">Loading</string>
+    <string name="bullet">\u2022</string>
+    <string name="with">with</string>
 
     <string name="action_login">Log In</string>
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
+    <string name="logout">Log Out</string>
+    <string name="logged_out">Logged Out</string>
 
     <string name="title_activity_exp_detail">Experience Detail</string>
     <string name="title_activity_exp_list_actvity2">Experience List</string>
@@ -32,6 +36,11 @@
     <string name="my_trip_myTrip">My Trips</string>
     <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
     <string name="my_trip_explore">Start Exploring</string>
+    <string name="mytrip_date_format">dd-MM-yyyy</string>
+    <string name="mytrip_date_today">Today</string>
+    <string name="mytrip_status_confirmed">Confirmed</string>
+    <string name="mytrip_status_requested">Requested</string>
+    <string name="mytrip_status_cancelled">Cancelled</string>
 
     <string name="nav_item1">nav item1</string>
     <string name="navigation_item_2">Home</string>
@@ -45,6 +54,12 @@
     <string name="navigation_wishlist">Wishlist</string>
     <string name="navigation_messages">Messages</string>
     <string name="navigation_myprofile">My Profile</string>
+    <string name="nav_terms_of_service_link">Terms of Service</string>
+    <string name="nav_privacy_policy">Privacy Policy</string>
+    <string name="nav_about_us">About Us</string>
+
+    <string name="exp_list_per_person">AUD/person</string>
+    <string name="exp_list_duration">hrs</string>
 
     <string name="exp_reservation">Reservation with </string>
     <string name="exp_detail_food">Food: NA</string>
@@ -109,12 +124,36 @@
     <string name="checkout_duration_placeholder">0hrs .</string>
     
     <string name="wishlist_title">Your Wishlist</string>
+<<<<<<< HEAD
     <string name="nav_terms_of_service_link">Terms of Service</string>
     <string name="nav_privacy_policy">Privacy Policy</string>
     <string name="nav_about_us">About Us</string>
     <string name="wish_log_in_msg">Please Log in to Save</string>
     <string name="save_to_wishlist">Save to wishlist</string>
     <string name="saved_to_wishlist">Saved to wishlist</string>
+=======
+    <string name="wishlist_save">Save to wishlist</string>
+    <string name="wishlist_saved">Saved to wishlist</string>
+    <string name="wishlist_removed">Removed from wishlist</string>
+    <string name="wishlist_error">Unable to save</string>
+
+    <string name="toast_contacting">Contacting server ...</string>
+    <string name="toast_error">Error occurred</string>
+    <string name="toast_showing_exp">Showing experience for\u0020</string>
+    <string name="toast_showing_wishlist">Showing your wishlist</string>
+    <string name="toast_search_submitted">Search submitted</string>
+    <string name="toast_login_success">Login succeeded</string>
+    <string name="toast_login_failure">Login failed</string>
+    <string name="toast_fb_login_success">Facebook login succeeded</string>
+    <string name="toast_fb_login_cancel">Facebook login cancelled</string>
+    <string name="toast_fb_login_failure">Facebook login failed</string>
+    <string name="toast_service_down">Service temporarily down</string>
+    <string name="toast_profile_get_success">Profile retrieved</string>
+    <string name="toast_profile_get_error">Error getting profile</string>
+    <string name="toast_feature_coming">Feature coming soon ...</string>
+    <string name="toast_signup_success">Successfully signed in</string>
+    <string name="toast_signup_failure">Sign up failed</string>
+>>>>>>> origin/master
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>
@@ -141,6 +180,4 @@
         <item>Greater Region, QLD</item>
         <item>Greater Region, NSW</item>
     </string-array>
-
-
 </resources>

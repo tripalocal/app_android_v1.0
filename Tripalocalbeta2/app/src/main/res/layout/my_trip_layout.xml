@@ -142,11 +142,20 @@
             android:id="@+id/my_trip_tableRow_host_name">
 
             <TextView
+                android:id="@+id/my_trip_with_host"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/with"
+                android:paddingEnd="2dp"
+                android:paddingRight="2dp"
+                android:layout_weight="0.5"/>
+            <TextView
                 android:id="@+id/my_trip_host_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"/>
+                android:gravity="start"
+                android:layout_weight="0.5"/>
         </TableRow>
 
         <TableRow

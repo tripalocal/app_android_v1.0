@@ -24,20 +24,51 @@
             android:scaleType="fitXY"
             android:background="@color/background_floating_material_dark"
             android:id="@+id/exp_list_banner_image"/>
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/exp_list_banner_txt"
-            android:paddingLeft="10dp"
+            android:orientation="horizontal"
             android:paddingBottom="7dp"
-            android:text="from 40$ Aud per person"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="22sp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="70dp"
             android:layout_marginLeft="30dp"
-            android:background="#720a0a0a" />
+            android:background="#720a0a0a">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_from"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="@string/from" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_dollar"
+                android:paddingLeft="2dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="@string/dollar_placeholder"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_per_person"
+                android:paddingLeft="2dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="@string/exp_list_per_person" />
+        </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +83,7 @@
         android:textSize="19sp"
         android:padding="8dp"
         android:id="@+id/exp_list_title_txt"
-        android:text="title of the experience sadsad dasdass"
+        android:text=""
         />
 
     <LinearLayout
@@ -64,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/exp_list_info_txt"
-            android:text="some infor about the expe.."
+            android:text=""
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
             android:textSize="16sp"
@@ -106,7 +137,14 @@
             android:id="@+id/exp_list_wish_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save to wishlist"
+            android:text=""
+            android:paddingLeft="2dp"
+            />
+        <TextView
+            android:id="@+id/exp_list_bullet_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bullet"
             android:paddingLeft="5dp"
             />
         <TextView
@@ -114,6 +152,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"/>
+        <TextView
+            android:id="@+id/exp_list_duration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exp_list_duration"
+            android:paddingLeft="2dp"/>
+        <TextView
+            android:id="@+id/exp_list_bullet_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bullet"
+            android:paddingLeft="5dp"
+            />
         <TextView
             android:id="@+id/exp_list_language"
             android:layout_width="wrap_content"

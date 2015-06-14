@@ -56,19 +56,25 @@ public class LoginFragment extends Fragment {
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                 startActivity(intent);
+<<<<<<< HEAD
                 ToastHelper.longToast("FB Login success");
+=======
+                /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
+                nav_view.invalidate();*/
+                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_fb_login_success));
+>>>>>>> origin/master
                 HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
             }
 
             @Override
             public void onCancel() {
-                ToastHelper.warnToast("FB Login cancelled");
+                ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_fb_login_cancel));
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
 
             @Override
             public void onError(FacebookException exception) {
-                ToastHelper.errorToast("FB Login error!");
+                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_fb_login_failure));
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
         });
@@ -77,7 +83,7 @@ public class LoginFragment extends Fragment {
         forgotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastHelper.warnToast("Service temporarily down");
+                ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_service_down));
             }
         });
         Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
@@ -106,7 +112,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginUser(){
-        ToastHelper.shortToast("Contacting Server....");
+        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
          RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint("https://www.tripalocal.com")
@@ -123,16 +129,23 @@ public class LoginFragment extends Fragment {
                     HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
+<<<<<<< HEAD
                     /*Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                     startActivity(intent);*/
                     ToastHelper.longToast("log in success");
                     getActivity().onBackPressed();
                     //HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
+=======
+                    Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
+                    startActivity(intent);
+                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_login_success));
+                    HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
+>>>>>>> origin/master
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    ToastHelper.errorToast("log in failed");
+                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_login_failure));
                     System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }

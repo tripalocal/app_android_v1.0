@@ -76,7 +76,7 @@ public class SignUpFragment extends Fragment {
         apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
-                ToastHelper.longToast("sign up success");
+                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
                 System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
                 Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
@@ -84,7 +84,7 @@ public class SignUpFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                ToastHelper.errorToast("sign up failed");
+                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
                 System.out.println("error = [" + error + "]");
             }
         });

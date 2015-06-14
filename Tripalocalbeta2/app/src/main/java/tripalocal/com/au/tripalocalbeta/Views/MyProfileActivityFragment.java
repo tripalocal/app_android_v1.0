@@ -66,12 +66,12 @@ public class MyProfileActivityFragment extends Fragment {
             public void success(MyProfile_result res, Response response) {
                 result = res;
                 prepareProfile(view);
-                ToastHelper.shortToast("success for profile");
+                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
             @Override
             public void failure(RetrofitError error) {
                 System.out.println("error = [" + error + "]");
-                ToastHelper.shortToast("error getting profile");
+                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
     }

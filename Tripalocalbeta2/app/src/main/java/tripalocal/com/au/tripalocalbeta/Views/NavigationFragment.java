@@ -114,7 +114,7 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_my_messages_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastHelper.warnToast("Feature coming soon..");
+                    ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_feature_coming));
                 }
             });
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
@@ -129,7 +129,7 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_my_account_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastHelper.warnToast("Feature coming soon..");
+                    ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_feature_coming));
                 }
             });
 
@@ -160,12 +160,12 @@ public class NavigationFragment extends Fragment {
             public void success(MyProfile_result res, Response response) {
                 result = res;
                 prepareProfile(view);
-                ToastHelper.shortToast("success for profile");
+                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
             @Override
             public void failure(RetrofitError error) {
                 System.out.println("error = [" + error + "]");
-                ToastHelper.shortToast("error getting profile");
+                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
         tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
