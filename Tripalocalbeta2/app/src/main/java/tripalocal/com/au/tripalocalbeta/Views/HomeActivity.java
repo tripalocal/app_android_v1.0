@@ -232,7 +232,7 @@ public class HomeActivity extends AppCompatActivity {
                 editor_l.clear();
                 editor_l.apply();
                 tpDrawer.invalidate();
-                ToastHelper.shortToast("Logged out");
+                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
                         .replace(R.id.fragment_container, new LoginFragment()).commit();

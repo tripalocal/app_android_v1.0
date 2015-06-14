@@ -228,14 +228,28 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_about_host_title"
+                    android:id="@+id/exp_detail_about_host_text"
                     android:textSize="20sp"
                     android:text="@string/exp_detail_about_the_host"
                     android:textStyle="bold"
-                    android:gravity="center"
-                    android:padding="20dp"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:password="false" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_about_host_title"
+                    android:layout_toRightOf="@id/exp_detail_about_host_text"
+                    android:textSize="20sp"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:password="false" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -300,19 +314,38 @@
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
                 android:background="@color/tripalocal_light_grey">
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_review_title"
-                    android:layout_below="@id/exp_detail_host_info_less"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:text="@string/exp_detail_reviews"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    android:gravity="center"
-                    android:padding="20dp"
-                    android:password="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_detail_review_title"
+                        android:layout_below="@id/exp_detail_host_info_less"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text=""
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:password="false" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_detail_review_text"
+                        android:layout_below="@id/exp_detail_host_info_less"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="@string/exp_detail_reviews"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:password="false" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -417,7 +450,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_grid"
                 android:layout_below="@id/exp_detail_add_expenses_title"
-                android:columnCount="2"
+                android:columnCount="3"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp"
@@ -437,6 +470,12 @@
                     android:paddingTop="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_food"
+                    android:id="@+id/exp_detail_grid_food_text"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text=""
                     android:id="@+id/exp_detail_grid_food_info"/>
                 <ImageView
                     android:layout_width="40dp"
@@ -451,6 +490,12 @@
                     android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_tickets"
+                    android:id="@+id/exp_detail_grid_ticket_text"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text=""
                     android:id="@+id/exp_detail_grid_ticket_info"/>
                 <ImageView
                     android:layout_width="40dp"
@@ -465,6 +510,12 @@
                     android:paddingTop="15dp"
                     android:paddingLeft="10dp"
                     android:text="@string/exp_detail_transport"
+                    android:id="@+id/exp_detail_grid_transport_text"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text=""
                     android:id="@+id/exp_detail_grid_transport_info"/>
             </GridLayout>
         </RelativeLayout>
