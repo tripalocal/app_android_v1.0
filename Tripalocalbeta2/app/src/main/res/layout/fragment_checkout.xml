@@ -321,12 +321,35 @@
                             android:layout_marginTop="15dp">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:id="@+id/booking_price_and_person_txt"
-                                android:text="@string/checkout_price_placeholder"
+                                android:id="@+id/booking_price_dollar_sign"
+                                android:text="@string/dollar_placeholder"
                                 android:gravity="start"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_price"
+                                android:text=""
+                                android:gravity="start"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_price_dollar_text"
+                                android:text="@string/checkout_price_dollar_text"
+                                android:gravity="start"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_guest_number"
+                                android:text=""
+                                android:gravity="start"/>
+                            <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_price_per_person"
+                            android:text="@string/checkout_price_pp"
+                            android:gravity="start"/>
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"

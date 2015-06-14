@@ -227,15 +227,15 @@ public class MyTripActivity extends ActionBarActivity {
     {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net")//https://www.tripalocal.com
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + token);
-                    }
-                })
-                .build();
+                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                        .setRequestInterceptor(new RequestInterceptor() {
+                            @Override
+                            public void intercept(RequestFacade request) {
+                                request.addHeader("Accept", "application/json");
+                                request.addHeader("Authorization", "Token " + token);
+                            }
+                        })
+                        .build();
 
         ApiService apiService = restAdapter.create(ApiService.class);
 

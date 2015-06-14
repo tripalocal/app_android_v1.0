@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
+    <string name="server_url">https://www.tripalocal.com</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Blank</string>
@@ -106,6 +107,8 @@
     <string name="checkout_guests_label">Guests</string>
     <string name="checkout_price_label">Price</string>
     <string name="checkout_price_placeholder">$0 AUD x 0 pp</string>
+    <string name="checkout_price_dollar_text">\u0020AUD x\u0020</string>
+    <string name="checkout_price_pp">\u0020pp</string>
     <string name="checkout_amount_placeholder">$ 0 AUD</string>
     <string name="checkout_coupon_label">code</string>
     <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>

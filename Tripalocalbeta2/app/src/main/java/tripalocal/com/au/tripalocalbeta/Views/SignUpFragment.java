@@ -56,7 +56,7 @@ public class SignUpFragment extends Fragment {
     public void signup(){
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("https://www.tripalocal.com")
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
