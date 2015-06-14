@@ -33,7 +33,7 @@ public class ExpDetailActivity extends AppCompatActivity {
         if(intent != null){
             if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
                 String query = intent.getStringExtra(SearchManager.QUERY);
-                ToastHelper.shortToast("Searched with " + query);
+                ToastHelper.shortToast(getResources().getString(R.string.toast_searched_with) + query);
             }else{
                 position = intent.getIntExtra(INT_EXTRA,0);
             }

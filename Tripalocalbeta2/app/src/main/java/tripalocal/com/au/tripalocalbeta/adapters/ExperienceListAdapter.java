@@ -69,6 +69,10 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.dataTxt.setText(exp_to_display.getId().toString());
         if(HomeActivity.getCurrent_user().isLoggedin() && HomeActivity.wish_map != null){
             if(HomeActivity.wish_map.containsKey(exp_to_display.getId().toString())){
+<<<<<<< HEAD
+=======
+                //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
+>>>>>>> origin/master
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
                 holder.wishTxt.setText(R.string.saved_to_wishlist);
@@ -78,7 +82,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 holder.wishTxt.setText(R.string.save_to_wishlist);
             }
         }
-        holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
+        holder.durationTxt.setText(exp_to_display.getDuration().toString());
         String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
@@ -133,30 +137,33 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     if (HomeActivity.getCurrent_user().isLoggedin()) {
                         String test = dataTxt.getText().toString();
                         //if (HomeActivity.wish_list.contains(test)) {
                         if (HomeActivity.wish_map.containsKey(test)) {
                             wishimage.setImageResource(R.drawable.heart_sw);
                             smallwishimage.setImageResource(R.drawable.heart_sw);
-                            wishTxt.setText("Save to wishlist");
+                            wishTxt.setText(mContext.getString(R.string.wishlist_save));
                             //HomeActivity.wish_list.remove(test);
                             HomeActivity.wish_map.remove(test);
-                            ToastHelper.shortToast("removed from wishlist");
+                            ToastHelper.shortToast(mContext.getString(R.string.wishlist_removed));
                         } else {
                             wishimage.setImageResource(R.drawable.heart_sr);
                             smallwishimage.setImageResource(R.drawable.heart_sr);
-                            wishTxt.setText("Saved to wishlist");
+                            wishTxt.setText(mContext.getString(R.string.wishlist_saved));
                             //HomeActivity.wish_list.add(test);
                             Experience exp = getExperience(Integer.parseInt(test));
-                            if (exp != null) {
-                                HomeActivity.wish_map.put(test, exp);
-                                ToastHelper.shortToast("saved to wishlist");
-                            } else
-                                ToastHelper.errorToast("unable to save");
+                            if(exp != null)
+                            {
+                                HomeActivity.wish_map.put(test,exp);
+                                ToastHelper.shortToast(mContext.getString(R.string.wishlist_saved));
+                            }
+                            else{
+                                ToastHelper.errorToast(mContext.getString(R.string.wishlist_error));
+                            }
                         }
-                    } else {
+                    }
+                    else{
                         ToastHelper.warnToast(mContext.getString(R.string.wish_log_in_msg));
                     }
                 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
-    <string name="server_url">https://www.tripalocal.com</string>
+    <string name="server_url">https://www.tripalocal.com/</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Blank</string>
@@ -63,15 +63,15 @@
     <string name="exp_list_duration">hrs</string>
 
     <string name="exp_reservation">Reservation with </string>
-    <string name="exp_detail_food">Food: NA</string>
-    <string name="exp_detail_tickets">Tickets : NA</string>
-    <string name="exp_detail_transport">Transport : NA </string>
+    <string name="exp_detail_food">Food:\u0020</string>
+    <string name="exp_detail_tickets">Tickets:\u0020</string>
+    <string name="exp_detail_transport">Transport:\u0020</string>
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
     <string name="view_more">View More</string>
     <string name="view_less">Less</string>
     <string name="no_review_content">No review</string>
-    <string name="exp_detail_reviews">Reviews</string>
-    <string name="exp_detail_about_the_host">About the host, </string>
+    <string name="exp_detail_reviews">\u0020Reviews</string>
+    <string name="exp_detail_about_the_host">About the host,\u0020</string>
     <string name="exp_detail_per_person_text">per person </string>
     <string name="exp_detail_per_person_for">for </string>
     <string name="exp_detail_per_person_hour">hour(s)</string>
@@ -151,6 +151,7 @@
     <string name="toast_feature_coming">Feature coming soon ...</string>
     <string name="toast_signup_success">Successfully signed in</string>
     <string name="toast_signup_failure">Sign up failed</string>
+    <string name="toast_searched_with">Searched with\u0020</string>
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>

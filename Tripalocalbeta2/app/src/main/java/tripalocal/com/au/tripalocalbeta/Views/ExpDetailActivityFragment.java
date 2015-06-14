@@ -219,10 +219,10 @@ public class ExpDetailActivityFragment extends Fragment {
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
         info_more.setText(exp_to_display.getExperience_description());
-        host_title.setText("About the Host, " +exp_to_display.getHost_firstname());
+        host_title.setText(exp_to_display.getHost_firstname() + " " + exp_to_display.getHost_lastname().substring(0, 1) + ".");
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
-        review_title.setText(exp_to_display.getExperience_reviews().size()+" Reviews");
+        review_title.setText(String.valueOf(exp_to_display.getExperience_reviews().size()));
         if(exp_to_display.getExperience_reviews().isEmpty()){
             review_more_btn.setVisibility(View.INVISIBLE);
         }
@@ -249,13 +249,13 @@ public class ExpDetailActivityFragment extends Fragment {
             review_content_less.setText(top_review.getReview_comment());
         }
         if(exp_to_display.isIncludedFood()){
-            food_info.setText("Food : "+exp_to_display.getIncluded_food_detail());
+            food_info.setText(exp_to_display.getIncluded_food_detail());
         }
         if(exp_to_display.isIncludedTransport()){
-            transport_info.setText("Transport : "+exp_to_display.getIncluded_transport_detail());
+            transport_info.setText(exp_to_display.getIncluded_transport_detail());
         }
         if(exp_to_display.isIncludedTicket()){
-            tickets_info.setText("Tickets : "+exp_to_display.getIncluded_ticket_detail());
+            tickets_info.setText(exp_to_display.getIncluded_ticket_detail());
         }
         getActivity().setTitle(exp_to_display.getExperience_title());
     }
