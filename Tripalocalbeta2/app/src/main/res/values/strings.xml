@@ -7,6 +7,7 @@
     <string name="placeholder_content">Loading</string>
     <string name="gibber"> </string>
     <string name="sub_head_gibber">Loading</string>
+    <string name="bullet">\u2022</string>
 
     <string name="action_login">Log In</string>
     <string name="action_search">Search</string>
@@ -45,6 +46,12 @@
     <string name="navigation_wishlist">Wishlist</string>
     <string name="navigation_messages">Messages</string>
     <string name="navigation_myprofile">My Profile</string>
+    <string name="nav_terms_of_service_link">Terms of Service</string>
+    <string name="nav_privacy_policy">Privacy Policy</string>
+    <string name="nav_about_us">About Us</string>
+
+    <string name="exp_list_per_person">AUD/person</string>
+    <string name="exp_list_duration">hrs</string>
 
     <string name="exp_reservation">Reservation with </string>
     <string name="exp_detail_food">Food: NA</string>
@@ -109,9 +116,10 @@
     <string name="checkout_duration_placeholder">0hrs .</string>
     
     <string name="wishlist_title">Your Wishlist</string>
-    <string name="nav_terms_of_service_link">Terms of Service</string>
-    <string name="nav_privacy_policy">Privacy Policy</string>
-    <string name="nav_about_us">About Us</string>
+    <string name="wishlist_save">Save to wishlist</string>
+    <string name="wishlist_saved">Saved to wishlist</string>
+    <string name="wishlist_removed">Removed from wishlist</string>
+    <string name="wishlist_error">Unable to save</string>
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>
@@ -138,6 +146,4 @@
         <item>Greater Region, QLD</item>
         <item>Greater Region, NSW</item>
     </string-array>
-
-
 </resources>

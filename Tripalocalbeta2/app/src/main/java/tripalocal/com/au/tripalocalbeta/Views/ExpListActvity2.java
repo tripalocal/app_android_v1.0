@@ -33,6 +33,7 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 public class ExpListActvity2 extends AppCompatActivity {
 
     public static int city_position;
+    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,11 @@ public class ExpListActvity2 extends AppCompatActivity {
         if(CheckoutActivity.experience_to_book != null)
             CheckoutActivity.experience_to_book = null;
         setContentView(R.layout.activity_exp_list_actvity2);
+        mContext = this;
+    }
+
+    public static Context getContext(){
+        return mContext;
     }
 
     private void displayWishList() {

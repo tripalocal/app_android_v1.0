@@ -19,6 +19,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity;
+import tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
@@ -62,7 +63,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         Experience exp_to_display = all_experiences.get(position);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + exp_to_display.getId()+ "_1.jpg").fitCenter().into(holder.bannerImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
-        holder.bannerTxt.setText("from $" + REAL_FORMATTER.format(exp_to_display.getPrice())+ " AUD/person");
+        holder.bannerTxt.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         holder.titleTxt.setText(exp_to_display.getTitle());
         holder.infoTxt.setText(exp_to_display.getDescription());
         holder.dataTxt.setText(exp_to_display.getId().toString());
@@ -74,14 +75,14 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
-                holder.wishTxt.setText("Saved to wishlist");
+                holder.wishTxt.setText(ExpListActvity2.getContext().getString(R.string.wishlist_saved));
             }else{
                 holder.wishimage.setImageResource(R.drawable.heart_sw);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sw);
-                holder.wishTxt.setText("Save to wishlist");
+                holder.wishTxt.setText(ExpListActvity2.getContext().getString(R.string.wishlist_save));
             }
         }
-        holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
+        holder.durationTxt.setText(exp_to_display.getDuration().toString());
         // todo @naveen get the language from the experience
         holder.languageTxt.setText("English");
         holder.bannerContainer.setTag(exp_to_display.getId());
@@ -128,23 +129,23 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                     if(HomeActivity.wish_map.containsKey(test)){
                         wishimage.setImageResource(R.drawable.heart_sw);
                         smallwishimage.setImageResource(R.drawable.heart_sw);
-                        wishTxt.setText("Save to wishlist");
+                        wishTxt.setText(ExpListActvity2.getContext().getString(R.string.wishlist_save));
                         //HomeActivity.wish_list.remove(test);
                         HomeActivity.wish_map.remove(test);
-                        ToastHelper.shortToast("removed from wishlist");
+                        ToastHelper.shortToast(ExpListActvity2.getContext().getString(R.string.wishlist_removed));
                     } else {
                         wishimage.setImageResource(R.drawable.heart_sr);
                         smallwishimage.setImageResource(R.drawable.heart_sr);
-                        wishTxt.setText("Saved to wishlist");
+                        wishTxt.setText(ExpListActvity2.getContext().getString(R.string.wishlist_saved));
                         //HomeActivity.wish_list.add(test);
                         Experience exp = getExperience(Integer.parseInt(test));
                         if(exp != null)
                         {
                             HomeActivity.wish_map.put(test,exp);
-                            ToastHelper.shortToast("saved to wishlist");
+                            ToastHelper.shortToast(ExpListActvity2.getContext().getString(R.string.wishlist_saved));
                         }
                         else
-                        ToastHelper.errorToast("unable to save");
+                        ToastHelper.errorToast(ExpListActvity2.getContext().getString(R.string.wishlist_error));
                     }
                 }
             });
