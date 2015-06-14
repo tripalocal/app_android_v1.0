@@ -33,7 +33,6 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 public class ExpListActvity2 extends AppCompatActivity {
 
     public static int city_position;
-    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +51,10 @@ public class ExpListActvity2 extends AppCompatActivity {
         if(CheckoutActivity.experience_to_book != null)
             CheckoutActivity.experience_to_book = null;
         setContentView(R.layout.activity_exp_list_actvity2);
-        mContext = this;
-    }
-
-    public static Context getContext(){
-        return mContext;
     }
 
     private void displayWishList() {
-        ToastHelper.shortToast("Showing your wishlist");
+        ToastHelper.shortToast(getResources().getString(R.string.toast_showing_wishlist));
         FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
     }
 
@@ -68,7 +62,7 @@ public class ExpListActvity2 extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
         if(HomeActivity.getCurrent_user().isLoggedin()){
-            menu.findItem(R.id.action_login).setTitle("Log Out");
+            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
         }
         return true;
     }
@@ -92,7 +86,7 @@ public class ExpListActvity2 extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
-                ToastHelper.shortToast("Logged out");
+                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
                         .replace(R.id.exp_list_fragment_container, new LoginFragment()).commit();
@@ -118,13 +112,13 @@ public class ExpListActvity2 extends AppCompatActivity {
                 .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast("Contacting Server...");
+        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
             @Override
             public void success(List<Search_Result> search_results, Response response) {
                 ExperienceListAdapter.prepareSearchResults(search_results);
                 System.out.println("search_results = " + search_results);
-                ToastHelper.shortToast("Showing experiences for " + HomeActivity.poi_data[position]);
+                ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
                 FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
             }
             @Override

@@ -127,11 +127,11 @@ public class ExpDetailActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(info_less.getVisibility() == View.GONE){
-                    info_view_more_btn.setText("View More");
+                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
                     info_less.setVisibility(View.VISIBLE);
                     info_more.setVisibility(View.GONE);
                 }else{
-                    info_view_more_btn.setText("View Less");
+                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
                     info_less.setVisibility(View.GONE);
                     info_more.setVisibility(View.VISIBLE);
                 }
@@ -179,7 +179,7 @@ public class ExpDetailActivityFragment extends Fragment {
                 .setEndpoint("http://adventure007.cloudapp.net/")
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast("Contacting Server...");
+        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         request req = new request(exp_id);
         apiService.getExpDetails(req, new Callback<Experience_Detail>() {
@@ -191,7 +191,7 @@ public class ExpDetailActivityFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                ToastHelper.errorToast("Error occurred");
+                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
     }

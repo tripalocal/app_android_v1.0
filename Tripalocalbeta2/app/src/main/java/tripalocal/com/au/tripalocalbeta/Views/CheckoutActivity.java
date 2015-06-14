@@ -38,7 +38,7 @@ public class CheckoutActivity extends AppCompatActivity {
 public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
     if(HomeActivity.getCurrent_user().isLoggedin()){
-        menu.findItem(R.id.action_login).setTitle("Log Out");
+        menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
     }
     return true;
 }
@@ -57,7 +57,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
-                ToastHelper.shortToast("Logged out");
+                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else
                 getSupportFragmentManager().beginTransaction().replace(R.id.checkout_fragment_container,new LoginFragment()).commit();
             return true;

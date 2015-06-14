@@ -63,10 +63,10 @@ public class MyTripActivity extends ActionBarActivity {
                 {
                     MyTripAdapter.myTrip = upcomingTrip;
                     category=0;
-                    upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                    upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
-                    previousTripButton.setTextColor(Color.parseColor("#33cccc"));
-                    previousTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 }
             }
@@ -79,10 +79,10 @@ public class MyTripActivity extends ActionBarActivity {
                 if (category == 0) {
                     MyTripAdapter.myTrip = previousTrip;
                     category = 1;
-                    upcomingTripButton.setTextColor(Color.parseColor("#33cccc"));
-                    upcomingTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
-                    previousTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                    previousTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
+                    upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
                     rv.setAdapter(new MyTripAdapter(getApplicationContext()));
                 }
             }
@@ -227,7 +227,7 @@ public class MyTripActivity extends ActionBarActivity {
     {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("https://www.tripalocal.com")//http://adventure007.cloudapp.net
+                .setEndpoint("http://adventure007.cloudapp.net")//https://www.tripalocal.com
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
@@ -247,20 +247,20 @@ public class MyTripActivity extends ActionBarActivity {
                 if(!upcomingTrip.isEmpty()) {
                     MyTripAdapter.myTrip = upcomingTrip;
                     category = 0;
-                    upcomingTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                    upcomingTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
-                    previousTripButton.setTextColor(Color.parseColor("#33cccc"));
-                    previousTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     tl_none.setVisibility(View.GONE);
                 }
                 else if(!previousTrip.isEmpty())
                 {
                     MyTripAdapter.myTrip = previousTrip;
                     category = 1;
-                    previousTripButton.setTextColor(Color.parseColor("#f7f7f7"));
-                    previousTripButton.setBackgroundColor(Color.parseColor("#33cccc"));
-                    upcomingTripButton.setTextColor(Color.parseColor("#33cccc"));
-                    upcomingTripButton.setBackgroundColor(Color.parseColor("#f7f7f7"));
+                    previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
+                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     tl_none.setVisibility(View.GONE);
                 }
                 else

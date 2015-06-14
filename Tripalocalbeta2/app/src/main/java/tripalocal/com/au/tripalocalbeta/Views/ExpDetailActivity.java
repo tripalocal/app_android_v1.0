@@ -46,7 +46,7 @@ public class ExpDetailActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
         if(HomeActivity.getCurrent_user().isLoggedin()){
-            menu.findItem(R.id.action_login).setTitle("Log Out");
+            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
         }
         return true;
     }
@@ -65,7 +65,7 @@ public class ExpDetailActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
-                ToastHelper.shortToast("Logged out");
+                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else
             getSupportFragmentManager().beginTransaction().addToBackStack("login")
                     .replace(R.id.detail_frag_container,new LoginFragment()).commit();

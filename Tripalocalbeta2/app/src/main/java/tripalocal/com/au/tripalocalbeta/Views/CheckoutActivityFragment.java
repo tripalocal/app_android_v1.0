@@ -231,7 +231,7 @@ public class CheckoutActivityFragment extends Fragment {
                     .setEndpoint("http://adventure007.cloudapp.net/")
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
-            ToastHelper.longToast("Contacting Server...");
+            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             request req = new request(CheckoutActivity.position);
             apiService.getExpDetails(req, new Callback<Experience_Detail>() {
@@ -242,7 +242,7 @@ public class CheckoutActivityFragment extends Fragment {
                 }
                 @Override
                 public void failure(RetrofitError error) {
-                    ToastHelper.errorToast("Error occurred");
+                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
                 }
             });
         }

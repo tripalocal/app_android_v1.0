@@ -20,6 +20,7 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2;
 import tripalocal.com.au.tripalocalbeta.models.ImageDownloader;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 
@@ -55,10 +56,10 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             System.out.println(pe.toString());
         }
 
-        sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf = new SimpleDateFormat(mContext.getResources().getString(R.string.mytrip_date_format));
         if(sdf.format(dt).equalsIgnoreCase(sdf.format(Calendar.getInstance().getTime())))
         {
-            holder.bookingDate.setText("Today");
+            holder.bookingDate.setText(mContext.getResources().getString(R.string.mytrip_date_today));
             holder.bookingDate.setTextColor(Color.RED);
         }
         else
@@ -68,27 +69,27 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         sdf = new SimpleDateFormat("HH:mm");
         holder.bookingTime.setText(sdf.format(dt));
         holder.expTitle.setText(result.getExperienceTitle());
-        holder.expTitle.setTextColor(Color.parseColor("#33cccc"));
+        holder.expTitle.setTextColor(mContext.getResources().getColor(R.color.tripalocal_green_blue));
         holder.guestNumber.setText(Integer.toString(result.getGuestNumber()));
-        holder.hostName.setText("with "+result.getHostName());
+        holder.hostName.setText(result.getHostName());
         holder.hostPhoneNumber.setText(result.getHostPhoneNumber());
 
         String st = result.getStatus();
         if(result.getStatus().equalsIgnoreCase("accepted"))
         {
-            st="Confirmed";
+            st=mContext.getString(R.string.mytrip_status_confirmed);
             holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_confirmed_shape));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("paid"))
         {
-            st="Requested";
+            st=mContext.getString(R.string.mytrip_status_requested);
             holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_requested_shape));
             holder.status.setTextColor(Color.WHITE);
         }
         else if(result.getStatus().equalsIgnoreCase("rejected"))
         {
-            st="Cancelled";
+            st=mContext.getString(R.string.mytrip_status_cancelled);
             holder.status.setBackground(mContext.getResources().getDrawable(R.drawable.my_trip_status_cancelled_shape));
             holder.status.setTextColor(Color.WHITE);
         }

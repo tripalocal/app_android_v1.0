@@ -174,7 +174,7 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                ToastHelper.shortToast("search submitted");
+                ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
                 return false;
             }
             @Override
