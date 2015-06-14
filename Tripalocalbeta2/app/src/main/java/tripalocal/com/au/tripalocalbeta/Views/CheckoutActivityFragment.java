@@ -29,6 +29,7 @@ import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+import tripalocal.com.au.tripalocalbeta.models.exp_detail.AvailableOption;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 
@@ -286,12 +287,15 @@ public class CheckoutActivityFragment extends Fragment {
             booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
             np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
             List<String> temp_dates = new ArrayList<>();
-            for(List<String> str : temp_detail_exp.getAvailable_date()){
-                temp_dates.add(str.get(0));
+            List<String> temp_times = new ArrayList<>();
+            for(AvailableOption option : temp_detail_exp.getAvailable_options()){
+                temp_dates.add(option.getDate_string());
+                temp_times.add(option.getTime_string());
             }
             ArrayAdapter<String> date_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_dates);
+            ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_times);
             date_spin.setAdapter(date_adapter);
-            time_spin.setAdapter(date_adapter);
+            time_spin.setAdapter(time_adapter);
             refund.setMovementMethod(LinkMovementMethod.getInstance());
             String text = "<a href='https://www.tripalocal.com/refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
             refund.setText(Html.fromHtml(text));
