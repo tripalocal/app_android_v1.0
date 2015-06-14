@@ -111,7 +111,7 @@ public class LoginFragment extends Fragment {
         ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
          RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
-                    .setEndpoint("https://www.tripalocal.com")
+                    .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
 

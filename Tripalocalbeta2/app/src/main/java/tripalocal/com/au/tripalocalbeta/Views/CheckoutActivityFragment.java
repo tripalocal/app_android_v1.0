@@ -52,7 +52,8 @@ public class CheckoutActivityFragment extends Fragment {
     View booking_row_3;
     View booking_row_4;
     View booking_row_5;
-    TextView booking_price_and_person;
+    TextView booking_price;
+    TextView booking_guest_number;
     TextView booking_price_and_person_amt;
     TextView refund;
     Spinner date_spin;
@@ -200,7 +201,8 @@ public class CheckoutActivityFragment extends Fragment {
             }
         });
 
-        booking_price_and_person = (TextView) view.findViewById(R.id.booking_price_and_person_txt);
+        booking_price = (TextView) view.findViewById(R.id.booking_price);
+        booking_guest_number = (TextView) view.findViewById(R.id.booking_guest_number);
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
         np.setMinValue(1);
@@ -209,7 +211,8 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 guests = newVal;
-                booking_price_and_person.setText("$"+ price_s + " AUD x "+ guests+" pp");
+                booking_price.setText(price_s);
+                booking_guest_number.setText(String.valueOf(guests));
                 booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
             }
         });
@@ -228,7 +231,7 @@ public class CheckoutActivityFragment extends Fragment {
         if(CheckoutActivity.position != 999){
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
-                    .setEndpoint("http://adventure007.cloudapp.net/")
+                    .setEndpoint(getResources().getString(R.string.server_url))
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
@@ -283,7 +286,8 @@ public class CheckoutActivityFragment extends Fragment {
             }
             price_i = temp_detail_exp.getExperience_price();
             price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
-            booking_price_and_person.setText("$"+ price_s+ " AUD x "+ guests+" pp");
+            booking_price.setText(price_s);
+            booking_guest_number.setText(String.valueOf(guests));
             booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
             np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
             List<String> temp_dates = new ArrayList<>();

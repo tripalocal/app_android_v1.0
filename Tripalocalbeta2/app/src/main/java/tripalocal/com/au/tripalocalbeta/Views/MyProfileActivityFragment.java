@@ -49,16 +49,16 @@ public class MyProfileActivityFragment extends Fragment {
         //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net")// https://www.tripalocal.com
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
-                        //request.addHeader("Authorization", "Token " + temp_token);
-                    }
-                })
-                .build();
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
+                        .setRequestInterceptor(new RequestInterceptor() {
+                            @Override
+                            public void intercept(RequestFacade request) {
+                                request.addHeader("Accept", "application/json");
+                                request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+                                //request.addHeader("Authorization", "Token " + temp_token);
+                            }
+                        })
+                        .build();
 
         ApiService apiService = restAdapter.create(ApiService.class);
         apiService.getMyProfileDetails(new Callback<MyProfile_result>() {

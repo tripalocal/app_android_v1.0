@@ -176,7 +176,7 @@ public class ExpDetailActivityFragment extends Fragment {
     public void getExpDetails(int exp_id){
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net/")
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));

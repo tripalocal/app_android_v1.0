@@ -109,7 +109,7 @@ public class ExpListActvity2 extends AppCompatActivity {
                 HomeActivity.db_poi_data[position],"2", keywords);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://adventure007.cloudapp.net/")
+                .setEndpoint(getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         ToastHelper.longToast(getResources().getString(R.string.toast_contacting));

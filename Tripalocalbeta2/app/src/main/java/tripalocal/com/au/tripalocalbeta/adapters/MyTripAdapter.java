@@ -100,9 +100,9 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
         holder.status.setText(st);
         holder.meetupSpot.setText(result.getMeetupSpot());
 
-        new ImageDownloader(holder.expImage).execute("http://adventure007.cloudapp.net/images/thumbnails/experiences/experience"
+        new ImageDownloader(holder.expImage).execute(mContext.getResources().getString(R.string.server_url) + "/images/thumbnails/experiences/experience"
                 +result.getExperienceId()+"_1.jpg");
-        new ImageDownloader(holder.profileImage).execute("http://adventure007.cloudapp.net/images/"
+        new ImageDownloader(holder.profileImage).execute(mContext.getResources().getString(R.string.server_url) + "/images/"
                 +result.getHostImage());
 
         holder.itemView.setTag(position);
