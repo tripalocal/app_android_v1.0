@@ -159,8 +159,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         else if(getIntent().getIntExtra("fragmentNumber",0)==3)
         {
-            DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawerLayout.openDrawer(GravityCompat.START);
+            tpDrawer.openDrawer(GravityCompat.START);
         }
     }
 
@@ -222,6 +221,24 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_login) {
+            if(HomeActivity.getCurrent_user().isLoggedin()){
+                HomeActivity.getCurrent_user().setLogin_token(null);
+                HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.setAccessToken(null);
+                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor_l = settings_l.edit();
+                editor_l.clear();
+                editor_l.apply();
+                tpDrawer.invalidate();
+                ToastHelper.shortToast("Logged out");
+            }else {
+                getSupportFragmentManager().beginTransaction().addToBackStack("login")
+                        .replace(R.id.fragment_container, new LoginFragment()).commit();
+            }
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

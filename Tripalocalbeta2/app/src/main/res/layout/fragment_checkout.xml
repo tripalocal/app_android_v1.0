@@ -244,15 +244,6 @@
                         android:popupBackground="@color/tripalocal_light_grey"
                         android:layout_weight="1">
                     </Spinner>
-                    <!--<Button
-                        android:id="@+id/booking_Select_Date_Btn"
-                        android:text="@string/checkout_select_date_label"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/my_trip_call_button_shape"
-                        android:textColor="@color/tripalocal_green_blue"/>-->
 
                     <Spinner android:id="@+id/booking_Select_Time_spinner"
                         android:text="@string/checkout_select_time_label"
@@ -260,15 +251,6 @@
                         android:layout_marginLeft="20dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"/>
-                    <!--<Button
-                        android:id="@+id/booking_Select_Time_Btn"
-                        android:text="@string/checkout_select_time_label"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/my_trip_call_button_shape"
-                        android:textColor="@color/tripalocal_green_blue"/>-->
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"

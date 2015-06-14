@@ -56,9 +56,13 @@ public class LoginFragment extends Fragment {
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                 startActivity(intent);
+<<<<<<< HEAD
+                ToastHelper.longToast("FB Login success");
+=======
                 /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
                 nav_view.invalidate();*/
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_fb_login_success));
+>>>>>>> origin/master
                 HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
             }
 
@@ -125,10 +129,18 @@ public class LoginFragment extends Fragment {
                     HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
+<<<<<<< HEAD
+                    /*Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
+                    startActivity(intent);*/
+                    ToastHelper.longToast("log in success");
+                    getActivity().onBackPressed();
+                    //HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
+=======
                     Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
                     startActivity(intent);
                     ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_login_success));
                     HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
+>>>>>>> origin/master
                 }
 
                 @Override

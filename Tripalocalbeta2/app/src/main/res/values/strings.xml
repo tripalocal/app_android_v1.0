@@ -127,6 +127,14 @@
     <string name="checkout_duration_placeholder">0hrs .</string>
     
     <string name="wishlist_title">Your Wishlist</string>
+<<<<<<< HEAD
+    <string name="nav_terms_of_service_link">Terms of Service</string>
+    <string name="nav_privacy_policy">Privacy Policy</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="wish_log_in_msg">Please Log in to Save</string>
+    <string name="save_to_wishlist">Save to wishlist</string>
+    <string name="saved_to_wishlist">Saved to wishlist</string>
+=======
     <string name="wishlist_save">Save to wishlist</string>
     <string name="wishlist_saved">Saved to wishlist</string>
     <string name="wishlist_removed">Removed from wishlist</string>
@@ -148,6 +156,7 @@
     <string name="toast_feature_coming">Feature coming soon ...</string>
     <string name="toast_signup_success">Successfully signed in</string>
     <string name="toast_signup_failure">Sign up failed</string>
+>>>>>>> origin/master
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>

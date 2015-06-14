@@ -63,9 +63,6 @@ public class NavigationFragment extends Fragment {
         Button loginBtn;
 
         if(HomeActivity.getCurrent_user().isLoggedin()) {
-            /*if(my_profile)
-                view = inflater.inflate(R.layout.myprofile_navigation, container, false);
-            else*/
             view = inflater.inflate(R.layout.user_sidebar_navigation, container, false);
             getProfileDetails(view);
         }
@@ -90,19 +87,6 @@ public class NavigationFragment extends Fragment {
 
         profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
-        tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
-        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String tos_text_content = "<a href='https://www.tripalocal.com/termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
-        tos_txt.setText(Html.fromHtml(tos_text_content));
-        privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
-        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String priv_text_content = "<a href='https://www.tripalocal.com/privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
-        privacy_txt.setText(Html.fromHtml(priv_text_content));
-        about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
-        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String about_text_content = "<a href='https://www.tripalocal.com/aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
-        about_txt.setText(Html.fromHtml(about_text_content));
-       /// if(!my_profile){
             view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -136,7 +120,6 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //ToastHelper.shortToast("my profile nav");
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.closeDrawers();
                     Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
@@ -185,7 +168,17 @@ public class NavigationFragment extends Fragment {
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
+        tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
+        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String tos_text_content = "<a href='https://www.tripalocal.com/termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
+        tos_txt.setText(Html.fromHtml(tos_text_content));
+        privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
+        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String priv_text_content = "<a href='https://www.tripalocal.com/privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
+        privacy_txt.setText(Html.fromHtml(priv_text_content));
+        about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
+        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String about_text_content = "<a href='https://www.tripalocal.com/aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
+        about_txt.setText(Html.fromHtml(about_text_content));
     }
-
-
 }
