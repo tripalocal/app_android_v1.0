@@ -111,14 +111,22 @@ public class ExpDetailActivityFragment extends Fragment {
         tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
 
-
+        if(request_to_book_btn.getVisibility() == View.GONE){
+            request_to_book_btn.setVisibility(View.VISIBLE);
+        }
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
-                intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                HomeActivity.getHome_context().startActivity(intent);
+                if(HomeActivity.getCurrent_user().isLoggedin()){
+                    Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
+                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    HomeActivity.getHome_context().startActivity(intent);
+                }else{
+                    getFragmentManager().beginTransaction().addToBackStack("login")
+                            .replace(R.id.detail_frag_container, new LoginFragment()).commit();
+                    request_to_book_btn.setVisibility(View.INVISIBLE);
+                }
             }
         });
 

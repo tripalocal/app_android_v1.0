@@ -68,22 +68,30 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.dataTxt.setText(exp_to_display.getId().toString());
         holder.dataTxt.setText(exp_to_display.getId().toString());
         //if(HomeActivity.wish_list != null) {
-        if(HomeActivity.wish_map != null){
+        if(HomeActivity.getCurrent_user().isLoggedin() && HomeActivity.wish_map != null){
             //if (HomeActivity.wish_map.containsKey(String.valueOf(ExpListActvity2.city_position) + String.valueOf(position))) {
             if(HomeActivity.wish_map.containsKey(exp_to_display.getId().toString())){
             //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
-                holder.wishTxt.setText("Saved to wishlist");
+                holder.wishTxt.setText(R.string.saved_to_wishlist);
             }else{
                 holder.wishimage.setImageResource(R.drawable.heart_sw);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sw);
-                holder.wishTxt.setText("Save to wishlist");
+                holder.wishTxt.setText(R.string.save_to_wishlist);
             }
         }
         holder.durationTxt.setText(". " + exp_to_display.getDuration().toString()+"hrs . ");
-        // todo @naveen get the language from the experience
-        holder.languageTxt.setText("English");
+        String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
+        String l= "";
+        for(int i=0;language!=null && i<language.length;i++)
+        {
+            switch(language[i]) {
+                case "english": l = "English";
+                case "english;mandarin": l = "English / 中文";
+            }
+        }
+        holder.languageTxt.setText(l);
         holder.bannerContainer.setTag(exp_to_display.getId());
     }
 
@@ -123,28 +131,33 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String test = dataTxt.getText().toString();
-                    //if (HomeActivity.wish_list.contains(test)) {
-                    if(HomeActivity.wish_map.containsKey(test)){
-                        wishimage.setImageResource(R.drawable.heart_sw);
-                        smallwishimage.setImageResource(R.drawable.heart_sw);
-                        wishTxt.setText("Save to wishlist");
-                        //HomeActivity.wish_list.remove(test);
-                        HomeActivity.wish_map.remove(test);
-                        ToastHelper.shortToast("removed from wishlist");
-                    } else {
-                        wishimage.setImageResource(R.drawable.heart_sr);
-                        smallwishimage.setImageResource(R.drawable.heart_sr);
-                        wishTxt.setText("Saved to wishlist");
-                        //HomeActivity.wish_list.add(test);
-                        Experience exp = getExperience(Integer.parseInt(test));
-                        if(exp != null)
-                        {
-                            HomeActivity.wish_map.put(test,exp);
-                            ToastHelper.shortToast("saved to wishlist");
+                    if(HomeActivity.getCurrent_user().isLoggedin()){
+                        String test = dataTxt.getText().toString();
+                        //if (HomeActivity.wish_list.contains(test)) {
+                        if(HomeActivity.wish_map.containsKey(test)){
+                            wishimage.setImageResource(R.drawable.heart_sw);
+                            smallwishimage.setImageResource(R.drawable.heart_sw);
+                            wishTxt.setText("Save to wishlist");
+                            //HomeActivity.wish_list.remove(test);
+                            HomeActivity.wish_map.remove(test);
+                            ToastHelper.shortToast("removed from wishlist");
+                        } else {
+                            wishimage.setImageResource(R.drawable.heart_sr);
+                            smallwishimage.setImageResource(R.drawable.heart_sr);
+                            wishTxt.setText("Saved to wishlist");
+                            //HomeActivity.wish_list.add(test);
+                            Experience exp = getExperience(Integer.parseInt(test));
+                            if(exp != null)
+                            {
+                                HomeActivity.wish_map.put(test,exp);
+                                ToastHelper.shortToast("saved to wishlist");
+                            }
+                            else
+                                ToastHelper.errorToast("unable to save");
                         }
-                        else
-                        ToastHelper.errorToast("unable to save");
+                    }
+                    else{
+                        ToastHelper.warnToast(mContext.getString(R.string.wish_log_in_msg));
                     }
                 }
             });

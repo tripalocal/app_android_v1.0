@@ -112,6 +112,9 @@
     <string name="nav_terms_of_service_link">Terms of Service</string>
     <string name="nav_privacy_policy">Privacy Policy</string>
     <string name="nav_about_us">About Us</string>
+    <string name="wish_log_in_msg">Please Log in to Save</string>
+    <string name="save_to_wishlist">Save to wishlist</string>
+    <string name="saved_to_wishlist">Saved to wishlist</string>
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>
