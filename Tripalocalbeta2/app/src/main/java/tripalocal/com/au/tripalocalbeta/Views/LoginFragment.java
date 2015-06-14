@@ -4,7 +4,6 @@ package tripalocal.com.au.tripalocalbeta.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,16 +53,9 @@ public class LoginFragment extends Fragment {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
-                Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
-                startActivity(intent);
-<<<<<<< HEAD
-                ToastHelper.longToast("FB Login success");
-=======
-                /*View nav_view = getActivity().findViewById(R.id.nav_drawer);
-                nav_view.invalidate();*/
+                HomeActivity.tpDrawer.invalidate();
+                getActivity().onBackPressed();
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_fb_login_success));
->>>>>>> origin/master
-                HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
             }
 
             @Override
@@ -129,18 +121,9 @@ public class LoginFragment extends Fragment {
                     HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
-<<<<<<< HEAD
-                    /*Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
-                    startActivity(intent);*/
-                    ToastHelper.longToast("log in success");
+                    HomeActivity.tpDrawer.invalidate();
                     getActivity().onBackPressed();
-                    //HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
-=======
-                    Intent intent = new Intent(HomeActivity.getHome_context(), HomeActivity.class);
-                    startActivity(intent);
                     ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_login_success));
-                    HomeActivity.tpDrawer.openDrawer(GravityCompat.START);
->>>>>>> origin/master
                 }
 
                 @Override

@@ -111,7 +111,7 @@ public class ExpDetailActivityFragment extends Fragment {
         tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
 
-        if(request_to_book_btn.getVisibility() == View.GONE){
+        if(request_to_book_btn.getVisibility() == View.INVISIBLE){
             request_to_book_btn.setVisibility(View.VISIBLE);
         }
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {

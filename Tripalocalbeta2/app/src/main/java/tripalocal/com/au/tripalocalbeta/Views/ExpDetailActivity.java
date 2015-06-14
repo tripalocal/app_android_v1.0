@@ -65,6 +65,7 @@ public class ExpDetailActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
+                HomeActivity.tpDrawer.invalidate();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else
             getSupportFragmentManager().beginTransaction().addToBackStack("login")

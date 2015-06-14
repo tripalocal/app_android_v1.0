@@ -19,7 +19,6 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity;
-import tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
@@ -75,7 +74,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
-<<<<<<< HEAD
                 holder.wishTxt.setText(R.string.saved_to_wishlist);
             }else{
                 holder.wishimage.setImageResource(R.drawable.heart_sw);
@@ -94,19 +92,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             }
         }
         holder.languageTxt.setText(l);
-=======
-                holder.wishTxt.setText(mContext.getString(R.string.wishlist_saved));
-            }else{
-                holder.wishimage.setImageResource(R.drawable.heart_sw);
-                holder.smallwishimage.setImageResource(R.drawable.heart_sw);
-                holder.wishTxt.setText(mContext.getString(R.string.wishlist_save));
-            }
-        }
-        holder.durationTxt.setText(exp_to_display.getDuration().toString());
-        // todo @naveen get the language from the experience
-        holder.languageTxt.setText("English");
->>>>>>> origin/master
-        holder.bannerContainer.setTag(exp_to_display.getId());
     }
 
 
@@ -142,14 +127,19 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             wishimage = (ImageView) itemView.findViewById(R.id.exp_list_wish_image);
             smallwishimage = (ImageView) itemView.findViewById(R.id.exp_list_small_wish);
             dataTxt = (TextView) itemView.findViewById(R.id.data_txt);
+            wishTxt = (TextView) itemView.findViewById(R.id.exp_list_wish_text);
+            durationTxt = (TextView) itemView.findViewById(R.id.exp_list_duration);
+            languageTxt = (TextView) itemView.findViewById(R.id.exp_list_language);
+            bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
+            bannerContainer.setOnClickListener(this);
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-<<<<<<< HEAD
-                    if(HomeActivity.getCurrent_user().isLoggedin()){
+
+                    if (HomeActivity.getCurrent_user().isLoggedin()) {
                         String test = dataTxt.getText().toString();
                         //if (HomeActivity.wish_list.contains(test)) {
-                        if(HomeActivity.wish_map.containsKey(test)){
+                        if (HomeActivity.wish_map.containsKey(test)) {
                             wishimage.setImageResource(R.drawable.heart_sw);
                             smallwishimage.setImageResource(R.drawable.heart_sw);
                             wishTxt.setText("Save to wishlist");
@@ -162,49 +152,18 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             wishTxt.setText("Saved to wishlist");
                             //HomeActivity.wish_list.add(test);
                             Experience exp = getExperience(Integer.parseInt(test));
-                            if(exp != null)
-                            {
-                                HomeActivity.wish_map.put(test,exp);
+                            if (exp != null) {
+                                HomeActivity.wish_map.put(test, exp);
                                 ToastHelper.shortToast("saved to wishlist");
-                            }
-                            else
+                            } else
                                 ToastHelper.errorToast("unable to save");
                         }
-                    }
-                    else{
-                        ToastHelper.warnToast(mContext.getString(R.string.wish_log_in_msg));
-=======
-                    String test = dataTxt.getText().toString();
-                    //if (HomeActivity.wish_list.contains(test)) {
-                    if(HomeActivity.wish_map.containsKey(test)){
-                        wishimage.setImageResource(R.drawable.heart_sw);
-                        smallwishimage.setImageResource(R.drawable.heart_sw);
-                        wishTxt.setText(mContext.getString(R.string.wishlist_save));
-                        //HomeActivity.wish_list.remove(test);
-                        HomeActivity.wish_map.remove(test);
-                        ToastHelper.shortToast(mContext.getString(R.string.wishlist_removed));
                     } else {
-                        wishimage.setImageResource(R.drawable.heart_sr);
-                        smallwishimage.setImageResource(R.drawable.heart_sr);
-                        wishTxt.setText(mContext.getString(R.string.wishlist_saved));
-                        //HomeActivity.wish_list.add(test);
-                        Experience exp = getExperience(Integer.parseInt(test));
-                        if(exp != null)
-                        {
-                            HomeActivity.wish_map.put(test,exp);
-                            ToastHelper.shortToast(mContext.getString(R.string.wishlist_saved));
-                        }
-                        else
-                        ToastHelper.errorToast(mContext.getString(R.string.wishlist_error));
->>>>>>> origin/master
+                        ToastHelper.warnToast(mContext.getString(R.string.wish_log_in_msg));
                     }
                 }
             });
-            wishTxt = (TextView) itemView.findViewById(R.id.exp_list_wish_text);
-            durationTxt = (TextView) itemView.findViewById(R.id.exp_list_duration);
-            languageTxt = (TextView) itemView.findViewById(R.id.exp_list_language);
-            bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
-            bannerContainer.setOnClickListener(this);
+
         }
 
         public Experience getExperience(int id){
