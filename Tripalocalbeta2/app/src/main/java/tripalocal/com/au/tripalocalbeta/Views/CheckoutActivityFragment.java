@@ -66,7 +66,6 @@ public class CheckoutActivityFragment extends Fragment {
     static int time_sel = 0;
     static Experience_Detail temp_detail_exp;
 
-
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
 
     public CheckoutActivityFragment() {
@@ -213,6 +212,7 @@ public class CheckoutActivityFragment extends Fragment {
                 guests = newVal;
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
+                //if(temp_detail_exp.getExperience_dynamic_price() != null && newVal > 2)
                 booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
             }
         });

@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private static Context home_context;
     private static FragmentManager frag_manager;
     private static User current_user = new User();
-    private static String current_userid;
+    //private static String current_userid;
     private static AccessToken accessToken;
     private static Menu menu_ref = null;
     public static DrawerLayout tpDrawer ;
@@ -59,13 +59,13 @@ public class HomeActivity extends AppCompatActivity {
         HomeActivity.accessToken = accessToken;
     }
 
-    public static String getCurrent_userid() {
+    /*public static String getCurrent_userid() {
         return current_userid;
     }
 
     public static void setCurrent_userid(String current_userid) {
         HomeActivity.current_userid = current_userid;
-    }
+    }*/
 
     public static FragmentManager getFrag_manager() {
         return frag_manager;

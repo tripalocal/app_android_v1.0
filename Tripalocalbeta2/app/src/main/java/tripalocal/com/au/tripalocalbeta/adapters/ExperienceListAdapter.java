@@ -67,11 +67,8 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.infoTxt.setText(exp_to_display.getDescription());
         holder.dataTxt.setText(exp_to_display.getId().toString());
         holder.dataTxt.setText(exp_to_display.getId().toString());
-        //if(HomeActivity.wish_list != null) {
         if(HomeActivity.getCurrent_user().isLoggedin() && HomeActivity.wish_map != null){
-            //if (HomeActivity.wish_map.containsKey(String.valueOf(ExpListActvity2.city_position) + String.valueOf(position))) {
             if(HomeActivity.wish_map.containsKey(exp_to_display.getId().toString())){
-            //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
                 holder.wishTxt.setText(R.string.saved_to_wishlist);
@@ -92,6 +89,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             }
         }
         holder.languageTxt.setText(l);
+        holder.bannerContainer.setTag(exp_to_display.getId());
     }
 
 

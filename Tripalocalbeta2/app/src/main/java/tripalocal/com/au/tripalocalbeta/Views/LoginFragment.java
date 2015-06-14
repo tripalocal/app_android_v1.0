@@ -29,6 +29,9 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 
 public class LoginFragment extends Fragment {
 
+    String log_in_success;
+    String log_in_failed;
+
     private CallbackManager callbackManager;
 
     public LoginFragment() {
@@ -39,6 +42,8 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        log_in_success = getActivity().getResources().getString(R.string.toast_login_success);
+        log_in_failed = getActivity().getResources().getString(R.string.toast_login_failure);
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
@@ -51,7 +56,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
-                HomeActivity.setCurrent_userid("9900"); //id for FB login
+                //HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.tpDrawer.invalidate();
                 getActivity().onBackPressed();
@@ -118,17 +123,17 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void success(Login_Result result, Response response) {
                     HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                    HomeActivity.setCurrent_userid(result.getUser_id());
+                    //HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
                     HomeActivity.tpDrawer.invalidate();
                     getActivity().onBackPressed();
-                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_login_success));
+                    ToastHelper.longToast(log_in_success);
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_login_failure));
+                    ToastHelper.errorToast(log_in_failed);
                     System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }

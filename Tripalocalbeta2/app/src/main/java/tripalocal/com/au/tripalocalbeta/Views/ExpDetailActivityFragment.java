@@ -111,9 +111,6 @@ public class ExpDetailActivityFragment extends Fragment {
         tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
 
-        if(request_to_book_btn.getVisibility() == View.INVISIBLE){
-            request_to_book_btn.setVisibility(View.VISIBLE);
-        }
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +122,6 @@ public class ExpDetailActivityFragment extends Fragment {
                 }else{
                     getFragmentManager().beginTransaction().addToBackStack("login")
                             .replace(R.id.detail_frag_container, new LoginFragment()).commit();
-                    request_to_book_btn.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -172,10 +168,6 @@ public class ExpDetailActivityFragment extends Fragment {
                }
             }
         });
-        /*if(CheckoutActivity.experience_to_book != null){
-            exp_to_display = CheckoutActivity.experience_to_book;
-            fillDetails();
-        }else*/
             getExpDetails(ExpDetailActivity.position);
         return view;
     }
