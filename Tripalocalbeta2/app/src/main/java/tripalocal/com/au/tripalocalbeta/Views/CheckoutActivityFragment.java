@@ -258,7 +258,7 @@ public class CheckoutActivityFragment extends Fragment {
             Glide.with(HomeActivity.getHome_context()).load(ExpDetailActivityFragment.BASE_URL+
                     "thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(thumbnail);
             title.setText(temp_detail_exp.getExperience_title());
-            duration.setText(temp_detail_exp.getExperience_duration().toString()+" hrs . ");
+            duration.setText(temp_detail_exp.getExperience_duration().toString());
             String[] language = temp_detail_exp.getLanguage()!=null?temp_detail_exp.getLanguage().split(";"):new String[1];
             String l= "";
             for(int i=0;language!=null && i<language.length;i++)

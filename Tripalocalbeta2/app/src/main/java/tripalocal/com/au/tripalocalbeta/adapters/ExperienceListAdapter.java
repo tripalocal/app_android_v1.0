@@ -69,10 +69,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.dataTxt.setText(exp_to_display.getId().toString());
         if(HomeActivity.getCurrent_user().isLoggedin() && HomeActivity.wish_map != null){
             if(HomeActivity.wish_map.containsKey(exp_to_display.getId().toString())){
-<<<<<<< HEAD
-=======
-                //if(HomeActivity.wish_list.contains(exp_to_display.getId().toString())){
->>>>>>> origin/master
                 holder.wishimage.setImageResource(R.drawable.heart_sr);
                 holder.smallwishimage.setImageResource(R.drawable.heart_sr);
                 holder.wishTxt.setText(R.string.saved_to_wishlist);

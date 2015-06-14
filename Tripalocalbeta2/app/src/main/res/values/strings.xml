@@ -116,15 +116,15 @@
     <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
     <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
     <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
-    <string name="checkout_refund_text">You can also view our </string>
-    <string name="checkout_refund_link"> refund policy</string>
+    <string name="checkout_refund_text">You can also view our\u0020</string>
+    <string name="checkout_refund_link">refund policy</string>
     <string name="checkout_proceed_to_payment">Proceed to Payment</string>
     <string name="checkout_date">Date</string>
     <string name="checkout_time">Time</string>
     <string name="checkout_date_content_desc">date_img</string>
     <string name="checkout_time_content_desc">time_img</string>
     <string name="checkout_english">English</string>
-    <string name="checkout_duration_placeholder">0hrs .</string>
+    <string name="checkout_duration_placeholder">hrs\u0020\u2022\u0020</string>
     
     <string name="wishlist_title">Your Wishlist</string>
     <string name="wish_log_in_msg">Please Log in to Save</string>

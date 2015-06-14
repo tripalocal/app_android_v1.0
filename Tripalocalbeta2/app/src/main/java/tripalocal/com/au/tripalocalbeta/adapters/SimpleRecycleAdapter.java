@@ -20,11 +20,16 @@ import tripalocal.com.au.tripalocalbeta.Views.HomeActivityFragment;
  */
 public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdapter.SimpleViewHolder>{
 
-    private static final String[] places = {"Melbourne", "Sydney"};
+    private static final String[] places = {"Melbourne", "Sydney", "Brisbane", "Cairns", "Goldcoast", "Hobart", "Adelaide"};
     private static HomeActivityFragment HomeFrag;
 
     private static final String[] bg_urls = {"https://www.tripalocal.com/images/mobile/home/Melbourne.jpg",
-                                               "https://www.tripalocal.com/images/mobile/home/Sydney.jpg"};
+                                                "https://www.tripalocal.com/images/mobile/home/Sydney.jpg",
+                                                "https://www.tripalocal.com/images/mobile/home/Brisbane.jpg",
+                                                "https://www.tripalocal.com/images/mobile/home/Cairns.jpg",
+                                                "https://www.tripalocal.com/images/mobile/home/Goldcoast.jpg",
+                                                "https://www.tripalocal.com/images/mobile/home/Hobart.jpg",
+                                                "https://www.tripalocal.com/images/mobile/home/Adelaide.jpg"};
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

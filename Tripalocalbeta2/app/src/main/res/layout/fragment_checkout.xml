@@ -55,6 +55,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_duration"
+                            android:text=""/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_duration_text"
                             android:text="@string/checkout_duration_placeholder"/>
                         <TextView
                             android:layout_width="wrap_content"
