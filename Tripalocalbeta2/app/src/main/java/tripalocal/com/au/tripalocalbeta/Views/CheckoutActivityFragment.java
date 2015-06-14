@@ -301,7 +301,7 @@ public class CheckoutActivityFragment extends Fragment {
             date_spin.setAdapter(date_adapter);
             time_spin.setAdapter(time_adapter);
             refund.setMovementMethod(LinkMovementMethod.getInstance());
-            String text = "<a href='https://www.tripalocal.com/refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
+            String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
             refund.setText(Html.fromHtml(text));
         }
     }

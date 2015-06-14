@@ -170,15 +170,15 @@ public class NavigationFragment extends Fragment {
         });
         tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
         tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String tos_text_content = "<a href='https://www.tripalocal.com/termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
+        String tos_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
         tos_txt.setText(Html.fromHtml(tos_text_content));
         privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
         privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String priv_text_content = "<a href='https://www.tripalocal.com/privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
+        String priv_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
         privacy_txt.setText(Html.fromHtml(priv_text_content));
         about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
         about_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String about_text_content = "<a href='https://www.tripalocal.com/aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
+        String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
         about_txt.setText(Html.fromHtml(about_text_content));
     }
 }

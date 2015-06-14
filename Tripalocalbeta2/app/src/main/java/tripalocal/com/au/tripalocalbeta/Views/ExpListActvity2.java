@@ -98,9 +98,7 @@ public class ExpListActvity2 extends AppCompatActivity {
     }
 
     public void displayListFrag(final int position){
-        String keywords = "Food&Wine,Education,History&Culture,Architecture,For Couples," +
-                "Photography Worthy,Liveability Research,Kids Friendly,Outdoor&Nature,Shopping,Sports&Leisure," +
-                "Host with Car,Extreme Fun,Events,Health&Beauty";
+        String keywords = getResources().getString(R.string.tags);
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();
         cal.add(Calendar.DAY_OF_MONTH,1);

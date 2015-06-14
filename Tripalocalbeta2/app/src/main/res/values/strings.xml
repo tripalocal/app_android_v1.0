@@ -10,7 +10,8 @@
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
     <string name="with">with</string>
-
+	<string name="tags">Food&amp;Wine,Education,History&amp;Culture,Architecture,For Couples,Photography Worthy,Liveability Research,Kids Friendly,Outdoor&amp;Nature,Shopping,Sports&amp;Leisure,Host with Car,Extreme Fun,Events,Health&amp;Beauty</string>
+	
     <string name="action_login">Log In</string>
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
