@@ -25,6 +25,7 @@
     <string name="title_activity_my_trip">我的体验</string>
     <string name="title_activity_my_profile">个人信息</string>
     <string name="title_activity_review">条评论</string>
+	<string name="title_activity_alipay">支付宝</string>
 
     <string name="search_hint">搜索</string>
     <string name="search_title">搜索</string>
@@ -36,7 +37,7 @@
     <string name="my_trip_message">短信</string>
     <string name="my_trip_meetup_title">会合提示</string>
     <string name="my_trip_myTrip">我的体验</string>
-    <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
+    <string name="my_trip_hint">您还没有预订过体验。</string>
     <string name="my_trip_explore">去首页逛逛</string>
     <string name="mytrip_date_format">yyyy-MM-dd</string>
     <string name="mytrip_date_today">今天</string>
@@ -45,6 +46,7 @@
     <string name="mytrip_status_cancelled">已取消</string>
 
     <string name="nav_item1"></string>
+	<string name="navigation_item_2">首页</string>
     <string name="navigation_subheader">副标题</string>
     <string name="nav_item_2">首页</string>
     <string name="nav_profile_title">账户</string>
@@ -82,7 +84,7 @@
     <string name="loading_title"></string>
     <string name="checkout_title_placeholder"></string>
 
-    <string name="home_bg_city_content_desc">background_image_city</string>
+    <string name="home_bg_city_content_desc">城市背景图片</string>
     <string name="login_or">or</string>
     <string name="login_email">邮箱</string>
     <string name="login_password">密码</string>
@@ -99,7 +101,7 @@
     <string name="myprofile_how_to_contact">怎么联系你？</string>
     <string name="myprofile_local_number">当地手机号</string>
     <string name="myprofile_roaming_number">漫游手机号</string>
-    <string name="myprofile_number_explanation">This will be included in all booking requests and confirmations for hosts to see</string>
+    <string name="myprofile_number_explanation">在您预订了体验后，领路人将通过以上方式与您联系</string>
 
     <string name="checkout_date_placeholder">dd/mm/yy</string>
     <string name="checkout_time_placeholder">hh:mm</string>
@@ -113,17 +115,17 @@
     <string name="checkout_amount_placeholder"> </string>
     <string name="checkout_coupon_label">打折码</string>
     <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
-    <string name="checkout_ok_tochange_text">It\'s OK to change your mind</string>
-    <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
-    <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
-    <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
-    <string name="checkout_refund_text">You can also view our\u0020</string>
+    <string name="checkout_ok_tochange_text">您提交预订后仍可更改</string>
+    <string name="checkout_disclaim_1">如果您提前至少7个自然日取消预订，我们将全额退款</string>
+    <string name="checkout_disclaim_2">如果您提前3至6个自然日取消预订，我们将半额退款</string>
+    <string name="checkout_disclaim_3">如果您在少于3个自然日取消预订，您将获得半额退款</string>
+    <string name="checkout_refund_text">您也可以查看我们的\u0020</string>
     <string name="checkout_refund_link">退款政策</string>
     <string name="checkout_proceed_to_payment">付款</string>
     <string name="checkout_date">日期</string>
     <string name="checkout_time">时间</string>
-    <string name="checkout_date_content_desc">date_img</string>
-    <string name="checkout_time_content_desc">time_img</string>
+    <string name="checkout_date_content_desc">日期图标</string>
+    <string name="checkout_time_content_desc">时间图标</string>
     <string name="checkout_english"></string>
     <string name="checkout_duration_placeholder">小时\u0020\u2022\u0020</string>
     
