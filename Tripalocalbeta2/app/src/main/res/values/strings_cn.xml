@@ -154,6 +154,17 @@
     <string name="toast_signup_failure">登录失败</string>
     <string name="toast_searched_with">搜索\u0020</string>
 
+    <!--payement string-->
+    <string name="alipay">支付宝</string>
+    <string name="add_alipay_account">添加新的支付宝账户</string>
+    <string name="credit_card">信用卡</string>
+    <string name="add_new_credit_card">添加新的信用卡</string>
+    <string name="wechat">微信</string>
+    <string name="add_wechat_account">添加新的微信账户</string>
+    <string name="confirm_pay">确认并支付</string>
+    <string name="currency_conversion">汇率转换</string>
+
+    <!--end of payment string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

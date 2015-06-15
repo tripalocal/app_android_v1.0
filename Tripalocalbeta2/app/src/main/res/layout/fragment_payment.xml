@@ -28,18 +28,18 @@
             <ImageView
 
                 android:id="@+id/imageView"
-                android:layout_width="260px"
-                android:layout_height="200px"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
                 android:layout_column="0"
-                android:layout_marginBottom="20px"
-                android:layout_marginLeft="-20px"
-                android:layout_marginRight="30px"
-                android:layout_marginTop="40px"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/alipay" />
 
             <LinearLayout
                 android:id="@+id/te"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30px"
                 android:orientation="vertical">
@@ -48,8 +48,8 @@
                     android:id="@+id/Alipay_checkout_text"
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40px"
-                    android:text="Alipay"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/alipay"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="23sp"
                     android:clickable="true"
@@ -57,12 +57,12 @@
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="302dp"
+                    android:layout_width="227dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40px"
+                    android:layout_marginBottom="5dp"
 
-                    android:layout_marginTop="10px"
-                    android:text="Add new Alipay Account"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/add_alipay_account"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -86,14 +86,11 @@
             <ImageView
 
                 android:id="@+id/creadit_payment_img"
-                android:layout_width="260px"
-                android:layout_height="200px"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
                 android:layout_column="0"
-                android:layout_marginBottom="20px"
-                android:layout_marginLeft="-20px"
-                android:layout_marginRight="30px"
-                android:layout_marginTop="40px"
-                android:src="@drawable/creditcard_box" />
+                android:src="@drawable/creditcard_box"
+                android:layout_margin="5dp" />
 
             <LinearLayout
                 android:id="@+id/credit_options"
@@ -107,19 +104,19 @@
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="40px"
-                    android:text="Credit Card"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/credit_card"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="23sp" />
 
                 <TextView
                     android:id="@+id/add_creadit_account"
-                    android:layout_width="302dp"
+                    android:layout_width="227dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40px"
+                    android:layout_marginBottom="5dp"
 
-                    android:layout_marginTop="10px"
-                    android:text="Add new creadit card"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/add_new_credit_card"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -143,15 +140,12 @@
             <ImageView
 
                 android:id="@+id/wechat_payment_img"
-                android:layout_width="260px"
-                android:layout_height="200px"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
                 android:layout_column="0"
-                android:layout_marginBottom="20px"
-                android:layout_marginLeft="-20px"
-                android:layout_marginRight="30px"
-                android:layout_marginTop="40px"
                 android:focusableInTouchMode="false"
-                android:src="@drawable/wechat" />
+                android:src="@drawable/wechat"
+                android:layout_margin="5dp" />
 
             <LinearLayout
                 android:id="@+id/wechat_options"
@@ -165,19 +159,19 @@
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="40px"
-                    android:text="Wechat"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/wechat"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="23sp" />
 
                 <TextView
                     android:id="@+id/add_wechat_account"
-                    android:layout_width="302dp"
+                    android:layout_width="227dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40px"
+                    android:layout_marginBottom="5dp"
 
-                    android:layout_marginTop="10px"
-                    android:text="Add new wechat account"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/add_wechat_account"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="16sp" />
             </LinearLayout>

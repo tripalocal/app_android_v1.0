@@ -72,7 +72,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Currency Conversion"
+                android:text="@string/currency_conversion"
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp"
@@ -105,7 +105,7 @@
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:textAlignment="center"
-            android:text = "Comfirm and Pay"
+            android:text = "@string/confirm_pay"
             android:textColor="@color/white"
             android:layout_margin="50px"
             android:onClick="pay"/>

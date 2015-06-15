@@ -157,6 +157,17 @@
     <string name="toast_signup_failure">Sign up failed</string>
     <string name="toast_searched_with">Searched with\u0020</string>
 
+    <!--payement string-->
+    <string name="alipay">Alipay</string>
+    <string name="add_alipay_account">Add new Alipay Account</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="add_new_credit_card">Add New Credit Card</string>
+    <string name="wechat">Wechat</string>
+    <string name="add_wechat_account">Add Wechat Account</string>
+    <string name="confirm_pay">Confirm And Pay</string>
+    <string name="currency_conversion">Currency Conversion</string>
+
+    <!--end of payment string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>
