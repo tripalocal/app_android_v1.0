@@ -129,6 +129,7 @@
             android:textStyle="bold"
             android:textSize="23sp" />
     </RelativeLayout>
+    <!--
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
@@ -180,7 +181,7 @@
             android:textStyle="bold"
             android:textSize="23sp" />
     </RelativeLayout>
-
+    -->
     <!--<RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
