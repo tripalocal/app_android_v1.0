@@ -53,7 +53,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/tripalocal_green_blue"
                 android:id="@+id/price_aud_2"
-                android:layout_weight="g"
+                android:layout_weight="9"
                 android:layout_gravity="center"
 
                 />
