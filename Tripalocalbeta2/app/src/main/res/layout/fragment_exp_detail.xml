@@ -69,7 +69,17 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:textStyle="normal"
-                    android:text="@string/gibber"/>
+                    android:text=""/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_reservation_with_cn"
+                    android:layout_toRightOf="@id/exp_host_name"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textStyle="normal"
+                    android:text="@string/exp_reservation_cn"/>
             </LinearLayout>
 
             <TextView
@@ -247,7 +257,6 @@
                     android:textSize="20sp"
                     android:text=""
                     android:textStyle="bold"
-                    android:layout_gravity="center"
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
                     android:password="false" />

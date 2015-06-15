@@ -62,7 +62,8 @@
     <string name="exp_list_per_person">澳元每人起</string>
     <string name="exp_list_duration">小时</string>
 
-    <string name="exp_reservation"></string>
+    <string name="exp_reservation">和</string>
+    <string name="exp_reservation_cn">\u0020预订</string>
     <string name="exp_detail_food">餐饮:\u0020</string>
     <string name="exp_detail_tickets">门票:\u0020</string>
     <string name="exp_detail_transport">交通:\u0020</string>
@@ -70,8 +71,8 @@
     <string name="view_more">展开</string>
     <string name="view_less">收起</string>
     <string name="no_review_content">没有评论</string>
-    <string name="exp_detail_reviews">\u0020条评论</string>
-    <string name="exp_detail_about_the_host">关于\u0020</string>
+    <string name="exp_detail_reviews">条评论</string>
+    <string name="exp_detail_about_the_host">关于\u0020--\u0020</string>
     <string name="exp_detail_per_person_text">每人</string>
     <string name="exp_detail_per_person_for">约</string>
     <string name="exp_detail_per_person_hour">小时</string>

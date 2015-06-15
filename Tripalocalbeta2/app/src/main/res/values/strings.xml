@@ -64,6 +64,7 @@
     <string name="exp_list_duration">hrs</string>
 
     <string name="exp_reservation">Reservation with </string>
+    <string name="exp_reservation_cn"></string>
     <string name="exp_detail_food">Food:\u0020</string>
     <string name="exp_detail_tickets">Tickets:\u0020</string>
     <string name="exp_detail_transport">Transport:\u0020</string>
