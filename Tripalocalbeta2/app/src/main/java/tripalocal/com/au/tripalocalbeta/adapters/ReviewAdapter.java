@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
+import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.ExperienceReview;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.SimpleViewHolder>{
 
     public static ArrayList<ExperienceReview> reviewsList = new ArrayList<>();
-    public static final String BASE_URL ="https://www.tripalocal.com/images/";
+    public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

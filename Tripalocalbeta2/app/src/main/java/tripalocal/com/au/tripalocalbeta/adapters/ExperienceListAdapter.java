@@ -23,6 +23,7 @@ import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
 import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
 /**
  * Created by naveen on 4/18/2015.
@@ -32,7 +33,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     //public static List<Search_Result> search_result;
     public static List<Experience> all_experiences = new ArrayList<Experience>();
     public static Context mContext;
-    private static final String BASE_URL ="https://www.tripalocal.com/images/";
+    private static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     public static final String INT_EXTRA = "POSITION";
     public static int current_city = 0;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");

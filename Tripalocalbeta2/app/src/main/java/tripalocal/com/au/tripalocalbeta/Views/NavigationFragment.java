@@ -28,6 +28,7 @@ import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
+import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
 
 public class NavigationFragment extends Fragment {
@@ -35,7 +36,7 @@ public class NavigationFragment extends Fragment {
     private static MyProfile_result result;
    // private static boolean my_profile = false;
 
-    public static final String BASE_URL ="https://www.tripalocal.com/images/";
+    public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
 
 
     private CircleImageView profile_img;
@@ -134,7 +135,7 @@ public class NavigationFragment extends Fragment {
             });
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
-        hostname.setText(result.getFirst_name() + result.getLast_name());
+        hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");
 
     }
 

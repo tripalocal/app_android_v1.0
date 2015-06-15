@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivityFragment;
+import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
 /**
  * Created by naveen on 4/17/2015.
@@ -23,13 +24,13 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
     private static final String[] places = {"Melbourne", "Sydney", "Brisbane", "Cairns", "Goldcoast", "Hobart", "Adelaide"};
     private static HomeActivityFragment HomeFrag;
 
-    private static final String[] bg_urls = {"https://www.tripalocal.com/images/mobile/home/Melbourne.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Sydney.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Brisbane.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Cairns.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Goldcoast.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Hobart.jpg",
-                                                "https://www.tripalocal.com/images/mobile/home/Adelaide.jpg"};
+    private static final String[] bg_urls = {Tripalocal.getServerUrl() + "images/mobile/home/Melbourne.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Sydney.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Brisbane.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Cairns.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Goldcoast.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Hobart.jpg",
+                                                Tripalocal.getServerUrl() + "images/mobile/home/Adelaide.jpg"};
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

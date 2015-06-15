@@ -85,6 +85,6 @@ public class MyProfileActivityFragment extends Fragment {
         roamingno.setText(result.getPhone_number());
 
     Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
-    hostname.setText(result.getFirst_name() + result.getLast_name());
+    hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");
     }
 }

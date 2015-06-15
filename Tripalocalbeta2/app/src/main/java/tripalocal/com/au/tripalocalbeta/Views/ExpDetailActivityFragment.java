@@ -25,6 +25,7 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ReviewAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.ExperienceReview;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
@@ -37,7 +38,7 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 public class ExpDetailActivityFragment extends Fragment {
 
 
-    public static final String BASE_URL ="https://www.tripalocal.com/images/";
+    public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     private static Experience_Detail exp_to_display;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
 
