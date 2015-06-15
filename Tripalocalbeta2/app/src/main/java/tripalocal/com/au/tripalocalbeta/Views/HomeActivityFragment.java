@@ -43,9 +43,9 @@ public class HomeActivityFragment extends Fragment {
         ImageView cairns = (ImageView) view.findViewById(R.id.home_cairns);
         ImageView goldcoast= (ImageView) view.findViewById(R.id.home_gold_coast);
         ImageView adelaide = (ImageView) view.findViewById(R.id.home_adelaide);
-        ImageView gc_vic = (ImageView) view.findViewById(R.id.home_greater_reg_vic);
-        ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
-        ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
+        //ImageView gc_vic = (ImageView) view.findViewById(R.id.home_greater_reg_vic);
+        //ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
+        //ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
 
 
         TextView melb_txt = (TextView) view.findViewById(R.id.home_melbourne_text);
@@ -68,8 +68,11 @@ public class HomeActivityFragment extends Fragment {
 
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[1]).centerCrop().crossFade().into(syd);
-        /*Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).crossFade().into(brisb);
-        Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).crossFade().into(tas);*/
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[2]).centerCrop().crossFade().into(brisb);
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[3]).centerCrop().crossFade().into(cairns);
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[4]).centerCrop().crossFade().into(goldcoast);
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[5]).centerCrop().crossFade().into(hobart);
+        Glide.with(HomeActivity.getHome_context()).load(bg_urls[6]).centerCrop().crossFade().into(adelaide);
 
         melb.setOnClickListener(new View.OnClickListener() {
             @Override

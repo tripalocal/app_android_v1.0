@@ -1,5 +1,6 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +11,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
@@ -43,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
     private static AccessToken accessToken;
     private static Menu menu_ref = null;
     public static DrawerLayout tpDrawer ;
+    public static ActionBarDrawerToggle mDrawerToggle;
     HomeActivityFragment homeFrag;
     public static String[] poi_data;
     public static String[] db_poi_data;
@@ -161,6 +165,8 @@ public class HomeActivity extends AppCompatActivity {
         {
             tpDrawer.openDrawer(GravityCompat.START);
         }
+
+        setUpDrawerToggle();
     }
 
 
@@ -196,11 +202,12 @@ public class HomeActivity extends AppCompatActivity {
                 //ToastHelper.shortToast("sugg select "+position);
                 return false;
             }
+
             @Override
             public boolean onSuggestionClick(int position) {
                 //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
                 Intent intent = new Intent(HomeActivity.getHome_context(), ExpListActvity2.class);
-                intent.putExtra(INT_EXTRA,position);
+                intent.putExtra(INT_EXTRA, position);
                 startActivity(intent);
                 return false;
             }
@@ -239,6 +246,44 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         }
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    //http://stackoverflow.com/questions/19724567/how-to-add-menu-indicator-next-to-action-bars-app-icon
+    //http://codetheory.in/android-navigation-drawer/
+    private void setUpDrawerToggle(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the navigation drawer and the action bar app icon.
+        mDrawerToggle = new ActionBarDrawerToggle(this, tpDrawer, R.drawable.menu, R.string.gibber, R.string.gibber) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+            }
+        };
+
+        // Defer code dependent on restoration of previous instance state.
+        // NB: required for the drawer indicator to show up!
+        tpDrawer.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
+
+        tpDrawer.setDrawerListener(mDrawerToggle);
     }
 }
