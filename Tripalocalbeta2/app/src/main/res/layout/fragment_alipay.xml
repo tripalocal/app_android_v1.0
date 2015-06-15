@@ -1,125 +1,114 @@
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment">
 
+    <TableLayout
+        android:id="@+id/payment_list_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/msp_demo_title_bg"
+            android:id="@+id/alipay_logo"
+            android:layout_width="280dp"
+            android:layout_height="146dp"
             android:scaleType="center"
-            android:src="@drawable/msp_demo_title"
+            android:src="@drawable/alipay"
             tools:ignore="ContentDescription" />
 
 
-
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+        <View
+            android:id="@+id/divider_line_1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="1dp"
+            android:layout_above="@id/alipay_logo"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px" />
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+        <TableRow
+            android:id="@+id/row_aud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+            <TextView
+                android:text="$35 AUD * 3 pp"
+                android:padding="3dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"/>
+            <TextView
+                android:text="$ 105 AUD"
+                android:gravity="left"
+                android:padding="3dip"
+                android:textSize="20sp"
+                android:layout_marginLeft="100px"
+                android:textColor="@color/tripalocal_green_blue"
+                />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="商品名称:"
-                        android:textColor="#777777"
-                        tools:ignore="HardcodedText" />
+        </TableRow>
 
-                    <TextView
-                        android:id="@+id/product_subject"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="测试的商品"
-                        android:textColor="#333333"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
+        <View
+            android:id="@+id/divider_line_2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_aud"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="30px"
+            android:layout_marginBottom="30px" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="商品描述:"
-                        android:textColor="#777777"
-                        tools:ignore="HardcodedText" />
+        <TableRow
+            android:id="@+id/row_rmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="该测试商品的详细描述"
-                        android:textColor="#333333"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
+            <TextView
+                android:text="Currency Conversion"
+                android:padding="3dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"/>
+            <TextView
+                android:text="￥105 RMB"
+                android:gravity="left"
+                android:padding="3dip"
+                android:textSize="20sp"
+                android:layout_marginLeft="100px"
+                android:textColor="@color/tripalocal_green_blue"
+                />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+        </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:text="商品价格:"
-                        android:textColor="#777777"
-                        tools:ignore="HardcodedText" />
 
-                    <TextView
-                        android:id="@+id/product_price"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="1元"
-                        android:textColor="#ff6600"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
+        <View
+            android:id="@+id/divider_line_3"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_rmb"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px"
+            android:layout_marginTop="30px" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tripalocal_green_blue"
+            android:id="@+id/pay"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textAlignment="center"
+            android:text = "Comfirm and Pay"
+            android:textColor="@color/white"
+            android:layout_margin="50px"
+            android:onClick="pay"/>
 
-                <Button
-                    android:id="@+id/pay"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:onClick="pay"
-                    android:text="支付"
-                    tools:ignore="HardcodedText" />
+    </TableLayout>
 
-                <Button
-                    android:id="@+id/check"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:onClick="check"
-                    android:text="检查账户"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
 
-        </ScrollView>
-    </LinearLayout>
-
+</RelativeLayout>
