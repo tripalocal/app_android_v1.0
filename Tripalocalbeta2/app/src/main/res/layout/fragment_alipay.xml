@@ -44,15 +44,19 @@
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp"
-                android:id="@+id/price_aud_1" />
+                android:id="@+id/price_aud_1"
+                />
             <TextView
                 android:text="$ 105 AUD"
                 android:gravity="left"
                 android:padding="3dip"
                 android:textSize="20sp"
-                android:layout_marginLeft="100px"
                 android:textColor="@color/tripalocal_green_blue"
-                android:id="@+id/price_aud_2" />
+                android:id="@+id/price_aud_2"
+                android:layout_weight="g"
+                android:layout_gravity="center"
+
+                />
 
         </TableRow>
 
@@ -76,15 +80,17 @@
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp"
+
                 />
             <TextView
                 android:text="￥105 RMB"
                 android:gravity="left"
                 android:padding="3dip"
                 android:textSize="20sp"
-                android:layout_marginLeft="100px"
                 android:textColor="@color/tripalocal_green_blue"
-                android:id="@+id/price_rmb_2" />
+                android:id="@+id/price_rmb_2"
+                android:layout_gravity="center"
+                />
 
         </TableRow>
 
@@ -107,7 +113,6 @@
             android:textAlignment="center"
             android:text = "@string/confirm_pay"
             android:textColor="@color/white"
-            android:layout_margin="50px"
             android:onClick="pay"/>
 
     </TableLayout>
