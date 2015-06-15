@@ -223,6 +223,9 @@ public class CheckoutActivityFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("price", price_s);
+                intent.putExtra("guests",guests+"");
+
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });

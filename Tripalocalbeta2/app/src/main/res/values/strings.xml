@@ -25,6 +25,8 @@
     <string name="title_activity_my_trip">My Trips</string>
     <string name="title_activity_my_profile">My Profile</string>
     <string name="title_activity_review">Reviews</string>
+    <string name="title_activity_alipay">Alipay</string>
+
 
     <string name="search_hint">search here</string>
     <string name="search_title">Search title</string>

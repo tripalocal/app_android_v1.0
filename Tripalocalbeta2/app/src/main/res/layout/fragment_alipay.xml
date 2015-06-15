@@ -1,0 +1,116 @@
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment">
+
+    <TableLayout
+        android:id="@+id/payment_list_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/alipay_logo"
+            android:layout_width="280dp"
+            android:layout_height="146dp"
+            android:scaleType="center"
+            android:src="@drawable/alipay"
+            tools:ignore="ContentDescription" />
+
+
+        <View
+            android:id="@+id/divider_line_1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/alipay_logo"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px" />
+
+        <TableRow
+            android:id="@+id/row_aud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="$35 AUD * 3 pp"
+                android:padding="3dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                android:id="@+id/price_aud_1" />
+            <TextView
+                android:text="$ 105 AUD"
+                android:gravity="left"
+                android:padding="3dip"
+                android:textSize="20sp"
+                android:layout_marginLeft="100px"
+                android:textColor="@color/tripalocal_green_blue"
+                android:id="@+id/price_aud_2" />
+
+        </TableRow>
+
+        <View
+            android:id="@+id/divider_line_2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_aud"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="30px"
+            android:layout_marginBottom="30px" />
+
+
+        <TableRow
+            android:id="@+id/row_rmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Currency Conversion"
+                android:padding="3dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:text="￥105 RMB"
+                android:gravity="left"
+                android:padding="3dip"
+                android:textSize="20sp"
+                android:layout_marginLeft="100px"
+                android:textColor="@color/tripalocal_green_blue"
+                android:id="@+id/price_rmb_2" />
+
+        </TableRow>
+
+
+        <View
+            android:id="@+id/divider_line_3"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_rmb"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px"
+            android:layout_marginTop="30px" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tripalocal_green_blue"
+            android:id="@+id/pay"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textAlignment="center"
+            android:text = "Comfirm and Pay"
+            android:textColor="@color/white"
+            android:layout_margin="50px"
+            android:onClick="pay"/>
+
+    </TableLayout>
+
+
+</RelativeLayout>
