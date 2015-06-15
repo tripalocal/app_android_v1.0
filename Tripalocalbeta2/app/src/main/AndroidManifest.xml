@@ -95,6 +95,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
         </activity>
+
+        <activity
+            android:name=".Views.AlipayActivity"
+            android:label="@string/title_activity_alipay"
+            android:parentActivityName=".Views.PaymentActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tripalocal.com.au.tripalocalbeta.Views.PaymentActivity" />
+        </activity>
     </application>
 
 </manifest>

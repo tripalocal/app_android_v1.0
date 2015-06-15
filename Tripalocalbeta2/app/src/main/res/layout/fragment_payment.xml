@@ -45,14 +45,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/Alipay_checkout_text"
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
-
                     android:layout_marginTop="40px"
                     android:text="Alipay"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="23sp" />
+                    android:textSize="23sp"
+                    android:clickable="true"
+                    />
 
                 <TextView
                     android:id="@+id/textView"
@@ -102,7 +103,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/creadit_payment_name"
+                    android:id="@+id/credit_checkout_text"
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
 
@@ -160,7 +161,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/wechat_payment_name"
+                    android:id="@+id/wechat_checkout_text"
                     android:layout_width="193dp"
                     android:layout_height="wrap_content"
 
@@ -189,6 +190,51 @@
             android:layout_height="1dp"
             android:layout_above="@id/table_wechat"
             android:background="@android:color/darker_gray" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button"
+                android:layout_column="1"
+                android:onClick="test"/>
+        </TableRow>
     </TableLayout>
 
 </RelativeLayout>
