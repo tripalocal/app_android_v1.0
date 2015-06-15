@@ -1,17 +1,36 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+
+import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class PaymentActivity extends ActionBarActivity {
+
+    public static String guests="";
+    public static String price="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        if(intent != null){
+            if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                String query = intent.getStringExtra(SearchManager.QUERY);
+                ToastHelper.shortToast("Searched with " + query);
+            }else{
+                price=intent.getStringExtra("price");
+                guests=intent.getStringExtra("guests");
+            }
+        }
+
         setContentView(R.layout.activity_payment);
     }
 

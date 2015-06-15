@@ -21,7 +21,7 @@ import android.view.View;
 import android.widget.Toast;
 import android.util.*;
 import com.alipay.sdk.app.PayTask;
-
+import android.widget.*;
 import tripalocal.com.au.tripalocalbeta.R;
 
 /**
@@ -29,13 +29,32 @@ import tripalocal.com.au.tripalocalbeta.R;
  */
 public class AlipayActivityFragment extends Fragment {
 
+    TextView price_aud_1;
+    TextView price_aud_2;
+    TextView price_rmb_2;
+
     public AlipayActivityFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_alipay, container, false);
+        View view= inflater.inflate(R.layout.fragment_alipay, container, false);
+        price_aud_1=(TextView)view.findViewById(R.id.price_aud_1);
+        price_aud_2=(TextView)view.findViewById(R.id.price_aud_2);
+        price_rmb_2=(TextView)view.findViewById(R.id.price_rmb_2);
+        setText();
+        return view;
+    }
+
+    public void setText(){
+        int price=Integer.parseInt(PaymentActivity.price);
+        int guests=Integer.parseInt(PaymentActivity.guests);
+        int total=price*guests;
+        price_aud_1.setText("$"+price+" AUD * "+guests+ "pp");
+        price_aud_2.setText("$"+total+" AUD");
+        price_rmb_2.setText("￥"+total*5+"RMB");
+
     }
 
 

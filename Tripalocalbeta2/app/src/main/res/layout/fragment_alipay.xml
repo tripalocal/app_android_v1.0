@@ -43,7 +43,8 @@
                 android:text="$35 AUD * 3 pp"
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:id="@+id/price_aud_1" />
             <TextView
                 android:text="$ 105 AUD"
                 android:gravity="left"
@@ -51,7 +52,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="100px"
                 android:textColor="@color/tripalocal_green_blue"
-                />
+                android:id="@+id/price_aud_2" />
 
         </TableRow>
 
@@ -74,7 +75,8 @@
                 android:text="Currency Conversion"
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                />
             <TextView
                 android:text="￥105 RMB"
                 android:gravity="left"
@@ -82,7 +84,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="100px"
                 android:textColor="@color/tripalocal_green_blue"
-                />
+                android:id="@+id/price_rmb_2" />
 
         </TableRow>
 

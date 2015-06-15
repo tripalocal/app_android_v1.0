@@ -1,6 +1,8 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,9 +37,11 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
  */
 public class AlipayActivity extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_alipay);
     }
 
@@ -129,7 +133,10 @@ public class AlipayActivity extends ActionBarActivity {
      */
     public void pay(View v) {
         // 订单
-        String orderInfo = getOrderInfo("测试的商品", "该测试商品的详细描述", "0.01");
+        int price=Integer.parseInt(PaymentActivity.price);
+        int guests=Integer.parseInt(PaymentActivity.guests);
+        double total=(double)(price*guests);
+        String orderInfo = getOrderInfo("TripaLocal Experience", "Experience in au ", ""+total);
 
         // 对订单做RSA 签名
         String sign = sign(orderInfo);
