@@ -14,7 +14,8 @@ import tripalocal.com.au.tripalocalbeta.R;
  */
 public class CreditCardActivityFragment extends Fragment {
 
-
+    TextView price_aud_1;
+    TextView price_aud_2;
     public CreditCardActivityFragment() {
     }
 
@@ -22,17 +23,18 @@ public class CreditCardActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_creditcard, container, false);
-
+        price_aud_1=(TextView)view.findViewById(R.id.price_aud_1);
+        price_aud_2=(TextView)view.findViewById(R.id.price_aud_2);
+        setText();
         return view;
     }
 
     public void setText(){
-//        int price=Integer.parseInt(PaymentActivity.price);
-//        int guests=Integer.parseInt(PaymentActivity.guests);
-//        int total=price*guests;
-//        price_aud_1.setText("$"+price+" AUD * "+guests+ "pp");
-//        price_aud_2.setText("$"+total+" AUD");
-//        price_rmb_2.setText("￥"+total*5+"RMB");
+        int price=Integer.parseInt(PaymentActivity.price);
+        int guests=Integer.parseInt(PaymentActivity.guests);
+        int total=price*guests;
+        price_aud_1.setText("$"+price+" AUD * "+guests+ "pp");
+        price_aud_2.setText("$"+total+" AUD");
 
     }
 

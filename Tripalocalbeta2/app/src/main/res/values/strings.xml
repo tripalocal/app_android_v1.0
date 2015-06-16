@@ -169,6 +169,7 @@
     <string name="expire">Expire</string>
     <string name="ccv">CCV</string>
     <string name="title_activity_creditcard">CreditCard Payment</string>
+    <string name="credit_no_hint">16 digits No</string>
 
     <!--end of payment string-->
     <string-array name="db_cities_array">

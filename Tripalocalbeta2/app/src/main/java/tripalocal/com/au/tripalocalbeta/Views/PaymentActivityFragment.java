@@ -46,8 +46,8 @@ public class PaymentActivityFragment extends Fragment{
 
                     Intent intent = new Intent(getActivity().getApplicationContext(), CreditCardActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    intent.putExtra("price", PaymentActivity.price);
-//                    intent.putExtra("guests",PaymentActivity.guests);
+                    intent.putExtra("price", PaymentActivity.price);
+                    intent.putExtra("guests",PaymentActivity.guests);
                     getActivity().getApplicationContext().startActivity(intent);
                 }
 

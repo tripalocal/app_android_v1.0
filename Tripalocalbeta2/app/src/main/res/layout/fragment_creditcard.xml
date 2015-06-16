@@ -94,7 +94,7 @@
                     android:inputType="number"
                     android:ems="9"
                     android:id="@+id/card_no"
-                    android:hint="1234567812345678"
+                    android:hint="@string/credit_no_hint"
                     android:layout_gravity="right" />
             </GridLayout>
 
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="3"
-                    android:id="@+id/editText"
+                    android:id="@+id/card_month"
                     android:hint="mm"
                     android:padding="3dip"
                     />
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:ems="10"
-                    android:id="@+id/editText2"
+                    android:id="@+id/card_year"
                     android:layout_weight="3.17"
                     android:hint="yyyy"
                     android:padding="3dip"
@@ -195,8 +195,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="4"
-                android:id="@+id/editText3"
+                android:ems="2"
+                android:id="@+id/card_ccv"
                 android:layout_column="1"
                 android:hint="123"
                 android:layout_gravity="right"
