@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import tripalocal.com.au.tripalocalbeta.R;
 
@@ -33,10 +34,11 @@ public class CreditCardActivityFragment extends Fragment {
         int price=Integer.parseInt(PaymentActivity.price);
         int guests=Integer.parseInt(PaymentActivity.guests);
         int total=price*guests;
-        price_aud_1.setText("$"+price+" AUD * "+guests+ "pp");
-        price_aud_2.setText("$"+total+" AUD");
+        price_aud_1.setText("$"+price+" AUD * "+guests+ "");
+        price_aud_2.setText("$" + total + " AUD");
 
     }
+
 
 
 

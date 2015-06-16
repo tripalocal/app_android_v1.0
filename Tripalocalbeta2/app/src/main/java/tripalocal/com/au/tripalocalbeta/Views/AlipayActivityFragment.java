@@ -51,7 +51,7 @@ public class AlipayActivityFragment extends Fragment {
         int price=Integer.parseInt(PaymentActivity.price);
         int guests=Integer.parseInt(PaymentActivity.guests);
         int total=price*guests;
-        price_aud_1.setText("$"+price+" AUD * "+guests+ "pp");
+        price_aud_1.setText("$"+price+" AUD * "+guests+ "");
         price_aud_2.setText("$"+total+" AUD");
         price_rmb_2.setText("￥"+total*5+"RMB");
 

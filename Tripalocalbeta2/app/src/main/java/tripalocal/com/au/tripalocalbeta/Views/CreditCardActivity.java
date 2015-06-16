@@ -49,24 +49,29 @@ public class CreditCardActivity  extends AppCompatActivity {
     }
 
     public void pay(View v){
-        if(validateInput()){
+        String card_no_s=card_no.getText().toString();
+        String card_month_s=card_month.getText().toString();
+        String card_year_s=card_year.getText().toString();
+        String card_ccv_s=card_ccv.getText().toString();
+
+        if(validateInput(card_no_s,card_month_s,card_year_s,card_ccv_s)){
 
         }
     }
 
-    public boolean validateInput(){
-        if(card_no.toString().length()!=16){
-            Toast.makeText(this,"Card number must be 16 digits",Toast.LENGTH_LONG);
+    public boolean validateInput(String no,String month,String year,String ccv){
+        if(no.length()<12 || no.length()>16){
+            Toast.makeText(this,"Card number must be between 12 to 16 digits",Toast.LENGTH_LONG).show();
             return false;
-        }else if(card_month.toString().length()!= 2 || Integer.parseInt(card_month.toString())>12
-                || Integer.parseInt(card_month.toString())<1){
-            Toast.makeText(this,"Incorrect Month",Toast.LENGTH_LONG);
+        }else if(month.length()!= 2 || Integer.parseInt(month)>12
+                || Integer.parseInt(month)<1){
+            Toast.makeText(this,"Incorrect Month",Toast.LENGTH_LONG).show();
             return false;
-        }else if(card_year.toString().length()!=4 || Integer.parseInt(card_year.toString())<2015){
-            Toast.makeText(this,"Incorrect Year",Toast.LENGTH_LONG);
+        }else if(year.length()!=4 || Integer.parseInt(year)<2015){
+            Toast.makeText(this,"Incorrect Year",Toast.LENGTH_LONG).show();
             return false;
-        }else if(card_ccv.toString().length()!=3){
-            Toast.makeText(this,"CCV must be 3 digit number",Toast.LENGTH_LONG);
+        }else if(ccv.length()!=3){
+            Toast.makeText(this,"CCV must be 3 digit number",Toast.LENGTH_LONG).show();
             return false;
         }
         return true;

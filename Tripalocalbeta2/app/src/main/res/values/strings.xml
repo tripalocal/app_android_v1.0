@@ -166,7 +166,7 @@
     <string name="confirm_pay">Confirm And Pay</string>
     <string name="currency_conversion">Currency Conversion</string>
     <string name="number">Number</string>
-    <string name="expire">Expire</string>
+    <string name="expire">Expire(mm/yy)</string>
     <string name="ccv">CCV</string>
     <string name="title_activity_creditcard">CreditCard Payment</string>
     <string name="credit_no_hint">16 digits No</string>
