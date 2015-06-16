@@ -96,7 +96,8 @@
                     android:id="@+id/card_no"
                     android:layout_gravity="right"
                     android:enabled="true"
-                    android:textCursorDrawable="@null"/>
+                    android:textCursorDrawable="@null"
+                    android:textColor="@color/black"/>
             </GridLayout>
 
         </TableRow>
@@ -146,6 +147,7 @@
                     android:id="@+id/card_month"
                     android:padding="3dip"
                     android:textCursorDrawable="@null"
+                    android:textColor="@color/black"
                     />
 
                 <TextView
@@ -167,7 +169,8 @@
                     android:textCursorDrawable="@null"
                     android:textStyle="normal"
                     android:layout_weight="1.50"
-                    android:autoText="false" />
+                    android:autoText="false"
+                    android:textColor="@color/black"/>
             </LinearLayout>
 
         </TableRow>
@@ -202,7 +205,8 @@
                 android:layout_column="1"
                 android:layout_gravity="right"
                 android:padding="3dp"
-                android:textCursorDrawable="@null"/>
+                android:textCursorDrawable="@null"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <View
