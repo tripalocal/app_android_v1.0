@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,7 +13,7 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
-public class PaymentActivity extends ActionBarActivity {
+public class PaymentActivity extends AppCompatActivity {
 
     public static String guests="";
     public static String price="";

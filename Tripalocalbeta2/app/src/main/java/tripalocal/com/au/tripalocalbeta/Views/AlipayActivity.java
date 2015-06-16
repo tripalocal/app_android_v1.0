@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -35,7 +36,7 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 /**
  * Created by user on 15/06/2015.
  */
-public class AlipayActivity extends ActionBarActivity {
+public class AlipayActivity extends AppCompatActivity {
 
 
     @Override
