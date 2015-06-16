@@ -117,6 +117,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.PaymentActivity" />
         </activity>
+        <activity
+            android:name=".Views.CreditCardActivity"
+            android:label="@string/title_activity_creditcard"
+            android:parentActivityName=".Views.PaymentActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tripalocal.com.au.tripalocalbeta.Views.PaymentActivity" />
+        </activity>
+
     </application>
 
 </manifest>

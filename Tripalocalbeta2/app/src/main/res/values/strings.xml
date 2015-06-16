@@ -165,6 +165,10 @@
     <string name="add_wechat_account">Add Wechat Account</string>
     <string name="confirm_pay">Confirm And Pay</string>
     <string name="currency_conversion">Currency Conversion</string>
+    <string name="number">Number</string>
+    <string name="expire">Expire</string>
+    <string name="ccv">CCV</string>
+    <string name="title_activity_creditcard">CreditCard Payment</string>
 
     <!--end of payment string-->
     <string-array name="db_cities_array">

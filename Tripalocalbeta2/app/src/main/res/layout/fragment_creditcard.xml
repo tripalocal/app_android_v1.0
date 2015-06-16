@@ -1,0 +1,236 @@
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment"
+    android:id="@+id/alipay_f">
+
+    <TableLayout
+        android:id="@+id/payment_list_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/credit_logo"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:src="@drawable/creditcard_hori"
+            tools:ignore="ContentDescription"
+            android:layout_margin="10dp" />
+
+
+        <View
+            android:id="@+id/divider_line_1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/alipay_logo"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px" />
+
+        <TableRow
+            android:id="@+id/row_aud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="$35 AUD * 3 pp"
+                android:padding="3dip"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="18sp"
+                android:id="@+id/price_aud_1"
+                />
+            <TextView
+                android:text="$ 105 AUD"
+                android:padding="3dip"
+                android:textSize="18sp"
+                android:textColor="@color/tripalocal_green_blue"
+                android:id="@+id/price_aud_2"
+                android:layout_gravity="right"
+
+                android:gravity="left"
+                android:layout_marginRight="2dp" />
+
+        </TableRow>
+
+        <View
+            android:id="@+id/divider_line_2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_aud"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="30px"
+            android:layout_marginBottom="30px" />
+
+
+        <TableRow
+            android:id="@+id/row_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2">
+
+                <TextView
+                    android:text="@string/number"
+                    android:padding="3dip"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="18sp"
+
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="9"
+                    android:id="@+id/card_no"
+                    android:hint="1234567812345678"
+                    android:layout_gravity="right" />
+            </GridLayout>
+
+        </TableRow>
+
+
+        <View
+            android:id="@+id/divider_line_3"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_rmb"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px"
+            android:layout_marginTop="30px" />
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/row_expire">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/expire"
+                android:id="@+id/textView2"
+                android:layout_column="0"
+                android:textIsSelectable="false"
+                android:textSize="18sp"
+                android:padding="3dip"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_span="1"
+                android:padding="3dip"
+                android:layout_gravity="right"
+                android:layout_marginRight="2dp">
+
+                <EditText
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="3"
+                    android:id="@+id/editText"
+                    android:hint="mm"
+                    android:padding="3dip"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="/"
+                    android:id="@+id/textView3"
+                    android:padding="3dip"
+                    />
+
+                <EditText
+                    android:layout_width="47dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/editText2"
+                    android:layout_weight="3.17"
+                    android:hint="yyyy"
+                    android:padding="3dip"
+                    />
+            </LinearLayout>
+
+        </TableRow>
+        <View
+            android:id="@+id/divider_line_4"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/alipay_logo"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/row_ccv">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/ccv"
+                android:id="@+id/textView4"
+                android:textSize="18sp"
+                android:padding="3dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="4"
+                android:id="@+id/editText3"
+                android:layout_column="1"
+                android:hint="123"
+                android:layout_gravity="right"
+                android:padding="3dp" />
+        </TableRow>
+
+        <View
+            android:id="@+id/divider_line_5"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/row_ccv"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="30px"
+            android:layout_marginTop="30px" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tripalocal_green_blue"
+            android:id="@+id/pay"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textAlignment="center"
+            android:text = "@string/confirm_pay"
+            android:textColor="@color/white"
+            android:onClick="pay"
+            android:layout_column="1" />
+
+    </TableLayout>
+
+</RelativeLayout>
