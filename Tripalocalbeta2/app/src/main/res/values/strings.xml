@@ -170,6 +170,8 @@
     <string name="ccv">CCV</string>
     <string name="title_activity_creditcard">CreditCard Payment</string>
     <string name="credit_no_hint">16 digits No</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_closed">drawer closed</string>
 
     <!--end of payment string-->
     <string-array name="db_cities_array">

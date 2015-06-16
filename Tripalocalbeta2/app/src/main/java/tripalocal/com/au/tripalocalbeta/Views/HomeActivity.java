@@ -1,6 +1,5 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -23,7 +22,6 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import tripalocal.com.au.tripalocalbeta.R;
@@ -42,15 +40,13 @@ public class HomeActivity extends AppCompatActivity {
     private static Context home_context;
     private static FragmentManager frag_manager;
     private static User current_user = new User();
-    //private static String current_userid;
     private static AccessToken accessToken;
     private static Menu menu_ref = null;
     public static DrawerLayout tpDrawer ;
-    public static ActionBarDrawerToggle mDrawerToggle;
+    private ActionBarDrawerToggle tpDrawToggle;
     HomeActivityFragment homeFrag;
     public static String[] poi_data;
     public static String[] db_poi_data;
-    public static ArrayList<String> wish_list = new ArrayList<>();
     public static HashMap<String, Experience> wish_map = new HashMap<>();
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
@@ -62,14 +58,6 @@ public class HomeActivity extends AppCompatActivity {
     public static void setAccessToken(AccessToken accessToken) {
         HomeActivity.accessToken = accessToken;
     }
-
-    /*public static String getCurrent_userid() {
-        return current_userid;
-    }
-
-    public static void setCurrent_userid(String current_userid) {
-        HomeActivity.current_userid = current_userid;
-    }*/
 
     public static FragmentManager getFrag_manager() {
         return frag_manager;
@@ -148,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
         ToastHelper.appln_context = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
+        getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         homeFrag = new HomeActivityFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
@@ -166,15 +155,36 @@ public class HomeActivity extends AppCompatActivity {
             tpDrawer.openDrawer(GravityCompat.START);
         }
 
-        setUpDrawerToggle();
+        tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_drawer_container, new NavigationFragment()).commit();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        tpDrawer.setDrawerListener(tpDrawToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        invalidateOptionsMenu();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         if(menu_ref == null)
             menu_ref= menu;
+        if(getCurrent_user().isLoggedin()){
+            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
+        }
         SearchView searchView =  getSearchView(menu);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -215,6 +225,12 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        tpDrawToggle.syncState();
+    }
+
 
     @NonNull
     private SearchView getSearchView(Menu menu) {
@@ -238,7 +254,6 @@ public class HomeActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
-                tpDrawer.invalidate();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
@@ -246,44 +261,9 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         }
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (tpDrawToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
-    }
-
-    //http://stackoverflow.com/questions/19724567/how-to-add-menu-indicator-next-to-action-bars-app-icon
-    //http://codetheory.in/android-navigation-drawer/
-    private void setUpDrawerToggle(){
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the navigation drawer and the action bar app icon.
-        mDrawerToggle = new ActionBarDrawerToggle(this, tpDrawer, R.drawable.menu, R.string.gibber, R.string.gibber) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
-            }
-        };
-
-        // Defer code dependent on restoration of previous instance state.
-        // NB: required for the drawer indicator to show up!
-        tpDrawer.post(new Runnable() {
-            @Override
-            public void run() {
-                mDrawerToggle.syncState();
-            }
-        });
-
-        tpDrawer.setDrawerListener(mDrawerToggle);
     }
 }

@@ -31,6 +31,9 @@ public class LoginFragment extends Fragment {
 
     String log_in_success;
     String log_in_failed;
+    String fb_log_in_success;
+    String fb_log_in_failed;
+
 
     private CallbackManager callbackManager;
 
@@ -44,6 +47,8 @@ public class LoginFragment extends Fragment {
         final View view =  inflater.inflate(R.layout.fragment_login, container, false);
         log_in_success = getActivity().getResources().getString(R.string.toast_login_success);
         log_in_failed = getActivity().getResources().getString(R.string.toast_login_failure);
+        fb_log_in_success = getActivity().getResources().getString(R.string.toast_fb_login_success);
+        fb_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_login_failure);
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
@@ -58,9 +63,8 @@ public class LoginFragment extends Fragment {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 //HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
-                HomeActivity.tpDrawer.invalidate();
                 getActivity().onBackPressed();
-                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_fb_login_success));
+                ToastHelper.longToast(fb_log_in_success);
             }
 
             @Override
@@ -71,7 +75,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onError(FacebookException exception) {
-                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_fb_login_failure));
+                ToastHelper.errorToast(fb_log_in_failed);
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
         });
