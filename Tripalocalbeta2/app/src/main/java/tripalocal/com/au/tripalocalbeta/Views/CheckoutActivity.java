@@ -15,8 +15,8 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 
 public class CheckoutActivity extends AppCompatActivity {
 
-      public static Experience_Detail experience_to_book;
-      public static int position = 999;
+    public static Experience_Detail experience_to_book;
+    public static int position = 999;
 
     @Override
     protected void onStop() {
@@ -27,21 +27,22 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getIntent() != null){
-           position =getIntent().getIntExtra(INT_EXTRA,0);
+        if (getIntent() != null) {
+            position = getIntent().getIntExtra(INT_EXTRA, 0);
         }
         setContentView(R.layout.activity_checkout);
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FF9933CC'>Booking Details </font>"));
     }
-//#FF5D5D5D -- grey
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
-    if(HomeActivity.getCurrent_user().isLoggedin()){
-        menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
+
+    //#FF5D5D5D -- grey
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
+        if (HomeActivity.getCurrent_user().isLoggedin()) {
+            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
+        }
+        return true;
     }
-    return true;
-}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -49,7 +50,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_login) {
-            if(HomeActivity.getCurrent_user().isLoggedin()){
+            if (HomeActivity.getCurrent_user().isLoggedin()) {
                 HomeActivity.getCurrent_user().setLogin_token(null);
                 HomeActivity.getCurrent_user().setLoggedin(false);
                 HomeActivity.setAccessToken(null);
@@ -58,8 +59,8 @@ public boolean onCreateOptionsMenu(Menu menu) {
                 editor_l.clear();
                 editor_l.apply();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
-            }else
-                getSupportFragmentManager().beginTransaction().replace(R.id.checkout_fragment_container,new LoginFragment()).commit();
+            } else
+                getSupportFragmentManager().beginTransaction().replace(R.id.checkout_fragment_container, new LoginFragment()).commit();
             return true;
         }
         return super.onOptionsItemSelected(item);

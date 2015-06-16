@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment">
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment"
+    android:id="@+id/alipay_f">
 
     <TableLayout
         android:id="@+id/payment_list_table"
@@ -43,17 +44,16 @@
                 android:text="$35 AUD * 3 pp"
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:id="@+id/price_aud_1"
                 />
             <TextView
                 android:text="$ 105 AUD"
                 android:gravity="left"
                 android:padding="3dip"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/tripalocal_green_blue"
                 android:id="@+id/price_aud_2"
-                android:layout_weight="9"
                 android:layout_gravity="center"
 
                 />
@@ -79,14 +79,14 @@
                 android:text="@string/currency_conversion"
                 android:padding="3dip"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp"
+                android:textSize="18sp"
 
                 />
             <TextView
                 android:text="￥105 RMB"
                 android:gravity="left"
                 android:padding="3dip"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/tripalocal_green_blue"
                 android:id="@+id/price_rmb_2"
                 android:layout_gravity="center"
