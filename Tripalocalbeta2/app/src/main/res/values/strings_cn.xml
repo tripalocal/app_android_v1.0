@@ -166,6 +166,13 @@
     <string name="confirm_pay">确认并支付</string>
     <string name="currency_conversion">汇率转换</string>
 
+    <string name="number">卡号</string>
+    <string name="expire">截止(mm/yy)</string>
+    <string name="ccv">CCV</string>
+    <string name="title_activity_creditcard">信用卡支付</string>
+    <string name="credit_no_hint">16个数字</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_closed">drawer closed</string>
     <!--end of payment string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
