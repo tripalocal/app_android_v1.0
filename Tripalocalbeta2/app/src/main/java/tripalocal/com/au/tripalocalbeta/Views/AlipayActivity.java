@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -98,8 +101,9 @@ public class AlipayActivity extends AppCompatActivity {
                     Log.d("result", resultStatus);
                     // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                     if (TextUtils.equals(resultStatus, "9000")) {
-                        Toast.makeText(AlipayActivity.this, "支付成功",
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(AlipayActivity.this, "支付成功",
+//                                Toast.LENGTH_SHORT).show();
+
                     } else {
                         // 判断resultStatus 为非“9000”则代表可能支付失败
                         // “8000”代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
@@ -300,5 +304,40 @@ public class AlipayActivity extends AppCompatActivity {
      */
     public String getSignType() {
         return "sign_type=\"RSA\"";
+    }
+
+    public String createJson(String no,String month,String year,String cvv){
+        String s="";
+        String id=CheckoutActivity.position+"";
+        String date=CheckoutActivity.date;
+        String time=CheckoutActivity.time;
+        String guest_num=CheckoutActivity.guest;
+
+        try {
+            JSONObject globalObj=new JSONObject();
+
+//            complie itinerary string
+            JSONArray itinerary_list=new JSONArray();
+            JSONObject itinerary_string=new JSONObject();
+            itinerary_string.put("id","20");
+            itinerary_string.put("date","2016/04/17");
+            itinerary_string.put("time","4:00-6:00");
+            itinerary_string.put("guest_number",2);
+            itinerary_list.put(itinerary_string);
+            globalObj.put("itinerary_string",itinerary_list);
+
+            //add crad info
+            globalObj.put("card_number","4242424242424242");
+            globalObj.put("expiration_month","0");
+            globalObj.put("expiration_year","0");
+            globalObj.put("cvv","Alipay");
+            s=globalObj.toString();
+            s=s.replace("\\","");
+
+        }catch (Exception e){
+
+        }
+
+        return s;
     }
 }
