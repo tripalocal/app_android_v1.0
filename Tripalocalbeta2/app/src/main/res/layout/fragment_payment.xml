@@ -6,7 +6,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment">
+    tools:context="tripalocal.com.au.tripalocalbeta.Views.PaymentActivityFragment"
+    android:background="@color/white"
+    >
 
     <TableLayout
         android:id="@+id/payment_list_table"
