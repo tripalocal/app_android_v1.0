@@ -133,61 +133,61 @@
             android:background="@android:color/darker_gray" />
 
 
-        <TableRow
-            android:id="@+id/table_wechat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <!--<TableRow-->
+            <!--android:id="@+id/table_wechat"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
 
-            android:orientation="vertical">
+            <!--android:orientation="vertical">-->
 
-            <ImageView
+            <!--<ImageView-->
 
-                android:id="@+id/wechat_payment_img"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_column="0"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/wechat"
-                android:layout_margin="5dp"
-                android:layout_weight="1" />
+                <!--android:id="@+id/wechat_payment_img"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_column="0"-->
+                <!--android:focusableInTouchMode="false"-->
+                <!--android:src="@drawable/wechat"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:layout_weight="1" />-->
 
-            <LinearLayout
-                android:id="@+id/wechat_options"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical"
-                android:layout_weight="2">
+            <!--<LinearLayout-->
+                <!--android:id="@+id/wechat_options"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_weight="2">-->
 
-                <TextView
-                    android:id="@+id/wechat_checkout_text"
-                    android:layout_width="193dp"
-                    android:layout_height="wrap_content"
+                <!--<TextView-->
+                    <!--android:id="@+id/wechat_checkout_text"-->
+                    <!--android:layout_width="193dp"-->
+                    <!--android:layout_height="wrap_content"-->
 
-                    android:layout_marginTop="15dp"
-                    android:text="@string/wechat"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="23sp" />
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:text="@string/wechat"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                    <!--android:textSize="23sp" />-->
 
-                <TextView
-                    android:id="@+id/add_wechat_account"
-                    android:layout_width="227dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                <!--<TextView-->
+                    <!--android:id="@+id/add_wechat_account"-->
+                    <!--android:layout_width="227dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="5dp"-->
 
-                    android:layout_marginTop="5dp"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="16sp" />
-            </LinearLayout>
-        </TableRow>
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                    <!--android:textSize="16sp" />-->
+            <!--</LinearLayout>-->
+        <!--</TableRow>-->
 
 
-        <View
-            android:id="@+id/divider_line_3"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_above="@id/table_wechat"
-            android:background="@android:color/darker_gray" />
+        <!--<View-->
+            <!--android:id="@+id/divider_line_3"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_above="@id/table_wechat"-->
+            <!--android:background="@android:color/darker_gray" />-->
 
         <TableRow
             android:layout_width="match_parent"
