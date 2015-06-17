@@ -1,17 +1,14 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 
 import java.text.ParseException;
@@ -29,7 +26,10 @@ import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.MyTripAdapter;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 
-public class MyTripActivity extends ActionBarActivity {
+/**
+ * Created by naveen on 6/17/2015.
+ */
+public class MyTripFragment extends Fragment {
 
     private RecyclerView rv;
     private Button upcomingTripButton;
@@ -43,19 +43,14 @@ public class MyTripActivity extends ActionBarActivity {
 
     private float initialX, initialY;
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        HomeActivity.saveData();
-    }
+    public MyTripFragment(){}
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_trip);
-        getMyTrip(getUserToken());
-
-        upcomingTripButton = (Button)findViewById(R.id.my_trip_upcoming);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.fragment_my_trip, container, false);
+        getMyTrip(HomeActivity.getCurrent_user().getLogin_token());
+        upcomingTripButton = (Button)getActivity().findViewById(R.id.my_trip_upcoming);
         upcomingTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,12 +62,12 @@ public class MyTripActivity extends ActionBarActivity {
                     upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
                     previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
                     previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
-                    rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                    rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
                 }
             }
         });
 
-        previousTripButton = (Button)findViewById(R.id.my_trip_previous);
+        previousTripButton = (Button)getActivity().findViewById(R.id.my_trip_previous);
         previousTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,23 +78,22 @@ public class MyTripActivity extends ActionBarActivity {
                     upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
                     previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
-                    rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                    rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
                 }
             }
         });
 
-        exploreButton = (Button)findViewById(R.id.my_trip_explore_button);
+        exploreButton = (Button)getActivity().findViewById(R.id.my_trip_explore_button);
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
-                startActivity(intent);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeActivityFragment()).addToBackStack("mytrip").commit();
             }
         });
 
-        tl_none = (TableLayout)findViewById(R.id.my_trip_table_none);
+        tl_none = (TableLayout)getActivity().findViewById(R.id.my_trip_table_none);
 
-        tl = (TableLayout)findViewById(R.id.my_trip_table);
+        tl = (TableLayout)getActivity().findViewById(R.id.my_trip_table);
         tl.setOnTouchListener(new View.OnTouchListener() {
             //http://codetheory.in/android-ontouchevent-ontouchlistener-motionevent-to-detect-common-gestures/
             @Override
@@ -128,13 +122,13 @@ public class MyTripActivity extends ActionBarActivity {
                         if (initialX < finalX) {
                             //Log.d(TAG, "Left to Right swipe performed");
                             MyTripAdapter.myTrip = previousTrip;
-                            rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                            rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
                         }
 
                         if (initialX > finalX) {
                             //Log.d(TAG, "Right to Left swipe performed");
                             MyTripAdapter.myTrip = upcomingTrip;
-                            rv.setAdapter(new MyTripAdapter(getApplicationContext()));
+                            rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
                         }
 
                         if (initialY < finalY) {
@@ -160,67 +154,11 @@ public class MyTripActivity extends ActionBarActivity {
             }
         });
 
-        rv = (RecyclerView) findViewById(R.id.my_trip_recycle_view);
+        rv = (RecyclerView) getActivity().findViewById(R.id.my_trip_recycle_view);
         rv.setHasFixedSize(true);
-        LinearLayoutManager LLM = new LinearLayoutManager(getApplicationContext());
+        LinearLayoutManager LLM = new LinearLayoutManager(HomeActivity.getHome_context());
         rv.setLayoutManager(LLM);
-
-      /*  ImageView homebtn = (ImageView)findViewById(R.id.homeButton);
-        homebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        ImageView searchbtn = (ImageView)findViewById(R.id.searchButton);
-        searchbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
-                intent.putExtra("fragmentNumber", 1);
-                startActivity(intent);
-            }
-        });
-
-        ImageView profilebtn = (ImageView)findViewById(R.id.myProfileButton);
-        profilebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyTripActivity.this, HomeActivity.class);
-                intent.putExtra("fragmentNumber",3);
-                startActivity(intent);
-            }
-        });*/
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my_trip, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private String getUserToken()
-    {
-        //TODO
-        return HomeActivity.getCurrent_user().getLogin_token();//"73487d0eb131a6822e08cd74612168cf6e0755dc";//
+        return view;
     }
 
     private void getMyTrip(final String token)
@@ -228,14 +166,14 @@ public class MyTripActivity extends ActionBarActivity {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
-                        .setRequestInterceptor(new RequestInterceptor() {
-                            @Override
-                            public void intercept(RequestFacade request) {
-                                request.addHeader("Accept", "application/json");
-                                request.addHeader("Authorization", "Token " + token);
-                            }
-                        })
-                        .build();
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + token);
+                    }
+                })
+                .build();
 
         ApiService apiService = restAdapter.create(ApiService.class);
 
@@ -269,14 +207,12 @@ public class MyTripActivity extends ActionBarActivity {
                     previousTripButton.setVisibility(View.INVISIBLE);
                 }
 
-                rv.setAdapter(new MyTripAdapter(getApplicationContext()));
-                System.out.println("MyTripActivity.Success");
+                rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
             }
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("MyTripActivity.failure");
-                System.out.println("error = [" + error + "]");
+                System.out.println("ERROR MYTRIP :" +error);
             }
         });
     }

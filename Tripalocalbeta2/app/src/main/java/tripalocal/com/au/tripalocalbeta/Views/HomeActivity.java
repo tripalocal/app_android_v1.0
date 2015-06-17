@@ -2,13 +2,12 @@ package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,14 +24,13 @@ import com.google.gson.reflect.TypeToken;
 import java.util.HashMap;
 
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.adapters.TPSuggestionsAdapter;
-import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
 import tripalocal.com.au.tripalocalbeta.models.User;
 
 import static tripalocal.com.au.tripalocalbeta.R.layout;
-import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -130,30 +128,15 @@ public class HomeActivity extends AppCompatActivity {
             poi_data = getResources().getStringArray(R.array.poi_array);
             db_poi_data = getResources().getStringArray(R.array.db_cities_array);
         }
-
         home_context = getApplicationContext();
         frag_manager = getSupportFragmentManager();
-        ToastHelper.appln_context = getApplicationContext();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         homeFrag = new HomeActivityFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, homeFrag).commit();
-        //0:home, 1:search, 2:mytrip, 3: profile
-        if(getIntent().getIntExtra("fragmentNumber",0)==1)
-        {
-            FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment());
-        }
-        else if(getIntent().getIntExtra("fragmentNumber",0)==2)
-        {
-            Intent intent = new Intent(HomeActivity.this, MyTripActivity.class);
-            startActivity(intent);
-        }
-        else if(getIntent().getIntExtra("fragmentNumber",0)==3)
-        {
-            tpDrawer.openDrawer(GravityCompat.START);
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFrag).commit();
+
 
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
@@ -216,9 +199,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onSuggestionClick(int position) {
                 //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
-                Intent intent = new Intent(HomeActivity.getHome_context(), ExpListActvity2.class);
-                intent.putExtra(INT_EXTRA, position);
-                startActivity(intent);
+                Fragment exp_list_frag = new ExperiencesListFragment();
+                Bundle args = new Bundle();
+                args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+                exp_list_frag.setArguments(args);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
                 return false;
             }
         });
@@ -254,6 +239,8 @@ public class HomeActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
+                invalidateOptionsMenu();
+                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")

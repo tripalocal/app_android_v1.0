@@ -165,7 +165,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                     }
                 }
             });
-
         }
 
         public Experience getExperience(int id){
@@ -185,6 +184,5 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);
         }
-
     }
 }

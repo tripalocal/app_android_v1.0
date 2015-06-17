@@ -121,7 +121,7 @@
                     android:text="@string/navigation_wishlist"/>
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nav_my_messages_container"
@@ -143,7 +143,7 @@
                     android:textStyle="bold"
                     android:layout_marginLeft="25dp"
                     android:text="@string/navigation_messages"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,7 +151,7 @@
                 android:id="@+id/nav_my_profile_container"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/nav_my_messages_container"
+                android:layout_below="@id/nav_wishlist_container"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="35dp"
@@ -169,7 +169,7 @@
                     android:text="@string/navigation_myprofile"/>
             </LinearLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nav_my_account_container"
@@ -191,11 +191,11 @@
                     android:textStyle="bold"
                     android:layout_marginLeft="25dp"
                     android:text="@string/nav_my_account"/>
-            </LinearLayout>
+            </LinearLayout>-->
         <View style="@style/DividerLight"
             android:id="@+id/nav_drawer_divider_3"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/nav_my_account_container"/>
+            android:layout_below="@+id/nav_my_profile_container"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

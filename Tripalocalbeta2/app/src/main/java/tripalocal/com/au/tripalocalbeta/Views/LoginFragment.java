@@ -52,9 +52,7 @@ public class LoginFragment extends Fragment {
         callbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
-        // If using in a fragment
         loginButton.setFragment(this);
-        // Other app specific specialization
 
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -130,7 +128,7 @@ public class LoginFragment extends Fragment {
                     //HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     System.out.println("result = [" + result + "], response = [" + response + "]");
-                    HomeActivity.tpDrawer.invalidate();
+                    getActivity().invalidateOptionsMenu();
                     getActivity().onBackPressed();
                     ToastHelper.longToast(log_in_success);
                 }

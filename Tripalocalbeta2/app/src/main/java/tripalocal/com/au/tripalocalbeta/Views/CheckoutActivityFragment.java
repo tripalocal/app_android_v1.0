@@ -65,6 +65,9 @@ public class CheckoutActivityFragment extends Fragment {
     static Double price_i = null;
     static int date_sel = 0;
     static int time_sel = 0;
+    static int np_sel = 0;
+    static String dy_price;
+    static String[]  temp_price;
     static Experience_Detail temp_detail_exp;
 
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
@@ -206,7 +209,6 @@ public class CheckoutActivityFragment extends Fragment {
         booking_guest_number = (TextView) view.findViewById(R.id.booking_guest_number);
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
-        np.setMinValue(1);
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -214,9 +216,17 @@ public class CheckoutActivityFragment extends Fragment {
                 guests = newVal;
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
-                //if(temp_detail_exp.getExperience_dynamic_price() != null && newVal > 2)
+                if(dy_price != null){
+                    booking_price_and_person_amt.setText(REAL_FORMATTER.format(Integer.parseInt(temp_price[np_sel])*guests));
+                    if(oldVal < newVal)
+                        np_sel++;
+                    else np_sel--;
+                }else
                 booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
+<<<<<<< HEAD
+=======
 //                guest=guests+"";
+>>>>>>> origin/master
 
             }
         });
@@ -307,7 +317,12 @@ public class CheckoutActivityFragment extends Fragment {
             booking_price.setText(price_s);
             booking_guest_number.setText(String.valueOf(guests));
             booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
-            np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
+            np.setMinValue(temp_detail_exp.getExperience_guest_number_min());
+            np.setMaxValue(temp_detail_exp.getExperience_guest_number_max());
+            dy_price = temp_detail_exp.getExperience_dynamic_price();
+            if (dy_price != null) {
+                temp_price = dy_price.split(",");
+            }
             List<String> temp_dates = new ArrayList<>();
             List<String> temp_times = new ArrayList<>();
             for(AvailableOption option : temp_detail_exp.getAvailable_options()){

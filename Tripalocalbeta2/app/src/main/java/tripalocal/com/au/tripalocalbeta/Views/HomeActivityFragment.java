@@ -1,6 +1,5 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
-import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -91,35 +89,35 @@ public class HomeActivityFragment extends Fragment {
         brisb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 2;
                 displayListFrag2(2);
             }
         });
         cairns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 3;
                 displayListFrag2(3);
             }
         });
         goldcoast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 4;
                 displayListFrag2(4);
             }
         });
         hobart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 5;
                 displayListFrag2(5);
             }
         });
         adelaide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 6;
                 displayListFrag2(6);
             }
         });
@@ -128,8 +126,10 @@ public class HomeActivityFragment extends Fragment {
     }
 
     public void displayListFrag2(int position) {
-        Intent intent = new Intent(HomeActivity.getHome_context(), ExpListActvity2.class);
-        intent.putExtra(INT_EXTRA,position);
-        startActivity(intent);
+        Fragment exp_list_frag = new ExperiencesListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        exp_list_frag.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }
 }
