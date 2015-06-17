@@ -172,7 +172,12 @@
     <string name="credit_no_hint">16 digits No</string>
     <string name="drawer_open">drawer open</string>
     <string name="drawer_closed">drawer closed</string>
+    <string name="payment_success">Payment Successful</string>
+    <string name="view_in_my_trip">View it in MyTrip</string>
+    <string name="payment_success_text">Your booking request has been sent to somebody</string>
+    <string name="payment_success_title">Payment Successful</string>
 
+    <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
