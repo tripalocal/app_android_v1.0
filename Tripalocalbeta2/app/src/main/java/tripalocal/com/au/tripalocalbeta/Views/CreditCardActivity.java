@@ -76,10 +76,10 @@ public class CreditCardActivity  extends AppCompatActivity {
         String card_month_s=card_month.getText().toString();
         String card_year_s=card_year.getText().toString();
         String card_cvv_s=card_cvv.getText().toString();
-        payByCard();
 
-//        if(validateInput(card_no_s,card_month_s,card_year_s,card_cvv_s)){
-//        }
+        if(validateInput(card_no_s,card_month_s,card_year_s,card_cvv_s)){
+            payByCard(card_no_s,card_month_s,card_year_s,card_cvv_s);
+        }
     }
 
     public boolean validateInput(String no,String month,String year,String cvv){
@@ -90,7 +90,7 @@ public class CreditCardActivity  extends AppCompatActivity {
                 || Integer.parseInt(month)<1){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_month_error));
             return false;
-        }else if(year.length()!=4 || Integer.parseInt(year)<2015){
+        }else if(year.length()!=2 || Integer.parseInt(year)<15){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_year_error));
             return false;
         }else if(cvv.length()!=3){
@@ -100,7 +100,7 @@ public class CreditCardActivity  extends AppCompatActivity {
         return true;
     }
 
-    public void payByCard(){
+    public void payByCard(String no,String month,String year,String cvv){
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
@@ -112,28 +112,23 @@ public class CreditCardActivity  extends AppCompatActivity {
                     }
                 })
                 .build();
-        System.out.println("token"+getUserToken()+"");
+//        System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-//        System.out.println(ep.getE);
-
-        Gson json=new Gson();
-        json.toJson("{test:asd}");
-        System.out.println("Json string : "+ json.toString() );
-        System.out.println(createJson("","","",""));
-        apiService.bookExperience(createJson("","","",""), new Callback<String>() {
+        System.out.println("create json"+createJson(no,month,year,cvv));
+        apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");
-                System.out.println("process success");
-
+                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
             }
 
             @Override
             public void failure(RetrofitError error) {
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
-
-//                ToastHelper.errorToast("Echo errors"+json.toString());
-                ToastHelper.errorToast("Echo errors");
+//                System.out.println("Echo errors123"+json.toString());
+                ToastHelper.errorToast("failure");
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -145,28 +140,28 @@ public class CreditCardActivity  extends AppCompatActivity {
     public String createJson(String no,String month,String year,String cvv){
         String s="";
         String id=CheckoutActivity.position+"";
-        String date=CheckoutActivity.date;
+        String datearr[]=(CheckoutActivity.date).split("/");
+        String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
         String time=CheckoutActivity.time;
         String guest_num=CheckoutActivity.guest;
-
         try {
             JSONObject globalObj=new JSONObject();
 
 //            complie itinerary string
             JSONArray itinerary_list=new JSONArray();
             JSONObject itinerary_string=new JSONObject();
-            itinerary_string.put("id","20");
-            itinerary_string.put("date","2016/04/17");
-            itinerary_string.put("time","4:00-6:00");
-            itinerary_string.put("guest_number",2);
+            itinerary_string.put("id",id);
+            itinerary_string.put("date",date);
+            itinerary_string.put("time",time);
+            itinerary_string.put("guest_number",Integer.parseInt(guest_num));
             itinerary_list.put(itinerary_string);
             globalObj.put("itinerary_string",itinerary_list);
 
             //add crad info
-            globalObj.put("card_number","4242424242424242");
-            globalObj.put("expiration_month","10");
-            globalObj.put("expiration_year","2017");
-            globalObj.put("cvv",664);
+            globalObj.put("card_number",no);//4242424242424242
+            globalObj.put("expiration_month",month);//10
+            globalObj.put("expiration_year","20"+year);//2017
+            globalObj.put("cvv",Integer.parseInt(cvv));//664,integer
             s=globalObj.toString();
             s=s.replace("\\","");
 

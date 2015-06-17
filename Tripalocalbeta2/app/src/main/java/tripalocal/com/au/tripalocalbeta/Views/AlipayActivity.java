@@ -28,7 +28,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
+import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.helpers.*;
@@ -103,6 +109,7 @@ public class AlipayActivity extends AppCompatActivity {
                     if (TextUtils.equals(resultStatus, "9000")) {
 //                        Toast.makeText(AlipayActivity.this, "支付成功",
 //                                Toast.LENGTH_SHORT).show();
+                        payByAlipay();
 
                     } else {
                         // 判断resultStatus 为非“9000”则代表可能支付失败
@@ -306,31 +313,69 @@ public class AlipayActivity extends AppCompatActivity {
         return "sign_type=\"RSA\"";
     }
 
-    public String createJson(String no,String month,String year,String cvv){
+
+
+    public void payByAlipay(){
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getResources().getString(R.string.server_url))
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + getUserToken());
+                    }
+                })
+                .build();
+//        System.out.println("token"+getUserToken()+"");
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.bookExperience(createJson(), new Callback<String>() {
+            @Override
+            public void success(String message, Response response) {
+                ToastHelper.errorToast("Success");
+                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+//                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+//                System.out.println("Echo errors123"+json.toString());
+                ToastHelper.errorToast("failure");
+                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
+//
+            }
+        });
+    }
+
+    public String createJson(){
         String s="";
         String id=CheckoutActivity.position+"";
-        String date=CheckoutActivity.date;
+        String datearr[]=(CheckoutActivity.date).split("/");
+        String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
         String time=CheckoutActivity.time;
         String guest_num=CheckoutActivity.guest;
-
         try {
             JSONObject globalObj=new JSONObject();
 
 //            complie itinerary string
             JSONArray itinerary_list=new JSONArray();
             JSONObject itinerary_string=new JSONObject();
-            itinerary_string.put("id","20");
-            itinerary_string.put("date","2016/04/17");
-            itinerary_string.put("time","4:00-6:00");
-            itinerary_string.put("guest_number",2);
+            itinerary_string.put("id",id);
+            itinerary_string.put("date",date);
+            itinerary_string.put("time",time);
+            itinerary_string.put("guest_number",Integer.parseInt(guest_num));
             itinerary_list.put(itinerary_string);
             globalObj.put("itinerary_string",itinerary_list);
 
             //add crad info
-            globalObj.put("card_number","4242424242424242");
-            globalObj.put("expiration_month","0");
-            globalObj.put("expiration_year","0");
-            globalObj.put("cvv","Alipay");
+            globalObj.put("card_number",getOutTradeNo());//4242424242424242
+            globalObj.put("expiration_month",0);//10
+            globalObj.put("expiration_year","20"+0);//2017
+            globalObj.put("cvv","ALIPAY");//664,integer
             s=globalObj.toString();
             s=s.replace("\\","");
 
@@ -339,5 +384,11 @@ public class AlipayActivity extends AppCompatActivity {
         }
 
         return s;
+    }
+
+    private String getUserToken()
+    {
+        //TODO
+        return HomeActivity.getCurrent_user().getLogin_token();//"73487d0eb131a6822e08cd74612168cf6e0755dc";//
     }
 }

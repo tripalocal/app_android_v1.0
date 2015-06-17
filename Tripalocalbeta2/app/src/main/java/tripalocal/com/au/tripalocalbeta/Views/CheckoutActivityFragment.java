@@ -226,8 +226,15 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CheckoutActivity.date=date_spin.getSelectedItem().toString();
-                CheckoutActivity.time=time_spin.getSelectedItem().toString();
+//                CheckoutActivity.time=time_spin.getSelectedItem().toString();
                 CheckoutActivity.guest=booking_guest_number.getText().toString();
+                String time_arr[]=(time_spin.getSelectedItem().toString().split(":"));
+                int hour=Integer.parseInt(time_arr[0].charAt(0)+"")*10+Integer.parseInt(time_arr[0].charAt(1)+"");
+                int duration=temp_detail_exp.getExperience_duration();
+                int secondHour=hour+duration;
+                String secHourSt=secondHour/10+""+secondHour%10+":00";
+                CheckoutActivity.time=time_spin.getSelectedItem().toString()+"-"+secHourSt;
+
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("price", price_s);
@@ -247,16 +254,17 @@ public class CheckoutActivityFragment extends Fragment {
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             request req = new request(CheckoutActivity.position);
-            apiService.getExpDetails(req, new Callback<Experience_Detail>() {
-                @Override
-                public void success(Experience_Detail experience_detail, Response response) {
-                    CheckoutActivity.experience_to_book = experience_detail;
-                    updateDetails();
-                }
-                @Override
-                public void failure(RetrofitError error) {
-                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
-                }
+                apiService.getExpDetails(req, new Callback<Experience_Detail>() {
+                    @Override
+                    public void success(Experience_Detail experience_detail, Response response) {
+                        CheckoutActivity.experience_to_book = experience_detail;
+                        updateDetails();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
+                    }
             });
         }
         return view;
