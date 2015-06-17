@@ -20,7 +20,6 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import tripalocal.com.au.tripalocalbeta.R;
-import tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2;
 import tripalocal.com.au.tripalocalbeta.models.ImageDownloader;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 

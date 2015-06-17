@@ -92,6 +92,8 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
                     Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                 }
@@ -99,24 +101,24 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_my_trips_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getActivity().getApplicationContext(), MyTripActivity.class);
-                    startActivity(intent);
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
+                    Fragment my_trip_fragment = new MyTripFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
                 }
             });
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
                     ExperienceListAdapter.all_experiences.clear();
                     ExperienceListAdapter.all_experiences.addAll(HomeActivity.wish_map.values());
-                    Intent intent = new Intent(getActivity().getApplicationContext(), ExpListActvity2.class);
-                    intent.putExtra(ExperienceListAdapter.INT_EXTRA,9999);
-                    startActivity(intent);
-                }
-            });
-            view.findViewById(R.id.nav_my_messages_container).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_feature_coming));
+                    Fragment exp_list_frag = new ExperiencesListFragment();
+                    Bundle args = new Bundle();
+                    args.putInt(ExperienceListAdapter.INT_EXTRA, 9999);
+                    exp_list_frag.setArguments(args);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_wish").commit();
                 }
             });
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
@@ -124,14 +126,8 @@ public class NavigationFragment extends Fragment {
                 public void onClick(View view) {
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.closeDrawers();
-                    Intent intent = new Intent(getActivity().getApplicationContext(), MyProfileActivity.class);
-                    startActivity(intent);
-                }
-            });
-            view.findViewById(R.id.nav_my_account_container).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_feature_coming));
+                    Fragment exp_list_frag = new MyProfileActivityFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
                 }
             });
 

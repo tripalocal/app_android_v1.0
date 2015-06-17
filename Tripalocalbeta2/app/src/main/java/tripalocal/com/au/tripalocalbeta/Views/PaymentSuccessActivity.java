@@ -1,16 +1,11 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import tripalocal.com.au.tripalocalbeta.R;
-import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.MyTrip;
-
-import android.view.*;
 /**
  * Created by user on 15/06/2015.
  */
@@ -47,10 +42,11 @@ public class PaymentSuccessActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void viewtriphisttory(View v){
+    /** Needs to be Modified to suit latest refractoring in activities by @naveen **/
+    /*public void viewtriphisttory(View v){
         System.out.println("this is a test");
         Intent intent = new Intent(getApplicationContext(), MyTripActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(intent);
-    }
+    }*/
 }

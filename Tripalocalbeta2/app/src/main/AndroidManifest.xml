@@ -48,14 +48,7 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-        <activity
-            android:name=".Views.ExpListActvity2"
-            android:label="@string/title_activity_exp_list_actvity2"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
-        </activity>
+
         <activity
             android:name=".Views.ExpDetailActivity"
             android:label="@string/title_activity_exp_detail"
@@ -64,10 +57,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tripalocal.com.au.tripalocalbeta.Views.ExpListActvity2" />
+                android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
         </activity>
         <activity
             android:name=".Views.CheckoutActivity"
@@ -86,12 +78,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.CheckoutActivity" />
         </activity>
-        <activity
-            android:name=".Views.MyTripActivity"
-            android:label="@string/title_activity_my_trip"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-        </activity>
+
         <activity
             android:name=".Views.ReviewActivity"
             android:label="@string/title_activity_review"
@@ -99,14 +86,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity" />
-        </activity>
-        <activity
-            android:name=".Views.MyProfileActivity"
-            android:label="@string/title_activity_my_profile"
-            android:parentActivityName=".Views.HomeActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tripalocal.com.au.tripalocalbeta.Views.HomeActivity" />
         </activity>
 
         <activity
@@ -129,10 +108,6 @@
             android:name=".Views.PaymentSuccessActivity"
             android:label="@string/payment_success_title"
             >
-
         </activity>
-
-
     </application>
-
 </manifest>

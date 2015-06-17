@@ -32,6 +32,9 @@ public class Experience_Detail{
     private String host_lastname;
     private Boolean included_food;
     private String experience_language;
+    private Integer experience_guest_number_min;
+    private Integer experience_guest_number_max;
+
 
     public Boolean isIncludedTicket() {
         return included_ticket;
@@ -220,4 +223,21 @@ public class Experience_Detail{
     public String getLanguage() {return experience_language;}
 
     public void setLanguage(String language) {this.experience_language = language;}
+
+
+    public Integer getExperience_guest_number_max() {
+        return experience_guest_number_max;
+    }
+
+    public void setExperience_guest_number_max(Integer experience_guest_number_max) {
+        this.experience_guest_number_max = experience_guest_number_max;
+    }
+
+    public Integer getExperience_guest_number_min() {
+        return experience_guest_number_min;
+    }
+
+    public void setExperience_guest_number_min(Integer experience_guest_number_min) {
+        this.experience_guest_number_min = experience_guest_number_min;
+    }
 }
