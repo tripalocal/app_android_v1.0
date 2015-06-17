@@ -125,6 +125,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tripalocal.com.au.tripalocalbeta.Views.PaymentActivity" />
         </activity>
+        <activity
+            android:name=".Views.PaymentSuccessActivity"
+            android:label="@string/payment_success_title"
+            >
+
+        </activity>
+
 
     </application>
 

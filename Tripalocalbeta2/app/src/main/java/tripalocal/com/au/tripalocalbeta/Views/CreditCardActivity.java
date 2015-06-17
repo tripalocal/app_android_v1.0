@@ -23,6 +23,7 @@ import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 
 import org.json.*;
+import android.content.*;
 
 /**
  * Created by user on 16/06/2015.
@@ -129,7 +130,9 @@ public class CreditCardActivity  extends AppCompatActivity {
 //                ToastHelper.errorToast("Echo errors"+json.toString());
                 ToastHelper.errorToast("Echo errors");
                 System.out.println("process success");
-
+                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
 //
             }
         });
