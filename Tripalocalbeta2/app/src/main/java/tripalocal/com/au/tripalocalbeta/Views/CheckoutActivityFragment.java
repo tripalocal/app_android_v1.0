@@ -32,7 +32,8 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.AvailableOption;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
-
+import android.widget.AdapterView;
+import android.widget.Toast;
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -83,6 +84,7 @@ public class CheckoutActivityFragment extends Fragment {
         duration = (TextView) view.findViewById(R.id.booking_duration);
         language_txt = (TextView) view.findViewById(R.id.booking_language);
         date_spin = (Spinner) view.findViewById(R.id.booking_Select_Date_spinner);
+
         time_spin = (Spinner) view.findViewById(R.id.booking_Select_Time_spinner);
         final View time_container_1 = view.findViewById(R.id.checkout_time_1_container);
         final View time_container_2 = view.findViewById(R.id.checkout_time_2_container);
@@ -221,6 +223,10 @@ public class CheckoutActivityFragment extends Fragment {
                     else np_sel--;
                 }else
                 booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
+<<<<<<< HEAD
+=======
+//                guest=guests+"";
+>>>>>>> origin/master
 
             }
         });
@@ -229,6 +235,9 @@ public class CheckoutActivityFragment extends Fragment {
         bookingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CheckoutActivity.date=date_spin.getSelectedItem().toString();
+                CheckoutActivity.time=time_spin.getSelectedItem().toString();
+                CheckoutActivity.guest=booking_guest_number.getText().toString();
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("price", price_s);

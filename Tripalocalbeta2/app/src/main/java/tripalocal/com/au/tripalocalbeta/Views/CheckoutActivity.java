@@ -17,7 +17,9 @@ public class CheckoutActivity extends AppCompatActivity {
 
     public static Experience_Detail experience_to_book;
     public static int position = 999;
-
+    public static String guest="";
+    public static String date="";
+    public static String time="";
     @Override
     protected void onStop() {
         super.onStop();

@@ -30,7 +30,10 @@ import android.content.*;
  */
 public class CreditCardActivity  extends AppCompatActivity {
     EditText card_no,card_month,card_year,card_cvv;
-    private Experience_Detail ep;
+    private Experience_Detail exp;//position is experience id
+    private int exp_id;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class CreditCardActivity  extends AppCompatActivity {
         card_month=(EditText)this.findViewById(R.id.card_month);
         card_year=(EditText)this.findViewById(R.id.card_year);
         card_cvv=(EditText)this.findViewById(R.id.card_cvv);
+        exp=CheckoutActivity.experience_to_book;
+        exp_id=CheckoutActivity.position;
     }
 
 
@@ -113,10 +118,9 @@ public class CreditCardActivity  extends AppCompatActivity {
 
         Gson json=new Gson();
         json.toJson("{test:asd}");
-        System.out.println("Json string : " + json.toString());
-        System.out.println(createJson());
-        String s="{'cvv':664,'expiration_year':'2017','itinerary_string':[{'date':'2016/04/17','id':'20','time':'4:00-6:00','guest_number':2}],'expiration_month':'10','card_number':'4242424242424242'}";
-        apiService.bookExperience(s, new Callback<String>() {
+        System.out.println("Json string : "+ json.toString() );
+        System.out.println(createJson("","","",""));
+        apiService.bookExperience(createJson("","","",""), new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");
@@ -130,7 +134,6 @@ public class CreditCardActivity  extends AppCompatActivity {
 
 //                ToastHelper.errorToast("Echo errors"+json.toString());
                 ToastHelper.errorToast("Echo errors");
-                System.out.println("process success");
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -139,8 +142,13 @@ public class CreditCardActivity  extends AppCompatActivity {
         });
     }
 
-    public String createJson(){
+    public String createJson(String no,String month,String year,String cvv){
         String s="";
+        String id=CheckoutActivity.position+"";
+        String date=CheckoutActivity.date;
+        String time=CheckoutActivity.time;
+        String guest_num=CheckoutActivity.guest;
+
         try {
             JSONObject globalObj=new JSONObject();
 
@@ -160,9 +168,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             globalObj.put("expiration_year","2017");
             globalObj.put("cvv",664);
             s=globalObj.toString();
-//            s="123";
             s=s.replace("\\","");
-            s=s.replace("\"","\'");
 
         }catch (Exception e){
 
