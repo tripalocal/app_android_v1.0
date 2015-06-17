@@ -177,6 +177,11 @@
     <string name="view_in_my_trip"> 去MyTrip里面查看</string>
     <string name="payment_success_text">你的预定申请已经被发送到somebody</string>
     <string name="payment_success_title">付款成功</string>
+    <string name="credit_card_no_error">信用卡号码必须为12到16位的数字</string>
+    <string name="credit_card_month_error">错误月份</string>
+    <string name="credit_card_year_error">错误年份</string>
+    <string name="credit_card_cvv_error">CVV只能是3位数字</string>
+    <string name="credit_card_error">付款失败</string>
     <!--do not change "somebody" when convert it to chinese-->
 
     <!--end of payment string-->

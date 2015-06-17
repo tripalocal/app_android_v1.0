@@ -56,7 +56,8 @@
                     android:text="@string/alipay"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="23sp"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:textStyle="bold|normal" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -111,7 +112,8 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/credit_card"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="23sp" />
+                    android:textSize="23sp"
+                    android:textStyle="bold|normal" />
 
                 <TextView
                     android:id="@+id/add_creadit_account"

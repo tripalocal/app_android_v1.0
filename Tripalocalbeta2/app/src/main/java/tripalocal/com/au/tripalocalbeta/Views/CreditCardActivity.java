@@ -29,7 +29,7 @@ import android.content.*;
  * Created by user on 16/06/2015.
  */
 public class CreditCardActivity  extends AppCompatActivity {
-    EditText card_no,card_month,card_year,card_ccv;
+    EditText card_no,card_month,card_year,card_cvv;
     private Experience_Detail ep;
 
     @Override
@@ -40,7 +40,7 @@ public class CreditCardActivity  extends AppCompatActivity {
         card_no=(EditText)this.findViewById(R.id.card_no);
         card_month=(EditText)this.findViewById(R.id.card_month);
         card_year=(EditText)this.findViewById(R.id.card_year);
-        card_ccv=(EditText)this.findViewById(R.id.card_ccv);
+        card_cvv=(EditText)this.findViewById(R.id.card_cvv);
     }
 
 
@@ -70,26 +70,26 @@ public class CreditCardActivity  extends AppCompatActivity {
         String card_no_s=card_no.getText().toString();
         String card_month_s=card_month.getText().toString();
         String card_year_s=card_year.getText().toString();
-        String card_ccv_s=card_ccv.getText().toString();
+        String card_cvv_s=card_cvv.getText().toString();
         payByCard();
 
-//        if(validateInput(card_no_s,card_month_s,card_year_s,card_ccv_s)){
+//        if(validateInput(card_no_s,card_month_s,card_year_s,card_cvv_s)){
 //        }
     }
 
-    public boolean validateInput(String no,String month,String year,String ccv){
+    public boolean validateInput(String no,String month,String year,String cvv){
         if(no.length()<12 || no.length()>16){
-            Toast.makeText(this,"Card number must be between 12 to 16 digits",Toast.LENGTH_LONG).show();
+            ToastHelper.errorToast(getResources().getString(R.string.credit_card_no_error));
             return false;
         }else if(month.length()!= 2 || Integer.parseInt(month)>12
                 || Integer.parseInt(month)<1){
-            Toast.makeText(this,"Incorrect Month",Toast.LENGTH_LONG).show();
+            ToastHelper.errorToast(getResources().getString(R.string.credit_card_month_error));
             return false;
         }else if(year.length()!=4 || Integer.parseInt(year)<2015){
-            Toast.makeText(this,"Incorrect Year",Toast.LENGTH_LONG).show();
+            ToastHelper.errorToast(getResources().getString(R.string.credit_card_year_error));
             return false;
-        }else if(ccv.length()!=3){
-            Toast.makeText(this,"CCV must be 3 digit number",Toast.LENGTH_LONG).show();
+        }else if(cvv.length()!=3){
+            ToastHelper.errorToast(getResources().getString(R.string.credit_card_cvv_error));
             return false;
         }
         return true;
@@ -113,9 +113,10 @@ public class CreditCardActivity  extends AppCompatActivity {
 
         Gson json=new Gson();
         json.toJson("{test:asd}");
-        System.out.println("Json string : "+ json.toString() );
+        System.out.println("Json string : " + json.toString());
         System.out.println(createJson());
-        apiService.bookExperience(createJson(), new Callback<String>() {
+        String s="{'cvv':664,'expiration_year':'2017','itinerary_string':[{'date':'2016/04/17','id':'20','time':'4:00-6:00','guest_number':2}],'expiration_month':'10','card_number':'4242424242424242'}";
+        apiService.bookExperience(s, new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");
@@ -161,6 +162,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             s=globalObj.toString();
 //            s="123";
             s=s.replace("\\","");
+            s=s.replace("\"","\'");
 
         }catch (Exception e){
 

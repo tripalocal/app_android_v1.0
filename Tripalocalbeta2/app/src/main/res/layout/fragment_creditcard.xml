@@ -54,6 +54,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18sp"
                 android:id="@+id/price_aud_1"
+                android:textStyle="bold"
+
                 />
             <TextView
                 android:text="$ 105 AUD"
@@ -94,7 +96,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="18sp"
 
-                    />
+                    android:textStyle="bold" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -135,7 +137,7 @@
                 android:textIsSelectable="false"
                 android:textSize="18sp"
                 android:padding="3dip"
-                />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -199,17 +201,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/ccv"
+                android:text="@string/cvv"
                 android:id="@+id/textView4"
                 android:textSize="18sp"
-                android:padding="3dp" />
+                android:padding="3dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="2"
-                android:id="@+id/card_ccv"
+                android:id="@+id/card_cvv"
                 android:layout_column="1"
                 android:layout_gravity="right"
                 android:padding="3dp"

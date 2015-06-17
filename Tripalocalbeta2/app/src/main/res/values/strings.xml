@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
-    <string name="server_url">https://www.tripalocal.com/</string>
+    <!--<string name="server_url">https://www.tripalocal.com/</string>-->
+    <string name="server_url">http://adventure007.cloudapp.net/</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Blank</string>
@@ -167,7 +168,7 @@
     <string name="currency_conversion">Currency Conversion</string>
     <string name="number">Number</string>
     <string name="expire">Expire(mm/yy)</string>
-    <string name="ccv">CCV</string>
+    <string name="cvv">CVV</string>
     <string name="title_activity_creditcard">CreditCard Payment</string>
     <string name="credit_no_hint">16 digits No</string>
     <string name="drawer_open">drawer open</string>
@@ -176,6 +177,11 @@
     <string name="view_in_my_trip">View it in MyTrip</string>
     <string name="payment_success_text">Your booking request has been sent to somebody</string>
     <string name="payment_success_title">Payment Successful</string>
+    <string name="credit_card_no_error">Card number must be between 12 to 16 digits</string>
+    <string name="credit_card_month_error">Incorrect Month</string>
+    <string name="credit_card_year_error">Incorrect Year</string>
+    <string name="credit_card_cvv_error">CVV must be 3 digit number</string>
+    <string name="credit_card_error">Unable to make the payment</string>
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
