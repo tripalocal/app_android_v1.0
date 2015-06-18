@@ -48,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     public static HashMap<String, Experience> wish_map = new HashMap<>();
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
+    public static boolean login_flag = true;
 
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -142,9 +143,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_drawer_container, new NavigationFragment()).commit();
+                    if(login_flag){
+                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_drawer_container, new NavigationFragment()).commit();
+                        login_flag = false;
+                    }
             }
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -239,6 +242,7 @@ public class HomeActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
+                HomeActivity.login_flag = true;
                 invalidateOptionsMenu();
                 ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));

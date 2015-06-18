@@ -127,7 +127,8 @@ public class LoginFragment extends Fragment {
                     HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                     //HomeActivity.setCurrent_userid(result.getUser_id());
                     HomeActivity.getCurrent_user().setLoggedin(true);
-                    System.out.println("result = [" + result + "], response = [" + response + "]");
+                    HomeActivity.login_flag = true;
+                    //System.out.println("result = [" + result + "], response = [" + response + "]");
                     getActivity().invalidateOptionsMenu();
                     getActivity().onBackPressed();
                     ToastHelper.longToast(log_in_success);

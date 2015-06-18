@@ -50,7 +50,7 @@ public class MyTripFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_my_trip, container, false);
         getMyTrip(HomeActivity.getCurrent_user().getLogin_token());
-        upcomingTripButton = (Button)getActivity().findViewById(R.id.my_trip_upcoming);
+        upcomingTripButton = (Button) view.findViewById(R.id.my_trip_upcoming);
         upcomingTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class MyTripFragment extends Fragment {
             }
         });
 
-        previousTripButton = (Button)getActivity().findViewById(R.id.my_trip_previous);
+        previousTripButton = (Button) view.findViewById(R.id.my_trip_previous);
         previousTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class MyTripFragment extends Fragment {
             }
         });
 
-        exploreButton = (Button)getActivity().findViewById(R.id.my_trip_explore_button);
+        exploreButton = (Button) view.findViewById(R.id.my_trip_explore_button);
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,9 +91,9 @@ public class MyTripFragment extends Fragment {
             }
         });
 
-        tl_none = (TableLayout)getActivity().findViewById(R.id.my_trip_table_none);
+        tl_none = (TableLayout)view.findViewById(R.id.my_trip_table_none);
 
-        tl = (TableLayout)getActivity().findViewById(R.id.my_trip_table);
+        tl = (TableLayout) view.findViewById(R.id.my_trip_table);
         tl.setOnTouchListener(new View.OnTouchListener() {
             //http://codetheory.in/android-ontouchevent-ontouchlistener-motionevent-to-detect-common-gestures/
             @Override
@@ -154,7 +154,7 @@ public class MyTripFragment extends Fragment {
             }
         });
 
-        rv = (RecyclerView) getActivity().findViewById(R.id.my_trip_recycle_view);
+        rv = (RecyclerView) view.findViewById(R.id.my_trip_recycle_view);
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(HomeActivity.getHome_context());
         rv.setLayoutManager(LLM);

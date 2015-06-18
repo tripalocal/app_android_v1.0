@@ -32,8 +32,6 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.AvailableOption;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
-import android.widget.AdapterView;
-import android.widget.Toast;
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -217,17 +215,12 @@ public class CheckoutActivityFragment extends Fragment {
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
                 if(dy_price != null){
-                    booking_price_and_person_amt.setText(REAL_FORMATTER.format(Integer.parseInt(temp_price[np_sel])*guests));
+                    booking_price_and_person_amt.setText(REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel])*guests));
                     if(oldVal < newVal)
                         np_sel++;
                     else np_sel--;
                 }else
                 booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
-<<<<<<< HEAD
-=======
-//                guest=guests+"";
->>>>>>> origin/master
-
             }
         });
 
