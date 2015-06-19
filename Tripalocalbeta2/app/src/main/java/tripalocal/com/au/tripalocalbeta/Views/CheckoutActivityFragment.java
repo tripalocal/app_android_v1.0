@@ -240,8 +240,10 @@ public class CheckoutActivityFragment extends Fragment {
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("price", price_s);
-                intent.putExtra("guests",guests+"");
+//                intent.putExtra("price", price_s);
+//                intent.putExtra("guests",guests+"");
+                CheckoutActivity.price=price_s;
+                CheckoutActivity.guest=guests+"";
 
                 getActivity().getApplicationContext().startActivity(intent);
             }
@@ -257,6 +259,7 @@ public class CheckoutActivityFragment extends Fragment {
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             request req = new request(CheckoutActivity.position);
+            System.out.println("Position is "+CheckoutActivity.position);
                 apiService.getExpDetails(req, new Callback<Experience_Detail>() {
                     @Override
                     public void success(Experience_Detail experience_detail, Response response) {

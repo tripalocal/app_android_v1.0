@@ -20,6 +20,7 @@ public class CheckoutActivity extends AppCompatActivity {
     public static String guest="";
     public static String date="";
     public static String time="";
+    public static String price="";
     @Override
     protected void onStop() {
         super.onStop();
@@ -29,22 +30,29 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent() != null) {
-            position = getIntent().getIntExtra(INT_EXTRA, 0);
+
+        if (getIntent() != null ) {
+            int temp = getIntent().getIntExtra(INT_EXTRA, 0);
+            if(temp!=0){
+                position=temp;
+            }
         }
         setContentView(R.layout.activity_checkout);
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FF9933CC'>Booking Details </font>"));
     }
 
+
     //#FF5D5D5D -- grey
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_exp_detail, menu);
+        getMenuInflater().inflate(R.menu.menu_checkout, menu);
         if (HomeActivity.getCurrent_user().isLoggedin()) {
             menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
         }
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
