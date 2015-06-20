@@ -72,7 +72,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/exp_detail_booking_btn"
+        android:id="@+id/view_trip_btn"
         android:text="@string/view_in_my_trip"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:onClick="viewtriphisttory"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         android:text="@string/payment_success_text"
         android:id="@+id/payment_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_above="@+id/exp_detail_booking_btn"
+        android:layout_above="@+id/view_trip_btn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="25dp"
