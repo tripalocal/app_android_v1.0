@@ -258,13 +258,13 @@ public class CheckoutActivityFragment extends Fragment {
                 guests = newVal;
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
-                if(dy_price != null){
-                    booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel])*guests)+" AUD");
-                    if(oldVal < newVal)
+                if (dy_price != null) {
+                    booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel]) * guests) + " AUD");
+                    if (oldVal < newVal)
                         np_sel++;
                     else np_sel--;
-                }else
-                booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
+                } else
+                    booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(price_i * guests) + " AUD");
             }
         });
 
@@ -294,7 +294,7 @@ public class CheckoutActivityFragment extends Fragment {
             }
         });
         refund = (TextView) view.findViewById(R.id.booking_refund_txt);
-
+        bookingBtn.setEnabled(false);
         if(CheckoutActivity.position != 999){
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -310,6 +310,8 @@ public class CheckoutActivityFragment extends Fragment {
                     public void success(Experience_Detail experience_detail, Response response) {
                         CheckoutActivity.experience_to_book = experience_detail;
                         updateDetails();
+                        bookingBtn.setEnabled(true);
+
                     }
 
                     @Override

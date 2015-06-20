@@ -158,18 +158,20 @@ public class ExpDetailActivityFragment extends Fragment {
         host_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(host_info_less.getVisibility() == View.GONE){
-                   host_info_less.setVisibility(View.VISIBLE);
-                   host_info_more.setVisibility(View.GONE);
-                   host_more_btn.setText(getResources().getString(R.string.view_more));
-               }else{
-                   host_info_less.setVisibility(View.GONE);
-                   host_info_more.setVisibility(View.VISIBLE);
-                   host_more_btn.setText(getResources().getString(R.string.view_less));
-               }
+                if (host_info_less.getVisibility() == View.GONE) {
+                    host_info_less.setVisibility(View.VISIBLE);
+                    host_info_more.setVisibility(View.GONE);
+                    host_more_btn.setText(getResources().getString(R.string.view_more));
+                } else {
+                    host_info_less.setVisibility(View.GONE);
+                    host_info_more.setVisibility(View.VISIBLE);
+                    host_more_btn.setText(getResources().getString(R.string.view_less));
+                }
             }
         });
+        request_to_book_btn.setEnabled(false);
             getExpDetails(ExpDetailActivity.position);
+
         return view;
     }
 
@@ -188,6 +190,8 @@ public class ExpDetailActivityFragment extends Fragment {
             public void success(Experience_Detail experience_detail, Response response) {
                 exp_to_display = experience_detail;
                 fillDetails();
+                request_to_book_btn.setEnabled(true);
+
             }
 
             @Override
@@ -195,6 +199,7 @@ public class ExpDetailActivityFragment extends Fragment {
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
+
     }
 
     //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
