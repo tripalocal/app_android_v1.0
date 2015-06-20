@@ -45,18 +45,21 @@
                         android:textSize="26sp"
                         android:text="@string/payment_success"
                         android:layout_marginLeft="3dp"
-                        android:layout_toRightOf="@id/exp_detail_price_person"/>
+                        android:layout_toRightOf="@id/exp_detail_price_person"
+                        android:layout_marginBottom="30dp" />
                 </RelativeLayout>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/host_img"
-                    android:layout_width="116dp"
-                    android:layout_height="116dp"
-                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_width="149dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/profile_default"
                     app:border_width="2dp"
-                    app:border_color="#ffffffff"/>
+                    app:border_color="#ffffffff"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginTop="60dp" />
 
             </FrameLayout>
 
@@ -99,6 +102,6 @@
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
-      />
+        />
 
 </RelativeLayout>
