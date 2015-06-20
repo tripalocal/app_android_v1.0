@@ -20,7 +20,9 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -33,6 +35,8 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.*;
+import tripalocal.com.au.tripalocalbeta.models.network.Booking_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 import tripalocal.com.au.tripalocalbeta.models.network.PayResult;
 
 /**
@@ -108,13 +112,13 @@ public class AlipayActivity extends AppCompatActivity {
                         // 判断resultStatus 为非“9000”则代表可能支付失败
                         // “8000”代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
                         if (TextUtils.equals(resultStatus, "8000")) {
-                            Toast.makeText(AlipayActivity.this, "支付结果确认中",
-                                    Toast.LENGTH_SHORT).show();
+                            ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
+
 
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
-                            Toast.makeText(AlipayActivity.this, "支付失败2"+resultStatus,
-                                    Toast.LENGTH_SHORT).show();
+                            ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
+
 
                         }
                     }
@@ -322,10 +326,9 @@ public class AlipayActivity extends AppCompatActivity {
                 .build();
 //        System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-        apiService.bookAliPayExperience(createJson(), new Callback<String>() {
+        apiService.bookExperience(getCreditRequest(getOutTradeNo(), ""+0, ""+0, "ALIPAY"), new Callback<Booking_Result>() {
             @Override
-            public void success(String message, Response response) {
-                ToastHelper.errorToast("Success");
+            public void success(Booking_Result message, Response response) {
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -334,16 +337,27 @@ public class AlipayActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
-//                System.out.println("Echo errors123"+json.toString());
-                ToastHelper.errorToast("failure");
-                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
+                ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
+
 //
             }
         });
     }
 
+
+    private Credit_Request getCreditRequest(String no, String month, String year, String cvv) {
+        String id=CheckoutActivity.position+"";
+        String datearr[]=(CheckoutActivity.date).split("/");
+        String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
+        String time=CheckoutActivity.time;
+        String guest_num=CheckoutActivity.guest;
+        String coupon_code = CheckoutActivity.coupon;
+        Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
+        List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
+        itinerary_list.add(itenerary);
+        Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
+        return cred_req;
+    }
     public String createJson(){
         String s="";
         String id=CheckoutActivity.position+"";

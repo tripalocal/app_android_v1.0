@@ -138,8 +138,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
-//                System.out.println("Echo errors123"+json.toString());
-                ToastHelper.errorToast("failure");
+                ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
