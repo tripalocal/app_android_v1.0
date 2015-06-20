@@ -2,6 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tripalocal.com.au.tripalocalbeta.Views.CheckoutActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_login" android:title="@string/action_login"
+        android:orderInCategory="500" app:showAsAction="never" />
 </menu>
