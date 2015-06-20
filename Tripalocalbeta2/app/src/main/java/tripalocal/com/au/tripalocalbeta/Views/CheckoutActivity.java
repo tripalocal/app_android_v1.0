@@ -20,12 +20,9 @@ public class CheckoutActivity extends AppCompatActivity {
     public static String guest="";
     public static String date="";
     public static String time="";
-<<<<<<< HEAD
     public static String coupon="";
-
-=======
     public static String price="";
->>>>>>> origin/master
+
     @Override
     protected void onStop() {
         super.onStop();
