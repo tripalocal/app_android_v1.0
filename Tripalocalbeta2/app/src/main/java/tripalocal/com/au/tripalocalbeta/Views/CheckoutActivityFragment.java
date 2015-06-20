@@ -72,6 +72,7 @@ public class CheckoutActivityFragment extends Fragment {
     static int date_sel = 0;
     static int time_sel = 0;
     static int np_sel = 0;
+
     static String dy_price;
     static String[]  temp_price;
     static Experience_Detail temp_detail_exp;
@@ -287,6 +288,7 @@ public class CheckoutActivityFragment extends Fragment {
 //                intent.putExtra("guests",guests+"");
                 CheckoutActivity.price=price_s;
                 CheckoutActivity.guest=guests+"";
+                CheckoutActivity.coupon=coupon_code.getText().toString();
 
                 getActivity().getApplicationContext().startActivity(intent);
             }
