@@ -21,6 +21,7 @@ import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
+import tripalocal.com.au.tripalocalbeta.models.network.Booking_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 
 import org.json.*;
@@ -125,9 +126,9 @@ public class CreditCardActivity  extends AppCompatActivity {
 
 
         //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
-        apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
+        apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<Booking_Result>() {
             @Override
-            public void success(String message, Response response) {
+            public void success(Booking_Result message, Response response) {
                 ToastHelper.errorToast("Success");
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

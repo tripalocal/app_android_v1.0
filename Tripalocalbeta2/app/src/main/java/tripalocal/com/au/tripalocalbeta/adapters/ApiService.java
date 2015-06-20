@@ -11,6 +11,7 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.models.network.Booking_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
@@ -49,7 +50,7 @@ public interface ApiService {
     void saveMyProfileDetails(String phone_number , Callback<MyProfile_result> response);
 
     @POST("/service_booking/")
-    void bookExperience(@Body Credit_Request data, Callback<String> response);
+    void bookExperience(@Body Credit_Request data, Callback<Booking_Result> response);
 
     @POST("/service_booking/")
     void bookAliPayExperience(@Body String data_json, Callback<String> response);

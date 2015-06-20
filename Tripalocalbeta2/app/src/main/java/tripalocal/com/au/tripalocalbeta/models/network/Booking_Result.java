@@ -1,0 +1,18 @@
+package tripalocal.com.au.tripalocalbeta.models.network;
+
+/**
+ * Created by YiHan on 2015/6/20.
+ */
+public class Booking_Result {
+    private String success;
+
+    public String getSuccess()
+    {
+        return success;
+    }
+
+    public void setSuccess(String s)
+    {
+        success = s;
+    }
+}
