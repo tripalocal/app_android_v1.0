@@ -28,7 +28,7 @@ import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
+import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
 import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
 
@@ -110,15 +110,22 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawerLayout.closeDrawers();
+                    Bundle args = new Bundle();
+                    Fragment exp_list_frag;
+                    if(HomeActivity.wish_map.isEmpty()){
+                         args.putString(BlankFragment.MSG_EXTRA, getResources().getString(R.string.empty_wishlist_msg));
+                         exp_list_frag = new BlankFragment();
+                         exp_list_frag.setArguments(args);
+                    }else{
                     ExperienceListAdapter.all_experiences.clear();
                     ExperienceListAdapter.all_experiences.addAll(HomeActivity.wish_map.values());
-                    Fragment exp_list_frag = new ExperiencesListFragment();
-                    Bundle args = new Bundle();
+                    exp_list_frag = new ExperiencesListFragment();
                     args.putInt(ExperienceListAdapter.INT_EXTRA, 9999);
                     exp_list_frag.setArguments(args);
+                    }
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_wish").commit();
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
                 }
             });
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {

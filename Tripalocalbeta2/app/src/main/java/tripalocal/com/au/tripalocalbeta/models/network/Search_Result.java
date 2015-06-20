@@ -1,7 +1,9 @@
-package tripalocal.com.au.tripalocalbeta.models;
+package tripalocal.com.au.tripalocalbeta.models.network;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tripalocal.com.au.tripalocalbeta.models.Experience;
 
 /**
  * Created by naveen on 4/19/2015.

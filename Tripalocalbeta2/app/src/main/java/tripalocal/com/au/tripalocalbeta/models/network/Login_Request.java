@@ -1,4 +1,4 @@
-package tripalocal.com.au.tripalocalbeta.models;
+package tripalocal.com.au.tripalocalbeta.models.network;
 
 /**
  * Created by naveen on 4/19/2015.

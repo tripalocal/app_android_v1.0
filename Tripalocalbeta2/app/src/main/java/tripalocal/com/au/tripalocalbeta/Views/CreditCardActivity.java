@@ -21,9 +21,13 @@ import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
+import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 
 import org.json.*;
 import android.content.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 16/06/2015.
@@ -115,7 +119,13 @@ public class CreditCardActivity  extends AppCompatActivity {
 //        System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
         System.out.println("create json"+createJson(no,month,year,cvv));
-        apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
+
+       // apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
+
+
+
+        //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
+        apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");
@@ -135,6 +145,20 @@ public class CreditCardActivity  extends AppCompatActivity {
 //
             }
         });
+    }
+
+    private Credit_Request getCreditRequest(String no, String month, String year, String cvv) {
+        String id=CheckoutActivity.position+"";
+        String datearr[]=(CheckoutActivity.date).split("/");
+        String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
+        String time=CheckoutActivity.time;
+        String guest_num=CheckoutActivity.guest;
+        String coupon_code = CheckoutActivity.coupon;
+        Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
+        List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
+        itinerary_list.add(itenerary);
+        Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
+        return cred_req;
     }
 
     public String createJson(String no,String month,String year,String cvv){
@@ -159,8 +183,8 @@ public class CreditCardActivity  extends AppCompatActivity {
 
             //add crad info
             globalObj.put("card_number",no);//4242424242424242
-            globalObj.put("expiration_month",month);//10
-            globalObj.put("expiration_year","20"+year);//2017
+            globalObj.put("expiration_month",Integer.parseInt(month));//10
+            globalObj.put("expiration_year","20"+Integer.parseInt(year));//2017
             globalObj.put("cvv",Integer.parseInt(cvv));//664,integer
             s=globalObj.toString();
             s=s.replace("\\","");

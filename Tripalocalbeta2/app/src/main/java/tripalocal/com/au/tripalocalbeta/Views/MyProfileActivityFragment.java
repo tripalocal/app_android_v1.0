@@ -19,7 +19,7 @@ import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
+import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -40,9 +40,42 @@ public class MyProfileActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.myprofile_navigation, container, false);
         getProfileDetails(view);
+        getActivity().setTitle(getResources().getString(R.string.my_profile));
         return view;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        saveProfile();
+    }
+
+    private void saveProfile() {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+                        //request.addHeader("Authorization", "Token " + temp_token);
+                    }
+                })
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.saveMyProfileDetails(localno.getText().toString(), new Callback<MyProfile_result>() {
+            @Override
+            public void success(MyProfile_result myProfile_result, Response response) {
+                ToastHelper.shortToast("profile saved");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                ToastHelper.errorToast("unable to save profile");
+            }
+        });
+    }
 
     public void getProfileDetails(final View view){
 
@@ -81,8 +114,8 @@ public class MyProfileActivityFragment extends Fragment {
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
         localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
         localno.setText(result.getPhone_number());
-        roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
-        roamingno.setText(result.getPhone_number());
+        /*roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
+        roamingno.setText(result.getPhone_number());*/
 
     Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
     hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");

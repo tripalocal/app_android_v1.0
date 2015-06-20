@@ -25,7 +25,7 @@ import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.Search_Result;
 
 
 public class ExperiencesListFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -44,6 +44,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         if(city_position != 9999){
             displayListFrag(city_position);
             getActivity().setTitle(HomeActivity.poi_data[city_position]);
+        }else{
+            getActivity().setTitle(getResources().getString(R.string.your_wishlist));
         }
         View view = inflater.inflate(R.layout.fragment_experiences_list, container, false);
         rv = (RecyclerView) view.findViewById(R.id.recycle_view_exp_list);

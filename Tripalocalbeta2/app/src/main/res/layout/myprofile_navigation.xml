@@ -65,7 +65,7 @@
             android:layout_centerHorizontal="true"
             android:padding="10dp"/>
 
-        <View style="@style/Divider"
+      <!--  <View style="@style/Divider"
             android:id="@+id/myprofile_divider_1"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
@@ -84,13 +84,13 @@
             android:layout_marginRight="30dp"
             android:textSize="14sp"
             android:layout_centerHorizontal="true"
-            android:padding="10dp"/>
+            android:padding="10dp"/>-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nav_drawer_discalimer"
-            android:layout_below="@+id/nav_drawer_roaming_no"
+            android:layout_below="@+id/nav_drawer_local_no"
             android:text="@string/myprofile_number_explanation"
             android:layout_marginTop="20dp"
             android:paddingBottom="20dp"

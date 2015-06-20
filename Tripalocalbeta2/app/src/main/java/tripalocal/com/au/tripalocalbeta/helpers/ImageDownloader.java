@@ -1,4 +1,4 @@
-package tripalocal.com.au.tripalocalbeta.models;
+package tripalocal.com.au.tripalocalbeta.helpers;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

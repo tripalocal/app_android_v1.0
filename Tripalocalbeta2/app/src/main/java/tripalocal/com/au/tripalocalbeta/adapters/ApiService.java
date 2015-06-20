@@ -11,9 +11,11 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
-import tripalocal.com.au.tripalocalbeta.models.MyProfile_result;
+import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
+import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
 import tripalocal.com.au.tripalocalbeta.models.MyTrip;
-import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.Search_Result;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 
@@ -43,7 +45,16 @@ public interface ApiService {
     @GET("/service_myprofile/")
     void getMyProfileDetails(Callback<MyProfile_result> response);
 
+    @POST("/service_myprofile/")
+    void saveMyProfileDetails(String phone_number , Callback<MyProfile_result> response);
+
     @POST("/service_booking/")
-    void bookExperience(@Body String data_json, Callback<String> response);
+    void bookExperience(@Body Credit_Request data, Callback<String> response);
+
+    @POST("/service_booking/")
+    void bookAliPayExperience(@Body String data_json, Callback<String> response);
+
+    @GET("/service_couponverification/")
+    void verifyCouponCode(@Body String data_json, Callback<Coupon_Result> response);
 
 }

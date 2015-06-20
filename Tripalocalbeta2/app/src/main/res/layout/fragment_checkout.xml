@@ -28,7 +28,6 @@
                     android:layout_height="85dp"
                     android:layout_weight="0.4"
                     android:id="@+id/booking_thumbnail"
-                    android:src="@color/tripalocal_light_green"
                     />
                 <!-- adde xpenses and info on saved lang duration -->
                 <LinearLayout
@@ -277,18 +276,18 @@
                     <FrameLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"/>
+                        android:layout_weight="0.35"/>
                     <NumberPicker
                         android:id="@+id/numberPicker1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.3"
                         />
                     <FrameLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.2"/>
+                        android:layout_weight="0.35"/>
                 </TableRow>
 
                 <TableRow
@@ -309,20 +308,22 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:background="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="20dp">
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            android:paddingLeft="10dp"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp">
 
                             <TextView
@@ -367,6 +368,7 @@
                                 android:gravity="end"/>
                         </LinearLayout>
                         <View style="@style/DarkDivider"
+                            android:layout_marginRight="20dp"
                             android:layout_marginTop="15dp"
                             android:id="@+id/booking_divider_1"
                             />
@@ -376,7 +378,7 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="10dp"
                     android:id="@+id/booking_price_coupon_container"
                     android:background="@color/white">
 
@@ -384,24 +386,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="20dp">
+                        android:paddingLeft="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="30dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="0.7"
+                            android:layout_gravity="center_vertical"
                             android:id="@+id/booking_price_coupon_txt"
                             android:text="Coupon"
-                            android:gravity="start"/>
+                            />
                         <EditText
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
                             android:id="@+id/booking_price_coupon_edit"
                             android:text="@string/checkout_coupon_label"
-                            android:layout_marginLeft="45dp"
+                            android:gravity="center"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="15dp"
                             android:textColor="@color/tripalocal_green_blue"
-                            android:gravity="end"/>
+                            />
                     </LinearLayout>
                 </TableRow>
                 <TableRow

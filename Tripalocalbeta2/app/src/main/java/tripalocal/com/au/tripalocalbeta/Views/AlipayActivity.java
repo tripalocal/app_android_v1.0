@@ -1,13 +1,9 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,11 +32,8 @@ import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
-import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.helpers.*;
-import tripalocal.com.au.tripalocalbeta.models.*;
-
-import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
+import tripalocal.com.au.tripalocalbeta.models.network.PayResult;
 
 /**
  * Created by user on 15/06/2015.
@@ -329,7 +322,7 @@ public class AlipayActivity extends AppCompatActivity {
                 .build();
 //        System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-        apiService.bookExperience(createJson(), new Callback<String>() {
+        apiService.bookAliPayExperience(createJson(), new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");

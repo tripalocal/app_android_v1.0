@@ -1,4 +1,4 @@
-package tripalocal.com.au.tripalocalbeta.models;
+package tripalocal.com.au.tripalocalbeta.models.network;
 
 /**
  * Created by user on 15/06/2015.

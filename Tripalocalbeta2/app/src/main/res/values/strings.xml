@@ -5,7 +5,7 @@
     <string name="server_url">http://adventure007.cloudapp.net/</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="hello_blank_fragment">Blank</string>
+    <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
     <string name="placeholder_content">Loading</string>
     <string name="gibber"> </string>
     <string name="sub_head_gibber">Loading</string>
@@ -183,6 +183,10 @@
     <string name="credit_card_year_error">Incorrect Year</string>
     <string name="credit_card_cvv_error">CVV must be 3 digit number</string>
     <string name="credit_card_error">Unable to make the payment</string>
+    <string name="your_wishlist">Your Wishlist</string>
+    <string name="empty_list_err">empty list</string>
+    <string name="empty_wishlist_msg">You have not added any experiences to your wishlist</string>
+    <string name="my_profile">My Profile</string>
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
@@ -194,9 +198,6 @@
         <item>Goldcoast</item>
         <item>Hobart</item>
         <item>Adelaide</item>
-        <item>GRVIC</item>
-        <item>GRQLD</item>
-        <item>GRNSW</item>
     </string-array>
 
     <string-array name="poi_array">
@@ -207,8 +208,5 @@
         <item>Gold Coast, QLD</item>
         <item>Hobart, TAS</item>
         <item>Adelaide, SA</item>
-        <item>Greater Region, VIC</item>
-        <item>Greater Region, QLD</item>
-        <item>Greater Region, NSW</item>
     </string-array>
 </resources>

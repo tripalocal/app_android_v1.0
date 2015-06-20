@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,6 +38,7 @@ public class MyTripFragment extends Fragment {
     private Button exploreButton;
     private int category = 0;//0:upcoming, 1:past
     private TableLayout tl,tl_none;
+    public static TextView msgTxt;
 
     public static ArrayList<MyTrip> upcomingTrip = new ArrayList<>();
     public static ArrayList<MyTrip> previousTrip = new ArrayList<>();
@@ -153,11 +155,11 @@ public class MyTripFragment extends Fragment {
                 return true;
             }
         });
-
         rv = (RecyclerView) view.findViewById(R.id.my_trip_recycle_view);
         rv.setHasFixedSize(true);
         LinearLayoutManager LLM = new LinearLayoutManager(HomeActivity.getHome_context());
         rv.setLayoutManager(LLM);
+        msgTxt = (TextView) getActivity().findViewById(R.id.blank_msg);
         return view;
     }
 
@@ -178,7 +180,6 @@ public class MyTripFragment extends Fragment {
         ApiService apiService = restAdapter.create(ApiService.class);
 
         apiService.getMyTrip(new Callback<ArrayList<MyTrip>>() {
-
             @Override
             public void success(ArrayList<MyTrip> my_trip, Response response) {
                 classifyTrip(my_trip);
@@ -203,6 +204,9 @@ public class MyTripFragment extends Fragment {
                 }
                 else
                 {
+                    if(upcomingTrip.isEmpty()){
+                        MyTripAdapter.upcoming_flag = true;
+                    }else MyTripAdapter.previous_flag = true;
                     upcomingTripButton.setVisibility(View.INVISIBLE);
                     previousTripButton.setVisibility(View.INVISIBLE);
                 }
@@ -212,7 +216,7 @@ public class MyTripFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("ERROR MYTRIP :" +error);
+                System.out.println("ERROR MYTRIP :" + error);
             }
         });
     }

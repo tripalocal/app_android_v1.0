@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -20,6 +21,9 @@ import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import retrofit.Callback;
@@ -32,6 +36,9 @@ import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.AvailableOption;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
+import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Request;
+import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -58,6 +65,7 @@ public class CheckoutActivityFragment extends Fragment {
     Spinner date_spin;
     Spinner time_spin;
     NumberPicker np;
+    EditText coupon_code;
     static int guests = 1;
     static String price_s = null;
     static Double price_i = null;
@@ -206,6 +214,41 @@ public class CheckoutActivityFragment extends Fragment {
         booking_price = (TextView) view.findViewById(R.id.booking_price);
         booking_guest_number = (TextView) view.findViewById(R.id.booking_guest_number);
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
+        coupon_code = (EditText) view.findViewById(R.id.booking_price_coupon_edit);
+        coupon_code.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    RestAdapter restAdapter = new RestAdapter.Builder()
+                            .setLogLevel(RestAdapter.LogLevel.FULL)
+                            .setEndpoint(getResources().getString(R.string.server_url))
+                            .build();
+                    ApiService apiService = restAdapter.create(ApiService.class);
+                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+                    Gson gson = new Gson();
+                    Calendar cal = new GregorianCalendar();
+                    Date today = cal.getTime();
+                    ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
+                    Coupon_Request req = new Coupon_Request("addd",String.valueOf(ExpDetailActivity.position),
+                            temp_detail_exp.getAvailable_options().get(date_sel).getDate_string(),
+                            temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
+                            guests);
+                    apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
+                        @Override
+                        public void success(Coupon_Result coupon_result, Response response) {
+                            if(coupon_result.getValid().equalsIgnoreCase("yes")) {
+                                price_i = coupon_result.getNew_price();
+                                booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
+                            }
+                            else
+                                ToastHelper.errorToast("Invalid Coupon");
+                        }
+                        @Override
+                        public void failure(RetrofitError error) {
+                        }
+                    });
+                }
+            }
+        });
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -215,12 +258,12 @@ public class CheckoutActivityFragment extends Fragment {
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
                 if(dy_price != null){
-                    booking_price_and_person_amt.setText(REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel])*guests));
+                    booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel])*guests)+" AUD");
                     if(oldVal < newVal)
                         np_sel++;
                     else np_sel--;
                 }else
-                booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
+                booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
             }
         });
 
@@ -237,7 +280,7 @@ public class CheckoutActivityFragment extends Fragment {
                 int secondHour=hour+duration;
                 String secHourSt=secondHour/10+""+secondHour%10+":00";
                 CheckoutActivity.time=time_spin.getSelectedItem().toString()+"-"+secHourSt;
-
+                CheckoutActivity.coupon = coupon_code.getText().toString();
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("price", price_s);
@@ -309,7 +352,7 @@ public class CheckoutActivityFragment extends Fragment {
             price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
             booking_price.setText(price_s);
             booking_guest_number.setText(String.valueOf(guests));
-            booking_price_and_person_amt.setText(REAL_FORMATTER.format(price_i*guests));
+            booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
             np.setMinValue(temp_detail_exp.getExperience_guest_number_min());
             np.setMaxValue(temp_detail_exp.getExperience_guest_number_max());
             dy_price = temp_detail_exp.getExperience_dynamic_price();

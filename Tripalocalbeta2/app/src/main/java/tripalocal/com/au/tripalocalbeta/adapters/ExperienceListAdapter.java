@@ -22,7 +22,7 @@ import tripalocal.com.au.tripalocalbeta.Views.ExpDetailActivity;
 import tripalocal.com.au.tripalocalbeta.Views.HomeActivity;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.Experience;
-import tripalocal.com.au.tripalocalbeta.models.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.Search_Result;
 import tripalocal.com.au.tripalocalbeta.models.Tripalocal;
 
 /**
