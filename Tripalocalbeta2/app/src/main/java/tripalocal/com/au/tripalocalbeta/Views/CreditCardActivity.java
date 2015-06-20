@@ -125,7 +125,7 @@ public class CreditCardActivity  extends AppCompatActivity {
 
 
         //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
-        apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
+        apiService.bookExperience(getCreditRequest(no, month, year, cvv), new Callback<String>() {
             @Override
             public void success(String message, Response response) {
                 ToastHelper.errorToast("Success");
@@ -168,6 +168,7 @@ public class CreditCardActivity  extends AppCompatActivity {
         String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
         String time=CheckoutActivity.time;
         String guest_num=CheckoutActivity.guest;
+        String coupon_text=CheckoutActivity.coupon;
         try {
             JSONObject globalObj=new JSONObject();
 
@@ -186,9 +187,10 @@ public class CreditCardActivity  extends AppCompatActivity {
             globalObj.put("expiration_month",Integer.parseInt(month));//10
             globalObj.put("expiration_year","20"+Integer.parseInt(year));//2017
             globalObj.put("cvv",Integer.parseInt(cvv));//664,integer
+            globalObj.put("coupon",coupon_text);
             s=globalObj.toString();
             s=s.replace("\\","");
-
+    System.out.println("Coupon"+coupon_text);
         }catch (Exception e){
 
         }
