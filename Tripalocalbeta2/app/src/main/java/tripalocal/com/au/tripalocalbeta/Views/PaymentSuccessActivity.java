@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.*;
 import tripalocal.com.au.tripalocalbeta.R;
 import android.content.Intent;
+import android.widget.Button;
+
 /**
  * Created by user on 15/06/2015.
  */
@@ -21,6 +23,7 @@ public class PaymentSuccessActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_payment_success);
+
     }
 
 
@@ -47,17 +50,7 @@ public class PaymentSuccessActivity extends ActionBarActivity {
     }
 
     /** Needs to be Modified to suit latest refractoring in activities by @naveen **/
-    public void viewtriphisttory(View v){
-        System.out.println("this is a test");
-
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-//        DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-//        drawerLayout.closeDrawers();
-//        Fragment my_trip_fragment = new MyTripFragment();
-//        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
-
-        getApplicationContext().startActivity(intent);
-    }
+//    public void viewtriphisttory(View v){
+//
+//    }
 }

@@ -109,5 +109,11 @@
             android:label="@string/payment_success_title"
             >
         </activity>
+
+        <activity
+            android:name=".Views.MyTriptmpActivity"
+            android:label="@string/navigation_mytrips"
+            >
+        </activity>
     </application>
 </manifest>
