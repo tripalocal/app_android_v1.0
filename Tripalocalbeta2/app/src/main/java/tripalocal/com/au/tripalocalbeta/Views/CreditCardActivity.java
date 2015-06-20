@@ -126,11 +126,7 @@ public class CreditCardActivity  extends AppCompatActivity {
 
 
         //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
-<<<<<<< HEAD
         apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<Booking_Result>() {
-=======
-        apiService.bookExperience(getCreditRequest(no, month, year, cvv), new Callback<String>() {
->>>>>>> a9c8b20290c1e2f3883801d4f4cee64c4ffb7282
             @Override
             public void success(Booking_Result message, Response response) {
                 ToastHelper.errorToast("Success");
