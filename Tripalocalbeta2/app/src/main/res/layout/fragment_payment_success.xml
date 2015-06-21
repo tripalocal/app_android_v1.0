@@ -43,7 +43,6 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/exp_detail_price_hour"
                         android:textSize="26sp"
-                        android:text="@string/payment_success"
                         android:layout_marginLeft="3dp"
                         android:layout_toRightOf="@id/exp_detail_price_person"
                         android:layout_marginBottom="30dp" />
