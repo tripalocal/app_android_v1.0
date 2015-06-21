@@ -74,6 +74,7 @@ public class CheckoutActivityFragment extends Fragment {
     static int date_sel = 0;
     static int time_sel = 0;
     static int np_sel = 0;
+
     static Experience_Detail temp_detail_exp;
 
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
@@ -266,9 +267,23 @@ public class CheckoutActivityFragment extends Fragment {
                 guests = newVal;
                 booking_guest_number.setText(String.valueOf(guests));
                 if (dy_price.length > 0) {
-                    if (oldVal < newVal)
+                    if (oldVal < newVal) {
+                        if(np_sel < dy_price.length && np_sel !=0)
                         np_sel++;
-                    else np_sel--;
+                        else
+                            np_sel = dy_price.length -1;
+                    }
+                    else{
+                        if(np_sel !=0){
+                            if(np_sel != dy_price.length-1)
+                            np_sel--;
+                            else if (newVal != np.getMinValue())
+                              np_sel--;
+                            else
+                                np_sel = 0 ;
+
+                        }
+                    }
                     price_i = Double.valueOf(dy_price[np_sel]);
                     price_s = REAL_FORMATTER.format(dy_price[np_sel]);
                     booking_price.setText(price_s);
@@ -372,10 +387,12 @@ public class CheckoutActivityFragment extends Fragment {
                     price_i = Double.valueOf(dy_price[3]);
                     price_s = REAL_FORMATTER.format(dy_price[3]);
                     guests = 4;
+                    np_sel = 3;
                 }else if(temp_detail_exp.getExperience_guest_number_max() < 4){
                     price_i = Double.valueOf(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     price_s = REAL_FORMATTER.format(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     guests = temp_detail_exp.getExperience_guest_number_max();
+                    np_sel = dy_price.length -1;
                 }else if(temp_detail_exp.getExperience_guest_number_min() > 4){
                     price_i = Double.valueOf(dy_price[0]);
                     price_s = REAL_FORMATTER.format(dy_price[0]);
@@ -438,8 +455,8 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
-                    price_i = coupon_result.getNew_price();
-                    booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
+                    ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
+                    booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(coupon_result.getNew_price())+" AUD");
                 }
                 else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));

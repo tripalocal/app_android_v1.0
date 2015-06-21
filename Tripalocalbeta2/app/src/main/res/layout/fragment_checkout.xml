@@ -383,6 +383,10 @@
                     android:background="@color/white">
 
                     <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -412,28 +416,26 @@
                             android:hint="@string/checkout_coupon_label"
                             android:layout_marginBottom="10dp" />
                     </LinearLayout>
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginRight="25dp">
-                        <FrameLayout
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.7"/>
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="31dp"
-                        android:layout_weight="0.6"
-                        android:layout_gravity="right"
-                        android:text="@string/checkout_refresh"
-                        android:id="@+id/refresh_code"
-                        android:background="@color/tripalocal_green_blue"
-                        android:textColor="@color/white" />
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="25dp">
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.7"/>
+                            <Button
+                                android:layout_width="0dp"
+                                android:layout_height="31dp"
+                                android:layout_weight="0.6"
+                                android:layout_gravity="right"
+                                android:text="@string/checkout_refresh"
+                                android:id="@+id/refresh_code"
+                                android:background="@color/tripalocal_green_blue"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
                     </LinearLayout>
                 </TableRow>
                 <TableRow

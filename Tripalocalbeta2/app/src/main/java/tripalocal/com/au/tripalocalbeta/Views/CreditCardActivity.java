@@ -1,34 +1,30 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.*;
-import android.widget.*;
+import android.view.View;
+import android.widget.EditText;
 
-import com.google.gson.Gson;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
-import retrofit.mime.TypedByteArray;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
-import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
-import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 import tripalocal.com.au.tripalocalbeta.models.network.Booking_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
-
-import org.json.*;
-import android.content.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by user on 16/06/2015.
