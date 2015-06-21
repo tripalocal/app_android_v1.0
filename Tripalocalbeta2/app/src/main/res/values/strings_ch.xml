@@ -61,7 +61,7 @@
     <string name="nav_privacy_policy">隐私政策</string>
     <string name="nav_about_us">关于我们</string>
 
-    <string name="exp_list_per_person">澳元每人起</string>
+    <string name="exp_list_per_person">澳元每人 起</string>
     <string name="exp_list_duration">小时</string>
 
     <string name="exp_reservation">和</string>
@@ -111,7 +111,7 @@
     <string name="checkout_price_label">价格</string>
     <string name="checkout_price_placeholder"></string>
     <string name="checkout_price_dollar_text">\u0020澳元 x\u0020</string>
-    <string name="checkout_price_pp">\u0020每人</string>
+    <string name="checkout_price_pp">\u0020人</string>
     <string name="checkout_amount_placeholder"> </string>
     <string name="checkout_coupon_label">打折码</string>
     <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
@@ -186,7 +186,7 @@
     <string name="your_wishlist">兴趣列表</string>
     <string name="empty_list_err">空列表</string>
     <string name="empty_wishlist_msg">你还没有添加任何体验</string>
-    <string name="my_profile">我的主页</string>
+    <string name="my_profile">个人信息</string>
     <string name="payment_failure">付款失败</string>
     <string name="payment_success">付款成功</string>
     <string name="error_saving_profile">无法保存个人信息</string>
