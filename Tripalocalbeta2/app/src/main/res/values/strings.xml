@@ -130,7 +130,7 @@
     <string name="checkout_duration_placeholder">hrs\u0020\u2022\u0020</string>
     <string name="checkout_refresh">Validate</string>
     <string name="checkout_invalidCoupon">Invalid coupon</string>
-
+    <string name="server_error">Server error</string>
     
     <string name="wishlist_title">Your Wishlist</string>
     <string name="wish_log_in_msg">Please Log in to Save</string>
