@@ -66,6 +66,7 @@ public class CheckoutActivityFragment extends Fragment {
     Spinner time_spin;
     NumberPicker np;
     EditText coupon_code;
+    Button refresh_btn;
     static int guests = 1;
     static String price_s = null;
     static Double price_i = null;
@@ -250,6 +251,14 @@ public class CheckoutActivityFragment extends Fragment {
                 }
             }
         });
+        refresh_btn=(Button)view.findViewById(R.id.refresh_code);
+        refresh_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refresh_code();
+
+            }
+        });
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
         np.setWrapSelectorWheel(false);
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -382,4 +391,36 @@ public class CheckoutActivityFragment extends Fragment {
         }
     }
 
+
+    public void refresh_code(){
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+        Gson gson = new Gson();
+        Calendar cal = new GregorianCalendar();
+        Date today = cal.getTime();
+        ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
+        Coupon_Request req = new Coupon_Request(coupon_code.getText().toString(),String.valueOf(ExpDetailActivity.position),
+                temp_detail_exp.getAvailable_options().get(date_sel).getDate_string(),
+                temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
+                guests);
+        apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
+            @Override
+            public void success(Coupon_Result coupon_result, Response response) {
+                if(coupon_result.getValid().equalsIgnoreCase("yes")) {
+                    price_i = coupon_result.getNew_price();
+                    booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
+                }
+                else
+                    ToastHelper.errorToast(getResources().getString(R.string.invalidateCoupon));
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                ToastHelper.longToast(getResources().getString(R.string.server_error));
+            }
+        });
+    }
 }
