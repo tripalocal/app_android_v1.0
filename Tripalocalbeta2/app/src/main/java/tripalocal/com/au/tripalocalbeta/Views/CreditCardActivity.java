@@ -88,17 +88,17 @@ public class CreditCardActivity  extends AppCompatActivity {
     }
 
     public boolean validateInput(String no,String month,String year,String cvv){
-        if(no.length()<12 || no.length()>16){
+        if(no.length()<12 || no.length()>16 || no.equals("")){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_no_error));
             return false;
         }else if(month.length()!= 2 || Integer.parseInt(month)>12
-                || Integer.parseInt(month)<1){
+                || Integer.parseInt(month)<1 || month.equals("")){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_month_error));
             return false;
-        }else if(year.length()!=2 || Integer.parseInt(year)<15){
+        }else if(year.length()!=2 || Integer.parseInt(year)<15 || year.equals("")){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_year_error));
             return false;
-        }else if(cvv.length()!=3){
+        }else if(cvv.length()!=3 || cvv.equals("")){
             ToastHelper.errorToast(getResources().getString(R.string.credit_card_cvv_error));
             return false;
         }
