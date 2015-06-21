@@ -9,7 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
+
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -39,7 +40,7 @@ import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
 import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Request;
 import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
-
+import android.widget.Button;
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -74,6 +75,7 @@ public class CheckoutActivityFragment extends Fragment {
     static int date_sel = 0;
     static int time_sel = 0;
     static int np_sel = 0;
+    static boolean coupon_status=false;
 
     static Experience_Detail temp_detail_exp;
 
@@ -315,8 +317,12 @@ public class CheckoutActivityFragment extends Fragment {
 //                intent.putExtra("price", price_s);
 //                intent.putExtra("guests",guests+"");
 //                if(CheckoutActivity.price.equals("")) {
-
-                    CheckoutActivity.price = REAL_FORMATTER.format(price_i/guests)+"";
+                if(coupon_status) {
+                    int guest = Integer.parseInt(booking_guest_number.getText().toString());
+                    CheckoutActivity.price = REAL_FORMATTER.format(price_i) + "";
+                }else{
+                    CheckoutActivity.price=price_s;
+                }
 //                System.out.println("price now"+price_i);
 //                }
                 CheckoutActivity.guest=guests+"";
@@ -461,10 +467,10 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
-                    price_i = coupon_result.getNew_price();
+                    price_i = coupon_result.getNew_price()/guests;
                     ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
-                    booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(coupon_result.getNew_price())+" AUD");
-
+                    booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(coupon_result.getNew_price()) + " AUD");
+                    coupon_status=true;
                 }
                 else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
