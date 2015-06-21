@@ -4,6 +4,7 @@ package tripalocal.com.au.tripalocalbeta.models.network;
  * Created by naveen on 6/19/2015.
  */
 public class Coupon_Result {
+
     private String valid;
     private Double new_price;
 

@@ -56,7 +56,7 @@ public interface ApiService {
     @POST("/service_booking/")
     void bookAliPayExperience(@Body String data_json, Callback<String> response);
 
-    @GET("/service_couponverification/")
+    @POST("/service_couponverification/")
     void verifyCouponCode(@Body String data_json, Callback<Coupon_Result> response);
 
 }

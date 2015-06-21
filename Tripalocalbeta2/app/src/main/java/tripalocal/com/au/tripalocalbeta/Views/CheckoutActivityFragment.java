@@ -27,6 +27,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -370,17 +371,21 @@ public class CheckoutActivityFragment extends Fragment {
                         temp_detail_exp.getExperience_guest_number_max() >= 4){
                     price_i = Double.valueOf(dy_price[3]);
                     price_s = REAL_FORMATTER.format(dy_price[3]);
+                    guests = 4;
                 }else if(temp_detail_exp.getExperience_guest_number_max() < 4){
                     price_i = Double.valueOf(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     price_s = REAL_FORMATTER.format(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
+                    guests = temp_detail_exp.getExperience_guest_number_max();
                 }else if(temp_detail_exp.getExperience_guest_number_min() > 4){
                     price_i = Double.valueOf(dy_price[0]);
                     price_s = REAL_FORMATTER.format(dy_price[0]);
+                    guests = temp_detail_exp.getExperience_guest_number_min();
                 }
             }else {
                 //price_title.setText(REAL_FORMATTER.format(temp_detail_exp.getExperience_price()*1.44));
                 price_i = temp_detail_exp.getExperience_price();
                 price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
+                guests = temp_detail_exp.getExperience_guest_number_min();
             }
             booking_price.setText(price_s);
             booking_guest_number.setText(String.valueOf(guests));
@@ -409,6 +414,13 @@ public class CheckoutActivityFragment extends Fragment {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+                    }
+                })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
