@@ -189,6 +189,8 @@
     <string name="my_profile">我的主页</string>
     <string name="payment_failure">付款失败</string>
     <string name="payment_success">付款成功</string>
+    <string name="error_saving_profile">无法保存个人信息</string>
+    <string name="profile_saved">个人信息已保存</string>
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->

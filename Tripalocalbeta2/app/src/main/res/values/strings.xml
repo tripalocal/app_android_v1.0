@@ -189,9 +189,6 @@
     <string name="my_profile">My Profile</string>
     <string name="payment_failure">Payment failure</string>
     <string name="payment_success">Payment Successful</string>
-    <string name="refresh">refresh</string>
-    <string name="invalidateCoupon">Invalid Coupon</string>
-    <string name="server_error">Server Error</string>
     <string name="error_saving_profile">unable to save profile</string>
     <string name="profile_saved">profile saved</string>
 
