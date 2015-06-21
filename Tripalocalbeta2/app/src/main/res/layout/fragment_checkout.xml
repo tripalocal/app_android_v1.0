@@ -402,13 +402,15 @@
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.3"
+                            android:layout_weight="0.8"
                             android:id="@+id/booking_price_coupon_edit"
                             android:gravity="center"
                             android:layout_gravity="end"
                             android:layout_marginLeft="15dp"
+
                             android:textColor="@color/tripalocal_green_blue"
-                            android:hint="@string/checkout_coupon_label" />
+                            android:hint="@string/checkout_coupon_label"
+                            android:layout_marginBottom="10dp" />
                     </LinearLayout>
                 </TableRow>
                 <TableRow
@@ -426,13 +428,12 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="31dp"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.6"
                         android:layout_gravity="right"
                         android:text="@string/checkout_refresh"
                         android:id="@+id/refresh_code"
                         android:background="@color/tripalocal_green_blue"
-                        android:textColor="@color/white"
-                        />
+                        android:textColor="@color/white" />
                     </LinearLayout>
                 </TableRow>
                 <TableRow
