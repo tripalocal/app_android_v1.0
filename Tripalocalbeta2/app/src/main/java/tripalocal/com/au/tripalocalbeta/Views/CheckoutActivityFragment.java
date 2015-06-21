@@ -73,12 +73,10 @@ public class CheckoutActivityFragment extends Fragment {
     static int date_sel = 0;
     static int time_sel = 0;
     static int np_sel = 0;
-
-    static String dy_price;
-    static String[]  temp_price;
     static Experience_Detail temp_detail_exp;
 
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
+    private static Float[] dy_price;
 
     public CheckoutActivityFragment() {
     }
@@ -267,8 +265,8 @@ public class CheckoutActivityFragment extends Fragment {
                 guests = newVal;
                 booking_price.setText(price_s);
                 booking_guest_number.setText(String.valueOf(guests));
-                if (dy_price != null) {
-                    booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(Float.parseFloat(temp_price[np_sel]) * guests) + " AUD");
+                if (dy_price.length > 0) {
+                    booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(dy_price[np_sel] * guests) + " AUD");
                     if (oldVal < newVal)
                         np_sel++;
                     else np_sel--;
@@ -320,9 +318,7 @@ public class CheckoutActivityFragment extends Fragment {
                         CheckoutActivity.experience_to_book = experience_detail;
                         updateDetails();
                         bookingBtn.setEnabled(true);
-
                     }
-
                     @Override
                     public void failure(RetrofitError error) {
                         ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
@@ -364,17 +360,35 @@ public class CheckoutActivityFragment extends Fragment {
                 booking_row_4.setVisibility(View.GONE);
                 booking_row_5.setVisibility(View.GONE);
             }
-            price_i = temp_detail_exp.getExperience_price();
-            price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
+
+
+            Float[] temp_dp = temp_detail_exp.getExperience_dynamic_price();
+            if(temp_dp.length > 0){
+                if(temp_detail_exp.getExperience_guest_number_min() <= 4 &&
+                        temp_detail_exp.getExperience_guest_number_max() >= 4){
+                    price_i = Double.valueOf(temp_dp[3]);
+                    price_s = REAL_FORMATTER.format(temp_dp[3]);
+                }else if(temp_detail_exp.getExperience_guest_number_max() < 4){
+                    price_i = Double.valueOf(temp_dp[temp_detail_exp.getExperience_guest_number_max()]);
+                    price_s = REAL_FORMATTER.format(temp_dp[temp_detail_exp.getExperience_guest_number_max()]);
+                }else if(temp_detail_exp.getExperience_guest_number_min() > 4){
+                    price_i = Double.valueOf(temp_dp[0]);
+                    price_s = REAL_FORMATTER.format(temp_dp[0]);
+                }
+            }else {
+                //price_title.setText(REAL_FORMATTER.format(temp_detail_exp.getExperience_price()*1.44));
+                price_i = temp_detail_exp.getExperience_price();
+                price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
+            }
+
+
+
             booking_price.setText(price_s);
             booking_guest_number.setText(String.valueOf(guests));
             booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
             np.setMinValue(temp_detail_exp.getExperience_guest_number_min());
             np.setMaxValue(temp_detail_exp.getExperience_guest_number_max());
             dy_price = temp_detail_exp.getExperience_dynamic_price();
-            if (dy_price != null) {
-                temp_price = dy_price.split(",");
-            }
             List<String> temp_dates = new ArrayList<>();
             List<String> temp_times = new ArrayList<>();
             for(AvailableOption option : temp_detail_exp.getAvailable_options()){

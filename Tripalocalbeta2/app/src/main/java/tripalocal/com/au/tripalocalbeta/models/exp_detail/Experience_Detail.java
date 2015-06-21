@@ -12,7 +12,8 @@ public class Experience_Detail{
     private Integer experience_duration;
     private Double experience_price;
     private String included_ticket_detail;
-    private String experience_dynamic_price;
+    //private String experience_dynamic_price;
+    private Float[] experience_dynamic_price;
     private String host_bio;
     private List <List<String>> available_date = new ArrayList<List<String>>();
     private String included_food_detail;
@@ -68,11 +69,11 @@ public class Experience_Detail{
         this.included_ticket_detail = included_ticket_detail;
     }
 
-    public String getExperience_dynamic_price() {
+    public Float[] getExperience_dynamic_price() {
         return experience_dynamic_price;
     }
 
-    public void setExperience_dynamic_price(String experience_dynamic_price) {
+    public void setExperience_dynamic_price(Float[] experience_dynamic_price) {
         this.experience_dynamic_price = experience_dynamic_price;
     }
 

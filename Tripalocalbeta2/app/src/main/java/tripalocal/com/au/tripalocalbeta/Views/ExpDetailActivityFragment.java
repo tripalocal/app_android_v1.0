@@ -220,7 +220,25 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         }
         exp_detail_lang.setText(l);
-        price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+
+        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+        //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;
+        //if guest_number_max < 4 , show the price for group of size guest_number_max;
+        //if guest_number_min > 4, show the price for group of size guest_number_min
+
+        Float[] temp_dp = exp_to_display.getExperience_dynamic_price();
+        if(temp_dp.length > 0){
+            if(exp_to_display.getExperience_guest_number_min() <= 4 &&
+                    exp_to_display.getExperience_guest_number_max() >= 4){
+                price_title.setText(REAL_FORMATTER.format(temp_dp[3]));
+            }else if(exp_to_display.getExperience_guest_number_max() < 4){
+                price_title.setText(REAL_FORMATTER.format(temp_dp[exp_to_display.getExperience_guest_number_max()]));
+            }else if(exp_to_display.getExperience_guest_number_min() > 4){
+                price_title.setText(REAL_FORMATTER.format(temp_dp[0]));
+            }
+        }else price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+
+
         price_hours.setText(REAL_FORMATTER.format(exp_to_display.getExperience_duration()));
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description());
