@@ -22,7 +22,6 @@ public class CheckoutActivity extends AppCompatActivity {
     public static String time="";
     public static String coupon="";
     public static String price="";
-
     @Override
     protected void onStop() {
         super.onStop();
