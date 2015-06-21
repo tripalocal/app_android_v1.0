@@ -409,18 +409,21 @@
                             android:layout_marginLeft="15dp"
                             android:textColor="@color/tripalocal_green_blue"
                             android:hint="@string/checkout_coupon_label" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="31dp"
-                            android:text="@string/checkout_refresh"
-                            android:id="@+id/refresh_code"
-                            android:background="@color/tripalocal_green_blue"
-                            android:textColor="@color/white"
-
-                            />
-
                     </LinearLayout>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="20dp">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_gravity="right"
+                        android:textAlignment="center"
+                        android:text="@string/checkout_refresh"
+                        android:id="@+id/refresh_code"
+                        android:background="@color/tripalocal_green_blue"
+                        android:textColor="@color/white"
+                        />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"

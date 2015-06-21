@@ -55,6 +55,8 @@
             android:id="@+id/nav_drawer_local_no"
             android:layout_below="@+id/nav_drawer_how_can_host_contact"
             android:hint="@string/myprofile_local_number"
+            android:inputType="phone"
+            android:singleLine="true"
             android:textColorHint="@color/tripalocal_hint"
             android:textCursorDrawable="@null"
             android:background="@color/white"

@@ -62,6 +62,7 @@ public class LoginFragment extends Fragment {
                 //HomeActivity.setCurrent_userid("9900"); //id for FB login
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 getActivity().onBackPressed();
+                getActivity().onBackPressed();
                 ToastHelper.longToast(fb_log_in_success);
             }
 
