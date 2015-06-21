@@ -268,10 +268,12 @@ public class CheckoutActivityFragment extends Fragment {
                 booking_guest_number.setText(String.valueOf(guests));
                 if (dy_price.length > 0) {
                     if (oldVal < newVal) {
-                        if(np_sel < dy_price.length && np_sel !=0)
-                        np_sel++;
-                        else
+                        if(np_sel < dy_price.length && np_sel !=0) {
+                            np_sel++;
+                        }else if(newVal == np.getMaxValue())
                             np_sel = dy_price.length -1;
+                        else
+                            np_sel++;
                     }
                     else{
                         if(np_sel !=0){

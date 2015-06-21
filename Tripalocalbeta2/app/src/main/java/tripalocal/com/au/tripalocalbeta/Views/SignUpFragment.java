@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
-
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -20,7 +18,6 @@ import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
-import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.network.SignupRequest;
@@ -67,8 +64,8 @@ public class SignUpFragment extends Fragment {
                 })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
-        Gson gson = new Gson();
+        //Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
+       // Gson gson = new Gson();
         //String log_json = gson.toJson(log_req);
 
         EditText edit_email = (EditText) getActivity().findViewById(R.id.signup_email);
