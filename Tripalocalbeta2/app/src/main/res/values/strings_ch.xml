@@ -175,7 +175,7 @@
     <string name="credit_no_hint">16个数字</string>
     <string name="drawer_open">橱窗开启</string>
     <string name="drawer_closed">橱窗关闭</string>
-    <string name="view_in_my_trip">去MyTrip里查看</string>
+    <string name="view_in_my_trip">去我的体验里查看</string>
     <string name="payment_success_text">你的预定请求已经成功发送给 somebody</string>
     <string name="payment_success_title">付款成功</string>
     <string name="credit_card_no_error">信用卡号码必须为12到16位的数字</string>
@@ -183,9 +183,9 @@
     <string name="credit_card_year_error">错误年份</string>
     <string name="credit_card_cvv_error">CVV只能是3位数字</string>
     <string name="credit_card_error">付款失败</string>
-    <string name="your_wishlist">愿望清单</string>
+    <string name="your_wishlist">兴趣列表</string>
     <string name="empty_list_err">空列表</string>
-    <string name="empty_wishlist_msg">你还有添加游历到你的愿望清单中</string>
+    <string name="empty_wishlist_msg">你还没有添加任何体验</string>
     <string name="my_profile">我的主页</string>
     <string name="payment_failure">付款失败</string>
     <string name="payment_success">付款成功</string>
