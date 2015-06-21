@@ -259,7 +259,7 @@ public class CheckoutActivityFragment extends Fragment {
             }
         });
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
-        np.setWrapSelectorWheel(false);
+        np.setWrapSelectorWheel(true);
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -392,7 +392,7 @@ public class CheckoutActivityFragment extends Fragment {
             booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
             np.setMinValue(temp_detail_exp.getExperience_guest_number_min());
             np.setMaxValue(temp_detail_exp.getExperience_guest_number_max());
-
+            np.setValue(guests);
             List<String> temp_dates = new ArrayList<>();
             List<String> temp_times = new ArrayList<>();
             for(AvailableOption option : temp_detail_exp.getAvailable_options()){
