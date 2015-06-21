@@ -429,7 +429,7 @@ public class CheckoutActivityFragment extends Fragment {
                     booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
                 }
                 else
-                    ToastHelper.errorToast(getResources().getString(R.string.invalidateCoupon));
+                    ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
             }
             @Override
             public void failure(RetrofitError error) {
