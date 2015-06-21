@@ -130,7 +130,7 @@
     <string name="checkout_duration_placeholder">小时\u0020\u2022\u0020</string>
     <string name="checkout_refresh">刷新</string>
     <string name="checkout_invalidCoupon">无效打折码</string>
-    <string name="checkout_validCoupon">打折码使用成功</string>
+    <string name="checkout_valid_coupon">打折码使用成功</string>
     <string name="server_error">服务器错误</string>
 
     <string name="wishlist_title">我的兴趣列表</string>
