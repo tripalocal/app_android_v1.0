@@ -129,7 +129,7 @@ public class CreditCardActivity  extends AppCompatActivity {
         apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<Booking_Result>() {
             @Override
             public void success(Booking_Result message, Response response) {
-                ToastHelper.errorToast("Success");
+//                ToastHelper.errorToast("Success");
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -139,9 +139,9 @@ public class CreditCardActivity  extends AppCompatActivity {
             public void failure(RetrofitError error) {
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
-                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                getApplicationContext().startActivity(intent);
 //
             }
         });
