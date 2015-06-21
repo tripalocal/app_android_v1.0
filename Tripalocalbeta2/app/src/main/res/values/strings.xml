@@ -191,7 +191,6 @@
     <string name="payment_success">Payment Successful</string>
     <string name="error_saving_profile">unable to save profile</string>
     <string name="profile_saved">profile saved</string>
-    <string name="server_error">Server Error</string>
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
