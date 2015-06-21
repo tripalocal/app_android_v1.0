@@ -20,6 +20,7 @@ import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
+import tripalocal.com.au.tripalocalbeta.models.network.profileUpdateRequest;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -31,6 +32,8 @@ public class MyProfileActivityFragment extends Fragment {
     private EditText localno;
     private EditText roamingno;
     private TextView hostname;
+    private static String profile_saved;
+    private static String profile_error;
 
     public MyProfileActivityFragment() {
     }
@@ -41,13 +44,15 @@ public class MyProfileActivityFragment extends Fragment {
         View view =inflater.inflate(R.layout.myprofile_navigation, container, false);
         getProfileDetails(view);
         getActivity().setTitle(getResources().getString(R.string.my_profile));
+        profile_saved = getResources().getString(R.string.profile_saved);
+        profile_error = getResources().getString(R.string.error_saving_profile);
         return view;
     }
 
     @Override
     public void onStop() {
-        super.onStop();
         saveProfile();
+        super.onStop();
     }
 
     private void saveProfile() {
@@ -64,15 +69,15 @@ public class MyProfileActivityFragment extends Fragment {
                 })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        apiService.saveMyProfileDetails(localno.getText().toString(), new Callback<MyProfile_result>() {
+        apiService.saveMyProfileDetails(new profileUpdateRequest(localno.getText().toString()), new Callback<MyProfile_result>() {
             @Override
             public void success(MyProfile_result myProfile_result, Response response) {
-                ToastHelper.shortToast("profile saved");
+                ToastHelper.shortToast(profile_saved);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                ToastHelper.errorToast("unable to save profile");
+                ToastHelper.errorToast(profile_error);
             }
         });
     }

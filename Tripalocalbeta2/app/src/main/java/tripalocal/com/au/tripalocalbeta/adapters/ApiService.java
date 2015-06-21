@@ -11,14 +11,15 @@ import retrofit.http.GET;
 import retrofit.http.POST;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.SearchRequest;
+import tripalocal.com.au.tripalocalbeta.models.MyTrip;
+import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
+import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
 import tripalocal.com.au.tripalocalbeta.models.network.Booking_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
-import tripalocal.com.au.tripalocalbeta.models.MyTrip;
 import tripalocal.com.au.tripalocalbeta.models.network.Search_Result;
-import tripalocal.com.au.tripalocalbeta.models.exp_detail.Experience_Detail;
-import tripalocal.com.au.tripalocalbeta.models.exp_detail.request;
+import tripalocal.com.au.tripalocalbeta.models.network.profileUpdateRequest;
 
 /**
  * Created by naveen on 4/6/2015.
@@ -47,7 +48,7 @@ public interface ApiService {
     void getMyProfileDetails(Callback<MyProfile_result> response);
 
     @POST("/service_myprofile/")
-    void saveMyProfileDetails(String phone_number , Callback<MyProfile_result> response);
+    void saveMyProfileDetails(@Body profileUpdateRequest phone , Callback<MyProfile_result> response);
 
     @POST("/service_booking/")
     void bookExperience(@Body Credit_Request data, Callback<Booking_Result> response);

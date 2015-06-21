@@ -77,7 +77,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SearchRequest req_obj = new SearchRequest(dateFormat.format(today), dateFormat.format(tommorow),
-                HomeActivity.db_poi_data[position],"2", keywords);
+                HomeActivity.db_poi_data[position],"0", keywords);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
