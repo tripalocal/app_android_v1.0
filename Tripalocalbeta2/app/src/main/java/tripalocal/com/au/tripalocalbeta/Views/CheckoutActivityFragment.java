@@ -314,6 +314,7 @@ public class CheckoutActivityFragment extends Fragment {
 //                intent.putExtra("guests",guests+"");
 //                if(CheckoutActivity.price.equals("")) {
                     CheckoutActivity.price = REAL_FORMATTER.format(price_i)+"";
+
 //                System.out.println("price now"+price_i);
 //                }
                 CheckoutActivity.guest=guests+"";
@@ -459,7 +460,8 @@ public class CheckoutActivityFragment extends Fragment {
             public void success(Coupon_Result coupon_result, Response response) {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
                     ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
-                    booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(coupon_result.getNew_price())+" AUD");
+                    booking_price_and_person_amt.setText((getResources().getString(R.string.checkout_amount_placeholder)).replace("0", REAL_FORMATTER.format(coupon_result.getNew_price() * guests) + ""));
+                    CheckoutActivity.price=price_i+"";
                 }
                 else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
