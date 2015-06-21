@@ -440,6 +440,7 @@ public class CheckoutActivityFragment extends Fragment {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
                     price_i = coupon_result.getNew_price();
                     booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
+                    CheckoutActivity.price=price_i+"";
                 }
                 else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
