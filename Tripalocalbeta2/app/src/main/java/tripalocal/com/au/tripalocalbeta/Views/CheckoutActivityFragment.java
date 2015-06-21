@@ -427,9 +427,11 @@ public class CheckoutActivityFragment extends Fragment {
         Gson gson = new Gson();
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();
+        String datearr1[]=(temp_detail_exp.getAvailable_options().get(date_sel).getDate_string()).split("/");
+        String date1=datearr1[2]+"/"+datearr1[1]+"/"+datearr1[0];
         ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
         Coupon_Request req = new Coupon_Request(coupon_code.getText().toString(),String.valueOf(ExpDetailActivity.position),
-                temp_detail_exp.getAvailable_options().get(date_sel).getDate_string(),
+                date1,
                 temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
                 guests);
         apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
