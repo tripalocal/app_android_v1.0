@@ -46,7 +46,7 @@ public class AlipayActivityFragment extends Fragment {
         price_aud_1=(TextView)view.findViewById(R.id.price_aud_1);
         price_aud_2=(TextView)view.findViewById(R.id.price_aud_2);
         price_rmb_2=(TextView)view.findViewById(R.id.price_rmb_2);
-        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
+//        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
 
         setText();
         return view;
@@ -59,9 +59,9 @@ public class AlipayActivityFragment extends Fragment {
         price_aud_1.setText("$"+price+" AUD * "+guests+ "");
         price_aud_2.setText("$"+total+" AUD");
         price_rmb_2.setText("￥"+total*5+"RMB");
-        refund.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
-        refund.setText(Html.fromHtml(text));
+//        refund.setMovementMethod(LinkMovementMethod.getInstance());
+//        String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
+//        refund.setText(Html.fromHtml(text));
     }
 
 
