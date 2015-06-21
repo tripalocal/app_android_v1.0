@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 
 import retrofit.Callback;
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -22,6 +23,7 @@ import tripalocal.com.au.tripalocalbeta.helpers.FragHelper;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Request;
 import tripalocal.com.au.tripalocalbeta.helpers.Login_Result;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
+import tripalocal.com.au.tripalocalbeta.models.network.SignupRequest;
 
 public class SignUpFragment extends Fragment {
 
@@ -57,6 +59,12 @@ public class SignUpFragment extends Fragment {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                    }
+                })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
@@ -73,7 +81,9 @@ public class SignUpFragment extends Fragment {
         String first_name = edit_firstname.getText().toString();
         String last_name = edit_lastname.getText().toString();
 
-        apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
+        //apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
+
+        apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));

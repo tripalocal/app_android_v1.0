@@ -458,15 +458,8 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
-<<<<<<< HEAD
-                    ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
+                    ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
                     booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(coupon_result.getNew_price())+" AUD");
-=======
-                    price_i = coupon_result.getNew_price();
-                    booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
-                    booking_price_and_person_amt.setText((getResources().getString(R.string.checkout_amount_placeholder)).replace("0", REAL_FORMATTER.format(coupon_result.getNew_price() * guests) + ""));
-                    CheckoutActivity.price=price_i+"";
->>>>>>> origin/master
                 }
                 else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));

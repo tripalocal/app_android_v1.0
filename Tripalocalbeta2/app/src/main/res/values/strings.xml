@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
-    <string name="server_url">http://adventure007.cloudapp.net/</string>
+    <string name="server_url"> https://www.tripalocal.com/</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
@@ -191,6 +191,7 @@
     <string name="payment_success">Payment Successful</string>
     <string name="error_saving_profile">unable to save profile</string>
     <string name="profile_saved">profile saved</string>
+    <string name="checkout_valid_coupon">Valid Coupon</string>
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->

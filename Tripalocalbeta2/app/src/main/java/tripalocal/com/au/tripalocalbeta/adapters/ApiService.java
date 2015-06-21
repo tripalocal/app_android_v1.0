@@ -19,6 +19,7 @@ import tripalocal.com.au.tripalocalbeta.models.network.Coupon_Result;
 import tripalocal.com.au.tripalocalbeta.models.network.Credit_Request;
 import tripalocal.com.au.tripalocalbeta.models.network.MyProfile_result;
 import tripalocal.com.au.tripalocalbeta.models.network.Search_Result;
+import tripalocal.com.au.tripalocalbeta.models.network.SignupRequest;
 import tripalocal.com.au.tripalocalbeta.models.network.profileUpdateRequest;
 
 /**
@@ -36,10 +37,14 @@ public interface ApiService {
     @POST("/service_login/")
     void loginUser(@Field("email")String email,@Field("password")String pwd, Callback<Login_Result> response);
 
-    @FormUrlEncoded
+    @POST("/service_signup/")
+    void signupUser(@Body SignupRequest request, Callback<Login_Result> response);
+
+
+    /*@FormUrlEncoded
     @POST("/service_signup/")
     void signup_user(@Field("email")String email, @Field("password")String pwd, @Field("first_name")
-    String firstName, @Field("last_name")String lastName,Callback<Login_Result> response);
+    String firstName, @Field("last_name")String lastName,Callback<Login_Result> response);*/
 
     @GET("/service_mytrip/")
     void getMyTrip(Callback<ArrayList<MyTrip>> response);
