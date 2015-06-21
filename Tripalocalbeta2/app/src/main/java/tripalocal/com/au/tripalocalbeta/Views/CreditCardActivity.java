@@ -135,10 +135,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             public void failure(RetrofitError error) {
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
-//                Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                getApplicationContext().startActivity(intent);
-//
+
             }
         });
     }

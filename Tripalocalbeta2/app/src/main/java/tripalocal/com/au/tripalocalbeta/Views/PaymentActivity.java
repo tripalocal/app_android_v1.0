@@ -17,14 +17,10 @@ import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.IN
 
 public class PaymentActivity extends AppCompatActivity {
 
-    public static String guests="";
-    public static String price="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        guests=CheckoutActivity.guest;
-        price=CheckoutActivity.price;
         setContentView(R.layout.activity_payment);
     }
 

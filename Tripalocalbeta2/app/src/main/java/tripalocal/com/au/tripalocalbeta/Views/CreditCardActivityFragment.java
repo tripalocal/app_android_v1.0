@@ -36,15 +36,12 @@ public class CreditCardActivityFragment extends Fragment {
     }
 
     public void setText(){
-        int price=Integer.parseInt(PaymentActivity.price);
-        int guests=Integer.parseInt(PaymentActivity.guests);
-        int total=price*guests;
-        price_aud_1.setText("$"+price+" AUD * "+guests+ "");
-        price_aud_2.setText("$" + total + " AUD");
+
+        price_aud_1.setText(CheckoutActivity.price_label_1);
+        price_aud_2.setText(CheckoutActivity.price_label_2);
 //        refund.setMovementMethod(LinkMovementMethod.getInstance());
 //        String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
 //        refund.setText(Html.fromHtml(text));
-
     }
 
 

@@ -219,40 +219,7 @@ public class CheckoutActivityFragment extends Fragment {
         booking_guest_number = (TextView) view.findViewById(R.id.booking_guest_number);
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
         coupon_code = (EditText) view.findViewById(R.id.booking_price_coupon_edit);
-        coupon_code.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    RestAdapter restAdapter = new RestAdapter.Builder()
-                            .setLogLevel(RestAdapter.LogLevel.FULL)
-                            .setEndpoint(getResources().getString(R.string.server_url))
-                            .build();
-                    ApiService apiService = restAdapter.create(ApiService.class);
-                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
-                    Gson gson = new Gson();
-                    Calendar cal = new GregorianCalendar();
-                    Date today = cal.getTime();
-                    ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
-                    Coupon_Request req = new Coupon_Request("addd",String.valueOf(ExpDetailActivity.position),
-                            temp_detail_exp.getAvailable_options().get(date_sel).getDate_string(),
-                            temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
-                            guests);
-                    apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
-                        @Override
-                        public void success(Coupon_Result coupon_result, Response response) {
-                            if(coupon_result.getValid().equalsIgnoreCase("yes")) {
-                                price_i = coupon_result.getNew_price();
-                                booking_price.setText(REAL_FORMATTER.format(coupon_result.getNew_price()));
-                            }
-                            else
-                                ToastHelper.errorToast("Invalid Coupon");
-                        }
-                        @Override
-                        public void failure(RetrofitError error) {
-                        }
-                    });
-                }
-            }
-        });
+
         refresh_btn=(Button)view.findViewById(R.id.refresh_code);
         refresh_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -314,17 +281,12 @@ public class CheckoutActivityFragment extends Fragment {
                 CheckoutActivity.coupon = coupon_code.getText().toString();
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.putExtra("price", price_s);
-//                intent.putExtra("guests",guests+"");
-//                if(CheckoutActivity.price.equals("")) {
-                if(coupon_status) {
-                    int guest = Integer.parseInt(booking_guest_number.getText().toString());
-                    CheckoutActivity.price = REAL_FORMATTER.format(price_i) + "";
-                }else{
-                    CheckoutActivity.price=price_s;
-                }
-//                System.out.println("price now"+price_i);
-//                }
+
+                CheckoutActivity.price_label_1="$ "+booking_price.getText().toString()
+                        +" AUD"+" x "+booking_guest_number.getText().toString()+" pp";
+                CheckoutActivity.price_label_2=booking_price_and_person_amt.getText().toString();
+                CheckoutActivity.total_price=booking_price_and_person_amt.getText().toString().replace("$ ","").replace(" AUD","");
+
                 CheckoutActivity.guest=guests+"";
                 CheckoutActivity.coupon=coupon_code.getText().toString();
 
@@ -467,7 +429,6 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
                 if(coupon_result.getValid().equalsIgnoreCase("yes")) {
-                    price_i = coupon_result.getNew_price()/guests;
                     ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(coupon_result.getNew_price()) + " AUD");
                     coupon_status=true;

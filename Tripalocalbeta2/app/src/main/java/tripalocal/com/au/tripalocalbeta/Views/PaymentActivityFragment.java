@@ -33,8 +33,6 @@ public class PaymentActivityFragment extends Fragment{
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), AlipayActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("price", PaymentActivity.price);
-                intent.putExtra("guests",PaymentActivity.guests);
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });
@@ -46,8 +44,6 @@ public class PaymentActivityFragment extends Fragment{
 
                     Intent intent = new Intent(getActivity().getApplicationContext(), CreditCardActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("price", PaymentActivity.price);
-                    intent.putExtra("guests",PaymentActivity.guests);
                     getActivity().getApplicationContext().startActivity(intent);
                 }
 

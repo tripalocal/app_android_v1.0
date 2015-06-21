@@ -21,7 +21,10 @@ public class CheckoutActivity extends AppCompatActivity {
     public static String date="";
     public static String time="";
     public static String coupon="";
-    public static String price="";
+//    public static String price="";
+    public static String price_label_1="";
+    public static String price_label_2="";
+    public static String total_price="";
     @Override
     protected void onStop() {
         super.onStop();

@@ -142,10 +142,8 @@ public class AlipayActivity extends AppCompatActivity {
      */
     public void pay(View v) {
         // 订单
-        int price=Integer.parseInt(PaymentActivity.price);
-        int guests=Integer.parseInt(PaymentActivity.guests);
-        double total=(double)(price*guests);
-        String orderInfo = getOrderInfo("TripaLocal Experience", "Experience in au ", ""+total);
+
+        String orderInfo = getOrderInfo("TripaLocal Experience", "Experience in au ", ""+Integer.parseInt(CheckoutActivity.total_price));
 
         // 对订单做RSA 签名
         String sign = sign(orderInfo);
