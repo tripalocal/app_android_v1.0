@@ -413,7 +413,7 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="31dp"
-                            android:text="@string/refresh"
+                            android:text="@string/checkout_refresh"
                             android:id="@+id/refresh_code"
                             android:background="@color/tripalocal_green_blue"
                             android:textColor="@color/white"

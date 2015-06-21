@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
-    <!--<string name="server_url">https://www.tripalocal.com/</string>-->
     <string name="server_url">http://adventure007.cloudapp.net/</string>
 
     <string name="hello_world">Hello world!</string>
@@ -11,7 +10,6 @@
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
     <string name="with">with</string>
-
 	<string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Livability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
 	
     <string name="action_login">Log In</string>
@@ -130,6 +128,7 @@
     <string name="checkout_time_content_desc">time_img</string>
     <string name="checkout_english">English</string>
     <string name="checkout_duration_placeholder">hrs\u0020\u2022\u0020</string>
+    <string name="checkout_refresh">Refresh</string>
     
     <string name="wishlist_title">Your Wishlist</string>
     <string name="wish_log_in_msg">Please Log in to Save</string>
@@ -188,7 +187,6 @@
     <string name="my_profile">My Profile</string>
     <string name="payment_failure">Payment failure</string>
     <string name="payment_success">Payment Successful</string>
-
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
