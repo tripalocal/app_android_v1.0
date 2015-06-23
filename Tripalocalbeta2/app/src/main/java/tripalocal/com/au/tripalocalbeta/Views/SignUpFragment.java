@@ -47,6 +47,8 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragHelper.replace(getFragmentManager(),new LoginFragment());
+//                view = inflater.inflate(R.layout.fragment_login, container, false);
+
             }
         });
         return view;
