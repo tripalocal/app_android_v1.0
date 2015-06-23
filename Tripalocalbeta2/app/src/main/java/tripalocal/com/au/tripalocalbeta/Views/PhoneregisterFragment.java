@@ -71,9 +71,10 @@ public class PhoneregisterFragment extends Fragment {
         verfication_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                invisibleButton(false);
                 //set the text
                 if(validationInput()) {
+                    invisibleButton(false);
+
                     new CountDownTimer(30000, 1000) {
 
                         public void onTick(long millisUntilFinished) {
