@@ -3,6 +3,7 @@ package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -70,6 +72,19 @@ public class PhoneregisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 invisibleButton(false);
+                //set the text
+                if(validationInput()) {
+                    new CountDownTimer(30000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
+                        }
+
+                        public void onFinish() {
+                            verfication_btn.setText(getResources().getString(R.string.verfication_expire));
+                        }
+                    }.start();
+                }
             }
         });
 //        verfication_btn.setVisibility(View.INVISIBLE);
@@ -92,11 +107,24 @@ public class PhoneregisterFragment extends Fragment {
                 if(verification_code.equals(verfication_code_confirm)){
                     Intent intent = new Intent(getActivity().getApplicationContext(), PhoneregisterActivity2.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("phone_no",phone_no_edit.getText().toString());
                     getActivity().getApplicationContext().startActivity(intent);
                 }
 
             }
         });
+    }
+
+
+    public boolean validationInput(){
+        String phone_no_s=phone_no_edit.getText().toString();
+        if(phone_no_s.length()!=11){
+            System.out.println(getResources().getString(R.string.phone_no_error));
+//            Toast.makeText(this.getActivity().getApplicationContext(),getResources().getString(R.string.phone_no_error),Toast.LENGTH_LONG).show();
+                return false;
+        }else{
+            return true;
+        }
     }
 
 
