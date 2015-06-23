@@ -8,6 +8,8 @@ public class SignupRequest {
     private String email;
     private String password;
     private String first_name;
+    private String phone_number;
+    private String last_name;
 
     public SignupRequest(String Email, String pwd, String fname, String lname){
         this.email = Email;
@@ -16,6 +18,13 @@ public class SignupRequest {
         this.last_name = lname;
     }
 
+    public SignupRequest(String Email, String pwd, String fname, String lname,String phone_number){
+        this.email = Email;
+        this.password = pwd;
+        this.first_name = fname;
+        this.last_name = lname;
+        this.phone_number=phone_number;
+    }
     public String getLast_name() {
         return last_name;
     }
@@ -48,5 +57,11 @@ public class SignupRequest {
         this.email = email;
     }
 
-    private String last_name;
+    public String getPhone_no(){
+        return phone_number;
+    }
+    public void setPhone_no(String phone_no){
+        this.phone_number=phone_number;
+    }
+
 }
