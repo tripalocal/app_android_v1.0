@@ -195,6 +195,20 @@
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
+
+    <!--start phone register string/ -->
+    <string name="send_verf_code">Send verification Code</string>
+    <string name="verfi_count_1">Please enter the code within </string>
+    <string name="verfi_count_2">seconds</string>
+    <string name="phone_no_hint">Please enter your phone num</string>
+    <string name="verification_hint">Please enter verification code</string>
+    <string name="confirm">Confirm</string>
+    <string name="last_name">Last</string>
+    <string name="first_name">First</string>
+    <string name="password_hint">Please enter password</string>
+    <string name="password_hint_2">Please enter password again</string>
+    <string name="go_to_tripalocal">Go to Tripalocal</string>
+    <!--end phone register string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

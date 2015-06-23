@@ -122,7 +122,11 @@ public class ExpDetailActivityFragment extends Fragment {
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
                     getFragmentManager().beginTransaction().addToBackStack("login")
-                            .replace(R.id.detail_frag_container, new LoginFragment()).commit();
+                            .replace(R.id.detail_frag_container, new TestFragment()).commit();
+                    Intent intent=new Intent(HomeActivity.getHome_context(),PhoneregisterActivity.class);
+                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    HomeActivity.getHome_context().startActivity(intent);
                 }
             }
         });
