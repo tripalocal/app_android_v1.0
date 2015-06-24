@@ -96,7 +96,7 @@ public class PhoneregisterFragment extends Fragment {
                         .replace(R.id.detail_frag_container, new TestFragment()).commit();
                 System.out.println("this is asdasa test");
             }
-        });
+        }); 
 
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +130,7 @@ public class PhoneregisterFragment extends Fragment {
 
     public Boolean sendVerfiMsg(String code) {
         Boolean success=true;
+        System.out.println("verification code is "+code);
         verfication_code_confirm = code;
         String uri = "http://222.73.117.158/msg/";//应用地址
         String account = "jiekou-clcs-01";//账号
@@ -144,7 +145,6 @@ public class PhoneregisterFragment extends Fragment {
         try {
             System.out.println("start event");
             String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
-//            System.out.println("returnstring:" + );
             String[] returnCodeArray=(returnString.split("\n")[0]).split(",");
             String returnCode=returnCodeArray[1];
 

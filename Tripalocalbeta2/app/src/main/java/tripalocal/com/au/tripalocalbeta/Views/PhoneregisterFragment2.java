@@ -85,8 +85,8 @@ public class PhoneregisterFragment2 extends Fragment {
         apiService.signupUser(new SignupRequest(email_s,password_s,first_name_s,last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
-//            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
-                System.out.println("success");
+                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
+
                 System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
                 Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
@@ -97,6 +97,8 @@ public class PhoneregisterFragment2 extends Fragment {
 //            ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
                 System.out.println("failure");
                 System.out.println("error = [" + error + "]");
+                ToastHelper.errorToast(getResources().getString(R.string.toast_signup_failure), getActivity());
+
             }
         });
 
@@ -111,13 +113,13 @@ public class PhoneregisterFragment2 extends Fragment {
         String email_s = email.getText().toString();
         if (last_name_s.equals("") || first_name_s.equals("") || password_1_s.equals("")
                 || password_2_s.equals("") || email_s.equals("")) {
-            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
+            ToastHelper.errorToast(getResources().getString(R.string.empty_field_error),getActivity());
 
-            System.out.println(getResources().getString(R.string.empty_field_error));
             return false;
         }
         if(!password_1_s.equals(password_2_s)){
-            System.out.println(getResources().getString(R.string.password_error));
+            ToastHelper.errorToast(getResources().getString(R.string.password_error), getActivity());
+
             return false;
         }
 
