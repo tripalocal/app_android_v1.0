@@ -2,6 +2,7 @@ package tripalocal.com.au.tripalocalbeta.Views;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bcloud.msg.http.HttpSender;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -72,6 +78,8 @@ public class PhoneregisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //set the text
+                new SendMsg().execute("");
+//                setVerficationMsg();
                 if(validationInput()) {
                     invisibleButton(false);
 
@@ -129,4 +137,69 @@ public class PhoneregisterFragment extends Fragment {
     }
 
 
+
+    public void setVerficationMsg(){
+
+
+
+                String uri = "http://222.73.117.158/msg/";//应用地址
+        String account = "jiekou-clcs-01";//账号
+        String pswd = "Tch111888";//密码
+        String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
+        System.out.println("phone no:"+mobiles);
+        String content = "客户你好，你的验证码为：34353，5分钟内有效，请完成注册。";//短信内容
+        boolean needstatus = true;//是否需要状态报告，需要true，不需要false
+        String product = null;//产品ID
+        String extno = null;//扩展码
+
+        try {
+            System.out.println("start event");
+            String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
+            System.out.println("returnstring:"+returnString);
+            System.out.println("success");
+            //TODO 处理返回值,参见HTTP协议文档
+        } catch (Exception e) {
+            //TODO 处理异常
+           System.out.println("printstack"+getStackTrace(e));
+            e.printStackTrace();
+        }
+        System.out.println("end event");
+            }
+
+
+
+
+    private class SendMsg extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            setVerficationMsg();
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+//            TextView txt = (TextView) findViewById(R.id.output);
+//            txt.setText("Executed"); // txt.setText(result);
+            // might want to change "executed" for the returned string passed
+            // into onPostExecute() but that is upto you
+            System.out.println("task finished");
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(Void... values) {}
+    }
+
+
+
+
+    public static String getStackTrace(final Throwable throwable) {
+        final StringWriter sw = new StringWriter();
+        final PrintWriter pw = new PrintWriter(sw, true);
+        throwable.printStackTrace(pw);
+        return sw.getBuffer().toString();
+    }
 }
