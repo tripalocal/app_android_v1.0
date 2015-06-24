@@ -18,6 +18,7 @@ import com.bcloud.msg.http.HttpSender;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Random;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -138,16 +139,16 @@ public class PhoneregisterFragment extends Fragment {
 
 
 
-    public void setVerficationMsg(){
+    public void sendVerfiMsg(String code){
 
-
+        verfication_code_confirm=code;
 
                 String uri = "http://222.73.117.158/msg/";//应用地址
         String account = "jiekou-clcs-01";//账号
         String pswd = "Tch111888";//密码
         String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
         System.out.println("phone no:"+mobiles);
-        String content = "客户你好，你的验证码为：34353，5分钟内有效，请完成注册。";//短信内容
+        String content = "客户你好，你的验证码为："+code+"，5分钟内有效，请完成注册。";//短信内容
         boolean needstatus = true;//是否需要状态报告，需要true，不需要false
         String product = null;//产品ID
         String extno = null;//扩展码
@@ -160,7 +161,6 @@ public class PhoneregisterFragment extends Fragment {
             //TODO 处理返回值,参见HTTP协议文档
         } catch (Exception e) {
             //TODO 处理异常
-           System.out.println("printstack"+getStackTrace(e));
             e.printStackTrace();
         }
         System.out.println("end event");
@@ -173,16 +173,12 @@ public class PhoneregisterFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-            setVerficationMsg();
+            sendVerfiMsg(getVerificationCode());
             return "Executed";
         }
 
         @Override
         protected void onPostExecute(String result) {
-//            TextView txt = (TextView) findViewById(R.id.output);
-//            txt.setText("Executed"); // txt.setText(result);
-            // might want to change "executed" for the returned string passed
-            // into onPostExecute() but that is upto you
             System.out.println("task finished");
         }
 
@@ -194,12 +190,20 @@ public class PhoneregisterFragment extends Fragment {
     }
 
 
+    public String getVerificationCode(){
+        String code="";
+        Random ran = new Random();
+        for(int i=0;i<5;i++) {
+            ran.nextInt(10);
+             code += ran.nextInt(10);
+        }
+
+        return code;
 
 
-    public static String getStackTrace(final Throwable throwable) {
-        final StringWriter sw = new StringWriter();
-        final PrintWriter pw = new PrintWriter(sw, true);
-        throwable.printStackTrace(pw);
-        return sw.getBuffer().toString();
     }
+
+
+
+
 }
