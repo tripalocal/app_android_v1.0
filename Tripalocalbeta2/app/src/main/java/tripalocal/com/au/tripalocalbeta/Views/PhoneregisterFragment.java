@@ -38,7 +38,7 @@ public class PhoneregisterFragment extends Fragment {
     Button login_btn,verfication_btn,confirm_btn;
 
     EditText phone_no_edit,verfi_code_edit;
-    private String verfication_code_confirm="5213";
+    private String verfication_code_confirm="";
 
     public PhoneregisterFragment() {
     }
@@ -79,12 +79,14 @@ public class PhoneregisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //set the text
-                new SendMsg().execute("");
-//                setVerficationMsg();
-                if(validationInput()) {
+                if(validationInput())
+                    verfication_btn.setEnabled(false);
+                {
+                    new SendMsg().execute("");
+
                     invisibleButton(false);
 
-                    new CountDownTimer(30000, 1000) {
+                    new CountDownTimer(60000, 1000) {
 
                         public void onTick(long millisUntilFinished) {
                             verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
@@ -92,6 +94,8 @@ public class PhoneregisterFragment extends Fragment {
 
                         public void onFinish() {
                             verfication_btn.setText(getResources().getString(R.string.verfication_expire));
+                            verfication_btn.setEnabled(true);
+
                         }
                     }.start();
                 }
@@ -158,9 +162,7 @@ public class PhoneregisterFragment extends Fragment {
             String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
             System.out.println("returnstring:"+returnString);
             System.out.println("success");
-            //TODO 处理返回值,参见HTTP协议文档
         } catch (Exception e) {
-            //TODO 处理异常
             e.printStackTrace();
         }
         System.out.println("end event");
