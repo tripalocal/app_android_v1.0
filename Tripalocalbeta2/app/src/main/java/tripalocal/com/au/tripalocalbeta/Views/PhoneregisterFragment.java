@@ -35,10 +35,10 @@ import tripalocal.com.au.tripalocalbeta.models.network.SignupRequest;
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class PhoneregisterFragment extends Fragment {
-    Button login_btn,verfication_btn,confirm_btn;
+    Button login_btn, verfication_btn, confirm_btn;
 
-    EditText phone_no_edit,verfi_code_edit;
-    private String verfication_code_confirm="";
+    EditText phone_no_edit, verfi_code_edit;
+    private String verfication_code_confirm = "";
 
     public PhoneregisterFragment() {
     }
@@ -53,55 +53,40 @@ public class PhoneregisterFragment extends Fragment {
         return view;
     }
 
-    public void invisibleButton(Boolean visible){
-        if(visible) {
+    public void invisibleButton(Boolean visible) {
+        if (visible) {
             verfi_code_edit.setVisibility(View.INVISIBLE);
             confirm_btn.setVisibility(View.INVISIBLE);
-        }else{
+        } else {
             verfi_code_edit.setVisibility(View.VISIBLE);
             confirm_btn.setVisibility(View.VISIBLE);
         }
 
     }
 
-    public void initView(View view){
-         login_btn = (Button) view.findViewById(R.id.signup_login);
-        verfication_btn=(Button)view.findViewById(R.id.verfication_btn);
-        phone_no_edit=(EditText)view.findViewById(R.id.phone_no_edit);
-        confirm_btn=(Button)view.findViewById(R.id.confirm_btn);
-        verfi_code_edit=(EditText)view.findViewById(R.id.verfi_code_edit);
+    public void initView(View view) {
+        login_btn = (Button) view.findViewById(R.id.signup_login);
+        verfication_btn = (Button) view.findViewById(R.id.verfication_btn);
+        phone_no_edit = (EditText) view.findViewById(R.id.phone_no_edit);
+        confirm_btn = (Button) view.findViewById(R.id.confirm_btn);
+        verfi_code_edit = (EditText) view.findViewById(R.id.verfi_code_edit);
     }
 
-    public void initControllers(){
+    public void initControllers() {
 
         invisibleButton(true);
         verfication_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set the text
-                if(validationInput())
+                if (validationInput()) {
                     verfication_btn.setEnabled(false);
-                {
                     new SendMsg().execute("");
 
-                    invisibleButton(false);
 
-                    new CountDownTimer(60000, 1000) {
-
-                        public void onTick(long millisUntilFinished) {
-                            verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
-                        }
-
-                        public void onFinish() {
-                            verfication_btn.setText(getResources().getString(R.string.verfication_expire));
-                            verfication_btn.setEnabled(true);
-
-                        }
-                    }.start();
                 }
             }
         });
-//        verfication_btn.setVisibility(View.INVISIBLE);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,13 +101,15 @@ public class PhoneregisterFragment extends Fragment {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phone_no=phone_no_edit.getText().toString();
-                String verification_code=verfi_code_edit.getText().toString();
-                if(verification_code.equals(verfication_code_confirm)){
+                String phone_no = phone_no_edit.getText().toString();
+                String verification_code = verfi_code_edit.getText().toString();
+                if (verification_code.equals(verfication_code_confirm)) {
                     Intent intent = new Intent(getActivity().getApplicationContext(), PhoneregisterActivity2.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("phone_no",phone_no_edit.getText().toString());
+                    intent.putExtra("phone_no", phone_no_edit.getText().toString());
                     getActivity().getApplicationContext().startActivity(intent);
+                }else{
+                    ToastHelper.errorToast(getResources().getString(R.string.verfication_code_error), getActivity());
                 }
 
             }
@@ -130,29 +117,26 @@ public class PhoneregisterFragment extends Fragment {
     }
 
 
-    public boolean validationInput(){
-        String phone_no_s=phone_no_edit.getText().toString();
-        if(phone_no_s.length()!=11){
-            System.out.println(getResources().getString(R.string.phone_no_error));
-//            Toast.makeText(this.getActivity().getApplicationContext(),getResources().getString(R.string.phone_no_error),Toast.LENGTH_LONG).show();
-                return false;
-        }else{
+    public boolean validationInput() {
+        String phone_no_s = phone_no_edit.getText().toString();
+        if (phone_no_s.length() != 11) {
+            ToastHelper.errorToast(getResources().getString(R.string.phone_no_error), getActivity());
+            return false;
+        } else {
             return true;
         }
     }
 
 
-
-    public void sendVerfiMsg(String code){
-
-        verfication_code_confirm=code;
-
-                String uri = "http://222.73.117.158/msg/";//应用地址
+    public Boolean sendVerfiMsg(String code) {
+        Boolean success=true;
+        verfication_code_confirm = code;
+        String uri = "http://222.73.117.158/msg/";//应用地址
         String account = "jiekou-clcs-01";//账号
         String pswd = "Tch111888";//密码
         String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
-        System.out.println("phone no:"+mobiles);
-        String content = "客户你好，你的验证码为："+code+"，5分钟内有效，请完成注册。";//短信内容
+        System.out.println("phone no:" + mobiles);
+        String content = getResources().getString(R.string.msg_content).replace("code",code);  //短信内容
         boolean needstatus = true;//是否需要状态报告，需要true，不需要false
         String product = null;//产品ID
         String extno = null;//扩展码
@@ -160,52 +144,79 @@ public class PhoneregisterFragment extends Fragment {
         try {
             System.out.println("start event");
             String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
-            System.out.println("returnstring:"+returnString);
-            System.out.println("success");
+//            System.out.println("returnstring:" + );
+            String[] returnCodeArray=(returnString.split("\n")[0]).split(",");
+            String returnCode=returnCodeArray[1];
+
+            System.out.println("return1 length:"+returnCode.length()+"return code:"+returnCode);
+            if(returnCode.equals("0")){
+            }else{
+                success=false;
+            }
+            System.out.println("++++++++++++++");
         } catch (Exception e) {
             e.printStackTrace();
+            success=false;
         }
         System.out.println("end event");
-            }
-
-
-
-
-    private class SendMsg extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            sendVerfiMsg(getVerificationCode());
-            return "Executed";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            System.out.println("task finished");
-        }
-
-        @Override
-        protected void onPreExecute() {}
-
-        @Override
-        protected void onProgressUpdate(Void... values) {}
+        return success;
     }
 
 
-    public String getVerificationCode(){
-        String code="";
+    private class SendMsg extends AsyncTask<String, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            return sendVerfiMsg(getVerificationCode());
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            System.out.println("task finished");
+            if(result){
+            invisibleButton(false);
+
+            new CountDownTimer(60000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    verfication_btn.setText(getResources().getString(R.string.verfication_expire));
+                    verfication_btn.setEnabled(true);
+
+                }
+            }.start();}
+            else{
+                ToastHelper.errorToast(getResources().getString(R.string.send_msg_failure),getActivity());
+                verfication_btn.setEnabled(true);
+
+            }
+        }
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
+    }
+
+
+    public String getVerificationCode() {
+        String code = "";
         Random ran = new Random();
-        for(int i=0;i<5;i++) {
+        for (int i = 0; i < 5; i++) {
             ran.nextInt(10);
-             code += ran.nextInt(10);
+            code += ran.nextInt(10);
         }
 
         return code;
 
 
     }
-
-
 
 
 }

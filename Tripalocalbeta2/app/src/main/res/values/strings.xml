@@ -211,6 +211,10 @@
     <string name="phone_no_error">Wrong number</string>
     <string name="empty_field_error">You must complete all the empty field</string>
     <string name="password_error">You must enter the same passwords</string>
+<string name="verfication_code_error">Wrong code</string>
+    <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
+    <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
+    <!--do not change the "code" here-->
 
     <!--end phone register string-->
     <string-array name="db_cities_array">
