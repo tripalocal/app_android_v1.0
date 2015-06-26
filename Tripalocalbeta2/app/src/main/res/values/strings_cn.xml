@@ -197,7 +197,6 @@
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
 
-
     <!--start phone register string/ -->
     <string name="send_verf_code">发送验证码</string>
     <string name="verfi_countdown">时间剩余: </string>
@@ -216,6 +215,8 @@
     <string name="verfication_code_error">验证码错误</string>
     <string name="send_msg_failure">发送失败，请检查你的电话号码</string>
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
+    <string name="title_login_fragment">登录</string>
+    <string name="title_signup_fragment">注册</string>
     <!--do not change the "code" here-->
 
     <string-array name="db_cities_array">
