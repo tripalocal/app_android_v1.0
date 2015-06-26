@@ -38,11 +38,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.SimpleView
         simpleViewHolder.itemView.setTag(i);
     }
 
-
-    /*public ReviewAdapter(HomeActivityFragment frag) {
-        super();
-    }
-*/
     @Override
     public int getItemCount() {
         return reviewsList.size();

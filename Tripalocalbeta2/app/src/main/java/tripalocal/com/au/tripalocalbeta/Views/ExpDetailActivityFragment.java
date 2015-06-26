@@ -73,6 +73,7 @@ public class ExpDetailActivityFragment extends Fragment {
     TextView food_info;
     TextView transport_info;
     TextView tickets_info;
+    View review_container;
 
 
 
@@ -146,7 +147,7 @@ public class ExpDetailActivityFragment extends Fragment {
                 }
             }
         });
-
+        review_container = view.findViewById(R.id.exp_detail_review_container);
         review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +196,6 @@ public class ExpDetailActivityFragment extends Fragment {
                 exp_to_display = experience_detail;
                 fillDetails();
                 request_to_book_btn.setEnabled(true);
-
             }
 
             @Override
@@ -277,6 +277,8 @@ public class ExpDetailActivityFragment extends Fragment {
                 Glide.with(HomeActivity.getHome_context()).load(BASE_URL+top_review.getReviewer_image()).fitCenter().into(reviewProfileImage);
             review_username.setText(top_review.getReviewer_firstname());
             review_content_less.setText(top_review.getReview_comment());
+        }else{
+            review_container.setVisibility(View.GONE);
         }
         if(exp_to_display.isIncludedFood()){
             food_info.setText(exp_to_display.getIncluded_food_detail());

@@ -115,6 +115,7 @@ public class NavigationFragment extends Fragment {
                     if(HomeActivity.wish_map.isEmpty()){
                          args.putString(BlankFragment.MSG_EXTRA, getResources().getString(R.string.empty_wishlist_msg));
                          exp_list_frag = new BlankFragment();
+                         args.putInt(ExperienceListAdapter.INT_EXTRA, 9999);
                          exp_list_frag.setArguments(args);
                     }else{
                     ExperienceListAdapter.all_experiences.clear();
