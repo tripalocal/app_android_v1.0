@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.squareup.okhttp.OkHttpClient;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,6 +21,7 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
@@ -32,6 +35,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
 
     public static RecyclerView rv;
     public static int city_position;
+    public static OkHttpClient ok_client;
+    SearchRequest req_obj;
 
     public ExperiencesListFragment(){
     }
@@ -77,10 +82,12 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         cal.add(Calendar.DAY_OF_MONTH,1);
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SearchRequest req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
+        req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
                 HomeActivity.db_poi_data[position],"0", keywords);
+        ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(ok_client))
                 .setEndpoint(getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
@@ -100,5 +107,11 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 System.out.println("error = [" + error + "]");
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ok_client.cancel(req_obj);
     }
 }

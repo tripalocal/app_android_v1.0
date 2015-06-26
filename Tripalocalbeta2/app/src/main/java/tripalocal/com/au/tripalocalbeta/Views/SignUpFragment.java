@@ -33,7 +33,7 @@ public class SignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        getActivity().setTitle(getResources().getString(R.string.title_signup_fragment));
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         Button signupBtn = (Button) view.findViewById(R.id.normal_signup_btn);
         signupBtn.setOnClickListener(new View.OnClickListener() {

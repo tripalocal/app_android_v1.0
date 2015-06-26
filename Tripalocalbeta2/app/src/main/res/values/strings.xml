@@ -215,6 +215,8 @@
     <string name="verfication_code_error">Wrong code</string>
     <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
+    <string name="title_login_fragment">Login</string>
+    <string name="title_signup_fragment">Signup</string>
     <!--do not change the "code" here-->
 
     <!--end phone register string-->

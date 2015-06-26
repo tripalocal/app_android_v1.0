@@ -50,6 +50,7 @@ public class MyTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setTitle(getResources().getString(R.string.title_activity_my_trip));
         View view =inflater.inflate(R.layout.fragment_my_trip, container, false);
         getMyTrip(HomeActivity.getCurrent_user().getLogin_token());
         upcomingTripButton = (Button) view.findViewById(R.id.my_trip_upcoming);

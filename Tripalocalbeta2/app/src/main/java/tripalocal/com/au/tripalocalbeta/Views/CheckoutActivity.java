@@ -34,7 +34,7 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle(getResources().getString(R.string.title_activity_checkout));
         if (getIntent() != null ) {
             int temp = getIntent().getIntExtra(INT_EXTRA, 0);
             if(temp!=0){
