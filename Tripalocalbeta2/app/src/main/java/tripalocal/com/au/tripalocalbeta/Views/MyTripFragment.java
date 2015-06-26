@@ -209,8 +209,8 @@ public class MyTripFragment extends Fragment {
                     }else MyTripAdapter.previous_flag = true;
                     upcomingTripButton.setVisibility(View.INVISIBLE);
                     previousTripButton.setVisibility(View.INVISIBLE);
+                    MyTripAdapter.myTrip = new ArrayList<MyTrip>();
                 }
-
                 rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
             }
 
