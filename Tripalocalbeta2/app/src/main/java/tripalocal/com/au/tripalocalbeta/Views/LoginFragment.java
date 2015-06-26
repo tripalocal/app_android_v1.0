@@ -53,7 +53,6 @@ public class LoginFragment extends Fragment {
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
         loginButton.setFragment(this);
-
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
