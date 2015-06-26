@@ -32,7 +32,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
     //public static List<Search_Result> search_result;
     public static List<Experience> all_experiences = new ArrayList<Experience>();
-    //public static Context mContext;
+    public static Context mContext;
     private static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     public static final String INT_EXTRA = "POSITION";
     public static int current_city = 0;
@@ -40,8 +40,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
 
     public ExperienceListAdapter(Context applicationContext) {
-        //mContext = applicationContext;
-
+        mContext = applicationContext;
     }
 
 
@@ -141,28 +140,28 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                         if (HomeActivity.wish_map.containsKey(test)) {
                             wishimage.setImageResource(R.drawable.heart_sw);
                             smallwishimage.setImageResource(R.drawable.heart_sw);
-                            wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
+                            wishTxt.setText(mContext.getString(R.string.wishlist_save));
                             //HomeActivity.wish_list.remove(test);
                             HomeActivity.wish_map.remove(test);
-                            ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
+                            ToastHelper.shortToast(mContext.getString(R.string.wishlist_removed));
                         } else {
                             wishimage.setImageResource(R.drawable.heart_sr);
                             smallwishimage.setImageResource(R.drawable.heart_sr);
-                            wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
+                            wishTxt.setText(mContext.getString(R.string.wishlist_saved));
                             //HomeActivity.wish_list.add(test);
                             Experience exp = getExperience(Integer.parseInt(test));
                             if(exp != null)
                             {
                                 HomeActivity.wish_map.put(test,exp);
-                                ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
+                                ToastHelper.shortToast(mContext.getString(R.string.wishlist_saved));
                             }
                             else{
-                                ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.wishlist_error));
+                                ToastHelper.errorToast(mContext.getString(R.string.wishlist_error));
                             }
                         }
                     }
                     else{
-                        ToastHelper.warnToast(HomeActivity.getHome_context().getString(R.string.wish_log_in_msg));
+                        ToastHelper.warnToast(mContext.getString(R.string.wish_log_in_msg));
                     }
                 }
             });
@@ -180,10 +179,10 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.getHome_context(), ExpDetailActivity.class);
+            Intent intent = new Intent(mContext, ExpDetailActivity.class);
             intent.putExtra(INT_EXTRA, (Integer) v.getTag());
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            HomeActivity.getHome_context().startActivity(intent);
+            mContext.startActivity(intent);
         }
     }
 }

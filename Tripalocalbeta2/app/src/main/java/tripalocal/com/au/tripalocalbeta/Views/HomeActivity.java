@@ -42,14 +42,13 @@ public class HomeActivity extends AppCompatActivity {
     private static Menu menu_ref = null;
     public static DrawerLayout tpDrawer ;
     private ActionBarDrawerToggle tpDrawToggle;
-    //HomeActivityFragment homeFrag;
+    HomeActivityFragment homeFrag;
     public static String[] poi_data;
     public static String[] db_poi_data;
     public static HashMap<String, Experience> wish_map = new HashMap<>();
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
     public static boolean login_flag = true;
-
 
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -136,6 +135,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(layout.activity_home);
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        homeFrag = new HomeActivityFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFrag).commit();
+
+
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
             public void onDrawerOpened(View drawerView) {

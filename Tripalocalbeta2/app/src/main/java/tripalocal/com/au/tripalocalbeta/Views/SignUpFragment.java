@@ -86,8 +86,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void success(Login_Result result, Response response) {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
-                HomeActivity.getCurrent_user().setLoggedin(true);
-                HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
                 Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
