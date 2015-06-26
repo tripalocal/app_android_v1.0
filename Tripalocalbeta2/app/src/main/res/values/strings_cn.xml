@@ -1,0 +1,240 @@
+<resources>
+    <string name="app_name">本土客</string>
+    <string name="facebook_app_id">595515750559076</string>
+    <string name="server_url">https://www.tripalocal.com/cn/</string>
+
+    <string name="hello_world"></string>
+    <string name="blank_fragment">您还没有保存任何体验</string>
+    <string name="placeholder_content"></string>
+    <string name="gibber"> </string>
+    <string name="sub_head_gibber"></string>
+    <string name="bullet">\u2022</string>
+    <string name="with">和</string>
+    <string name="tags">美食美酒,名校游学,历史人文,经典建筑,蜜月旅拍,风光摄影,移民考察,亲子夏令营,户外探险,购物扫货,运动休闲,领路人自驾,刺激享乐,赛事庆典,美容保健</string>
+
+    <string name="action_login">登录</string>
+    <string name="action_search">搜索</string>
+    <string name="action_settings">设置</string>
+    <string name="logout">退出</string>
+    <string name="logged_out">已退出</string>
+
+    <string name="title_activity_exp_detail">体验详情</string>
+    <string name="title_activity_exp_list_actvity2">体验列表</string>
+    <string name="title_activity_checkout">结账</string>
+    <string name="title_activity_payment">付款</string>
+    <string name="title_activity_my_trip">我的体验</string>
+    <string name="title_activity_my_profile">个人信息</string>
+    <string name="title_activity_review">条评论</string>
+    <string name="title_activity_alipay">支付宝</string>
+
+    <string name="search_hint">搜索</string>
+    <string name="search_title">搜索</string>
+
+    <string name="experience_image">体验图片</string>
+    <string name="my_trip_upcoming">已预订</string>
+    <string name="my_trip_previous">已完成</string>
+    <string name="my_trip_call">电话</string>
+    <string name="my_trip_message">短信</string>
+    <string name="my_trip_meetup_title">会合提示</string>
+    <string name="my_trip_myTrip">我的体验</string>
+    <string name="my_trip_hint">您还没有预订过体验。</string>
+    <string name="my_trip_explore">去首页逛逛</string>
+    <string name="mytrip_date_format">yyyy-MM-dd</string>
+    <string name="mytrip_date_today">今天</string>
+    <string name="mytrip_status_confirmed">已确定</string>
+    <string name="mytrip_status_requested">已申请</string>
+    <string name="mytrip_status_cancelled">已取消</string>
+
+    <string name="nav_item1"></string>
+    <string name="navigation_item_2">首页</string>
+    <string name="navigation_subheader">副标题</string>
+    <string name="nav_item_2">首页</string>
+    <string name="nav_profile_title">账户</string>
+    <string name="nav_profile_image">账户图片</string>
+    <string name="nav_my_account">我的账户</string>
+    <string name="navigation_home">首页</string>
+    <string name="navigation_mytrips">我的体验</string>
+    <string name="navigation_wishlist">兴趣列表</string>
+    <string name="navigation_messages">发信息</string>
+    <string name="navigation_myprofile">个人信息</string>
+    <string name="nav_terms_of_service_link">服务条款</string>
+    <string name="nav_privacy_policy">隐私政策</string>
+    <string name="nav_about_us">关于我们</string>
+
+    <string name="exp_list_per_person">澳元每人 起</string>
+    <string name="exp_list_duration">小时</string>
+
+    <string name="exp_reservation">和</string>
+    <string name="exp_reservation_cn">\u0020预订</string>
+    <string name="exp_detail_food">餐饮:\u0020</string>
+    <string name="exp_detail_tickets">门票:\u0020</string>
+    <string name="exp_detail_transport">交通:\u0020</string>
+    <string name="exp_detail_add_expenses_label">额外开销</string>
+    <string name="exp_detail_default_optional_expenses">票价中不包括</string>
+    <string name="view_more">展开</string>
+    <string name="view_less">收起</string>
+    <string name="no_review_content">没有评论</string>
+    <string name="exp_detail_reviews">条评论</string>
+    <string name="exp_detail_about_the_host">关于\u0020--\u0020</string>
+    <string name="exp_detail_per_person_text">每人</string>
+    <string name="exp_detail_per_person_for">约</string>
+    <string name="exp_detail_per_person_hour">小时</string>
+    <string name="exp_detail_request">预订</string>
+    <string name="from"></string>
+    <string name="dollar_placeholder">$</string>
+    <string name="loading_title"></string>
+    <string name="checkout_title_placeholder"></string>
+
+    <string name="home_bg_city_content_desc">城市背景图片</string>
+    <string name="login_or">or</string>
+    <string name="login_email">邮箱</string>
+    <string name="login_password">密码</string>
+    <string name="login_forget_password">忘记密码?</string>
+    <string name="login_login">登录</string>
+    <string name="login_no_account">没有账户?</string>
+    <string name="login_signup">注册</string>
+    <string name="signup_first_name">名字</string>
+    <string name="signup_last_name">姓氏</string>
+    <string name="signup_term">我同意本土客的服务条款，隐私政策和退款政策</string>
+    <string name="signup_has_account">已经注册过?</string>
+
+    <string name="myprofile_placeholder_host_name"></string>
+    <string name="myprofile_how_to_contact">怎么联系你？</string>
+    <string name="myprofile_local_number">当地手机号</string>
+    <string name="myprofile_roaming_number">漫游手机号</string>
+    <string name="myprofile_number_explanation">在您预订了体验后，领路人将通过以上方式与您联系</string>
+
+    <string name="checkout_date_placeholder">dd/mm/yy</string>
+    <string name="checkout_time_placeholder">hh:mm</string>
+    <string name="checkout_select_date_label">日期</string>
+    <string name="checkout_select_time_label">时间</string>
+    <string name="checkout_guests_label">人数</string>
+    <string name="checkout_price_label">价格</string>
+    <string name="checkout_price_placeholder"></string>
+    <string name="checkout_price_dollar_text">\u0020澳元 x\u0020</string>
+    <string name="checkout_price_pp">\u0020人</string>
+    <string name="checkout_amount_placeholder"> </string>
+    <string name="checkout_coupon_label">打折码</string>
+    <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
+    <string name="checkout_ok_tochange_text">您提交预订后仍可更改</string>
+    <string name="checkout_disclaim_1">如果您提前至少7个自然日取消预订，我们将全额退款</string>
+    <string name="checkout_disclaim_2">如果您提前3至6个自然日取消预订，我们将半额退款</string>
+    <string name="checkout_disclaim_3">如果您在少于3个自然日取消预订，您将获得半额退款</string>
+    <string name="checkout_refund_text">您也可以查看我们的\u0020</string>
+    <string name="checkout_refund_link">退款政策</string>
+    <string name="checkout_proceed_to_payment">付款</string>
+    <string name="checkout_date">日期</string>
+    <string name="checkout_time">时间</string>
+    <string name="checkout_date_content_desc">日期图标</string>
+    <string name="checkout_time_content_desc">时间图标</string>
+    <string name="checkout_english"></string>
+    <string name="checkout_duration_placeholder">小时\u0020\u2022\u0020</string>
+    <string name="checkout_refresh">刷新</string>
+    <string name="checkout_invalidCoupon">无效打折码</string>
+    <string name="checkout_valid_coupon">打折码使用成功</string>
+    <string name="server_error">服务器错误</string>
+
+    <string name="wishlist_title">我的兴趣列表</string>
+    <string name="wish_log_in_msg">请登录</string>
+    <string name="save_to_wishlist">保存至兴趣列表</string>
+    <string name="saved_to_wishlist">已保存至兴趣列表</string>
+    <string name="wishlist_save">保存至兴趣列表</string>
+    <string name="wishlist_saved">已保存至兴趣列表</string>
+    <string name="wishlist_removed">已从兴趣列表移除</string>
+    <string name="wishlist_error">保存时出错</string>
+
+    <string name="toast_contacting">连接服务器 ...</string>
+    <string name="toast_error">连接失败</string>
+    <string name="toast_showing_exp"></string>
+    <string name="toast_showing_wishlist">我的兴趣列表</string>
+    <string name="toast_search_submitted">搜索已提交</string>
+    <string name="toast_login_success">登录成功</string>
+    <string name="toast_login_failure">登录失败</string>
+    <string name="toast_fb_login_success">Facebook login succeeded</string>
+    <string name="toast_fb_login_cancel">Facebook login cancelled</string>
+    <string name="toast_fb_login_failure">Facebook login failed</string>
+    <string name="toast_service_down">服务暂时无法访问</string>
+    <string name="toast_profile_get_success">个人信息更新成功</string>
+    <string name="toast_profile_get_error">获取个人信息时出错</string>
+    <string name="toast_feature_coming">开发中 ...</string>
+    <string name="toast_signup_success">注册成功</string>
+    <string name="toast_signup_failure">注册失败</string>
+    <string name="toast_searched_with">搜索\u0020</string>
+
+    <!--payement string-->
+    <string name="alipay">支付宝</string>
+    <string name="add_alipay_account">添加新的支付宝账户</string>
+    <string name="credit_card">信用卡</string>
+    <string name="add_new_credit_card">添加新的信用卡</string>
+    <string name="wechat">微信</string>
+    <string name="add_wechat_account">添加新的微信账户</string>
+    <string name="confirm_pay">确认并支付</string>
+    <string name="currency_conversion">汇率转换</string>
+    <string name="number">卡号</string>
+    <string name="expire">到期(mm/yy)</string>
+    <string name="cvv">CVV</string>
+    <string name="title_activity_creditcard">信用卡支付</string>
+    <string name="credit_no_hint">16个数字</string>
+    <string name="drawer_open">橱窗开启</string>
+    <string name="drawer_closed">橱窗关闭</string>
+    <string name="view_in_my_trip">去我的体验里查看</string>
+    <string name="payment_success_text">你的预定请求已经成功发送给 somebody</string>
+    <string name="payment_success_title">付款成功</string>
+    <string name="credit_card_no_error">信用卡号码必须为12到16位的数字</string>
+    <string name="credit_card_month_error">错误月份</string>
+    <string name="credit_card_year_error">错误年份</string>
+    <string name="credit_card_cvv_error">CVV只能是3位数字</string>
+    <string name="credit_card_error">付款失败</string>
+    <string name="your_wishlist">兴趣列表</string>
+    <string name="empty_list_err">空列表</string>
+    <string name="empty_wishlist_msg">你还没有添加任何体验</string>
+    <string name="my_profile">个人信息</string>
+    <string name="payment_failure">付款失败</string>
+    <string name="payment_success">付款成功</string>
+    <string name="error_saving_profile">无法保存个人信息</string>
+    <string name="profile_saved">个人信息已保存</string>
+
+    <!--do not change "somebody" when convert it to chinese-->
+    <!--end of payment string-->
+
+
+    <!--start phone register string/ -->
+    <string name="send_verf_code">发送验证码</string>
+    <string name="verfi_countdown">时间剩余: </string>
+    <string name="phone_no_hint">电话号码</string>
+    <string name="verification_hint">验证码</string>
+    <string name="confirm">确认</string>
+    <string name="last_name">姓</string>
+    <string name="first_name">名</string>
+    <string name="password_hint">设置密码</string>
+    <string name="password_hint_2">再次输入密码</string>
+    <string name="go_to_tripalocal">开始本土可</string>
+    <string name="verfication_expire">失效，点击重新发送</string>
+    <string name="phone_no_error">错误的电话号码</string>
+    <string name="empty_field_error">你必须填写所有的空白</string>
+    <string name="password_error">密码必须保持一致</string>
+    <string name="verfication_code_error">验证码错误</string>
+    <string name="send_msg_failure">发送失败，请检查你的电话号码</string>
+    <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
+    <!--do not change the "code" here-->
+
+    <string-array name="db_cities_array">
+        <item>Melbourne</item>
+        <item>Sydney</item>
+        <item>Brisbane</item>
+        <item>Cairns</item>
+        <item>Goldcoast</item>
+        <item>Hobart</item>
+        <item>Adelaide</item>
+    </string-array>
+
+    <string-array name="poi_array">
+        <item>墨尔本, 维多利亚州</item>
+        <item>悉尼, 新南威尔士州</item>
+        <item>布里斯班, 昆士兰州</item>
+        <item>凯恩斯, 昆士兰州</item>
+        <item>黄金海岸, 昆士兰州</item>
+        <item>霍巴特, 塔斯马尼亚州</item>
+        <item>阿德莱德, 南澳</item>
+    </string-array>
+</resources>

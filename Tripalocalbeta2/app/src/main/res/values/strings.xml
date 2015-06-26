@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
-    <!--<string name="server_url"> https://www.tripalocal.com/</string>-->
-<string name="server_url">http://adventure007.cloudapp.net/</string>
+    <string name="server_url">https://www.tripalocal.com/cn/</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
     <string name="placeholder_content">Loading</string>
@@ -212,7 +212,7 @@
     <string name="phone_no_error">Wrong number</string>
     <string name="empty_field_error">You must complete all the empty field</string>
     <string name="password_error">You must enter the same passwords</string>
-<string name="verfication_code_error">Wrong code</string>
+    <string name="verfication_code_error">Wrong code</string>
     <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
     <!--do not change the "code" here-->
