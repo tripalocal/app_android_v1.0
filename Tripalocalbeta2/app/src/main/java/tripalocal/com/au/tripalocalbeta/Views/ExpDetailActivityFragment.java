@@ -231,13 +231,15 @@ public class ExpDetailActivityFragment extends Fragment {
         //if guest_number_min > 4, show the price for group of size guest_number_min
 
         Float[] temp_dp = exp_to_display.getExperience_dynamic_price();
-        if(temp_dp.length > 0){
-            if(exp_to_display.getExperience_guest_number_min() <= 4 &&
-                    exp_to_display.getExperience_guest_number_max() >= 4){
-                price_title.setText(REAL_FORMATTER.format(temp_dp[3]));
-            }else if(exp_to_display.getExperience_guest_number_max() < 4){
-                price_title.setText(REAL_FORMATTER.format(temp_dp[exp_to_display.getExperience_guest_number_max()]));
-            }else if(exp_to_display.getExperience_guest_number_min() > 4){
+        int min_number = exp_to_display.getExperience_guest_number_min();
+        int max_number = exp_to_display.getExperience_guest_number_max();
+
+        if(temp_dp.length > 0 && max_number >= min_number && temp_dp.length == max_number-min_number+1){
+            if (min_number <= 4 && max_number >= 4) {
+                price_title.setText(REAL_FORMATTER.format(temp_dp[max_number - min_number]));
+            } else if (max_number < 4) {
+                price_title.setText(REAL_FORMATTER.format(temp_dp[max_number]));
+            } else if (min_number > 4) {
                 price_title.setText(REAL_FORMATTER.format(temp_dp[0]));
             }
         }else price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));

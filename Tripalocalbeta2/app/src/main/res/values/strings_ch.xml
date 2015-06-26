@@ -156,8 +156,8 @@
     <string name="toast_profile_get_success">个人信息更新成功</string>
     <string name="toast_profile_get_error">获取个人信息时出错</string>
     <string name="toast_feature_coming">开发中 ...</string>
-    <string name="toast_signup_success">登录成功</string>
-    <string name="toast_signup_failure">登录失败</string>
+    <string name="toast_signup_success">注册成功</string>
+    <string name="toast_signup_failure">注册失败</string>
     <string name="toast_searched_with">搜索\u0020</string>
 
     <!--payement string-->
