@@ -92,6 +92,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         }
         holder.languageTxt.setText(l);
         holder.bannerContainer.setTag(exp_to_display.getId());
+        holder.titleTxt.setTag(exp_to_display.getId());
     }
 
 
@@ -122,6 +123,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             bannerImage = (ImageView) itemView.findViewById(R.id.exp_list_banner_image);
             bannerTxt = (TextView) itemView.findViewById(R.id.exp_list_banner_txt);
             titleTxt = (TextView) itemView.findViewById(R.id.exp_list_title_txt);
+            titleTxt.setOnClickListener(this);
             infoTxt = (TextView) itemView.findViewById(R.id.exp_list_info_txt);
             profileImage = (CircleImageView) itemView.findViewById(R.id.exp_list_profile_image);
             wishimage = (ImageView) itemView.findViewById(R.id.exp_list_wish_image);

@@ -217,6 +217,7 @@
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
     <string name="title_login_fragment">Login</string>
     <string name="title_signup_fragment">Signup</string>
+    <string name="title_fragment_wishlist">Your Wishlist</string>
     <!--do not change the "code" here-->
 
     <!--end phone register string-->

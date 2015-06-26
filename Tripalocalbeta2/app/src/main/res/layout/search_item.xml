@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/location"
+        android:id="@+id/loc_img"
+        android:background="@color/tripalocal_light_grey"
+        android:contentDescription="location"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/search_txt"
-        android:paddingTop="10dp"
-        android:textSize="16sp"
+        android:layout_toRightOf="@id/loc_img"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/dark_gray"
         android:background="@color/tripalocal_light_grey"
-        android:textColor="@color/tripalocal_green_blue"/>
+        />
 
-</LinearLayout>
+</RelativeLayout>
