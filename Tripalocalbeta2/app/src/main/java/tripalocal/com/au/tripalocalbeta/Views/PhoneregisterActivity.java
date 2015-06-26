@@ -5,15 +5,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-//import android
+
 import tripalocal.com.au.tripalocalbeta.R;
+
+//import android
 
 public class PhoneregisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
 //        getActionBar().hide();
         setContentView(R.layout.activity_phoneregister);
 //        if(checkFirstTime()){
