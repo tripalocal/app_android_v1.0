@@ -484,7 +484,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingTop="10dp"
-                    android:text=""
+                    android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_food_info"/>
                 <ImageView
                     android:layout_width="40dp"
@@ -504,7 +504,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingTop="10dp"
-                    android:text=""
+                    android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_ticket_info"/>
                 <ImageView
                     android:layout_width="40dp"
@@ -524,7 +524,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingTop="10dp"
-                    android:text=""
+                    android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_transport_info"/>
             </GridLayout>
         </RelativeLayout>

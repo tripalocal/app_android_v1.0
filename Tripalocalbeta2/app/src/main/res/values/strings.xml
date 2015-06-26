@@ -70,6 +70,7 @@
     <string name="exp_detail_tickets">Tickets:\u0020</string>
     <string name="exp_detail_transport">Transport:\u0020</string>
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
+    <string name="exp_detail_default_optional_expenses">Not included</string>
     <string name="view_more">View More</string>
     <string name="view_less">Less</string>
     <string name="no_review_content">No review</string>

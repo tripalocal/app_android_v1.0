@@ -70,6 +70,7 @@
     <string name="exp_detail_tickets">门票:\u0020</string>
     <string name="exp_detail_transport">交通:\u0020</string>
     <string name="exp_detail_add_expenses_label">额外开销</string>
+    <string name="exp_detail_default_optional_expenses">票价中不包括</string>
     <string name="view_more">展开</string>
     <string name="view_less">收起</string>
     <string name="no_review_content">没有评论</string>
