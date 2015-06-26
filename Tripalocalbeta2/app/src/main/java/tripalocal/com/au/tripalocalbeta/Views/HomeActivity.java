@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 
+import retrofit.client.OkClient;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
 import tripalocal.com.au.tripalocalbeta.adapters.TPSuggestionsAdapter;
@@ -49,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
     public static boolean login_flag = true;
+    public static OkClient ok_client = new OkClient();
+
 
 
     public static AccessToken getAccessToken() {
@@ -150,6 +153,7 @@ public class HomeActivity extends AppCompatActivity {
                 super.onDrawerClosed(drawerView);
             }
         };
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeActivityFragment()).commit();
         tpDrawer.setDrawerListener(tpDrawToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
