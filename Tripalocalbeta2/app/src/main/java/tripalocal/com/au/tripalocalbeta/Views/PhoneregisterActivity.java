@@ -38,17 +38,5 @@ public class PhoneregisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public Boolean checkFirstTime(){
-        SharedPreferences prefs = getSharedPreferences("Baisc", MODE_PRIVATE);
-        String restoredText = prefs.getString("firsttime", null);
-        if (restoredText == null) {
-            SharedPreferences.Editor editor = getSharedPreferences("Basic", MODE_PRIVATE).edit();
-            editor.putString("firsttime", "yes");
-            editor.commit();
-            return false;
-        }else{
-            return true;
-        }
 
-    }
 }

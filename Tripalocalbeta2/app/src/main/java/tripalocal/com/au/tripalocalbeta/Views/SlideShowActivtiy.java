@@ -1,8 +1,10 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
@@ -21,6 +23,11 @@ RelativeLayout background_layout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        if(checkFirstTime()){
+            Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
 
         setContentView(R.layout.activity_slideshow);
         background_layout=(RelativeLayout)findViewById(R.id.background_layout);
@@ -48,6 +55,21 @@ RelativeLayout background_layout;
         }.start();
 
     }
+
+    public Boolean checkFirstTime(){
+        String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
+        System.out.println("record text:" + restoredText);
+        if (restoredText == null) {
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putString("firsttime","no").apply();
+
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
 
 
 
