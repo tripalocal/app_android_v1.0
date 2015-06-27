@@ -1,0 +1,54 @@
+package tripalocal.com.au.tripalocalbeta.Views;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.RelativeLayout;
+
+import tripalocal.com.au.tripalocalbeta.R;
+
+public class SlideShowActivtiy extends AppCompatActivity {
+
+RelativeLayout background_layout;
+    @Override
+    protected void onStop() {
+        super.onStop();
+        HomeActivity.saveData();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
+        setContentView(R.layout.activity_slideshow);
+        background_layout=(RelativeLayout)findViewById(R.id.background_layout);
+        new CountDownTimer(9000, 2500) {
+            int sdk = android.os.Build.VERSION.SDK_INT;
+            int count=-1;
+            int drawArr[]=new int[]{R.drawable.slide01,R.drawable.slide02,R.drawable.slide03};
+
+            public void onTick(long millisUntilFinished) {
+                count++;
+                int id=drawArr[count];
+                if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    background_layout.setBackgroundDrawable( getResources().getDrawable(id) );
+                } else {
+                    background_layout.setBackground( getResources().getDrawable(id));
+                }
+                System.out.println(count+"");
+            }
+
+            public void onFinish() {
+                Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        }.start();
+
+    }
+
+
+
+}

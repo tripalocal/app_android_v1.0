@@ -134,7 +134,7 @@ public class PhoneregisterFragment extends Fragment {
         verfication_code_confirm = code;
         String uri = "http://222.73.117.158/msg/";//应用地址
         String account = "jiekou-clcs-01";//账号
-        String pswd = "Tch111888";//密码
+        String pswd = "Tch498965";//密码
         String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
         System.out.println("phone no:" + mobiles);
         String content = getResources().getString(R.string.msg_content).replace("code",code);  //短信内容
