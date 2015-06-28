@@ -49,10 +49,11 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         if(city_position != 9999){
             displayListFrag(city_position);
             getActivity().setTitle(HomeActivity.poi_data[city_position]);
+            ExperienceListAdapter.all_experiences.clear();
         }else{
             getActivity().setTitle(getResources().getString(R.string.your_wishlist));
         }
-//        ExperienceListAdapter.all_experiences.clear();
+
         View view = inflater.inflate(R.layout.fragment_experiences_list, container, false);
         rv = (RecyclerView) view.findViewById(R.id.recycle_view_exp_list);
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
