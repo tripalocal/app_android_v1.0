@@ -8,6 +8,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 
@@ -75,10 +76,9 @@ public class CheckoutActivityFragment extends Fragment {
     static int date_sel = 0;
     static int time_sel = 0;
     static int np_sel = 0;
-    static boolean coupon_status=false;
-
+    static boolean coupon_status = false;
     static Experience_Detail temp_detail_exp;
-
+    private static View view_instance;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
     private static Float[] dy_price;
 
@@ -89,6 +89,7 @@ public class CheckoutActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
+        view_instance=view;
         title = (TextView) view.findViewById(R.id.booking_title);
         thumbnail = (ImageView) view.findViewById(R.id.booking_thumbnail);
         duration = (TextView) view.findViewById(R.id.booking_duration);
@@ -106,11 +107,11 @@ public class CheckoutActivityFragment extends Fragment {
         booking_date_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(date_sel != 0) {
-                    if(date_sel == 1){
+                if (date_sel != 0) {
+                    if (date_sel == 1) {
                         booking_date_2.setBackgroundResource(R.color.white);
                         time_container_2.setBackgroundResource(R.color.white);
-                    }else{
+                    } else {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
                     }
@@ -119,17 +120,19 @@ public class CheckoutActivityFragment extends Fragment {
                     date_sel = 0;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
                 }
+                checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
+
             }
         });
         booking_date_2 = (TextView) view.findViewById(R.id.booking_date_txt2);
         booking_date_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(date_sel != 1) {
-                    if(date_sel == 2){
+                if (date_sel != 1) {
+                    if (date_sel == 2) {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
-                    }else{
+                    } else {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
                     }
@@ -138,17 +141,18 @@ public class CheckoutActivityFragment extends Fragment {
                     date_sel = 1;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
                 }
+                checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
             }
         });
         booking_date_3 = (TextView) view.findViewById(R.id.booking_date_txt3);
         booking_date_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(date_sel != 2) {
-                    if(date_sel == 0){
+                if (date_sel != 2) {
+                    if (date_sel == 0) {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
-                    }else {
+                    } else {
                         booking_date_2.setBackgroundResource(R.color.white);
                         time_container_2.setBackgroundResource(R.color.white);
                     }
@@ -157,19 +161,21 @@ public class CheckoutActivityFragment extends Fragment {
                     date_sel = 2;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
                 }
+                checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
+
             }
         });
-        booking_time_1 = (TextView)view.findViewById(R.id.booking_time_txt1);
-        booking_time_2 = (TextView)view.findViewById(R.id.booking_time_txt2);
-        booking_time_3 = (TextView)view.findViewById(R.id.booking_time_txt3);
+        booking_time_1 = (TextView) view.findViewById(R.id.booking_time_txt1);
+        booking_time_2 = (TextView) view.findViewById(R.id.booking_time_txt2);
+        booking_time_3 = (TextView) view.findViewById(R.id.booking_time_txt3);
         time_container_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(time_sel != 0) {
-                    if(time_sel == 1){
+                if (time_sel != 0) {
+                    if (time_sel == 1) {
                         booking_date_2.setBackgroundResource(R.color.white);
                         time_container_2.setBackgroundResource(R.color.white);
-                }else {
+                    } else {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
                     }
@@ -177,17 +183,19 @@ public class CheckoutActivityFragment extends Fragment {
                     time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 0;
                 }
+                checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
+
             }
         });
 
         time_container_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(time_sel != 1) {
-                    if(time_sel == 2){
+                if (time_sel != 1) {
+                    if (time_sel == 2) {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
-                    }else {
+                    } else {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
                     }
@@ -195,16 +203,18 @@ public class CheckoutActivityFragment extends Fragment {
                     booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 1;
                 }
+                checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
+
             }
         });
         time_container_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(time_sel != 2) {
-                    if(time_sel == 0){
+                if (time_sel != 2) {
+                    if (time_sel == 0) {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
-                    }else {
+                    } else {
                         time_container_2.setBackgroundResource(R.color.white);
                         booking_date_2.setBackgroundResource(R.color.white);
                     }
@@ -212,6 +222,8 @@ public class CheckoutActivityFragment extends Fragment {
                     time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 2;
                 }
+                checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
+
             }
         });
 
@@ -220,7 +232,7 @@ public class CheckoutActivityFragment extends Fragment {
         booking_price_and_person_amt = (TextView) view.findViewById(R.id.booking_price_total_amt_txt);
         coupon_code = (EditText) view.findViewById(R.id.booking_price_coupon_edit);
 
-        refresh_btn=(Button)view.findViewById(R.id.refresh_code);
+        refresh_btn = (Button) view.findViewById(R.id.refresh_code);
         refresh_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -237,21 +249,20 @@ public class CheckoutActivityFragment extends Fragment {
                 booking_guest_number.setText(String.valueOf(guests));
                 if (dy_price.length > 0) {
                     if (oldVal < newVal) {
-                        if(np_sel < dy_price.length && np_sel !=0) {
+                        if (np_sel < dy_price.length && np_sel != 0) {
                             np_sel++;
-                        }else if(newVal == np.getMaxValue())
-                            np_sel = dy_price.length -1;
+                        } else if (newVal == np.getMaxValue())
+                            np_sel = dy_price.length - 1;
                         else
                             np_sel++;
-                    }
-                    else{
-                        if(np_sel !=0){
-                            if(np_sel != dy_price.length-1)
-                            np_sel--;
+                    } else {
+                        if (np_sel != 0) {
+                            if (np_sel != dy_price.length - 1)
+                                np_sel--;
                             else if (newVal != np.getMinValue())
-                              np_sel--;
+                                np_sel--;
                             else
-                                np_sel = 0 ;
+                                np_sel = 0;
 
                         }
                     }
@@ -265,37 +276,61 @@ public class CheckoutActivityFragment extends Fragment {
             }
         });
 
+        date_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                
+                checkDateSpin();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+        time_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
+            {
+                checkDateSpin();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView)
+            {
+            }
+        });
         bookingBtn = (Button) view.findViewById(R.id.booking_bottom_Btn);
         bookingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckoutActivity.date=date_spin.getSelectedItem().toString();
+                CheckoutActivity.date = date_spin.getSelectedItem().toString();
 //                CheckoutActivity.time=time_spin.getSelectedItem().toString();
-                CheckoutActivity.guest=booking_guest_number.getText().toString();
-                String time_arr[]=(time_spin.getSelectedItem().toString().split(":"));
-                int hour=Integer.parseInt(time_arr[0].charAt(0)+"")*10+Integer.parseInt(time_arr[0].charAt(1)+"");
-                int duration=temp_detail_exp.getExperience_duration();
-                int secondHour=hour+duration;
-                String secHourSt=secondHour/10+""+secondHour%10+":00";
-                CheckoutActivity.time=time_spin.getSelectedItem().toString()+"-"+secHourSt;
+                CheckoutActivity.guest = booking_guest_number.getText().toString();
+                String time_arr[] = (time_spin.getSelectedItem().toString().split(":"));
+                int hour = Integer.parseInt(time_arr[0].charAt(0) + "") * 10 + Integer.parseInt(time_arr[0].charAt(1) + "");
+                int duration = temp_detail_exp.getExperience_duration();
+                int secondHour = hour + duration;
+                String secHourSt = secondHour / 10 + "" + secondHour % 10 + ":00";
+                CheckoutActivity.time = time_spin.getSelectedItem().toString() + "-" + secHourSt;
                 CheckoutActivity.coupon = coupon_code.getText().toString();
                 Intent intent = new Intent(getActivity().getApplicationContext(), PaymentActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                CheckoutActivity.price_label_1="$ "+booking_price.getText().toString()
-                        +" AUD"+" x "+booking_guest_number.getText().toString()+" pp";
-                CheckoutActivity.price_label_2=booking_price_and_person_amt.getText().toString();
-                CheckoutActivity.total_price=booking_price_and_person_amt.getText().toString().replace("$ ","").replace(" AUD","");
+                CheckoutActivity.price_label_1 = "$ " + booking_price.getText().toString()
+                        + " AUD" + " x " + booking_guest_number.getText().toString() + " pp";
+                CheckoutActivity.price_label_2 = booking_price_and_person_amt.getText().toString();
+                CheckoutActivity.total_price = booking_price_and_person_amt.getText().toString().replace("$ ", "").replace(" AUD", "");
 
-                CheckoutActivity.guest=guests+"";
-                CheckoutActivity.coupon=coupon_code.getText().toString();
+                CheckoutActivity.guest = guests + "";
+                CheckoutActivity.coupon = coupon_code.getText().toString();
 
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });
         refund = (TextView) view.findViewById(R.id.booking_refund_txt);
         bookingBtn.setEnabled(false);
-        if(CheckoutActivity.position != 999){
+        if (CheckoutActivity.position != 999) {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint(getResources().getString(R.string.server_url))
@@ -304,43 +339,45 @@ public class CheckoutActivityFragment extends Fragment {
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             request req = new request(CheckoutActivity.position);
-            System.out.println("Position is "+CheckoutActivity.position);
-                apiService.getExpDetails(req, new Callback<Experience_Detail>() {
-                    @Override
-                    public void success(Experience_Detail experience_detail, Response response) {
-                        CheckoutActivity.experience_to_book = experience_detail;
-                        updateDetails();
-                        bookingBtn.setEnabled(true);
-                    }
-                    @Override
-                    public void failure(RetrofitError error) {
-                        ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
-                    }
+            System.out.println("Position is " + CheckoutActivity.position);
+            apiService.getExpDetails(req, new Callback<Experience_Detail>() {
+                @Override
+                public void success(Experience_Detail experience_detail, Response response) {
+                    CheckoutActivity.experience_to_book = experience_detail;
+                    updateDetails();
+                    bookingBtn.setEnabled(true);
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
+                }
             });
         }
         return view;
     }
 
-    public void updateDetails(){
+    public void updateDetails() {
         temp_detail_exp = CheckoutActivity.experience_to_book;
-        if(temp_detail_exp != null){
-            Glide.with(HomeActivity.getHome_context()).load(ExpDetailActivityFragment.BASE_URL+
-                    "thumbnails/experiences/experience" + ExpDetailActivity.position+ "_1.jpg").fitCenter().into(thumbnail);
+        if (temp_detail_exp != null) {
+            Glide.with(HomeActivity.getHome_context()).load(ExpDetailActivityFragment.BASE_URL +
+                    "thumbnails/experiences/experience" + ExpDetailActivity.position + "_1.jpg").fitCenter().into(thumbnail);
             title.setText(temp_detail_exp.getExperience_title());
             duration.setText(temp_detail_exp.getExperience_duration().toString());
-            String[] language = temp_detail_exp.getLanguage()!=null?temp_detail_exp.getLanguage().split(";"):new String[1];
-            String l= "";
-            for(int i=0;language!=null && i<language.length;i++)
-            {
-                switch(language[i]) {
-                    case "english": l = "English";
-                    case "english;mandarin": l = "English / 中文";
+            String[] language = temp_detail_exp.getLanguage() != null ? temp_detail_exp.getLanguage().split(";") : new String[1];
+            String l = "";
+            for (int i = 0; language != null && i < language.length; i++) {
+                switch (language[i]) {
+                    case "english":
+                        l = "English";
+                    case "english;mandarin":
+                        l = "English / 中文";
                 }
             }
             language_txt.setText(l);
 
-            if(temp_detail_exp.getAvailable_options().get(0).isInstantBooking()){
-                if(temp_detail_exp.getAvailable_options().size() >= 3){
+            if (temp_detail_exp.getAvailable_options().get(0).isInstantBooking()) {
+                if (temp_detail_exp.getAvailable_options().size() >= 3) {
                     booking_date_1.setText(temp_detail_exp.getAvailable_options().get(0).getDate_string());
                     booking_date_2.setText(temp_detail_exp.getAvailable_options().get(1).getDate_string());
                     booking_date_3.setText(temp_detail_exp.getAvailable_options().get(2).getDate_string());
@@ -348,31 +385,31 @@ public class CheckoutActivityFragment extends Fragment {
                     booking_time_2.setText(temp_detail_exp.getAvailable_options().get(1).getTime_string());
                     booking_time_3.setText(temp_detail_exp.getAvailable_options().get(2).getTime_string());
                 }
-            }else{
+            } else {
                 booking_row_3.setVisibility(View.GONE);
                 booking_row_4.setVisibility(View.GONE);
                 booking_row_5.setVisibility(View.GONE);
             }
 
             dy_price = temp_detail_exp.getExperience_dynamic_price();
-            if(dy_price.length > 0){
-                if(temp_detail_exp.getExperience_guest_number_min() <= 4 &&
-                        temp_detail_exp.getExperience_guest_number_max() >= 4){
+            if (dy_price.length > 0) {
+                if (temp_detail_exp.getExperience_guest_number_min() <= 4 &&
+                        temp_detail_exp.getExperience_guest_number_max() >= 4) {
                     price_i = Double.valueOf(dy_price[3]);
                     price_s = REAL_FORMATTER.format(dy_price[3]);
                     guests = 4;
                     np_sel = 3;
-                }else if(temp_detail_exp.getExperience_guest_number_max() < 4){
+                } else if (temp_detail_exp.getExperience_guest_number_max() < 4) {
                     price_i = Double.valueOf(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     price_s = REAL_FORMATTER.format(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     guests = temp_detail_exp.getExperience_guest_number_max();
-                    np_sel = dy_price.length -1;
-                }else if(temp_detail_exp.getExperience_guest_number_min() > 4){
+                    np_sel = dy_price.length - 1;
+                } else if (temp_detail_exp.getExperience_guest_number_min() > 4) {
                     price_i = Double.valueOf(dy_price[0]);
                     price_s = REAL_FORMATTER.format(dy_price[0]);
                     guests = temp_detail_exp.getExperience_guest_number_min();
                 }
-            }else {
+            } else {
                 //price_title.setText(REAL_FORMATTER.format(temp_detail_exp.getExperience_price()*1.44));
                 price_i = temp_detail_exp.getExperience_price();
                 price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
@@ -380,13 +417,13 @@ public class CheckoutActivityFragment extends Fragment {
             }
             booking_price.setText(price_s);
             booking_guest_number.setText(String.valueOf(guests));
-            booking_price_and_person_amt.setText("$ "+REAL_FORMATTER.format(price_i*guests)+" AUD");
+            booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(price_i * guests) + " AUD");
             np.setMinValue(temp_detail_exp.getExperience_guest_number_min());
             np.setMaxValue(temp_detail_exp.getExperience_guest_number_max());
             np.setValue(guests);
             List<String> temp_dates = new ArrayList<>();
             List<String> temp_times = new ArrayList<>();
-            for(AvailableOption option : temp_detail_exp.getAvailable_options()){
+            for (AvailableOption option : temp_detail_exp.getAvailable_options()) {
                 temp_dates.add(option.getDate_string());
                 temp_times.add(option.getTime_string());
             }
@@ -395,13 +432,13 @@ public class CheckoutActivityFragment extends Fragment {
             date_spin.setAdapter(date_adapter);
             time_spin.setAdapter(time_adapter);
             refund.setMovementMethod(LinkMovementMethod.getInstance());
-            String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
+            String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>" + getResources().getString(R.string.checkout_refund_link) + " </a>";
             refund.setText(Html.fromHtml(text));
         }
     }
 
 
-    public void refresh_code(){
+    public void refresh_code() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
@@ -418,28 +455,96 @@ public class CheckoutActivityFragment extends Fragment {
         Gson gson = new Gson();
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();
-        String datearr1[]=(temp_detail_exp.getAvailable_options().get(date_sel).getDate_string()).split("/");
-        String date1=datearr1[2]+"/"+datearr1[1]+"/"+datearr1[0];
+        String datearr1[] = (temp_detail_exp.getAvailable_options().get(date_sel).getDate_string()).split("/");
+        String date1 = datearr1[2] + "/" + datearr1[1] + "/" + datearr1[0];
         ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
-        Coupon_Request req = new Coupon_Request(coupon_code.getText().toString(),String.valueOf(ExpDetailActivity.position),
+        Coupon_Request req = new Coupon_Request(coupon_code.getText().toString(), String.valueOf(ExpDetailActivity.position),
                 date1,
                 temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
                 guests);
         apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
-                if(coupon_result.getValid().equalsIgnoreCase("yes")) {
+                if (coupon_result.getValid().equalsIgnoreCase("yes")) {
                     ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(coupon_result.getNew_price()) + " AUD");
-                    coupon_status=true;
-                }
-                else
+                    coupon_status = true;
+                } else
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
             }
+
             @Override
             public void failure(RetrofitError error) {
                 ToastHelper.longToast(getResources().getString(R.string.server_error));
             }
         });
+    }
+
+    public void checkDateInst(String date, String time) {
+        String spin_date_s = date_spin.getSelectedItem().toString();
+        String spine_time_s = time_spin.getSelectedItem().toString();
+
+        int count = 0;
+        for (AvailableOption option : temp_detail_exp.getAvailable_options()) {
+            if (option.getDate_string().equals(date) && option.getTime_string().equals(time)) {
+                date_spin.setSelection(count);
+                time_spin.setSelection(count);
+
+            }
+
+            count++;
+        }
+//        String datetime1=booking_date_1.getText().toString();
+//        String datetime2=booking_date_2.getText().toString();
+//        String datetime3=booking_date_3.getText().toString();
+//        String instant_time=booking_time_1.getText().toString();
+//        System.out.println("spin"+spin_date_s+"--"+spine_time_s);
+//System.out.println("Booking date time"+datetime1+"--"+instant_time);
+    }
+
+    public void checkDateSpin() {
+        final View time_container_1 = view_instance.findViewById(R.id.checkout_time_1_container);
+        final View time_container_2 = view_instance.findViewById(R.id.checkout_time_2_container);
+        final View time_container_3 = view_instance.findViewById(R.id.checkout_time_3_container);
+        String spin_date_s = date_spin.getSelectedItem().toString();
+        String spine_time_s = time_spin.getSelectedItem().toString();
+        clearlabel();
+        if (spin_date_s.equals(booking_date_1.getText().toString())
+                && spine_time_s.equals(booking_time_1.getText().toString())) {
+            booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
+            booking_time_1.setBackgroundResource(R.color.tripalocal_instance_book);
+            time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
+
+        } else if (spin_date_s.equals(booking_date_2.getText().toString())
+                && spine_time_s.equals(booking_time_2.getText().toString())) {
+            booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
+            booking_time_2.setBackgroundResource(R.color.tripalocal_instance_book);
+            time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
+
+        } else if (spin_date_s.equals(booking_date_3.getText().toString())
+                && spine_time_s.equals(booking_time_3.getText().toString())) {
+            booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
+            booking_time_3.setBackgroundResource(R.color.tripalocal_instance_book);
+            time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
+
+        }
+        System.out.println("come here 123");
+    }
+
+    public void clearlabel(){
+        final View time_container_1 = view_instance.findViewById(R.id.checkout_time_1_container);
+        final View time_container_2 = view_instance.findViewById(R.id.checkout_time_2_container);
+        final View time_container_3 = view_instance.findViewById(R.id.checkout_time_3_container);
+        time_container_1.setBackgroundResource(R.color.white);
+        time_container_2.setBackgroundResource(R.color.white);
+        time_container_3.setBackgroundResource(R.color.white);
+
+        booking_date_1.setBackgroundResource(R.color.white);
+        booking_date_2.setBackgroundResource(R.color.white);
+        booking_date_3.setBackgroundResource(R.color.white);
+        booking_time_1.setBackgroundResource(R.color.white);
+        booking_time_2.setBackgroundResource(R.color.white);
+        booking_time_3.setBackgroundResource(R.color.white);
+
     }
 }
