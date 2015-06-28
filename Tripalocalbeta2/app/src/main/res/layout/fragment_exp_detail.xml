@@ -36,7 +36,7 @@
                         android:id="@+id/exp_detail_profile_image"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
-                        android:layout_gravity="bottom|center"
+                        android:layout_gravity="center|bottom"
                         android:src="@drawable/profile_default"
                         app:border_width="2dp"
                         app:border_color="#ffffffff"/>
@@ -225,7 +225,9 @@
                     android:layout_below="@id/exp_detail_info_read_more_container"
                     android:background="@drawable/read_more_btn_shape_white"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/view_more"/>
+                    android:text="@string/view_more"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"/>
             </RelativeLayout>
 
             <!-- about the host-->
@@ -310,9 +312,11 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_host_view_more_btn"
                     android:layout_below="@id/exp_detail_host_info_read_more_container"
-                    android:background="@drawable/read_more_btn_shape_grey"
+                    android:background="@drawable/read_more_btn_shape_white"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/view_more"/>
+                    android:text="@string/view_more"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"/>
             </RelativeLayout>
             <!-- reviews-->
             <LinearLayout
@@ -353,7 +357,8 @@
                         android:text="@string/exp_detail_reviews"
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
-                        android:password="false" />
+                        android:password="false"
+                        android:layout_marginLeft="-5dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -362,36 +367,36 @@
                     android:layout_gravity="center"
                     android:id="@+id/exp_detail_review_stars_container">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:padding="20dp"
                         android:id="@+id/exp_detail_review_star_1"
                         android:background="@drawable/star_y"/>
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:padding="20dp"
                         android:id="@+id/exp_detail_review_star_2"
                         android:background="@drawable/star_y"/>
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:padding="20dp"
                         android:id="@+id/exp_detail_review_star_3"
                         android:background="@drawable/star_y"/>
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:padding="20dp"
                         android:id="@+id/exp_detail_review_star_4"
                         android:background="@drawable/star_y"/>
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:padding="20dp"
                         android:id="@+id/exp_detail_review_star_5"
@@ -407,7 +412,8 @@
                     android:src="@drawable/profile_default"
                     android:layout_gravity="center"
                     app:border_width="2dp"
-                    app:border_color="#ffffffff" />
+                    app:border_color="#ffffffff"
+                    android:layout_marginTop="10dp" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -433,7 +439,10 @@
                     android:id="@+id/exp_detail_review_view_more_btn"
                     android:background="@drawable/read_more_btn_shape_white"
                     android:layout_gravity="center"
-                    android:text="@string/view_more"/>
+                    android:text="@string/view_all"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    />
             </LinearLayout>
             <!--end of reviews -->
             <ImageView
