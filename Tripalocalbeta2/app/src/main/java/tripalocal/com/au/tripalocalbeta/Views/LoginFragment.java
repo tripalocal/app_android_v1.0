@@ -99,7 +99,14 @@ public class LoginFragment extends Fragment {
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragHelper.addReplace(getActivity().getSupportFragmentManager(), new SignUpFragment());
+                if(HomeActivity.login_ch) {
+                    Intent intent =new Intent(getActivity().getApplicationContext(), PhoneregisterActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+                else {
+                    FragHelper.addReplace(getActivity().getSupportFragmentManager(), new SignUpFragment());
+                }
             }
         });
         return view;
@@ -133,6 +140,13 @@ public class LoginFragment extends Fragment {
                     getActivity().invalidateOptionsMenu();
                     getActivity().onBackPressed();
                     ToastHelper.longToast(log_in_success);
+                    HomeActivity.saveData();
+                    if(HomeActivity.login_ch){
+                        HomeActivity.login_ch=false;
+                        Intent intent =new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
                 }
 
                 @Override

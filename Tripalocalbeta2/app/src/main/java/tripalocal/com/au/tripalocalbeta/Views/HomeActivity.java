@@ -2,9 +2,11 @@ package tripalocal.com.au.tripalocalbeta.Views;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -49,7 +51,8 @@ public class HomeActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "TPPrefs";
     public static final String PREFS_NAME_L = "TPPrefs_L";
     public static boolean login_flag = true;
-
+    public static boolean login_ch=false;
+//    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
     }
@@ -152,6 +155,17 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeActivityFragment()).commit();
         tpDrawer.setDrawerListener(tpDrawToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(!checkFirstTime()){
+            Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if(!checkLogin()){
+            Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.out.println("come on");
+        }
+
     }
 
     @Override
@@ -175,6 +189,7 @@ public class HomeActivity extends AppCompatActivity {
                 ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 Object[] temp = new Object[]{0, "default"};
@@ -241,7 +256,7 @@ public class HomeActivity extends AppCompatActivity {
                 editor_l.apply();
                 HomeActivity.login_flag = true;
                 invalidateOptionsMenu();
-                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
@@ -253,5 +268,31 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public Boolean checkFirstTime(){
+        String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
+        System.out.println("record text:" + restoredText);
+        if (restoredText == null) {
+
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean checkLogin(){
+        SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
+        return settings_l.getBoolean("login", false);
+    }
+
+    public boolean getloginFragmentExtra(){
+        Intent intent = getIntent();
+        if(intent != null){
+           String loginFra=intent.getStringExtra("login_fragment")+"";
+            return intent.getBooleanExtra("login_fragment",false);
+        }
+        return false;
     }
 }

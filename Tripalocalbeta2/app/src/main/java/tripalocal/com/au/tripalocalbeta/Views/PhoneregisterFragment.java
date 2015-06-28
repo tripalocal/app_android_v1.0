@@ -90,11 +90,19 @@ public class PhoneregisterFragment extends Fragment {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.phone_reg_container, new LoginFragment()).commit();
-                getFragmentManager().beginTransaction().addToBackStack("login")
-                        .replace(R.id.detail_frag_container, new TestFragment()).commit();
-                System.out.println("this is asdasa test");
+                phone_no_edit.clearFocus();
+                verfi_code_edit.clearFocus();
+//                getFragmentManager().beginTransaction().addToBackStack("login")
+//                        .replace(R.id.phone_reg_container, new LoginFragment()).commit();
+//                Intent intent=new Intent(getActivity().getApplicationContext(),PhoneregisterActivity.class);
+//                intent.putExtra("login_fragment",true);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                getActivity().getApplicationContext().startActivity(intent);
+                Intent intent=new Intent(getActivity().getApplicationContext(),LoginActivity.class);
+                intent.putExtra("login_fragment",true);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.login_ch=true;
+                getActivity().getApplicationContext().startActivity(intent);
             }
         }); 
 
