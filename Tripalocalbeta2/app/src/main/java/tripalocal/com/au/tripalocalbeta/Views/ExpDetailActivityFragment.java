@@ -176,7 +176,7 @@ public class ExpDetailActivityFragment extends Fragment {
         });
         request_to_book_btn.setEnabled(false);
             getExpDetails(ExpDetailActivity.position);
-
+        
         return view;
     }
 
