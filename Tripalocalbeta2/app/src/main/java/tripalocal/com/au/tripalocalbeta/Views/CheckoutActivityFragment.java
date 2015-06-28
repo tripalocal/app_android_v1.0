@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.Callback;
@@ -81,6 +82,7 @@ public class CheckoutActivityFragment extends Fragment {
     private static View view_instance;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
     private static Float[] dy_price;
+    private HashMap<String,ArrayList<String>> datetimeMap;
 
     public CheckoutActivityFragment() {
     }
@@ -90,6 +92,7 @@ public class CheckoutActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
         view_instance=view;
+        datetimeMap=new HashMap<String,ArrayList<String>>();
         title = (TextView) view.findViewById(R.id.booking_title);
         thumbnail = (ImageView) view.findViewById(R.id.booking_thumbnail);
         duration = (TextView) view.findViewById(R.id.booking_duration);
@@ -279,8 +282,10 @@ public class CheckoutActivityFragment extends Fragment {
         date_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                
-                checkDateSpin();
+                String key=date_spin.getItemAtPosition(position).toString();
+                ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, datetimeMap.get(key));
+                time_spin.setAdapter(time_adapter);
+//                checkDateSpin();
 
             }
 
@@ -423,9 +428,22 @@ public class CheckoutActivityFragment extends Fragment {
             np.setValue(guests);
             List<String> temp_dates = new ArrayList<>();
             List<String> temp_times = new ArrayList<>();
-            for (AvailableOption option : temp_detail_exp.getAvailable_options()) {
-                temp_dates.add(option.getDate_string());
-                temp_times.add(option.getTime_string());
+            int count=0;
+            for (List<String> option : temp_detail_exp.getAvailable_date()) {
+                temp_dates.add(option.get(0));
+                ArrayList<String> time_list=new ArrayList<String>();
+                for(AvailableOption options:temp_detail_exp.getAvailable_options()){
+                    if(option.get(1).equals(options.getDate_string())){
+                        if(count==0) {
+                            time_list.add(options.getTime_string());
+                            temp_times.add(options.getTime_string());
+                        }else{
+                            time_list.add(options.getTime_string());
+                        }
+                    }
+                }
+                datetimeMap.put(option.get(0),time_list);
+                count++;
             }
             ArrayAdapter<String> date_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_dates);
             ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_times);
@@ -483,23 +501,22 @@ public class CheckoutActivityFragment extends Fragment {
     public void checkDateInst(String date, String time) {
         String spin_date_s = date_spin.getSelectedItem().toString();
         String spine_time_s = time_spin.getSelectedItem().toString();
+        if(datetimeMap.containsKey(date)){
+            date_spin.setSelection(getIndex(date_spin,date));
+            time_spin.setSelection(getIndex(time_spin,time));
 
-        int count = 0;
-        for (AvailableOption option : temp_detail_exp.getAvailable_options()) {
-            if (option.getDate_string().equals(date) && option.getTime_string().equals(time)) {
-                date_spin.setSelection(count);
-                time_spin.setSelection(count);
-
-            }
-
-            count++;
         }
-//        String datetime1=booking_date_1.getText().toString();
-//        String datetime2=booking_date_2.getText().toString();
-//        String datetime3=booking_date_3.getText().toString();
-//        String instant_time=booking_time_1.getText().toString();
-//        System.out.println("spin"+spin_date_s+"--"+spine_time_s);
-//System.out.println("Booking date time"+datetime1+"--"+instant_time);
+//        int count = 0;
+//        for (HashMap<String,Array>) {
+//            if (option.getDate_string().equals(date) && option.getTime_string().equals(time)) {
+//                date_spin.setSelection(count);
+//                time_spin.setSelection(count);
+//
+//            }
+//
+//            count++;
+//        }
+
     }
 
     public void checkDateSpin() {
@@ -528,7 +545,6 @@ public class CheckoutActivityFragment extends Fragment {
             time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
 
         }
-        System.out.println("come here 123");
     }
 
     public void clearlabel(){
@@ -546,5 +562,17 @@ public class CheckoutActivityFragment extends Fragment {
         booking_time_2.setBackgroundResource(R.color.white);
         booking_time_3.setBackgroundResource(R.color.white);
 
+    }
+    private int getIndex(Spinner spinner, String myString)
+    {
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 }
