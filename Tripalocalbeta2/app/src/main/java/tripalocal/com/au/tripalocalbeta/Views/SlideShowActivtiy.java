@@ -22,6 +22,8 @@ RelativeLayout background_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("oncreate go thererere");
+
         getSupportActionBar().hide();
         if(checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
@@ -56,6 +58,7 @@ RelativeLayout background_layout;
         }
 
     }
+
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);

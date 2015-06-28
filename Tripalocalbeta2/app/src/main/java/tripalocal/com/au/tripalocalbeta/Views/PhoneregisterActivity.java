@@ -36,6 +36,16 @@ public class PhoneregisterActivity extends AppCompatActivity {
         HomeActivity.saveData();
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(checkLogin()){
+            Intent intent =new Intent(this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.out.println("go there 1");
+        }
+    }
     public void backdoor(View view){
         Intent intent =new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

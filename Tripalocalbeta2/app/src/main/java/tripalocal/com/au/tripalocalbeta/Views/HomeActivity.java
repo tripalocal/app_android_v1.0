@@ -172,6 +172,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         invalidateOptionsMenu();
+        if(!checkFirstTime()){
+            Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if(!checkLogin()){
+            Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.out.println("come on");
+        }
     }
 
     @Override

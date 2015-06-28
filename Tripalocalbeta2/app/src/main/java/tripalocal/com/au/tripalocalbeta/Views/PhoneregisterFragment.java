@@ -43,6 +43,7 @@ public class PhoneregisterFragment extends Fragment {
     public PhoneregisterFragment() {
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,8 +56,8 @@ public class PhoneregisterFragment extends Fragment {
 
     public void invisibleButton(Boolean visible) {
         if (visible) {
-            verfi_code_edit.setVisibility(View.INVISIBLE);
-            confirm_btn.setVisibility(View.INVISIBLE);
+            verfi_code_edit.setVisibility(View.GONE);
+            confirm_btn.setVisibility(View.GONE);
         } else {
             verfi_code_edit.setVisibility(View.VISIBLE);
             confirm_btn.setVisibility(View.VISIBLE);
@@ -74,7 +75,7 @@ public class PhoneregisterFragment extends Fragment {
 
     public void initControllers() {
 
-        invisibleButton(true);
+//        invisibleButton(true);
         verfication_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +184,7 @@ public class PhoneregisterFragment extends Fragment {
         protected void onPostExecute(Boolean result) {
             System.out.println("task finished");
             if(result){
-            invisibleButton(false);
+//            invisibleButton(false);
 
             new CountDownTimer(60000, 1000) {
 
