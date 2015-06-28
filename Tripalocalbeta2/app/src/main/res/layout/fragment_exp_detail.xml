@@ -357,8 +357,7 @@
                         android:text="@string/exp_detail_reviews"
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
-                        android:password="false"
-                        android:layout_marginLeft="-5dp" />
+                        android:password="false"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -24,7 +24,7 @@
     <string name="title_activity_payment">付款</string>
     <string name="title_activity_my_trip">我的体验</string>
     <string name="title_activity_my_profile">个人信息</string>
-    <string name="title_activity_review">条评论</string>
+    <string name="title_activity_review">评论</string>
     <string name="title_activity_alipay">支付宝</string>
 
     <string name="search_hint">搜索</string>
@@ -176,8 +176,8 @@
     <string name="cvv">CVV</string>
     <string name="title_activity_creditcard">信用卡支付</string>
     <string name="credit_no_hint">16个数字</string>
-    <string name="drawer_open">橱窗开启</string>
-    <string name="drawer_closed">橱窗关闭</string>
+    <string name="drawer_open">展开</string>
+    <string name="drawer_closed">收起</string>
     <string name="view_in_my_trip">去我的体验里查看</string>
     <string name="payment_success_text">你的预定请求已经成功发送给 somebody</string>
     <string name="payment_success_title">付款成功</string>
