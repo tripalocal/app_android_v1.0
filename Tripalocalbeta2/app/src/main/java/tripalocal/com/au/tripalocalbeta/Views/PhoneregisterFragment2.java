@@ -88,7 +88,8 @@ public class PhoneregisterFragment2 extends Fragment {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
 
                 System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
-                Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                HomeActivity.login_ch=true;
+                Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
 
