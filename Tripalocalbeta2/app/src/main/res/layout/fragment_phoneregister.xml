@@ -81,7 +81,7 @@
                     android:id="@+id/verfi_code_edit"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_input"
-                    android:hint="@string/phone_no_hint"
+                    android:hint="@string/verification_hint"
                     android:inputType="numberSigned"
                     android:paddingBottom="10dp"
                     android:paddingLeft="35dp"

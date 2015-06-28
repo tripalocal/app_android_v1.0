@@ -208,7 +208,7 @@
     <string name="first_name">名</string>
     <string name="password_hint">设置密码</string>
     <string name="password_hint_2">再次输入密码</string>
-    <string name="go_to_tripalocal">开始本土可</string>
+    <string name="go_to_tripalocal">进入本土客</string>
     <string name="verfication_expire">失效，点击重新发送</string>
     <string name="phone_no_error">错误的电话号码</string>
     <string name="empty_field_error">你必须填写所有的空白</string>
