@@ -52,7 +52,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         }else{
             getActivity().setTitle(getResources().getString(R.string.your_wishlist));
         }
-        ExperienceListAdapter.all_experiences.clear();
+//        ExperienceListAdapter.all_experiences.clear();
         View view = inflater.inflate(R.layout.fragment_experiences_list, container, false);
         rv = (RecyclerView) view.findViewById(R.id.recycle_view_exp_list);
         LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
