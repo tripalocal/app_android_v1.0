@@ -61,7 +61,7 @@
     <string name="nav_privacy_policy">隐私政策</string>
     <string name="nav_about_us">关于我们</string>
 
-    <string name="exp_list_per_person">澳元每人 起</string>
+    <string name="exp_list_per_person">澳元/每人起</string>
     <string name="exp_list_duration">小时</string>
 
     <string name="exp_reservation">和</string>
@@ -75,7 +75,7 @@
     <string name="view_less">收起</string>
     <string name="no_review_content">没有评论</string>
     <string name="exp_detail_reviews">条评论</string>
-    <string name="exp_detail_about_the_host">关于\u0020--\u0020</string>
+    <string name="exp_detail_about_the_host">关于\u0020\u2013\u0020</string>
     <string name="exp_detail_per_person_text">每人</string>
     <string name="exp_detail_per_person_for">约</string>
     <string name="exp_detail_per_person_hour">小时</string>
@@ -217,6 +217,7 @@
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
     <string name="title_login_fragment">登录</string>
     <string name="title_signup_fragment">注册</string>
+    <string name="title_fragment_wishlist">兴趣列表</string>
     <!--do not change the "code" here-->
 
     <string-array name="db_cities_array">

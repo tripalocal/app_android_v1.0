@@ -6,6 +6,11 @@
     android:layout_width="fill_parent"
     android:fontFamily="light"
     card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0dp"
+    card_view:contentPaddingLeft="-3dp"
+    card_view:contentPaddingRight="-3dp"
+    card_view:contentPaddingTop="-3dp"
+    card_view:contentPaddingBottom="-3dp"
     >
     <LinearLayout
         android:layout_width="wrap_content"
@@ -21,17 +26,19 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:background="@color/background_floating_material_dark"
             android:id="@+id/exp_list_banner_image"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="7dp"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="70dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:background="#720a0a0a">
             <TextView
                 android:layout_width="wrap_content"
@@ -66,16 +73,17 @@
                 android:paddingLeft="2dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:text="@string/exp_list_per_person" />
         </LinearLayout>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/exp_list_wish_image"
-            android:src="@drawable/heart_sw"
+            android:src="@drawable/heart_lg"
             android:layout_gravity="right"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"/>
     </FrameLayout>
     <TextView
         android:layout_width="match_parent"
@@ -129,10 +137,9 @@
             android:id="@+id/exp_list_small_wish"
             android:src="@drawable/heart_sw"
             android:layout_width="27dp"
-            android:layout_height="20dp"
-            android:scaleType="fitXY"
-            android:paddingRight="10dp"
-            />
+            android:layout_height="27dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"/>
         <TextView
             android:id="@+id/exp_list_wish_text"
             android:layout_width="wrap_content"

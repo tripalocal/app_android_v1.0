@@ -134,7 +134,7 @@
     <string name="checkout_valid_coupon">Coupon successfully applied</string>
     <string name="server_error">Server error</string>
     
-    <string name="wishlist_title">Your Wishlist</string>
+    <string name="wishlist_title">My Wishlist</string>
     <string name="wish_log_in_msg">Please Log in to Save</string>
     <string name="save_to_wishlist">Save to wishlist</string>
     <string name="saved_to_wishlist">Saved to wishlist</string>
@@ -185,7 +185,7 @@
     <string name="credit_card_year_error">Incorrect Year</string>
     <string name="credit_card_cvv_error">CVV must be 3 digit number</string>
     <string name="credit_card_error">Unable to make the payment</string>
-    <string name="your_wishlist">Your Wishlist</string>
+    <string name="your_wishlist">My Wishlist</string>
     <string name="empty_list_err">empty list</string>
     <string name="empty_wishlist_msg">You have not added any experiences to your wishlist</string>
     <string name="my_profile">My Profile</string>
@@ -217,7 +217,7 @@
     <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
     <string name="title_login_fragment">Login</string>
     <string name="title_signup_fragment">Signup</string>
-    <string name="title_fragment_wishlist">Your Wishlist</string>
+    <string name="title_fragment_wishlist">My Wishlist</string>
     <!--do not change the "code" here-->
 
     <!--end phone register string-->
