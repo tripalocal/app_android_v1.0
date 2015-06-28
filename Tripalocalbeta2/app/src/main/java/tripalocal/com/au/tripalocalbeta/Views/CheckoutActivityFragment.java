@@ -114,8 +114,8 @@ public class CheckoutActivityFragment extends Fragment {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
                     }
-                    booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    time_container_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                    time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
                     date_sel = 0;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
                 }
@@ -133,8 +133,8 @@ public class CheckoutActivityFragment extends Fragment {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
                     }
-                    booking_date_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    time_container_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                    time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
                     date_sel = 1;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
                 }
@@ -152,8 +152,8 @@ public class CheckoutActivityFragment extends Fragment {
                         booking_date_2.setBackgroundResource(R.color.white);
                         time_container_2.setBackgroundResource(R.color.white);
                     }
-                    booking_date_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    time_container_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                    time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
                     date_sel = 2;
                     np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
                 }
@@ -173,8 +173,8 @@ public class CheckoutActivityFragment extends Fragment {
                         booking_date_3.setBackgroundResource(R.color.white);
                         time_container_3.setBackgroundResource(R.color.white);
                     }
-                    booking_date_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    time_container_1.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                    time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 0;
                 }
             }
@@ -191,8 +191,8 @@ public class CheckoutActivityFragment extends Fragment {
                         booking_date_1.setBackgroundResource(R.color.white);
                         time_container_1.setBackgroundResource(R.color.white);
                     }
-                    time_container_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    booking_date_2.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                    booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 1;
                 }
             }
@@ -208,8 +208,8 @@ public class CheckoutActivityFragment extends Fragment {
                         time_container_2.setBackgroundResource(R.color.white);
                         booking_date_2.setBackgroundResource(R.color.white);
                     }
-                    booking_date_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
-                    time_container_3.setBackgroundResource(R.color.tripalocal_selection_highlight);
+                    booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                    time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
                     time_sel = 2;
                 }
             }

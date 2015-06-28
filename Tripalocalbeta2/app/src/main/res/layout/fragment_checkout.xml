@@ -126,19 +126,20 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/booking_date_txt1"
-                        android:background="@color/tripalocal_selection_highlight"
+                        android:background="@color/tripalocal_instance_book"
                         android:text="@string/checkout_date_placeholder"
                         android:padding="5dp"
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
                         android:layout_marginRight="25dp"
-                        android:layout_marginLeft="25dp" />
+                        android:layout_marginLeft="25dp"
+                        android:clickable="true" />
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_width="0dp"
                         android:id="@+id/checkout_time_1_container"
-                        android:background="@color/tripalocal_selection_highlight"
+                        android:background="@color/tripalocal_instance_book"
                         android:orientation="horizontal">
                         <ImageView
                             android:layout_width="wrap_content"
