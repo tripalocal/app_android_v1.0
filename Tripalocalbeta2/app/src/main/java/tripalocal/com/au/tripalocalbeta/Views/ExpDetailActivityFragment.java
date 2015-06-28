@@ -247,8 +247,8 @@ public class ExpDetailActivityFragment extends Fragment {
 
         price_hours.setText(REAL_FORMATTER.format(exp_to_display.getExperience_duration()));
         info_title.setText(exp_to_display.getExperience_title());
-        info_less.setText(exp_to_display.getExperience_description());
-        info_more.setText(exp_to_display.getExperience_description());
+        info_less.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
+        info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
         host_title.setText(exp_to_display.getHost_firstname() + " " + exp_to_display.getHost_lastname().substring(0, 1) + ".");
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
