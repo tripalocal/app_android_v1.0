@@ -84,6 +84,7 @@
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses</string>
+	<string name="exp_detail_view_all">View  All</string>
 
     <string name="home_bg_city_content_desc">background_image_city</string>
     <string name="login_or">or</string>
@@ -219,12 +220,7 @@
     <string name="title_signup_fragment">Signup</string>
     <string name="title_fragment_wishlist">My Wishlist</string>
     <!--do not change the "code" here-->
-
     <!--end phone register string-->
-
-    <!--exp details-->
-    <string name="view_all">View  All</string>
-    <!--end exp details-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

@@ -84,6 +84,7 @@
     <string name="dollar_placeholder">$</string>
     <string name="loading_title"></string>
     <string name="checkout_title_placeholder"></string>
+    <string name="exp_detail_view_all">查看全部</string>
 
     <string name="home_bg_city_content_desc">城市背景图片</string>
     <string name="login_or">or</string>
@@ -219,7 +220,7 @@
     <string name="title_signup_fragment">注册</string>
     <string name="title_fragment_wishlist">兴趣列表</string>
     <!--do not change the "code" here-->
-
+    <!--end phone register string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

@@ -80,7 +80,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/exp_list_wish_image"
-            android:src="@drawable/heart_lg"
+            android:src="@drawable/heart_ldg"
             android:layout_gravity="right"
             android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"/>
