@@ -221,12 +221,16 @@
     <string name="password_error">You must enter the same passwords</string>
     <string name="verfication_code_error">Wrong code</string>
     <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
-    <string name="msg_content">客户你好，你的验证码为：code 5分钟内有效，请完成注册</string>
+    <string name="msg_content">客户你好，你的验证码为：code 60秒内有效，请完成注册</string>
+    <!--do not change the "code" here-->
     <string name="title_login_fragment">Login</string>
     <string name="title_signup_fragment">Signup</string>
     <string name="title_fragment_wishlist">My Wishlist</string>
     <string name="save_profile_btn">Save Profile</string>
-    <!--do not change the "code" here-->
+    <string name="phone_reg_username">bentuke</string>
+    <string name="phone_reg_pwd">Bentuke123</string>
+    <string name="phone_reg_server">http://222.73.117.158/msg/</string>
+
     <!--end phone register string-->
 
     <!--youmeng page string-->
