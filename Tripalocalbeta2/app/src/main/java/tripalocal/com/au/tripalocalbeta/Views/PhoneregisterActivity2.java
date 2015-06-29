@@ -19,6 +19,8 @@ public class PhoneregisterActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
         Intent intent = getIntent();
         if(intent != null){
             if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
