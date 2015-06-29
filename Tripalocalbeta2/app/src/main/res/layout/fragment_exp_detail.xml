@@ -490,7 +490,8 @@
                     android:id="@+id/exp_detail_grid_food_text"/>
                 <TextView
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
                     android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_food_info"/>
@@ -510,7 +511,8 @@
                     android:id="@+id/exp_detail_grid_ticket_text"/>
                 <TextView
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
                     android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_ticket_info"/>
@@ -530,7 +532,8 @@
                     android:id="@+id/exp_detail_grid_transport_text"/>
                 <TextView
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
                     android:text="@string/exp_detail_default_optional_expenses"
                     android:id="@+id/exp_detail_grid_transport_info"/>
