@@ -31,9 +31,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.SimpleView
     public void onBindViewHolder(SimpleViewHolder simpleViewHolder, int i) {
         ExperienceReview review_to_display = reviewsList.get(i);
         simpleViewHolder.reviewerName.setText(review_to_display.getReviewer_firstname()
-                +" " +review_to_display.getReviewer_lastname());
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+review_to_display.getReviewer_image()).fitCenter()
-                .into(simpleViewHolder.profileImage);
+                + " " + review_to_display.getReviewer_lastname());
+        if(review_to_display.getReviewer_image() != null && !review_to_display.getReviewer_image().isEmpty()) {
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + review_to_display.getReviewer_image()).fitCenter()
+                    .into(simpleViewHolder.profileImage);
+        }
         simpleViewHolder.reviewContent.setText(review_to_display.getReview_comment());
         simpleViewHolder.itemView.setTag(i);
     }

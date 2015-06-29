@@ -76,7 +76,7 @@
     <string name="no_review_content">没有评论</string>
     <string name="exp_detail_reviews">条评论</string>
     <string name="exp_detail_about_the_host">关于\u0020\u2013\u0020</string>
-    <string name="exp_detail_per_person_text">每人</string>
+    <string name="exp_detail_per_person_text">每人起</string>
     <string name="exp_detail_per_person_for">约</string>
     <string name="exp_detail_per_person_hour">小时</string>
     <string name="exp_detail_request">预订</string>
