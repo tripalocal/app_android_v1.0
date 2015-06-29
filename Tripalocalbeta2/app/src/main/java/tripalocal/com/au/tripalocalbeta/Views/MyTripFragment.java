@@ -217,7 +217,7 @@ public class MyTripFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("ERROR MYTRIP :" + error);
+                //System.out.println("ERROR MYTRIP :" + error);
             }
         });
     }
@@ -236,7 +236,7 @@ public class MyTripFragment extends Fragment {
             }
             catch(ParseException pe)
             {
-                System.out.println(pe.toString());
+                //System.out.println(pe.toString());
             }
             if(dt.after(new Date()))
             {

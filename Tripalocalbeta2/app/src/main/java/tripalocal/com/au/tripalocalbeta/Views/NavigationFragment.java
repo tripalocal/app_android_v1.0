@@ -170,7 +170,7 @@ public class NavigationFragment extends Fragment {
             }
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("error = [" + error + "]");
+                //System.out.println("error = [" + error + "]");
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });

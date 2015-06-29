@@ -115,7 +115,7 @@ public class CreditCardActivity  extends AppCompatActivity {
                 .build();
 //        System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-        System.out.println("create json"+createJson(no,month,year,cvv));
+        //System.out.println("create json"+createJson(no,month,year,cvv));
 
        // apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
 
@@ -183,7 +183,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             globalObj.put("coupon",coupon_text);
             s=globalObj.toString();
             s=s.replace("\\","");
-    System.out.println("Coupon"+coupon_text);
+    //System.out.println("Coupon"+coupon_text);
         }catch (Exception e){
 
         }

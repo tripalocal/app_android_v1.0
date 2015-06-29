@@ -61,7 +61,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             try {
                 dt = sdf.parse(result.getDatetime().substring(0, 20));
             } catch (ParseException pe) {
-                System.out.println(pe.toString());
+                //System.out.println(pe.toString());
             }
 
             sdf = new SimpleDateFormat(mContext.getResources().getString(R.string.mytrip_date_format));

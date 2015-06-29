@@ -344,7 +344,7 @@ public class CheckoutActivityFragment extends Fragment {
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             request req = new request(CheckoutActivity.position);
-            System.out.println("Position is " + CheckoutActivity.position);
+            //System.out.println("Position is " + CheckoutActivity.position);
             apiService.getExpDetails(req, new Callback<Experience_Detail>() {
                 @Override
                 public void success(Experience_Detail experience_detail, Response response) {

@@ -97,15 +97,15 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             @Override
             public void success(List<Search_Result> search_results, Response response) {
                 ExperienceListAdapter.prepareSearchResults(search_results);
-                System.out.println("search_results = " + search_results);
+                //System.out.println("search_results = " + search_results);
                 //ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
                 rv.getAdapter().notifyDataSetChanged();
                 //FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
             }
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("HomeActivityFragment.failure");
-                System.out.println("error = [" + error + "]");
+                //System.out.println("HomeActivityFragment.failure");
+                //System.out.println("error = [" + error + "]");
             }
         });
     }

@@ -96,7 +96,7 @@ public class SignUpFragment extends Fragment {
             public void failure(RetrofitError error) {
 
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                System.out.println("error = [" + error + "]");
+                //System.out.println("error = [" + error + "]");
             }
         });
     }

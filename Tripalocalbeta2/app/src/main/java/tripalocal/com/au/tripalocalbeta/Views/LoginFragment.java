@@ -152,7 +152,7 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void failure(RetrofitError error) {
                     ToastHelper.errorToast(log_in_failed);
-                    System.out.println("error = [" + error + "]");
+                    //System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }
             });

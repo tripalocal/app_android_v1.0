@@ -46,7 +46,7 @@ public class PaymentSuccessFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("this is a test");
+                //System.out.println("this is a test");
 //                Fragment my_trip_fragment = new MyTripFragment();
 //                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
 //                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).commit();

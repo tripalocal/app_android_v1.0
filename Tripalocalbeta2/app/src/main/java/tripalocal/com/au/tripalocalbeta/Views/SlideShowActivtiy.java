@@ -22,7 +22,7 @@ RelativeLayout background_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("oncreate go thererere");
+        //System.out.println("oncreate go thererere");
 
         getSupportActionBar().hide();
         if(checkFirstTime()){
@@ -46,7 +46,7 @@ RelativeLayout background_layout;
                     } else {
                         background_layout.setBackground(getResources().getDrawable(id));
                     }
-                    System.out.println(count + "");
+                    //System.out.println(count + "");
                 }
 
                 public void onFinish() {
@@ -62,7 +62,7 @@ RelativeLayout background_layout;
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        System.out.println("record text:" + restoredText);
+        //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("firsttime","no").apply();
 

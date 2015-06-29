@@ -87,7 +87,7 @@ public class PhoneregisterFragment2 extends Fragment {
             public void success(Login_Result result, Response response) {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
 
-                System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
+                //System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
                 HomeActivity.login_ch=true;
                 Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
@@ -96,8 +96,8 @@ public class PhoneregisterFragment2 extends Fragment {
             @Override
             public void failure(RetrofitError error) {
 //            ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                System.out.println("failure");
-                System.out.println("error = [" + error + "]");
+                //System.out.println("failure");
+                //System.out.println("error = [" + error + "]");
                 ToastHelper.errorToast(getResources().getString(R.string.toast_signup_failure), getActivity());
 
             }

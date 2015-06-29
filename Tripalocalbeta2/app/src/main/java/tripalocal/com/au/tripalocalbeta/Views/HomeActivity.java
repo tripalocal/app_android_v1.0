@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            System.out.println("come on");
+            //System.out.println("come on");
         }
 
     }
@@ -182,7 +182,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            System.out.println("come on");
+            //System.out.println("come on");
         }
     }
 
@@ -284,7 +284,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        System.out.println("record text:" + restoredText);
+        //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
 
             return false;
