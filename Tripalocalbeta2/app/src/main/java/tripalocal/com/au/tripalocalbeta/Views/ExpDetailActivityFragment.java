@@ -236,7 +236,12 @@ public class ExpDetailActivityFragment extends Fragment {
 
         if(temp_dp.length > 0 && max_number >= min_number && temp_dp.length == max_number-min_number+1){
             if (min_number <= 4 && max_number >= 4) {
-                price_title.setText(REAL_FORMATTER.format(temp_dp[max_number - min_number]));
+                if(max_number - min_number >= 3) {
+                    price_title.setText(REAL_FORMATTER.format(temp_dp[3]));
+                }
+                else {
+                    price_title.setText(REAL_FORMATTER.format(temp_dp[max_number - min_number]));
+                }
             } else if (max_number < 4) {
                 price_title.setText(REAL_FORMATTER.format(temp_dp[max_number]));
             } else if (min_number > 4) {
