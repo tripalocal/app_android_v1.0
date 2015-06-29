@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class MyProfileActivityFragment extends Fragment {
     private EditText localno;
     private EditText roamingno;
     private TextView hostname;
+    private Button saveBtn;
     private static String profile_saved;
     private static String profile_error;
 
@@ -49,11 +51,11 @@ public class MyProfileActivityFragment extends Fragment {
         return view;
     }
 
-    @Override
+   /* @Override
     public void onStop() {
         saveProfile();
         super.onStop();
-    }
+    }*/
 
     private void saveProfile() {
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -119,8 +121,13 @@ public class MyProfileActivityFragment extends Fragment {
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
         localno = (EditText) view.findViewById(R.id.nav_drawer_local_no);
         localno.setText(result.getPhone_number());
-        /*roamingno = (EditText) view.findViewById(R.id.nav_drawer_roaming_no);
-        roamingno.setText(result.getPhone_number());*/
+        saveBtn = (Button) view.findViewById(R.id.my_profile_save_btn);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveProfile();
+            }
+        });
 
     Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
     hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");

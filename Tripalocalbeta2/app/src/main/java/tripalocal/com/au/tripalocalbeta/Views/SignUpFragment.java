@@ -88,6 +88,7 @@ public class SignUpFragment extends Fragment {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                HomeActivity.login_flag = true;
                 Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }

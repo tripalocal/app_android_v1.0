@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking_super_container">
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -67,27 +72,6 @@
             android:layout_centerHorizontal="true"
             android:padding="10dp"/>
 
-      <!--  <View style="@style/Divider"
-            android:id="@+id/myprofile_divider_1"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_below="@+id/nav_drawer_local_no"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/nav_drawer_roaming_no"
-            android:layout_below="@+id/myprofile_divider_1"
-            android:hint="@string/myprofile_roaming_number"
-            android:textColorHint="@color/tripalocal_hint"
-            android:textCursorDrawable="@null"
-            android:background="@color/white"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textSize="14sp"
-            android:layout_centerHorizontal="true"
-            android:padding="10dp"/>-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,3 +86,14 @@
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </ScrollView>
+
+<Button
+android:id="@+id/my_profile_save_btn"
+android:text="@string/save_profile_btn"
+android:layout_alignParentBottom="true"
+android:layout_height="wrap_content"
+android:layout_width="match_parent"
+android:background="@drawable/booking_btn_shape"
+android:textColor="@color/white"/>
+
+    </RelativeLayout>
