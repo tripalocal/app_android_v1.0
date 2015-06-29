@@ -16,6 +16,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
@@ -84,7 +85,7 @@ public class ExpDetailActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        updateYoumeng();
         View view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
@@ -309,5 +310,12 @@ public class ExpDetailActivityFragment extends Fragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_expDetail));
+    }
+
+    public void updateYoumeng(){
+        HashMap<String,String> map = new HashMap<String,String>();
+        map.put(getResources().getString(R.string.youmeng_event_item_cityId),ExperiencesListFragment.city_position+"");
+        map.put(getResources().getString(R.string.youmeng_event_item_expId),ExpDetailActivity.position+"");
+        MobclickAgent.onEvent(getActivity().getApplicationContext(), getResources().getString(R.string.youmeng_event_title_viewExp), map);
     }
 }

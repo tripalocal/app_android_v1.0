@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.HashMap;
+
 import tripalocal.com.au.tripalocalbeta.R;
 
 /**

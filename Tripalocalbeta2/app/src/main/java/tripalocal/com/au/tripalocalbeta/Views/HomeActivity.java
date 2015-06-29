@@ -323,6 +323,7 @@ public class HomeActivity extends AppCompatActivity {
                             intent.addCategory(Intent.CATEGORY_HOME);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
                             startActivity(intent);
+                            MobclickAgent.onKillProcess(getApplicationContext());
                             finish();
                             System.exit(0);
                         }

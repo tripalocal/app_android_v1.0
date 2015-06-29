@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.Callback;
@@ -128,6 +129,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             @Override
             public void success(Booking_Result message, Response response) {
 //                ToastHelper.errorToast("Success");
+                updateYoumeng();
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -206,6 +208,17 @@ public class CreditCardActivity  extends AppCompatActivity {
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
+    public void updateYoumeng(){
+        HashMap<String,String> map = new HashMap<String,String>();
+        map.put(getResources().getString(R.string.youmeng_event_item_expId), CheckoutActivity.position + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_guestNum), CheckoutActivity.guest+"" + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_expDate), CheckoutActivity.date+"" + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_paymentMethod), getResources().getString(R.string.youmeng_event_item_creditCardPayment));
+        MobclickAgent.onEvent(this.getApplicationContext(), getResources().getString(R.string.youmeng_event_title_payment), map);
+    }
+
+
 }
 
 

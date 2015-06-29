@@ -251,13 +251,22 @@
     <string name="youmeng_fragment_phoneReg2">Phone Registration2</string>
     <string name="youmeng_fragment_review">Review</string>
     <string name="youmeng_fragment_signup">SignUp</string>
-    <string name="youmeng_event_expLocation_syn">Sydney</string>
-    <string name="youmeng_event_expLocation_mel">Melbourne</string>
-    <string name="youmeng_event_expLocation_brisb">Birsbane</string>
-    <string name="youmeng_event_expLocation_cairns">Cairns</string>
-    <string name="youmeng_event_expLocation_goldcoast">Goldcoast</string>
-    <string name="youmeng_event_expLocation_hobart">Hobart</string>
-    <string name="youmeng_event_expLocation_adelaide">Adelaide</string>
+    <string name="youmeng_event_expLocation_syn">ExpList_Sydney</string>
+    <string name="youmeng_event_expLocation_mel">ExpList_Melbourne</string>
+    <string name="youmeng_event_expLocation_brisb">ExpList_Birsbane</string>
+    <string name="youmeng_event_expLocation_cairns">ExpList_Cairns</string>
+    <string name="youmeng_event_expLocation_goldcoast">ExpList_Goldcoast</string>
+    <string name="youmeng_event_expLocation_hobart">ExpList_Hobart</string>
+    <string name="youmeng_event_expLocation_adelaide">ExpList_Adelaide</string>
+    <string name="youmeng_event_title_viewExp">View Experience Details Event</string>
+    <string name="youmeng_event_item_cityId">City Id</string>
+    <string name="youmeng_event_item_expId">Experience Id</string>
+    <string name="youmeng_event_title_payment">Payment</string>
+    <string name="youmeng_event_item_paymentMethod">Payment Method</string>
+    <string name="youmeng_event_item_creditCardPayment">CreditCard Payment</string>
+    <string name="youmeng_event_item_alipayPayment">Alipay Payment</string>
+    <string name="youmeng_event_item_guestNum">Guest Number</string>
+    <string name="youmeng_event_item_expDate">Experience Date</string>
 
     <!--end youmeng page string-->
     <string-array name="db_cities_array">

@@ -23,6 +23,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -328,6 +329,7 @@ public class AlipayActivity extends AppCompatActivity {
         apiService.bookExperience(getCreditRequest(getOutTradeNo(), ""+0, ""+0, "ALIPAY"), new Callback<Booking_Result>() {
             @Override
             public void success(Booking_Result message, Response response) {
+                updateYoumeng();
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
@@ -405,5 +407,14 @@ public class AlipayActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
+    }
+
+    public void updateYoumeng(){
+        HashMap<String,String> map = new HashMap<String,String>();
+        map.put(getResources().getString(R.string.youmeng_event_item_expId), CheckoutActivity.position + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_guestNum), CheckoutActivity.guest+"" + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_expDate), CheckoutActivity.date+"" + "");
+        map.put(getResources().getString(R.string.youmeng_event_item_paymentMethod), getResources().getString(R.string.youmeng_event_item_alipayPayment));
+        MobclickAgent.onEvent(this.getApplicationContext(), getResources().getString(R.string.youmeng_event_title_payment), map);
     }
 }
