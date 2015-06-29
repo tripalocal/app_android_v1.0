@@ -121,7 +121,7 @@ public class HomeActivityFragment extends Fragment {
                 displayListFrag2(6);
             }
         });
-
+        getActivity().setTitle(getResources().getString(R.string.app_name));
         return view;
     }
 
