@@ -197,6 +197,12 @@
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
+    <!--dialog string-->
+    <string name="dialog_exit_app">确定退出本土客吗</string>
+    <string name="dialog_option_yes">是</string>
+    <string name="dialog_option_no">否</string>
+
+    <!--end dialog string-->
 
     <!--start phone register string/ -->
     <string name="send_verf_code">发送验证码</string>

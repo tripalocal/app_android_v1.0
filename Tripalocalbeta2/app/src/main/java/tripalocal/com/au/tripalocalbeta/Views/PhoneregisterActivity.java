@@ -1,6 +1,8 @@
 package tripalocal.com.au.tripalocalbeta.Views;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -56,6 +58,25 @@ public class PhoneregisterActivity extends AppCompatActivity {
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
         return settings_l.getBoolean("login", false);
     }
-
+    @Override
+    public void onBackPressed(){
+        new AlertDialog.Builder(this)
+                .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
+                .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+                        startActivity(intent);
+                        finish();
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .show();
+    }
 
 }

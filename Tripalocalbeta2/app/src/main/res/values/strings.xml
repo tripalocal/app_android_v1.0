@@ -198,6 +198,12 @@
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
 
+    <!--dialog string-->
+    <string name="dialog_exit_app">Are u sure you want to exit the app?</string>
+    <string name="dialog_option_yes">Yes</string>
+    <string name="dialog_option_no">No</string>
+
+    <!--end dialog string-->
     <!--start phone register string/ -->
     <string name="send_verf_code">Send verification Code</string>
     <string name="verfi_countdown">Seconds Remaining: </string>
