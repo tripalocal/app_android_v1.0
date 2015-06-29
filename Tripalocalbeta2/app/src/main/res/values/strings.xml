@@ -228,6 +228,34 @@
     <string name="save_profile_btn">Save Profile</string>
     <!--do not change the "code" here-->
     <!--end phone register string-->
+
+    <!--youmeng page string-->
+    <string name="youmeng_fragment_alipay">Alipay</string>
+    <string name="youmeng_fragment_blank">Blank</string>
+    <string name="youmeng_fragment_checkout">Checkout</string>
+    <string name="youmeng_fragment_creditCard">CreditCard</string>
+    <string name="youmeng_fragment_expDetail">Experience Detail</string>
+    <string name="youmeng_fragment_expList">Experience List</string>
+    <string name="youmeng_fragment_home">Home</string>
+    <string name="youmeng_fragment_login">Login</string>
+    <string name="youmeng_fragment_myProfile">My Profile</string>
+    <string name="youmeng_fragment_myTrip">My Trip</string>
+    <string name="youmeng_fragment_navigation">Navigation</string>
+    <string name="youmeng_fragment_payment">Payment</string>
+    <string name="youmeng_fragment_payment_success">Payment Success</string>
+    <string name="youmeng_fragment_phoneReg">Phone Registration</string>
+    <string name="youmeng_fragment_phoneReg2">Phone Registration2</string>
+    <string name="youmeng_fragment_review">Review</string>
+    <string name="youmeng_fragment_signup">SignUp</string>
+    <string name="youmeng_event_expLocation_syn">Sydney</string>
+    <string name="youmeng_event_expLocation_mel">Melbourne</string>
+    <string name="youmeng_event_expLocation_brisb">Birsbane</string>
+    <string name="youmeng_event_expLocation_cairns">Cairns</string>
+    <string name="youmeng_event_expLocation_goldcoast">Goldcoast</string>
+    <string name="youmeng_event_expLocation_hobart">Hobart</string>
+    <string name="youmeng_event_expLocation_adelaide">Adelaide</string>
+
+    <!--end youmeng page string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
@@ -140,7 +141,7 @@ public class NavigationFragment extends Fragment {
             });
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
-        hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");
+        hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
 
     }
 
@@ -186,5 +187,14 @@ public class NavigationFragment extends Fragment {
         about_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
         about_txt.setText(Html.fromHtml(about_text_content));
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_navigation)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_navigation));
     }
 }

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.umeng.analytics.MobclickAgent;
+
 import tripalocal.com.au.tripalocalbeta.R;
 
 //import android
@@ -41,6 +43,7 @@ public class PhoneregisterActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+        MobclickAgent.onResume(this);       //统计时长
         if(checkLogin()){
             Intent intent =new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -79,4 +82,8 @@ public class PhoneregisterActivity extends AppCompatActivity {
                 .show();
     }
 
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

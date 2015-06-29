@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.umeng.analytics.MobclickAgent;
 
 import org.w3c.dom.Text;
 
@@ -70,7 +71,14 @@ public class PaymentSuccessFragment extends Fragment {
         message=message.replace("somebody",host_name);
         payment_success.setText(message);
     }
-
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_payment_success)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_payment_success));
+    }
 
 
 }

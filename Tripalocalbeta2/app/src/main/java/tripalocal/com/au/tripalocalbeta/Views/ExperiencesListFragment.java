@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.umeng.analytics.MobclickAgent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -114,5 +115,13 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     public void onStop() {
         super.onStop();
         ok_client.cancel(req_obj);
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_expList)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_expList));
     }
 }

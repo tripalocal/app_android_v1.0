@@ -20,6 +20,7 @@ import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
 
@@ -160,6 +161,7 @@ public class MyTriptmpActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);       //统计时长
         invalidateOptionsMenu();
     }
 
@@ -183,6 +185,7 @@ public class MyTriptmpActivity extends AppCompatActivity {
                 ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 Object[] temp = new Object[]{0, "default"};
@@ -261,5 +264,11 @@ public class MyTriptmpActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

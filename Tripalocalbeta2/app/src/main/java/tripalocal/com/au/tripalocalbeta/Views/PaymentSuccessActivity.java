@@ -12,6 +12,8 @@ import tripalocal.com.au.tripalocalbeta.R;
 import android.content.Intent;
 import android.widget.Button;
 
+import com.umeng.analytics.MobclickAgent;
+
 /**
  * Created by user on 15/06/2015.
  */
@@ -47,6 +49,14 @@ public class PaymentSuccessActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);       //统计时长
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     /** Needs to be Modified to suit latest refractoring in activities by @naveen **/

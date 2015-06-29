@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import tripalocal.com.au.tripalocalbeta.R;
 
 public class BlankFragment extends Fragment {
@@ -28,5 +30,13 @@ public class BlankFragment extends Fragment {
         TextView msg_txt = (TextView) view.findViewById(R.id.blank_msg);
         msg_txt.setText(msg_to_show);
         return view;
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_blank)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_blank));
     }
 }

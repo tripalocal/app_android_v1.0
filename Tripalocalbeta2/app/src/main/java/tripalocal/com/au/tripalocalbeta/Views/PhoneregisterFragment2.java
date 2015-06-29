@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.umeng.analytics.MobclickAgent;
+
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -127,5 +129,15 @@ public class PhoneregisterFragment2 extends Fragment {
 
         return true;
     }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg2)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg2));
+    }
+
 
 }

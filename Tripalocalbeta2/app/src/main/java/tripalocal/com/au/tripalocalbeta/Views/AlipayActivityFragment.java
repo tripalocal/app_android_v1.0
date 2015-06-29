@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.Toast;
 import android.util.*;
 import com.alipay.sdk.app.PayTask;
+import com.umeng.analytics.MobclickAgent;
+
 import android.widget.*;
 import tripalocal.com.au.tripalocalbeta.R;
 
@@ -60,6 +62,14 @@ public class AlipayActivityFragment extends Fragment {
 //        refund.setMovementMethod(LinkMovementMethod.getInstance());
 //        String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
 //        refund.setText(Html.fromHtml(text));
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_alipay)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_alipay));
     }
 
 

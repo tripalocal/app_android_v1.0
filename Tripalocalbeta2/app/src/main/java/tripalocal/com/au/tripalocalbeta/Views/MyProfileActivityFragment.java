@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
@@ -130,6 +131,15 @@ public class MyProfileActivityFragment extends Fragment {
         });
 
     Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
-    hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0,1) + ".");
+    hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_myProfile)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_myProfile));
     }
 }

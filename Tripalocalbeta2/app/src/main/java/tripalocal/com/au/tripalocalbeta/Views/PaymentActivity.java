@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.helpers.ToastHelper;
 import android.support.v7.app.*;
+
+import com.umeng.analytics.MobclickAgent;
+
 import static tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -60,5 +63,14 @@ public class PaymentActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);       //统计时长
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

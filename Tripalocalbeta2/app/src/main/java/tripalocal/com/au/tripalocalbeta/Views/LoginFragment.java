@@ -16,6 +16,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.umeng.analytics.MobclickAgent;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -156,5 +157,13 @@ public class LoginFragment extends Fragment {
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }
             });
+    }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
     }
 }

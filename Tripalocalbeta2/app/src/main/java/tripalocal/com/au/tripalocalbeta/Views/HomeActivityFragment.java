@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.umeng.analytics.MobclickAgent;
+
+import java.util.HashMap;
 
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ExperienceListAdapter;
@@ -77,6 +80,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 0;
                         displayListFrag2(0);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_mel));
+
             }
         });
         syd.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +89,7 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 1;
                 displayListFrag2(1);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_syn));
             }
         });
         brisb.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +97,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 2;
                 displayListFrag2(2);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_brisb));
+
             }
         });
         cairns.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +106,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 3;
                 displayListFrag2(3);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_cairns));
+
             }
         });
         goldcoast.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +115,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 4;
                 displayListFrag2(4);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_goldcoast));
+
             }
         });
         hobart.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +124,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 5;
                 displayListFrag2(5);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_hobart));
+
             }
         });
         adelaide.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +133,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 6;
                 displayListFrag2(6);
+                MobclickAgent.onEvent(getActivity().getApplicationContext(), getActivity().getResources().getString(R.string.youmeng_event_expLocation_adelaide));
+
             }
         });
         getActivity().setTitle(getResources().getString(R.string.app_name));
@@ -132,4 +148,14 @@ public class HomeActivityFragment extends Fragment {
         exp_list_frag.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_home)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_home));
+    }
+
+
 }

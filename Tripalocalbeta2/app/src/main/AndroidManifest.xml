@@ -160,5 +160,8 @@
             android:label="@string/navigation_mytrips"
             >
         </activity>
+        <meta-data android:value="557e87b467e58e0bf90026ed" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="Wandoujia" android:name="UMENG_CHANNEL"/>
+
     </application>
 </manifest>

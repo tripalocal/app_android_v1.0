@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bcloud.msg.http.HttpSender;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -224,8 +225,17 @@ public class PhoneregisterFragment extends Fragment {
 
         return code;
 
-
     }
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg)); //统计页面
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg));
+    }
+
+
 
 
 }
