@@ -12,4 +12,16 @@ public class Tripalocal extends Application {
     public static String getServerUrl() {
         return serverUrl;
     }
+
+    public static String getFullName(String firstName, String lastName)
+    {
+        if(firstName.matches("^[\\u0000-\\u0080]+$") && lastName.matches("^[\\u0000-\\u0080]+$"))
+        {
+            return firstName + " " + lastName.substring(0, 1) + ".";
+        }
+        else
+        {
+            return lastName + firstName;
+        }
+    }
 }

@@ -213,7 +213,7 @@ public class ExpDetailActivityFragment extends Fragment {
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
 
-        exp_host_name.setText(" " + exp_to_display.getHost_firstname() + " " + exp_to_display.getHost_lastname().substring(0, 1) + ".");
+        exp_host_name.setText(" " + Tripalocal.getFullName(exp_to_display.getHost_firstname(), exp_to_display.getHost_lastname()));
         String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
@@ -254,7 +254,7 @@ public class ExpDetailActivityFragment extends Fragment {
         info_title.setText(exp_to_display.getExperience_title());
         info_less.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
         info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
-        host_title.setText(exp_to_display.getHost_firstname() + " " + exp_to_display.getHost_lastname().substring(0, 1) + ".");
+        host_title.setText(Tripalocal.getFullName(exp_to_display.getHost_firstname(), exp_to_display.getHost_lastname()));
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
         review_title.setText(String.valueOf(exp_to_display.getExperience_reviews().size()));
@@ -280,7 +280,7 @@ public class ExpDetailActivityFragment extends Fragment {
             ExperienceReview top_review  = exp_to_display.getExperience_reviews().get(0);
             if(top_review.getReviewer_image().length() > 2)
                 Glide.with(HomeActivity.getHome_context()).load(BASE_URL+top_review.getReviewer_image()).fitCenter().into(reviewProfileImage);
-            review_username.setText(top_review.getReviewer_firstname());
+            review_username.setText(Tripalocal.getFullName(top_review.getReviewer_firstname(), top_review.getReviewer_lastname()));
             review_content_less.setText(top_review.getReview_comment());
         }else{
             review_container.setVisibility(View.GONE);
