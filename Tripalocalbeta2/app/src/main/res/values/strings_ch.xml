@@ -225,6 +225,7 @@
     <string name="title_login_fragment">登录</string>
     <string name="title_signup_fragment">注册</string>
     <string name="title_fragment_wishlist">兴趣列表</string>
+	<string name="save_profile_btn">保存</string>
     <!--do not change the "code" here-->
     <!--end phone register string-->
     <string-array name="db_cities_array">

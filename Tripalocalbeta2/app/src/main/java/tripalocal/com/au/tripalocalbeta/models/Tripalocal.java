@@ -17,7 +17,7 @@ public class Tripalocal extends Application {
     {
         if(firstName.matches("^[\\u0000-\\u0080]+$") && lastName.matches("^[\\u0000-\\u0080]+$"))
         {
-            return firstName + " " + lastName.substring(0, 1) + ".";
+            return Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1) + " " + lastName.substring(0, 1).toUpperCase() + ".";
         }
         else
         {
