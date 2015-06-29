@@ -4,17 +4,26 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+        <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+
+        <!--android:id="@+id/background_layout"-->
+        <!--android:background="@drawable/slide03"-->
+        <!--android:scaleType="centerCrop"-->
+        <!-->-->
+
+
+
+    <!--</RelativeLayout>-->
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-
+        android:src="@drawable/slide03"
+        android:scaleType="centerCrop"
         android:id="@+id/background_layout"
-        android:background="@drawable/background_phonereg">
-
-
-
-    </RelativeLayout>
+       />
 </LinearLayout>

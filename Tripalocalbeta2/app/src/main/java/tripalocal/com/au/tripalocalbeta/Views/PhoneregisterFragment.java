@@ -39,7 +39,7 @@ public class PhoneregisterFragment extends Fragment {
     Button login_btn, verfication_btn, confirm_btn;
 
     EditText phone_no_edit, verfi_code_edit;
-    private String verfication_code_confirm = "";
+    private String verfication_code_confirm = "initalValue";
 
     public PhoneregisterFragment() {
     }
@@ -52,6 +52,7 @@ public class PhoneregisterFragment extends Fragment {
 
         initView(view);
         initControllers();
+        confirm_btn.setEnabled(false);
         return view;
     }
 
@@ -83,6 +84,7 @@ public class PhoneregisterFragment extends Fragment {
                 //set the text
                 if (validationInput()) {
                     verfication_btn.setEnabled(false);
+
                     new SendMsg().execute("");
 
 
@@ -113,6 +115,8 @@ public class PhoneregisterFragment extends Fragment {
             public void onClick(View v) {
                 String phone_no = phone_no_edit.getText().toString();
                 String verification_code = verfi_code_edit.getText().toString();
+
+
                 if (verification_code.equals(verfication_code_confirm)) {
                     Intent intent = new Intent(getActivity().getApplicationContext(), PhoneregisterActivity2.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -186,6 +190,7 @@ public class PhoneregisterFragment extends Fragment {
             //System.out.println("task finished");
             if(result){
 //            invisibleButton(false);
+                confirm_btn.setEnabled(true);
 
             new CountDownTimer(60000, 1000) {
 
@@ -196,12 +201,14 @@ public class PhoneregisterFragment extends Fragment {
                 public void onFinish() {
                     verfication_btn.setText(getResources().getString(R.string.verfication_expire));
                     verfication_btn.setEnabled(true);
+                    confirm_btn.setEnabled(false);
 
                 }
             }.start();}
             else{
                 ToastHelper.errorToast(getResources().getString(R.string.send_msg_failure),getActivity());
                 verfication_btn.setEnabled(true);
+                confirm_btn.setEnabled(false);
 
             }
         }

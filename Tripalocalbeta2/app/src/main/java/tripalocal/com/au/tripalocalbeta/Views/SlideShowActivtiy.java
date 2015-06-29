@@ -34,20 +34,20 @@ RelativeLayout background_layout;
         }else {
 
             setContentView(R.layout.activity_slideshow);
-            background_layout = (RelativeLayout) findViewById(R.id.background_layout);
-            new CountDownTimer(9000, 2500) {
+//            background_layout = (RelativeLayout) findViewById(R.id.background_layout);
+            new CountDownTimer(2000, 1000) {
                 int sdk = android.os.Build.VERSION.SDK_INT;
                 int count = -1;
                 int drawArr[] = new int[]{R.drawable.slide01, R.drawable.slide02, R.drawable.slide03};
 
                 public void onTick(long millisUntilFinished) {
-                    count++;
-                    int id = drawArr[count];
-                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                        background_layout.setBackgroundDrawable(getResources().getDrawable(id));
-                    } else {
-                        background_layout.setBackground(getResources().getDrawable(id));
-                    }
+//                    count++;
+//                    int id = drawArr[count];
+//                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+//                        background_layout.setBackgroundDrawable(getResources().getDrawable(id));
+//                    } else {
+//                        background_layout.setBackground(getResources().getDrawable(id));
+//                    }
                     //System.out.println(count + "");
                 }
 
