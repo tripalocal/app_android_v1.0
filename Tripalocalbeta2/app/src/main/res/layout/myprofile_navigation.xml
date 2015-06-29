@@ -32,7 +32,7 @@
             android:id="@+id/nav_drawer_host_name"
             android:layout_below="@id/nav_drawer_host_profile_image"
             android:text="@string/myprofile_placeholder_host_name"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"/>
 
         <ImageView
@@ -42,7 +42,7 @@
             android:id="@+id/nav_drawer_phone_img"
             android:layout_below="@id/nav_drawer_host_name"
             android:src="@drawable/phone"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"/>
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_below="@+id/nav_drawer_local_no"
             android:text="@string/myprofile_number_explanation"
             android:layout_marginTop="20dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:textSize="12sp"
