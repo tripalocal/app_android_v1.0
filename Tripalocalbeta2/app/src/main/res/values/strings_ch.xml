@@ -234,6 +234,8 @@
     <!--end phone register string-->
 
     <!--youmeng page string-->
+    <string name="youmeng_channel_name">wandoujia</string>
+    <string name="youmeng_app_key">557e87b467e58e0bf90026ed</string>
     <string name="youmeng_fragment_alipay">Alipay</string>
     <string name="youmeng_fragment_blank">Blank</string>
     <string name="youmeng_fragment_checkout">Checkout</string>
