@@ -107,7 +107,7 @@ public class LoginFragment extends Fragment {
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(HomeActivity.login_ch) {
+                if(getActivity().getResources().getString(R.string.version_language).equals("Chinese")) {
                     Intent intent =new Intent(getActivity().getApplicationContext(), PhoneregisterActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

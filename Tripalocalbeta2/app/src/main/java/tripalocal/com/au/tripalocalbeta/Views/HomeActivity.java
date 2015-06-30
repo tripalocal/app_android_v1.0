@@ -169,7 +169,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else if(!checkLogin() ){
+        }else if(!checkLogin() && (getResources().getString(R.string.version_language)).equals("Chinese")){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -188,7 +188,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else if(!checkLogin() ){
+        }else if(!checkLogin() && (getResources().getString(R.string.version_language)).equals("Chinese")){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
