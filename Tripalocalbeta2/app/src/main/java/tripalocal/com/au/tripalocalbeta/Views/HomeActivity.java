@@ -143,7 +143,10 @@ public class HomeActivity extends AppCompatActivity {
         frag_manager = getSupportFragmentManager();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
+        if(login_flag){
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
+        login_flag = false;
+        }
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
