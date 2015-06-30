@@ -71,7 +71,6 @@ public class LoginFragment extends Fragment {
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.login_flag = true;
                 getActivity().onBackPressed();
-                getActivity().onBackPressed();
                 ToastHelper.longToast(fb_log_in_success);
             }
 
