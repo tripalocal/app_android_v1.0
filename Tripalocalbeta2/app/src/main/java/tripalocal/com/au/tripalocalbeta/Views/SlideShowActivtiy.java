@@ -52,7 +52,12 @@ RelativeLayout background_layout;
                 }
 
                 public void onFinish() {
-                    Intent intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
+                    Intent intent;
+                    if(getResources().getString(R.string.version_language).equals("Chinese")){
+                         intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
+                    }else{
+                        intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    }
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
