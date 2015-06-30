@@ -96,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public static void saveData() {
-        if(wish_map != null && !wish_map.isEmpty()){
+        if(wish_map != null){
             SharedPreferences settings = home_context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
             editor.clear();
@@ -348,6 +348,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
+        saveData();
         MobclickAgent.onPause(this);
     }
 }
