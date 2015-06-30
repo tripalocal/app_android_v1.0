@@ -114,7 +114,9 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     @Override
     public void onStop() {
         super.onStop();
-        ok_client.cancel(req_obj);
+        if(ok_client != null) {
+            ok_client.cancel(req_obj);
+        }
     }
     public void onResume() {
         super.onResume();
