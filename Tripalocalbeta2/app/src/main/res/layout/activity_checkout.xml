@@ -1,8 +1,0 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/checkout_fragment_container"
-    android:name="tripalocal.com.au.tripalocalbeta.Views.CheckoutActivityFragment"
-    tools:layout="@layout/fragment_checkout"
-    android:tag="checkout_fragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />

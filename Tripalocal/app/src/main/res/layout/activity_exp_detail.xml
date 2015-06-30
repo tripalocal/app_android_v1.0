@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent" android:layout_width="match_parent">
+
+<fragment  android:id="@+id/detail_frag_container"
+    android:name="tripalocal.com.Views.ExpDetailActivityFragment"
+    tools:layout="@layout/fragment_exp_detail" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
+</FrameLayout>
