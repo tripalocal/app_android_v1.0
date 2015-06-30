@@ -26,7 +26,7 @@ import tripalocal.com.au.tripalocalbeta.models.network.SignupRequest;
 
 public class SignUpFragment extends Fragment {
 
-
+    public static boolean cancelled = false;
     public SignUpFragment() {
         // Required empty public constructor
     }
@@ -48,7 +48,7 @@ public class SignUpFragment extends Fragment {
         signupLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragHelper.replace(getFragmentManager(),new LoginFragment());
+                FragHelper.replace(getFragmentManager(), new LoginFragment());
 //                view = inflater.inflate(R.layout.fragment_login, container, false);
 
             }
@@ -87,12 +87,14 @@ public class SignUpFragment extends Fragment {
         apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
-                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
-                HomeActivity.getCurrent_user().setLoggedin(true);
-                HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                HomeActivity.login_flag = true;
-                Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                if(!cancelled) {
+                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
+                    HomeActivity.getCurrent_user().setLoggedin(true);
+                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                    HomeActivity.login_flag = true;
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -113,4 +115,9 @@ public class SignUpFragment extends Fragment {
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_signup));
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        cancelled = true;
+    }
 }

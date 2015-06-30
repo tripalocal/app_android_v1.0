@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.DecimalFormat;
@@ -22,6 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
@@ -43,8 +45,9 @@ public class ExpDetailActivityFragment extends Fragment {
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     private static Experience_Detail exp_to_display;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
+    public static OkHttpClient ok_client;
 
-
+    request req;
     ImageView exp_bg;
     CircleImageView profileImage;
     CircleImageView profileHostImage;
@@ -184,20 +187,24 @@ public class ExpDetailActivityFragment extends Fragment {
 
 
     public void getExpDetails(int exp_id){
+        ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(ok_client))
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
-        request req = new request(exp_id);
+        req = new request(exp_id);
         apiService.getExpDetails(req, new Callback<Experience_Detail>() {
             @Override
             public void success(Experience_Detail experience_detail, Response response) {
-                exp_to_display = experience_detail;
-                fillDetails();
-                request_to_book_btn.setEnabled(true);
+                if(req.getExperience_id() > 0) {
+                    exp_to_display = experience_detail;
+                    fillDetails();
+                    request_to_book_btn.setEnabled(true);
+                }
             }
 
             @Override
@@ -310,6 +317,14 @@ public class ExpDetailActivityFragment extends Fragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_expDetail));
+    }
+
+    public void onStop() {
+        super.onStop();
+        if(ok_client != null) {
+            req.setExperience_id(-1);
+            ok_client.cancel(req);
+        }
     }
 
     public void updateYoumeng(){

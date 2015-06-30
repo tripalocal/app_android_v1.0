@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.squareup.okhttp.OkHttpClient;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.DecimalFormat;
@@ -34,6 +35,7 @@ import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 import tripalocal.com.au.tripalocalbeta.R;
 import tripalocal.com.au.tripalocalbeta.adapters.ApiService;
@@ -48,7 +50,8 @@ import android.widget.Button;
  * A placeholder fragment containing a simple view.
  */
 public class CheckoutActivityFragment extends Fragment {
-
+    public static OkHttpClient ok_client;
+    request req;
     Button bookingBtn;
     ImageView thumbnail;
     TextView title;
@@ -337,21 +340,25 @@ public class CheckoutActivityFragment extends Fragment {
         refund = (TextView) view.findViewById(R.id.booking_refund_txt);
         bookingBtn.setEnabled(false);
         if (CheckoutActivity.position != 999) {
+            ok_client = new OkHttpClient();
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
+                    .setClient(new OkClient(ok_client))
                     .setEndpoint(getResources().getString(R.string.server_url))
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
             ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
-            request req = new request(CheckoutActivity.position);
+            req = new request(CheckoutActivity.position);
             //System.out.println("Position is " + CheckoutActivity.position);
             apiService.getExpDetails(req, new Callback<Experience_Detail>() {
                 @Override
                 public void success(Experience_Detail experience_detail, Response response) {
-                    CheckoutActivity.experience_to_book = experience_detail;
-                    updateDetails();
-                    bookingBtn.setEnabled(true);
+                    if(req.getExperience_id()>0) {
+                        CheckoutActivity.experience_to_book = experience_detail;
+                        updateDetails();
+                        bookingBtn.setEnabled(true);
+                    }
                 }
 
                 @Override
@@ -583,5 +590,13 @@ public class CheckoutActivityFragment extends Fragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_checkout));
+    }
+
+    public void onStop() {
+        super.onStop();
+        if(ok_client != null) {
+            req.setExperience_id(-1);
+            ok_client.cancel(req);
+        }
     }
 }

@@ -35,7 +35,7 @@ public class LoginFragment extends Fragment {
     String fb_log_in_success;
     String fb_log_in_failed;
 
-
+    public static boolean cancelled = false;
     private CallbackManager callbackManager;
 
     public LoginFragment() {
@@ -140,20 +140,22 @@ public class LoginFragment extends Fragment {
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
-                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                    //HomeActivity.setCurrent_userid(result.getUser_id());
-                    HomeActivity.getCurrent_user().setLoggedin(true);
-                    HomeActivity.login_flag = true;
-                    //System.out.println("result = [" + result + "], response = [" + response + "]");
-                    getActivity().invalidateOptionsMenu();
-                    getActivity().onBackPressed();
-                    ToastHelper.longToast(log_in_success);
-                    HomeActivity.saveData();
-                    if(HomeActivity.login_ch){
-                        HomeActivity.login_ch=false;
-                        Intent intent =new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                    if(!cancelled) {
+                        HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                        //HomeActivity.setCurrent_userid(result.getUser_id());
+                        HomeActivity.getCurrent_user().setLoggedin(true);
+                        HomeActivity.login_flag = true;
+                        //System.out.println("result = [" + result + "], response = [" + response + "]");
+                        getActivity().invalidateOptionsMenu();
+                        getActivity().onBackPressed();
+                        ToastHelper.longToast(log_in_success);
+                        HomeActivity.saveData();
+                        if (HomeActivity.login_ch) {
+                            HomeActivity.login_ch = false;
+                            Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
                     }
                 }
 
@@ -172,5 +174,11 @@ public class LoginFragment extends Fragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        cancelled = true;
     }
 }
