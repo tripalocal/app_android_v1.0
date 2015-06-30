@@ -45,6 +45,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         final View view =  inflater.inflate(R.layout.fragment_login, container, false);
         log_in_success = getActivity().getResources().getString(R.string.toast_login_success);
         log_in_failed = getActivity().getResources().getString(R.string.toast_login_failure);
@@ -52,9 +53,15 @@ public class LoginFragment extends Fragment {
         fb_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_login_failure);
         getActivity().setTitle(getResources().getString(R.string.title_login_fragment));
         callbackManager = CallbackManager.Factory.create();
+
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.fb_login_button);
         loginButton.setReadPermissions("user_friends");
         loginButton.setFragment(this);
+        if(getResources().getString(R.string.version_language).equals("Chinese")){
+                loginButton.setVisibility(View.GONE);
+        }else{
+            loginButton.setVisibility(View.VISIBLE);
+        }
         // Callback registration
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
