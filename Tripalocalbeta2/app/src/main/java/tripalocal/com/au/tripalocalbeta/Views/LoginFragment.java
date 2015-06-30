@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
         loginButton.setReadPermissions("user_friends");
         loginButton.setFragment(this);
         if(getResources().getString(R.string.version_language).equals("Chinese")){
-                loginButton.setVisibility(View.GONE);
+                loginButton.setVisibility(View.INVISIBLE);
         }else{
             loginButton.setVisibility(View.VISIBLE);
         }

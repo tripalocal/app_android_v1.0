@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.umeng.analytics.MobclickAgent;
@@ -25,45 +26,56 @@ RelativeLayout background_layout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //System.out.println("oncreate go thererere");
+        setContentView(R.layout.activity_slideshow);
 
         getSupportActionBar().hide();
+//        if(checkFirstTime()){
+//            Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//        }else {
+//
+//            setContentView(R.layout.activity_slideshow);
+////            background_layout = (RelativeLayout) findViewById(R.id.background_layout);
+//            new CountDownTimer(2000, 1000) {
+//                int sdk = android.os.Build.VERSION.SDK_INT;
+//                int count = -1;
+//                int drawArr[] = new int[]{R.drawable.slide01, R.drawable.slide02, R.drawable.slide03};
+//
+//                public void onTick(long millisUntilFinished) {
+////                    count++;
+////                    int id = drawArr[count];
+////                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+////                        background_layout.setBackgroundDrawable(getResources().getDrawable(id));
+////                    } else {
+////                        background_layout.setBackground(getResources().getDrawable(id));
+////                    }
+//                    //System.out.println(count + "");
+//                }
+//
+//                public void onFinish() {
+//                    Intent intent;
+//                         intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
+//
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                }
+//            }.start();
+//        }
+
+    }
+
+    public void afterSlide(View view){
         if(checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }else {
+            Intent intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
 
-            setContentView(R.layout.activity_slideshow);
-//            background_layout = (RelativeLayout) findViewById(R.id.background_layout);
-            new CountDownTimer(2000, 1000) {
-                int sdk = android.os.Build.VERSION.SDK_INT;
-                int count = -1;
-                int drawArr[] = new int[]{R.drawable.slide01, R.drawable.slide02, R.drawable.slide03};
-
-                public void onTick(long millisUntilFinished) {
-//                    count++;
-//                    int id = drawArr[count];
-//                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-//                        background_layout.setBackgroundDrawable(getResources().getDrawable(id));
-//                    } else {
-//                        background_layout.setBackground(getResources().getDrawable(id));
-//                    }
-                    //System.out.println(count + "");
-                }
-
-                public void onFinish() {
-                    Intent intent;
-                    if(getResources().getString(R.string.version_language).equals("Chinese")){
-                         intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
-                    }else{
-                        intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    }
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-            }.start();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
-
     }
 
 
@@ -72,7 +84,6 @@ RelativeLayout background_layout;
         //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("firsttime","no").apply();
-
             return false;
         }else{
             return true;

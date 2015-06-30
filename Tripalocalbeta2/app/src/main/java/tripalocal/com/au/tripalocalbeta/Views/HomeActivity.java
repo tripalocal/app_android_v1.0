@@ -169,28 +169,33 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else if(!checkLogin() && getResources().getString(R.string.version_language).equals("Chinese")){
+        }else if(!checkLogin() ){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+        System.out.println("oncreate");
 
     }
 
     @Override
     protected void onResume() {
+        System.out.println("onresume");
+
         super.onResume();
-        MobclickAgent.onResume(this);
-        invalidateOptionsMenu();
+//        invalidateOptionsMenu();
         if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else if(!checkLogin()){
+        }else if(!checkLogin() ){
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+        saveData();
+        MobclickAgent.onResume(this);
+
     }
 
     @Override
@@ -343,6 +348,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
+        saveData();
         MobclickAgent.onPause(this);
     }
 }

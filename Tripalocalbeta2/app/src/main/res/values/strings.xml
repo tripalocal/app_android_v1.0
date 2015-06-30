@@ -7,6 +7,8 @@
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
     <string name="placeholder_content">Loading</string>
     <string name="gibber"> </string>
+    <string name="slide_button">Go Now!</string>
+
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
     <string name="with">with</string>
