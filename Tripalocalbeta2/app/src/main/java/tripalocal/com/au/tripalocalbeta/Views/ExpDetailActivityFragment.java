@@ -259,7 +259,7 @@ public class ExpDetailActivityFragment extends Fragment {
         host_title.setText(Tripalocal.getFullName(exp_to_display.getHost_firstname(), exp_to_display.getHost_lastname()));
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
-        if(exp_to_display.getHost_bio().length()<180)
+        if(exp_to_display.getHost_bio().length()<120)
         {
             host_more_btn.setVisibility(View.INVISIBLE);
         }
