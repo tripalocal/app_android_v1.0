@@ -223,10 +223,10 @@
     <string name="send_msg_failure">发送失败，请检查你的电话号码</string>
     <string name="msg_content">客户你好，你的验证码为：code 60秒内有效，请完成注册</string>
     <!--do not change the "code" here-->
-    <string name="title_login_fragment">Login</string>
-    <string name="title_signup_fragment">Signup</string>
-    <string name="title_fragment_wishlist">My Wishlist</string>
-    <string name="save_profile_btn">Save Profile</string>
+    <string name="title_login_fragment">登录</string>
+    <string name="title_signup_fragment">注册</string>
+    <string name="title_fragment_wishlist">我的兴趣列表</string>
+    <string name="save_profile_btn">保存</string>
     <string name="phone_reg_username">bentuke</string>
     <string name="phone_reg_pwd">Bentuke123</string>
     <string name="phone_reg_server">http://222.73.117.158/msg/</string>
