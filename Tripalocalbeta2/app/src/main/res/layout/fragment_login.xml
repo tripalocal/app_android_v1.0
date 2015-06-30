@@ -89,7 +89,8 @@
                     android:layout_gravity="left"
                     android:textColor="@color/tripalocal_green_blue"
                     android:textSize="15sp"
-                    android:paddingLeft="5dp" />
+                    android:paddingLeft="5dp"
+                    android:visibility="invisible"/>
                 <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
