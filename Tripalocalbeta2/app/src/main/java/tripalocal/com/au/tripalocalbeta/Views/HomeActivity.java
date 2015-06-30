@@ -143,10 +143,10 @@ public class HomeActivity extends AppCompatActivity {
         frag_manager = getSupportFragmentManager();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
-        if(login_flag){
+//        if(login_flag){
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
-        login_flag = false;
-        }
+//        login_flag = false;
+//        }
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
@@ -193,7 +193,6 @@ public class HomeActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-        saveData();
         MobclickAgent.onResume(this);
 
     }
@@ -348,7 +347,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
-        saveData();
         MobclickAgent.onPause(this);
     }
 }

@@ -81,7 +81,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:id="@+id/login_forgot_pwd"
                     android:text="@string/login_forget_password"
                     android:layout_marginTop="20dp"
