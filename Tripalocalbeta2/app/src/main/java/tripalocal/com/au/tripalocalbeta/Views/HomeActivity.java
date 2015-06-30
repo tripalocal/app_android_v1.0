@@ -320,6 +320,7 @@ public class HomeActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
+        saveData();
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
         if(fragment_t instanceof HomeActivityFragment) {
             new AlertDialog.Builder(this)
