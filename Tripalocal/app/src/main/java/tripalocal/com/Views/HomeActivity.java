@@ -263,6 +263,7 @@ public class HomeActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
+        searchView.setQueryHint("Test Search..");
         return searchView;
     }
 
