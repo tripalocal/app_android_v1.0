@@ -8,16 +8,16 @@ import com.facebook.AccessToken;
 public class LoginFBRequest {
 
     public AccessToken getToken() {
-        return token;
+        return access_token;
     }
 
     public void setToken(AccessToken token) {
-        this.token = token;
+        this.access_token = token;
     }
 
-    private AccessToken token;
+    private AccessToken access_token;
 
     public LoginFBRequest(AccessToken token) {
-        this.token = token;
+        this.access_token = token;
     }
 }
