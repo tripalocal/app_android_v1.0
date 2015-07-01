@@ -271,6 +271,9 @@
     <string name="youmeng_event_item_alipayPayment">Alipay Payment</string>
     <string name="youmeng_event_item_guestNum">Guest Number</string>
     <string name="youmeng_event_item_expDate">Experience Date</string>
+    <string name="toast_login_fb">registering with server</string>
+    <string name="toast_fb_server_login_success">Successfully registered FB login with server</string>
+    <string name="toast_fb_server_login_failed">Failed to register FB login with server</string>
 
     <!--end youmeng page string-->
     <string-array name="db_cities_array">

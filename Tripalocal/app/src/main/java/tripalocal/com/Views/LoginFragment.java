@@ -27,6 +27,7 @@ import tripalocal.com.adapters.ApiService;
 import tripalocal.com.helpers.FragHelper;
 import tripalocal.com.helpers.Login_Result;
 import tripalocal.com.helpers.ToastHelper;
+import tripalocal.com.models.network.LoginFBRequest;
 
 public class LoginFragment extends Fragment {
 
@@ -34,6 +35,8 @@ public class LoginFragment extends Fragment {
     String log_in_failed;
     String fb_log_in_success;
     String fb_log_in_failed;
+    String fb_server_log_in_success;
+    String fb_server_log_in_failed;
 
     public static boolean cancelled = false;
     private CallbackManager callbackManager;
@@ -51,6 +54,10 @@ public class LoginFragment extends Fragment {
         log_in_failed = getActivity().getResources().getString(R.string.toast_login_failure);
         fb_log_in_success = getActivity().getResources().getString(R.string.toast_fb_login_success);
         fb_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_login_failure);
+        fb_server_log_in_success = getActivity().getResources().getString(R.string.toast_fb_server_login_success);
+        fb_server_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_server_login_failed);
+
+
         getActivity().setTitle(getResources().getString(R.string.title_login_fragment));
         callbackManager = CallbackManager.Factory.create();
 
@@ -68,10 +75,7 @@ public class LoginFragment extends Fragment {
             public void onSuccess(LoginResult loginResult) {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 //HomeActivity.setCurrent_userid("9900"); //id for FB login
-                HomeActivity.getCurrent_user().setLoggedin(true);
-                HomeActivity.login_flag = true;
-                getActivity().onBackPressed();
-                ToastHelper.longToast(fb_log_in_success);
+                loginFBUser();
             }
 
             @Override
@@ -125,6 +129,32 @@ public class LoginFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+    public void loginFBUser(){
+        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_login_fb));
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+
+        apiService.loginFBUser(new LoginFBRequest(HomeActivity.getAccessToken()), new Callback<Login_Result>() {
+            @Override
+            public void success(Login_Result login_result, Response response) {
+                HomeActivity.getCurrent_user().setLoggedin(true);
+                HomeActivity.login_flag = true;
+                getActivity().onBackPressed();
+                ToastHelper.longToast(fb_server_log_in_success);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                ToastHelper.errorToast(fb_server_log_in_failed);
+                HomeActivity.getCurrent_user().setLoggedin(false);
+            }
+        });
+    }
+
 
     public void loginUser(){
         ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));

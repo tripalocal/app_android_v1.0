@@ -17,6 +17,7 @@ import tripalocal.com.models.exp_detail.request;
 import tripalocal.com.models.network.Booking_Result;
 import tripalocal.com.models.network.Coupon_Result;
 import tripalocal.com.models.network.Credit_Request;
+import tripalocal.com.models.network.LoginFBRequest;
 import tripalocal.com.models.network.MyProfile_result;
 import tripalocal.com.models.network.Search_Result;
 import tripalocal.com.models.network.SignupRequest;
@@ -40,11 +41,8 @@ public interface ApiService {
     @POST("/service_signup/")
     void signupUser(@Body SignupRequest request, Callback<Login_Result> response);
 
-
-    /*@FormUrlEncoded
-    @POST("/service_signup/")
-    void signup_user(@Field("email")String email, @Field("password")String pwd, @Field("first_name")
-    String firstName, @Field("last_name")String lastName,Callback<Login_Result> response);*/
+    @POST("/service_facebook_login/")
+    void loginFBUser(@Body LoginFBRequest request, Callback<Login_Result> response);
 
     @GET("/service_mytrip/")
     void getMyTrip(Callback<ArrayList<MyTrip>> response);
