@@ -11,6 +11,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -176,17 +177,50 @@ public class NavigationFragment extends Fragment {
             }
         });
         tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
-        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
+//        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String tos_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
         tos_txt.setText(Html.fromHtml(tos_text_content));
         privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
-        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
+//        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String priv_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
         privacy_txt.setText(Html.fromHtml(priv_text_content));
         about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
-        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
+//        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
         about_txt.setText(Html.fromHtml(about_text_content));
+        privacy_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info="privacypolicy";
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
+        about_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info="aboutus";
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
+        tos_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info="termsofservice";
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
     }
 
     public void onResume() {

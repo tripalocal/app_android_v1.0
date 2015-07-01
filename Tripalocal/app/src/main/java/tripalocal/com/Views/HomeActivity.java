@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
     public static final String PREFS_NAME_L = "TPPrefs_L";
     public static boolean login_flag = true;
     public static boolean login_ch=false;
+    public static String webViewPage_info="";
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;

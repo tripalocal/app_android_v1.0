@@ -1,0 +1,29 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tripalocal.com.Views.BlankFragment"
+    android:background="@color/white">
+
+    <!--<TextView android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/blank_msg"-->
+        <!--android:padding="10dp"-->
+        <!--android:fontFamily="light"-->
+        <!--android:text="@string/blank_fragment"-->
+        <!--android:layout_alignParentTop="true" />-->
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoWebView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-350dp" />
+
+</RelativeLayout>
