@@ -39,6 +39,6 @@
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:onClick="afterSlide"
-        android:textSize="23sp" />
+        android:textSize="21sp" />
 
 </FrameLayout>

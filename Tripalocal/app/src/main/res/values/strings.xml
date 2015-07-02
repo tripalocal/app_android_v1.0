@@ -87,6 +87,7 @@
     <string name="loading_title">Loading title</string>
     <string name="checkout_title_placeholder">Add expenses</string>
 	<string name="exp_detail_view_all">View  All</string>
+    <string name="exp_detail_log_in_msg">Please log in or sign up first</string>
 
     <string name="home_bg_city_content_desc">background_image_city</string>
     <string name="login_or">or</string>
@@ -236,7 +237,7 @@
     <!--end phone register string-->
 
     <!--youmeng page string-->
-    <string name="youmeng_channel_name">wandoujia</string>
+    <string name="youmeng_channel_name">googleplay</string>
     <string name="youmeng_app_key">557e87b467e58e0bf90026ed</string>
     <string name="youmeng_fragment_alipay">Alipay</string>
     <string name="youmeng_fragment_blank">Blank</string>
@@ -271,9 +272,6 @@
     <string name="youmeng_event_item_alipayPayment">Alipay Payment</string>
     <string name="youmeng_event_item_guestNum">Guest Number</string>
     <string name="youmeng_event_item_expDate">Experience Date</string>
-    <string name="toast_login_fb">registering with server</string>
-    <string name="toast_fb_server_login_success">Successfully registered FB login with server</string>
-    <string name="toast_fb_server_login_failed">Failed to register FB login with server</string>
 
     <!--end youmeng page string-->
     <string-array name="db_cities_array">

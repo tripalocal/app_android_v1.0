@@ -53,6 +53,7 @@ public class SignUpFragment extends Fragment {
 
             }
         });
+        cancelled = false;
         return view;
     }
 

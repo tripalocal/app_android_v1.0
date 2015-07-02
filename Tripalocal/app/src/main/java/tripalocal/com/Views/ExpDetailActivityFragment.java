@@ -127,12 +127,14 @@ public class ExpDetailActivityFragment extends Fragment {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
+                    /*
                     getFragmentManager().beginTransaction().addToBackStack("login")
                             .replace(R.id.detail_frag_container, new LoginFragment()).commit();
                     Intent intent=new Intent(HomeActivity.getHome_context(),PhoneregisterActivity.class);
                     intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    HomeActivity.getHome_context().startActivity(intent);
+                    HomeActivity.getHome_context().startActivity(intent);*/
+                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
             }
         });

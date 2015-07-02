@@ -54,9 +54,6 @@ public class LoginFragment extends Fragment {
         log_in_failed = getActivity().getResources().getString(R.string.toast_login_failure);
         fb_log_in_success = getActivity().getResources().getString(R.string.toast_fb_login_success);
         fb_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_login_failure);
-        fb_server_log_in_success = getActivity().getResources().getString(R.string.toast_fb_server_login_success);
-        fb_server_log_in_failed = getActivity().getResources().getString(R.string.toast_fb_server_login_failed);
-
 
         getActivity().setTitle(getResources().getString(R.string.title_login_fragment));
         callbackManager = CallbackManager.Factory.create();
@@ -121,6 +118,8 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
+        cancelled = false;
         return view;
     }
 
@@ -131,7 +130,6 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginFBUser(){
-        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_login_fb));
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
@@ -144,12 +142,12 @@ public class LoginFragment extends Fragment {
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.login_flag = true;
                 getActivity().onBackPressed();
-                ToastHelper.longToast(fb_server_log_in_success);
+                ToastHelper.longToast(fb_log_in_success);
             }
 
             @Override
             public void failure(RetrofitError error) {
-                ToastHelper.errorToast(fb_server_log_in_failed);
+                ToastHelper.errorToast(fb_log_in_failed);
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
         });
