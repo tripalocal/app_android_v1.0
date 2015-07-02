@@ -87,6 +87,7 @@
     <string name="loading_title"></string>
     <string name="checkout_title_placeholder"></string>
     <string name="exp_detail_view_all">查看全部</string>
+	<string name="exp_detail_log_in_msg">请先登录或注册</string>
 
     <string name="home_bg_city_content_desc">城市背景图片</string>
     <string name="login_or">or</string>
