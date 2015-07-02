@@ -248,7 +248,7 @@ public class CheckoutActivityFragment extends Fragment {
             }
         });
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
-        np.setWrapSelectorWheel(true);
+       // np.setWrapSelectorWheel(true);
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
