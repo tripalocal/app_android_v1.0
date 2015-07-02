@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tripalocal.com.Views.PaymentActivityFragment"
+    tools:context="com.tripalocal.bentuke.Views.PaymentActivityFragment"
     android:id="@+id/alipay_f"
     android:background="@color/white"
     >

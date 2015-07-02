@@ -13,7 +13,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tripalocal.com.Views.NavigationFragment"
+    tools:context="com.tripalocal.bentuke.Views.NavigationFragment"
     android:background="@color/button_material_light">
 
     <de.hdodenhof.circleimageview.CircleImageView

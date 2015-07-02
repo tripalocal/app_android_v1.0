@@ -1,5 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="tripalocal.com.Views.CheckoutActivity">
+    tools:context="com.tripalocal.bentuke.Views.CheckoutActivity">
 
 </menu>

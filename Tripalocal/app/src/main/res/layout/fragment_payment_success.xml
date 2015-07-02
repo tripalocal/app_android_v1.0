@@ -18,7 +18,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:fontFamily="light"
-            tools:context="tripalocal.com.Views.ExperienceDetail">
+            tools:context="com.tripalocal.bentuke.Views.ExperienceDetail">
 
             <FrameLayout
                 android:layout_width="match_parent"

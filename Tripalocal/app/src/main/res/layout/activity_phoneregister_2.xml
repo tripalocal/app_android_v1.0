@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_height="match_parent" android:layout_width="match_parent">
 
 <fragment  android:id="@+id/phone_reg_container2"
-    android:name="tripalocal.com.Views.PhoneregisterFragment2"
+    android:name="com.tripalocal.bentuke.Views.PhoneregisterFragment2"
     tools:layout="@layout/fragment_phoneregister_2" android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
