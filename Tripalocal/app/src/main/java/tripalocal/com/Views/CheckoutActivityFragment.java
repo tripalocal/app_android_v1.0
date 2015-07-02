@@ -383,8 +383,10 @@ public class CheckoutActivityFragment extends Fragment {
                 switch (language[i]) {
                     case "english":
                         l = "English";
-                    case "english;mandarin":
-                        l = "English / 中文";
+                        break;
+                    case "mandarin":
+                        l += " / 中文";
+                        break;
                 }
             }
             language_txt.setText(l);

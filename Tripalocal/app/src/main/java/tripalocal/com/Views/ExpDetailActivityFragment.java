@@ -230,8 +230,8 @@ public class ExpDetailActivityFragment extends Fragment {
         for(int i=0;language!=null && i<language.length;i++)
         {
             switch(language[i]) {
-                case "english": l = "English";
-                case "english;mandarin": l = "English / 中文";
+                case "english": l = "English";break;
+                case "mandarin": l += " / 中文";break;
             }
         }
         exp_detail_lang.setText(l);
