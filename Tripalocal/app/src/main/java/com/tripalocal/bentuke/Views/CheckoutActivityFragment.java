@@ -410,10 +410,24 @@ public class CheckoutActivityFragment extends Fragment {
             if (dy_price.length > 0) {
                 if (temp_detail_exp.getExperience_guest_number_min() <= 4 &&
                         temp_detail_exp.getExperience_guest_number_max() >= 4) {
-                    price_i = Double.valueOf(dy_price[3]);
-                    price_s = REAL_FORMATTER.format(dy_price[3]);
-                    guests = 4;
-                    np_sel = 3;
+
+                    int min_number = temp_detail_exp.getExperience_guest_number_min();
+                    int max_number = temp_detail_exp.getExperience_guest_number_max();
+
+                    if(max_number - min_number >= 3)
+                    {
+                        price_i = Double.valueOf(dy_price[3]);
+                        price_s = REAL_FORMATTER.format(dy_price[3]);
+                        guests = 4;
+                        np_sel = 3;
+                    }
+                    else
+                    {
+                        price_i = Double.valueOf(dy_price[max_number - min_number]);
+                        price_s = REAL_FORMATTER.format(dy_price[max_number - min_number]);
+                        guests = 4;
+                        np_sel = max_number - min_number;
+                    }
                 } else if (temp_detail_exp.getExperience_guest_number_max() < 4) {
                     price_i = Double.valueOf(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
                     price_s = REAL_FORMATTER.format(dy_price[temp_detail_exp.getExperience_guest_number_max()]);
