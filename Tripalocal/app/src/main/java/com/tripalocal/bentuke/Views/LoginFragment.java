@@ -4,6 +4,8 @@ package com.tripalocal.bentuke.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,12 +91,21 @@ public class LoginFragment extends Fragment {
         });
 
         TextView forgotBtn = (TextView) view.findViewById(R.id.login_forgot_pwd);
-        forgotBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_service_down));
-            }
-        });
+//        TextView textView =(TextView)findViewById(R.id.textView);
+        forgotBtn.setClickable(true);
+        forgotBtn.setMovementMethod(LinkMovementMethod.getInstance());
+        String link_string=(getResources().getString(R.string.version_language).equals("Chinese"))?"<a href='https://www.tripalocal.com/cn/accounts/password/reset/'>":
+                "<a href='https://www.tripalocal.com/accounts/password/reset/'>";
+
+        String forgot_pwd_text =link_string+getResources().getString(R.string.login_forget_password)+"</a>";
+        System.out.println(forgot_pwd_text);
+        forgotBtn.setText(Html.fromHtml(forgot_pwd_text));
+//        forgotBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_service_down));
+//            }
+//        });
         Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
