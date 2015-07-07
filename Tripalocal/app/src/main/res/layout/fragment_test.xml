@@ -4,14 +4,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.tripalocal.bentuke.Views.BlankFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:id="@+id/conversation_item">
 
-    <TextView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/blank_msg"
-        android:layout_marginTop="45dp"
-        android:padding="10dp"
-        android:fontFamily="light"
-        android:text="@string/blank_fragment" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/conversion_total"
+        android:layout_marginLeft="5dp"
+        android:weightSum="1">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/exp_list_profile_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/profile_default"
+            app:border_width="2dp"
+            app:border_color="#ffffff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Felx"
+                android:id="@+id/textView6"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 mins ago"
+                android:id="@+id/textView5"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="291dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="thakfhkjsd fjkasdhfk ajsdhfkjadshfkjas fhksadfhas"
+                android:id="@+id/textView7"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="10dp" />
+        </GridLayout>
+
+
+    </LinearLayout>
+    <View
+        android:id="@+id/divider_line_1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/conversion_total"
+        android:layout_alignRight="@+id/conversion_total"
+        android:layout_alignEnd="@+id/conversion_total"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>
