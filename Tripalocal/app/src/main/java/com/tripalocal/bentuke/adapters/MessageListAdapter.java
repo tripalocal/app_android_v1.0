@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.Message;
 
 import java.util.List;
@@ -48,16 +49,24 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     }
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
+        CardView msg_list_card_view;
         TextView msg_sender;
         TextView msg_brief;
         TextView msg_time;
 
-        MessageViewHolder(View itemView) {
+
+        public MessageViewHolder(View itemView) {
             super(itemView);
             msg_sender = (TextView)itemView.findViewById(R.id.msg_sender);
             msg_brief = (TextView)itemView.findViewById(R.id.msg_brief);
             msg_time = (TextView)itemView.findViewById(R.id.msg_time);
+            msg_brief.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    ToastHelper.errorToast("hello got message");
+                }
+            });
         }
     }
 
