@@ -57,9 +57,13 @@ public class ChatFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String text=inputText.getText().toString();
-                addTextToList(text,0);
-                adapter.notifyDataSetChanged();
-                chatListView.setSelection(chatListMap.size()-1);            }
+                if(!text.trim().equals("")) {
+                    addTextToList(text, 0);
+                    adapter.notifyDataSetChanged();
+                    chatListView.setSelection(chatListMap.size() - 1);
+                    inputText.setText("");
+                }
+            }
         });
     }
 
@@ -70,9 +74,7 @@ public class ChatFragment extends Fragment {
 
     }
 
-    public void initAdapter(){
 
-    }
     public void onResume() {
         super.onResume();
 //        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_payment)); //统计页面
