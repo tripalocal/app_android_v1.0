@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Views.ChatActivity;
+import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.Message;
 
@@ -60,13 +63,20 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             msg_sender = (TextView)itemView.findViewById(R.id.msg_sender);
             msg_brief = (TextView)itemView.findViewById(R.id.msg_brief);
             msg_time = (TextView)itemView.findViewById(R.id.msg_time);
-            msg_brief.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            msg_sender.setOnClickListener(new msglistlistener());
+            msg_brief.setOnClickListener(new msglistlistener());
+            msg_time.setOnClickListener(new msglistlistener());
 
-                    ToastHelper.errorToast("hello got message");
-                }
-            });
+        }
+
+        static class msglistlistener implements View.OnClickListener{
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.getHome_context().startActivity(intent);
+            }
         }
     }
 

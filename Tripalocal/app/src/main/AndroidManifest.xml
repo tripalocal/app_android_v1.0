@@ -162,6 +162,14 @@
             android:label="@string/navigation_mytrips"
             >
         </activity>
+
+        <activity
+            android:name="com.tripalocal.bentuke.Views.ChatActivity"
+            android:screenOrientation="portrait"
+            android:label="This is a test">
+
+
+        </activity>
         <meta-data android:value="@string/youmeng_app_key" android:name="UMENG_APPKEY"></meta-data>
         <meta-data android:value="@string/youmeng_channel_name" android:name="UMENG_CHANNEL"/>
 

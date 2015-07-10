@@ -82,18 +82,18 @@ public class MsgListFragment extends Fragment {
 
     private void initializeData(){
         messages = new ArrayList<>();
-        messages.add(new Message("test","10 mins ago","te4321d"));
-        messages.add(new Message("dasd","12 mins ago","teas4321d"));
-        messages.add(new Message("tdase78st","1 hr ago","te908sd4321d"));
+        messages.add(new Message("test","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d"));
+        messages.add(new Message("dasd","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d"));
+        messages.add(new Message("tdase78st","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d"));
 
     }
     public void onResume() {
         super.onResume();
-        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
+//        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
+//        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
     }
 
     @Override
