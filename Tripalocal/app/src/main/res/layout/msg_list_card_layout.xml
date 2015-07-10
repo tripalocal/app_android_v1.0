@@ -44,7 +44,7 @@
                 app:border_width="2dp"
                 app:border_color="#ffffff"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="-5dp" />
+                android:layout_marginTop="-3dp" />
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -77,7 +77,8 @@
                             android:layout_column="1"
                             android:gravity="right"
                             android:layout_gravity="bottom"
-                            android:layout_weight="2" />
+                            android:layout_weight="2"
+                            android:paddingTop="5dp"/>
 
                     </LinearLayout>
 
@@ -96,8 +97,14 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
+
+            <View
+                android:id="@+id/divider_msg_list"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
