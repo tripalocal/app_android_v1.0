@@ -73,7 +73,8 @@ public class ChatAdapter extends BaseAdapter{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
 
         }
-        holder.textView.setText("This is a test");
+        String text=(String)chatList.get(position).get("text");
+        holder.textView.setText(text);
 //        holder.imageView=(ImageView)convertView.findViewById(to[who*2+0]);
 //        holder.textView=(TextView)convertView.findViewById(to[who*2+1]);
 //

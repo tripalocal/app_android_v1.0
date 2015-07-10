@@ -16,7 +16,7 @@
         android:background="@drawable/normal_shape_rect">
 
         <EditText
-            android:id="@+id/chat_bottom_edittext"
+            android:id="@+id/chat_input_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -28,7 +28,7 @@
             android:textColorHint="@android:color/darker_gray"
             android:layout_marginTop="5dp" />
         <Button
-            android:id="@+id/chat_bottom_sendbutton"
+            android:id="@+id/chat_send_btn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_weight="4"

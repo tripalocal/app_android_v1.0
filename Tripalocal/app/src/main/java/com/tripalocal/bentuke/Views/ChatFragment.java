@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,8 @@ public class ChatFragment extends Fragment {
     private ArrayList<HashMap<String,Object>> chatListMap=null;
     private ChatAdapter adapter;
     int[] layouts;
+    Button chat_send_btn;
+    EditText inputText;
     public ChatFragment() {
     }
 
@@ -38,7 +41,10 @@ public class ChatFragment extends Fragment {
         chatListView=(ListView)view.findViewById(R.id.chat_list);
         chatListMap=new ArrayList<HashMap<String,Object>>();
         layouts=new int[]{R.layout.msg_send_card,R.layout.msg_receive_card};
+        chat_send_btn=(Button)view.findViewById(R.id.chat_send_btn);
+        inputText=(EditText)view.findViewById(R.id.chat_input_text);
         initData();
+        setChatListener();
         adapter=new ChatAdapter(this.getActivity(),chatListMap,layouts);
 
         chatListView.setAdapter(adapter);
@@ -46,6 +52,16 @@ public class ChatFragment extends Fragment {
 
     }
 
+    public void setChatListener(){
+        chat_send_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text=inputText.getText().toString();
+                addTextToList(text,0);
+                adapter.notifyDataSetChanged();
+                chatListView.setSelection(chatListMap.size()-1);            }
+        });
+    }
 
     public void initData(){
         addTextToList("this is from me",1);
