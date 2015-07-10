@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.helpers.ToastHelper;
@@ -18,7 +19,6 @@ import com.umeng.analytics.MobclickAgent;
  * Created by chenfang on 10/07/2015.
  */
 public class ChatActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
