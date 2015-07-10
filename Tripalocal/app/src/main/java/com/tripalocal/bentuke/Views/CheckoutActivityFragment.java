@@ -392,6 +392,9 @@ public class CheckoutActivityFragment extends Fragment {
             language_txt.setText(l);
 
             if (temp_detail_exp.getAvailable_options().get(0).isInstantBooking()) {
+                booking_row_3.setVisibility(View.VISIBLE);
+                booking_row_4.setVisibility(View.VISIBLE);
+                booking_row_5.setVisibility(View.VISIBLE);
                 if (temp_detail_exp.getAvailable_options().size() >= 3) {
                     booking_date_1.setText(temp_detail_exp.getAvailable_options().get(0).getDate_string());
                     booking_date_2.setText(temp_detail_exp.getAvailable_options().get(1).getDate_string());
