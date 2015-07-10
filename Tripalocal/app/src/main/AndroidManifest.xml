@@ -166,8 +166,8 @@
         <activity
             android:name="com.tripalocal.bentuke.Views.ChatActivity"
             android:screenOrientation="portrait"
-            android:label="This is a test">
-
+            android:label="This is a test"
+            >
 
         </activity>
         <meta-data android:value="@string/youmeng_app_key" android:name="UMENG_APPKEY"></meta-data>
