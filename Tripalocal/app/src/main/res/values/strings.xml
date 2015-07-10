@@ -274,6 +274,19 @@
     <string name="youmeng_event_item_expDate">Experience Date</string>
 
     <!--end youmeng page string-->
+
+    <!--start message string-->
+    <string name="msg_send_msg">Send Message</string>
+    <!--the keyword re here should never be replaced-->
+    <string name="msg_mins_to_now">re mins ago</string>
+    <string name="msg_hrs_to_now">re hrs ago</string>
+    <string name="msg_hint"> Write  message...</string>
+    <string name="msg_send_btn">Send</string>
+    <!--do not change the keyword somebody here-->
+    <string name="msg_chat_title">Conversations with somebody</string>
+    <string name="msg_list_title">Messages</string>
+
+    <!--end message string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

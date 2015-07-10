@@ -74,6 +74,7 @@ public class MsgListFragment extends Fragment {
 //        mAdapter = new MyAdapter(myDataset);
 //        mRecyclerView.setAdapter(mAdapter);
         initializeData();
+        getActivity().setTitle(getResources().getString(R.string.msg_list_title));
         MessageListAdapter adapter = new MessageListAdapter(messages);
         mRecyclerView.setAdapter(adapter);
 

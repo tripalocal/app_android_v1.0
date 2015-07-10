@@ -24,7 +24,7 @@
             android:layout_weight="1.5"
             android:background="@drawable/msg_send_text_shape"
             android:layout_marginBottom="10dp"
-            android:hint="  Write Message..."
+            android:hint="@string/msg_hint"
             android:textColorHint="@android:color/darker_gray"
             android:layout_marginTop="5dp" />
         <Button
@@ -33,7 +33,7 @@
             android:layout_height="40dp"
             android:layout_weight="4"
             android:layout_marginRight="10dp"
-            android:text="SEND"
+            android:text="@string/msg_send_btn"
             android:textColor="@android:color/darker_gray"
             android:background="@drawable/transparent_btn_shape"
             android:textSize="20dp"

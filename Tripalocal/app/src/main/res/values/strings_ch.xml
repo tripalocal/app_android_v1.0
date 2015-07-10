@@ -237,6 +237,7 @@
     <!--end phone register string-->
 
     <!--youmeng page string-->
+    <string name="youmeng_channel_name">playstore</string>
     <string name="youmeng_app_key">557e87b467e58e0bf90026ed</string>
     <string name="youmeng_fragment_alipay">Alipay</string>
     <string name="youmeng_fragment_blank">Blank</string>
@@ -273,6 +274,19 @@
     <string name="youmeng_event_item_expDate">Experience Date</string>
 
     <!--end youmeng page string-->
+
+    <!--start message string-->
+    <string name="msg_send_msg">私信</string>
+    <!--the keyword re here should never be replaced-->
+    <string name="msg_mins_to_now">re 分钟之前</string>
+    <string name="msg_hrs_to_now">re 小时之前</string>
+    <string name="msg_hint"> 请输入</string>
+    <string name="msg_send_btn">发送</string>
+    <!--do not change the keyword somebody here-->
+    <string name="msg_chat_title">正在与somebody对话</string>
+    <string name="msg_list_title">对话列表</string>
+
+    <!--end message string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

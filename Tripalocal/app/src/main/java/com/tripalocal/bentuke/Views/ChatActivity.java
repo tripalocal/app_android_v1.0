@@ -29,7 +29,8 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String title_t=getResources().getString(R.string.msg_chat_title);
+        setTitle(title_t);
         setContentView(R.layout.activity_chat);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

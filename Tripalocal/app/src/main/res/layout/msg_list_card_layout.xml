@@ -71,7 +71,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="28dp"
-                            android:text="60 mins ago"
+                            android:text="@string/msg_mins_to_now"
                             android:id="@+id/msg_time"
                             android:layout_row="0"
                             android:layout_column="1"

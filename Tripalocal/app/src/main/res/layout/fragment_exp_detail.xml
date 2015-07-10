@@ -560,7 +560,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Send message"
+            android:text="@string/msg_send_msg"
             android:id="@+id/send_msg_btn"
             android:textColor="@color/white"
             android:background="@drawable/booking_btn_shape"

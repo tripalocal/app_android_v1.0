@@ -188,7 +188,7 @@
 
         <Button
             android:id="@+id/my_trip_message_button"
-            android:text="@string/my_trip_message"
+            android:text="@string/msg_send_msg"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
