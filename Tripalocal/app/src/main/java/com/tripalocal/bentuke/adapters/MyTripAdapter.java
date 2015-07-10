@@ -20,8 +20,11 @@ import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Views.ChatActivity;
+import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MyTripFragment;
 import com.tripalocal.bentuke.helpers.ImageDownloader;
+import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.MyTrip;
 
 /**
@@ -119,11 +122,14 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             holder.messageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    TextView b = ((TextView) ((View) v.getParent().getParent()).findViewById(R.id.my_trip_host_phone_number));
-                    intent.setData(Uri.parse("sms:" + b.getText()));
-                    mContext.startActivity(intent);
+                    if(HomeActivity.getCurrent_user().isLoggedin()){
+                        Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        HomeActivity.getHome_context().startActivity(intent);
+                    }else{
+
+                        ToastHelper.warnToast(mContext.getResources().getString(R.string.exp_detail_log_in_msg));
+                    }
                 }
             });
         }else{

@@ -541,13 +541,30 @@
         </RelativeLayout>
     </ScrollView>
 
-    <Button
-    android:id="@+id/exp_detail_booking_btn"
-    android:text="@string/exp_detail_request"
-    android:layout_alignParentBottom="true"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:background="@drawable/booking_btn_shape"
-    android:textColor="@color/white"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+        android:id="@+id/exp_detail_booking_btn"
+        android:text="@string/exp_detail_request"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:background="@drawable/booking_btn_shape"
+        android:textColor="@color/white"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Send message"
+            android:id="@+id/send_msg_btn"
+            android:textColor="@color/white"
+            android:background="@drawable/booking_btn_shape"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </RelativeLayout>

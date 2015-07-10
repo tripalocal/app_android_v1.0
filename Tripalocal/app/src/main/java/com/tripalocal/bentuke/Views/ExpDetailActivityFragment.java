@@ -74,7 +74,7 @@ public class ExpDetailActivityFragment extends Fragment {
     Button review_more_btn;
     Button host_more_btn;
     ImageView expenses_banner_img;
-    Button request_to_book_btn;
+    Button request_to_book_btn,send_msg_btn;
     TextView food_info;
     TextView transport_info;
     TextView tickets_info;
@@ -117,7 +117,7 @@ public class ExpDetailActivityFragment extends Fragment {
         transport_info = (TextView) view.findViewById(R.id.exp_detail_grid_transport_info);
         tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
-
+        send_msg_btn=(Button)view.findViewById(R.id.send_msg_btn);
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +139,21 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         });
 
+        send_msg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(HomeActivity.getCurrent_user().isLoggedin()){
+                    Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    HomeActivity.getHome_context().startActivity(intent);
+                }else{
+
+                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+                }
+
+
+            }
+        });
         info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
         info_view_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +197,9 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         });
         request_to_book_btn.setEnabled(false);
-            getExpDetails(ExpDetailActivity.position);
+        send_msg_btn.setEnabled(false);
+
+        getExpDetails(ExpDetailActivity.position);
 
         return view;
     }
@@ -206,6 +223,7 @@ public class ExpDetailActivityFragment extends Fragment {
                     exp_to_display = experience_detail;
                     fillDetails();
                     request_to_book_btn.setEnabled(true);
+                    send_msg_btn.setEnabled(true);
                 }
             }
 
