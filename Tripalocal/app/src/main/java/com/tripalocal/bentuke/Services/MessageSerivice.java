@@ -6,6 +6,7 @@ package com.tripalocal.bentuke.Services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -48,44 +49,57 @@ public class MessageSerivice extends Service {
 
         Log.i(TAG, "Service onStartCommand");
         System.out.println("service statrted");
-//        Creating new thread for my service
-//        Always write your long running tasks in a separate thread, to avoid ANR
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                try{
-                    System.out.println("this is a test");
-                    XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
-                            .setHost("10.0.3.2")
-                            .setServiceName("10.0.3.2")
-                            .setPort(5222)
-                            .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
-                            .build();
-                    AbstractXMPPConnection connection =new XMPPTCPConnection(config);
-                    connection.connect();
-
-                    try {
-                        /** 用户登陆，用户名、密码 */
-                        connection.login("zhuxiaole", "zhuxiaole");
-                    } catch (XMPPException e) {
-                        e.printStackTrace();
-                    }
-                    /** 获取当前登陆用户 */
-//                    System.out.println("User:"+ connection.getUser());
-                    ChatManager chatManager= ChatManager.getInstanceFor(connection);
-                    chat=chatManager.createChat("frankcf329@frank");
-                    chatManager.addChatListener(new ChatMsgListener());
-                    while (true) ;
-                }catch(Exception e){
-                    System.out.println(""+e.getMessage().toString());
-                }
-            }
-        }).start();
-
+        new ChatTask().execute();
         return Service.START_STICKY;
     }
 
+    private class ChatTask extends AsyncTask<String, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            try{
+                System.out.println("this is a test");
+                XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
+                        .setHost("10.0.3.2")
+                        .setServiceName("10.0.3.2")
+                        .setPort(5222)
+                        .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+                        .build();
+                AbstractXMPPConnection connection =new XMPPTCPConnection(config);
+                connection.connect();
+
+                try {
+                    connection.login("zhuxiaole", "zhuxiaole");
+                } catch (XMPPException e) {
+                    e.printStackTrace();
+                }
+                /** 获取当前登陆用户 */
+//                    System.out.println("User:"+ connection.getUser());
+                ChatManager chatManager= ChatManager.getInstanceFor(connection);
+                chat=chatManager.createChat("frankcf329@frank");
+                chatManager.addChatListener(new ChatMsgListener());
+                while (true) ;
+            }catch(Exception e){
+                System.out.println(""+e.getMessage().toString());
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            //System.out.println("task finished");
+
+        }
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
+    }
+
+//    private messageTask extends AsyncTask<String,Stirng,Stirng>(){}
 
     @Override
     public IBinder onBind(Intent arg0) {
