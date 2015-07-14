@@ -33,11 +33,15 @@ public class Message {
         return content;
     }
 
+    public Boolean getSendMsgFlag(){
+        return sendMsgFlag;
+    }
     String sender,receiver,datetime_sent,datetime_delieverd,
             datetime_read,status,content;
+    Boolean sendMsgFlag;
     public Message(String sender,String receiver,String datetime_sent,
                    String datetime_delieverd,String datetime_read,
-                   String status,String content){
+                   String status,String content,Boolean sendMsgFlag){
         this.sender=sender;
         this.receiver=receiver;
         this.datetime_sent=datetime_sent;
@@ -45,12 +49,14 @@ public class Message {
         this.datetime_read=datetime_read;
         this.status=status;
         this.content=content;
+        this.sendMsgFlag=sendMsgFlag;
     }
 
-    public  Message(String sender,String datetime_read,String content){
+    public  Message(String sender,String datetime_read,String content,boolean sendMsgFlag){
         this.sender=sender;
         this.datetime_read=datetime_read;
         this.content=content;
+        this.sendMsgFlag=sendMsgFlag;
     }
 
     public String test(){

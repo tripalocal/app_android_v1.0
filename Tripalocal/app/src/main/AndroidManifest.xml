@@ -173,5 +173,7 @@
         <meta-data android:value="@string/youmeng_app_key" android:name="UMENG_APPKEY"></meta-data>
         <meta-data android:value="@string/youmeng_channel_name" android:name="UMENG_CHANNEL"/>
 
+        <service android:name=".Services.MessageSerivice"
+            />
     </application>
 </manifest>

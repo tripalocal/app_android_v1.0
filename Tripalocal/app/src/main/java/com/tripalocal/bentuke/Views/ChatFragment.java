@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 import com.umeng.analytics.MobclickAgent;
 
@@ -58,10 +59,15 @@ public class ChatFragment extends Fragment {
             public void onClick(View view) {
                 String text=inputText.getText().toString();
                 if(!text.trim().equals("")) {
-                    addTextToList(text, 0);
+                    addTextToList(text, 1);
                     adapter.notifyDataSetChanged();
                     chatListView.setSelection(chatListMap.size() - 1);
                     inputText.setText("");
+                    try {
+                        MessageSerivice.chat.sendMessage(text);
+                    }catch(Exception e){
+
+                    }
                 }
             }
         });
@@ -69,8 +75,8 @@ public class ChatFragment extends Fragment {
 
     public void initData(){
         addTextToList("this is from me",1);
-        addTextToList("this is from 3",0);
-        addTextToList("this is from other texts",1);
+        addTextToList("this is from 3",1);
+        addTextToList("this is from other texts",0);
 
     }
 
@@ -84,9 +90,9 @@ public class ChatFragment extends Fragment {
 //        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_payment));
     }
 
-    protected void addTextToList(String text, int who){
+    protected void addTextToList(String text, int  sender){
         HashMap<String,Object> map=new HashMap<String,Object>();
-        map.put("person",who );
+        map.put("person",sender );
         map.put("text", text);
         chatListMap.add(map);
     }

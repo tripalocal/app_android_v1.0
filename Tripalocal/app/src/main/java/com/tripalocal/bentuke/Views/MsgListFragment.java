@@ -83,9 +83,9 @@ public class MsgListFragment extends Fragment {
 
     private void initializeData(){
         messages = new ArrayList<>();
-        messages.add(new Message("test","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d"));
-        messages.add(new Message("dasd","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d"));
-        messages.add(new Message("tdase78st","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d"));
+        messages.add(new Message("test","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d",true));
+        messages.add(new Message("dasd","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d",false));
+        messages.add(new Message("tdase78st","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d",false));
 
     }
     public void onResume() {
