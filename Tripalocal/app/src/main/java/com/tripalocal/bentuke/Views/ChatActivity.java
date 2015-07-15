@@ -50,6 +50,13 @@ public class ChatActivity extends AppCompatActivity {
     Chat chat;
     Fragment fragment;
     XMPPTCPConnection connection;
+    private static ListView chatListView;
+    public static ArrayList<HashMap<String,Object>> chatListMap=null;
+    private static ChatAdapter adapter;
+    public static Activity chatActivity_context;
+    int[] layouts;
+    Button chat_send_btn;
+    EditText inputText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +73,20 @@ public class ChatActivity extends AppCompatActivity {
         }
         String title_t=getResources().getString(R.string.msg_chat_title);
         setTitle(title_t);
+        chatListView=(ListView)findViewById(R.id.chat_list);
+        chatListMap=new ArrayList<HashMap<String,Object>>();
+        layouts=new int[]{R.layout.msg_send_card,R.layout.msg_receive_card};
+        chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
+        inputText=(EditText)findViewById(R.id.chat_input_text);
+        initData();
+        setChatListener();
+        adapter=new ChatAdapter(this,chatListMap,layouts);
+//        chatListView.setAdapter(adapter);
+        chatActivity_context=this;
         setContentView(R.layout.activity_chat);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -173,6 +191,55 @@ public class ChatActivity extends AppCompatActivity {
         }catch(Exception e){
             System.out.println(""+e.getMessage().toString());
         }
+    }
+
+    public static void notfityChange(){
+        adapter.notifyDataSetChanged();
+        chatListView.setSelection(chatListMap.size() - 1);
+    }
+
+    public void setChatListener(){
+//        chat_send_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String text = inputText.getText().toString();
+//                if (!text.trim().equals("")) {
+//                    addTextToList(text);
+//                    notifAdapter();
+//                    try {
+//                        MessageSerivice.chat.sendMessage(text);
+//                    } catch (Exception e) {
+//                        System.out.println("errors here" + e.getMessage().toString());
+//                    }
+//                }
+//            }
+//        });
+    }
+
+    public void initData(){
+        addTextToList("this is from me");
+        addTextToList("this is from 3");
+        addTextToList("this is from other texts");
+
+    }
+
+
+
+    protected void addTextToList(String text){
+        HashMap<String,Object> map=new HashMap<String,Object>();
+        map.put("person",0 );
+        map.put("text", text);
+        chatListMap.add(map);
+    }
+
+    public void notifAdapter(){
+        adapter.notifyDataSetChanged();
+        chatListView.setSelection(chatListMap.size() - 1);
+        inputText.setText("");
+    }
+
+    public void test(){
+        chat_send_btn.setText("this is a tets");
     }
 
 
