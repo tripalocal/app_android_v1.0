@@ -4,12 +4,6 @@ package com.tripalocal.bentuke.adapters;
  * Created by chenf_000 on 14/07/2015.
  */
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-
-import com.tripalocal.bentuke.R;
-import com.tripalocal.bentuke.Views.ChatFragment;
 
 import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatManagerListener;
@@ -23,9 +17,6 @@ public class ChatMsgListener implements ChatManagerListener {
 
     private ArrayList<HashMap<String,Object>> chatListMap=null;
 
-    public ChatMsgListener(){
-        this.chatListMap= ChatFragment.chatListMap;
-    }
     @Override
     public void chatCreated(Chat arg0, boolean arg1) {
         arg0.addMessageListener(new ChatMessageListener() {
@@ -47,8 +38,6 @@ public class ChatMsgListener implements ChatManagerListener {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", 1);
         map.put("text", text);
-        ChatFragment.chatListMap.add(map);
-        ChatFragment.notfityChange();
 
 
     }

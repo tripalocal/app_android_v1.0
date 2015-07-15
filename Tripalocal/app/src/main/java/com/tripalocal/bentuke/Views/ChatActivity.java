@@ -50,7 +50,7 @@ public class ChatActivity extends AppCompatActivity {
     Chat chat;
     Fragment fragment;
     XMPPTCPConnection connection;
-    private static ListView chatListView;
+    private  ListView chatListView;
     public static ArrayList<HashMap<String,Object>> chatListMap=null;
     private static ChatAdapter adapter;
     public static Activity chatActivity_context;
@@ -60,6 +60,8 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+
         connection= MessageSerivice.connection;
         if(connection==null){
             try {
@@ -81,9 +83,8 @@ public class ChatActivity extends AppCompatActivity {
         initData();
         setChatListener();
         adapter=new ChatAdapter(this,chatListMap,layouts);
-//        chatListView.setAdapter(adapter);
+        chatListView.setAdapter(adapter);
         chatActivity_context=this;
-        setContentView(R.layout.activity_chat);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -193,10 +194,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    public static void notfityChange(){
-        adapter.notifyDataSetChanged();
-        chatListView.setSelection(chatListMap.size() - 1);
-    }
+
 
     public void setChatListener(){
 //        chat_send_btn.setOnClickListener(new View.OnClickListener() {
