@@ -2,6 +2,7 @@ package com.tripalocal.bentuke.Views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,11 +12,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
+import com.tripalocal.bentuke.adapters.ChatMsgListener;
 import com.umeng.analytics.MobclickAgent;
+
+import org.jivesoftware.smack.AbstractXMPPConnection;
+import org.jivesoftware.smack.ConnectionConfiguration;
+import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.chat.Chat;
+import org.jivesoftware.smack.chat.ChatManager;
+import org.jivesoftware.smack.chat.ChatManagerListener;
+import org.jivesoftware.smack.chat.ChatMessageListener;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +40,7 @@ import java.util.Objects;
  */
 public class ChatFragment extends Fragment {
 
-
+    Chat chat;
     private static ListView chatListView;
     public static ArrayList<HashMap<String,Object>> chatListMap=null;
     private static ChatAdapter adapter;
@@ -52,6 +66,8 @@ public class ChatFragment extends Fragment {
         adapter=new ChatAdapter(this.getActivity(),chatListMap,layouts);
         chatListView.setAdapter(adapter);
         chatActivity_context=getActivity();
+
+        System.out.println("start chat fragment");
         return view;
 
     }
@@ -67,18 +83,14 @@ public class ChatFragment extends Fragment {
         chat_send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text=inputText.getText().toString();
-                if(!text.trim().equals("")) {
+                String text = inputText.getText().toString();
+                if (!text.trim().equals("")) {
                     addTextToList(text);
-                    adapter.notifyDataSetChanged();
-                    chatListView.setSelection(chatListMap.size() - 1);
-                    inputText.setText("");
-                    chatListView.setSelection(chatListMap.size() - 1);
-
+                    notifAdapter();
                     try {
                         MessageSerivice.chat.sendMessage(text);
-                    }catch(Exception e){
-
+                    } catch (Exception e) {
+                        System.out.println("errors here" + e.getMessage().toString());
                     }
                 }
             }
@@ -108,5 +120,18 @@ public class ChatFragment extends Fragment {
         map.put("text", text);
         chatListMap.add(map);
     }
+
+    public void notifAdapter(){
+        adapter.notifyDataSetChanged();
+        chatListView.setSelection(chatListMap.size() - 1);
+        inputText.setText("");
+    }
+
+    public void test(){
+        chat_send_btn.setText("this is a tets");
+    }
+
+
+
 
 }

@@ -37,6 +37,8 @@ import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
+import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+
 import static com.tripalocal.bentuke.R.layout;
 
 
@@ -58,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
     public static boolean login_flag = true;
     public static boolean login_ch=false;
     public static String webViewPage_info="";
+    public static XMPPTCPConnection connection;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;

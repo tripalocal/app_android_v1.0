@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.adapters.ChatMsgListener;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
@@ -37,6 +38,7 @@ public class MessageSerivice extends Service {
 
     private boolean isRunning  = false;
     public static Chat chat;
+    public static XMPPTCPConnection connection;
 
     @Override
     public void onCreate() {
@@ -47,8 +49,6 @@ public class MessageSerivice extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.i(TAG, "Service onStartCommand");
-        System.out.println("service statrted");
         new ChatTask().execute();
         return Service.START_STICKY;
     }
@@ -58,26 +58,32 @@ public class MessageSerivice extends Service {
         @Override
         protected Boolean doInBackground(String... params) {
             try{
-                System.out.println("this is a test");
-                XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
-                        .setHost("10.0.3.2")
-                        .setServiceName("10.0.3.2")
-                        .setPort(5222)
-                        .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
-                        .build();
-                AbstractXMPPConnection connection =new XMPPTCPConnection(config);
-                connection.connect();
-
-                try {
-                    connection.login("zhuxiaole", "zhuxiaole");
-                } catch (XMPPException e) {
-                    e.printStackTrace();
-                }
                 /** 获取当前登陆用户 */
+
+                        try {
+                            Log.i(TAG, "Service onStartCommand");
+                            System.out.println("service statrted");
+                            System.out.println("this is a test");
+                            XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
+                                    .setHost("10.0.3.2")
+                                    .setServiceName("10.0.3.2")
+                                    .setPort(5222)
+                                    .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+                                    .build();
+                            connection = new XMPPTCPConnection(config);
+                            connection.connect();
+                            connection.login("zhuxiaole", "zhuxiaole");
+
+                            HomeActivity.connection = connection;
+                        }catch(Exception e){
+                            System.out.println(e.getMessage().toString());
+                        }
+
+
 //                    System.out.println("User:"+ connection.getUser());
                 ChatManager chatManager= ChatManager.getInstanceFor(connection);
                 chat=chatManager.createChat("frankcf329@frank");
-                chatManager.addChatListener(new ChatMsgListener());
+//                chatManager.addChatListener(new ChatMsgListener());
                 while (true) ;
             }catch(Exception e){
                 System.out.println(""+e.getMessage().toString());

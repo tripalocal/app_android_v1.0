@@ -35,7 +35,7 @@ public class ChatMsgListener implements ChatManagerListener {
                 if (null != arg1.getBody()) {
                     String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
                     System.out.println("from " + from + " : " + arg1.getBody());
-                    addTextToList(arg1.getBody());
+//                    addTextToList(arg1.getBody());
 //                    ChatFragment.chatActivity_context.findViewById(R.id.chat_list).SET
 
                 }
