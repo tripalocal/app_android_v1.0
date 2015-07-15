@@ -92,6 +92,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void run() {
                 msgHandler();
+
             }
         }).start();
 
@@ -170,15 +171,11 @@ public class ChatActivity extends AppCompatActivity {
                             System.out.println("here comes 1");
 
                             if (null != arg1.getBody()) {
-                                String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
-                                System.out.println("from " + from + " : " + arg1.getBody());
-//                                try {
-//                                    fragment.addTextToList(arg1.getBody());
-//                                    fragment.notifAdapter();
-//                                    ToastHelper.errorToast("test");
-//                                }catch (Exception e){
-//                                    System.out.println("Exception here: "+e.getMessage().toString());
-//                                }
+//                                String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
+//                                System.out.println("from " + from + " : " + arg1.getBody());
+                                    addTextToList(arg1.getBody());
+                                   notifAdapter();
+                                test();
                                 System.out.println("goes inside");
 //                                fragment.test();
                             }
@@ -197,21 +194,21 @@ public class ChatActivity extends AppCompatActivity {
 
 
     public void setChatListener(){
-//        chat_send_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String text = inputText.getText().toString();
-//                if (!text.trim().equals("")) {
-//                    addTextToList(text);
-//                    notifAdapter();
-//                    try {
-//                        MessageSerivice.chat.sendMessage(text);
-//                    } catch (Exception e) {
-//                        System.out.println("errors here" + e.getMessage().toString());
-//                    }
-//                }
-//            }
-//        });
+        chat_send_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = inputText.getText().toString();
+                if (!text.trim().equals("")) {
+                    addTextToList(text);
+                    notifAdapter();
+                    try {
+                        MessageSerivice.chat.sendMessage(text);
+                    } catch (Exception e) {
+                        System.out.println("errors here" + e.getMessage().toString());
+                    }
+                }
+            }
+        });
     }
 
     public void initData(){
