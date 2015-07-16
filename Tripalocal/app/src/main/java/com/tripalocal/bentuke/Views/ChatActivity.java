@@ -57,6 +57,8 @@ public class ChatActivity extends AppCompatActivity {
     int[] layouts;
     Button chat_send_btn;
     EditText inputText;
+    public final static int receiver_flag=0;
+    public final static int sender_flag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +82,6 @@ public class ChatActivity extends AppCompatActivity {
         layouts=new int[]{R.layout.msg_send_card,R.layout.msg_receive_card};
         chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
         inputText=(EditText)findViewById(R.id.chat_input_text);
-        initData();
         setChatListener();
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
@@ -164,22 +165,9 @@ public class ChatActivity extends AppCompatActivity {
             chatManager.addChatListener(new ChatManagerListener() {
                 @Override
                 public void chatCreated(Chat chat, boolean createdLocally) {
-                    chat.addMessageListener(new ChatMessageListener() {
+                    chat.addMessageListener(new chatMsgListener() {
 
-                        @Override
-                        public void processMessage(Chat arg0, Message arg1) {
-                            System.out.println("here comes 1");
 
-                            if (null != arg1.getBody()) {
-//                                String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
-//                                System.out.println("from " + from + " : " + arg1.getBody());
-                                    addTextToList(arg1.getBody());
-                                   notifAdapter();
-                                test();
-                                System.out.println("goes inside");
-//                                fragment.test();
-                            }
-                        }
                     });
                 }
             });
@@ -193,13 +181,37 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
+    public class chatMsgListener implements ChatMessageListener{
+        @Override
+        public void processMessage(Chat arg0, Message arg1) {
+            System.out.println("here comes 1");
+
+            if (null != arg1.getBody()) {
+                final String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
+                final String message_body=arg1.getBody();
+//                System.out.println("from " + from + " : " + arg1.getBody());
+                runOnUiThread(new Runnable(){
+                    public void run(){
+                        //update UI elements
+
+                        addTextToList(message_body,receiver_flag);
+                        notifAdapter();
+                        System.out.println("goes inside");
+                    }
+                });
+
+//                                fragment.test();
+            }
+        }
+
+    }
     public void setChatListener(){
         chat_send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
-                    addTextToList(text);
+                    addTextToList(text,sender_flag);
                     notifAdapter();
                     try {
                         MessageSerivice.chat.sendMessage(text);
@@ -211,18 +223,12 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    public void initData(){
-        addTextToList("this is from me");
-        addTextToList("this is from 3");
-        addTextToList("this is from other texts");
-
-    }
 
 
 
-    protected void addTextToList(String text){
+    protected void addTextToList(String text,int person){
         HashMap<String,Object> map=new HashMap<String,Object>();
-        map.put("person",0 );
+        map.put("person",person );
         map.put("text", text);
         chatListMap.add(map);
     }
