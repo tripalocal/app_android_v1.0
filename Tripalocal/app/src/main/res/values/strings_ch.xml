@@ -2,6 +2,7 @@
     <string name="app_name">本土客</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/cn/</string>
+
     <string name="version_language">Chinese</string>
     <string name="hello_world"></string>
     <string name="blank_fragment">您还没有保存任何体验</string>
@@ -286,6 +287,12 @@
     <string name="msg_chat_title">正在与somebody对话</string>
     <string name="msg_list_title">对话列表</string>
 
+    <string name="msg_server_name">10.0.3.2</string>
+    <string name="msg_host">10.0.3.2</string>
+    <string name="msg_server_nick_name">frank</string>
+
+    <!--msg configuration-->
+    <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>

@@ -285,7 +285,9 @@
     <!--do not change the keyword somebody here-->
     <string name="msg_chat_title">Conversations with somebody</string>
     <string name="msg_list_title">Messages</string>
-
+    <string name="msg_server_name">10.0.3.2</string>
+    <string name="msg_host">10.0.3.2</string>
+    <string name="msg_server_nick_name">frank</string>
     <!--end message string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
