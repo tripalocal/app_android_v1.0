@@ -25,6 +25,7 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.models.Message;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
@@ -180,8 +181,13 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
         System.out.println("oncreate");
-        Intent intent = new Intent(this, MessageSerivice.class);
-        startService(intent);
+
+        //start service for message
+        if(!MessageSerivice.isRunning) {
+            MessageSerivice.username="zhuxiaole";
+            Intent intent = new Intent(this, MessageSerivice.class);
+            startService(intent);
+        }
 
     }
 

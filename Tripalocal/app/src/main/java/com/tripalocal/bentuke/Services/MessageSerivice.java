@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.adapters.ChatMsgListener;
 
@@ -36,9 +37,10 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 public class MessageSerivice extends Service {
     private static final String TAG = "HelloService";
 
-    private boolean isRunning  = false;
+    public static boolean isRunning  = false;
     public static Chat chat;
     public static XMPPTCPConnection connection;
+    public static String username;
 
     @Override
     public void onCreate() {
@@ -58,21 +60,17 @@ public class MessageSerivice extends Service {
         @Override
         protected Boolean doInBackground(String... params) {
             try{
-                /** 获取当前登陆用户 */
-
                         try {
-                            Log.i(TAG, "Service onStartCommand");
-                            System.out.println("service statrted");
-                            System.out.println("this is a test");
+
                             XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
-                                    .setHost("10.0.3.2")
-                                    .setServiceName("10.0.3.2")
+                                    .setHost(getResources().getString(R.string.msg_host))
+                                    .setServiceName(getResources().getString(R.string.msg_server_name))
                                     .setPort(5222)
                                     .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
                                     .build();
                             connection = new XMPPTCPConnection(config);
                             connection.connect();
-                            connection.login("zhuxiaole", "zhuxiaole");
+                            connection.login(username,username);
 
                             HomeActivity.connection = connection;
                         }catch(Exception e){
@@ -80,7 +78,6 @@ public class MessageSerivice extends Service {
                         }
 
 
-//                    System.out.println("User:"+ connection.getUser());
                 ChatManager chatManager= ChatManager.getInstanceFor(connection);
                 chat=chatManager.createChat("frankcf329@frank");
 //                chatManager.addChatListener(new ChatMsgListener());

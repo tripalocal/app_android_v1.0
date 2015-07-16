@@ -43,10 +43,13 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     public void onBindViewHolder(MessageViewHolder msgViewHolder, int i) {
         msgViewHolder.msg_sender.setText(messages.get(i).getSender());
         msgViewHolder.msg_brief.setText(messages.get(i).getContent());
-//        personViewHolder.msg_time.setText(messages.get(i).getDatetime_read());
         String msg_time=HomeActivity.getHome_context().getResources().getString(R.string.msg_mins_to_now);
         msgViewHolder.msg_time.setText(msg_time);
 
+        String sender_name=messages.get(i).getSender();
+        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name));
+        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name));
+        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name));
     }
 
     @Override
@@ -66,21 +69,24 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             msg_sender = (TextView)itemView.findViewById(R.id.msg_sender);
             msg_brief = (TextView)itemView.findViewById(R.id.msg_brief);
             msg_time = (TextView)itemView.findViewById(R.id.msg_time);
-            msg_sender.setOnClickListener(new msglistlistener());
-            msg_brief.setOnClickListener(new msglistlistener());
-            msg_time.setOnClickListener(new msglistlistener());
+          ;
 
         }
 
-        static class msglistlistener implements View.OnClickListener{
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                HomeActivity.getHome_context().startActivity(intent);
-            }
-        }
     }
 
+    static class msglistlistener implements View.OnClickListener{
+        String info;
+        msglistlistener(String info){
+            this.info=info;
+        }
+        @Override
+        public void onClick(View view) {
+            ChatActivity.sender_id=info;
+            Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            HomeActivity.getHome_context().startActivity(intent);
+        }
+    }
 }

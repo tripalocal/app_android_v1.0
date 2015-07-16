@@ -70,9 +70,7 @@ public class MsgListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
-//        mAdapter = new MyAdapter(myDataset);
-//        mRecyclerView.setAdapter(mAdapter);
+
         initializeData();
         getActivity().setTitle(getResources().getString(R.string.msg_list_title));
         MessageListAdapter adapter = new MessageListAdapter(messages);
@@ -82,10 +80,11 @@ public class MsgListFragment extends Fragment {
     }
 
     private void initializeData(){
+        //get All message list from database or web server.
         messages = new ArrayList<>();
-        messages.add(new Message("test","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d",true));
-        messages.add(new Message("dasd","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d",false));
-        messages.add(new Message("tdase78st","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d",false));
+        messages.add(new Message("1","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d",true));
+        messages.add(new Message("2","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d",false));
+        messages.add(new Message("3","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d",false));
 
     }
     public void onResume() {

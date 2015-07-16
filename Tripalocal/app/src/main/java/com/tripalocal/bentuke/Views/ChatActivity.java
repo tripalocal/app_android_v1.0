@@ -59,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
     EditText inputText;
     public final static int receiver_flag=0;
     public final static int sender_flag=1;
+    public static String sender_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,30 +117,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_msg_detail, menu);
-//        if(menu_ref == null)
-//            menu_ref= menu;
-//        if(getCurrent_user().isLoggedin()){
-//            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
-//        }
-//
-//        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
-//            @Override
-//            public boolean onSuggestionSelect(int position) {
-//                //ToastHelper.shortToast("sugg select "+position);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onSuggestionClick(int position) {
-//                //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
-//                Fragment exp_list_frag = new ExperiencesListFragment();
-//                Bundle args = new Bundle();
-//                args.putInt(ExperienceListAdapter.INT_EXTRA, position);
-//                exp_list_frag.setArguments(args);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
-//                return false;
-//            }
-//        });
+
         return true;
     }
 
@@ -160,19 +138,13 @@ public class ChatActivity extends AppCompatActivity {
 
 //                    System.out.println("User:"+ connection.getUser());
             ChatManager chatManager= ChatManager.getInstanceFor(connection);
-            chat=chatManager.createChat("frankcf329@frank");
-            System.out.println("here comes 1");
+            chat=chatManager.createChat(sender_id+"@frank");
             chatManager.addChatListener(new ChatManagerListener() {
                 @Override
                 public void chatCreated(Chat chat, boolean createdLocally) {
-                    chat.addMessageListener(new chatMsgListener() {
-
-
-                    });
+                    chat.addMessageListener(new chatMsgListener());
                 }
             });
-            System.out.println("here comes 3");
-
             while (true) ;
         }catch(Exception e){
             System.out.println(""+e.getMessage().toString());
@@ -181,26 +153,24 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-    public class chatMsgListener implements ChatMessageListener{
+    private class chatMsgListener implements ChatMessageListener{
         @Override
         public void processMessage(Chat arg0, Message arg1) {
-            System.out.println("here comes 1");
-
             if (null != arg1.getBody()) {
                 final String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
+                System.out.println(from);
                 final String message_body=arg1.getBody();
-//                System.out.println("from " + from + " : " + arg1.getBody());
-                runOnUiThread(new Runnable(){
-                    public void run(){
-                        //update UI elements
+                if(from.equals(ChatActivity.sender_id)) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            //update UI elements
+                            addTextToList(message_body, receiver_flag);
+                            notifAdapter();
+                            System.out.println("goes inside1");
+                        }
+                    });
+                }
 
-                        addTextToList(message_body,receiver_flag);
-                        notifAdapter();
-                        System.out.println("goes inside");
-                    }
-                });
-
-//                                fragment.test();
             }
         }
 
@@ -211,10 +181,11 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
-                    addTextToList(text,sender_flag);
+                    addTextToList(text, sender_flag);
                     notifAdapter();
                     try {
-                        MessageSerivice.chat.sendMessage(text);
+                        chat.sendMessage(text);
+                        notifAdapter();
                     } catch (Exception e) {
                         System.out.println("errors here" + e.getMessage().toString());
                     }
@@ -228,7 +199,7 @@ public class ChatActivity extends AppCompatActivity {
 
     protected void addTextToList(String text,int person){
         HashMap<String,Object> map=new HashMap<String,Object>();
-        map.put("person",person );
+        map.put("person", person);
         map.put("text", text);
         chatListMap.add(map);
     }
@@ -239,9 +210,6 @@ public class ChatActivity extends AppCompatActivity {
         inputText.setText("");
     }
 
-    public void test(){
-        chat_send_btn.setText("this is a tets");
-    }
 
 
 }
