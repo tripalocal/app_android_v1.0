@@ -145,6 +145,10 @@ public class ExpDetailActivityFragment extends Fragment {
                 if(HomeActivity.getCurrent_user().isLoggedin()){
                     Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    ChatActivity.sender_id=3+"";//set exp id
+                    ChatActivity.sender_name=3+"";//set exp id
+
+//                    ChatActivity
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
 

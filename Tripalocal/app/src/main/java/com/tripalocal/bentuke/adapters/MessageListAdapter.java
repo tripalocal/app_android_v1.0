@@ -47,9 +47,9 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         msgViewHolder.msg_time.setText(msg_time);
 
         String sender_name=messages.get(i).getSender();
-        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name));
-        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name));
-        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name));
+        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_name));
+        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_name));
+        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_name));
     }
 
     @Override
@@ -77,14 +77,17 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     }
 
     static class msglistlistener implements View.OnClickListener{
-        String info;
-        msglistlistener(String info){
-            this.info=info;
+        String name,id;
+        msglistlistener(String name,String id){
+            this.name=name;
+            this.id=id;
         }
         @Override
         public void onClick(View view) {
-            ChatActivity.sender_id=info;
+
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+            ChatActivity.sender_id=id;
+            ChatActivity.sender_name=name;
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             HomeActivity.getHome_context().startActivity(intent);
         }
