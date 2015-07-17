@@ -144,7 +144,7 @@ public class ChatActivity extends AppCompatActivity {
 
 //                    System.out.println("User:"+ connection.getUser());
             ChatManager chatManager= ChatManager.getInstanceFor(connection);
-            chat=chatManager.createChat(sender_id+"@frank");
+            chat=chatManager.createChat(sender_id+"@"+getResources().getString(R.string.msg_server_nick_name));
             chatManager.addChatListener(new ChatManagerListener() {
                 @Override
                 public void chatCreated(Chat chat, boolean createdLocally) {

@@ -63,8 +63,11 @@ public class MessageSerivice extends Service {
                                     .build();
                             connection = new XMPPTCPConnection(config);
                             connection.connect();
-                            connection.login(username,username);
-
+                            try {
+                                connection.login(username, username);
+                            }catch(Exception e){
+                                System.out.println("connection error:"+e.getMessage().toString());
+                            }
                             HomeActivity.connection = connection;
                             ChatManager chatManager= ChatManager.getInstanceFor(connection);
                             chatManager.addChatListener(new ChatManagerListener() {
@@ -77,23 +80,27 @@ public class MessageSerivice extends Service {
                                                 String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 String msg_body = message.getBody().toString();
                                                 NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
+                                                System.out.println("message body"+msg_body);
                                             }
+                                            System.out.println("message body comes inside");
+
                                         }
                                     });
+                                    System.out.println("message body outdei  inside");
+
 
                                 }
                             });
                         }catch(Exception e){
-                            System.out.println(e.getMessage().toString());
+                            System.out.println("service erro1:"+e.getMessage().toString());
                         }
 
 
-                ChatManager chatManager= ChatManager.getInstanceFor(connection);
-                chat=chatManager.createChat("frankcf329@frank");
-//                chatManager.addChatListener(new ChatMsgListener());
+                ChatManager chatManager= ChatManager.getInstanceFor(connection);//
+                //                chatManager.addChatListener(new ChatMsgListener());
                 while (true) ;
             }catch(Exception e){
-                System.out.println(""+e.getMessage().toString());
+                System.out.println("service error2"+e.getMessage().toString());
             }
             return true;
         }

@@ -287,9 +287,9 @@
     <string name="msg_chat_title">正在与somebody对话</string>
     <string name="msg_list_title">对话列表</string>
 
-    <string name="msg_server_name">10.0.3.2</string>
-    <string name="msg_host">10.0.3.2</string>
-    <string name="msg_server_nick_name">frank</string>
+    <string name="msg_server_name">54.149.42.196</string>
+    <string name="msg_host">54.149.42.196</string>
+    <string name="msg_server_nick_name">tripalocal.com</string>
 
     <!--msg configuration-->
     <!--<String name="msg_server_address"></String>-->
