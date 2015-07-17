@@ -225,7 +225,7 @@
     <string name="password_error">密码必须保持一致</string>
     <string name="verfication_code_error">验证码错误</string>
     <string name="send_msg_failure">发送失败，请检查你的电话号码</string>
-    <string name="msg_content">客户你好，你的验证码为：code 60秒内有效，请完成注册</string>
+    <string name="msg_content">客户你好，你的验证码为：code ，1分钟内有效，请完成注册</string>
     <!--do not change the "code" here-->
     <string name="title_login_fragment">登录</string>
     <string name="title_signup_fragment">注册</string>
