@@ -184,7 +184,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //start service for message
         if(!MessageSerivice.isRunning) {
-            MessageSerivice.username="zhuxiaole";
+            MessageSerivice.username="2";
             Intent intent = new Intent(this, MessageSerivice.class);
             startService(intent);
         }

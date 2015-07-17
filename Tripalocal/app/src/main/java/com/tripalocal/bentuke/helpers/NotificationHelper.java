@@ -22,7 +22,7 @@ public class NotificationHelper {
         mBuilder.setContentTitle(title);
         mBuilder.setContentText(msg_detail);//details msg inside the notifcation bar
         mBuilder.setTicker(msg_detail);//notification msg on the top
-        mBuilder.setSmallIcon(R.drawable.icon_app_notification);
+        mBuilder.setSmallIcon(R.drawable.msg_notification_icon);
         Intent resultIntent=new Intent(context, ChatActivity.class);
         resultIntent.putExtra("notificationId", 1);
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(context);
