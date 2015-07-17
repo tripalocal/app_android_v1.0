@@ -11,18 +11,11 @@ import android.os.IBinder;
 import android.util.Log;
 
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.util.Log;
-
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.HomeActivity;
-import com.tripalocal.bentuke.adapters.ChatMsgListener;
+import com.tripalocal.bentuke.helpers.NotificationHelper;
 
-import org.jivesoftware.smack.AbstractXMPPConnection;
 import org.jivesoftware.smack.ConnectionConfiguration;
-import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.chat.Chat;
 import org.jivesoftware.smack.chat.ChatManager;
 import org.jivesoftware.smack.chat.ChatManagerListener;
@@ -73,6 +66,23 @@ public class MessageSerivice extends Service {
                             connection.login(username,username);
 
                             HomeActivity.connection = connection;
+                            ChatManager chatManager= ChatManager.getInstanceFor(connection);
+                            chatManager.addChatListener(new ChatManagerListener() {
+                                @Override
+                                public void chatCreated(Chat chat, boolean createdLocally) {
+                                    chat.addMessageListener(new ChatMessageListener() {
+                                        @Override
+                                        public void processMessage(Chat chat, Message message) {
+                                            if (message.getBody() != null) {
+                                                String partiticipant_id = chat.getParticipant().split("@")[0];
+                                                String msg_body = message.getBody().toString();
+                                                NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
+                                            }
+                                        }
+                                    });
+
+                                }
+                            });
                         }catch(Exception e){
                             System.out.println(e.getMessage().toString());
                         }
@@ -116,5 +126,10 @@ public class MessageSerivice extends Service {
         isRunning = false;
 
     }
+
+
+
+
+
 }
 

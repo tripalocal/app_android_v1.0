@@ -2,16 +2,22 @@ package com.tripalocal.bentuke.Views;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,7 +65,7 @@ public class ChatActivity extends AppCompatActivity {
     EditText inputText;
     public final static int receiver_flag=0;
     public final static int sender_flag=1;
-    public static String sender_id;
+    public static String sender_id,sender_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +82,7 @@ public class ChatActivity extends AppCompatActivity {
             connection= MessageSerivice.connection;
 
         }
-        String title_t=getResources().getString(R.string.msg_chat_title);
+        String title_t=getResources().getString(R.string.msg_chat_title).replace("somebody",sender_id);
         setTitle(title_t);
         chatListView=(ListView)findViewById(R.id.chat_list);
         chatListMap=new ArrayList<HashMap<String,Object>>();
@@ -104,7 +110,7 @@ public class ChatActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-       finish();
+        finish();
         return super.onOptionsItemSelected(item);
     }
 
@@ -166,7 +172,7 @@ public class ChatActivity extends AppCompatActivity {
                             //update UI elements
                             addTextToList(message_body, receiver_flag);
                             notifAdapter();
-                            System.out.println("goes inside1");
+//                            System.out.println("goes inside1");
                         }
                     });
                 }
@@ -196,7 +202,6 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-
     protected void addTextToList(String text,int person){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
@@ -209,6 +214,8 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setSelection(chatListMap.size() - 1);
         inputText.setText("");
     }
+
+
 
 
 
