@@ -56,17 +56,17 @@ public class ChatActivity extends AppCompatActivity {
     Chat chat;
     Fragment fragment;
     XMPPTCPConnection connection;
-    private  ListView chatListView;
+    private  static ListView chatListView;
     public static ArrayList<HashMap<String,Object>> chatListMap=null;
     private static ChatAdapter adapter;
     public static Activity chatActivity_context;
     int[] layouts;
     Button chat_send_btn;
-    EditText inputText;
+    public static EditText inputText;
     public final static int receiver_flag=0;
     public final static int sender_flag=1;
     public static String sender_id,sender_name;
-    private boolean isRunning;
+    private  ChatManager chatManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,8 +81,8 @@ public class ChatActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             connection= MessageSerivice.connection;
-
         }
+        chatManager=ChatManager.getInstanceFor(connection);
         String title_t=getResources().getString(R.string.msg_chat_title).replace("somebody",sender_id);
         setTitle(title_t);
         chatListView=(ListView)findViewById(R.id.chat_list);
@@ -95,17 +95,8 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setAdapter(adapter);
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        isRunning=true;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                msgHandler();
-
-            }
-        }).start();
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -117,10 +108,25 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        isRunning=false;
         finish();
         super.onBackPressed();
+        chat=null;
+        sender_id="";
 
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        chat=null;
+        sender_id="";
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        chat=null;
+        sender_id="";
     }
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
@@ -141,48 +147,10 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
-    public void msgHandler(){
-        try{
-
-//                    System.out.println("User:"+ connection.getUser());
-            ChatManager chatManager= ChatManager.getInstanceFor(connection);
-            chat=chatManager.createChat(sender_id+"@"+getResources().getString(R.string.msg_server_nick_name));
-            chatManager.addChatListener(new ChatManagerListener() {
-                @Override
-                public void chatCreated(Chat chat, boolean createdLocally) {
-                    chat.addMessageListener(new chatMsgListener());
-                }
-            });
-            while (isRunning) ;
-        }catch(Exception e){
-            System.out.println(""+e.getMessage().toString());
-        }
-    }
 
 
 
-    private class chatMsgListener implements ChatMessageListener{
-        @Override
-        public void processMessage(Chat arg0, Message arg1) {
-            if (null != arg1.getBody()) {
-                final String from = arg1.getFrom().substring(0, arg1.getFrom().indexOf("@"));
-                System.out.println(from);
-                final String message_body=arg1.getBody();
-                if(from.equals(ChatActivity.sender_id)) {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            //update UI elements
-                            addTextToList(message_body, receiver_flag);
-                            notifAdapter();
-//                            System.out.println("goes inside1");
-                        }
-                    });
-                }
 
-            }
-        }
-
-    }
     public void setChatListener(){
         chat_send_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,6 +160,7 @@ public class ChatActivity extends AppCompatActivity {
                     addTextToList(text, sender_flag);
                     notifAdapter();
                     try {
+                        chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
                         chat.sendMessage(text);
                         notifAdapter();
                     } catch (Exception e) {
@@ -216,6 +185,20 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setSelection(chatListMap.size() - 1);
         inputText.setText("");
     }
+    public static void notifAdapterStatic(){
+        adapter.notifyDataSetChanged();
+        chatListView.setSelection(chatListMap.size() - 1);
+        inputText.setText("");
+    }
+
+    public static void addTextToListStatic(String text,int person){
+        HashMap<String,Object> map=new HashMap<String,Object>();
+        map.put("person", person);
+        map.put("text", text);
+        chatListMap.add(map);
+    }
+
+
 
 
 

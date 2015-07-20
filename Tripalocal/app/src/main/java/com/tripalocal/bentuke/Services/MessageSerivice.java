@@ -7,11 +7,13 @@ package com.tripalocal.bentuke.Services;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 
@@ -34,11 +36,14 @@ public class MessageSerivice extends Service {
     public static Chat chat;
     public static XMPPTCPConnection connection;
     public static String username;
+    Handler handler;
 
     @Override
     public void onCreate() {
 
         isRunning = true;
+        handler = new Handler();
+
     }
 
     @Override
@@ -77,16 +82,27 @@ public class MessageSerivice extends Service {
                                         @Override
                                         public void processMessage(Chat chat, Message message) {
                                             if (message.getBody() != null) {
-                                                String partiticipant_id = chat.getParticipant().split("@")[0];
-                                                String msg_body = message.getBody().toString();
-                                                NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
-                                                System.out.println("message body"+msg_body);
-                                            }
-                                            System.out.println("message body comes inside");
+                                                final String partiticipant_id = chat.getParticipant().split("@")[0];
+                                                final String msg_body = message.getBody().toString();
+                                                System.out.println("message body" + msg_body);
+                                                if(ChatActivity.sender_id.equals(partiticipant_id)){
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            //update UI elements
+                                                            ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
+                                                            ChatActivity.notifAdapterStatic();
+                                                        }
+                                                    });
+                                                }else{
+                                                    NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
 
+                                                }
+
+                                            }
+//                                            System.out.println("message body comes inside");
                                         }
                                     });
-                                    System.out.println("message body outdei  inside");
+//                                    System.out.println("message body outdei  inside");
 
 
                                 }
@@ -96,8 +112,6 @@ public class MessageSerivice extends Service {
                         }
 
 
-                ChatManager chatManager= ChatManager.getInstanceFor(connection);//
-                //                chatManager.addChatListener(new ChatMsgListener());
                 while (true) ;
             }catch(Exception e){
                 System.out.println("service error2"+e.getMessage().toString());
@@ -121,6 +135,9 @@ public class MessageSerivice extends Service {
 
 //    private messageTask extends AsyncTask<String,Stirng,Stirng>(){}
 
+    private void runOnUiThread(Runnable runnable) {
+        handler.post(runnable);
+    }
     @Override
     public IBinder onBind(Intent arg0) {
         Log.i(TAG, "Service onBind");
