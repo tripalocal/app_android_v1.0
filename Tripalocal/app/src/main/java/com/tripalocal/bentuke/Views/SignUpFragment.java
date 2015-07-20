@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import retrofit.Callback;
@@ -88,6 +89,8 @@ public class SignUpFragment extends Fragment {
         apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
+                MsgHelper.registerUserXMPP("test");//need id here
+
                 if(!cancelled) {
                     ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
                     HomeActivity.getCurrent_user().setLoggedin(true);

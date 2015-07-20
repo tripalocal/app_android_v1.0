@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import retrofit.Callback;
@@ -90,6 +91,7 @@ public class PhoneregisterFragment2 extends Fragment {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
 
                 //System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
+                MsgHelper.registerUserXMPP("test");//need id here
                 HomeActivity.login_ch=true;
                 Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
