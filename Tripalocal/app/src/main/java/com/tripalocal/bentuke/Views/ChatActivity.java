@@ -66,6 +66,7 @@ public class ChatActivity extends AppCompatActivity {
     public final static int receiver_flag=0;
     public final static int sender_flag=1;
     public static String sender_id,sender_name;
+    private boolean isRunning;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +96,7 @@ public class ChatActivity extends AppCompatActivity {
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        isRunning=true;
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -116,6 +117,7 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        isRunning=false;
         finish();
         super.onBackPressed();
 
@@ -151,7 +153,7 @@ public class ChatActivity extends AppCompatActivity {
                     chat.addMessageListener(new chatMsgListener());
                 }
             });
-            while (true) ;
+            while (isRunning) ;
         }catch(Exception e){
             System.out.println(""+e.getMessage().toString());
         }
