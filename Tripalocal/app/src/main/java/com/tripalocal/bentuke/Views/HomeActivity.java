@@ -183,11 +183,14 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println("oncreate");
 
         //start service for message
+        ChatActivity.sender_id="";
         if(!MessageSerivice.isRunning) {
-            MessageSerivice.username="2";
+            MessageSerivice.username="6";
             Intent intent = new Intent(this, MessageSerivice.class);
             startService(intent);
         }
+
+
 
     }
 
