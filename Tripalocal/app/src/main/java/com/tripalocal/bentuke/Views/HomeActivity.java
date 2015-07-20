@@ -62,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
     public static boolean login_ch=false;
     public static String webViewPage_info="";
     public static XMPPTCPConnection connection;
+    public static String user_id;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;

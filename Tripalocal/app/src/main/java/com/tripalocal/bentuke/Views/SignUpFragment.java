@@ -95,6 +95,7 @@ public class SignUpFragment extends Fragment {
                     public void run() {
                         MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
                         System.out.println("running here");
+                        HomeActivity.user_id=result1.getUser_id();
                     }
                 }).start();
 
