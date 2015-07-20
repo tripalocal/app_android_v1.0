@@ -46,7 +46,7 @@ public class MsgHelper {
 
     public static void startMsgSerivice(Context context){
         if(!MessageSerivice.isRunning && HomeActivity.getCurrent_user().isLoggedin()) {
-            MessageSerivice.username="6";
+            MessageSerivice.username=HomeActivity.getCurrent_user().getUser_id();
             Intent intent = new Intent(context, MessageSerivice.class);
             context.startService(intent);
             System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
