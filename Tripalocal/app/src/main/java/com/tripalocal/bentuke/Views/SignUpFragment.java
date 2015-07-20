@@ -89,7 +89,14 @@ public class SignUpFragment extends Fragment {
         apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
-                MsgHelper.registerUserXMPP("test");//need id here
+                final Login_Result result1=result;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
+                        System.out.println("running here");
+                    }
+                }).start();
 
                 if(!cancelled) {
                     ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));

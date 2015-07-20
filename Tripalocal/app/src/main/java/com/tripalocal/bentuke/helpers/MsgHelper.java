@@ -17,6 +17,7 @@ import org.jivesoftware.smackx.iqregister.AccountManager;
 public class MsgHelper {
 
     public static void registerUserXMPP(String userId){
+
         XMPPTCPConnection connection;
 
         XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()

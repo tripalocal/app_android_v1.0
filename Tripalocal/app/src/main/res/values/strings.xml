@@ -288,8 +288,8 @@
     <string name="msg_server_name">54.149.42.196</string>
     <string name="msg_host">54.149.42.196</string>
     <string name="msg_server_nick_name">tripalocal.com</string>
-    <string name="msg_admin_username">admin</string>
-    <string name="msg_admin_password">admin</string>
+    <string name="msg_admin_username">superAdmin</string>
+    <string name="msg_admin_password">superAdmin</string>
     <!--end message string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
