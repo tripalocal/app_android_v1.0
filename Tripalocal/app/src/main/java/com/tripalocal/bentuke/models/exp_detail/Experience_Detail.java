@@ -35,6 +35,17 @@ public class Experience_Detail{
     private String experience_language;
     private Integer experience_guest_number_min;
     private Integer experience_guest_number_max;
+    private String host_id;
+
+    public String getHost_id() {
+        return host_id;
+    }
+
+    public void setHost_id(String host_id) {
+        this.host_id = host_id;
+    }
+
+
 
 
     public Boolean isIncludedTicket() {
