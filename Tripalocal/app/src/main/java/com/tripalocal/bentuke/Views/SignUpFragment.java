@@ -84,8 +84,6 @@ public class SignUpFragment extends Fragment {
         String first_name = edit_firstname.getText().toString();
         String last_name = edit_lastname.getText().toString();
 
-        //apiService.signup_user(email, pwd, first_name, last_name, new Callback<Login_Result>() {
-
         apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
@@ -103,6 +101,8 @@ public class SignUpFragment extends Fragment {
                     ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                    HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+
                     HomeActivity.login_flag = true;
                     Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                     startActivity(intent);

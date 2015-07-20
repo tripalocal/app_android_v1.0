@@ -18,6 +18,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import retrofit.Callback;
@@ -184,11 +185,14 @@ public class LoginFragment extends Fragment {
                         //HomeActivity.setCurrent_userid(result.getUser_id());
                         HomeActivity.getCurrent_user().setLoggedin(true);
                         HomeActivity.login_flag = true;
+                        HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
                         //System.out.println("result = [" + result + "], response = [" + response + "]");
                         getActivity().invalidateOptionsMenu();
                         getActivity().onBackPressed();
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
+                        MsgHelper.startMsgSerivice(getActivity());
+
                         if (HomeActivity.login_ch) {
                             HomeActivity.login_ch = false;
                             Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);

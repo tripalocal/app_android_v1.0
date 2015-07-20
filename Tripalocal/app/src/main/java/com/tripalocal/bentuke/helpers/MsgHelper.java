@@ -1,8 +1,11 @@
 package com.tripalocal.bentuke.helpers;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.Views.HomeActivity;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
@@ -38,6 +41,15 @@ public class MsgHelper {
             System.out.println("connection error:"+e.getMessage().toString());
         }finally{
             connection.disconnect();
+        }
+    }
+
+    public static void startMsgSerivice(Context context){
+        if(!MessageSerivice.isRunning && HomeActivity.getCurrent_user().isLoggedin()) {
+            MessageSerivice.username="6";
+            Intent intent = new Intent(context, MessageSerivice.class);
+            context.startService(intent);
+            System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
         }
     }
 }

@@ -29,6 +29,7 @@ public class PhoneregisterFragment2 extends Fragment {
 
     Button confirm_btn;
     EditText last_name, first_name, password_1, password_2, email;
+    public static boolean cancelled = false;
 
     public PhoneregisterFragment2() {
     }
@@ -40,6 +41,8 @@ public class PhoneregisterFragment2 extends Fragment {
 
         initView(view);
         initControllers();
+        cancelled = false;
+
         return view;
     }
 
@@ -85,23 +88,29 @@ public class PhoneregisterFragment2 extends Fragment {
         String first_name_s=first_name.getText().toString();
         String last_name_s=last_name.getText().toString();
 
-        apiService.signupUser(new SignupRequest(email_s,password_s,first_name_s,last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
+        apiService.signupUser(new SignupRequest(email_s, password_s, first_name_s, last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
-                final Login_Result result1=result;
+                final Login_Result result1 = result;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
                         System.out.println("running here");
-                        HomeActivity.user_id=result1.getUser_id();
                     }
                 }).start();
                 //System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
-                HomeActivity.login_ch=true;
-                Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                if (!cancelled) {
+                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
+                    HomeActivity.getCurrent_user().setLoggedin(true);
+                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                    HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+
+                    HomeActivity.login_flag = true;
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -148,5 +157,9 @@ public class PhoneregisterFragment2 extends Fragment {
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg2));
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        cancelled = true;
+    }
 }

@@ -25,6 +25,7 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.models.Message;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
@@ -117,6 +118,7 @@ public class HomeActivity extends AppCompatActivity {
             if(!settings_l.getBoolean("login", false)){
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.putString("token", getCurrent_user().getLogin_token());
+                editor_l.putString("user_id",getCurrent_user().getUser_id());
                 editor_l.putBoolean("login", true);
                 editor_l.apply();
             }
@@ -140,6 +142,7 @@ public class HomeActivity extends AppCompatActivity {
         if(settings_l.getBoolean("login", false)){
             getCurrent_user().setLogin_token(settings_l.getString("token", null));
             getCurrent_user().setLoggedin(true);
+            getCurrent_user().setUser_id(settings_l.getString("user_id",null));
         }
 
         if(poi_data == null || db_poi_data == null){
@@ -180,16 +183,14 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+        }else{
+            ChatActivity.sender_id="";
+            MsgHelper.startMsgSerivice(getHome_context());
+
         }
         System.out.println("oncreate");
 
         //start service for message
-        ChatActivity.sender_id="";
-        if(!MessageSerivice.isRunning) {
-            MessageSerivice.username="6";
-            Intent intent = new Intent(this, MessageSerivice.class);
-            startService(intent);
-        }
 
 
 
@@ -290,6 +291,7 @@ public class HomeActivity extends AppCompatActivity {
             if(HomeActivity.getCurrent_user().isLoggedin()){
                 HomeActivity.getCurrent_user().setLogin_token(null);
                 HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.getCurrent_user().setUser_id(null);
                 HomeActivity.setAccessToken(null);
                 SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor_l = settings_l.edit();
