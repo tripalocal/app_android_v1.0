@@ -89,7 +89,6 @@ public class PhoneregisterFragment2 extends Fragment {
             @Override
             public void success(Login_Result result, Response response) {
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
-
                 final Login_Result result1=result;
                 new Thread(new Runnable() {
                     @Override
@@ -100,7 +99,6 @@ public class PhoneregisterFragment2 extends Fragment {
                     }
                 }).start();
                 //System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
-                MsgHelper.registerUserXMPP(result.getUser_id());//need id here
                 HomeActivity.login_ch=true;
                 Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
