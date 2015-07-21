@@ -30,14 +30,7 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
-import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
-import com.tripalocal.bentuke.adapters.MyTripAdapter;
-import com.tripalocal.bentuke.adapters.TPSuggestionsAdapter;
-import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatListDbHelper;
-import com.tripalocal.bentuke.models.MyTrip;
-import com.tripalocal.bentuke.models.database.ChatList;
-import com.tripalocal.bentuke.models.network.UserInfo_Result;
+
 import com.umeng.analytics.MobclickAgent;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
@@ -107,11 +100,7 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setAdapter(adapter);
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ChatListDbHelper db=new ChatListDbHelper(this);
-        db.addNewChatList(new ChatList(12,"test","test","test"));
-        db.readChatList(12);
-
-        testApi();
+//        testApi();
     }
 
 
@@ -216,36 +205,36 @@ public class ChatActivity extends AppCompatActivity {
         chatListMap.add(map);
     }
 
-
-    private void testApi()
-    {
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
-                    }
-                })
-                .build();
-
-        ApiService apiService = restAdapter.create(ApiService.class);
-
-        apiService.getPublicProfile("12", new Callback<UserInfo_Result>() {
-
-            @Override
-            public void success(UserInfo_Result userInfo_result, Response response) {
-                        System.out.println("test lalala :"+userInfo_result.getHostname());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                //System.out.println("ERROR MYTRIP :" + error);
-            }
-        });
-    }
+//
+//    private void testApi()
+//    {
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
+//                .setRequestInterceptor(new RequestInterceptor() {
+//                    @Override
+//                    public void intercept(RequestFacade request) {
+//                        request.addHeader("Accept", "application/json");
+//                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
+//                    }
+//                })
+//                .build();
+//
+//        ApiService apiService = restAdapter.create(ApiService.class);
+//
+//        apiService.getPublicProfile("12", new Callback<UserInfo_Result>() {
+//
+//            @Override
+//            public void success(UserInfo_Result userInfo_result, Response response) {
+//                        System.out.println("test lalala :"+userInfo_result.getHostname());
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                //System.out.println("ERROR MYTRIP :" + error);
+//            }
+//        });
+//    }
 
 
 
