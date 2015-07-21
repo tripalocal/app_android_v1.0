@@ -28,10 +28,16 @@ import android.widget.ListView;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
+import com.tripalocal.bentuke.adapters.MyTripAdapter;
 import com.tripalocal.bentuke.adapters.TPSuggestionsAdapter;
 import com.tripalocal.bentuke.helpers.ToastHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDbHelper;
+import com.tripalocal.bentuke.models.MyTrip;
+import com.tripalocal.bentuke.models.database.ChatList;
+import com.tripalocal.bentuke.models.network.UserInfo_Result;
 import com.umeng.analytics.MobclickAgent;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
@@ -47,6 +53,12 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by chenfang on 10/07/2015.
@@ -83,7 +95,7 @@ public class ChatActivity extends AppCompatActivity {
             connection= MessageSerivice.connection;
         }
         chatManager=ChatManager.getInstanceFor(connection);
-        String title_t=getResources().getString(R.string.msg_chat_title).replace("somebody",sender_id);
+        String title_t=getResources().getString(R.string.msg_chat_title).replace("somebody",sender_name);
         setTitle(title_t);
         chatListView=(ListView)findViewById(R.id.chat_list);
         chatListMap=new ArrayList<HashMap<String,Object>>();
@@ -95,7 +107,13 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setAdapter(adapter);
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ChatListDbHelper db=new ChatListDbHelper(this);
+        db.addNewChatList(new ChatList(12,"test","test","test"));
+        db.readChatList(12);
+
+        testApi();
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -199,6 +217,35 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
+    private void testApi()
+    {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
+                    }
+                })
+                .build();
+
+        ApiService apiService = restAdapter.create(ApiService.class);
+
+        apiService.getPublicProfile("12", new Callback<UserInfo_Result>() {
+
+            @Override
+            public void success(UserInfo_Result userInfo_result, Response response) {
+                        System.out.println("test lalala :"+userInfo_result.getHostname());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                //System.out.println("ERROR MYTRIP :" + error);
+            }
+        });
+    }
 
 
 
