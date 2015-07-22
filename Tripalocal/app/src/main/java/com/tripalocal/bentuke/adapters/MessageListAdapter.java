@@ -13,6 +13,7 @@ import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.Message;
+import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import java.util.List;
 
@@ -21,9 +22,9 @@ import java.util.List;
  */
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageViewHolder>{
 
-    List<Message> messages;
+    List<ChatList_model> messages;
 
-   public MessageListAdapter(List<Message> messages){
+   public MessageListAdapter(List<ChatList_model> messages){
         this.messages = messages;
     }
 
@@ -41,15 +42,16 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     @Override
     public void onBindViewHolder(MessageViewHolder msgViewHolder, int i) {
-        msgViewHolder.msg_sender.setText(messages.get(i).getSender());
-        msgViewHolder.msg_brief.setText(messages.get(i).getContent());
+        msgViewHolder.msg_sender.setText(messages.get(i).getSender_name());
+        msgViewHolder.msg_brief.setText(messages.get(i).getLast_msg_content());
         String msg_time=HomeActivity.getHome_context().getResources().getString(R.string.msg_mins_to_now);
         msgViewHolder.msg_time.setText(msg_time);
 
-        String sender_name=messages.get(i).getSender();
-        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_name));
-        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_name));
-        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_name));
+        String sender_name=messages.get(i).getSender_name();
+        String sender_id=messages.get(i).getSender_id();
+        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id));
+        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_id));
+        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id));
     }
 
     @Override

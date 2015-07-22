@@ -94,8 +94,9 @@ public class MessageSerivice extends Service {
                                                 ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
                                                 ChatList_model model=new ChatList_model();
                                                 model.setSender_id(partiticipant_id);
-                                                model.setSender_name("test");
-                                                model.setLast_msg_content("fsdfs");
+                                                model.setSender_name("test"+partiticipant_id
+                                                );
+                                                model.setLast_msg_content(msg_body);
                                                 model.setLast_msg_date("dsad");
                                                 try {
                                                     dataSource.open();
