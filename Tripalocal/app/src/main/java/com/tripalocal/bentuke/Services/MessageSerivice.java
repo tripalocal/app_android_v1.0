@@ -103,9 +103,10 @@ public class MessageSerivice extends Service {
                                                 ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
                                                 ChatMsg_model msgModel=new ChatMsg_model();
                                                 msgModel.setReceiver_id(partiticipant_id);
-                                                msgModel.setReceiver_name(partiticipant_id+"test");
+                                                msgModel.setReceiver_name(partiticipant_id + "test");
                                                 msgModel.setMsg_date("data");
                                                 msgModel.setMsg_content(msg_body);
+                                                msgModel.setMsg_type(ChatActivity.receiver_flag);
 
 
                                                 try {
@@ -119,7 +120,7 @@ public class MessageSerivice extends Service {
 //                                                    System.out.println("we are gonna to start db here");
                                                 } catch (SQLException e) {
                                                     e.printStackTrace();
-                                                    System.out.println("Exception here "+e.getMessage().toString());
+                                                    System.out.println("Exception here " + e.getMessage().toString());
                                                 }
                                                 if(ChatActivity.sender_id.equals(partiticipant_id)){
                                                     runOnUiThread(new Runnable() {

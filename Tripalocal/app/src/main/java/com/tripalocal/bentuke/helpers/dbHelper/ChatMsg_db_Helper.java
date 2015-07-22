@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by chenf_000 on 22/07/2015.
  */
 public class ChatMsg_db_Helper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME="chatMsg9.db";
+    public static final String DATABASE_NAME="chatMsg.db";
     private static final int DATABASE_VERSION=1;
     public static final String TABLE_NAME="ChatMsg_table";
     public static final String COLUMN_ID="id";
@@ -16,6 +16,7 @@ public class ChatMsg_db_Helper extends SQLiteOpenHelper {
     public static final String COLUMN_RECEIVER_NAME="receiver_name";
     public static final String COLUMN_MSG_CONTENT="msg_content";
     public static final String COLUMN_MSG_DATE="msg_date";
+    public static final String COlUMN_MSG_TYPE="msg_type";
 
     private static final String DATABASE_CREATE="create table "
             +TABLE_NAME+ "( "+
@@ -23,6 +24,7 @@ public class ChatMsg_db_Helper extends SQLiteOpenHelper {
             COLUMN_RECEIVER_ID+" TEXT NOT NULL, " +
             COLUMN_RECEIVER_NAME+" TEXT NOT NULL, "+
             COLUMN_MSG_CONTENT+" TEXT NOT NULL, "+
+            COlUMN_MSG_TYPE+" TEXT NOT NULL, "+
             COLUMN_MSG_DATE+ " TEXT NOT NULL);";
 
     public ChatMsg_db_Helper(Context context){

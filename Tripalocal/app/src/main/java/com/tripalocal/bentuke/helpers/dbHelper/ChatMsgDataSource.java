@@ -24,7 +24,8 @@ public class ChatMsgDataSource{
             ChatMsg_db_Helper.COLUMN_MSG_CONTENT,
             ChatMsg_db_Helper.COLUMN_MSG_DATE,
             ChatMsg_db_Helper.COLUMN_RECEIVER_ID,
-            ChatMsg_db_Helper.COLUMN_RECEIVER_NAME
+            ChatMsg_db_Helper.COLUMN_RECEIVER_NAME,
+            ChatMsg_db_Helper.COlUMN_MSG_TYPE
     };
 
     public ChatMsgDataSource(Context context){
@@ -45,8 +46,11 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_MSG_DATE,model.getMsg_date());
         values.put(dbHelper.COLUMN_RECEIVER_ID,model.getReceiver_id());
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
+        values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
         long insertId=database.insert(dbHelper.TABLE_NAME,null,values);
-        System.out.println("added to database successfully");
+        System.out.println("added to database successfully"+model.getMsg_type()+values.get(dbHelper.COlUMN_MSG_TYPE));
+//        System.out.println("person type on add new msg");
+
     }
 
     public List<ChatMsg_model> getChatMsgs(int receiverId){
@@ -66,7 +70,7 @@ public class ChatMsgDataSource{
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
         ChatMsg_model model=new ChatMsg_model();
-//        model.setMsg_id(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
+        model.setMsg_type(cursor.getInt(cursor.getColumnIndex(dbHelper.COlUMN_MSG_TYPE)));
         model.setMsg_content(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MSG_CONTENT)));
         model.setMsg_date(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MSG_DATE)));
         model.setReceiver_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_ID)));

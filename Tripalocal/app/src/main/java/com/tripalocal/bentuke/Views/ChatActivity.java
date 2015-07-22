@@ -202,7 +202,7 @@ public class ChatActivity extends AppCompatActivity {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
 
             chatMsg_datasource.open();
-            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id,sender_name,text,"d"));
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, "d", 1));
             chatMsg_datasource.close();
             System.out.println("add text finish");
         }catch (Exception e){
@@ -249,7 +249,8 @@ public class ChatActivity extends AppCompatActivity {
         }
         for(ChatMsg_model model :lists){
             HashMap<String,Object> map=new HashMap<String,Object>();
-            map.put("person", 1);
+            map.put("person", model.getMsg_type());
+            System.out.println("person type on initData"+model.getMsg_type());
             map.put("text", model.getMsg_content());
             chatListMap.add(map);
         }
