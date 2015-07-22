@@ -90,7 +90,7 @@ public class MessageSerivice extends Service {
                                             if (message.getBody() != null) {
                                                 final String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 final String msg_body = message.getBody().toString();
-                                                System.out.println("message body" + msg_body);
+//                                                System.out.println("message body" + msg_body);
                                                 ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
                                                 ChatList_model model=new ChatList_model();
                                                 model.setSender_id(partiticipant_id);
@@ -102,10 +102,10 @@ public class MessageSerivice extends Service {
                                                     dataSource.open();
                                                     dataSource.createNewChat(model);
                                                     dataSource.close();
-                                                    System.out.println("we are gonna to start db here");
+//                                                    System.out.println("we are gonna to start db here");
                                                 } catch (SQLException e) {
                                                     e.printStackTrace();
-                                                    System.out.println("Exception here "+e.getMessage().toString());
+//                                                    System.out.println("Exception here "+e.getMessage().toString());
                                                 }
                                                 if(ChatActivity.sender_id.equals(partiticipant_id)){
                                                     runOnUiThread(new Runnable() {

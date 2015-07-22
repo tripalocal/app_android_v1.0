@@ -75,15 +75,6 @@ public class ChatAdapter extends BaseAdapter{
         }
         String text=(String)chatList.get(position).get("text");
         holder.textView.setText(text);
-//        holder.imageView=(ImageView)convertView.findViewById(to[who*2+0]);
-//        holder.textView=(TextView)convertView.findViewById(to[who*2+1]);
-//
-//
-//        System.out.println(holder);
-//        System.out.println("WHYWHYWHYWHYW");
-//        System.out.println(holder.imageView);
-//        holder.imageView.setBackgroundResource((Integer)chatList.get(position).get(from[0]));
-//        holder.textView.setText(chatList.get(position).get(from[1]).toString());
         return convertView;
     }
 }

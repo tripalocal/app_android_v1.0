@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
-import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.models.Message;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import java.util.List;

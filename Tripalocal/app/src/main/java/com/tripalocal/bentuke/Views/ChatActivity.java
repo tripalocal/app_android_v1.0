@@ -32,7 +32,10 @@ import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 
 import com.tripalocal.bentuke.adapters.MyTripAdapter;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.MyTrip;
+import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.database.ChatMsg_model;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.umeng.analytics.MobclickAgent;
 
@@ -75,6 +78,7 @@ public class ChatActivity extends AppCompatActivity {
     public final static int sender_flag=1;
     public static String sender_id,sender_name;
     private  ChatManager chatManager;
+    private ChatMsgDataSource chatMsg_datasource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,12 +103,15 @@ public class ChatActivity extends AppCompatActivity {
         chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
         inputText=(EditText)findViewById(R.id.chat_input_text);
         setChatListener();
+        initData();
+
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        testApi();
+    //        testApi();
 //        getProfile();
+
     }
 
 
@@ -188,7 +195,22 @@ public class ChatActivity extends AppCompatActivity {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
+        System.out.println("add text to list starta");
         chatListMap.add(map);
+        ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
+        try {
+            chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
+
+            chatMsg_datasource.open();
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id,sender_name,text,"d"));
+            chatMsg_datasource.close();
+            System.out.println("add text finish");
+        }catch (Exception e){
+            System.out.println("exception"+e.getMessage().toString());
+        }
+        System.out.println("add text to list end");
+
+
     }
 
     public void notifAdapter(){
@@ -209,6 +231,29 @@ public class ChatActivity extends AppCompatActivity {
         chatListMap.add(map);
     }
 
+
+    public void initData(){
+        chatListMap = new ArrayList< HashMap<String,Object>>();
+        ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
+        ChatMsgDataSource chatMsg_datasource1=new ChatMsgDataSource(getApplicationContext());
+        System.out.println("helloo eocmasdfas");
+        try {
+            chatMsg_datasource1.open();
+            lists =(ArrayList<ChatMsg_model>)chatMsg_datasource1.getChatMsgs(Integer.parseInt(sender_id));
+            System.out.println("retrieve data succesffully");
+        }catch (Exception e){
+            System.out.println("exception123:"+e.getMessage().toString());
+        }finally {
+            chatMsg_datasource1.close();
+
+        }
+        for(ChatMsg_model model :lists){
+            HashMap<String,Object> map=new HashMap<String,Object>();
+            map.put("person", 1);
+            map.put("text", model.getMsg_content());
+            chatListMap.add(map);
+        }
+    }
 //
 //    private void testApi()
 //    {
