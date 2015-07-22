@@ -18,7 +18,9 @@ import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.database.ChatMsg_model;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.chat.Chat;
@@ -94,18 +96,30 @@ public class MessageSerivice extends Service {
                                                 ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
                                                 ChatList_model model=new ChatList_model();
                                                 model.setSender_id(partiticipant_id);
-                                                model.setSender_name("test"+partiticipant_id
-                                                );
+                                                model.setSender_name("test" + partiticipant_id);
                                                 model.setLast_msg_content(msg_body);
                                                 model.setLast_msg_date("dsad");
+
+                                                ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
+                                                ChatMsg_model msgModel=new ChatMsg_model();
+                                                msgModel.setReceiver_id(partiticipant_id);
+                                                msgModel.setReceiver_name(partiticipant_id+"test");
+                                                msgModel.setMsg_date("data");
+                                                msgModel.setMsg_content(msg_body);
+
+
                                                 try {
                                                     dataSource.open();
                                                     dataSource.createNewChat(model);
                                                     dataSource.close();
+
+                                                    msgDataSource.open();
+                                                    msgDataSource.addNewMsg(msgModel);
+                                                    msgDataSource.close();
 //                                                    System.out.println("we are gonna to start db here");
                                                 } catch (SQLException e) {
                                                     e.printStackTrace();
-//                                                    System.out.println("Exception here "+e.getMessage().toString());
+                                                    System.out.println("Exception here "+e.getMessage().toString());
                                                 }
                                                 if(ChatActivity.sender_id.equals(partiticipant_id)){
                                                     runOnUiThread(new Runnable() {
@@ -113,7 +127,7 @@ public class MessageSerivice extends Service {
                                                             //update UI elements
                                                             ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
                                                             ChatActivity.notifAdapterStatic();
-                                                            MsgListFragment.notfiChangeOfAdapter();
+//                                                            MsgListFragment.notfiChangeOfAdapter();
 
 
                                                         }
