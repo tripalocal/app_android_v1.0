@@ -19,6 +19,7 @@ import com.tripalocal.bentuke.models.network.Coupon_Result;
 import com.tripalocal.bentuke.models.network.Credit_Request;
 import com.tripalocal.bentuke.models.network.LoginFBRequest;
 import com.tripalocal.bentuke.models.network.MyProfile_result;
+import com.tripalocal.bentuke.models.network.Profile_result;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.network.SignupRequest;
 import com.tripalocal.bentuke.models.network.profileUpdateRequest;
@@ -50,6 +51,10 @@ public interface ApiService {
     @GET("/service_myprofile/")
     void getMyProfileDetails(Callback<MyProfile_result> response);
 
+    @GET("/service_publicprofile")
+    void getPublicProfile(Callback<Profile_result> response);
+
+
     @POST("/service_myprofile/")
     void saveMyProfileDetails(@Body profileUpdateRequest phone , Callback<MyProfile_result> response);
 
@@ -61,5 +66,6 @@ public interface ApiService {
 
     @POST("/service_couponverification/")
     void verifyCouponCode(@Body String data_json, Callback<Coupon_Result> response);
+
 
 }

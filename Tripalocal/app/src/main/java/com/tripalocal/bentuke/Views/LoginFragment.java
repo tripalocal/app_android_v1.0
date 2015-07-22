@@ -191,6 +191,9 @@ public class LoginFragment extends Fragment {
                         getActivity().onBackPressed();
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
+                        System.out.println("Login pages");
+                        System.out.println("tooken "+result.getToken());
+                        System.out.println("tooken on Home Activity"+HomeActivity.getAccessToken());
                         MsgHelper.startMsgSerivice(getActivity());
 
                         if (HomeActivity.login_ch) {

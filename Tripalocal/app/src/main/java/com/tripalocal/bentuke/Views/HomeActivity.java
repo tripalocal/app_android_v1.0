@@ -25,8 +25,10 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.models.Message;
+import com.tripalocal.bentuke.models.network.Profile_result;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
@@ -40,6 +42,12 @@ import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 import static com.tripalocal.bentuke.R.layout;
 
@@ -127,6 +135,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         MobclickAgent.updateOnlineConfig(this);
         AnalyticsConfig.enableEncrypt(true);
@@ -186,11 +195,12 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
+            getProfile();
 
         }
-        System.out.println("oncreate");
-
+        System.out.println("oncreate and tooken is "+getAccessToken());
         //start service for message
+//        getProfile();
 
 
 
@@ -371,4 +381,36 @@ public class HomeActivity extends AppCompatActivity {
         saveData();
         MobclickAgent.onPause(this);
     }
+
+    private void getProfile()
+    {
+        System.out.println("Profile activity start");
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
+                    }
+                })
+                .build();
+
+        ApiService apiService = restAdapter.create(ApiService.class);
+
+        apiService.getPublicProfile(new Callback<Profile_result>() {
+            @Override
+            public void success(Profile_result result, Response response) {
+                System.out.println("retrieve profile successfully");
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("ERROR MYTRIP :" + error+"\n Tooken is "
+                +HomeActivity.getAccessToken());
+            }
+        });
+    }
+
+
 }

@@ -15,7 +15,10 @@ import android.util.Log;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.chat.Chat;
@@ -25,6 +28,8 @@ import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+
+import java.sql.SQLException;
 
 /**
  * Created by chenf_000 on 14/07/2015.
@@ -37,6 +42,7 @@ public class MessageSerivice extends Service {
     public static XMPPTCPConnection connection;
     public static String username;
     Handler handler;
+
 
     @Override
     public void onCreate() {
@@ -85,12 +91,30 @@ public class MessageSerivice extends Service {
                                                 final String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 final String msg_body = message.getBody().toString();
                                                 System.out.println("message body" + msg_body);
+                                                ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
+                                                ChatList_model model=new ChatList_model();
+                                                model.setSender_id(partiticipant_id);
+                                                model.setSender_name("test");
+                                                model.setLast_msg_content("fsdfs");
+                                                model.setLast_msg_date("dsad");
+                                                try {
+                                                    dataSource.open();
+                                                    dataSource.createNewChat(model);
+                                                    dataSource.close();
+                                                    System.out.println("we are gonna to start db here");
+                                                } catch (SQLException e) {
+                                                    e.printStackTrace();
+                                                    System.out.println("Exception here "+e.getMessage().toString());
+                                                }
                                                 if(ChatActivity.sender_id.equals(partiticipant_id)){
                                                     runOnUiThread(new Runnable() {
                                                         public void run() {
                                                             //update UI elements
                                                             ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
                                                             ChatActivity.notifAdapterStatic();
+                                                            MsgListFragment.notfiChangeOfAdapter();
+
+
                                                         }
                                                     });
                                                 }else{
@@ -103,8 +127,6 @@ public class MessageSerivice extends Service {
                                         }
                                     });
 //                                    System.out.println("message body outdei  inside");
-
-
                                 }
                             });
                         }catch(Exception e){

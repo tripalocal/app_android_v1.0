@@ -31,6 +31,9 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 
+import com.tripalocal.bentuke.adapters.MyTripAdapter;
+import com.tripalocal.bentuke.models.MyTrip;
+import com.tripalocal.bentuke.models.network.Profile_result;
 import com.umeng.analytics.MobclickAgent;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
@@ -101,6 +104,7 @@ public class ChatActivity extends AppCompatActivity {
         chatActivity_context=this;
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        testApi();
+//        getProfile();
     }
 
 
