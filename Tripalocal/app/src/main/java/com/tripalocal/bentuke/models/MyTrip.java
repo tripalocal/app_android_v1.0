@@ -10,9 +10,19 @@ public class MyTrip {
     private int experience_id;
     private String experience_title;
     private String meetup_spot;
+
+    public String getHost_id() {
+        return host_id;
+    }
+
+    public void setHost_id(String host_id) {
+        this.host_id = host_id;
+    }
+
     private String host_name;
     private String host_phone_number;
     private String host_image;
+    private String host_id;
 
     public String getDatetime() {
         return datetime;

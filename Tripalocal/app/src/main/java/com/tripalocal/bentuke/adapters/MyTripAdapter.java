@@ -127,7 +127,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                 @Override
                 public void onClick(View v) {
                     if(HomeActivity.getCurrent_user().isLoggedin()){
-                        ChatActivity.sender_id=MyTripAdapter.result_mytrip.getHostName();  //set exp id
+                        ChatActivity.sender_id=MyTripAdapter.result_mytrip.getHost_id();  //set exp id
                         ChatActivity.sender_name=MyTripAdapter.result_mytrip.getHostName();//set exp name
                         Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
