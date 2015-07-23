@@ -16,6 +16,7 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MsgListFragment;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
@@ -98,13 +99,13 @@ public class MessageSerivice extends Service {
                                                 model.setSender_id(partiticipant_id);
                                                 model.setSender_name("test" + partiticipant_id);
                                                 model.setLast_msg_content(msg_body);
-                                                model.setLast_msg_date("dsad");
+                                                model.setLast_msg_date(GeneralHelper.getDateTime());
 
                                                 ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
                                                 ChatMsg_model msgModel=new ChatMsg_model();
                                                 msgModel.setReceiver_id(partiticipant_id);
                                                 msgModel.setReceiver_name(partiticipant_id + "test");
-                                                msgModel.setMsg_date("data");
+                                                msgModel.setMsg_date(GeneralHelper.getDateTime());
                                                 msgModel.setMsg_content(msg_body);
                                                 msgModel.setMsg_type(ChatActivity.receiver_flag);
                                                 try {

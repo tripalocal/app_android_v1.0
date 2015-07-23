@@ -23,6 +23,7 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MyTripFragment;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ImageDownloader;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
@@ -137,7 +138,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                         model.setSender_id(ChatActivity.sender_id);
                         model.setSender_name(ChatActivity.sender_name);
                         model.setLast_msg_content("");
-                        model.setLast_msg_date("dsad");
+                        model.setLast_msg_date(GeneralHelper.getDateTime());
                        try{
                            dataSource.open();
                             dataSource.createNewChat(model);

@@ -9,12 +9,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Views.ChatActivity;
+import com.tripalocal.bentuke.Views.HomeActivity;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by chenfang on 10/07/2015.
@@ -53,9 +58,9 @@ public class ChatAdapter extends BaseAdapter{
     }
 
     class ViewHolder{
-        public ImageView imageView=null;
+        public CircleImageView imageView=null;
         public TextView textView=null;
-
+        public TextView dateTime_text=null;
     }
 
     @Override
@@ -67,14 +72,22 @@ public class ChatAdapter extends BaseAdapter{
             convertView= LayoutInflater.from(context).inflate(layout[who],null);
 ;
         holder=new ViewHolder();
-        if(who==0){
-            holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
+        if(who== ChatActivity.sender_flag){
+            holder.textView=(TextView)convertView.findViewById(R.id.msg_content_send);
+            holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_send);
+            holder.imageView=(CircleImageView)convertView.findViewById(R.id.msg_image_send);
         }else{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
+            holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_receive);
+            holder.imageView=(CircleImageView)convertView.findViewById(R.id.msg_image_receive);
 
         }
         String text=(String)chatList.get(position).get("text");
+        String datetime_s=(String)chatList.get(position).get("dateTime");
         holder.textView.setText(text);
+        holder.dateTime_text.setText(datetime_s);
+        Glide.with(HomeActivity.getHome_context()).load("https://img1.etsystatic.com/026/0/9967485/il_570xN.650903603_29q6.jpg").fitCenter().into(holder.imageView);
+
         return convertView;
     }
 }

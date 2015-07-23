@@ -32,7 +32,7 @@ import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 
 import com.tripalocal.bentuke.adapters.MyTripAdapter;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.MyTrip;
 import com.tripalocal.bentuke.models.database.ChatList_model;
@@ -196,6 +196,7 @@ public class ChatActivity extends AppCompatActivity {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
+        map.put("dateTime",GeneralHelper.getDateTime());
         System.out.println("add text to list starta");
         chatListMap.add(map);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
@@ -203,20 +204,8 @@ public class ChatActivity extends AppCompatActivity {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
 
             chatMsg_datasource.open();
-            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, "d", sender_flag));
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag));
             chatMsg_datasource.close();
-
-                    //update ChatList
-            ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
-            ChatList_model model=new ChatList_model();
-            model.setSender_id(sender_id);
-            model.setSender_name(sender_name);
-            model.setLast_msg_content(text);
-            model.setLast_msg_date("dsad");
-            dataSource.open();
-            dataSource.createNewChat(model);
-            dataSource.close();
-
             System.out.println("add text finish");
         }catch (Exception e){
             System.out.println("exception"+e.getMessage().toString());
@@ -241,6 +230,7 @@ public class ChatActivity extends AppCompatActivity {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
+        map.put("dateTime",GeneralHelper.getDateTime());
         chatListMap.add(map);
     }
 
@@ -263,8 +253,9 @@ public class ChatActivity extends AppCompatActivity {
         for(ChatMsg_model model :lists){
             HashMap<String,Object> map=new HashMap<String,Object>();
             map.put("person", model.getMsg_type());
-            System.out.println("person type on initData"+model.getMsg_type());
+            System.out.println("person type on initData" + model.getMsg_type());
             map.put("text", model.getMsg_content());
+            map.put("dateTime",model.getMsg_date());
             chatListMap.add(map);
         }
     }

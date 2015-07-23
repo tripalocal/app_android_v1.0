@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="dasdasdsfashdfjksahfkjashfkjashdfkjashdfkjasdhfkjasdhfkasjdfhksjadfhasjk"
-                    android:id="@+id/msg_content_receive"
+                    android:id="@+id/msg_content_send"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
@@ -51,7 +51,7 @@
                     android:layout_height="0dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/msg_mins_to_now"
-                    android:id="@+id/textView6"
+                    android:id="@+id/msg_time_send"
                     android:layout_weight="0.47"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
@@ -62,7 +62,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/exp_detail_profile_image"
+                android:id="@+id/msg_image_send"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right|bottom"
