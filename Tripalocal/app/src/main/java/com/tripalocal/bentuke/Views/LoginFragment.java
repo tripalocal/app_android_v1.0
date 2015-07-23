@@ -18,7 +18,9 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.MsgHelper;
+import com.tripalocal.bentuke.models.User;
 import com.umeng.analytics.MobclickAgent;
 
 import retrofit.Callback;
@@ -181,22 +183,25 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void success(Login_Result result, Response response) {
                     if(!cancelled) {
+                        System.out.println("tooken is below");
                         HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                         //HomeActivity.setCurrent_userid(result.getUser_id());
                         HomeActivity.getCurrent_user().setLoggedin(true);
                         HomeActivity.login_flag = true;
                         HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+                        System.out.print("this token is " + HomeActivity.getAccessToken());
+
                         //System.out.println("result = [" + result + "], response = [" + response + "]");
-                        System.out.println("Login pages");
-                        System.out.println("tooken "+result.getToken());
-                        System.out.println("tooken on Home Activity" + HomeActivity.getAccessToken());
                         getActivity().invalidateOptionsMenu();
                         getActivity().onBackPressed();
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
-
 //                        MsgHelper.startMsgSerivice(getActivity());
-
+//                        if(!MessageSerivice.isRunning){
+//                            ChatActivity.sender_id="";
+//                            MsgHelper.startMsgSerivice(getActivity().getApplicationContext());
+//                            System.out.println("service start on ");
+//                        }
                         if (HomeActivity.login_ch) {
                             HomeActivity.login_ch = false;
                             Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);

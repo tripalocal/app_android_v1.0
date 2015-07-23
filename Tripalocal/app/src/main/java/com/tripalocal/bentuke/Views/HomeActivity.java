@@ -223,7 +223,7 @@ public class HomeActivity extends AppCompatActivity {
         if(!MessageSerivice.isRunning){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
-            getProfile();
+//            getProfile();
         }
         System.out.println("oncreate and tooken is "+getAccessToken());
 
@@ -390,6 +390,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void getProfile()
     {
+        final String tooken_en="804db40bac2e17f35932693dd4925b930be6925e";
         System.out.println("Profile activity start");
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -398,10 +399,11 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void intercept(RequestFacade request) {
                         request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
+                        request.addHeader("Authorization", "Token " +tooken_en);
                     }
                 })
                 .build();
+
 
         ApiService apiService = restAdapter.create(ApiService.class);
 
