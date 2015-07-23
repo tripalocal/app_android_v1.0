@@ -32,6 +32,7 @@ import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ChatAdapter;
 
 import com.tripalocal.bentuke.adapters.MyTripAdapter;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.MyTrip;
 import com.tripalocal.bentuke.models.database.ChatList_model;
@@ -74,8 +75,8 @@ public class ChatActivity extends AppCompatActivity {
     int[] layouts;
     Button chat_send_btn;
     public static EditText inputText;
-    public final static int receiver_flag=0;
-    public final static int sender_flag=1;
+    public final static int receiver_flag=1;
+    public final static int sender_flag=0;
     public static String sender_id,sender_name;
     private  ChatManager chatManager;
     private ChatMsgDataSource chatMsg_datasource;
@@ -202,8 +203,20 @@ public class ChatActivity extends AppCompatActivity {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
 
             chatMsg_datasource.open();
-            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, "d", 1));
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, "d", sender_flag));
             chatMsg_datasource.close();
+
+                    //update ChatList
+            ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
+            ChatList_model model=new ChatList_model();
+            model.setSender_id(sender_id);
+            model.setSender_name(sender_name);
+            model.setLast_msg_content(text);
+            model.setLast_msg_date("dsad");
+            dataSource.open();
+            dataSource.createNewChat(model);
+            dataSource.close();
+
             System.out.println("add text finish");
         }catch (Exception e){
             System.out.println("exception"+e.getMessage().toString());

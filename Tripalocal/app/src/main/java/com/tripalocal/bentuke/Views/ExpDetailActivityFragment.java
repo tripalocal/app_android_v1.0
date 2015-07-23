@@ -13,8 +13,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
+import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.database.ChatMsg_model;
 import com.umeng.analytics.MobclickAgent;
 
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -147,7 +152,23 @@ public class ExpDetailActivityFragment extends Fragment {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
                     ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
+                    ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
+                    ChatList_model model=new ChatList_model();
+                    model.setSender_id(ChatActivity.sender_id);
+                    model.setSender_name(ChatActivity.sender_name);
+                    model.setLast_msg_content("");
+                    model.setLast_msg_date("dsad");
 
+
+                    
+                    try {
+                        dataSource.open();
+                        dataSource.createNewChat(model);
+                        dataSource.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        System.out.println("Exception here " + e.getMessage().toString());
+                    }
 //                    ChatActivity
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
@@ -357,4 +378,6 @@ public class ExpDetailActivityFragment extends Fragment {
         map.put(getResources().getString(R.string.youmeng_event_item_expId),ExpDetailActivity.position+"");
         MobclickAgent.onEvent(getActivity().getApplicationContext(), getResources().getString(R.string.youmeng_event_title_viewExp), map);
     }
+
+
 }

@@ -187,14 +187,15 @@ public class LoginFragment extends Fragment {
                         HomeActivity.login_flag = true;
                         HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
                         //System.out.println("result = [" + result + "], response = [" + response + "]");
+                        System.out.println("Login pages");
+                        System.out.println("tooken "+result.getToken());
+                        System.out.println("tooken on Home Activity" + HomeActivity.getAccessToken());
                         getActivity().invalidateOptionsMenu();
                         getActivity().onBackPressed();
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
-                        System.out.println("Login pages");
-                        System.out.println("tooken "+result.getToken());
-                        System.out.println("tooken on Home Activity"+HomeActivity.getAccessToken());
-                        MsgHelper.startMsgSerivice(getActivity());
+
+//                        MsgHelper.startMsgSerivice(getActivity());
 
                         if (HomeActivity.login_ch) {
                             HomeActivity.login_ch = false;

@@ -125,7 +125,7 @@ public class MessageSerivice extends Service {
                                                             //update UI elements
                                                             ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
                                                             ChatActivity.notifAdapterStatic();
-                                                            MsgListFragment.notfiChangeOfAdapter();
+//                                                            MsgListFragment.notfiChangeOfAdapter();
                                                         }
                                                     });
                                                 }else{

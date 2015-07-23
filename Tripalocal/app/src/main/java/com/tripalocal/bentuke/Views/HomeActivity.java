@@ -24,6 +24,7 @@ import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.models.network.Profile_result;
@@ -124,7 +125,8 @@ public class HomeActivity extends AppCompatActivity {
             if(!settings_l.getBoolean("login", false)){
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.putString("token", getCurrent_user().getLogin_token());
-                editor_l.putString("user_id",getCurrent_user().getUser_id());
+                System.out.println("check token on home activity" + getCurrent_user().getLogin_token());
+                editor_l.putString("user_id", getCurrent_user().getUser_id());
                 editor_l.putBoolean("login", true);
                 editor_l.apply();
             }
@@ -190,13 +192,12 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else{
+        }
+        if(!MessageSerivice.isRunning){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
             getProfile();
-
         }
-        System.out.println("oncreate and tooken is "+getAccessToken());
         //start service for message
 //        getProfile();
 
@@ -219,6 +220,13 @@ public class HomeActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+        if(!MessageSerivice.isRunning){
+            ChatActivity.sender_id="";
+            MsgHelper.startMsgSerivice(getHome_context());
+            getProfile();
+        }
+        System.out.println("oncreate and tooken is "+getAccessToken());
+
         MobclickAgent.onResume(this);
 
     }

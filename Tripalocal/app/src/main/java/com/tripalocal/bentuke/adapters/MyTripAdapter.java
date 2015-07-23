@@ -25,7 +25,9 @@ import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MyTripFragment;
 import com.tripalocal.bentuke.helpers.ImageDownloader;
 import com.tripalocal.bentuke.helpers.ToastHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.MyTrip;
+import com.tripalocal.bentuke.models.database.ChatList_model;
 
 /**
  * Created by YiHan on 2015/4/28.
@@ -36,6 +38,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
     public static Context mContext;
     public static boolean upcoming_flag = false;
     public static boolean previous_flag = false;
+    public static MyTrip result_mytrip;
 
 
     public MyTripAdapter(Context applicationContext)
@@ -58,7 +61,8 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
         if(myTrip != null && !myTrip.isEmpty()) {
-            MyTrip result = myTrip.get(position);
+            final MyTrip result = myTrip.get(position);
+            result_mytrip=myTrip.get(position);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+'");
             Date dt = new Date();
             try {
@@ -123,9 +127,25 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                 @Override
                 public void onClick(View v) {
                     if(HomeActivity.getCurrent_user().isLoggedin()){
+                        ChatActivity.sender_id=MyTripAdapter.result_mytrip.getHostName();  //set exp id
+                        ChatActivity.sender_name=MyTripAdapter.result_mytrip.getHostName();//set exp name
                         Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         HomeActivity.getHome_context().startActivity(intent);
+                        ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
+                        ChatList_model model=new ChatList_model();
+                        model.setSender_id(ChatActivity.sender_id);
+                        model.setSender_name(ChatActivity.sender_name);
+                        model.setLast_msg_content("");
+                        model.setLast_msg_date("dsad");
+                       try{
+                           dataSource.open();
+                            dataSource.createNewChat(model);
+                           dataSource.close();
+                       }catch (Exception e){
+                           System.out.println("");
+                       }
+
                     }else{
 
                         ToastHelper.warnToast(mContext.getResources().getString(R.string.exp_detail_log_in_msg));

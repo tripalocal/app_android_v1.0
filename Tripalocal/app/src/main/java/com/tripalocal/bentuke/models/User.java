@@ -42,11 +42,12 @@ public class User {
     public User(){
     }
 
-    public User(String fname, String lname,String DOB, String Email) {
+    public User(String fname, String lname,String DOB, String Email,String login_token) {
         firstName = fname;
         lastName = lname;
         dob = DOB;
         email = Email;
+        this.login_token=login_token;
     }
 
     public boolean isLoggedin() {

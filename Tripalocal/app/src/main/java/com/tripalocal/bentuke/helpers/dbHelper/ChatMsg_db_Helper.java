@@ -4,13 +4,15 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.tripalocal.bentuke.Views.HomeActivity;
+
 /**
  * Created by chenf_000 on 22/07/2015.
  */
 public class ChatMsg_db_Helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="chatMsg.db";
     private static final int DATABASE_VERSION=1;
-    public static final String TABLE_NAME="ChatMsg_table";
+    public static final String TABLE_NAME="ChatMsg_table_"+ HomeActivity.getCurrent_user().getUser_id();
     public static final String COLUMN_ID="id";
     public static final String COLUMN_RECEIVER_ID="receiver_id";
     public static final String COLUMN_RECEIVER_NAME="receiver_name";
