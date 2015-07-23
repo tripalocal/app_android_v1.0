@@ -11,7 +11,7 @@ public class GeneralHelper {
 
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "MM/dd HH:mm", Locale.getDefault());
+                "dd/MM HH:mm", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }
