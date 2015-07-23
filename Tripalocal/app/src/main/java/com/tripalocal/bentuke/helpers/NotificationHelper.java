@@ -23,6 +23,8 @@ public class NotificationHelper {
         mBuilder.setContentText(msg_detail);//details msg inside the notifcation bar
         mBuilder.setTicker(msg_detail);//notification msg on the top
         mBuilder.setSmallIcon(R.drawable.msg_notification_icon);
+        mBuilder.setAutoCancel(true);//important here, when you start a notificaiotn from
+//        the service, it will not auto cancel, you must add this
         Intent resultIntent=new Intent(context, ChatActivity.class);
         resultIntent.putExtra("notificationId", 1);
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(context);

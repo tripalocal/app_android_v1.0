@@ -107,8 +107,6 @@ public class MessageSerivice extends Service {
                                                 msgModel.setMsg_date("data");
                                                 msgModel.setMsg_content(msg_body);
                                                 msgModel.setMsg_type(ChatActivity.receiver_flag);
-
-
                                                 try {
                                                     dataSource.open();
                                                     dataSource.createNewChat(model);
@@ -117,7 +115,6 @@ public class MessageSerivice extends Service {
                                                     msgDataSource.open();
                                                     msgDataSource.addNewMsg(msgModel);
                                                     msgDataSource.close();
-//                                                    System.out.println("we are gonna to start db here");
                                                 } catch (SQLException e) {
                                                     e.printStackTrace();
                                                     System.out.println("Exception here " + e.getMessage().toString());
@@ -128,9 +125,7 @@ public class MessageSerivice extends Service {
                                                             //update UI elements
                                                             ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
                                                             ChatActivity.notifAdapterStatic();
-//                                                            MsgListFragment.notfiChangeOfAdapter();
-
-
+                                                            MsgListFragment.notfiChangeOfAdapter();
                                                         }
                                                     });
                                                 }else{
@@ -139,10 +134,8 @@ public class MessageSerivice extends Service {
                                                 }
 
                                             }
-//                                            System.out.println("message body comes inside");
                                         }
                                     });
-//                                    System.out.println("message body outdei  inside");
                                 }
                             });
                         }catch(Exception e){

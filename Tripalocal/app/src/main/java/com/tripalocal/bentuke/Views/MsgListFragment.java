@@ -1,50 +1,30 @@
 package com.tripalocal.bentuke.Views;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.tripalocal.bentuke.R;
-import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.MessageListAdapter;
-import com.tripalocal.bentuke.helpers.FragHelper;
-import com.tripalocal.bentuke.helpers.Login_Result;
-import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.models.Message;
-import com.tripalocal.bentuke.models.network.LoginFBRequest;
-import com.umeng.analytics.MobclickAgent;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class MsgListFragment extends Fragment {
 
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private static RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<Message> messages;
+    private List<ChatList_model> messages;
+    private ChatListDataSource chatList_db_source;
     public MsgListFragment() {
         // Required empty public constructor
     }
@@ -60,8 +40,10 @@ public class MsgListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_msg_list, container, false);
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.rv);
+        chatList_db_source=new ChatListDataSource(HomeActivity.getHome_context());
 
+
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.rv);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
@@ -82,9 +64,19 @@ public class MsgListFragment extends Fragment {
     private void initializeData(){
         //get All message list from database or web server.
         messages = new ArrayList<>();
-        messages.add(new Message("1","10 mins ago","te432fasfdasdfasdfasdfasdfasdfa1d",true));
-        messages.add(new Message("2","12 mins ago","teas43sdfasdfsadfasdfsdfsdfsfsdfsdfsadfasdf21d",false));
-        messages.add(new Message("3","1 hr ago","te908sdfsadfsadfsadfsadfsadfsadfasdsassd4321d",false));
+        ArrayList<ChatList_model> lists=new ArrayList<ChatList_model>();
+
+        try {
+            chatList_db_source.open();
+            lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
+            chatList_db_source.close();
+        }catch (Exception e){
+            System.out.println("exception"+e.getMessage().toString());
+        }
+        for(ChatList_model model :lists){
+            messages.add(model);
+        }
+
 
     }
     public void onResume() {
@@ -96,6 +88,9 @@ public class MsgListFragment extends Fragment {
 //        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
     }
 
+    public static void notfiChangeOfAdapter(){
+        mAdapter.notifyDataSetChanged();
+    }
     @Override
     public void onStop() {
         super.onStop();
