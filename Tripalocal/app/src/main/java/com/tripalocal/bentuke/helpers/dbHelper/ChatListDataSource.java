@@ -24,7 +24,8 @@ public class ChatListDataSource {
       ChatList_db_Helper.COLUMN_LAST_MSG_CONTENT,
             ChatList_db_Helper.COLUMN_LAST_MSG_DATE,
             ChatList_db_Helper.COLUMN_SENDER_ID,
-            ChatList_db_Helper.COLUMN_SENDER_NAME
+            ChatList_db_Helper.COLUMN_SENDER_NAME,
+            ChatList_db_Helper.COLUMN_SENDER_IMAGE
     };
 
     public ChatListDataSource(Context context){
@@ -46,6 +47,7 @@ public class ChatListDataSource {
         values.put(dbHelper.COLUMN_LAST_MSG_DATE,model.getLast_msg_date());
         values.put(dbHelper.COLUMN_SENDER_ID,model.getSender_id());
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
+        values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
         long insertId=database.insert(dbHelper.TABLE_NAME,null,values);
 //        Cursor cursor=database.query(dbHelper.TABLE_NAME);
     }
@@ -83,6 +85,7 @@ public class ChatListDataSource {
         model.setLast_msg_date(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LAST_MSG_DATE)));
         model.setSender_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_ID)));
         model.setSender_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_NAME)));
+        model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));
         return model;
     }
 }

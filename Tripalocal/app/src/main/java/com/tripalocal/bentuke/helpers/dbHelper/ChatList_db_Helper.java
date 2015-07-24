@@ -18,6 +18,7 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
     public static final String COLUMN_SENDER_NAME="sender_name";
     public static final String COLUMN_LAST_MSG_CONTENT="last_msg_content";
     public static final String COLUMN_LAST_MSG_DATE="last_msg_date";
+    public static final String COLUMN_SENDER_IMAGE="sender_image";
 
     private static final String DATABASE_CREATE="create table if not exists "
             +TABLE_NAME+ "( "+
@@ -25,6 +26,7 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
             COLUMN_SENDER_ID+" TEXT NOT NULL, " +
             COLUMN_SENDER_NAME+" TEXT NOT NULL, "+
             COLUMN_LAST_MSG_CONTENT+" TEXT NOT NULL, "+
+            COLUMN_SENDER_IMAGE+" TEXT NOT NULL "+
             COLUMN_LAST_MSG_DATE+ " TEXT NOT NULL);";
 
 

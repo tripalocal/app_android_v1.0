@@ -19,6 +19,7 @@ public class ChatMsg_db_Helper extends SQLiteOpenHelper {
     public static final String COLUMN_MSG_CONTENT="msg_content";
     public static final String COLUMN_MSG_DATE="msg_date";
     public static final String COlUMN_MSG_TYPE="msg_type";
+    public static final String COLUMN_RECEIVER_IMAGE="receiver_image";
 
     private static final String DATABASE_CREATE="create table if not exists "
             +TABLE_NAME+ "( "+
@@ -27,6 +28,7 @@ public class ChatMsg_db_Helper extends SQLiteOpenHelper {
             COLUMN_RECEIVER_NAME+" TEXT NOT NULL, "+
             COLUMN_MSG_CONTENT+" TEXT NOT NULL, "+
             COlUMN_MSG_TYPE+" TEXT NOT NULL, "+
+            COLUMN_RECEIVER_IMAGE+" TEXT NOT NULL, "+
             COLUMN_MSG_DATE+ " TEXT NOT NULL);";
 
     public ChatMsg_db_Helper(Context context){

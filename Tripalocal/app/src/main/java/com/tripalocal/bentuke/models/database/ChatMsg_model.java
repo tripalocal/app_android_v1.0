@@ -36,14 +36,24 @@ public class ChatMsg_model {
         this.msg_content = msg_content;
     }
 
-    public ChatMsg_model (String receiver_id, String receiver_name, String msg_content, String msg_date,int msg_type) {
+    public ChatMsg_model (String receiver_id, String receiver_name, String msg_content, String msg_date,int msg_type,
+                          String receiver_img) {
         this.receiver_id = receiver_id;
         this.receiver_name = receiver_name;
         this.msg_content = msg_content;
         this.msg_date = msg_date;
         this.msg_type=msg_type;
+        this.receiver_img=receiver_img;
     }
     public ChatMsg_model(){}
+
+    public String getReceiver_img() {
+        return receiver_img;
+    }
+
+    public void setReceiver_img(String receiver_img) {
+        this.receiver_img = receiver_img;
+    }
 
     public String getMsg_date() {
 
@@ -54,7 +64,7 @@ public class ChatMsg_model {
         this.msg_date = msg_date;
     }
 
-    private String receiver_id,receiver_name, msg_content,msg_date;
+    private String receiver_id,receiver_name, msg_content,msg_date,receiver_img;
 
     public int getMsg_type() {
         return msg_type;

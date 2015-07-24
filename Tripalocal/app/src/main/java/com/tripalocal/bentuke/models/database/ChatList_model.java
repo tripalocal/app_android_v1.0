@@ -5,11 +5,12 @@ package com.tripalocal.bentuke.models.database;
  */
 public class ChatList_model {
 
-    public ChatList_model(String sender_id, String sender_name, String last_msg_date, String last_msg_content) {
+    public ChatList_model(String sender_id, String sender_name, String last_msg_date, String last_msg_content,String sender_img) {
         this.sender_id = sender_id;
         this.sender_name = sender_name;
         this.last_msg_date = last_msg_date;
         this.last_msg_content = last_msg_content;
+        this.sender_img=sender_img;
     }
 
     public ChatList_model(){
@@ -39,6 +40,14 @@ public class ChatList_model {
         this.last_msg_date = last_msg_data;
     }
 
+    public String getSender_img() {
+        return sender_img;
+    }
+
+    public void setSender_img(String sender_img) {
+        this.sender_img = sender_img;
+    }
+
     public String getLast_msg_content() {
         return last_msg_content;
     }
@@ -47,6 +56,6 @@ public class ChatList_model {
         this.last_msg_content = last_msg_content;
     }
 
-    private String sender_id,sender_name,last_msg_date,last_msg_content;
+    private String sender_id,sender_name,last_msg_date,last_msg_content,sender_img;
 
 }

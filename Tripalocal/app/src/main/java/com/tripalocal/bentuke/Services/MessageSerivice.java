@@ -33,6 +33,7 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * Created by chenf_000 on 14/07/2015.
@@ -94,20 +95,23 @@ public class MessageSerivice extends Service {
                                                 final String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 final String msg_body = message.getBody().toString();
 //                                                System.out.println("message body" + msg_body);
+                                                HashMap<String,String> map=GeneralHelper.getProfile(partiticipant_id);
                                                 ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
                                                 ChatList_model model=new ChatList_model();
                                                 model.setSender_id(partiticipant_id);
-                                                model.setSender_name("test" + partiticipant_id);
+                                                model.setSender_name(map.get("name"));
                                                 model.setLast_msg_content(msg_body);
                                                 model.setLast_msg_date(GeneralHelper.getDateTime());
+                                                model.setReceiver_img(map.get("image"));
 
                                                 ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
                                                 ChatMsg_model msgModel=new ChatMsg_model();
                                                 msgModel.setReceiver_id(partiticipant_id);
-                                                msgModel.setReceiver_name(partiticipant_id + "test");
+                                                msgModel.setReceiver_name(map.get("name"));
                                                 msgModel.setMsg_date(GeneralHelper.getDateTime());
                                                 msgModel.setMsg_content(msg_body);
                                                 msgModel.setMsg_type(ChatActivity.receiver_flag);
+                                                msgModel.setReceiver_img(map.get("image"));
                                                 try {
                                                     dataSource.open();
                                                     dataSource.createNewChat(model);

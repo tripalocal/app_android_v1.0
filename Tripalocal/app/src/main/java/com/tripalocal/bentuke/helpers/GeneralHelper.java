@@ -14,6 +14,7 @@ import com.tripalocal.bentuke.models.network.Profile_result;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 import retrofit.Callback;
@@ -56,9 +57,9 @@ public class GeneralHelper {
         progress.dismiss();
     }
 
-    private void getProfile(Activity activity)
+    public static HashMap<String,String> getProfile(String user_id)
     {
-        GeneralHelper.showLoadingProgress(activity);
+        final HashMap<String,String> map=new HashMap<String,String>();
         final String tooken_en="804db40bac2e17f35932693dd4925b930be6925e";
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -75,22 +76,23 @@ public class GeneralHelper {
 
         ApiService apiService = restAdapter.create(ApiService.class);
 
-        apiService.getPublicProfile("8",new Callback<Profile_result>() {
+        apiService.getPublicProfile(user_id, new Callback<Profile_result>() {
             @Override
             public void success(Profile_result result, Response response) {
                 GeneralHelper.closeLoadingProgress();
-
-                System.out.println("retrieve profile successfully"+result.getFirst_name()+result.getImage()+result.getLast_name()+"end");
+                map.put("name",result.getFirst_name()+" "+result.getLast_name());
+                map.put("image",result.getImage());
+                System.out.println("retrieve profile successfully" + result.getFirst_name() + result.getImage() + result.getLast_name() + "end");
             }
+
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
 
-                System.out.println("ERROR MYTRIP :" + error+"\n Tooken is "
-                        +HomeActivity.getCurrent_user().getLogin_token());
+                System.out.println("ERROR MYTRIP :" + error + "\n Tooken is "
+                        + HomeActivity.getCurrent_user().getLogin_token());
             }
         });
-        GeneralHelper.closeLoadingProgress();
-
+        return map;
     }
 }
