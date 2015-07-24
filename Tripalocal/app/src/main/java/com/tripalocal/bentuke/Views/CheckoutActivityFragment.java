@@ -95,8 +95,6 @@ public class CheckoutActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        GeneralHelper.showLoadingProgress(getActivity());
-        GeneralHelper.showLoadingProgress(getActivity());
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
         view_instance=view;
         datetimeMap=new HashMap<String,ArrayList<String>>();
@@ -343,6 +341,7 @@ public class CheckoutActivityFragment extends Fragment {
         refund = (TextView) view.findViewById(R.id.booking_refund_txt);
         bookingBtn.setEnabled(false);
         if (CheckoutActivity.position != 999) {
+            GeneralHelper.showLoadingProgress(getActivity());
             ok_client = new OkHttpClient();
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
