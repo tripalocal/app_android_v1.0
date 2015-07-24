@@ -198,7 +198,7 @@ public class HomeActivity extends AppCompatActivity {
         if(!MessageSerivice.isRunning && checkLogin()){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
-            getProfile();
+//            getProfile();
         }
 
         //start service for message
