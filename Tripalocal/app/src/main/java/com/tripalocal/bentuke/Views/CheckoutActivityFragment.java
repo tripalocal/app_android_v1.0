@@ -349,7 +349,7 @@ public class CheckoutActivityFragment extends Fragment {
                     .setEndpoint(getResources().getString(R.string.server_url))
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
-            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+//            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             req = new request(CheckoutActivity.position);
             //System.out.println("Position is " + CheckoutActivity.position);
@@ -502,7 +502,7 @@ public class CheckoutActivityFragment extends Fragment {
                 })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+//        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();

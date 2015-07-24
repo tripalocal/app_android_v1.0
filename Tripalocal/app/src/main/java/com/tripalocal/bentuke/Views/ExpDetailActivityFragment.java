@@ -240,7 +240,7 @@ public class ExpDetailActivityFragment extends Fragment {
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         req = new request(exp_id);
         apiService.getExpDetails(req, new Callback<Experience_Detail>() {

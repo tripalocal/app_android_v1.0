@@ -2,6 +2,7 @@
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/</string>
+
     <string name="version_language">Enlgish</string>
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
@@ -147,7 +148,7 @@
     <string name="wishlist_removed">Removed from wishlist</string>
     <string name="wishlist_error">Unable to save</string>
 
-    <string name="toast_contacting">Contacting server ...</string>
+    <!--<string name="toast_contacting">Contacting server ...</string>-->
     <string name="toast_error">Error occurred</string>
     <string name="toast_showing_exp">Showing experience for\u0020</string>
     <string name="toast_showing_wishlist">Showing your wishlist</string>
@@ -291,6 +292,11 @@
     <string name="msg_admin_username">superAdmin</string>
     <string name="msg_admin_password">superAdmin</string>
     <!--end message string-->
+
+    <!--loading text start-->
+    <string name="loading_dialog_title">Loading.....</string>
+    <string name="loading_dialog_text">Please Wait while loading...</string>
+    <!--loading text finish-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

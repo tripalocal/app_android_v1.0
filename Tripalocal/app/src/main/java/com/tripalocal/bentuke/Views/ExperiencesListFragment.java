@@ -95,7 +95,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 .setEndpoint(getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
             @Override
             public void success(List<Search_Result> search_results, Response response) {

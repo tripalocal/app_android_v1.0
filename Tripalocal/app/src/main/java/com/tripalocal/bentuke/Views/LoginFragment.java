@@ -175,7 +175,7 @@ public class LoginFragment extends Fragment {
 
     public void loginUser(){
         GeneralHelper.showLoadingProgress(getActivity());
-        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
+//        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
          RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint(getActivity().getResources().getString(R.string.server_url))
