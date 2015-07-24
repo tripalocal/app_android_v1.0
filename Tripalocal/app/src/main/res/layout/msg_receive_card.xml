@@ -26,21 +26,21 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginBottom="16dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="-10dp"
                 android:weightSum="1"
                 android:background="@drawable/msg_receive_shape">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="dasdasdsfashdfjksahfkjashfkjashdfkjashdfkjasdhfkjasdhfkasjdfhksjadfhasjk"
                     android:id="@+id/msg_content_receive"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="35dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:textSize="15dp" />
@@ -54,7 +54,7 @@
                     android:layout_weight="0.47"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="35dp"
                     android:textSize="10dp" />
 
             </LinearLayout>
@@ -68,7 +68,7 @@
                 android:src="@drawable/profile_default"
                 app:border_width="2dp"
                 app:border_color="#ffffffff"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="6dp"
                 android:layout_marginBottom="15dp" />
 
         </FrameLayout>
