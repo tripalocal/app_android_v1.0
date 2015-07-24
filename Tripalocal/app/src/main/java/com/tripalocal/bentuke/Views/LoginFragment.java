@@ -19,6 +19,7 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.models.User;
 import com.umeng.analytics.MobclickAgent;
@@ -144,6 +145,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginFBUser(){
+        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
@@ -153,6 +155,7 @@ public class LoginFragment extends Fragment {
         apiService.loginFBUser(new LoginFBRequest(HomeActivity.getAccessToken()), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result login_result, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.login_flag = true;
                 getActivity().onBackPressed();
@@ -161,6 +164,8 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 ToastHelper.errorToast(fb_log_in_failed);
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
@@ -169,6 +174,7 @@ public class LoginFragment extends Fragment {
 
 
     public void loginUser(){
+        GeneralHelper.showLoadingProgress(getActivity());
         ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
          RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -182,6 +188,7 @@ public class LoginFragment extends Fragment {
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
+                    GeneralHelper.closeLoadingProgress();
                     if(!cancelled) {
                         System.out.println("tooken is below");
                         HomeActivity.getCurrent_user().setLogin_token(result.getToken());
@@ -213,6 +220,7 @@ public class LoginFragment extends Fragment {
 
                 @Override
                 public void failure(RetrofitError error) {
+                    GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(log_in_failed);
                     //System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);

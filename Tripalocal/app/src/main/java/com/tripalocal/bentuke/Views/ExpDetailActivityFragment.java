@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
@@ -231,6 +232,7 @@ public class ExpDetailActivityFragment extends Fragment {
 
 
     public void getExpDetails(int exp_id){
+        GeneralHelper.showLoadingProgress(getActivity());
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -244,16 +246,20 @@ public class ExpDetailActivityFragment extends Fragment {
         apiService.getExpDetails(req, new Callback<Experience_Detail>() {
             @Override
             public void success(Experience_Detail experience_detail, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 if(req.getExperience_id() > 0) {
                     exp_to_display = experience_detail;
                     fillDetails();
                     request_to_book_btn.setEnabled(true);
                     send_msg_btn.setEnabled(true);
                 }
+
             }
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });

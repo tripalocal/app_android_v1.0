@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.DecimalFormat;
@@ -94,6 +95,8 @@ public class CheckoutActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        GeneralHelper.showLoadingProgress(getActivity());
+        GeneralHelper.showLoadingProgress(getActivity());
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
         view_instance=view;
         datetimeMap=new HashMap<String,ArrayList<String>>();
@@ -359,11 +362,14 @@ public class CheckoutActivityFragment extends Fragment {
                         updateDetails();
                         bookingBtn.setEnabled(true);
                     }
+                    GeneralHelper.closeLoadingProgress();
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
+                    GeneralHelper.closeLoadingProgress();
+
                 }
             });
         }
@@ -484,6 +490,7 @@ public class CheckoutActivityFragment extends Fragment {
 
 
     public void refresh_code() {
+        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
@@ -515,11 +522,15 @@ public class CheckoutActivityFragment extends Fragment {
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(coupon_result.getNew_price()) + " AUD");
                     coupon_status = true;
                 } else
+                GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
+
             }
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 ToastHelper.longToast(getResources().getString(R.string.server_error));
             }
         });

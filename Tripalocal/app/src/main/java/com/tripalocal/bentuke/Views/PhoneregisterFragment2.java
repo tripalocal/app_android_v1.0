@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.umeng.analytics.MobclickAgent;
 
@@ -72,6 +73,7 @@ public class PhoneregisterFragment2 extends Fragment {
 
 
     public void signupUser() {
+        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
@@ -91,6 +93,7 @@ public class PhoneregisterFragment2 extends Fragment {
         apiService.signupUser(new SignupRequest(email_s, password_s, first_name_s, last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
                 final Login_Result result1 = result;
                 new Thread(new Runnable() {
@@ -115,6 +118,7 @@ public class PhoneregisterFragment2 extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
 //            ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
                 //System.out.println("failure");
                 //System.out.println("error = [" + error + "]");

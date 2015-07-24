@@ -1,6 +1,7 @@
 package com.tripalocal.bentuke.Views;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.umeng.analytics.AnalyticsConfig;
@@ -193,11 +195,12 @@ public class HomeActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-        if(!MessageSerivice.isRunning){
+        if(!MessageSerivice.isRunning && checkLogin()){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
             getProfile();
         }
+
         //start service for message
 //        getProfile();
 
@@ -220,7 +223,7 @@ public class HomeActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-        if(!MessageSerivice.isRunning){
+        if(!MessageSerivice.isRunning && checkLogin()){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
 //            getProfile();
@@ -390,6 +393,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void getProfile()
     {
+        GeneralHelper.showLoadingProgress(this);
         final String tooken_en="804db40bac2e17f35932693dd4925b930be6925e";
         System.out.println("Profile activity start");
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -410,10 +414,13 @@ public class HomeActivity extends AppCompatActivity {
         apiService.getPublicProfile(new Callback<Profile_result>() {
             @Override
             public void success(Profile_result result, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 System.out.println("retrieve profile successfully");
             }
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 System.out.println("ERROR MYTRIP :" + error+"\n Tooken is "
                 +HomeActivity.getAccessToken());
             }

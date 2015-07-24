@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -59,6 +60,7 @@ public class MyProfileActivityFragment extends Fragment {
     }*/
 
     private void saveProfile() {
+        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
@@ -75,18 +77,21 @@ public class MyProfileActivityFragment extends Fragment {
         apiService.saveMyProfileDetails(new profileUpdateRequest(localno.getText().toString()), new Callback<MyProfile_result>() {
             @Override
             public void success(MyProfile_result myProfile_result, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 ToastHelper.shortToast(profile_saved);
             }
 
             @Override
             public void failure(RetrofitError error) {
+
+                GeneralHelper.closeLoadingProgress();
                 ToastHelper.errorToast(profile_error);
             }
         });
     }
 
     public void getProfileDetails(final View view){
-
+        GeneralHelper.showLoadingProgress(getActivity());
         //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -105,12 +110,14 @@ public class MyProfileActivityFragment extends Fragment {
         apiService.getMyProfileDetails(new Callback<MyProfile_result>() {
             @Override
             public void success(MyProfile_result res, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 result = res;
                 prepareProfile(view);
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
                 //System.out.println("error = [" + error + "]");
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }

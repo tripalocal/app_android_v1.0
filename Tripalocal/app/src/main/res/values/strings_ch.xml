@@ -295,6 +295,12 @@
     <!--msg configuration-->
     <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
+
+    <!--loading text start-->
+    <string name="loading_dialog_title">读取中.....</string>
+    <string name="loading_dialog_text">请耐心等候...</string>
+    <!--loading text finish-->
+
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

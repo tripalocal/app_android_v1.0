@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.DateFormat;
@@ -78,6 +79,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     }
 
     public void displayListFrag(final int position){
+        GeneralHelper.showLoadingProgress(getActivity());
         String keywords = getResources().getString(R.string.tags);
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();
@@ -97,6 +99,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
             @Override
             public void success(List<Search_Result> search_results, Response response) {
+                GeneralHelper.closeLoadingProgress();
                 ExperienceListAdapter.prepareSearchResults(search_results);
                 //System.out.println("search_results = " + search_results);
                 //ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
@@ -105,6 +108,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             }
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 //System.out.println("HomeActivityFragment.failure");
                 //System.out.println("error = [" + error + "]");
             }

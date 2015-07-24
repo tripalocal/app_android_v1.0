@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
@@ -105,6 +106,7 @@ public class CreditCardActivity  extends AppCompatActivity {
     }
 
     public void payByCard(String no,String month,String year,String cvv){
+        GeneralHelper.showLoadingProgress(this);
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))
@@ -129,6 +131,8 @@ public class CreditCardActivity  extends AppCompatActivity {
             @Override
             public void success(Booking_Result message, Response response) {
 //                ToastHelper.errorToast("Success");
+                GeneralHelper.closeLoadingProgress();
+
                 updateYoumeng();
                 Intent intent = new Intent(getApplicationContext(), PaymentSuccessActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -137,6 +141,8 @@ public class CreditCardActivity  extends AppCompatActivity {
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
 //                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
 

@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.Views;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.ParseException;
@@ -52,6 +54,7 @@ public class MyTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         getActivity().setTitle(getResources().getString(R.string.title_activity_my_trip));
         View view =inflater.inflate(R.layout.fragment_my_trip, container, false);
         getMyTrip(HomeActivity.getCurrent_user().getLogin_token());
@@ -168,6 +171,8 @@ public class MyTripFragment extends Fragment {
 
     private void getMyTrip(final String token)
     {
+        GeneralHelper.showLoadingProgress(getActivity());
+
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
@@ -186,7 +191,7 @@ public class MyTripFragment extends Fragment {
             @Override
             public void success(ArrayList<MyTrip> my_trip, Response response) {
                 classifyTrip(my_trip);
-                if(!upcomingTrip.isEmpty()) {
+                if (!upcomingTrip.isEmpty()) {
                     MyTripAdapter.myTrip = upcomingTrip;
                     category = 0;
                     upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
@@ -194,9 +199,7 @@ public class MyTripFragment extends Fragment {
                     previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
                     previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     tl_none.setVisibility(View.GONE);
-                }
-                else if(!previousTrip.isEmpty())
-                {
+                } else if (!previousTrip.isEmpty()) {
                     MyTripAdapter.myTrip = previousTrip;
                     category = 1;
                     previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
@@ -204,21 +207,23 @@ public class MyTripFragment extends Fragment {
                     upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
                     upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
                     tl_none.setVisibility(View.GONE);
-                }
-                else
-                {
-                    if(upcomingTrip.isEmpty()){
+                } else {
+                    if (upcomingTrip.isEmpty()) {
                         MyTripAdapter.upcoming_flag = true;
-                    }else MyTripAdapter.previous_flag = true;
+                    } else MyTripAdapter.previous_flag = true;
                     upcomingTripButton.setVisibility(View.INVISIBLE);
                     previousTripButton.setVisibility(View.INVISIBLE);
                     MyTripAdapter.myTrip = new ArrayList<MyTrip>();
                 }
                 rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
+                GeneralHelper.closeLoadingProgress();
+
             }
 
             @Override
             public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
                 //System.out.println("ERROR MYTRIP :" + error);
             }
         });
