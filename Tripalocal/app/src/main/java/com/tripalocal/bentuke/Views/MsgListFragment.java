@@ -25,6 +25,7 @@ public class MsgListFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private List<ChatList_model> messages;
     private ChatListDataSource chatList_db_source;
+    private static MessageListAdapter adapter;
     public MsgListFragment() {
         // Required empty public constructor
     }
@@ -55,7 +56,7 @@ public class MsgListFragment extends Fragment {
 
         initializeData();
         getActivity().setTitle(getResources().getString(R.string.msg_list_title));
-        MessageListAdapter adapter = new MessageListAdapter(messages);
+         adapter = new MessageListAdapter(messages);
         mRecyclerView.setAdapter(adapter);
 
         return view;
@@ -81,6 +82,8 @@ public class MsgListFragment extends Fragment {
     }
     public void onResume() {
         super.onResume();
+        initializeData();
+        adapter.notifyDataSetChanged();
 //        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
     public void onPause() {
