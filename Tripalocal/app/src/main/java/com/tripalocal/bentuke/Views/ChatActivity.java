@@ -204,7 +204,9 @@ public class ChatActivity extends AppCompatActivity {
         try {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
-            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag));
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
+                    GeneralHelper.getProfile(sender_id+"").get("image")
+            ));
             chatMsg_datasource.close();
 
             ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());

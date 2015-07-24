@@ -102,7 +102,7 @@ public class MessageSerivice extends Service {
                                                 model.setSender_name(map.get("name"));
                                                 model.setLast_msg_content(msg_body);
                                                 model.setLast_msg_date(GeneralHelper.getDateTime());
-                                                model.setReceiver_img(map.get("image"));
+                                                model.setSender_img(map.get("image"));
 
                                                 ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
                                                 ChatMsg_model msgModel=new ChatMsg_model();
