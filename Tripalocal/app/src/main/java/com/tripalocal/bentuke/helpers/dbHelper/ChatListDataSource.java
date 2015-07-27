@@ -59,7 +59,7 @@ public class ChatListDataSource {
 
     public List<ChatList_model> getChatList(){
         List<ChatList_model> chats=new ArrayList<ChatList_model>();
-        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,null,null,null,null,null);
+        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,null,null,null,null,dbHelper.COLUMN_ID+" DESC");
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatList_model model=cursorToChatList(cursor);
