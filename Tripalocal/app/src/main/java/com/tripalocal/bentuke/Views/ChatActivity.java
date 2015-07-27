@@ -79,7 +79,7 @@ public class ChatActivity extends AppCompatActivity {
     public static EditText inputText;
     public final static int receiver_flag=1;
     public final static int sender_flag=0;
-    public static String sender_id="",sender_name="";
+    public static String sender_id="",sender_name="",sender_img="";
     private  ChatManager chatManager;
     private ChatMsgDataSource chatMsg_datasource;
     public static boolean isNotification=false;
@@ -184,7 +184,8 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
-                    addTextToList(text, sender_flag,"f");
+                    addTextToList(text, sender_flag,sender_img);
+                    System.out.println("sender images shows here "+ sender_img);
                     notifAdapter();
                     try {
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
@@ -205,14 +206,14 @@ public class ChatActivity extends AppCompatActivity {
         map.put("person", person);
         map.put("text", text);
         map.put("dateTime",GeneralHelper.getDateTime());
-        map.put("image",image);
+        map.put("image", image);
         chatListMap.add(map);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
         try {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
-image));
+                    image));
             chatMsg_datasource.close();
 
             ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());

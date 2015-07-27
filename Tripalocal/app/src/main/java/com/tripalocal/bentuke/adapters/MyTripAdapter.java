@@ -131,6 +131,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                         ChatActivity.isNotification=false;
                         ChatActivity.sender_id=MyTripAdapter.result_mytrip.getHost_id();  //set exp id
                         ChatActivity.sender_name=MyTripAdapter.result_mytrip.getHostName();//set exp name
+                        ChatActivity.sender_img=MyTripAdapter.result_mytrip.getHostImage();
                         Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         HomeActivity.getHome_context().startActivity(intent);
@@ -140,6 +141,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                         model.setSender_name(ChatActivity.sender_name);
                         model.setLast_msg_content("");
                         model.setLast_msg_date(GeneralHelper.getDateTime());
+                        model.setSender_img(MyTripAdapter.result_mytrip.getHostImage());
                        try{
                            dataSource.open();
                             dataSource.createNewChat(model);

@@ -155,12 +155,14 @@ public class ExpDetailActivityFragment extends Fragment {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
                     ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
+                    ChatActivity.sender_img=exp_to_display.getHost_image();
                     ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
                     ChatList_model model=new ChatList_model();
                     model.setSender_id(ChatActivity.sender_id);
                     model.setSender_name(ChatActivity.sender_name);
                     model.setLast_msg_content("");
-                    model.setLast_msg_date("dsad");
+                    model.setLast_msg_date(GeneralHelper.getDateTime());
+                    model.setSender_img(exp_to_display.getHost_image());
 
 
                     

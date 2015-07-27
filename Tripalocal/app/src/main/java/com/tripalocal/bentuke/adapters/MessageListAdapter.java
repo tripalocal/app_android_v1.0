@@ -52,6 +52,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         String image=messages.get(i).getSender_img();
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL + image).fitCenter()
                 .into(msgViewHolder.imageView);
+        System.out.println("images on msglist+" +image);
         String sender_name=messages.get(i).getSender_name();
         String sender_id=messages.get(i).getSender_id();
         msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id));
