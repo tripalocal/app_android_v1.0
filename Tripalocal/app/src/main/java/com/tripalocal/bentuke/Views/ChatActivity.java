@@ -70,8 +70,8 @@ public class ChatActivity extends AppCompatActivity {
     Fragment fragment;
     XMPPTCPConnection connection;
     private  static ListView chatListView;
-    public static ArrayList<HashMap<String,Object>> chatListMap=null;
-    private static ChatAdapter adapter;
+    public static ArrayList<HashMap<String,Object>> chatListMap=new ArrayList<HashMap<String,Object>>();;
+    private static ChatAdapter adapter=null;
     public static Activity chatActivity_context;
     int[] layouts;
     Button chat_send_btn;
@@ -85,7 +85,14 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+       initComponenets();
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    //        testApi();
+//        getProfile();
 
+    }
+
+    public void initComponenets(){
         connection= MessageSerivice.connection;
         if(connection==null){
             try {
@@ -100,7 +107,7 @@ public class ChatActivity extends AppCompatActivity {
         String title_t=getResources().getString(R.string.msg_chat_title).replace("somebody",sender_name);
         setTitle(title_t);
         chatListView=(ListView)findViewById(R.id.chat_list);
-        chatListMap=new ArrayList<HashMap<String,Object>>();
+//        chatListMap=new ArrayList<HashMap<String,Object>>();
         layouts=new int[]{R.layout.msg_send_card,R.layout.msg_receive_card};
         chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
         inputText=(EditText)findViewById(R.id.chat_input_text);
@@ -110,10 +117,6 @@ public class ChatActivity extends AppCompatActivity {
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
         chatActivity_context=this;
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    //        testApi();
-//        getProfile();
-
     }
 
 
@@ -235,6 +238,9 @@ public class ChatActivity extends AppCompatActivity {
         inputText.setText("");
     }
     public static void notifAdapterStatic(){
+        if(adapter==null){
+
+        }
         adapter.notifyDataSetChanged();
         chatListView.setSelection(chatListMap.size() - 1);
         inputText.setText("");

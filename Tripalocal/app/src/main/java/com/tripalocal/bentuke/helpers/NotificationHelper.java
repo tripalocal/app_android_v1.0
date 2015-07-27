@@ -10,11 +10,15 @@ import android.support.v4.app.NotificationCompat;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
+import com.tripalocal.bentuke.Views.HomeActivity;
+
+import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
  * Created by chenf_000 on 17/07/2015.
  */
 public class NotificationHelper {
+    public static  int badgeCount = 1;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public final static void msg_notification(String title,String msg_detail,Context context){
@@ -39,6 +43,10 @@ public class NotificationHelper {
         ChatActivity.sender_name=title;
         myNotificationManager.notify(1, mBuilder.build());
 
+    }
+
+    public static void addBadge(){
+        ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount++);
     }
 
 

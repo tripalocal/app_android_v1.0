@@ -99,19 +99,19 @@ public class MessageSerivice extends Service {
                                                 ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
                                                 ChatList_model model=new ChatList_model();
                                                 model.setSender_id(partiticipant_id);
-                                                model.setSender_name(map.get("name"));
+                                                model.setSender_name("name");
                                                 model.setLast_msg_content(msg_body);
                                                 model.setLast_msg_date(GeneralHelper.getDateTime());
-                                                model.setSender_img(map.get("image"));
+                                                model.setSender_img("image1");
 
                                                 ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
                                                 ChatMsg_model msgModel=new ChatMsg_model();
                                                 msgModel.setReceiver_id(partiticipant_id);
-                                                msgModel.setReceiver_name(map.get("name"));
+                                                msgModel.setReceiver_name("mame");
                                                 msgModel.setMsg_date(GeneralHelper.getDateTime());
                                                 msgModel.setMsg_content(msg_body);
                                                 msgModel.setMsg_type(ChatActivity.receiver_flag);
-                                                msgModel.setReceiver_img(map.get("image"));
+                                                msgModel.setReceiver_img("dasd");
                                                 try {
                                                     dataSource.open();
                                                     dataSource.createNewChat(model);
@@ -135,7 +135,13 @@ public class MessageSerivice extends Service {
                                                     });
                                                 }else{
                                                     NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
-
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            //update UI elements
+                                                            NotificationHelper.addBadge();
+//                                                            MsgListFragment.notfiChangeOfAdapter();
+                                                        }
+                                                    });
                                                 }
 
                                             }
