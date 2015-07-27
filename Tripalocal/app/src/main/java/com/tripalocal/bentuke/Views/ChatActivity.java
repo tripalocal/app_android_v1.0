@@ -207,12 +207,14 @@ public class ChatActivity extends AppCompatActivity {
         chatListMap.add(map);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
         try {
+            //add to datasource
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
                     image));
             chatMsg_datasource.close();
 
+            //add to data list
             ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
             ChatList_model model=new ChatList_model();
             model.setSender_id(sender_id);

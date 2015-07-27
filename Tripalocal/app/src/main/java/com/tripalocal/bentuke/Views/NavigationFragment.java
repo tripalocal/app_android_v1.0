@@ -151,6 +151,7 @@ public class NavigationFragment extends Fragment {
 
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
         hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
+        HomeActivity.user_img=result.getImage();
 
     }
 
