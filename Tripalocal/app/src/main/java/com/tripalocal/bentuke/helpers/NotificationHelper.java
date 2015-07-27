@@ -21,7 +21,7 @@ public class NotificationHelper {
     public static  int badgeCount = 1;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public final static void msg_notification(String title,String name,String msg_detail,Context context){
+    public final static void msg_notification(String title,String name,String image, String msg_detail,Context context){
         NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(context);
         mBuilder.setContentTitle(name);
         mBuilder.setContentText(msg_detail);//details msg inside the notifcation bar
@@ -41,6 +41,7 @@ public class NotificationHelper {
         NotificationManager myNotificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         ChatActivity.sender_id=title;
         ChatActivity.sender_name=name;
+        ChatActivity.sender_img=image;
         myNotificationManager.notify(1, mBuilder.build());
 
     }

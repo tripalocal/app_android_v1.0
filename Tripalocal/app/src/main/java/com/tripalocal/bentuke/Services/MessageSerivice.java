@@ -170,7 +170,7 @@ public class MessageSerivice extends Service {
                                                             });
                                                         }else{
                                                             ChatActivity.isNotification=true;
-                                                            NotificationHelper.msg_notification(partiticipant_id,map.get("name"),
+                                                            NotificationHelper.msg_notification(partiticipant_id,map.get("name"),map.get("image"),
                                                                     msg_body, getApplicationContext());
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
