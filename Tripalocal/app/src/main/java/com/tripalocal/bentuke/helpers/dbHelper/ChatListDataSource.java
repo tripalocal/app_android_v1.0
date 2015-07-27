@@ -88,6 +88,7 @@ public class ChatListDataSource {
         model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));
         return model;
     }
+
 }
 
 

@@ -200,6 +200,10 @@ public class LoginFragment extends Fragment {
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
 
+                        if(!MessageSerivice.isRunning ){
+                            ChatActivity.sender_id="";
+                            MsgHelper.startMsgSerivice(HomeActivity.getHome_context());
+                        }
                         if (HomeActivity.login_ch) {
                             HomeActivity.login_ch = false;
                             Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
