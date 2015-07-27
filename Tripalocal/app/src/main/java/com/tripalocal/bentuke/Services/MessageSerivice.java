@@ -124,7 +124,10 @@ public class MessageSerivice extends Service {
                                                     e.printStackTrace();
                                                     System.out.println("Exception here " + e.getMessage().toString());
                                                 }
-                                                if(ChatActivity.sender_id.equals(partiticipant_id)){
+                                                System.out.println("sender id is : "+ChatActivity.sender_id);
+                                                if(ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.isNotification){
+                                                    ChatActivity.isNotification=false;
+
                                                     runOnUiThread(new Runnable() {
                                                         public void run() {
                                                             //update UI elements
@@ -134,6 +137,7 @@ public class MessageSerivice extends Service {
                                                         }
                                                     });
                                                 }else{
+                                                    ChatActivity.isNotification=true;
                                                     NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
                                                     runOnUiThread(new Runnable() {
                                                         public void run() {

@@ -79,9 +79,10 @@ public class ChatActivity extends AppCompatActivity {
     public static EditText inputText;
     public final static int receiver_flag=1;
     public final static int sender_flag=0;
-    public static String sender_id,sender_name;
+    public static String sender_id="",sender_name="";
     private  ChatManager chatManager;
     private ChatMsgDataSource chatMsg_datasource;
+    public static boolean isNotification=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

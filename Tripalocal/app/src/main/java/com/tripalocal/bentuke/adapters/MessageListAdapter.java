@@ -92,6 +92,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         }
         @Override
         public void onClick(View view) {
+            ChatActivity.isNotification=false;
 
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
             ChatActivity.sender_id=id;
