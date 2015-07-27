@@ -48,7 +48,7 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_RECEIVER_ID,model.getReceiver_id());
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
-        values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img()+"h");
+        values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());
 
         long insertId=database.insert(dbHelper.TABLE_NAME,null,values);
         System.out.println("added to database successfully"+model.getMsg_type()+values.get(dbHelper.COlUMN_MSG_TYPE));

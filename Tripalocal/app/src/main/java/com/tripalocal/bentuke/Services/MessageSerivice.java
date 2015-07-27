@@ -16,12 +16,14 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MsgListFragment;
+import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
+import com.tripalocal.bentuke.models.network.Profile_result;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.chat.Chat;
@@ -34,6 +36,12 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by chenf_000 on 14/07/2015.
@@ -92,61 +100,98 @@ public class MessageSerivice extends Service {
                                         @Override
                                         public void processMessage(Chat chat, Message message) {
                                             if (message.getBody() != null) {
+
                                                 final String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 final String msg_body = message.getBody().toString();
-//                                                System.out.println("message body" + msg_body);
-                                                HashMap<String,String> map=GeneralHelper.getProfile(partiticipant_id);
-                                                ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
-                                                ChatList_model model=new ChatList_model();
-                                                model.setSender_id(partiticipant_id);
-                                                model.setSender_name("name");
-                                                model.setLast_msg_content(msg_body);
-                                                model.setLast_msg_date(GeneralHelper.getDateTime());
-                                                model.setSender_img("image1");
+//                                                System.out.println("message body" + msg_body);final HashMap<String,String> map=new HashMap<String,String>();
+                                                final String tooken_en="804db40bac2e17f35932693dd4925b930be6925e";
 
-                                                ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
-                                                ChatMsg_model msgModel=new ChatMsg_model();
-                                                msgModel.setReceiver_id(partiticipant_id);
-                                                msgModel.setReceiver_name("mame");
-                                                msgModel.setMsg_date(GeneralHelper.getDateTime());
-                                                msgModel.setMsg_content(msg_body);
-                                                msgModel.setMsg_type(ChatActivity.receiver_flag);
-                                                msgModel.setReceiver_img("dasd");
-                                                try {
-                                                    dataSource.open();
-                                                    dataSource.createNewChat(model);
-                                                    dataSource.close();
+                                                RestAdapter restAdapter = new RestAdapter.Builder()
+                                                        .setLogLevel(RestAdapter.LogLevel.FULL)
+                                                        .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                                                        .setRequestInterceptor(new RequestInterceptor() {
+                                                            @Override
+                                                            public void intercept(RequestFacade request) {
+                                                                request.addHeader("Accept", "application/json");
+                                                                request.addHeader("Authorization", "Token " +tooken_en);
+                                                            }
+                                                        })
+                                                        .build();
 
-                                                    msgDataSource.open();
-                                                    msgDataSource.addNewMsg(msgModel);
-                                                    msgDataSource.close();
-                                                } catch (SQLException e) {
-                                                    e.printStackTrace();
-                                                    System.out.println("Exception here " + e.getMessage().toString());
-                                                }
-                                                System.out.println("sender id is : "+ChatActivity.sender_id);
-                                                if(ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.isNotification){
-                                                    ChatActivity.isNotification=false;
 
-                                                    runOnUiThread(new Runnable() {
-                                                        public void run() {
-                                                            //update UI elements
-                                                            ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag);
-                                                            ChatActivity.notifAdapterStatic();
-//                                                            MsgListFragment.notfiChangeOfAdapter();
+                                                ApiService apiService = restAdapter.create(ApiService.class);
+
+                                                apiService.getPublicProfile(partiticipant_id, new Callback<Profile_result>() {
+                                                    @Override
+                                                    public void success(Profile_result result, Response response) {
+                                                        GeneralHelper.closeLoadingProgress();
+                                                        final HashMap<String,String> map=new HashMap<String, String>();
+                                                        map.put("name",result.getFirst_name()+" "+result.getLast_name());
+                                                        map.put("image",result.getImage());
+                                                        ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
+                                                        ChatList_model model=new ChatList_model();
+                                                        model.setSender_id(partiticipant_id);
+                                                        model.setSender_name(map.get("name"));
+                                                        model.setLast_msg_content(msg_body);
+                                                        model.setLast_msg_date(GeneralHelper.getDateTime());
+                                                        model.setSender_img(map.get("image"));
+
+                                                        ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
+                                                        ChatMsg_model msgModel=new ChatMsg_model();
+                                                        msgModel.setReceiver_id(partiticipant_id);
+                                                        msgModel.setReceiver_name(map.get("name"));
+                                                        msgModel.setMsg_date(GeneralHelper.getDateTime());
+                                                        msgModel.setMsg_content(msg_body);
+                                                        msgModel.setMsg_type(ChatActivity.receiver_flag);
+                                                        msgModel.setReceiver_img(map.get("image"));
+                                                        try {
+                                                            dataSource.open();
+                                                            dataSource.createNewChat(model);
+                                                            dataSource.close();
+
+                                                            msgDataSource.open();
+                                                            msgDataSource.addNewMsg(msgModel);
+                                                            msgDataSource.close();
+                                                        } catch (SQLException e) {
+                                                            e.printStackTrace();
+                                                            System.out.println("Exception here " + e.getMessage().toString());
                                                         }
-                                                    });
-                                                }else{
-                                                    ChatActivity.isNotification=true;
-                                                    NotificationHelper.msg_notification(partiticipant_id, msg_body, getApplicationContext());
-                                                    runOnUiThread(new Runnable() {
-                                                        public void run() {
-                                                            //update UI elements
-                                                            NotificationHelper.addBadge();
+                                                        System.out.println("sender id is : "+ChatActivity.sender_id);
+                                                        if(ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.isNotification){
+                                                            ChatActivity.isNotification=false;
+
+                                                            runOnUiThread(new Runnable() {
+                                                                public void run() {
+                                                                    //update UI elements
+                                                                    ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag,map.get("image"));
+                                                                    ChatActivity.notifAdapterStatic();
 //                                                            MsgListFragment.notfiChangeOfAdapter();
+                                                                }
+                                                            });
+                                                        }else{
+                                                            ChatActivity.isNotification=true;
+                                                            NotificationHelper.msg_notification(partiticipant_id,map.get("name"),
+                                                                    msg_body, getApplicationContext());
+                                                            runOnUiThread(new Runnable() {
+                                                                public void run() {
+                                                                    //update UI elements
+                                                                    NotificationHelper.addBadge();
+//                                                            MsgListFragment.notfiChangeOfAdapter();
+                                                                }
+                                                            });
                                                         }
-                                                    });
-                                                }
+                                                        System.out.println("retrieve profile successfully" + result.getImage()+ "end");
+                                                    }
+
+                                                    @Override
+                                                    public void failure(RetrofitError error) {
+                                                        GeneralHelper.closeLoadingProgress();
+
+                                                        System.out.println("ERROR MYTRIP :" + error + "\n Tooken is "
+                                                                + HomeActivity.getCurrent_user().getLogin_token());
+                                                    }
+                                                });
+
 
                                             }
                                         }

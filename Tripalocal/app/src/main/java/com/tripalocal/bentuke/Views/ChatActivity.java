@@ -184,7 +184,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
-                    addTextToList(text, sender_flag);
+                    addTextToList(text, sender_flag,"f");
                     notifAdapter();
                     try {
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
@@ -200,21 +200,19 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-    protected void addTextToList(String text,int person){
+    protected void addTextToList(String text,int person,String image){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
         map.put("dateTime",GeneralHelper.getDateTime());
-        System.out.println("add text to list starta");
+        map.put("image",image);
         chatListMap.add(map);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
         try {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
-//            System.out.println("images are +"+GeneralHelper.getProfile(8+"").get("image"));
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
-"dads"
-            ));
+image));
             chatMsg_datasource.close();
 
             ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
@@ -223,6 +221,7 @@ public class ChatActivity extends AppCompatActivity {
             model.setSender_name(sender_name);
             model.setLast_msg_content(text);
             model.setLast_msg_date(GeneralHelper.getDateTime());
+            model.setSender_img(image);
 
             dataSource.open();
             dataSource.createNewChat(model);
@@ -250,11 +249,14 @@ public class ChatActivity extends AppCompatActivity {
         inputText.setText("");
     }
 
-    public static void addTextToListStatic(String text,int person){
+    public static void addTextToListStatic(String text,int person,String image){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
         map.put("dateTime",GeneralHelper.getDateTime());
+        map.put("image",image);
+        System.out.println("image url on chatActivity "+image);
+
         chatListMap.add(map);
     }
 
@@ -275,11 +277,12 @@ public class ChatActivity extends AppCompatActivity {
 
         }
         for(ChatMsg_model model :lists){
-            HashMap<String,Object> map=new HashMap<String,Object>();
+            HashMap<String,Object> map = new HashMap<String, Object>();
             map.put("person", model.getMsg_type());
             System.out.println("person type on initData" + model.getMsg_type());
             map.put("text", model.getMsg_content());
             map.put("dateTime",model.getMsg_date());
+            map.put("image",model.getReceiver_img());
 
             chatListMap.add(map);
         }
