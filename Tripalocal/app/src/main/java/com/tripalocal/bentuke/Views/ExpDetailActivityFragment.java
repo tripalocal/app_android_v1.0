@@ -148,7 +148,9 @@ public class ExpDetailActivityFragment extends Fragment {
         send_msg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(HomeActivity.getCurrent_user().isLoggedin()){
+                    ChatActivity.isNotification=false;
                     Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
