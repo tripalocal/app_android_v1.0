@@ -36,7 +36,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/exp_list_profile_image"
+                android:id="@+id/msg_list_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginRight="10dp"

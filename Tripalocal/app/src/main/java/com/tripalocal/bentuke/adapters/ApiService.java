@@ -9,6 +9,8 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
+
 import com.tripalocal.bentuke.helpers.Login_Result;
 import com.tripalocal.bentuke.helpers.SearchRequest;
 import com.tripalocal.bentuke.models.MyTrip;
@@ -51,8 +53,8 @@ public interface ApiService {
     @GET("/service_myprofile/")
     void getMyProfileDetails(Callback<MyProfile_result> response);
 
-    @GET("/service_publicprofile")
-    void getPublicProfile(Callback<Profile_result> response);
+    @GET("/service_publicprofile/")
+    void getPublicProfile(@Query("user_id") String user_id,Callback<Profile_result> response);
 
 
     @POST("/service_myprofile/")

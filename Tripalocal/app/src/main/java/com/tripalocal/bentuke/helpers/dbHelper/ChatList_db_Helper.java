@@ -26,7 +26,7 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
             COLUMN_SENDER_ID+" TEXT NOT NULL, " +
             COLUMN_SENDER_NAME+" TEXT NOT NULL, "+
             COLUMN_LAST_MSG_CONTENT+" TEXT NOT NULL, "+
-            COLUMN_SENDER_IMAGE+" TEXT NOT NULL "+
+            COLUMN_SENDER_IMAGE+" TEXT NOT NULL, "+
             COLUMN_LAST_MSG_DATE+ " TEXT NOT NULL);";
 
 

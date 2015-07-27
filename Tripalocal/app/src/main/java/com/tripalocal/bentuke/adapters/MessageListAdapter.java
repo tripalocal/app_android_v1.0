@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by chenfang on 8/07/2015.
@@ -21,6 +25,7 @@ import java.util.List;
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageViewHolder>{
 
     List<ChatList_model> messages;
+    public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
 
    public MessageListAdapter(List<ChatList_model> messages){
         this.messages = messages;
@@ -44,7 +49,9 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         msgViewHolder.msg_brief.setText(messages.get(i).getLast_msg_content());
         String msg_time=messages.get(i).getLast_msg_date();
         msgViewHolder.msg_time.setText(msg_time);
-
+        String image=messages.get(i).getSender_img();
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL + image).fitCenter()
+                .into(msgViewHolder.imageView);
         String sender_name=messages.get(i).getSender_name();
         String sender_id=messages.get(i).getSender_id();
         msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id));
@@ -58,7 +65,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     }
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder{
-        CardView msg_list_card_view;
+        CircleImageView imageView;
         TextView msg_sender;
         TextView msg_brief;
         TextView msg_time;
@@ -69,7 +76,8 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             msg_sender = (TextView)itemView.findViewById(R.id.msg_sender);
             msg_brief = (TextView)itemView.findViewById(R.id.msg_brief);
             msg_time = (TextView)itemView.findViewById(R.id.msg_time);
-          ;
+            imageView=(CircleImageView)itemView.findViewById(R.id.msg_list_image);
+
 
         }
 

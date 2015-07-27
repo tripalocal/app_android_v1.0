@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.models.Tripalocal;
 
 import org.w3c.dom.Text;
 
@@ -28,6 +29,7 @@ public class ChatAdapter extends BaseAdapter{
     Context context=null;
     ArrayList<HashMap<String,Object>> chatList=null;
     int[] layout;
+    public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
 
     public ChatAdapter(Context context,
                        ArrayList<HashMap<String, Object>> chatList, int[] layout
@@ -80,13 +82,14 @@ public class ChatAdapter extends BaseAdapter{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
             holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_receive);
             holder.imageView=(CircleImageView)convertView.findViewById(R.id.msg_image_receive);
-
+//            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + image).fitCenter()
+//                    .into(msgViewHolder.imageView);
         }
         String text=(String)chatList.get(position).get("text");
         String datetime_s=(String)chatList.get(position).get("dateTime");
+
         holder.textView.setText(text);
         holder.dateTime_text.setText(datetime_s);
-        Glide.with(HomeActivity.getHome_context()).load("https://img1.etsystatic.com/026/0/9967485/il_570xN.650903603_29q6.jpg").fitCenter().into(holder.imageView);
 
         return convertView;
     }

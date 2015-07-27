@@ -204,8 +204,9 @@ public class ChatActivity extends AppCompatActivity {
         try {
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
+//            System.out.println("images are +"+GeneralHelper.getProfile(8+"").get("image"));
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
-                    GeneralHelper.getProfile(sender_id+"").get("image")
+"dads"
             ));
             chatMsg_datasource.close();
 
@@ -269,41 +270,10 @@ public class ChatActivity extends AppCompatActivity {
             System.out.println("person type on initData" + model.getMsg_type());
             map.put("text", model.getMsg_content());
             map.put("dateTime",model.getMsg_date());
+
             chatListMap.add(map);
         }
     }
-//
-//    private void testApi()
-//    {
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setLogLevel(RestAdapter.LogLevel.FULL)
-//                .setEndpoint(getResources().getString(R.string.server_url))//https://www.tripalocal.com
-//                .setRequestInterceptor(new RequestInterceptor() {
-//                    @Override
-//                    public void intercept(RequestFacade request) {
-//                        request.addHeader("Accept", "application/json");
-//                        request.addHeader("Authorization", "Token " + HomeActivity.getAccessToken());
-//                    }
-//                })
-//                .build();
-//
-//        ApiService apiService = restAdapter.create(ApiService.class);
-//
-//        apiService.getPublicProfile("12", new Callback<UserInfo_Result>() {
-//
-//            @Override
-//            public void success(UserInfo_Result userInfo_result, Response response) {
-//                        System.out.println("test lalala :"+userInfo_result.getHostname());
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                //System.out.println("ERROR MYTRIP :" + error);
-//            }
-//        });
-//    }
-
-
 
 
 
