@@ -78,6 +78,9 @@ public class ChatAdapter extends BaseAdapter{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_send);
             holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_send);
             holder.imageView=(CircleImageView)convertView.findViewById(R.id.msg_image_send);
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + HomeActivity.user_img).fitCenter()
+                    .into(holder.imageView);
+            System.out.println("my image on chatAdapter is "+HomeActivity.user_img);
         }else{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
             holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_receive);

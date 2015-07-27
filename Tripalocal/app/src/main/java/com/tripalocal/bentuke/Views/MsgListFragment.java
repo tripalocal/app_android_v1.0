@@ -43,8 +43,6 @@ public class MsgListFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_msg_list, container, false);
         chatList_db_source=new ChatListDataSource(HomeActivity.getHome_context());
-
-
         mRecyclerView = (RecyclerView)view.findViewById(R.id.rv);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -53,7 +51,6 @@ public class MsgListFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
 
         initializeData();
         getActivity().setTitle(getResources().getString(R.string.msg_list_title));
@@ -78,7 +75,6 @@ public class MsgListFragment extends Fragment {
         for(ChatList_model model :lists){
             messages.add(model);
         }
-
         NotificationHelper.clearBadge();
     }
     public void onResume() {

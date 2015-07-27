@@ -190,25 +190,16 @@ public class LoginFragment extends Fragment {
                 public void success(Login_Result result, Response response) {
                     GeneralHelper.closeLoadingProgress();
                     if(!cancelled) {
-                        System.out.println("tooken is below");
+                        //set login
                         HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                        //HomeActivity.setCurrent_userid(result.getUser_id());
                         HomeActivity.getCurrent_user().setLoggedin(true);
                         HomeActivity.login_flag = true;
                         HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
-                        System.out.print("this token is " + HomeActivity.getAccessToken());
-
-                        //System.out.println("result = [" + result + "], response = [" + response + "]");
                         getActivity().invalidateOptionsMenu();
                         getActivity().onBackPressed();
                         ToastHelper.longToast(log_in_success);
                         HomeActivity.saveData();
-//                        MsgHelper.startMsgSerivice(getActivity());
-//                        if(!MessageSerivice.isRunning){
-//                            ChatActivity.sender_id="";
-//                            MsgHelper.startMsgSerivice(getActivity().getApplicationContext());
-//                            System.out.println("service start on ");
-//                        }
+
                         if (HomeActivity.login_ch) {
                             HomeActivity.login_ch = false;
                             Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);

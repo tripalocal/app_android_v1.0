@@ -55,9 +55,9 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         System.out.println("images on msglist+" +image);
         String sender_name=messages.get(i).getSender_name();
         String sender_id=messages.get(i).getSender_id();
-        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id));
-        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_id));
-        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id));
+        msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
+        msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
+        msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
     }
 
     @Override
@@ -86,10 +86,11 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     }
 
     static class msglistlistener implements View.OnClickListener{
-        String name,id;
-        msglistlistener(String name,String id){
+        String name,id,image;
+        msglistlistener(String name,String id,String image){
             this.name=name;
             this.id=id;
+            this.image=image;
         }
         @Override
         public void onClick(View view) {
@@ -98,6 +99,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
             ChatActivity.sender_id=id;
             ChatActivity.sender_name=name;
+            ChatActivity.sender_img=image;
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             HomeActivity.getHome_context().startActivity(intent);
         }

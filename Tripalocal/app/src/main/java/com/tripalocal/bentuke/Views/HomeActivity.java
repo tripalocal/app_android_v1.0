@@ -78,6 +78,7 @@ public class HomeActivity extends AppCompatActivity {
     public static String webViewPage_info="";
     public static XMPPTCPConnection connection;
     public static String user_id;
+    public static String user_img;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
