@@ -33,6 +33,7 @@ import com.tripalocal.bentuke.adapters.ChatAdapter;
 
 import com.tripalocal.bentuke.adapters.MyTripAdapter;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.MyTrip;
@@ -87,7 +88,9 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
        initComponenets();
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    //        testApi();
+        NotificationHelper.clearBadge();
+
+        //        testApi();
 //        getProfile();
 
     }

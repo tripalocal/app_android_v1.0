@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.MessageListAdapter;
+import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 
@@ -78,7 +79,7 @@ public class MsgListFragment extends Fragment {
             messages.add(model);
         }
 
-
+        NotificationHelper.clearBadge();
     }
     public void onResume() {
         super.onResume();
