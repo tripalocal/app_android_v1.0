@@ -50,8 +50,8 @@ public class NotificationHelper {
     }
 
     public static void clearBadge(){
-        badgeCount=0;
-        ShortcutBadger.with(HomeActivity.getHome_context()).count(0);
+        badgeCount=1;
+        ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount);
 
     }
 
