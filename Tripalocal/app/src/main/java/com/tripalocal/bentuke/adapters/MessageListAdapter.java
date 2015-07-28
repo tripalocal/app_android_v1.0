@@ -1,9 +1,13 @@
 package com.tripalocal.bentuke.adapters;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,6 +18,7 @@ import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -26,7 +31,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     List<ChatList_model> messages;
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
-
    public MessageListAdapter(List<ChatList_model> messages){
         this.messages = messages;
     }
@@ -60,6 +64,12 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
         msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
         msgViewHolder.imageView.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
+
+        msgViewHolder.msg_sender.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+        msgViewHolder.msg_brief.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+        msgViewHolder.msg_time.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+        msgViewHolder.imageView.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+
     }
 
     @Override
@@ -97,14 +107,25 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
-//            ChatActivity.sender_id=id;
-//            ChatActivity.sender_name=name;
-//            ChatActivity.sender_img=image;
             intent.putExtra(ChatActivity.COL_SENDER_ID,id);
             intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
             intent.putExtra(ChatActivity.COL_SENDER_IMG,image);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             HomeActivity.getHome_context().startActivity(intent);
+        }
+    }
+
+    static class msgOnLongClickListener implements View.OnLongClickListener{
+
+        String sender_id;
+        msgOnLongClickListener(String sender_id){
+            this.sender_id=sender_id;
+        }
+        @Override
+        public boolean onLongClick(View v) {
+        System.out.println("on long click listener goes here");
+
+            return false;
         }
     }
 }
