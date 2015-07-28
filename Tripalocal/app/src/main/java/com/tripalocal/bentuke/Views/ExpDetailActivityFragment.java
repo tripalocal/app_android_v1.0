@@ -159,24 +159,6 @@ public class ExpDetailActivityFragment extends Fragment {
                     intent.putExtra(ChatActivity.COL_SENDER_NAME,exp_to_display.getHost_firstname());
                     intent.putExtra(ChatActivity.COL_SENDER_IMG,exp_to_display.getHost_image());
 
-                    ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
-                    ChatList_model model=new ChatList_model();
-                    model.setSender_id(ChatActivity.sender_id);
-                    model.setSender_name(ChatActivity.sender_name);
-                    model.setLast_msg_content("");
-                    model.setLast_msg_date(GeneralHelper.getDateTime());
-                    model.setSender_img(exp_to_display.getHost_image());
-
-
-                    
-                    try {
-                        dataSource.open();
-                        dataSource.createNewChat(model);
-                        dataSource.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        System.out.println("Exception here " + e.getMessage().toString());
-                    }
 //                    ChatActivity
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
