@@ -90,6 +90,7 @@ public class ChatActivity extends AppCompatActivity {
        initComponenets();
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
+        isNotification=false;
 
     }
 

@@ -41,15 +41,20 @@ public class ChatListDataSource {
     }
 
     public void createNewChat(ChatList_model model){
-        checkChat(model.getSender_id());
+        Boolean checkReuslt=checkChat(model.getSender_id());
         ContentValues values=new ContentValues();
         values.put(dbHelper.COLUMN_LAST_MSG_CONTENT,model.getLast_msg_content());
         values.put(dbHelper.COLUMN_LAST_MSG_DATE,model.getLast_msg_date());
         values.put(dbHelper.COLUMN_SENDER_ID,model.getSender_id());
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
-        long insertId=database.insert(dbHelper.TABLE_NAME,null,values);
+        if(checkReuslt) {
+            long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
+        }else {
+            long insertId = database.update(dbHelper.TABLE_NAME, values, " " + dbHelper.COLUMN_SENDER_ID + "= ? ", new String[]{model.getSender_id()});
 //        Cursor cursor=database.query(dbHelper.TABLE_NAME);
+
+        }
     }
 
     public void deleteChat(String sender_id){
@@ -70,13 +75,15 @@ public class ChatListDataSource {
         return chats;
     }
 
-    public void checkChat(String sender_id){
+    public boolean checkChat(String sender_id){
 //        List<ChatList_model> models=new ArrayList<ChatList_model>();
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,
                 dbHelper.COLUMN_SENDER_ID+" = '"+sender_id+"'",null,null,null,null);
         if(cursor.getCount()!=0){
-            deleteChat(sender_id);
+//            deleteChat(sender_id);
+            return  false;
         }
+        return true;
     }
 
     public ChatList_model cursorToChatList(Cursor cursor){
