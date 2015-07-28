@@ -138,20 +138,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                         intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
                         intent.putExtra(ChatActivity.COL_SENDER_IMG, image);
                         HomeActivity.getHome_context().startActivity(intent);
-                        ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
-                        ChatList_model model=new ChatList_model();
-                        model.setSender_id(ChatActivity.sender_id);
-                        model.setSender_name(ChatActivity.sender_name);
-                        model.setLast_msg_content("");
-                        model.setLast_msg_date(GeneralHelper.getDateTime());
-                        model.setSender_img(MyTripAdapter.result_mytrip.getHostImage());
-                       try{
-                           dataSource.open();
-                            dataSource.createNewChat(model);
-                           dataSource.close();
-                       }catch (Exception e){
-                           System.out.println("");
-                       }
+
 
                     }else{
 
