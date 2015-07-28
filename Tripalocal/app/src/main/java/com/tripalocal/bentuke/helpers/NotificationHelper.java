@@ -31,7 +31,7 @@ public class NotificationHelper {
         mBuilder.setAutoCancel(true);//important here, when you start a notificaiotn from
 //        the service, it will not auto cancel, you must add this
         Intent intent=new Intent(context, ChatActivity.class);
-        intent.putExtra(ChatActivity.COL_NOTIFICATION_ID, "nm");
+        intent.putExtra(ChatActivity.COL_NOTIFICATION_ID,id);
         intent.putExtra(ChatActivity.COL_SENDER_ID,id);
         intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
         intent.putExtra(ChatActivity.COL_SENDER_IMG,image);
@@ -39,14 +39,14 @@ public class NotificationHelper {
         stackBuilder.addParentStack(ChatActivity.class);
         stackBuilder.addNextIntent(intent);
         PendingIntent resultPendingIntent=stackBuilder.getPendingIntent(
-                0,PendingIntent.FLAG_ONE_SHOT
+                Integer.parseInt(id),PendingIntent.FLAG_ONE_SHOT
         );
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager myNotificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 //        ChatActivity.sender_id=title;
 //        ChatActivity.sender_name=name;
 //        ChatActivity.sender_img=image;
-        myNotificationManager.notify(1, mBuilder.build());
+        myNotificationManager.notify(Integer.parseInt(id), mBuilder.build());
 
     }
 
