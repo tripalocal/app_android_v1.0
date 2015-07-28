@@ -128,12 +128,15 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
                 @Override
                 public void onClick(View v) {
                     if(HomeActivity.getCurrent_user().isLoggedin()){
-                        ChatActivity.isNotification=false;
-                        ChatActivity.sender_id=MyTripAdapter.result_mytrip.getHost_id();  //set exp id
-                        ChatActivity.sender_name=MyTripAdapter.result_mytrip.getHostName();//set exp name
-                        ChatActivity.sender_img=MyTripAdapter.result_mytrip.getHostImage();
+                        String id=MyTripAdapter.result_mytrip.getHost_id();  //set exp id
+                        String name=MyTripAdapter.result_mytrip.getHostName();//set exp name
+                        String image=MyTripAdapter.result_mytrip.getHostImage();
+
                         Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra(ChatActivity.COL_SENDER_ID,id);
+                        intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
+                        intent.putExtra(ChatActivity.COL_SENDER_IMG, image);
                         HomeActivity.getHome_context().startActivity(intent);
                         ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
                         ChatList_model model=new ChatList_model();

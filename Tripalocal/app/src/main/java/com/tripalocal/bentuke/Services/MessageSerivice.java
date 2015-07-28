@@ -157,26 +157,21 @@ public class MessageSerivice extends Service {
                                                             System.out.println("Exception here " + e.getMessage().toString());
                                                         }
                                                         System.out.println("sender id is : "+ChatActivity.sender_id);
-                                                        if(ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.isNotification){
-                                                            ChatActivity.isNotification=false;
+                                                        if(ChatActivity.sender_id.equals(partiticipant_id)){
 
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     //update UI elements
                                                                     ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag,map.get("image"));
                                                                     ChatActivity.notifAdapterStatic();
-//                                                            MsgListFragment.notfiChangeOfAdapter();
                                                                 }
                                                             });
                                                         }else{
-                                                            ChatActivity.isNotification=true;
                                                             NotificationHelper.msg_notification(partiticipant_id,map.get("name"),map.get("image"),
                                                                     msg_body, getApplicationContext());
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
-                                                                    //update UI elements
                                                                     NotificationHelper.addBadge();
-//                                                            MsgListFragment.notfiChangeOfAdapter();
                                                                 }
                                                             });
                                                         }

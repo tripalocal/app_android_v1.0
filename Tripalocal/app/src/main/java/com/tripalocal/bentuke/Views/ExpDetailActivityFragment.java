@@ -150,12 +150,15 @@ public class ExpDetailActivityFragment extends Fragment {
             public void onClick(View view) {
 
                 if(HomeActivity.getCurrent_user().isLoggedin()){
-                    ChatActivity.isNotification=false;
                     Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
-                    ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
-                    ChatActivity.sender_img=exp_to_display.getHost_image();
+//                    ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
+//                    ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
+//                    ChatActivity.sender_img=exp_to_display.getHost_image();
+                    intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
+                    intent.putExtra(ChatActivity.COL_SENDER_NAME,exp_to_display.getHost_firstname());
+                    intent.putExtra(ChatActivity.COL_SENDER_IMG,exp_to_display.getHost_image());
+
                     ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
                     ChatList_model model=new ChatList_model();
                     model.setSender_id(ChatActivity.sender_id);

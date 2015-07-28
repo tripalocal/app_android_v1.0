@@ -74,6 +74,7 @@ public class MsgListFragment extends Fragment {
         }
         for(ChatList_model model :lists){
             messages.add(model);
+            System.out.println("ididiiddi+  "+model.getSender_id());
         }
         NotificationHelper.clearBadge();
     }

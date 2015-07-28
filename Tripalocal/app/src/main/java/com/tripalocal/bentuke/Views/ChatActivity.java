@@ -79,18 +79,19 @@ public class ChatActivity extends AppCompatActivity {
     public static EditText inputText;
     public final static int receiver_flag=1;
     public final static int sender_flag=0;
-    public static String sender_id="",sender_name="",sender_img="";
+    public static String sender_id="",sender_name="",sender_img="",notification_id="";
     private  ChatManager chatManager;
     private ChatMsgDataSource chatMsg_datasource;
-    public static boolean isNotification=false;
+    public static String COL_SENDER_ID="SENDER_ID",COL_SENDER_NAME="SENDER_NAME",COL_SENDER_IMG="SENDER_IMG",COL_NOTIFICATION_ID="NOTIFICATION_ID";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        initExtra();
        initComponenets();
+
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
-        isNotification=false;
 
     }
 
@@ -118,6 +119,8 @@ public class ChatActivity extends AppCompatActivity {
 
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
+        chatListView.setSelection(chatListMap.size() - 1);
+
         chatActivity_context=this;
     }
 
@@ -127,16 +130,24 @@ public class ChatActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        finish();
+//        finish();
+        this.onBackPressed();
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
+
+        if(!notification_id.equals("")) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else {
         finish();
-        super.onBackPressed();
+//        super.onBackPressed();
+        }
         chat=null;
-        sender_id="";
+//        sender_id="";
 
     }
 
@@ -164,6 +175,7 @@ public class ChatActivity extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
+        System.out.println("start on resume method on chat Activity");
         MobclickAgent.onResume(this);       //统计时长
     }
     public void onPause() {
@@ -182,8 +194,8 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
-                    addTextToList(text, sender_flag,sender_img);
-                    System.out.println("sender images shows here "+ sender_img);
+                    addTextToList(text, sender_flag, sender_img);
+                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
@@ -255,18 +267,27 @@ public class ChatActivity extends AppCompatActivity {
         map.put("person", person);
         map.put("text", text);
         map.put("dateTime",GeneralHelper.getDateTime());
-        map.put("image",image);
-        System.out.println("image url on chatActivity "+image);
+        map.put("image", image);
+        System.out.println("image url on chatActivity " + image);
 
         chatListMap.add(map);
     }
 
+    public void initExtra(){
+        Bundle extras = getIntent().getExtras();
+        sender_id="";
+        if (extras != null) {
+            sender_id=extras.getString(ChatActivity.COL_SENDER_ID,"");
+            sender_name= extras.getString(ChatActivity.COL_SENDER_NAME,"");
+            sender_img=extras.getString(ChatActivity.COL_SENDER_IMG,"");
+            notification_id=extras.getString(ChatActivity.COL_NOTIFICATION_ID,"");
+        }
+    }
 
     public void initData(){
         chatListMap = new ArrayList< HashMap<String,Object>>();
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
         ChatMsgDataSource chatMsg_datasource1=new ChatMsgDataSource(getApplicationContext());
-        System.out.println("helloo eocmasdfas");
         try {
             chatMsg_datasource1.open();
             lists =(ArrayList<ChatMsg_model>)chatMsg_datasource1.getChatMsgs(Integer.parseInt(sender_id));

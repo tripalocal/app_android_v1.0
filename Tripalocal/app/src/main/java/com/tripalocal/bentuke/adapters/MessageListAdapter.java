@@ -94,12 +94,13 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         }
         @Override
         public void onClick(View view) {
-            ChatActivity.isNotification=false;
-
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
-            ChatActivity.sender_id=id;
-            ChatActivity.sender_name=name;
-            ChatActivity.sender_img=image;
+//            ChatActivity.sender_id=id;
+//            ChatActivity.sender_name=name;
+//            ChatActivity.sender_img=image;
+            intent.putExtra(ChatActivity.COL_SENDER_ID,id);
+            intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
+            intent.putExtra(ChatActivity.COL_SENDER_IMG,image);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             HomeActivity.getHome_context().startActivity(intent);
         }
