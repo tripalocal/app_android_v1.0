@@ -45,7 +45,7 @@ public class ChatMsgDataSource{
         ContentValues values=new ContentValues();
         values.put(dbHelper.COLUMN_MSG_CONTENT,model.getMsg_content());
         values.put(dbHelper.COLUMN_MSG_DATE,model.getMsg_date());
-        values.put(dbHelper.COLUMN_RECEIVER_ID,model.getReceiver_id());
+        values.put(dbHelper.COLUMN_RECEIVER_ID,model.getReceiver_id().trim());
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
         values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());

@@ -21,7 +21,8 @@ public class NotificationHelper {
     public static  int badgeCount = 1;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public final static void msg_notification(String title,String name,String image, String msg_detail,Context context){
+    public final static void msg_notification(String id,String name,String image, String msg_detail,Context context){
+
         NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(context);
         mBuilder.setContentTitle(name);
         mBuilder.setContentText(msg_detail);//details msg inside the notifcation bar
@@ -30,8 +31,8 @@ public class NotificationHelper {
         mBuilder.setAutoCancel(true);//important here, when you start a notificaiotn from
 //        the service, it will not auto cancel, you must add this
         Intent intent=new Intent(context, ChatActivity.class);
-        intent.putExtra(ChatActivity.COL_NOTIFICATION_ID, title);
-        intent.putExtra(ChatActivity.COL_SENDER_ID,title);
+        intent.putExtra(ChatActivity.COL_NOTIFICATION_ID, "nm");
+        intent.putExtra(ChatActivity.COL_SENDER_ID,id);
         intent.putExtra(ChatActivity.COL_SENDER_NAME,name);
         intent.putExtra(ChatActivity.COL_SENDER_IMG,image);
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(context);
@@ -45,7 +46,7 @@ public class NotificationHelper {
 //        ChatActivity.sender_id=title;
 //        ChatActivity.sender_name=name;
 //        ChatActivity.sender_img=image;
-        myNotificationManager.notify(Integer.parseInt(title), mBuilder.build());
+        myNotificationManager.notify(1, mBuilder.build());
 
     }
 

@@ -112,7 +112,7 @@ public class MessageSerivice extends Service {
                                                 final String partiticipant_id = chat.getParticipant().split("@")[0];
                                                 final String msg_body = message.getBody().toString();
 //                                                System.out.println("message body" + msg_body);final HashMap<String,String> map=new HashMap<String,String>();
-                                                final String tooken_en="804db40bac2e17f35932693dd4925b930be6925e";
+                                                final String tooken_en = "804db40bac2e17f35932693dd4925b930be6925e";
 
                                                 RestAdapter restAdapter = new RestAdapter.Builder()
                                                         .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -121,7 +121,7 @@ public class MessageSerivice extends Service {
                                                             @Override
                                                             public void intercept(RequestFacade request) {
                                                                 request.addHeader("Accept", "application/json");
-                                                                request.addHeader("Authorization", "Token " +tooken_en);
+                                                                request.addHeader("Authorization", "Token " + tooken_en);
                                                             }
                                                         })
                                                         .build();
@@ -133,19 +133,19 @@ public class MessageSerivice extends Service {
                                                     @Override
                                                     public void success(Profile_result result, Response response) {
                                                         GeneralHelper.closeLoadingProgress();
-                                                        final HashMap<String,String> map=new HashMap<String, String>();
-                                                        map.put("name",result.getFirst_name()+" "+result.getLast_name());
-                                                        map.put("image",result.getImage());
-                                                        ChatListDataSource dataSource=new ChatListDataSource(getApplicationContext());
-                                                        ChatList_model model=new ChatList_model();
+                                                        final HashMap<String, String> map = new HashMap<String, String>();
+                                                        map.put("name", result.getFirst_name() + " " + result.getLast_name());
+                                                        map.put("image", result.getImage());
+                                                        ChatListDataSource dataSource = new ChatListDataSource(getApplicationContext());
+                                                        ChatList_model model = new ChatList_model();
                                                         model.setSender_id(partiticipant_id);
                                                         model.setSender_name(map.get("name"));
                                                         model.setLast_msg_content(msg_body);
                                                         model.setLast_msg_date(GeneralHelper.getDateTime());
                                                         model.setSender_img(map.get("image"));
 
-                                                        ChatMsgDataSource msgDataSource=new ChatMsgDataSource(getApplicationContext());
-                                                        ChatMsg_model msgModel=new ChatMsg_model();
+                                                        ChatMsgDataSource msgDataSource = new ChatMsgDataSource(getApplicationContext());
+                                                        ChatMsg_model msgModel = new ChatMsg_model();
                                                         msgModel.setReceiver_id(partiticipant_id);
                                                         msgModel.setReceiver_name(map.get("name"));
                                                         msgModel.setMsg_date(GeneralHelper.getDateTime());
@@ -164,18 +164,18 @@ public class MessageSerivice extends Service {
                                                             e.printStackTrace();
                                                             System.out.println("Exception here " + e.getMessage().toString());
                                                         }
-                                                        System.out.println("sender id is : "+ChatActivity.sender_id);
-                                                        if(ChatActivity.sender_id.equals(partiticipant_id)){
+                                                        System.out.println("sender id is : " + ChatActivity.sender_id);
+                                                        if (ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.sender_id.equals("")) {
 
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     //update UI elements
-                                                                    ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag,map.get("image"));
+                                                                    ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag, map.get("image"));
                                                                     ChatActivity.notifAdapterStatic();
                                                                 }
                                                             });
-                                                        }else{
-                                                            NotificationHelper.msg_notification(partiticipant_id,map.get("name"),map.get("image"),
+                                                        } else {
+                                                            NotificationHelper.msg_notification(partiticipant_id, map.get("name"), map.get("image"),
                                                                     msg_body, getApplicationContext());
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
@@ -183,7 +183,7 @@ public class MessageSerivice extends Service {
                                                                 }
                                                             });
                                                         }
-                                                        System.out.println("retrieve profile successfully" + result.getImage()+ "end");
+                                                        System.out.println("retrieve profile successfully" + result.getImage() + "end");
                                                     }
 
                                                     @Override
