@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 
@@ -31,6 +32,7 @@ import org.jivesoftware.smack.chat.ChatManager;
 import org.jivesoftware.smack.chat.ChatManagerListener;
 import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 
@@ -91,7 +93,9 @@ public class MessageSerivice extends Service {
                             }catch(Exception e){
                                 System.out.println("connection error:"+e.getMessage().toString());
                             }
-                            HomeActivity.connection = connection;
+                            Presence presence = new Presence(Presence.Type.available);
+                            presence.setMode(Presence.Mode.available);
+                            connection.sendPacket(presence);
                             ChatManager chatManager= ChatManager.getInstanceFor(connection);
                             chatManager.addChatListener(new ChatManagerListener() {
                                 @Override
@@ -198,7 +202,7 @@ public class MessageSerivice extends Service {
                         }
 
 
-                while (true) ;
+//                while (true) ;
             }catch(Exception e){
                 System.out.println("service error2"+e.getMessage().toString());
             }
