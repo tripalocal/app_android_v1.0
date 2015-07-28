@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.adapters;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.umeng.analytics.MobclickAgent;
@@ -117,14 +119,43 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     static class msgOnLongClickListener implements View.OnLongClickListener{
 
-        String sender_id;
+        final String sender_id;
         msgOnLongClickListener(String sender_id){
             this.sender_id=sender_id;
         }
         @Override
         public boolean onLongClick(View v) {
         System.out.println("on long click listener goes here");
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
+            alertDialog.setTitle(HomeActivity.getHome_context().getResources().getString(R.string.dialog_delete_conversation));
+//            alertDialog.setIcon(R.drawable.icon);
+
+            alertDialog.setPositiveButton(
+                    HomeActivity.getHome_context().getResources().getString(R.string.dialog_option_delete),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                ChatListDataSource dataSource = new ChatListDataSource(HomeActivity.getHome_context());
+                                dataSource.open();
+                                dataSource.deleteChat(sender_id);
+                                dataSource.close();
+                            } catch (Exception e) {
+
+                            }
+                        }
+                    }
+            );
+            alertDialog.setNegativeButton(
+                    HomeActivity.getHome_context().getResources().getString(R.string.dialog_option_cancel),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    }
+            );
+
+
+        alertDialog.show();
             return false;
         }
     }

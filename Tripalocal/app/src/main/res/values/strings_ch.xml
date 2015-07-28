@@ -205,7 +205,9 @@
     <string name="dialog_exit_app">确定退出本土客吗</string>
     <string name="dialog_option_yes">是</string>
     <string name="dialog_option_no">否</string>
-
+    <string name="dialog_delete_conversation">确定删除对话吗</string>
+    <string name="dialog_option_cancel">取消</string>
+    <string name="dialog_option_delete">删除</string>
     <!--end dialog string-->
 
     <!--start phone register string/ -->
