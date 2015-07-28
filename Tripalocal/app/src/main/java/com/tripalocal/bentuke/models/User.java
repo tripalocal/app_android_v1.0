@@ -42,7 +42,7 @@ public class User {
     public User(){
     }
 
-    public User(String fname, String lname,String DOB, String Email,String login_token) {
+    public User(String fname, String lname,String DOB, String Email,String login_token,String user_id) {
         firstName = fname;
         lastName = lname;
         dob = DOB;

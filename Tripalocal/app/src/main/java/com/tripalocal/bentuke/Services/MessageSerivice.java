@@ -5,7 +5,9 @@ package com.tripalocal.bentuke.Services;
  */
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
@@ -89,6 +91,8 @@ public class MessageSerivice extends Service {
                             connection = new XMPPTCPConnection(config);
                             connection.connect();
                             try {
+                                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                                   username=settings_l.getString("user_id","test123123");
                                 connection.login(username, username);
                             }catch(Exception e){
                                 System.out.println("connection error:"+e.getMessage().toString());
