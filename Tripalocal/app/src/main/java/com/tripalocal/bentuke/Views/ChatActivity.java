@@ -194,6 +194,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
+                    initExtra();
                     addTextToList(text, sender_flag, sender_img);
                     System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
