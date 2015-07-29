@@ -37,6 +37,9 @@ public class MsgListFragment extends Fragment {
 
     }
 
+    public static MessageListAdapter getAdapter(){
+        return adapter;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

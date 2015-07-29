@@ -17,11 +17,13 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -168,5 +170,25 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
             return false;
         }
+    }
+
+
+    public static void refreshData(){
+        messages = new ArrayList<>();
+        ArrayList<ChatList_model> lists=new ArrayList<ChatList_model>();
+        ChatListDataSource chatList_db_source=new ChatListDataSource(HomeActivity.getHome_context());
+        try {
+
+            chatList_db_source.open();
+            lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
+            chatList_db_source.close();
+        }catch (Exception e){
+            System.out.println("exception"+e.getMessage().toString());
+        }
+        for(ChatList_model model :lists){
+            messages.add(model);
+        }
+        NotificationHelper.clearBadge();
+        adapter.notifyDataSetChanged();
     }
 }

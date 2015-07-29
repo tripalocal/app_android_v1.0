@@ -20,6 +20,7 @@ import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.adapters.ApiService;
+import com.tripalocal.bentuke.adapters.MessageListAdapter;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
@@ -173,6 +174,7 @@ public class MessageSerivice extends Service {
                                                                     //update UI elements
                                                                     ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag, map.get("image"));
                                                                     ChatActivity.notifAdapterStatic();
+                                                                    MsgListFragment.getAdapter().refreshData();
                                                                 }
                                                             });
                                                         } else {
@@ -181,6 +183,8 @@ public class MessageSerivice extends Service {
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     NotificationHelper.addBadge();
+                                                                    MsgListFragment.getAdapter().refreshData();
+
                                                                 }
                                                             });
                                                         }
