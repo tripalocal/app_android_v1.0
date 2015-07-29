@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.umeng.analytics.MobclickAgent;
@@ -64,7 +65,7 @@ public class PhoneregisterFragment2 extends Fragment {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validationInput()) {
+                if (validationInput()) {
                     signupUser();
                 }
             }
@@ -85,8 +86,8 @@ public class PhoneregisterFragment2 extends Fragment {
                 })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-        String email_s=email.getText().toString();
-        String password_s=password_1.getText().toString();
+       final String email_s=email.getText().toString();
+       final String password_s=password_1.getText().toString();
         String first_name_s=first_name.getText().toString();
         String last_name_s=last_name.getText().toString();
 
@@ -94,34 +95,23 @@ public class PhoneregisterFragment2 extends Fragment {
             @Override
             public void success(Login_Result result, Response response) {
                 GeneralHelper.closeLoadingProgress();
-                ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success), getActivity());
                 final Login_Result result1 = result;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
-                        System.out.println("running here");
+                        System.out.println("running here" + result1.getUser_id());
+                        HomeActivity.user_id = result1.getUser_id();
+
                     }
                 }).start();
-                //System.out.println("s = [" + result.toString() + "], response = [" + response + "]");
-                if (!cancelled) {
-                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
-                    HomeActivity.getCurrent_user().setLoggedin(true);
-                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                    HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+                loginUser(email_s, password_s);
 
-                    HomeActivity.login_flag = true;
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                }
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-//            ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                //System.out.println("failure");
-                //System.out.println("error = [" + error + "]");
                 ToastHelper.errorToast(getResources().getString(R.string.toast_signup_failure), getActivity());
 
             }
@@ -129,6 +119,58 @@ public class PhoneregisterFragment2 extends Fragment {
 
     }
 
+    public void loginUser(String username,String pwd){
+        GeneralHelper.showLoadingProgress(getActivity());
+//        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.loginUser(username, pwd, new Callback<Login_Result>() {
+            @Override
+            public void success(Login_Result result, Response response) {
+                try {
+                     Thread.sleep(5000);
+
+                    if (!cancelled) {
+                        //set login
+                        HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                        HomeActivity.getCurrent_user().setLoggedin(true);
+                        HomeActivity.login_flag = true;
+                        HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+                        getActivity().invalidateOptionsMenu();
+                        getActivity().onBackPressed();
+//                    ToastHelper.longToast();
+                        HomeActivity.saveData();
+
+                        if (!MessageSerivice.isRunning) {
+                            ChatActivity.sender_id = "";
+                            MsgHelper.startMsgSerivice(HomeActivity.getHome_context());
+                        }
+                        if (HomeActivity.login_ch) {
+                            HomeActivity.login_ch = false;
+                            Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }finally {
+                    GeneralHelper.closeLoadingProgress();
+
+                }
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+//                ToastHelper.errorToast(log_in_failed);
+                //System.out.println("error = [" + error + "]");
+                HomeActivity.getCurrent_user().setLoggedin(false);
+            }
+        });
+    }
 
     public boolean validationInput() {
         String last_name_s = last_name.getText().toString();
