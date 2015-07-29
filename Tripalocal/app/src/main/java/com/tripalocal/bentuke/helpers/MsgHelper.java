@@ -49,7 +49,7 @@ public class MsgHelper {
             MessageSerivice.username=HomeActivity.getCurrent_user().getUser_id();
             Intent intent = new Intent(context, MessageSerivice.class);
             context.startService(intent);
-            System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
+//            System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
         }
     }
 }

@@ -166,7 +166,6 @@ public class MessageSerivice extends Service {
                                                             e.printStackTrace();
                                                             System.out.println("Exception here " + e.getMessage().toString());
                                                         }
-                                                        System.out.println("sender id is : " + ChatActivity.sender_id);
                                                         if (ChatActivity.sender_id.equals(partiticipant_id) && !ChatActivity.sender_id.equals("")) {
 
                                                             runOnUiThread(new Runnable() {
@@ -174,7 +173,9 @@ public class MessageSerivice extends Service {
                                                                     //update UI elements
                                                                     ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag, map.get("image"));
                                                                     ChatActivity.notifAdapterStatic();
-                                                                    MsgListFragment.getAdapter().refreshData();
+                                                                    if(MsgListFragment.getAdapter()!=null) {
+                                                                        MsgListFragment.getAdapter().refreshData();
+                                                                    }
                                                                 }
                                                             });
                                                         } else {
@@ -183,12 +184,12 @@ public class MessageSerivice extends Service {
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     NotificationHelper.addBadge();
-                                                                    MsgListFragment.getAdapter().refreshData();
-
+                                                                    if(MsgListFragment.getAdapter()!=null) {
+                                                                        MsgListFragment.getAdapter().refreshData();
+                                                                    }
                                                                 }
                                                             });
                                                         }
-                                                        System.out.println("retrieve profile successfully" + result.getImage() + "end");
                                                     }
 
                                                     @Override

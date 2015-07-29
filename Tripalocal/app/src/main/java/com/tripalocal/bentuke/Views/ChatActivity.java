@@ -196,7 +196,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (!text.trim().equals("")) {
                     initExtra();
                     addTextToList(text, sender_flag, sender_img);
-                    System.out.println("sender images shows here " + sender_img);
+//                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
@@ -240,11 +240,11 @@ public class ChatActivity extends AppCompatActivity {
             dataSource.open();
             dataSource.createNewChat(model);
             dataSource.close();
-            System.out.println("add text finish");
+//            System.out.println("add text finish");
         }catch (Exception e){
             System.out.println("exception"+e.getMessage().toString());
         }
-        System.out.println("add text to list end");
+//        System.out.println("add text to list end");
 
 
     }
@@ -269,7 +269,7 @@ public class ChatActivity extends AppCompatActivity {
         map.put("text", text);
         map.put("dateTime",GeneralHelper.getDateTime());
         map.put("image", image);
-        System.out.println("image url on chatActivity " + image);
+//        System.out.println("image url on chatActivity " + image);
 
         chatListMap.add(map);
     }
@@ -292,7 +292,7 @@ public class ChatActivity extends AppCompatActivity {
         try {
             chatMsg_datasource1.open();
             lists =(ArrayList<ChatMsg_model>)chatMsg_datasource1.getChatMsgs(Integer.parseInt(sender_id));
-            System.out.println("retrieve data succesffully");
+//            System.out.println("retrieve data succesffully");
         }catch (Exception e){
             System.out.println("exception123:"+e.getMessage().toString());
         }finally {
