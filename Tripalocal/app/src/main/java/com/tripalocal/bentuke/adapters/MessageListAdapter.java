@@ -31,8 +31,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageViewHolder>{
 
-    List<ChatList_model> messages;
+    public static List<ChatList_model> messages;
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
+    public static  RecyclerView.Adapter<MessageListAdapter.MessageViewHolder> adapter;
    public MessageListAdapter(List<ChatList_model> messages){
         this.messages = messages;
     }
@@ -51,6 +52,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     @Override
     public void onBindViewHolder(MessageViewHolder msgViewHolder, int i) {
+        adapter=this;
         msgViewHolder.msg_sender.setText(messages.get(i).getSender_name());
         msgViewHolder.msg_brief.setText(messages.get(i).getLast_msg_content());
         String msg_time=messages.get(i).getLast_msg_date();
@@ -65,7 +67,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
         msgViewHolder.msg_brief.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
         msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
-        msgViewHolder.imageView.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
+        msgViewHolder.imageView.setOnClickListener(new msglistlistener(sender_name, sender_id, image));
 
         msgViewHolder.msg_sender.setOnLongClickListener(new msgOnLongClickListener(sender_id));
         msgViewHolder.msg_brief.setOnLongClickListener(new msgOnLongClickListener(sender_id));
@@ -140,6 +142,12 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
                                 dataSource.open();
                                 dataSource.deleteChat(sender_id);
                                 dataSource.close();
+                                for(ChatList_model model : messages){
+                                        if(model.getSender_id().equals(sender_id)){
+                                            messages.remove(model);
+                                        }
+                                }
+                                adapter.notifyDataSetChanged();
 
                             } catch (Exception e) {
 
@@ -157,6 +165,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
 
         alertDialog.show();
+
             return false;
         }
     }
