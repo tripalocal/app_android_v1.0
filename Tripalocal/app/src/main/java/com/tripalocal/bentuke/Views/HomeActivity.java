@@ -322,6 +322,7 @@ public class HomeActivity extends AppCompatActivity {
                 HomeActivity.login_flag = true;
                 invalidateOptionsMenu();
                 MessageSerivice.isRunning=false;
+                MessageSerivice.connection.disconnect();
 //                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {

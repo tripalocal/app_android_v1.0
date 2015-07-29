@@ -20,6 +20,7 @@ import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
@@ -245,6 +246,7 @@ public class MyTriptmpActivity extends AppCompatActivity {
             if(HomeActivity.getCurrent_user().isLoggedin()){
                 HomeActivity.getCurrent_user().setLogin_token(null);
                 HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.getCurrent_user().setUser_id(null);
                 HomeActivity.setAccessToken(null);
                 SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor_l = settings_l.edit();
@@ -252,7 +254,9 @@ public class MyTriptmpActivity extends AppCompatActivity {
                 editor_l.apply();
                 HomeActivity.login_flag = true;
                 invalidateOptionsMenu();
-                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                MessageSerivice.isRunning=false;
+                MessageSerivice.connection.disconnect();
+//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")

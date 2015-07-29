@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 
 import com.umeng.analytics.MobclickAgent;
@@ -46,11 +47,17 @@ public class PaymentActivity extends AppCompatActivity {
             if (HomeActivity.getCurrent_user().isLoggedin()) {
                 HomeActivity.getCurrent_user().setLogin_token(null);
                 HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.getCurrent_user().setUser_id(null);
                 HomeActivity.setAccessToken(null);
                 SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.clear();
                 editor_l.apply();
+                HomeActivity.login_flag = true;
+                invalidateOptionsMenu();
+                MessageSerivice.isRunning=false;
+                MessageSerivice.connection.disconnect();
+//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             } else
                 getSupportFragmentManager().beginTransaction().replace(R.id.payment_content, new LoginFragment()).commit();
