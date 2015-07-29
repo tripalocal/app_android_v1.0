@@ -80,6 +80,7 @@ public class MessageSerivice extends Service {
         @Override
         protected Boolean doInBackground(String... params) {
             try{
+                Thread.sleep(6000);
                         try {
 
                             XMPPTCPConnectionConfiguration config = XMPPTCPConnectionConfiguration.builder()
@@ -113,7 +114,7 @@ public class MessageSerivice extends Service {
                                                 final String msg_body = message.getBody().toString();
 //                                                System.out.println("message body" + msg_body);final HashMap<String,String> map=new HashMap<String,String>();
                                                 final String tooken_en = "804db40bac2e17f35932693dd4925b930be6925e";
-
+                                                        System.out.println("msg body : "+ msg_body+chat.getParticipant());
                                                 RestAdapter restAdapter = new RestAdapter.Builder()
                                                         .setLogLevel(RestAdapter.LogLevel.FULL)
                                                         .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
@@ -211,6 +212,7 @@ public class MessageSerivice extends Service {
                 System.out.println("service error2"+e.getMessage().toString());
             }
             return true;
+
         }
 
         @Override

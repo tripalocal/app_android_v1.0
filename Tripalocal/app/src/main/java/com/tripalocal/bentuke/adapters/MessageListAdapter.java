@@ -140,6 +140,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
                                 dataSource.open();
                                 dataSource.deleteChat(sender_id);
                                 dataSource.close();
+
                             } catch (Exception e) {
 
                             }

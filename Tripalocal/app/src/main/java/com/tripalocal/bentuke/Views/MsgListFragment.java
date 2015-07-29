@@ -77,6 +77,8 @@ public class MsgListFragment extends Fragment {
         }
         NotificationHelper.clearBadge();
     }
+
+
     public void onResume() {
         super.onResume();
         initializeData();
