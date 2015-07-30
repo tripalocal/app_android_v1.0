@@ -294,6 +294,13 @@
     <string name="msg_server_nick_name">tripalocal.com</string>
     <string name="msg_admin_username">superAdmin</string>
     <string name="msg_admin_password">superAdmin</string>
+    <string name="msg_years_ago">years ago</string>
+    <string name="msg_months_ago">months ago</string>
+    <string name="msg_days_ago">days ago</string>
+    <string name="msg_hours_ago">hours ago</string>
+    <string name="msg_mins_ago">mins ago</string>
+    <string name="msg_just_now">just now</string>
+
     <!--end message string-->
 
     <!--loading text start-->

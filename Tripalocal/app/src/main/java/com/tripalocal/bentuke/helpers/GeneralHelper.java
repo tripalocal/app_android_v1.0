@@ -31,7 +31,7 @@ public class GeneralHelper {
     public static ProgressDialog progress;
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "dd/MM HH:mm", Locale.getDefault());
+                "yyyy/MM/dd/HH/mm", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }
@@ -80,8 +80,8 @@ public class GeneralHelper {
             @Override
             public void success(Profile_result result, Response response) {
                 GeneralHelper.closeLoadingProgress();
-                map.put("name",result.getFirst_name()+" "+result.getLast_name());
-                map.put("image",result.getImage());
+                map.put("name", result.getFirst_name() + " " + result.getLast_name());
+                map.put("image", result.getImage());
                 System.out.println("retrieve profile successfully" + result.getFirst_name() + result.getImage() + result.getLast_name() + "end");
             }
 
@@ -94,5 +94,35 @@ public class GeneralHelper {
             }
         });
         return map;
+    }
+
+
+    public static String getTimeClp(String dateTime){
+        String datetimeR_arr[]=dateTime.split("/");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy/MM/dd/HH/mm", Locale.getDefault());
+        String datetimeC_arr[]= dateFormat.format(new Date()).split("/");
+        if(Integer.parseInt(datetimeC_arr[0])>Integer.parseInt(datetimeR_arr[0])){
+            int gap=Integer.parseInt(datetimeC_arr[0])-Integer.parseInt(datetimeR_arr[0]);
+            return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_years_ago);
+        }
+        if(Integer.parseInt(datetimeC_arr[1])>Integer.parseInt(datetimeR_arr[1])){
+            int gap=Integer.parseInt(datetimeC_arr[1])-Integer.parseInt(datetimeR_arr[1]);
+            return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_months_ago);
+        }
+        if(Integer.parseInt(datetimeC_arr[2])>Integer.parseInt(datetimeR_arr[2])){
+            int gap=Integer.parseInt(datetimeC_arr[2])-Integer.parseInt(datetimeR_arr[2]);
+            return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_days_ago);
+        }
+        if(Integer.parseInt(datetimeC_arr[3])>Integer.parseInt(datetimeR_arr[3])){
+            int gap=Integer.parseInt(datetimeC_arr[3])-Integer.parseInt(datetimeR_arr[3]);
+            return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_hours_ago);
+        }
+        if(Integer.parseInt(datetimeC_arr[4])>Integer.parseInt(datetimeR_arr[4])){
+            int gap=Integer.parseInt(datetimeC_arr[4])-Integer.parseInt(datetimeR_arr[4]);
+            return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_mins_ago);
+        }
+        return HomeActivity.getHome_context().getResources().getString(R.string.msg_just_now);
+
     }
 }

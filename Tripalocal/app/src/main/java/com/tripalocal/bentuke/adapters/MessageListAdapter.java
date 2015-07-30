@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.Tripalocal;
@@ -57,7 +58,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         adapter=this;
         msgViewHolder.msg_sender.setText(messages.get(i).getSender_name());
         msgViewHolder.msg_brief.setText(messages.get(i).getLast_msg_content());
-        String msg_time=messages.get(i).getLast_msg_date();
+        String msg_time= GeneralHelper.getTimeClp(messages.get(i).getLast_msg_date());
         msgViewHolder.msg_time.setText(msg_time);
         String image=messages.get(i).getSender_img();
         if(!image.equals("")) {

@@ -19,7 +19,7 @@
     <item name="tripalocal_hint" type="color">#E8E6E7</item>
     <item name="tripalocal_selection_highlight" type="color">#006666</item>
     <item name="tripalocal_instance_book" type="color">#339999</item>
-    <item name="msg_send" type="color">#c3eae8</item>
+    <item name="msg_send" type="color">#c4eaea</item>
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>

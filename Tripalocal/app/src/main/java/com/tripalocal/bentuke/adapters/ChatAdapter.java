@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.Tripalocal;
 
 import org.w3c.dom.Text;
@@ -100,7 +101,7 @@ public class ChatAdapter extends BaseAdapter{
         String datetime_s=(String)chatList.get(position).get("dateTime");
 
         holder.textView.setText(text);
-        holder.dateTime_text.setText(datetime_s);
+        holder.dateTime_text.setText(GeneralHelper.getTimeClp(datetime_s));
 
         return convertView;
     }
