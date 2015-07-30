@@ -136,6 +136,8 @@ public class HomeActivityFragment extends Fragment {
             }
         });
         getActivity().setTitle(getResources().getString(R.string.app_name));
+        getActivity().invalidateOptionsMenu();
+
         return view;
     }
 

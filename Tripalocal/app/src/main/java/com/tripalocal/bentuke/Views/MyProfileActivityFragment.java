@@ -50,6 +50,8 @@ public class MyProfileActivityFragment extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.my_profile));
         profile_saved = getResources().getString(R.string.profile_saved);
         profile_error = getResources().getString(R.string.error_saving_profile);
+        getActivity().invalidateOptionsMenu();
+
         return view;
     }
 

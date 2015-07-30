@@ -214,6 +214,8 @@ public class NavigationFragment extends Fragment {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
                 HomeActivity.webViewPage_info = "privacypolicy";
+                InfoFragment.title=getResources().getString(R.string.nav_privacy_policy);
+
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 
@@ -225,6 +227,7 @@ public class NavigationFragment extends Fragment {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
                 HomeActivity.webViewPage_info="aboutus";
+                InfoFragment.title=getResources().getString(R.string.nav_about_us);
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 
@@ -236,6 +239,8 @@ public class NavigationFragment extends Fragment {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
                 HomeActivity.webViewPage_info="termsofservice";
+                InfoFragment.title=getResources().getString(R.string.nav_terms_of_service_link);
+
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 

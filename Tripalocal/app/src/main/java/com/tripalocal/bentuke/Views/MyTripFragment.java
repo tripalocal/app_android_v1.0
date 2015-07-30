@@ -166,6 +166,8 @@ public class MyTripFragment extends Fragment {
         LinearLayoutManager LLM = new LinearLayoutManager(HomeActivity.getHome_context());
         rv.setLayoutManager(LLM);
         msgTxt = (TextView) getActivity().findViewById(R.id.blank_msg);
+        getActivity().invalidateOptionsMenu();
+
         return view;
     }
 

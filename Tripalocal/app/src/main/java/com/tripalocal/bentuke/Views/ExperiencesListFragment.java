@@ -63,6 +63,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         rv.setAdapter(new ExperienceListAdapter(getActivity().getApplicationContext()));
         if(CheckoutActivity.experience_to_book != null)
             CheckoutActivity.experience_to_book = null;
+        getActivity().invalidateOptionsMenu();
+
         return view;
     }
 

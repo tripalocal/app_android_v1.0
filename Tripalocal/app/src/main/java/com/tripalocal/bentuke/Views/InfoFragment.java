@@ -17,7 +17,7 @@ import com.tripalocal.bentuke.R;
 public class InfoFragment extends Fragment {
 
     public WebView webViewPage;
-
+    public static String title="";
     public InfoFragment() {
         // Required empty public constructor
 
@@ -37,6 +37,9 @@ public class InfoFragment extends Fragment {
         webViewPage.setWebViewClient(new MyWebViewClient());
         webViewPage.loadUrl(getActivity().getResources().getString(R.string.server_url)+HomeActivity.webViewPage_info);
 //        webViewPage.set
+        getActivity().invalidateOptionsMenu();
+        getActivity().setTitle(title);
+
         return view;
     }
 

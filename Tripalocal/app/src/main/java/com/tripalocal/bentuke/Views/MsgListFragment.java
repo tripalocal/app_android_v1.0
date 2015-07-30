@@ -63,7 +63,7 @@ public class MsgListFragment extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.msg_list_title));
          adapter = new MessageListAdapter(messages);
         mRecyclerView.setAdapter(adapter);
-
+getActivity().invalidateOptionsMenu();
         return view;
     }
 

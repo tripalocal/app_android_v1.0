@@ -135,6 +135,8 @@ public class LoginFragment extends Fragment {
         });
 
         cancelled = false;
+        getActivity().invalidateOptionsMenu();
+
         return view;
     }
 

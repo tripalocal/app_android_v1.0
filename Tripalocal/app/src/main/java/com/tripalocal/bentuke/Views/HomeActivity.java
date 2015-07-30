@@ -216,8 +216,9 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println("onresume");
 
         super.onResume();
-//        invalidateOptionsMenu();
-        if(!checkFirstTime()){
+        invalidateOptionsMenu();
+        if(!
+                checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -231,7 +232,7 @@ public class HomeActivity extends AppCompatActivity {
             MsgHelper.startMsgSerivice(getHome_context());
 //            getProfile();
         }
-        System.out.println("oncreate and tooken is "+getAccessToken());
+        System.out.println("oncreate and tooken is " + getAccessToken());
 
         MobclickAgent.onResume(this);
 
@@ -283,7 +284,12 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-        return true;
+        Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
+        if(fragment_t instanceof HomeActivityFragment) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
