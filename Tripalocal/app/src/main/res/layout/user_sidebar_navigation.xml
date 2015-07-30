@@ -222,10 +222,21 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
-            android:paddingBottom="35dp"
             android:textStyle="bold"
             android:id="@+id/nav_about_us_txt"
             android:layout_below="@id/nav_privacy_txt"
             android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="35dp"
+            android:textStyle="bold"
+            android:text="logout"
+            android:id="@+id/nav_logout_text"
+            android:layout_below="@id/nav_about_us_txt"
+            android:clickable="true"
+            android:textColor="@color/tripalocal_green_blue"/>
     </RelativeLayout>
 </ScrollView>

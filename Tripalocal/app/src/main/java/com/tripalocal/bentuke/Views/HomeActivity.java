@@ -242,9 +242,7 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         if(menu_ref == null)
             menu_ref= menu;
-        if(getCurrent_user().isLoggedin()){
-            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
-        }
+
         SearchView searchView =  getSearchView(menu);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -311,20 +309,20 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_login) {
             if(HomeActivity.getCurrent_user().isLoggedin()){
-                HomeActivity.getCurrent_user().setLogin_token(null);
-                HomeActivity.getCurrent_user().setLoggedin(false);
-                HomeActivity.getCurrent_user().setUser_id(null);
-                HomeActivity.setAccessToken(null);
-                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor_l = settings_l.edit();
-                editor_l.clear();
-                editor_l.apply();
-                HomeActivity.login_flag = true;
-                invalidateOptionsMenu();
-                MessageSerivice.isRunning=false;
-                MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
-                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
+//                HomeActivity.getCurrent_user().setLogin_token(null);
+//                HomeActivity.getCurrent_user().setLoggedin(false);
+//                HomeActivity.getCurrent_user().setUser_id(null);
+//                HomeActivity.setAccessToken(null);
+//                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor_l = settings_l.edit();
+//                editor_l.clear();
+//                editor_l.apply();
+//                HomeActivity.login_flag = true;
+//                invalidateOptionsMenu();
+//                MessageSerivice.isRunning=false;
+//                MessageSerivice.connection.disconnect();
+////                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+//                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
                         .replace(R.id.fragment_container, new LoginFragment()).commit();

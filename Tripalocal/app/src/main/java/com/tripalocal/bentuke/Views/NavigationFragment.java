@@ -1,7 +1,9 @@
 package com.tripalocal.bentuke.Views;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
@@ -48,6 +51,7 @@ public class NavigationFragment extends Fragment {
     TextView tos_txt;
     TextView privacy_txt;
     TextView about_txt;
+    TextView logout_txt;
 
 
     public NavigationFragment() {
@@ -199,12 +203,14 @@ public class NavigationFragment extends Fragment {
 //        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
         about_txt.setText(Html.fromHtml(about_text_content));
+        logout_txt=(TextView)view.findViewById(R.id.nav_logout_text);
+        logout_txt.setText(getResources().getString(R.string.logout));
         privacy_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info="privacypolicy";
+                HomeActivity.webViewPage_info = "privacypolicy";
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 
@@ -230,6 +236,30 @@ public class NavigationFragment extends Fragment {
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 
+            }
+        });
+        logout_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(HomeActivity.getCurrent_user().isLoggedin()){
+                    HomeActivity.getCurrent_user().setLogin_token(null);
+                    HomeActivity.getCurrent_user().setLoggedin(false);
+                    HomeActivity.getCurrent_user().setUser_id(null);
+                    HomeActivity.setAccessToken(null);
+                    SharedPreferences settings_l = getActivity().getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor_l = settings_l.edit();
+                    editor_l.clear();
+                    editor_l.apply();
+                    HomeActivity.login_flag = true;
+                    getActivity().invalidateOptionsMenu();
+                    MessageSerivice.isRunning=false;
+                    MessageSerivice.connection.disconnect();
+//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                    ToastHelper.shortToast(getResources().getString(R.string.logged_out));
+                }else {
+                    getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("login")
+                            .replace(R.id.fragment_container, new LoginFragment()).commit();
+                }
             }
         });
     }
