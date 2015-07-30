@@ -19,7 +19,7 @@ import me.leolin.shortcutbadger.ShortcutBadger;
  */
 public class NotificationHelper {
     public static  int badgeCount = 1;
-
+    public static boolean haveNotifcation=false;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public final static void msg_notification(String id,String name,String image, String msg_detail,Context context){
 
@@ -52,11 +52,13 @@ public class NotificationHelper {
 
     public static void addBadge(){
         ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount++);
+        haveNotifcation=true;
     }
 
     public static void clearBadge(){
         badgeCount=1;
         ShortcutBadger.with(HomeActivity.getHome_context()).count(0);
+        haveNotifcation=false;
 
     }
 

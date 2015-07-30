@@ -14,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -52,6 +54,7 @@ public class NavigationFragment extends Fragment {
     TextView privacy_txt;
     TextView about_txt;
     TextView logout_txt;
+    private static ImageView notification_red_icon;
 
 
     public NavigationFragment() {
@@ -262,10 +265,25 @@ public class NavigationFragment extends Fragment {
                 }
             }
         });
+
+        notification_red_icon=(ImageView)view.findViewById(R.id.notificaiotn_red_icon);
+        if(NotificationHelper.haveNotifcation){
+       notification_red_icon.setVisibility(View.VISIBLE);
+        }else{
+            notification_red_icon.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void onResume() {
         super.onResume();
+        System.out.println("come to resume here ");
+        if(notification_red_icon!=null) {
+            if (NotificationHelper.haveNotifcation) {
+                notification_red_icon.setVisibility(View.VISIBLE);
+            } else {
+                notification_red_icon.setVisibility(View.GONE);
+            }
+        }
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_navigation)); //统计页面
     }
     public void onPause() {
