@@ -184,7 +184,7 @@ public class MessageSerivice extends Service {
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     NotificationHelper.addBadge();
-                                                                    if(MsgListFragment.getAdapter()!=null) {
+                                                                    if(MsgListFragment.getInit()) {
                                                                         MsgListFragment.getAdapter().refreshData();
                                                                     }
                                                                 }

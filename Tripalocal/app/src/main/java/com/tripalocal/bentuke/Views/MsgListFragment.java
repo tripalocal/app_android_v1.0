@@ -27,6 +27,7 @@ public class MsgListFragment extends Fragment {
     private List<ChatList_model> messages;
     private ChatListDataSource chatList_db_source;
     private static MessageListAdapter adapter;
+    private static boolean isInitialise=false;
     public MsgListFragment() {
         // Required empty public constructor
     }
@@ -34,9 +35,12 @@ public class MsgListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        isInitialise=true;
     }
 
+    public static boolean getInit(){
+        return  isInitialise;
+    }
     public static MessageListAdapter getAdapter(){
         return adapter;
     }
