@@ -294,6 +294,12 @@
     <string name="msg_server_nick_name">tripalocal.com</string>
     <string name="msg_admin_username">superAdmin</string>
     <string name="msg_admin_password">superAdmin</string>
+    <string name="msg_years_ago">年前</string>
+    <string name="msg_months_ago">月前</string>
+    <string name="msg_days_ago">天前</string>
+    <string name="msg_hours_ago">小时前</string>
+    <string name="msg_mins_ago">分钟前</string>
+    <string name="msg_just_now">刚刚</string>
     <!--msg configuration-->
     <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
