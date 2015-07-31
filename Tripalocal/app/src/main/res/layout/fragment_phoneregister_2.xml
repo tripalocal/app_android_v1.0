@@ -146,7 +146,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:textColor="@color/white"
-            android:background="@color/tripalocal_green_blue"/>
+            android:background="@drawable/btn_round_square"/>
 
     </LinearLayout>
     <!--</ScrollView>-->
