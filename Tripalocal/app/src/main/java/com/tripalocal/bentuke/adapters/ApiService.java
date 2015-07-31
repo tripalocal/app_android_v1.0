@@ -15,6 +15,7 @@ import com.tripalocal.bentuke.helpers.Login_Result;
 import com.tripalocal.bentuke.helpers.SearchRequest;
 import com.tripalocal.bentuke.models.MyTrip;
 import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
+import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
 import com.tripalocal.bentuke.models.exp_detail.request;
 import com.tripalocal.bentuke.models.network.Booking_Result;
 import com.tripalocal.bentuke.models.network.Coupon_Result;
@@ -24,12 +25,20 @@ import com.tripalocal.bentuke.models.network.MyProfile_result;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.network.SignupRequest;
+import com.tripalocal.bentuke.models.network.WishList_update_Request;
+import com.tripalocal.bentuke.models.network.Wishlist_update_result;
 import com.tripalocal.bentuke.models.network.profileUpdateRequest;
 
 /**
  * Created by naveen on 4/6/2015.
  */
 public interface ApiService {
+
+    @POST("/service_wishlist")
+    void UpdateWishList(@Body WishList_update_Request request,Callback<String> response);
+
+    @GET("/service_wishlist")
+    void RetrieveWishList(Callback<WishList_Retrieve_Result> response);
 
     @POST("/service_search/")
     void getSearchResults(@Body SearchRequest data_json, Callback<List<Search_Result>> cb);
