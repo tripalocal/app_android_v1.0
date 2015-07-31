@@ -30,8 +30,8 @@
     <string name="title_activity_review">评论</string>
     <string name="title_activity_alipay">支付宝</string>
 
-    <string name="search_hint">切换目的地</string>
-    <string name="search_title">切换目的地</string>
+    <string name="search_hint">你想去哪？</string>
+    <string name="search_title">你想去哪？</string>
 
     <string name="experience_image">体验图片</string>
     <string name="my_trip_upcoming">已预订</string>
