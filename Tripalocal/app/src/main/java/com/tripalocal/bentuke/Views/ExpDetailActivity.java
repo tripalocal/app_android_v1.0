@@ -51,7 +51,7 @@ public class ExpDetailActivity extends AppCompatActivity {
         if(HomeActivity.getCurrent_user().isLoggedin()){
             menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
         }
-        return true;
+        return false;
     }
 
     @Override
