@@ -70,7 +70,7 @@ public class PhoneregisterFragment extends Fragment {
                 //set the text
                 if (validationInput()) {
                     verfication_btn.setEnabled(false);
-
+                    verfication_btn.setBackgroundColor(getResources().getColor(R.color.grey));
                     new SendMsg().execute("");
 
 
@@ -187,6 +187,8 @@ public class PhoneregisterFragment extends Fragment {
                 public void onFinish() {
                     verfication_btn.setText(getResources().getString(R.string.verfication_expire));
                     verfication_btn.setEnabled(true);
+                    verfication_btn.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+
                     confirm_btn.setEnabled(false);
 
                 }
@@ -194,6 +196,8 @@ public class PhoneregisterFragment extends Fragment {
             else{
                 ToastHelper.errorToast(getResources().getString(R.string.send_msg_failure),getActivity());
                 verfication_btn.setEnabled(true);
+                verfication_btn.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+
                 confirm_btn.setEnabled(false);
 
             }
