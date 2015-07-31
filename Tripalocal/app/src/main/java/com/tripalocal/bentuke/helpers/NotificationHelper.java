@@ -52,13 +52,16 @@ public class NotificationHelper {
 
     public static void addBadge(){
         ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount++);
+        System.out.println("badges count " + badgeCount);
         haveNotifcation=true;
     }
 
     public static void clearBadge(){
-        badgeCount=1;
-        ShortcutBadger.with(HomeActivity.getHome_context()).count(0);
-        haveNotifcation=false;
+        if(haveNotifcation) {
+            badgeCount = 1;
+            ShortcutBadger.with(HomeActivity.getHome_context()).count(0);
+            haveNotifcation = false;
+        }
 
     }
 

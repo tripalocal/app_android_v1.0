@@ -189,7 +189,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         for(ChatList_model model :lists){
             messages.add(model);
         }
-        NotificationHelper.clearBadge();
+//        NotificationHelper.clearBadge();
         adapter.notifyDataSetChanged();
     }
 }
