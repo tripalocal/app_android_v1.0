@@ -153,6 +153,7 @@ public class HomeActivity extends AppCompatActivity {
             Gson gson = new Gson();
             java.lang.reflect.Type type = new TypeToken<HashMap<String,Experience>>(){}.getType();
             wish_map =  gson.fromJson(settings.getString("wish_map", "null"),type);
+            //change here retrieve wish map here 
         }
 
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);

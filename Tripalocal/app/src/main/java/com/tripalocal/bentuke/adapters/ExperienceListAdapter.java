@@ -146,6 +146,8 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
                             //HomeActivity.wish_list.remove(test);
                             HomeActivity.wish_map.remove(test);
+                            //change here
+
                             ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
                         } else {
                             wishimage.setImageResource(R.drawable.heart_lr);
@@ -157,6 +159,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             {
                                 HomeActivity.wish_map.put(test,exp);
                                 ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
+                                //change here
                             }
                             else{
                                 ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.wishlist_error));
