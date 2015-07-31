@@ -54,4 +54,6 @@ dependencies {
     compile "org.igniterealtime.smack:smack-im:4.1.0-rc1"
     // Optional for XMPP extensions support
     compile "org.igniterealtime.smack:smack-extensions:4.1.0-rc1"
+    compile 'me.leolin:ShortcutBadger:1.1.2@aar'
+
 }
