@@ -213,7 +213,7 @@
     <!--start phone register string/ -->
     <string name="send_verf_code">发送验证码</string>
     <string name="verfi_countdown">时间剩余: </string>
-    <string name="phone_no_hint">电话号码</string>
+    <string name="phone_no_hint">手机号码</string>
     <string name="verification_hint">验证码</string>
     <string name="confirm">确认</string>
     <string name="last_name">姓</string>

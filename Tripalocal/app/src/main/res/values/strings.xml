@@ -214,7 +214,7 @@
     <!--start phone register string/ -->
     <string name="send_verf_code">Send verification Code</string>
     <string name="verfi_countdown">Seconds Remaining: </string>
-    <string name="phone_no_hint">Please enter your phone num</string>
+    <string name="phone_no_hint">mobile number</string>
     <string name="verification_hint">Please enter verification code</string>
     <string name="confirm">Confirm</string>
     <string name="last_name">Last</string>
