@@ -250,7 +250,8 @@
                         android:layout_marginLeft="25dp"
                         android:layout_width="0dp"
                         android:popupBackground="@color/tripalocal_light_grey"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_datetime">
                     </Spinner>
 
                     <Spinner android:id="@+id/booking_Select_Time_spinner"
@@ -258,7 +259,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner_datetime" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
