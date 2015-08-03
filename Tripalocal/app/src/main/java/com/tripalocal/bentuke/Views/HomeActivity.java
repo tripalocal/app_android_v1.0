@@ -34,10 +34,15 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
+import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
 import com.tripalocal.bentuke.models.network.Profile_result;
+import com.tripalocal.bentuke.models.network.WishList_update_Request;
+import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.tripalocal.bentuke.R;
@@ -154,6 +159,7 @@ public class HomeActivity extends AppCompatActivity {
             java.lang.reflect.Type type = new TypeToken<HashMap<String,Experience>>(){}.getType();
             wish_map =  gson.fromJson(settings.getString("wish_map", "null"),type);
             //change here retrieve wish map here
+
         }
 
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
@@ -205,8 +211,12 @@ public class HomeActivity extends AppCompatActivity {
         if(!MessageSerivice.isRunning && checkLogin()){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
-        }
 
+        }
+        if(checkLogin()){
+            System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
+            RetrieveWishListMap();
+        }
         //start service for message
 
 
@@ -401,5 +411,37 @@ public class HomeActivity extends AppCompatActivity {
         MobclickAgent.onPause(this);
     }
 
+
+    public void RetrieveWishListMap(){
+        System.out.println("start activity ");
+        final HashMap<String,String> map=new HashMap<String,String>();
+        final String tooken="923fcc532722a50f957ec197f13ae72a9e8f348a";
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " +tooken);
+                    }
+                })
+                .build();
+
+
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.RetrieveWishList(new Callback<WishList_Retrieve_Result>() {
+            @Override
+            public void success(WishList_Retrieve_Result result, Response response) {
+                System.out.println("retrieve data success"+result.getIds().length);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("retrieve data failure");
+
+            }
+        });
+    }
 
 }
