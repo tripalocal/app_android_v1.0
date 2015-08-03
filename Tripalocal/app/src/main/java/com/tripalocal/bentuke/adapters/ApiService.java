@@ -27,6 +27,7 @@ import com.tripalocal.bentuke.models.network.Profile_result;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.network.SignupRequest;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
+import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 import com.tripalocal.bentuke.models.network.profileUpdateRequest;
 
 /**
@@ -34,10 +35,10 @@ import com.tripalocal.bentuke.models.network.profileUpdateRequest;
  */
 public interface ApiService {
 
-    @POST("/service_wishlist")
-    void UpdateWishList(@Body WishList_update_Request request,Callback<String> response);
+    @POST("/service_wishlist/")
+    void UpdateWishList(@Body WishList_update_Request request,Callback<Wishlist_Update_Result> response);
 
-    @GET("/service_wishlist")
+    @GET("/service_wishlist/")
     void RetrieveWishList(Callback<ArrayList<Experience>> response);
 
     @POST("/service_search/")

@@ -58,6 +58,7 @@ import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 
 import static com.tripalocal.bentuke.R.layout;
@@ -215,11 +216,9 @@ public class HomeActivity extends AppCompatActivity {
         }
         if(checkLogin()){
             System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
-            RetrieveWishListMap();
+//            RetrieveWishListMap();
         }
         //start service for message
-
-
     }
 
     @Override
@@ -228,8 +227,7 @@ public class HomeActivity extends AppCompatActivity {
 
         super.onResume();
         invalidateOptionsMenu();
-        if(!
-                checkFirstTime()){
+        if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -356,7 +354,6 @@ public class HomeActivity extends AppCompatActivity {
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
         //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
-
             return false;
         }else{
             return true;
@@ -412,36 +409,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void RetrieveWishListMap(){
-        System.out.println("start activity ");
-        final HashMap<String,String> map=new HashMap<String,String>();
-        final String tooken="923fcc532722a50f957ec197f13ae72a9e8f348a";
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " +tooken);
-                    }
-                })
-                .build();
 
-
-        ApiService apiService = restAdapter.create(ApiService.class);
-        apiService.RetrieveWishList(new Callback<WishList_Retrieve_Result>() {
-            @Override
-            public void success(WishList_Retrieve_Result result, Response response) {
-                System.out.println("retrieve data success"+result.getIds().length);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                System.out.println("retrieve data failure");
-
-            }
-        });
-    }
 
 }

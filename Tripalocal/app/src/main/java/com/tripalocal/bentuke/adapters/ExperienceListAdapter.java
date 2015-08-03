@@ -14,16 +14,26 @@ import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ExpDetailActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.Tripalocal;
+import com.tripalocal.bentuke.models.network.WishList_update_Request;
+import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 
 /**
  * Created by naveen on 4/18/2015.
@@ -146,7 +156,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
                             //HomeActivity.wish_list.remove(test);
                             HomeActivity.wish_map.remove(test);
-                            //change here
+                            updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_false);
 
                             ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
                         } else {
@@ -158,6 +168,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             if(exp != null)
                             {
                                 HomeActivity.wish_map.put(test,exp);
+                                updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_true);
                                 ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
                                 //change here
                             }
@@ -190,5 +201,41 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             HomeActivity.getHome_context().startActivity(intent);
         }
+    }
+
+
+    public static void updateListMap(int user_id,int experience_id,String added) {
+
+        final HashMap<String, String> map = new HashMap<String, String>();
+        final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + tooken);
+                        request.addHeader("Content-Type","application/json");
+                    }
+                })
+                .build();
+
+        WishList_update_Request request = new WishList_update_Request();
+        request.setUser_id(user_id);
+        request.setExperience_id(experience_id);
+        request.setAdded(added);
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.UpdateWishList(request, new Callback<Wishlist_Update_Result>() {
+            @Override
+            public void success(Wishlist_Update_Result wishlist_update_result, Response response) {
+                System.out.println("success"+wishlist_update_result.getAdded());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("failure" + error.getMessage().toString());
+            }
+        });
     }
 }
