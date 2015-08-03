@@ -29,7 +29,9 @@ import com.tripalocal.bentuke.Views.ExpDetailActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.Experience;
+import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
@@ -156,7 +158,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
                             //HomeActivity.wish_list.remove(test);
                             HomeActivity.wish_map.remove(test);
-                            updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_false);
+                            updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_true);
 
                             ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
                         } else {
@@ -167,10 +169,10 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                             Experience exp = getExperience(Integer.parseInt(test));
                             if(exp != null)
                             {
-                                HomeActivity.wish_map.put(test,exp);
-                                updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_true);
+                                HomeActivity.wish_map.put(test, exp);
+                                updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_false);
                                 ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
-                                //change here
+
                             }
                             else{
                                 ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.wishlist_error));
@@ -216,7 +218,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                     public void intercept(RequestFacade request) {
                         request.addHeader("Accept", "application/json");
                         request.addHeader("Authorization", "Token " + tooken);
-                        request.addHeader("Content-Type","application/json");
+                        request.addHeader("Content-Type", "application/json");
                     }
                 })
                 .build();
@@ -229,7 +231,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         apiService.UpdateWishList(request, new Callback<Wishlist_Update_Result>() {
             @Override
             public void success(Wishlist_Update_Result wishlist_update_result, Response response) {
-                System.out.println("success"+wishlist_update_result.getAdded());
+                System.out.println("success" + wishlist_update_result.getAdded());
             }
 
             @Override
@@ -237,5 +239,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 System.out.println("failure" + error.getMessage().toString());
             }
         });
-    }
-}
+    }}
+
+
+

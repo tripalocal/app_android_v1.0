@@ -29,6 +29,42 @@ public class Experience {
         this.description = description;
     }
 
+    public Experience(){
+
+    }
+
+    public Experience(String title, Integer id, String description) {
+        this.title = title;
+        this.id = id;
+        this.description = description;
+    }
+
+    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Integer duration, Integer id, String description, String language) {
+        this.title = title;
+        this.timeslots = timeslots;
+        this.meetup_spot = meetup_spot;
+        this.rate = rate;
+        this.price = price;
+        this.instant_booking = instant_booking;
+        this.host = host;
+        this.host_image = host_image;
+        this.duration = duration;
+        this.id = id;
+        this.description = description;
+        this.language = language;
+    }
+
+    public Experience(String title, Double price, String host_image, Integer duration, Integer id, String description, String language) {
+        this.title = title;
+        this.price = price;
+        this.host_image = host_image;
+        this.duration = duration;
+        this.id = id;
+        this.description = description;
+
+        this.language = language;
+    }
+
     public String getTitle() {
         return title;
     }

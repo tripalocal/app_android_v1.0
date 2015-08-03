@@ -85,6 +85,7 @@ public class HomeActivity extends AppCompatActivity {
     public static XMPPTCPConnection connection;
     public static String user_id;
     public static String user_img;
+    public static boolean updatedWishMap=false;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -217,6 +218,7 @@ public class HomeActivity extends AppCompatActivity {
         if(checkLogin()){
             System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
 //            RetrieveWishListMap();
+            getExperienceMap();
         }
         //start service for message
     }
@@ -242,8 +244,11 @@ public class HomeActivity extends AppCompatActivity {
 //            getProfile();
         }
         System.out.println("oncreate and tooken is " + getAccessToken());
-
-        MobclickAgent.onResume(this);
+        if(checkLogin()){
+            System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
+//            RetrieveWishListMap();
+            getExperienceMap();
+        }        MobclickAgent.onResume(this);
 
     }
 
@@ -408,6 +413,44 @@ public class HomeActivity extends AppCompatActivity {
         MobclickAgent.onPause(this);
     }
 
+
+    public void getExperienceMap() {
+        if (!updatedWishMap) {
+            updatedWishMap = true;
+            final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
+                    .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                    .setRequestInterceptor(new RequestInterceptor() {
+                        @Override
+                        public void intercept(RequestFacade request) {
+                            request.addHeader("Accept", "application/json");
+                            request.addHeader("Authorization", "Token " + tooken);
+                        }
+                    })
+                    .build();
+
+            ApiService apiService = restAdapter.create(ApiService.class);
+            apiService.RetrieveWishList(new Callback<ArrayList<Experience>>() {
+                @Override
+                public void success(
+                        ArrayList<Experience> experiences,
+                        Response response) {
+                    System.out.println("retrieve all experiences success" + experiences.size());
+                    HomeActivity.wish_map.clear();
+                    for (Experience exp : experiences) {
+                        HomeActivity.wish_map.put(exp.getId() + "", exp);
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    System.out.println("retrieve all experiences fail" + error.getMessage().toString());
+
+                }
+            });
+        }
+    }
 
 
 

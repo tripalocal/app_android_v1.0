@@ -516,13 +516,19 @@ public class CheckoutActivityFragment extends Fragment {
         apiService.verifyCouponCode(gson.toJson(req), new Callback<Coupon_Result>() {
             @Override
             public void success(Coupon_Result coupon_result, Response response) {
+                GeneralHelper.closeLoadingProgress();
+
                 if (coupon_result.getValid().equalsIgnoreCase("yes")) {
                     ToastHelper.shortToast(getResources().getString(R.string.checkout_valid_coupon));
+                    GeneralHelper.closeLoadingProgress();
+
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(coupon_result.getNew_price()) + " AUD");
                     coupon_status = true;
-                } else
-                GeneralHelper.closeLoadingProgress();
+                } else {
+                    GeneralHelper.closeLoadingProgress();
+
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
+                }
 
             }
 
