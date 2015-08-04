@@ -88,7 +88,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
 //                        adapter.all_experiences.add();
 //                        displayListFrag(ExperienceListAdapter.current_city);
 
-                        //prepare for paging also need to modify this method. 
+                        //prepare for paging also need to modify this method.
                     }
 
                 }
