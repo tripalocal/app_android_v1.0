@@ -39,7 +39,10 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     public static int city_position;
     public static OkHttpClient ok_client;
     SearchRequest req_obj;
-
+    private boolean loading = true;
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+    LinearLayoutManager LLM;
+    ExperienceListAdapter adapter;
     public ExperiencesListFragment(){
     }
 
@@ -58,13 +61,39 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
 
         View view = inflater.inflate(R.layout.fragment_experiences_list, container, false);
         rv = (RecyclerView) view.findViewById(R.id.recycle_view_exp_list);
-        LinearLayoutManager LLM = new LinearLayoutManager(getActivity().getApplicationContext());
+         LLM = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(LLM);
-        rv.setAdapter(new ExperienceListAdapter(getActivity().getApplicationContext()));
+        adapter=new ExperienceListAdapter(getActivity().getApplicationContext());
+        rv.setAdapter(adapter);
         if(CheckoutActivity.experience_to_book != null)
             CheckoutActivity.experience_to_book = null;
         getActivity().invalidateOptionsMenu();
+                rv.setLayoutManager(LLM);
 
+        rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                visibleItemCount = LLM.getChildCount();
+                totalItemCount = LLM.getItemCount();
+                pastVisiblesItems = LLM.findFirstVisibleItemPosition();
+
+                if (loading) {
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                        loading = false;
+//                        GeneralHelper.showLoadingProgress(getActivity());
+
+                        System.out.println("here comes to the end ");
+//                        adapter.all_experiences.add();
+//                        displayListFrag(ExperienceListAdapter.current_city);
+
+                        //prepare for paging also need to modify this method. 
+                    }
+
+                }
+            }
+        });
         return view;
     }
 
