@@ -151,13 +151,14 @@ public class ExpDetailActivityFragment extends Fragment {
 
                 if(HomeActivity.getCurrent_user().isLoggedin()){
                     Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                    ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
 //                    ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
 //                    ChatActivity.sender_img=exp_to_display.getHost_image();
                     intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
-                    intent.putExtra(ChatActivity.COL_SENDER_NAME,exp_to_display.getHost_firstname());
-                    intent.putExtra(ChatActivity.COL_SENDER_IMG,exp_to_display.getHost_image());
+                    intent.putExtra(ChatActivity.COL_SENDER_NAME, exp_to_display.getHost_firstname());
+                    intent.putExtra(ChatActivity.COL_SENDER_IMG, exp_to_display.getHost_image());
 
 //                    ChatActivity
                     HomeActivity.getHome_context().startActivity(intent);
