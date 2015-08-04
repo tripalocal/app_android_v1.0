@@ -64,6 +64,8 @@ public class MsgListFragment extends Fragment {
          adapter = new MessageListAdapter(messages);
         mRecyclerView.setAdapter(adapter);
 getActivity().invalidateOptionsMenu();
+        checkValidate();
+
         return view;
     }
 
@@ -89,12 +91,20 @@ getActivity().invalidateOptionsMenu();
     public void onResume() {
         super.onResume();
         initializeData();
+        checkValidate();
         adapter.notifyDataSetChanged();
 //        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
     public void onPause() {
         super.onPause();
 //        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
+    }
+
+    public void checkValidate(){
+        if(messages==null || messages.size()==0) {
+            Fragment no_msg_fragment = new NoMsgFragment();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, no_msg_fragment).addToBackStack("navigation_my_profile").commit();
+        }
     }
 
     public static void notfiChangeOfAdapter(){
