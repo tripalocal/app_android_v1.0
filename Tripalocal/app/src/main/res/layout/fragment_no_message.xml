@@ -33,14 +33,13 @@
         android:layout_marginRight="30dp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/imageView4"
         android:src="@drawable/smiley"
-        android:layout_above="@+id/linearLayout"
-        android:layout_marginBottom="31dp"
-        android:layout_alignRight="@+id/explore_exp_btn"
-        android:layout_alignEnd="@+id/explore_exp_btn" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
     <LinearLayout
         android:orientation="vertical"

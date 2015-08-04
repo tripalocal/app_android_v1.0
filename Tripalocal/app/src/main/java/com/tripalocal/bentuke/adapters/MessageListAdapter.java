@@ -72,10 +72,10 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         msgViewHolder.msg_time.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
         msgViewHolder.imageView.setOnClickListener(new msglistlistener(sender_name, sender_id, image));
 
-        msgViewHolder.msg_sender.setOnLongClickListener(new msgOnLongClickListener(sender_id));
-        msgViewHolder.msg_brief.setOnLongClickListener(new msgOnLongClickListener(sender_id));
-        msgViewHolder.msg_time.setOnLongClickListener(new msgOnLongClickListener(sender_id));
-        msgViewHolder.imageView.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+//        msgViewHolder.msg_sender.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+//        msgViewHolder.msg_brief.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+//        msgViewHolder.msg_time.setOnLongClickListener(new msgOnLongClickListener(sender_id));
+//        msgViewHolder.imageView.setOnLongClickListener(new msgOnLongClickListener(sender_id));
 
     }
 
