@@ -300,6 +300,10 @@
     <string name="msg_hours_ago">小时前</string>
     <string name="msg_mins_ago">分钟前</string>
     <string name="msg_just_now">刚刚</string>
+    <string name="msg_list_no_1">你还没有发送任何</string>
+    <string name="msg_list_no_2">信息给host</string>
+    <string name="msg_list_no_3">你可以发送信息给任何</string>
+    <string name="msg_list_no_4">host，通过体验信息主页发送</string>
     <!--msg configuration-->
     <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
