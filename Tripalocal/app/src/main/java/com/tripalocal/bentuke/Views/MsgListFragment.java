@@ -103,7 +103,7 @@ getActivity().invalidateOptionsMenu();
     public void checkValidate(){
         if(messages==null || messages.size()==0) {
             Fragment no_msg_fragment = new NoMsgFragment();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, no_msg_fragment).addToBackStack("navigation_my_profile").commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, no_msg_fragment).addToBackStack("no msg").commit();
         }
     }
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.tripalocal.bentuke.Views.BlankFragment"
-    android:background="@drawable/wechat">
+    >
 
     <!--<TextView android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
@@ -14,5 +14,75 @@
         <!--android:text="@string/blank_fragment"-->
         <!--android:layout_alignParentTop="true" />-->
 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tripalocal_green_blue"
+        android:id="@+id/explore_exp_btn"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:textAlignment="center"
+        android:text="@string/my_trip_explore"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="97dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:src="@drawable/smiley"
+        android:layout_above="@+id/linearLayout"
+        android:layout_marginBottom="31dp"
+        android:layout_alignRight="@+id/explore_exp_btn"
+        android:layout_alignEnd="@+id/explore_exp_btn" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_list_no_1"
+            android:id="@+id/textView5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_list_no_2"
+            android:id="@+id/textView6"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_list_no_3"
+            android:id="@+id/textView7"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_list_no_4"
+            android:id="@+id/textView8"
+            android:textStyle="normal" />
+    </LinearLayout>
 
 </RelativeLayout>
