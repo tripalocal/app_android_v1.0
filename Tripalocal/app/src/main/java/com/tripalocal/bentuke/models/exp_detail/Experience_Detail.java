@@ -37,6 +37,16 @@ public class Experience_Detail{
     private Integer experience_guest_number_max;
     private String host_id;
 
+    public ArrayList<String> getExperience_images() {
+        return experience_images;
+    }
+
+    public void setExperience_images(ArrayList<String> experience_images) {
+        this.experience_images = experience_images;
+    }
+
+    private ArrayList<String> experience_images;
+
     public String getHost_id() {
         return host_id;
     }
