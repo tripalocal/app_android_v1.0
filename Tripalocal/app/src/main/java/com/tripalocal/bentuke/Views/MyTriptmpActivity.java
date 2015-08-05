@@ -173,53 +173,53 @@ public class MyTriptmpActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_home, menu);
-        if(menu_ref == null)
-            menu_ref= menu;
-        if(getCurrent_user().isLoggedin()){
-            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
-        }
-        SearchView searchView =  getSearchView(menu);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Object[] temp = new Object[]{0, "default"};
-                String[] columns = new String[]{"_id", "poi"};
-                MatrixCursor cursor = new MatrixCursor(columns);
-                for (int i = 0; i < poi_data.length; i++) {
-                    temp[0] = i;
-                    temp[1] = poi_data[i];
-                    cursor.addRow(temp);
-                }
-                getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
-                return true;
-            }
-        });
-        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
-            @Override
-            public boolean onSuggestionSelect(int position) {
-                //ToastHelper.shortToast("sugg select "+position);
-                return false;
-            }
-
-            @Override
-            public boolean onSuggestionClick(int position) {
-                //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
-                Fragment exp_list_frag = new ExperiencesListFragment();
-                Bundle args = new Bundle();
-                args.putInt(ExperienceListAdapter.INT_EXTRA, position);
-                exp_list_frag.setArguments(args);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
-                return false;
-            }
-        });
-        return true;
+//        getMenuInflater().inflate(R.menu.menu_home, menu);
+//        if(menu_ref == null)
+//            menu_ref= menu;
+//        if(getCurrent_user().isLoggedin()){
+//            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
+//        }
+//        SearchView searchView =  getSearchView(menu);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                Object[] temp = new Object[]{0, "default"};
+//                String[] columns = new String[]{"_id", "poi"};
+//                MatrixCursor cursor = new MatrixCursor(columns);
+//                for (int i = 0; i < poi_data.length; i++) {
+//                    temp[0] = i;
+//                    temp[1] = poi_data[i];
+//                    cursor.addRow(temp);
+//                }
+//                getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
+//                return true;
+//            }
+//        });
+//        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+//            @Override
+//            public boolean onSuggestionSelect(int position) {
+//                //ToastHelper.shortToast("sugg select "+position);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onSuggestionClick(int position) {
+//                //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
+//                Fragment exp_list_frag = new ExperiencesListFragment();
+//                Bundle args = new Bundle();
+//                args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+//                exp_list_frag.setArguments(args);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
+//                return false;
+//            }
+//        });
+        return false;
     }
 
     @Override
