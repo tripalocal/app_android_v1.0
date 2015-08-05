@@ -9,7 +9,73 @@ public class MyTrip {
     private int guest_number;
     private int experience_id;
     private String experience_title;
+
+    public String getHost_image() {
+        return host_image;
+    }
+
+    public void setHost_image(String host_image) {
+        this.host_image = host_image;
+    }
+
+    public int getGuest_number() {
+        return guest_number;
+    }
+
+    public void setGuest_number(int guest_number) {
+        this.guest_number = guest_number;
+    }
+
+    public int getExperience_id() {
+        return experience_id;
+    }
+
+    public void setExperience_id(int experience_id) {
+        this.experience_id = experience_id;
+    }
+
+    public String getExperience_title() {
+        return experience_title;
+    }
+
+    public void setExperience_title(String experience_title) {
+        this.experience_title = experience_title;
+    }
+
+    public String getMeetup_spot() {
+        return meetup_spot;
+    }
+
+    public void setMeetup_spot(String meetup_spot) {
+        this.meetup_spot = meetup_spot;
+    }
+
+    public String getExperience_photo() {
+        return experience_photo;
+    }
+
+    public void setExperience_photo(String experience_photo) {
+        this.experience_photo = experience_photo;
+    }
+
+    public String getHost_name() {
+        return host_name;
+    }
+
+    public void setHost_name(String host_name) {
+        this.host_name = host_name;
+    }
+
+    public String getHost_phone_number() {
+        return host_phone_number;
+    }
+
+    public void setHost_phone_number(String host_phone_number) {
+        this.host_phone_number = host_phone_number;
+    }
+
     private String meetup_spot;
+    private String experience_photo;
 
     public String getHost_id() {
         return host_id;
