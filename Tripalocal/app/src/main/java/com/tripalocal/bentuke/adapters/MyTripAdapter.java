@@ -105,7 +105,8 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             }
             holder.status.setText(st);
             holder.meetupSpot.setText(result.getMeetupSpot());
-            new ImageDownloader(holder.expImage).execute(result.getExperience_photo());
+            new ImageDownloader(holder.expImage).execute((mContext.getResources().getString(R.string.server_url) + "images/"+result.getExperience_photo()));
+//            System.out.println("Mytrip photo over there "+(mContext.getResources().getString(R.string.server_url) + "images/"+result.getExperience_photo());
             new ImageDownloader(holder.profileImage).execute(mContext.getResources().getString(R.string.server_url) + "images/"
                     + result.getHostImage());
 
