@@ -3,17 +3,26 @@ package com.tripalocal.bentuke.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.tripalocal.bentuke.adapters.PagerAdapter;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
 
-public class SlideShowActivtiy extends AppCompatActivity {
+import java.util.List;
+import java.util.Vector;
+
+public class SlideShowActivtiy extends FragmentActivity {
 
 RelativeLayout background_layout;
+    private PagerAdapter mPagerAdapter;
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -25,42 +34,19 @@ RelativeLayout background_layout;
         super.onCreate(savedInstanceState);
         //System.out.println("oncreate go thererere");
         setContentView(R.layout.activity_slideshow);
+        initialisePaging();
 
-        getSupportActionBar().hide();
-//        if(checkFirstTime()){
-//            Intent intent =new Intent(getApplicationContext(), PhoneregisterActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-//        }else {
-//
-//            setContentView(R.layout.activity_slideshow);
-////            background_layout = (RelativeLayout) findViewById(R.id.background_layout);
-//            new CountDownTimer(2000, 1000) {
-//                int sdk = android.os.Build.VERSION.SDK_INT;
-//                int count = -1;
-//                int drawArr[] = new int[]{R.drawable.slide01, R.drawable.slide02, R.drawable.slide03};
-//
-//                public void onTick(long millisUntilFinished) {
-////                    count++;
-////                    int id = drawArr[count];
-////                    if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-////                        background_layout.setBackgroundDrawable(getResources().getDrawable(id));
-////                    } else {
-////                        background_layout.setBackground(getResources().getDrawable(id));
-////                    }
-//                    //System.out.println(count + "");
-//                }
-//
-//                public void onFinish() {
-//                    Intent intent;
-//                         intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
-//
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                }
-//            }.start();
-//        }
+//        getSupportActionBar().hide();
 
+    }
+    private void initialisePaging(){
+        List<Fragment> fragments=new Vector<Fragment>();
+        fragments.add(Fragment.instantiate(this, SlideShowFragment1.class.getName()));
+        fragments.add(Fragment.instantiate(this, SlideShowFragment2.class.getName()));
+        fragments.add(Fragment.instantiate(this, SlideShowFragment3.class.getName()));
+        mPagerAdapter=new PagerAdapter(this.getSupportFragmentManager(),fragments);
+        ViewPager pager=(ViewPager)findViewById(R.id.viewpager);
+        pager.setAdapter(mPagerAdapter);
     }
 
     public void afterSlide(View view){

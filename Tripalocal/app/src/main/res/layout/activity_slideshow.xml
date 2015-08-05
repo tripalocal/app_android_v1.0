@@ -1,44 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
 
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:tools="http://schemas.android.com/tools"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
-        <!--android:paddingRight="@dimen/activity_horizontal_margin"-->
+    <!--&lt;!&ndash;<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns:tools="http://schemas.android.com/tools"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="fill_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingLeft="@dimen/activity_horizontal_margin"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingRight="@dimen/activity_horizontal_margin"&ndash;&gt;-->
 
-        <!--android:id="@+id/background_layout"-->
-        <!--android:background="@drawable/slide03"-->
+        <!--&lt;!&ndash;android:id="@+id/background_layout"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="@drawable/slide03"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:scaleType="centerCrop"&ndash;&gt;-->
+        <!--&lt;!&ndash;>&ndash;&gt;-->
+
+
+
+    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@drawable/slide03"-->
         <!--android:scaleType="centerCrop"-->
-        <!-->-->
+        <!--android:id="@+id/background_layout"-->
+       <!--/>-->
 
 
 
-    <!--</RelativeLayout>-->
-    <ImageView
+<!--</FrameLayout>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"  tools:context=".MainActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/slide03"
-        android:scaleType="centerCrop"
-        android:id="@+id/background_layout"
-       />
-
-    <Button
-        android:layout_width="168dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:background="@color/tripalocal_green_blue"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:text="@string/slide_button"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:onClick="afterSlide"
-        android:textSize="21sp" />
-
-</FrameLayout>
+        />
+</LinearLayout>
