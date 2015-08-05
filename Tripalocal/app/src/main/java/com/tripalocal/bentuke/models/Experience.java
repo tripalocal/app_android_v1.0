@@ -20,10 +20,11 @@ public class Experience {
     private Integer id;
     private String description;
     private String language;
-    private String exp_image;
+    private String photo_url;//ArrayList:experience_images,mytrip:experience_photo
 
-
-
+    public String getPhoto_url() {
+        return photo_url;
+    }
 
     public String getDescription() {
         return description;
@@ -43,7 +44,7 @@ public class Experience {
         this.description = description;
     }
 
-    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Integer duration, Integer id, String description, String language,String exp_image) {
+    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Integer duration, Integer id, String description, String language,String photo_url) {
         this.title = title;
         this.timeslots = timeslots;
         this.meetup_spot = meetup_spot;
@@ -56,17 +57,17 @@ public class Experience {
         this.id = id;
         this.description = description;
         this.language = language;
-        this.exp_image=exp_image;
+        this.photo_url=photo_url;
     }
 
-    public Experience(String title, Double price, String host_image, Integer duration, Integer id, String description, String language,String exp_image) {
+    public Experience(String title, Double price, String host_image, Integer duration, Integer id, String description, String language,String photo_url) {
         this.title = title;
         this.price = price;
         this.host_image = host_image;
         this.duration = duration;
         this.id = id;
         this.description = description;
-        this.exp_image=exp_image;
+        this.photo_url=photo_url;
 
         this.language = language;
     }

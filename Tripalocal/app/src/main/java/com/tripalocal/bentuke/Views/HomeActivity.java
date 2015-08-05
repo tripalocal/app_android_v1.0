@@ -440,6 +440,7 @@ public class HomeActivity extends AppCompatActivity {
                     HomeActivity.wish_map.clear();
                     for (Experience exp : experiences) {
                         HomeActivity.wish_map.put(exp.getId() + "", exp);
+                        System.out.println("experience photo "+exp.getPhoto_url());
                     }
                 }
 

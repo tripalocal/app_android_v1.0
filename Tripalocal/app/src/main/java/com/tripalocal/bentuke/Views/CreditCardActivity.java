@@ -23,6 +23,8 @@ import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.ToastHelper;
@@ -143,8 +145,9 @@ public class CreditCardActivity  extends AppCompatActivity {
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
 
-//                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
+                System.out.println(json);
 
             }
         });
@@ -160,7 +163,12 @@ public class CreditCardActivity  extends AppCompatActivity {
         Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
         List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
         itinerary_list.add(itenerary);
+//        System.out.println(cred_req);
         Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
+        System.out.println("card no "+cred_req.getCard_number()+" month "+cred_req.getExpiration_month()+
+                "year "+cred_req.getExpiration_year()+" coupon"+cred_req.getCoupon()+" cvv"+cred_req.getCvv()+
+        "itenaray_no"+cred_req.getItinerary_string().size());
+
         return cred_req;
     }
 
@@ -195,9 +203,7 @@ public class CreditCardActivity  extends AppCompatActivity {
             s=s.replace("\\","");
     //System.out.println("Coupon"+coupon_text);
         }catch (Exception e){
-
         }
-
         return s;
     }
 

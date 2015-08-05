@@ -74,7 +74,8 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
         Experience exp_to_display = all_experiences.get(position);
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+"thumbnails/experiences/experience" + exp_to_display.getId()+ "_1.jpg").fitCenter().into(holder.bannerImage);
+        System.out.println("exp list photo list : "+BASE_URL+""+exp_to_display.getPhoto_url());
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getPhoto_url()).fitCenter().into(holder.bannerImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
         holder.bannerTxt.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         holder.titleTxt.setText(exp_to_display.getTitle());
