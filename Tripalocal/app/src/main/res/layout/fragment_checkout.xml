@@ -82,7 +82,7 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/date"
+                        android:src="@drawable/calendar"
                         android:id="@+id/booking_date_image"
                         android:layout_weight="1"
                         android:layout_marginLeft="20dp"
@@ -93,8 +93,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/time"
                         android:layout_weight="1"
-                        android:contentDescription="@string/checkout_time_content_desc"
-                        android:layout_marginTop="4dp" />
+                        android:contentDescription="@string/checkout_time_content_desc" />
                 </TableRow>
                 <TableRow
                     android:layout_width="wrap_content">
