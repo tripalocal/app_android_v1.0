@@ -3,6 +3,7 @@ package com.tripalocal.bentuke.Views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
+import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
@@ -150,18 +152,22 @@ public class ExpDetailActivityFragment extends Fragment {
             public void onClick(View view) {
 
                 if(HomeActivity.getCurrent_user().isLoggedin()){
-                    Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    if (MessageSerivice.connection!=null) {
+                        Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                    ChatActivity.sender_id=exp_to_display.getHost_id();//set exp id
 //                    ChatActivity.sender_name=exp_to_display.getHost_firstname();//set exp name
 //                    ChatActivity.sender_img=exp_to_display.getHost_image();
-                    intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
-                    intent.putExtra(ChatActivity.COL_SENDER_NAME, exp_to_display.getHost_firstname());
-                    intent.putExtra(ChatActivity.COL_SENDER_IMG, exp_to_display.getHost_image());
+                        intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
+                        intent.putExtra(ChatActivity.COL_SENDER_NAME, exp_to_display.getHost_firstname());
+                        intent.putExtra(ChatActivity.COL_SENDER_IMG, exp_to_display.getHost_image());
 
 //                    ChatActivity
-                    HomeActivity.getHome_context().startActivity(intent);
+                        HomeActivity.getHome_context().startActivity(intent); }else{
+                        ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
+                    }
+
                 }else{
 
                     ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));

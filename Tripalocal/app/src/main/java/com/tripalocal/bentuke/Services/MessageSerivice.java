@@ -64,13 +64,14 @@ public class MessageSerivice extends Service {
     public static XMPPTCPConnection connection;
     public static String username;
     Handler handler;
-
+    public static boolean connected;
 
     @Override
     public void onCreate() {
 
         isRunning = true;
         handler = new Handler();
+        connected=false;
 
     }
 
@@ -102,13 +103,14 @@ public class MessageSerivice extends Service {
                             try {
 
                                 connection.login(username, username);
-
+                                connected=true;
                             }catch(Exception e){
                                 System.out.println("connection error:"+e.getMessage().toString());
                                 MsgHelper.registerUserXMPP(username);
                                 Thread.sleep(1000);
                                 try {
                                     connection.login(username, username);
+                                    connected=true;
                                 }catch (Exception e1){
                                     System.out.println("connection error2:"+e1.getMessage().toString());
 
