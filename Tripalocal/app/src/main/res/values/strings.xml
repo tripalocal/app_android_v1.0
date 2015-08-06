@@ -1,0 +1,332 @@
+<resources>
+    <string name="app_name">Tripalocal</string>
+    <string name="facebook_app_id">595515750559076</string>
+    <string name="server_url">https://www.tripalocal.com/</string>
+
+    <string name="version_language">Enlgish</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
+    <string name="placeholder_content">Loading</string>
+    <string name="gibber"> </string>
+    <string name="slide_button">Start Now!</string>
+
+    <string name="sub_head_gibber">Loading</string>
+    <string name="bullet">\u2022</string>
+    <string name="with">with</string>
+    <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Livability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
+
+    <string name="action_login">Log In</string>
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Log Out</string>
+    <string name="logged_out">Logged Out</string>
+
+    <string name="title_activity_exp_detail">Experience Detail</string>
+    <string name="title_activity_exp_list_actvity2">Experience List</string>
+    <string name="title_activity_checkout">Checkout</string>
+    <string name="title_activity_payment">Payment</string>
+    <string name="title_activity_my_trip">My Trips</string>
+    <string name="title_activity_my_profile">My Profile</string>
+    <string name="title_activity_review">Reviews</string>
+    <string name="title_activity_alipay">Alipay</string>
+
+    <string name="search_hint">Where are you going?</string>
+    <string name="search_title">Where are you going?n</string>
+
+    <string name="experience_image">Experience Image</string>
+    <string name="my_trip_upcoming">Upcoming</string>
+    <string name="my_trip_previous">Previous</string>
+    <string name="my_trip_call">Call</string>
+    <string name="my_trip_message">SMS</string>
+    <string name="my_trip_meetup_title">Meet up instruction</string>
+    <string name="my_trip_myTrip">My Trips</string>
+    <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
+    <string name="my_trip_explore">Start Exploring</string>
+    <string name="mytrip_date_format">dd-MM-yyyy</string>
+    <string name="mytrip_date_today">Today</string>
+    <string name="mytrip_status_confirmed">Confirmed</string>
+    <string name="mytrip_status_requested">Requested</string>
+    <string name="mytrip_status_cancelled">Cancelled</string>
+
+    <string name="nav_item1">nav item1</string>
+    <string name="navigation_item_2">Home</string>
+    <string name="navigation_subheader">Subheader</string>
+    <string name="nav_item_2">Home</string>
+    <string name="nav_profile_title">profile title</string>
+    <string name="nav_profile_image">nav profile image</string>
+    <string name="nav_my_account">My Account</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_mytrips">My trips</string>
+    <string name="navigation_wishlist">Wishlist</string>
+    <string name="navigation_messages">Messages</string>
+    <string name="navigation_myprofile">My Profile</string>
+    <string name="nav_terms_of_service_link">Terms of Service</string>
+    <string name="nav_privacy_policy">Privacy Policy</string>
+    <string name="nav_about_us">About Us</string>
+
+    <string name="exp_list_per_person">AUD/person</string>
+    <string name="exp_list_duration">hrs</string>
+
+    <string name="exp_reservation">Reservation with </string>
+    <string name="exp_reservation_cn"></string>
+    <string name="exp_detail_food">Food:\u0020</string>
+    <string name="exp_detail_tickets">Tickets:\u0020</string>
+    <string name="exp_detail_transport">Transport:\u0020</string>
+    <string name="exp_detail_add_expenses_label">Additional Expenses</string>
+    <string name="exp_detail_default_optional_expenses">Not included</string>
+    <string name="view_more">Read More</string>
+    <string name="view_less">Less</string>
+    <string name="no_review_content">No review</string>
+    <string name="exp_detail_reviews">\u0020Reviews</string>
+    <string name="exp_detail_about_the_host">About the host,\u0020</string>
+    <string name="exp_detail_per_person_text">per person </string>
+    <string name="exp_detail_per_person_for">for </string>
+    <string name="exp_detail_per_person_hour">hour(s)</string>
+    <string name="exp_detail_request">Request to Book</string>
+    <string name="from">from </string>
+    <string name="dollar_placeholder">$</string>
+    <string name="loading_title">Loading title</string>
+    <string name="checkout_title_placeholder">Add expenses</string>
+    <string name="exp_detail_view_all">View  All</string>
+    <string name="exp_detail_log_in_msg">Please log in or sign up first</string>
+
+    <string name="home_bg_city_content_desc">background_image_city</string>
+    <string name="login_or">or</string>
+    <string name="login_email">Email address</string>
+    <string name="login_password">Password</string>
+    <string name="login_forget_password">Forgot password?</string>
+    <string name="login_login">Log In</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_signup">Sign Up</string>
+    <string name="signup_first_name">First name</string>
+    <string name="signup_last_name">Last name</string>
+    <string name="signup_term">By signing up, I agree to tripalocal\'s Terms of service, Privacy policy and Refund policy</string>
+    <string name="signup_has_account">Already with us?</string>
+
+    <string name="myprofile_placeholder_host_name"></string>
+    <string name="myprofile_how_to_contact">How can hosts contact you?</string>
+    <string name="myprofile_local_number">Local Mobile Number</string>
+    <string name="myprofile_roaming_number">Roaming Mobile Number</string>
+    <string name="myprofile_number_explanation">This will be included in all booking requests and confirmations for hosts to see</string>
+
+    <string name="checkout_date_placeholder">dd/mm/yy</string>
+    <string name="checkout_time_placeholder">hh:mm</string>
+    <string name="checkout_select_date_label">Select Date</string>
+    <string name="checkout_select_time_label">Select Time</string>
+    <string name="checkout_guests_label">Guests</string>
+    <string name="checkout_price_label">Price</string>
+    <string name="checkout_price_placeholder">$0 AUD x 0 pp</string>
+    <string name="checkout_price_dollar_text">\u0020AUD x\u0020</string>
+    <string name="checkout_price_pp">\u0020pp</string>
+    <string name="checkout_amount_placeholder">$ 0 AUD</string>
+    <string name="checkout_coupon_label">code</string>
+    <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
+    <string name="checkout_ok_tochange_text">It\'s OK to change your mind</string>
+    <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
+    <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
+    <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
+    <string name="checkout_refund_text">You can also view our\u0020</string>
+    <string name="checkout_refund_link">refund policy</string>
+    <string name="checkout_proceed_to_payment">Proceed to Payment</string>
+    <string name="checkout_date">Date</string>
+    <string name="checkout_time">Time</string>
+    <string name="checkout_date_content_desc">date_img</string>
+    <string name="checkout_time_content_desc">time_img</string>
+    <string name="checkout_english">English</string>
+    <string name="checkout_duration_placeholder">hrs\u0020\u2022\u0020</string>
+    <string name="checkout_refresh">Validate</string>
+    <string name="checkout_invalidCoupon">Invalid coupon</string>
+    <string name="checkout_valid_coupon">Coupon successfully applied</string>
+    <string name="server_error">Server error</string>
+
+    <string name="wishlist_title">My Wishlist</string>
+    <string name="wish_log_in_msg">Please Log in to Save</string>
+    <string name="save_to_wishlist">Save to wishlist</string>
+    <string name="saved_to_wishlist">Saved to wishlist</string>
+    <string name="wishlist_save">Save to wishlist</string>
+    <string name="wishlist_saved">Saved to wishlist</string>
+    <string name="wishlist_removed">Removed from wishlist</string>
+    <string name="wishlist_error">Unable to save</string>
+
+    <!--<string name="toast_contacting">Contacting server ...</string>-->
+    <string name="toast_error">Error occurred</string>
+    <string name="toast_showing_exp">Showing experience for\u0020</string>
+    <string name="toast_showing_wishlist">Showing your wishlist</string>
+    <string name="toast_search_submitted">Search submitted</string>
+    <string name="toast_login_success">Login succeeded</string>
+    <string name="toast_login_failure">Login failed</string>
+    <string name="toast_fb_login_success">Facebook login succeeded</string>
+    <string name="toast_fb_login_cancel">Facebook login cancelled</string>
+    <string name="toast_fb_login_failure">Facebook login failed</string>
+    <string name="toast_service_down">Service temporarily down</string>
+    <string name="toast_profile_get_success">Profile retrieved</string>
+    <string name="toast_profile_get_error">Error getting profile</string>
+    <string name="toast_feature_coming">Feature coming soon ...</string>
+    <string name="toast_signup_success">Successfully signed in</string>
+    <string name="toast_signup_failure">Sign up failed</string>
+    <string name="toast_searched_with">Searched with\u0020</string>
+
+    <!--payement string-->
+    <string name="alipay">Alipay</string>
+    <string name="add_alipay_account">Add new Alipay Account</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="add_new_credit_card">Add New Credit Card</string>
+    <string name="wechat">Wechat</string>
+    <string name="add_wechat_account">Add Wechat Account</string>
+    <string name="confirm_pay">Confirm And Pay</string>
+    <string name="currency_conversion">Currency Conversion</string>
+    <string name="number">Number</string>
+    <string name="expire">Expire(mm/yy)</string>
+    <string name="cvv">CVV</string>
+    <string name="title_activity_creditcard">CreditCard Payment</string>
+    <string name="credit_no_hint">16 digits No</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_closed">drawer closed</string>
+    <string name="view_in_my_trip">View it in MyTrip</string>
+    <string name="payment_success_text">Your booking request has been sent to somebody</string>
+    <string name="payment_success_title">Payment Successful</string>
+    <string name="credit_card_no_error">Card number must be between 12 to 16 digits</string>
+    <string name="credit_card_month_error">Incorrect Month</string>
+    <string name="credit_card_year_error">Incorrect Year</string>
+    <string name="credit_card_cvv_error">CVV must be 3 digit number</string>
+    <string name="credit_card_error">Unable to make the payment</string>
+    <string name="your_wishlist">My Wishlist</string>
+    <string name="empty_list_err">empty list</string>
+    <string name="empty_wishlist_msg">You have not added any experiences to your wishlist</string>
+    <string name="my_profile">My Profile</string>
+    <string name="payment_failure">Payment failure</string>
+    <string name="payment_success">Payment Successful</string>
+    <string name="error_saving_profile">unable to save profile</string>
+    <string name="profile_saved">profile saved</string>
+
+    <!--do not change "somebody" when convert it to chinese-->
+    <!--end of payment string-->
+
+    <!--dialog string-->
+    <string name="dialog_exit_app">Are u sure you want to exit Tripalocal?</string>
+    <string name="dialog_option_yes">Yes</string>
+    <string name="dialog_option_no">No</string>
+    <string name="dialog_delete_conversation">Are u sure you want to delete this conversation</string>
+    <string name="dialog_option_cancel">Cancel</string>
+    <string name="dialog_option_delete">Delete</string>
+
+    <!--end dialog string-->
+    <!--start phone register string/ -->
+    <string name="send_verf_code">Send verification Code</string>
+    <string name="verfi_countdown">Seconds Remaining: </string>
+    <string name="phone_no_hint">mobile number</string>
+    <string name="verification_hint">Please enter verification code</string>
+    <string name="confirm">Confirm</string>
+    <string name="last_name">Last</string>
+    <string name="first_name">First</string>
+    <string name="password_hint">Please enter password</string>
+    <string name="password_hint_2">Please enter password again</string>
+    <string name="go_to_tripalocal">Go to Tripalocal</string>
+    <string name="verfication_expire">Expired,Please press again</string>
+    <string name="phone_no_error">Wrong number</string>
+    <string name="empty_field_error">You must complete all the empty field</string>
+    <string name="password_error">You must enter the same passwords</string>
+    <string name="verfication_code_error">Wrong code</string>
+    <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
+    <string name="msg_content">客户你好，你的验证码为：code ，一分钟秒内有效，请完成注册</string>
+    <!--do not change the "code" here-->
+    <string name="title_login_fragment">Login</string>
+    <string name="title_signup_fragment">Signup</string>
+    <string name="title_fragment_wishlist">My Wishlist</string>
+    <string name="save_profile_btn">Save Profile</string>
+    <string name="phone_reg_username">bentuke</string>
+    <string name="phone_reg_pwd">Bentuke123</string>
+    <string name="phone_reg_server">http://222.73.117.158/msg/</string>
+
+    <!--end phone register string-->
+
+    <!--youmeng page string-->
+    <string name="youmeng_app_key">557e87b467e58e0bf90026ed</string>
+    <string name="youmeng_fragment_alipay">Alipay</string>
+    <string name="youmeng_fragment_blank">Blank</string>
+    <string name="youmeng_fragment_checkout">Checkout</string>
+    <string name="youmeng_fragment_creditCard">CreditCard</string>
+    <string name="youmeng_fragment_expDetail">Experience Detail</string>
+    <string name="youmeng_fragment_expList">Experience List</string>
+    <string name="youmeng_fragment_home">Home</string>
+    <string name="youmeng_fragment_login">Login</string>
+    <string name="youmeng_fragment_myProfile">My Profile</string>
+    <string name="youmeng_fragment_myTrip">My Trip</string>
+    <string name="youmeng_fragment_navigation">Navigation</string>
+    <string name="youmeng_fragment_payment">Payment</string>
+    <string name="youmeng_fragment_payment_success">Payment Success</string>
+    <string name="youmeng_fragment_phoneReg">Phone Registration</string>
+    <string name="youmeng_fragment_phoneReg2">Phone Registration2</string>
+    <string name="youmeng_fragment_review">Review</string>
+    <string name="youmeng_fragment_signup">SignUp</string>
+    <string name="youmeng_event_expLocation_syn">ExpList_Sydney</string>
+    <string name="youmeng_event_expLocation_mel">ExpList_Melbourne</string>
+    <string name="youmeng_event_expLocation_brisb">ExpList_Birsbane</string>
+    <string name="youmeng_event_expLocation_cairns">ExpList_Cairns</string>
+    <string name="youmeng_event_expLocation_goldcoast">ExpList_Goldcoast</string>
+    <string name="youmeng_event_expLocation_hobart">ExpList_Hobart</string>
+    <string name="youmeng_event_expLocation_adelaide">ExpList_Adelaide</string>
+    <string name="youmeng_event_title_viewExp">View Experience Details Event</string>
+    <string name="youmeng_event_item_cityId">City Id</string>
+    <string name="youmeng_event_item_expId">Experience Id</string>
+    <string name="youmeng_event_title_payment">Payment</string>
+    <string name="youmeng_event_item_paymentMethod">Payment Method</string>
+    <string name="youmeng_event_item_creditCardPayment">CreditCard Payment</string>
+    <string name="youmeng_event_item_alipayPayment">Alipay Payment</string>
+    <string name="youmeng_event_item_guestNum">Guest Number</string>
+    <string name="youmeng_event_item_expDate">Experience Date</string>
+
+    <!--end youmeng page string-->
+
+    <!--start message string-->
+    <string name="msg_send_msg">Send Message</string>
+    <!--the keyword re here should never be replaced-->
+    <string name="msg_mins_to_now">re mins ago</string>
+    <string name="msg_hrs_to_now">re hrs ago</string>
+    <string name="msg_hint"> Write  message...</string>
+    <string name="msg_send_btn">Send</string>
+    <!--do not change the keyword somebody here-->
+    <string name="msg_chat_title">Conversations with somebody</string>
+    <string name="msg_list_title">Messages</string>
+    <string name="msg_server_name">54.149.42.196</string>
+    <string name="msg_host">54.149.42.196</string>
+    <string name="msg_server_nick_name">tripalocal.com</string>
+    <string name="msg_admin_username">superAdmin</string>
+    <string name="msg_admin_password">superAdmin</string>
+    <string name="msg_years_ago">years ago</string>
+    <string name="msg_months_ago">months ago</string>
+    <string name="msg_days_ago">days ago</string>
+    <string name="msg_hours_ago">hours ago</string>
+    <string name="msg_mins_ago">mins ago</string>
+    <string name="msg_just_now">just now</string>
+    <string name="msg_list_no_1">You have not sent any message</string>
+    <string name="msg_list_no_2">to any host yet</string>
+    <string name="msg_list_no_3">You can send message to any</string>
+    <string name="msg_list_no_4">host on their experience page</string>
+    <string name="msg_connecting">Server error , pls try again in 1 min</string>
+    <!--end message string-->
+
+    <!--loading text start-->
+    <string name="loading_dialog_title">Loading.....</string>
+    <string name="loading_dialog_text">Please Wait while loading...</string>
+    <!--loading text finish-->
+    <string-array name="db_cities_array">
+        <item>Melbourne</item>
+        <item>Sydney</item>
+        <item>Brisbane</item>
+        <item>Cairns</item>
+        <item>Goldcoast</item>
+        <item>Hobart</item>
+        <item>Adelaide</item>
+    </string-array>
+
+    <string-array name="poi_array">
+        <item>Melbourne, VIC</item>
+        <item>Sydney, NSW</item>
+        <item>Brisbane, QLD</item>
+        <item>Cairns, QLD</item>
+        <item>Gold Coast, QLD</item>
+        <item>Hobart, TAS</item>
+        <item>Adelaide, SA</item>
+    </string-array>
+</resources>
