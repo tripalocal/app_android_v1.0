@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">本土客</string>
     <string name="facebook_app_id">595515750559076</string>
-    <string name="server_url">https://www.tripalocal.com/cn/</string>
+    <string name="server_url">https://www.tripalocal.com.cn/</string>
 
     <string name="version_language">Chinese</string>
     <string name="hello_world"></string>
@@ -124,7 +124,7 @@
     <string name="checkout_ok_tochange_text">您提交预订后仍可更改</string>
     <string name="checkout_disclaim_1">如果您提前至少7个自然日取消预订，我们将全额退款</string>
     <string name="checkout_disclaim_2">如果您提前3至6个自然日取消预订，我们将半额退款</string>
-    <string name="checkout_disclaim_3">如果您在少于3个自然日取消预订，您将获得半额退款</string>
+    <string name="checkout_disclaim_3">如果您在少于3个自然日取消预订，您将无法获得退款</string>
     <string name="checkout_refund_text">您也可以查看我们的\u0020</string>
     <string name="checkout_refund_link">退款政策</string>
     <string name="checkout_proceed_to_payment">付款</string>
