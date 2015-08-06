@@ -190,8 +190,8 @@ public class LoginFragment extends Fragment {
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
-                    GeneralHelper.closeLoadingProgress();
                     if(!cancelled) {
+
                         //set login
                         HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                         HomeActivity.getCurrent_user().setLoggedin(true);
@@ -213,6 +213,8 @@ public class LoginFragment extends Fragment {
                             startActivity(intent);
                         }
                     }
+                    GeneralHelper.closeLoadingProgress();
+
                 }
 
                 @Override
