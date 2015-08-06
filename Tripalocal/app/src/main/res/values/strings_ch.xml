@@ -302,7 +302,7 @@
     <string name="msg_just_now">刚刚</string>
     <string name="msg_list_no_1">你还没有发送任何信息给</string>
     <string name="msg_list_no_2">领路人。你可以从体验页</string>
-    <string name="msg_list_no_3">面向任何领路人发宋信息</string>
+    <string name="msg_list_no_3">面向任何领路人发送信息</string>
     <string name="msg_list_no_4"></string>
     <string name="msg_connecting">服务器问题，请1分钟之后再次尝试</string>
 
