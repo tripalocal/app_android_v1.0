@@ -71,41 +71,166 @@ public class NavigationFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view;
         Button loginBtn;
-
+        view = inflater.inflate(R.layout.user_sidebar_navigation, container, false);
+        initialContent(view);
         if(HomeActivity.getCurrent_user().isLoggedin()) {
-            view = inflater.inflate(R.layout.user_sidebar_navigation, container, false);
             getProfileDetails(view);
         }
         else
         {
-            view = inflater.inflate(R.layout.default_navigation, container, false);
-            loginBtn = (Button) view.findViewById(R.id.nav_normal_login);
-            loginBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FragHelper.addReplace(HomeActivity.getFrag_manager(), new LoginFragment());
-                    DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawer.closeDrawer(GravityCompat.START);
-                }
-            });
+//            view = inflater.inflate(R.layout.default_navigation, container, false);
+//            loginBtn = (Button) view.findViewById(R.id.nav_normal_login);
+//            loginBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    FragHelper.addReplace(HomeActivity.getFrag_manager(), new LoginFragment());
+//                    DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+//                    drawer.closeDrawer(GravityCompat.START);
+//                }
+//            });
+            initNonLoginContent(view);
         }
 
         return view;
     }
 
+    public void initNonLoginContent(View view){
+        view.findViewById(R.id.nav_my_trips_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new LoginFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            }
+        });
+        view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new LoginFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            }
+        });
+        view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new LoginFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
+        });
+        view.findViewById(R.id.nav_msg_list_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new LoginFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
+        });
+    }
+
+    public void initialContent(View view){
+        view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment homefragment = new HomeActivityFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homefragment).addToBackStack("homefragment").commit();
+            }
+        });
+        tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
+//        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String tos_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
+        tos_txt.setText(Html.fromHtml(tos_text_content));
+        privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
+//        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String priv_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
+        privacy_txt.setText(Html.fromHtml(priv_text_content));
+        about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
+//        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
+        about_txt.setText(Html.fromHtml(about_text_content));
+        privacy_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info = "privacypolicy";
+                InfoFragment.title = getResources().getString(R.string.nav_privacy_policy);
+
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
+        about_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info="aboutus";
+                InfoFragment.title=getResources().getString(R.string.nav_about_us);
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
+        tos_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                HomeActivity.webViewPage_info="termsofservice";
+                InfoFragment.title=getResources().getString(R.string.nav_terms_of_service_link);
+
+                Fragment info_fragment = new InfoFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
+
+            }
+        });
+        logout_txt=(TextView)view.findViewById(R.id.nav_logout_text);
+        logout_txt.setText(getResources().getString(R.string.logout));
+        if(HomeActivity.getCurrent_user().isLoggedin()) {
+            logout_txt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (HomeActivity.getCurrent_user().isLoggedin()) {
+                        HomeActivity.getCurrent_user().setLogin_token(null);
+                        HomeActivity.getCurrent_user().setLoggedin(false);
+                        HomeActivity.getCurrent_user().setUser_id(null);
+                        HomeActivity.setAccessToken(null);
+                        SharedPreferences settings_l = getActivity().getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor_l = settings_l.edit();
+                        editor_l.clear();
+                        editor_l.apply();
+                        HomeActivity.login_flag = true;
+                        getActivity().invalidateOptionsMenu();
+                        MessageSerivice.isRunning = false;
+                        MessageSerivice.connection.disconnect();
+//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                        ToastHelper.shortToast(getResources().getString(R.string.logged_out));
+                    } else {
+                        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("login")
+                                .replace(R.id.fragment_container, new LoginFragment()).commit();
+                    }
+                }
+            });
+        }
+        notification_red_icon=(ImageView)view.findViewById(R.id.notificaiotn_red_icon);
+        if(NotificationHelper.haveNotifcation){
+            notification_red_icon.setVisibility(View.VISIBLE);
+        }else{
+            notification_red_icon.setVisibility(View.INVISIBLE);
+        }
+    }
     private void prepareProfile(View view) {
 
         profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
-            view.findViewById(R.id.nav_home_container).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                    drawerLayout.closeDrawers();
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                }
-            });
+
             view.findViewById(R.id.nav_my_trips_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -194,89 +319,7 @@ public class NavigationFragment extends Fragment {
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
-        tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
-//        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String tos_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
-        tos_txt.setText(Html.fromHtml(tos_text_content));
-        privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
-//        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String priv_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
-        privacy_txt.setText(Html.fromHtml(priv_text_content));
-        about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
-//        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
-        String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
-        about_txt.setText(Html.fromHtml(about_text_content));
-        logout_txt=(TextView)view.findViewById(R.id.nav_logout_text);
-        logout_txt.setText(getResources().getString(R.string.logout));
-        privacy_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info = "privacypolicy";
-                InfoFragment.title=getResources().getString(R.string.nav_privacy_policy);
 
-                Fragment info_fragment = new InfoFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
-
-            }
-        });
-        about_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info="aboutus";
-                InfoFragment.title=getResources().getString(R.string.nav_about_us);
-                Fragment info_fragment = new InfoFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
-
-            }
-        });
-        tos_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info="termsofservice";
-                InfoFragment.title=getResources().getString(R.string.nav_terms_of_service_link);
-
-                Fragment info_fragment = new InfoFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
-
-            }
-        });
-        logout_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(HomeActivity.getCurrent_user().isLoggedin()){
-                    HomeActivity.getCurrent_user().setLogin_token(null);
-                    HomeActivity.getCurrent_user().setLoggedin(false);
-                    HomeActivity.getCurrent_user().setUser_id(null);
-                    HomeActivity.setAccessToken(null);
-                    SharedPreferences settings_l = getActivity().getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor_l = settings_l.edit();
-                    editor_l.clear();
-                    editor_l.apply();
-                    HomeActivity.login_flag = true;
-                    getActivity().invalidateOptionsMenu();
-                    MessageSerivice.isRunning=false;
-                    MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
-                    ToastHelper.shortToast(getResources().getString(R.string.logged_out));
-                }else {
-                    getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("login")
-                            .replace(R.id.fragment_container, new LoginFragment()).commit();
-                }
-            }
-        });
-
-        notification_red_icon=(ImageView)view.findViewById(R.id.notificaiotn_red_icon);
-        if(NotificationHelper.haveNotifcation){
-       notification_red_icon.setVisibility(View.VISIBLE);
-        }else{
-            notification_red_icon.setVisibility(View.INVISIBLE);
-        }
     }
 
     public void onResume() {
