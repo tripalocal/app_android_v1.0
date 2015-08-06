@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.tripalocal.bentuke.R;
@@ -18,6 +19,12 @@ public class SlideShowFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return (LinearLayout)inflater.inflate(R.layout.slideshow_fragment2,container,false);
-    }
+        View view=(LinearLayout)inflater.inflate(R.layout.slideshow_fragment2,container,false);
+        ImageView img=(ImageView)view.findViewById(R.id.img_slide_2);
+        if((getResources().getString(R.string.version_language)).equals("Chinese")) {
+            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_ch));
+        }else{
+            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_en));
+        }
+        return view;    }
 }

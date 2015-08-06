@@ -10,11 +10,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/imageView5"
-            android:layout_gravity="center"
-            android:src="@drawable/slide03"
+            android:id="@+id/img_slide_3"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/slide3_en"
             android:scaleType="centerCrop"/>
 
         <Button
@@ -30,5 +30,6 @@
         android:onClick="afterSlide"
         android:textSize="21sp"
             android:layout_marginBottom="70dp" />
+
     </FrameLayout>
 </LinearLayout>
