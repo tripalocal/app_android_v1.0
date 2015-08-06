@@ -300,8 +300,8 @@
     <string name="msg_hours_ago">hours ago</string>
     <string name="msg_mins_ago">mins ago</string>
     <string name="msg_just_now">just now</string>
-    <string name="msg_list_no_1">You have not send any</string>
-    <string name="msg_list_no_2">message to any host yet</string>
+    <string name="msg_list_no_1">You have not sent any message</string>
+    <string name="msg_list_no_2">to any host yet</string>
     <string name="msg_list_no_3">You can send message to any</string>
     <string name="msg_list_no_4">host on their experience page</string>
     <string name="msg_connecting">Server error , pls try again in 1 min</string>
