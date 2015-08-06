@@ -304,7 +304,7 @@
     <string name="msg_list_no_2">message to any host yet</string>
     <string name="msg_list_no_3">You can send message to any</string>
     <string name="msg_list_no_4">host on their experience page</string>
-
+    <string name="msg_connecting">Server error , pls try again in 1 min</string>
     <!--end message string-->
 
     <!--loading text start-->

@@ -304,6 +304,8 @@
     <string name="msg_list_no_2">信息给host</string>
     <string name="msg_list_no_3">你可以发送信息给任何</string>
     <string name="msg_list_no_4">host，通过体验信息主页发送</string>
+    <string name="msg_connecting">服务器问题，请1分钟之后再次尝试</string>
+
     <!--msg configuration-->
     <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
