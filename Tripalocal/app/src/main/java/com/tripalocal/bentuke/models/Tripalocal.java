@@ -7,7 +7,7 @@ import android.app.Application;
  */
 public class Tripalocal extends Application {
 
-    private static String serverUrl = "https://www.tripalocal.com/cn/";
+    private static String serverUrl = "https://www.tripalocal.com.cn/";
 
     public static String getServerUrl() {
         return serverUrl;
