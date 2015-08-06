@@ -34,6 +34,7 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
+import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
@@ -383,25 +384,32 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed(){
         saveData();
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
-        if(fragment_t instanceof HomeActivityFragment) {
-            new AlertDialog.Builder(this)
-                    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
-                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            MobclickAgent.onKillProcess(getApplicationContext());
+//        if(fragment_t instanceof HomeActivityFragment) {
+//            new AlertDialog.Builder(this)
+//                    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
+//                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent(Intent.ACTION_MAIN);
+//                            intent.addCategory(Intent.CATEGORY_HOME);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+//                            startActivity(intent);
+//                            MobclickAgent.onKillProcess(getApplicationContext());
+//                            finish();
+//                            System.exit(0);
+//                        }
+//                    })
+//                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                        }
+//                    })
+//                    .show();
+//        }else{
+//            super.onBackPressed();
+//        }
+        if(Tripalocal.checkDoubleClick()){
+            MobclickAgent.onKillProcess(getApplicationContext());
                             finish();
-                            System.exit(0);
-                        }
-                    })
-                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .show();
+            System.exit(0);
         }else{
             super.onBackPressed();
         }
