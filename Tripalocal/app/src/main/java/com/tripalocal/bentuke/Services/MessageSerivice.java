@@ -22,9 +22,11 @@ import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.MessageListAdapter;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
+import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
 import com.tripalocal.bentuke.models.network.Profile_result;
@@ -38,6 +40,9 @@ import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+import org.jivesoftware.smackx.search.ReportedData;
+import org.jivesoftware.smackx.search.UserSearchManager;
+import org.jivesoftware.smackx.xdata.Form;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -92,13 +97,25 @@ public class MessageSerivice extends Service {
                                     .build();
                             connection = new XMPPTCPConnection(config);
                             connection.connect();
+                            SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                            username=settings_l.getString("user_id","test123123");
                             try {
-                                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
-                                   username=settings_l.getString("user_id","test123123");
+
                                 connection.login(username, username);
+
                             }catch(Exception e){
                                 System.out.println("connection error:"+e.getMessage().toString());
+                                MsgHelper.registerUserXMPP(username);
+                                Thread.sleep(1000);
+                                try {
+                                    connection.login(username, username);
+                                }catch (Exception e1){
+                                    System.out.println("connection error2:"+e1.getMessage().toString());
+
+                                }
                             }
+
+
                             Presence presence = new Presence(Presence.Type.available);
                             presence.setMode(Presence.Mode.available);
                             connection.sendPacket(presence);
