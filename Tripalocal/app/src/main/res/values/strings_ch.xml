@@ -300,10 +300,10 @@
     <string name="msg_hours_ago">小时前</string>
     <string name="msg_mins_ago">分钟前</string>
     <string name="msg_just_now">刚刚</string>
-    <string name="msg_list_no_1">你还没有发送任何</string>
-    <string name="msg_list_no_2">信息给host</string>
-    <string name="msg_list_no_3">你可以发送信息给任何</string>
-    <string name="msg_list_no_4">host，通过体验信息主页发送</string>
+    <string name="msg_list_no_1">你还没有发送任何信息给</string>
+    <string name="msg_list_no_2">领路人。你可以从体验页</string>
+    <string name="msg_list_no_3">面向任何领路人发宋信息</string>
+    <string name="msg_list_no_4"></string>
     <string name="msg_connecting">服务器问题，请1分钟之后再次尝试</string>
 
     <!--msg configuration-->
