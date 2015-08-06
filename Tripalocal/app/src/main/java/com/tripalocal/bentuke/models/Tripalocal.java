@@ -10,8 +10,7 @@ import java.util.Date;
 public class Tripalocal extends Application {
 
     private static String serverUrl = "https://www.tripalocal.com.cn/";
-    public static long LastTimestamp=0;
-    private static final long BACK_PRESS_DELAY = 2000;
+
 
     public static String getServerUrl() {
         return serverUrl;
@@ -29,13 +28,4 @@ public class Tripalocal extends Application {
     }
 
 
-    public static boolean checkDoubleClick(){
-        long currentTime=System.currentTimeMillis();
-        LastTimestamp=currentTime;
-        if(currentTime<LastTimestamp+BACK_PRESS_DELAY){
-            return false;
-        }else{
-            return true;
-        }
-    }
 }
