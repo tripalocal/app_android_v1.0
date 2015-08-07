@@ -1,12 +1,15 @@
 package com.tripalocal.bentuke.Views;
 
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
@@ -39,6 +42,8 @@ public class CreditCardActivity  extends AppCompatActivity {
     EditText card_no,card_month,card_year,card_cvv;
     private Experience_Detail exp;//position is experience id
     private int exp_id;
+    TableRow row1,row2,row3;
+    View divider1,divider2,divider3;
 
 
 
@@ -53,8 +58,35 @@ public class CreditCardActivity  extends AppCompatActivity {
         card_cvv=(EditText)this.findViewById(R.id.card_cvv);
         exp=CheckoutActivity.experience_to_book;
         exp_id=CheckoutActivity.position;
+row1=(TableRow)this.findViewById(R.id.row_num);
+        row2=(TableRow)this.findViewById(R.id.row_expire);
+        row3=(TableRow)this.findViewById(R.id.row_ccv);
+        divider1=(View)this.findViewById(R.id.divider_line_3);
+        divider2=(View)this.findViewById(R.id.divider_line_4);
+        divider3=(View)this.findViewById(R.id.divider_line_5);
+
+        setPaymentContentVisibility();
     }
 
+
+    public void setPaymentContentVisibility(){
+        if(CheckoutActivity.total_price.equals("0")){
+            row1.setVisibility(View.GONE);
+            row2.setVisibility(View.GONE);
+            row3.setVisibility(View.GONE);
+            divider1.setVisibility(View.GONE);
+            divider2.setVisibility(View.GONE);
+            divider3.setVisibility(View.GONE);
+        }else{
+            row1.setVisibility(View.VISIBLE);
+            row2.setVisibility(View.VISIBLE);
+            row3.setVisibility(View.VISIBLE);
+            divider1.setVisibility(View.VISIBLE);
+            divider2.setVisibility(View.VISIBLE);
+            divider3.setVisibility(View.VISIBLE);
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,8 +116,12 @@ public class CreditCardActivity  extends AppCompatActivity {
         String card_year_s=card_year.getText().toString();
         String card_cvv_s=card_cvv.getText().toString();
 
-        if(validateInput(card_no_s,card_month_s,card_year_s,card_cvv_s)){
-            payByCard(card_no_s,card_month_s,card_year_s,card_cvv_s);
+        if(CheckoutActivity.total_price.equals("0")){
+            payByCard("", "", "", "");
+        }else {
+            if (validateInput(card_no_s, card_month_s, card_year_s, card_cvv_s)) {
+                payByCard(card_no_s, card_month_s, card_year_s, card_cvv_s);
+            }
         }
     }
 
@@ -125,11 +161,15 @@ public class CreditCardActivity  extends AppCompatActivity {
         //System.out.println("create json"+createJson(no,month,year,cvv));
 
        // apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
+Credit_Request request;
+        if(CheckoutActivity.total_price.equals("0")) {
+            request=getCreditRequest_Zero();
+        }else{
+             request = getCreditRequest(no, month, year, cvv);
 
-
-
+        }
         //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
-        apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<Booking_Result>() {
+        apiService.bookExperience(request, new Callback<Booking_Result>() {
             @Override
             public void success(Booking_Result message, Response response) {
 //                ToastHelper.errorToast("Success");
@@ -165,12 +205,36 @@ public class CreditCardActivity  extends AppCompatActivity {
         itinerary_list.add(itenerary);
 //        System.out.println(cred_req);
         Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
-        System.out.println("card no "+cred_req.getCard_number()+" month "+cred_req.getExpiration_month()+
-                "year "+cred_req.getExpiration_year()+" coupon"+cred_req.getCoupon()+" cvv"+cred_req.getCvv()+
-        "itenaray_no"+cred_req.getItinerary_string().size());
+        System.out.println("card no " + cred_req.getCard_number() + " month " + cred_req.getExpiration_month() +
+                "year " + cred_req.getExpiration_year() + " coupon" + cred_req.getCoupon() + " cvv" + cred_req.getCvv() +
+                "itenaray_no" + cred_req.getItinerary_string().size());
 
         return cred_req;
     }
+
+    private Credit_Request getCreditRequest_Zero() {
+        String no="4242424242424242";
+        String month="12";
+        String year="12";
+        String cvv="646";
+        String id=CheckoutActivity.position+"";
+        String datearr[]=(CheckoutActivity.date).split("/");
+        String date=datearr[2]+"/"+datearr[1]+"/"+datearr[0];
+        String time=CheckoutActivity.time;
+        String guest_num=CheckoutActivity.guest;
+        String coupon_code = CheckoutActivity.coupon;
+        Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
+        List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
+        itinerary_list.add(itenerary);
+//        System.out.println(cred_req);
+        Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
+        System.out.println("card no "+cred_req.getCard_number()+" month "+cred_req.getExpiration_month()+
+                "year "+cred_req.getExpiration_year()+" coupon"+cred_req.getCoupon()+" cvv"+cred_req.getCvv()+
+                "itenaray_no"+cred_req.getItinerary_string().size());
+
+        return cred_req;
+    }
+
 
     public String createJson(String no,String month,String year,String cvv){
         String s="";
@@ -214,6 +278,8 @@ public class CreditCardActivity  extends AppCompatActivity {
     }
     public void onResume() {
         super.onResume();
+        setPaymentContentVisibility();
+
         MobclickAgent.onResume(this);       //统计时长
     }
     public void onPause() {
