@@ -420,6 +420,11 @@ public class HomeActivity extends AppCompatActivity {
                     doubleClick=false;
                 }
             }, 2000);
+        }else if(fragment_t instanceof NoMsgFragment){
+            Fragment home_fragment = new HomeActivityFragment();
+           getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home_fragment).addToBackStack("home").commit();
+
+
         }else{
             super.onBackPressed();
         }

@@ -91,7 +91,7 @@ getActivity().invalidateOptionsMenu();
     public void onResume() {
         super.onResume();
         initializeData();
-        checkValidate();
+//        checkValidate();
         adapter.notifyDataSetChanged();
 //        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
