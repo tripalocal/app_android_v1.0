@@ -92,7 +92,7 @@
         android:padding="8dp"
         android:id="@+id/exp_list_title_txt"
         android:text=""
-        />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -101,17 +101,20 @@
         >
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="102dp"
             android:id="@+id/exp_list_info_txt"
-            android:text=""
+            android:text="z"
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
             android:textSize="16sp"
-            android:maxLines="6"
+            android:maxLines="4"
             android:singleLine="false"
             android:ellipsize="end"
             android:layout_gravity="left"
-            android:layout_weight=".6"/>
+            android:layout_weight=".6"
+            android:lineSpacingExtra="3dp"
+
+            />
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
