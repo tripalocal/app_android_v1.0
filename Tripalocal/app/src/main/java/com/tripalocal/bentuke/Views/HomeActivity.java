@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
     public static String user_id;
     public static String user_img;
     public static boolean updatedWishMap=false;
-    private boolean doubleClick=false;
+    private static boolean doubleClick=false;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -406,7 +406,8 @@ public class HomeActivity extends AppCompatActivity {
 //                    })
 //                    .show();
             if (doubleClick) {
-                super.onBackPressed();
+                finish();
+                            System.exit(0);
                 return;
             }
 
@@ -422,7 +423,7 @@ public class HomeActivity extends AppCompatActivity {
             }, 2000);
         }else if(fragment_t instanceof NoMsgFragment){
             Fragment home_fragment = new HomeActivityFragment();
-           getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home_fragment).addToBackStack("home").commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home_fragment).addToBackStack("home").commit();
 
 
         }else{
