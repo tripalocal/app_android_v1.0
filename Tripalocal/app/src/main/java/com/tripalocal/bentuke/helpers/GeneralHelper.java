@@ -125,4 +125,6 @@ public class GeneralHelper {
         return HomeActivity.getHome_context().getResources().getString(R.string.msg_just_now);
 
     }
+
+
 }

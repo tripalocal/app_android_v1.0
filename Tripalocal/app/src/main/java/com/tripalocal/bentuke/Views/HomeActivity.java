@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
@@ -87,6 +88,7 @@ public class HomeActivity extends AppCompatActivity {
     public static String user_id;
     public static String user_img;
     public static boolean updatedWishMap=false;
+    private boolean doubleClick=false;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -385,27 +387,44 @@ public class HomeActivity extends AppCompatActivity {
         saveData();
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
         if(fragment_t instanceof HomeActivityFragment) {
-            new AlertDialog.Builder(this)
-                    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
-                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            MobclickAgent.onKillProcess(getApplicationContext());
-                            finish();
-                            System.exit(0);
-                        }
-                    })
-                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .show();
+//            new AlertDialog.Builder(this)
+//                    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
+//                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent(Intent.ACTION_MAIN);
+//                            intent.addCategory(Intent.CATEGORY_HOME);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+//                            startActivity(intent);
+//                            MobclickAgent.onKillProcess(getApplicationContext());
+//                            finish();
+//                            System.exit(0);
+//                        }
+//                    })
+//                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                        }
+//                    })
+//                    .show();
+            if (doubleClick) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleClick = true;
+//        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+            ToastHelper.shortToast("please double click ");
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleClick=false;
+                }
+            }, 2000);
         }else{
             super.onBackPressed();
         }
+
+
 
     }
 

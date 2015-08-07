@@ -311,6 +311,10 @@
     <string name="loading_dialog_title">Loading.....</string>
     <string name="loading_dialog_text">Please Wait while loading...</string>
     <!--loading text finish-->
+
+    <!-- others-->
+    <string name="double_click_exit">Click again to exit the app</string>
+    <!--others-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>
