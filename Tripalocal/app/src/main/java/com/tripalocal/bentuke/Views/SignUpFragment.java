@@ -105,7 +105,7 @@ public class SignUpFragment extends Fragment {
                     HomeActivity.getCurrent_user().setLoggedin(true);
                     HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                     HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
-
+                    HomeActivity.saveData();
                     HomeActivity.login_flag = true;
                     Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
                     startActivity(intent);

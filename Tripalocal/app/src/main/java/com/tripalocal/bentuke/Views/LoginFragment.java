@@ -1,6 +1,7 @@
 package com.tripalocal.bentuke.Views;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -78,6 +80,7 @@ public class LoginFragment extends Fragment {
             public void onSuccess(LoginResult loginResult) {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 //HomeActivity.setCurrent_userid("9900"); //id for FB login
+
                 loginFBUser();
             }
 
@@ -192,6 +195,8 @@ public class LoginFragment extends Fragment {
                 public void success(Login_Result result, Response response) {
                     if(!cancelled) {
 
+                        InputMethodManager imm = (InputMethodManager)HomeActivity.getHome_context().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow( ((EditText) getActivity().findViewById(R.id.login_password)).getWindowToken(), 0);
                         //set login
                         HomeActivity.getCurrent_user().setLogin_token(result.getToken());
                         HomeActivity.getCurrent_user().setLoggedin(true);
