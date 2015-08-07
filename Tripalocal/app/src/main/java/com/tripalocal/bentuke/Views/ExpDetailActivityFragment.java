@@ -265,7 +265,8 @@ public class ExpDetailActivityFragment extends Fragment {
     //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
     public void fillDetails(){
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(1)).fitCenter().into(expenses_banner_img);
+        int point =exp_to_display.getExperience_images().size()-1;
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
 
