@@ -196,18 +196,18 @@ public class MyTripFragment extends Fragment {
                 if (!upcomingTrip.isEmpty()) {
                     MyTripAdapter.myTrip = upcomingTrip;
                     category = 0;
-                    upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    upcomingTripButton.setTextColor(getResources().getColor(R.color.white));
                     upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
                     previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
-                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    previousTripButton.setBackgroundColor(getResources().getColor(R.color.white));
                     tl_none.setVisibility(View.GONE);
                 } else if (!previousTrip.isEmpty()) {
                     MyTripAdapter.myTrip = previousTrip;
                     category = 1;
-                    previousTripButton.setTextColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    previousTripButton.setTextColor(getResources().getColor(R.color.white));
                     previousTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
                     upcomingTripButton.setTextColor(getResources().getColor(R.color.tripalocal_green_blue));
-                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.tripalocal_light_grey));
+                    upcomingTripButton.setBackgroundColor(getResources().getColor(R.color.white));
                     tl_none.setVisibility(View.GONE);
                 } else {
                     if (upcomingTrip.isEmpty()) {
