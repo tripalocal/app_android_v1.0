@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/</string>
