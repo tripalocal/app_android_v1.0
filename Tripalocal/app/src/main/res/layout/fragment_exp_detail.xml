@@ -562,8 +562,8 @@
             android:layout_height="wrap_content"
             android:text="@string/msg_send_msg"
             android:id="@+id/send_msg_btn"
-            android:textColor="@color/white"
-            android:background="@drawable/booking_btn_shape"
+            android:textColor="@color/tripalocal_green_blue"
+            android:background="@drawable/contact_btn_shape"
             android:layout_weight="1" />
     </LinearLayout>
 
