@@ -16,7 +16,7 @@ import com.tripalocal.bentuke.R;
 public class TPSuggestionsAdapter extends CursorAdapter {
 
     private String[] data;
-    private TextView text;
+    private TextView text_city,text_state;
 
     public TPSuggestionsAdapter(Context context, Cursor c, String[] data_list){
         super(context, c, false);
@@ -34,13 +34,15 @@ public class TPSuggestionsAdapter extends CursorAdapter {
 
         View view = inflater.inflate(R.layout.search_item, viewGroup, false);
 
-        text = (TextView) view.findViewById(R.id.search_txt);
-
+        text_city = (TextView) view.findViewById(R.id.search_city);
+        text_state=(TextView)view.findViewById(R.id.search_state);
         return view;
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        text.setText(data[(cursor.getPosition())]);
+        text_city.setText(data[(cursor.getPosition())].split(",")[0]);
+        text_state.setText(data[(cursor.getPosition())].split(",")[1]);
+
     }
 }

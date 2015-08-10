@@ -327,12 +327,12 @@
     </string-array>
 
     <string-array name="poi_array">
-        <item>Melbourne, VIC</item>
+        <item>Melbourne, Victoria</item>
         <item>Sydney, NSW</item>
-        <item>Brisbane, QLD</item>
-        <item>Cairns, QLD</item>
-        <item>Gold Coast, QLD</item>
-        <item>Hobart, TAS</item>
-        <item>Adelaide, SA</item>
+        <item>Brisbane, Queensland</item>
+        <item>Cairns, Queensland</item>
+        <item>Gold Coast, Queensland</item>
+        <item>Hobart, Tasmania</item>
+        <item>Adelaide, south Australia</item>
     </string-array>
 </resources>
