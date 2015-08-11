@@ -2,6 +2,7 @@ package com.tripalocal.bentuke.models;
 
 import android.app.Application;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -26,6 +27,7 @@ public class Tripalocal extends Application {
             return lastName + firstName;
         }
     }
+    public static ArrayList<String> updatedChatList=new ArrayList<String>();
 
 
 

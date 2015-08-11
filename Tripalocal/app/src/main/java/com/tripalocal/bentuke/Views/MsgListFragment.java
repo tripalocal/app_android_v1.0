@@ -71,6 +71,7 @@ getActivity().invalidateOptionsMenu();
 
     private void initializeData(){
         //get All message list from database or web server.
+        //update data here .
         messages = new ArrayList<>();
         ArrayList<ChatList_model> lists=new ArrayList<ChatList_model>();
 

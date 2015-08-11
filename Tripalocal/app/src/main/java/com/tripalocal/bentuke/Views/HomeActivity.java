@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+    Tripalocal.updatedChatList.add("test");
         super.onCreate(savedInstanceState);
         MobclickAgent.updateOnlineConfig(this);
         AnalyticsConfig.enableEncrypt(true);
@@ -224,11 +224,13 @@ public class HomeActivity extends AppCompatActivity {
             getExperienceMap();
         }
         //start service for message
+        System.out.println("ArrayList count: "+Tripalocal.updatedChatList.size());
     }
 
     @Override
     protected void onResume() {
         System.out.println("onresume");
+        System.out.println("ArrayList count: "+Tripalocal.updatedChatList.size());
 
         super.onResume();
         invalidateOptionsMenu();
