@@ -6,12 +6,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by chenf_000 on 22/07/2015.
@@ -49,22 +54,33 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
         values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());
+    System.out.println("msg date :"+model.getMsg_date());
+        try {
+            long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
+            System.out.println("added to database successfully" + model.getMsg_type() + values.get(dbHelper.COlUMN_MSG_TYPE));
+        }catch (Exception e){
 
-        long insertId=database.insert(dbHelper.TABLE_NAME,null,values);
-        System.out.println("added to database successfully"+model.getMsg_type()+values.get(dbHelper.COlUMN_MSG_TYPE));
+        }
 //        System.out.println("person type on add new msg");
 
     }
 
     public List<ChatMsg_model> getChatMsgs(int receiverId){
         List<ChatMsg_model> chats=new ArrayList<ChatMsg_model>();
-        System.out.println("sender id + "+ receiverId);
+        Map<Date,ChatMsg_model> map=new HashMap<Date,ChatMsg_model>();
+
+        System.out.println("sender id + " + receiverId);
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,null,null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatMsg_model model=cursorToChatMsg(cursor);
-            chats.add(model);
+            map.put(GeneralHelper.getDateByString(model.getMsg_date()),model);
+//            chats.add(model);
             cursor.moveToNext();
+        }
+        Map<Date, ChatMsg_model> sortedMap = new TreeMap<Date, ChatMsg_model>(map);
+        for(ChatMsg_model m:sortedMap.values()){
+            chats.add(m);
         }
         cursor.close();
         return chats;

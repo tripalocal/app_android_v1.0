@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 
 import org.jivesoftware.smack.chat.Chat;
@@ -12,7 +13,11 @@ import org.w3c.dom.Comment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by chenf_000 on 22/07/2015.
@@ -64,13 +69,20 @@ public class ChatListDataSource {
 
     public List<ChatList_model> getChatList(){
         List<ChatList_model> chats=new ArrayList<ChatList_model>();
+        Map<Date,ChatList_model> map=new HashMap<Date,ChatList_model>();
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,null,null,null,null,dbHelper.COLUMN_ID+" DESC");
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatList_model model=cursorToChatList(cursor);
-            chats.add(model);
+//            chats.add(model);
+            map.put(GeneralHelper.getDateByString(model.getLast_msg_date()),model);
             cursor.moveToNext();
         }
+        Map<Date, ChatList_model> sortedMap = new TreeMap<Date, ChatList_model>(map);
+        for(ChatList_model m:sortedMap.values()){
+            chats.add(m);
+        }
+//        chats= (List<ChatList_model>) sortedMap.values();
         cursor.close();
         return chats;
     }
