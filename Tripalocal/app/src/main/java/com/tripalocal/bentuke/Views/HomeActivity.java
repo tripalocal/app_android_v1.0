@@ -224,7 +224,7 @@ public class HomeActivity extends AppCompatActivity {
             getExperienceMap();
         }
         //start service for message
-        System.out.println("ArrayList count: "+Tripalocal.updatedChatList.size());
+//        System.out.println("Date time showing here : "+GeneralHelper.getUTCTime("2013/02/12/1/56"));
     }
 
     @Override

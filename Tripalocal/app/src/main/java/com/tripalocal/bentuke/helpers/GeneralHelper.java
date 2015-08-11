@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -34,6 +35,18 @@ public class GeneralHelper {
                 "yyyy/MM/dd/HH/mm", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    public static String getUTCTime(String dateTimeString){
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm", Locale.getDefault());
+        Date oldDate=new Date();
+        try {
+            oldDate = dateFormat.parse(dateTimeString);
+        }catch (Exception e){
+
+        }
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return dateFormat.format(oldDate);
     }
 
     public static ProgressDialog showLoadingProgress(Activity activity){
