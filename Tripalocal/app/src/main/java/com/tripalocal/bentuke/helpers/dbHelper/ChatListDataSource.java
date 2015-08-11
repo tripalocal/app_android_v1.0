@@ -13,6 +13,7 @@ import org.w3c.dom.Comment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -64,7 +65,7 @@ public class ChatListDataSource {
 
     public void deleteChat(String sender_id){
         database.delete(dbHelper.TABLE_NAME, dbHelper.COLUMN_SENDER_ID + " = " +
-                "'" + sender_id +"'",null);
+                "'" + sender_id + "'", null);
     }
 
     public List<ChatList_model> getChatList(){
@@ -82,6 +83,8 @@ public class ChatListDataSource {
         for(ChatList_model m:sortedMap.values()){
             chats.add(m);
         }
+        Collections.reverse(chats);
+
 //        chats= (List<ChatList_model>) sortedMap.values();
         cursor.close();
         return chats;

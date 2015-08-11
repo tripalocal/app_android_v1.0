@@ -12,6 +12,7 @@ import com.tripalocal.bentuke.models.database.ChatMsg_model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +32,9 @@ public class ChatMsgDataSource{
             ChatMsg_db_Helper.COLUMN_RECEIVER_ID,
             ChatMsg_db_Helper.COLUMN_RECEIVER_NAME,
             ChatMsg_db_Helper.COlUMN_MSG_TYPE,
-            ChatMsg_db_Helper.COLUMN_RECEIVER_IMAGE
+            ChatMsg_db_Helper.COLUMN_RECEIVER_IMAGE,
+            ChatMsg_db_Helper.COLUMN_GLOBAL_ID
+
     };
 
     public ChatMsgDataSource(Context context){
@@ -54,7 +57,9 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
         values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());
-    System.out.println("msg date :"+model.getMsg_date());
+        values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
+
+        System.out.println("msg date :"+model.getMsg_date());
         try {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
             System.out.println("added to database successfully" + model.getMsg_type() + values.get(dbHelper.COlUMN_MSG_TYPE));
@@ -67,7 +72,7 @@ public class ChatMsgDataSource{
 
     public List<ChatMsg_model> getChatMsgs(int receiverId){
         List<ChatMsg_model> chats=new ArrayList<ChatMsg_model>();
-        Map<Date,ChatMsg_model> map=new HashMap<Date,ChatMsg_model>();
+        Map<Date,ChatMsg_model> map = new HashMap<Date,ChatMsg_model>();
 
         System.out.println("sender id + " + receiverId);
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,null,null);
@@ -95,6 +100,7 @@ public class ChatMsgDataSource{
         model.setReceiver_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_ID)));
         model.setReceiver_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_NAME)));
         model.setReceiver_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_IMAGE)));
+        model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
 
 
         return model;

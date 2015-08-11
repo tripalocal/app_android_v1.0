@@ -37,13 +37,24 @@ public class ChatMsg_model {
     }
 
     public ChatMsg_model (String receiver_id, String receiver_name, String msg_content, String msg_date,int msg_type,
-                          String receiver_img) {
+                               String receiver_img) {
         this.receiver_id = receiver_id;
         this.receiver_name = receiver_name;
         this.msg_content = msg_content;
         this.msg_date = msg_date;
         this.msg_type=msg_type;
         this.receiver_img=receiver_img;
+        this.global_id="0";
+    }
+    public ChatMsg_model (String receiver_id, String receiver_name, String msg_content, String msg_date,int msg_type,
+                          String receiver_img,String global_id) {
+        this.receiver_id = receiver_id;
+        this.receiver_name = receiver_name;
+        this.msg_content = msg_content;
+        this.msg_date = msg_date;
+        this.msg_type=msg_type;
+        this.receiver_img=receiver_img;
+        this.global_id=global_id;
     }
     public ChatMsg_model(){}
 
@@ -60,11 +71,19 @@ public class ChatMsg_model {
         return msg_date;
     }
 
+    public String getGlobal_id() {
+        return global_id;
+    }
+
+    public void setGlobal_id(String global_id) {
+        this.global_id = global_id;
+    }
+
     public void setMsg_date(String msg_date) {
         this.msg_date = msg_date;
     }
 
-    private String receiver_id,receiver_name, msg_content,msg_date,receiver_img;
+    private String receiver_id,receiver_name, msg_content,msg_date,receiver_img,global_id;
 
     public int getMsg_type() {
         return msg_type;
