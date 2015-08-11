@@ -224,7 +224,7 @@ public class HomeActivity extends AppCompatActivity {
             getExperienceMap();
         }
         //start service for message
-//        System.out.println("Date time showing here : "+GeneralHelper.getUTCTime("2013/02/12/1/56"));
+//        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
     }
 
     @Override
@@ -409,7 +409,8 @@ public class HomeActivity extends AppCompatActivity {
 //                    .show();
             if (doubleClick) {
                 finish();
-                            System.exit(0);
+
+                System.exit(0);
                 return;
             }
 

@@ -49,6 +49,19 @@ public class GeneralHelper {
         return dateFormat.format(oldDate);
     }
 
+
+    public static String getLocalTime(String dateTimeString){
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm",Locale.getDefault());
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date oldDate=new Date();
+        try {
+            oldDate = dateFormat.parse(dateTimeString);
+        }catch (Exception e){
+
+        }
+        dateFormat.setTimeZone(TimeZone.getDefault());
+        return dateFormat.format(oldDate);
+    }
     public static ProgressDialog showLoadingProgress(Activity activity){
          progress = new ProgressDialog(activity);//MUST BE activity instrad of getApplicationContext
 //        progress.setTitle(HomeActivity.getHome_context().getResources().getString(R.string.loading_dialog_title));
