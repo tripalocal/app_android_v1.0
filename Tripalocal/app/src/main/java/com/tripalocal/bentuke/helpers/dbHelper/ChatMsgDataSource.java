@@ -70,6 +70,20 @@ public class ChatMsgDataSource{
 
     }
 
+    public int getLastConversationGlobalId(int receiverId){
+        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,dbHelper.COLUMN_GLOBAL_ID,null);
+        int last_conversation_id=0;
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            ChatMsg_model model=cursorToChatMsg(cursor);
+            int temp=Integer.parseInt(model.getReceiver_id());
+            if(temp>last_conversation_id){
+                last_conversation_id=temp;
+            }
+            cursor.moveToNext();
+        }
+        return last_conversation_id;
+    }
     public List<ChatMsg_model> getChatMsgs(int receiverId){
         List<ChatMsg_model> chats=new ArrayList<ChatMsg_model>();
         Map<Date,ChatMsg_model> map = new HashMap<Date,ChatMsg_model>();

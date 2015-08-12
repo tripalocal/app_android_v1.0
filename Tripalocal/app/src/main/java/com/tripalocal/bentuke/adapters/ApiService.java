@@ -19,6 +19,7 @@ import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
 import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
 import com.tripalocal.bentuke.models.exp_detail.request;
 import com.tripalocal.bentuke.models.network.Booking_Result;
+import com.tripalocal.bentuke.models.network.Conversation_Result;
 import com.tripalocal.bentuke.models.network.Coupon_Result;
 import com.tripalocal.bentuke.models.network.Credit_Request;
 import com.tripalocal.bentuke.models.network.LoginFBRequest;
@@ -43,8 +44,8 @@ public interface ApiService {
     void getAllMessageList(Callback<ArrayList<MsgListModel>> response);
 
     @GET("/service_message/")
-    void getConversationById(@Query("user_id") String sender_id,
-                             @Query("last_update_id") String user_id,Callback<ArrayList<MsgListModel>> response);
+    void getConversationById(@Query("user_id") int sender_id,
+                             @Query("last_update_id") int user_id,Callback<ArrayList<Conversation_Result>> response);
 
     @POST("/service_message/")
     void updateConversation(@Body Update_Conversation_Request request,Callback<Update_Conversation_Result> response);

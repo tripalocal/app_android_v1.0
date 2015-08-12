@@ -19,6 +19,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,9 +37,12 @@ import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
+import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.MyTrip;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
+import com.tripalocal.bentuke.models.network.Conversation_Result;
+import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.umeng.analytics.MobclickAgent;
 
@@ -92,6 +96,7 @@ public class ChatActivity extends AppCompatActivity {
             System.out.println("chat activity start");
           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
+        updateChat();
 
     }
 
@@ -115,7 +120,7 @@ public class ChatActivity extends AppCompatActivity {
         chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
         inputText=(EditText)findViewById(R.id.chat_input_text);
         setChatListener();
-        initData();
+//        initData();
 
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
@@ -267,7 +272,7 @@ public class ChatActivity extends AppCompatActivity {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
-        map.put("dateTime",GeneralHelper.getDateTime());
+        map.put("dateTime", GeneralHelper.getDateTime());
         map.put("image", image);
 //        System.out.println("image url on chatActivity " + image);
 
@@ -309,6 +314,46 @@ public class ChatActivity extends AppCompatActivity {
 
             chatListMap.add(map);
         }
+    }
+
+    public void updateChat(){
+        GeneralHelper.showLoadingProgress(chatActivity_context);
+        final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + tooken);
+                    }
+                })
+                .build();
+        int receiver_id=Integer.parseInt(sender_id);
+        int last_chat_id=0;
+        try {
+            chatMsg_datasource.open();
+            last_chat_id=chatMsg_datasource.getLastConversationGlobalId(receiver_id);
+            chatMsg_datasource.close();
+        }catch (Exception e){
+
+        }
+
+
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.getConversationById(receiver_id, last_chat_id, new Callback<ArrayList<Conversation_Result>>() {
+            @Override
+            public void success(ArrayList<Conversation_Result> conversation_results, Response response) {
+                Log.i("Conversation ","amount "+conversation_results.size());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+
     }
 
 
