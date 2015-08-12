@@ -323,6 +323,7 @@ public class NavigationFragment extends Fragment {
                             chatModel.setSender_id(model.getSender_id() + "");
                             chatModel.setLast_msg_content(model.getMsg_content());
                             chatModel.setLast_msg_date(model.getMsg_date());
+                            chatModel.setSender_name(model.getSender_name());
                             chatList_db_source.createNewChat(chatModel);
                             Log.i("messages count ", "das" + chatList_db_source.getChatList().size());
                             Log.i("chat server test","step 2.1");
