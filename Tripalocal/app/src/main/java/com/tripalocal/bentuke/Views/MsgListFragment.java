@@ -5,18 +5,29 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.tripalocal.bentuke.R;
+import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.MessageListAdapter;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.network.MsgListModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MsgListFragment extends Fragment {
 
@@ -63,7 +74,7 @@ public class MsgListFragment extends Fragment {
         getActivity().setTitle(getResources().getString(R.string.msg_list_title));
          adapter = new MessageListAdapter(messages);
         mRecyclerView.setAdapter(adapter);
-getActivity().invalidateOptionsMenu();
+            getActivity().invalidateOptionsMenu();
         checkValidate();
 
         return view;
@@ -87,6 +98,7 @@ getActivity().invalidateOptionsMenu();
         }
         NotificationHelper.clearBadge();
     }
+
 
 
     public void onResume() {

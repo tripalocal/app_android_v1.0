@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,9 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,6 +40,8 @@ import com.tripalocal.bentuke.helpers.FragHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.network.MyProfile_result;
 import com.tripalocal.bentuke.models.Tripalocal;
+
+import java.util.ArrayList;
 
 
 public class NavigationFragment extends Fragment {
@@ -119,7 +125,8 @@ public class NavigationFragment extends Fragment {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
                 Fragment loginFragment = new LoginFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            }
         });
         view.findViewById(R.id.nav_msg_list_container).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,15 +281,8 @@ public class NavigationFragment extends Fragment {
             view.findViewById(R.id.nav_msg_list_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (MessageSerivice.connection!=null) {
-                        DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                        drawerLayout.closeDrawers();
+                    updateDatabase();
 
-                        Fragment exp_list_frag = new MsgListFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
-                    }else{
-                        ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
-                    }
                 }
             });
 
@@ -292,6 +292,83 @@ public class NavigationFragment extends Fragment {
 
     }
 
+    public void updateDatabase() {
+        final ChatListDataSource chatList_db_source=new ChatListDataSource(getActivity());
+        GeneralHelper.showLoadingProgress(getActivity());
+        final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + tooken);
+                    }
+                })
+                .build();
+
+        ApiService apiService = restAdapter.create(ApiService.class);
+        apiService.getAllMessageList(new Callback<ArrayList<MsgListModel>>() {
+            @Override
+            public void success(ArrayList<MsgListModel> msgListModels, Response response) {
+                try {
+                    Log.i("chat server test","step 1"+msgListModels.size());
+                    chatList_db_source.open();
+                    for(MsgListModel model:msgListModels){
+                        if(chatList_db_source.checkSync(model.getSender_id()+"",model.getId()+"")){
+                            ChatList_model chatModel=new ChatList_model();
+                            chatModel.setGlobal_id(model.getId() + "");
+                            chatModel.setSender_img(model.getSender_image());
+                            chatModel.setSender_id(model.getSender_id() + "");
+                            chatModel.setLast_msg_content(model.getMsg_content());
+                            chatModel.setLast_msg_date(model.getMsg_date());
+                            chatList_db_source.createNewChat(chatModel);
+                            Log.i("messages count ", "das" + chatList_db_source.getChatList().size());
+                            Log.i("chat server test","step 2.1");
+
+
+                        }
+                        Log.i("chat server test","step 2");
+
+                    }
+                    chatList_db_source.close();
+                    Log.i("chat server test", "step 3");
+
+                }catch (Exception e){
+                    System.out.println("exception"+e.getMessage().toString());
+                    Log.i("chat server test", "step 4");
+
+                }
+                GeneralHelper.closeLoadingProgress();
+                if (MessageSerivice.connection!=null) {
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
+
+                    Fragment exp_list_frag = new MsgListFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
+                }else{
+                    ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                System.out.println("fali on new service : "+error.getMessage().toString());
+                GeneralHelper.closeLoadingProgress();
+//                if (MessageSerivice.connection!=null) {
+//                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+//                    drawerLayout.closeDrawers();
+//
+//                    Fragment exp_list_frag = new MsgListFragment();
+//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
+//                }else{
+//                    ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
+//                }
+            }
+        });
+
+    }
     public void getProfileDetails(final View view){
         GeneralHelper.showLoadingProgress(getActivity());
         //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";

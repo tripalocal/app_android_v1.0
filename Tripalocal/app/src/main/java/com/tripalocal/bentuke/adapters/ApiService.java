@@ -22,10 +22,13 @@ import com.tripalocal.bentuke.models.network.Booking_Result;
 import com.tripalocal.bentuke.models.network.Coupon_Result;
 import com.tripalocal.bentuke.models.network.Credit_Request;
 import com.tripalocal.bentuke.models.network.LoginFBRequest;
+import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.tripalocal.bentuke.models.network.MyProfile_result;
 import com.tripalocal.bentuke.models.network.Profile_result;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.network.SignupRequest;
+import com.tripalocal.bentuke.models.network.Update_Conversation_Request;
+import com.tripalocal.bentuke.models.network.Update_Conversation_Result;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
 import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 import com.tripalocal.bentuke.models.network.profileUpdateRequest;
@@ -34,6 +37,17 @@ import com.tripalocal.bentuke.models.network.profileUpdateRequest;
  * Created by naveen on 4/6/2015.
  */
 public interface ApiService {
+
+
+    @GET("/service_message_list/")
+    void getAllMessageList(Callback<ArrayList<MsgListModel>> response);
+
+    @GET("/service_message/")
+    void getConversationById(@Query("user_id") String sender_id,
+                             @Query("last_update_id") String user_id,Callback<ArrayList<MsgListModel>> response);
+
+    @POST("/service_message/")
+    void updateConversation(@Body Update_Conversation_Request request,Callback<Update_Conversation_Result> response);
 
     @POST("/service_wishlist/")
     void UpdateWishList(@Body WishList_update_Request request,Callback<Wishlist_Update_Result> response);
