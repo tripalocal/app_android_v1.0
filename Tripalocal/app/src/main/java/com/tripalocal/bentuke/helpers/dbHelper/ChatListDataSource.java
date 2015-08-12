@@ -149,7 +149,7 @@ public class ChatListDataSource {
         model.setSender_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_ID)).trim());
         model.setSender_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_NAME)));
         model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));
-        model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
+        model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
 
         return model;
     }
