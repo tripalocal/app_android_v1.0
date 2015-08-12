@@ -32,13 +32,13 @@ public class GeneralHelper {
     public static ProgressDialog progress;
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy/MM/dd/HH/mm/ss/SSS", Locale.getDefault());
+                "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }
 
     public static String getUTCTime(String dateTimeString){
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss/SSS", Locale.getDefault());
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
         Date oldDate=new Date();
         try {
             oldDate = dateFormat.parse(dateTimeString);
@@ -51,7 +51,7 @@ public class GeneralHelper {
 
 
     public static String getLocalTime(String dateTimeString){
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss/SSS",Locale.getDefault());
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss/SSSSSS",Locale.getDefault());
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date oldDate=new Date();
         try {
@@ -65,7 +65,7 @@ public class GeneralHelper {
 
     public static Date getDateByString(String dateTimeString){
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy/MM/dd/HH/mm/ss/SSS", Locale.getDefault());
+                "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
         Date date=new Date();
         try {
             date = dateFormat.parse(dateTimeString);
@@ -138,7 +138,7 @@ public class GeneralHelper {
     public static String getTimeClp(String dateTime){
         String datetimeR_arr[]=dateTime.split("/");
         SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy/MM/dd/HH/mm/ss/SSS", Locale.getDefault());
+                "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
         String datetimeC_arr[]= dateFormat.format(new Date()).split("/");
         if(Integer.parseInt(datetimeC_arr[0])>Integer.parseInt(datetimeR_arr[0])){
             int gap=Integer.parseInt(datetimeC_arr[0])-Integer.parseInt(datetimeR_arr[0]);
