@@ -67,6 +67,40 @@ public class ChatListDataSource {
         Log.i("chatList","new Chat created");
     }
 
+    public ArrayList<String> getAllUnsyncChat(){
+        ArrayList<String> chats=new ArrayList<String>();
+        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,
+                dbHelper.COLUMN_GLOBAL_ID+" = 0 ",null,null,null,null);        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            ChatList_model model=cursorToChatList(cursor);
+//            chats.add(model);
+           chats.add(model.getSender_id());
+            cursor.moveToNext();
+        }
+       cursor.close();
+        Log.i("chatList", "all unsync senders "+chats
+                .size());
+
+        return chats;
+    }
+
+    public boolean checkSync(String sender_id,String global_id) {
+        Cursor cursor = database.query(dbHelper.TABLE_NAME, allColumns,
+                dbHelper.COLUMN_SENDER_ID + " = '" + sender_id + "'", null, null, null, null);
+        if (cursor.getCount() != 0) {
+            ChatList_model model = cursorToChatList(cursor);
+            int global_id_int = Integer.parseInt(global_id);
+            int global_id_int_local = Integer.parseInt(model.getGlobal_id());
+            if (global_id_int > global_id_int_local) {
+                deleteChat(sender_id);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
     public void deleteChat(String sender_id){
         database.delete(dbHelper.TABLE_NAME, dbHelper.COLUMN_SENDER_ID + " = " +
                 "'" + sender_id + "'", null);
