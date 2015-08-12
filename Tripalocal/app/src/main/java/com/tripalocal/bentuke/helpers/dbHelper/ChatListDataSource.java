@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
@@ -31,7 +32,9 @@ public class ChatListDataSource {
             ChatList_db_Helper.COLUMN_LAST_MSG_DATE,
             ChatList_db_Helper.COLUMN_SENDER_ID,
             ChatList_db_Helper.COLUMN_SENDER_NAME,
-            ChatList_db_Helper.COLUMN_SENDER_IMAGE
+            ChatList_db_Helper.COLUMN_SENDER_IMAGE,
+            ChatList_db_Helper.COLUMN_GLOBAL_ID
+
     };
 
     public ChatListDataSource(Context context){
@@ -54,13 +57,14 @@ public class ChatListDataSource {
         values.put(dbHelper.COLUMN_SENDER_ID,model.getSender_id().trim().trim());
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
+        values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
 //        if(checkReuslt) {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
 //        }else {
 //            long insertId = database.update(dbHelper.TABLE_NAME, values, " " + dbHelper.COLUMN_SENDER_ID + "= ? ", new String[]{model.getSender_id()});
 //        Cursor cursor=database.query(dbHelper.TABLE_NAME);
-
 //        }
+        Log.i("chatList","new Chat created");
     }
 
     public void deleteChat(String sender_id){
@@ -87,6 +91,9 @@ public class ChatListDataSource {
 
 //        chats= (List<ChatList_model>) sortedMap.values();
         cursor.close();
+        Log.i("chatList", "total chats "+chats
+        .size());
+
         return chats;
     }
 
@@ -108,6 +115,8 @@ public class ChatListDataSource {
         model.setSender_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_ID)).trim());
         model.setSender_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_NAME)));
         model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));
+        model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
+
         return model;
     }
 

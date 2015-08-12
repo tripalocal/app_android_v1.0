@@ -5,15 +5,28 @@ package com.tripalocal.bentuke.models.database;
  */
 public class ChatList_model {
 
-    public ChatList_model(String sender_id, String sender_name, String last_msg_date, String last_msg_content,String sender_img) {
+    public ChatList_model(String sender_id, String sender_name, String last_msg_date, String last_msg_content,String sender_img,
+                          String global_id) {
         this.sender_id = sender_id;
         this.sender_name = sender_name;
         this.last_msg_date = last_msg_date;
         this.last_msg_content = last_msg_content;
         this.sender_img=sender_img;
+        this.global_id=global_id;
+    }
+
+    public ChatList_model(String sender_id, String sender_name, String last_msg_date, String last_msg_content,String sender_img
+                          ) {
+        this.sender_id = sender_id;
+        this.sender_name = sender_name;
+        this.last_msg_date = last_msg_date;
+        this.last_msg_content = last_msg_content;
+        this.sender_img=sender_img;
+        this.global_id="0";
     }
 
     public ChatList_model(){
+        this.global_id="0";
 
     }
     public String getSender_id() {
@@ -48,6 +61,14 @@ public class ChatList_model {
         this.sender_img = sender_img;
     }
 
+    public String getGlobal_id() {
+        return global_id;
+    }
+
+    public void setGlobal_id(String global_id) {
+        this.global_id = global_id;
+    }
+
     public String getLast_msg_content() {
         return last_msg_content;
     }
@@ -56,6 +77,6 @@ public class ChatList_model {
         this.last_msg_content = last_msg_content;
     }
 
-    private String sender_id,sender_name,last_msg_date,last_msg_content,sender_img;
+    private String sender_id,sender_name,last_msg_date,last_msg_content,sender_img,global_id;
 
 }
