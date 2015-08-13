@@ -92,10 +92,12 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         initExtra();
+        initData();
        initComponenets();
             System.out.println("chat activity start");
           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
+
         updateChat();
 
     }
@@ -279,6 +281,16 @@ public class ChatActivity extends AppCompatActivity {
         chatListMap.add(map);
     }
 
+    public  void addTextToListNoRecord(String text,int person,String image){
+        HashMap<String,Object> map=new HashMap<String,Object>();
+        map.put("person", person);
+        map.put("text", text);
+        map.put("dateTime", GeneralHelper.getDateTime());
+        map.put("image", image);
+//        System.out.println("image url on chatActivity " + image);
+
+        chatListMap.add(map);
+    }
     public void initExtra(){
         Bundle extras = getIntent().getExtras();
         sender_id="";
@@ -330,22 +342,53 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 })
                 .build();
-        int receiver_id=Integer.parseInt(sender_id);
+        final int receiver_id=Integer.parseInt(sender_id);
         int last_chat_id=0;
         try {
-            chatMsg_datasource.open();
-            last_chat_id=chatMsg_datasource.getLastConversationGlobalId(receiver_id);
-            chatMsg_datasource.close();
+            ChatMsgDataSource dataSource=new ChatMsgDataSource(HomeActivity.getHome_context());
+            dataSource.open();
+            last_chat_id=dataSource.getLastConversationGlobalId(receiver_id);
+            dataSource.close();
         }catch (Exception e){
-
+            Log.i("CONVERSATION ",e.getMessage().toString());
         }
-
+        Log.i("CONVERSATION ",last_chat_id+"");
 
         ApiService apiService = restAdapter.create(ApiService.class);
         apiService.getConversationById(receiver_id,last_chat_id, new Callback<ArrayList<Conversation_Result>>() {
             @Override
             public void success(ArrayList<Conversation_Result> conversation_results, Response response) {
-                Log.i("Conversation ","amount "+conversation_results.size());
+                Log.i("Conversation ", "amount " + conversation_results.size());
+                try {
+                    ChatMsgDataSource datesource=new ChatMsgDataSource(HomeActivity.getHome_context());
+                    datesource.open();
+                    for(Conversation_Result result : conversation_results){
+                        ChatMsg_model model=new ChatMsg_model();
+                        model.setGlobal_id(result.getId() + "");
+//                        model.setMsg_type();
+                        model.setMsg_content(result.getMsg_content());
+                        model.setMsg_date(result.getMsg_date());
+                       if((result.getSender_id()+"").equals(sender_id)) {
+                            model.setMsg_type(ChatActivity.receiver_flag);
+                            model.setReceiver_name(sender_name);
+                            model.setReceiver_id(sender_id);
+                            model.setReceiver_img(sender_img);
+                        }else{
+                            model.setMsg_type(ChatActivity.sender_flag);
+                            model.setReceiver_name(HomeActivity.getCurrent_user().getFirstName());
+                            model.setReceiver_id(HomeActivity.getCurrent_user().getUser_id());
+                            model.setReceiver_img(HomeActivity.user_img);
+                        }
+                        datesource.addNewMsg(model);
+                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img());
+                        Log.i("Conversation ", "comes here");
+                    }
+
+                    datesource.close();
+                }catch (Exception e){
+                    Log.i("Conversation ", "Exception for the chatActivity" + e.getMessage().toString());
+                }
+                notifAdapter();
                 GeneralHelper.closeLoadingProgress();
 
             }

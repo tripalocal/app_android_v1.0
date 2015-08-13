@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
@@ -62,7 +64,8 @@ public class ChatMsgDataSource{
         System.out.println("msg date :"+model.getMsg_date());
         try {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
-            System.out.println("added to database successfully" + model.getMsg_type() + values.get(dbHelper.COlUMN_MSG_TYPE));
+            Log.i("Conversation ","add global id is "+model.getGlobal_id());
+
         }catch (Exception e){
 
         }
@@ -71,15 +74,19 @@ public class ChatMsgDataSource{
     }
 
     public int getLastConversationGlobalId(int receiverId){
-        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,dbHelper.COLUMN_GLOBAL_ID,null);
+        Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId
+                +" OR " +dbHelper.COLUMN_RECEIVER_ID +" = "+ HomeActivity.getCurrent_user().getUser_id(),null,null,null,null);
         int last_conversation_id=0;
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatMsg_model model=cursorToChatMsg(cursor);
-            int temp=Integer.parseInt(model.getReceiver_id());
+            int temp=Integer.parseInt(model.getGlobal_id());
             if(temp>last_conversation_id){
                 last_conversation_id=temp;
+                Log.i("Conversation ","global id inside is "+temp);
             }
+            Log.i("Conversation ","global id outside is "+temp);
+
             cursor.moveToNext();
         }
         return last_conversation_id;
@@ -104,6 +111,8 @@ public class ChatMsgDataSource{
         cursor.close();
         return chats;
     }
+
+
 
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
