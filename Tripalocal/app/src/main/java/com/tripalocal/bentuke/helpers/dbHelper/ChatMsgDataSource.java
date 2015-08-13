@@ -113,7 +113,24 @@ public class ChatMsgDataSource{
         return chats;
     }
 
+    public ArrayList<ChatMsg_model> getUnsyncMsgs(int receiverId){
+        List<ChatMsg_model> chats=getChatMsgs(receiverId);
+        ArrayList<ChatMsg_model> reChats=new ArrayList<ChatMsg_model>();
 
+        for(ChatMsg_model m:chats){
+            if(m.getGlobal_id().equals("0")){
+                reChats.add(m);
+            }
+        }
+        return reChats;
+    }
+
+    public void UpdateGlobalId(int local_id,int global_id){
+        ContentValues args = new ContentValues();
+        args.put(dbHelper.COLUMN_GLOBAL_ID, global_id +"");
+        database.update(dbHelper.TABLE_NAME, args, dbHelper.COLUMN_ID+" =" + local_id, null);
+
+    }
 
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
@@ -125,8 +142,8 @@ public class ChatMsgDataSource{
         model.setReceiver_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_NAME)));
         model.setReceiver_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_IMAGE)));
         model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
-
-
+        model.setMsg_id(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
+        Log.i("MESSAGE","retrieve msg id : "+cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
         return model;
     }
 }

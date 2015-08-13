@@ -13,7 +13,7 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
     public static final String DATABASE_NAME="chat"+Integer.parseInt(HomeActivity.getCurrent_user().getUser_id())+".db";
     private static final int DATABASE_VERSION=1;
     public static final String TABLE_NAME="ChatList_table";
-    public static final String COLUMN_ID="id";
+    public static final String COLUMN_ID="_id";
     public static final String COLUMN_SENDER_ID="sender_id";
     public static final String COLUMN_SENDER_NAME="sender_name";
     public static final String COLUMN_LAST_MSG_CONTENT="last_msg_content";
