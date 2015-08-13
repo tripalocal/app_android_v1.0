@@ -53,7 +53,7 @@ public class ChatListDataSource {
         Boolean checkReuslt=checkChat(model.getSender_id().trim());
         ContentValues values=new ContentValues();
         values.put(dbHelper.COLUMN_LAST_MSG_CONTENT,model.getLast_msg_content());
-        values.put(dbHelper.COLUMN_LAST_MSG_DATE,model.getLast_msg_date());
+        values.put(dbHelper.COLUMN_LAST_MSG_DATE,GeneralHelper.getUTCTime(model.getLast_msg_date()));
         values.put(dbHelper.COLUMN_SENDER_ID,model.getSender_id().trim().trim());
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
@@ -145,7 +145,7 @@ public class ChatListDataSource {
     public ChatList_model cursorToChatList(Cursor cursor){
         ChatList_model model=new ChatList_model();
         model.setLast_msg_content(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LAST_MSG_CONTENT)));
-        model.setLast_msg_date(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LAST_MSG_DATE)));
+        model.setLast_msg_date(GeneralHelper.getLocalTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LAST_MSG_DATE))));
         model.setSender_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_ID)).trim());
         model.setSender_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_NAME)));
         model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));

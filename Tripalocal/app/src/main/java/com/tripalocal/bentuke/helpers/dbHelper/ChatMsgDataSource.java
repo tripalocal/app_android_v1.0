@@ -54,7 +54,7 @@ public class ChatMsgDataSource{
     public void addNewMsg(ChatMsg_model model){
         ContentValues values=new ContentValues();
         values.put(dbHelper.COLUMN_MSG_CONTENT,model.getMsg_content());
-        values.put(dbHelper.COLUMN_MSG_DATE,model.getMsg_date());
+        values.put(dbHelper.COLUMN_MSG_DATE,GeneralHelper.getUTCTime(model.getMsg_date()));
         values.put(dbHelper.COLUMN_RECEIVER_ID,model.getReceiver_id().trim());
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
@@ -137,7 +137,7 @@ public class ChatMsgDataSource{
         ChatMsg_model model=new ChatMsg_model();
         model.setMsg_type(cursor.getInt(cursor.getColumnIndex(dbHelper.COlUMN_MSG_TYPE)));
         model.setMsg_content(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MSG_CONTENT)));
-        model.setMsg_date(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MSG_DATE)));
+        model.setMsg_date(GeneralHelper.getLocalTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MSG_DATE))));
         model.setReceiver_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_ID)));
         model.setReceiver_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_NAME)));
         model.setReceiver_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_IMAGE)));
