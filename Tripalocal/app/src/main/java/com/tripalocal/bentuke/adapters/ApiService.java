@@ -48,7 +48,7 @@ public interface ApiService {
                              @Query("last_update_id") int user_id,Callback<ArrayList<Conversation_Result>> response);
 
     @POST("/service_message/")
-    void updateConversation(@Body Update_Conversation_Request request,Callback<Update_Conversation_Result> response);
+    void updateConversation(@Body Update_Conversation_Request request,Callback<ArrayList<Update_Conversation_Result>> response);
 
     @POST("/service_wishlist/")
     void UpdateWishList(@Body WishList_update_Request request,Callback<Wishlist_Update_Result> response);

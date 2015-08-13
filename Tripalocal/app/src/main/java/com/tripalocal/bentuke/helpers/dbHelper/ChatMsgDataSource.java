@@ -73,6 +73,7 @@ public class ChatMsgDataSource{
 
     }
 
+
     public int getLastConversationGlobalId(int receiverId){
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId
                 +" OR " +dbHelper.COLUMN_RECEIVER_ID +" = "+ HomeActivity.getCurrent_user().getUser_id(),null,null,null,null);
