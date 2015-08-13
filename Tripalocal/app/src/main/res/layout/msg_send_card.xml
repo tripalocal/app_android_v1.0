@@ -73,7 +73,7 @@
                 app:border_width="2dp"
                 app:border_color="#ffffffff"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="150dp" />
 
         </FrameLayout>
