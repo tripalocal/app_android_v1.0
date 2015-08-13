@@ -22,6 +22,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,15 +36,24 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.Tripalocal;
+import com.tripalocal.bentuke.models.database.ChatList_model;
+import com.tripalocal.bentuke.models.database.ChatMsg_model;
 import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
+import com.tripalocal.bentuke.models.network.Conversation_msg_api;
+import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.tripalocal.bentuke.models.network.Profile_result;
+import com.tripalocal.bentuke.models.network.Update_Conversation_Request;
+import com.tripalocal.bentuke.models.network.Update_Conversation_Result;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
 import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
 import java.lang.reflect.Array;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -219,9 +229,10 @@ public class HomeActivity extends AppCompatActivity {
 
         }
         if(checkLogin()){
-            System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
+            System.out.println("System login token is " + HomeActivity.getCurrent_user().getLogin_token());
 //            RetrieveWishListMap();
             getExperienceMap();
+            testapi();
         }
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
@@ -250,7 +261,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         System.out.println("oncreate and tooken is " + getAccessToken());
         if(checkLogin()){
-            System.out.println("System login token is "+HomeActivity.getCurrent_user().getLogin_token());
+            System.out.println(HomeActivity.getCurrent_user().getUser_id()+" test login toke login token is "+HomeActivity.getCurrent_user().getLogin_token());
 //            RetrieveWishListMap();
             getExperienceMap();
         }        MobclickAgent.onResume(this);
@@ -483,6 +494,79 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+    public void testapi() {
+
+            final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
+                    .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                    .setRequestInterceptor(new RequestInterceptor() {
+                        @Override
+                        public void intercept(RequestFacade request) {
+                            request.addHeader("Accept", "application/json");
+                            request.addHeader("Authorization", "Token " + tooken);
+                        }
+                    })
+                    .build();
+        ChatMsgDataSource dataSource=new ChatMsgDataSource(this);
+        Update_Conversation_Request request=new Update_Conversation_Request();
+
+        try {
+            dataSource.open();
+            ArrayList<ChatMsg_model> chatsData= dataSource.getUnsyncMsgs(1);
+            for(ChatMsg_model m:chatsData){
+                Conversation_msg_api item=new Conversation_msg_api();
+                item.setMsg_date(m.getMsg_date());
+                item.setMsg_content(m.getMsg_content());
+                item.setLocal_id(m.getMsg_id());
+                System.out.println("Message id here is "+m.getMsg_id());
+                item.setReceiver_id(Integer.parseInt(m.getReceiver_id()));
+                request.addToList(item);
+            }
+            dataSource.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        Gson gson = new Gson();
+
+        // convert java object to JSON format,
+        // and returned as JSON formatted string
+        String json = gson.toJson(request);
+        System.out.println("json s"+json);
+        if(request.getMessages().size()!=0) {
+            ApiService apiService = restAdapter.create(ApiService.class);
+            apiService.updateConversation(request, new Callback<ArrayList<Update_Conversation_Result>>() {
+                @Override
+                public void success(ArrayList<Update_Conversation_Result> update_conversation_results, Response response) {
+                    Log.i("Conversation ", "update size " + update_conversation_results.size());
+                        try {
+                            ChatMsgDataSource dataSource=new ChatMsgDataSource(getHome_context());
+                            dataSource.open();
+                            for(Update_Conversation_Result result : update_conversation_results){
+                                    dataSource.UpdateGlobalId(result.getLocal_id(),result.getLocal_id());
+                                System.out.println("11local id is " + result.getLocal_id() + "global id is " + result.getGlobal_id());
+
+                            }
+                            dataSource.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            System.out.println("Msg update Exception here "+ e.getMessage().toString());
+                        }
+
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    Log.i("Conversation ", "error is " + error.getMessage().toString());
+                }
+            });
+        }
+    }
 
 
 }
