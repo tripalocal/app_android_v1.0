@@ -44,7 +44,7 @@ public interface ApiService {
     void getAllMessageList(Callback<ArrayList<MsgListModel>> response);
 
     @GET("/service_message/")
-    void getConversationById(@Query("user_id") int sender_id,
+    void getConversationById(@Query("sender_id") int sender_id,
                              @Query("last_update_id") int user_id,Callback<ArrayList<Conversation_Result>> response);
 
     @POST("/service_message/")

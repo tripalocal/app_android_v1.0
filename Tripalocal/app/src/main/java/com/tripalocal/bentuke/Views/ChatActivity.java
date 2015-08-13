@@ -342,15 +342,18 @@ public class ChatActivity extends AppCompatActivity {
 
 
         ApiService apiService = restAdapter.create(ApiService.class);
-        apiService.getConversationById(receiver_id, last_chat_id, new Callback<ArrayList<Conversation_Result>>() {
+        apiService.getConversationById(receiver_id,last_chat_id, new Callback<ArrayList<Conversation_Result>>() {
             @Override
             public void success(ArrayList<Conversation_Result> conversation_results, Response response) {
                 Log.i("Conversation ","amount "+conversation_results.size());
+                GeneralHelper.closeLoadingProgress();
+
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                Log.i("chat error",error.getMessage().toString());
+                GeneralHelper.closeLoadingProgress();
             }
         });
 
