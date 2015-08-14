@@ -208,7 +208,7 @@ public class ChatActivity extends AppCompatActivity {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
                     initExtra();
-                    addTextToList(text, sender_flag, sender_img);
+                    addTextToList(text, sender_flag, sender_img,GeneralHelper.getDateTime());
 //                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
@@ -225,11 +225,11 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-    protected void addTextToList(String text,int person,String image){
+    protected void addTextToList(String text,int person,String image,String time){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
-        map.put("dateTime",GeneralHelper.getDateTime());
+        map.put("dateTime",time);
         map.put("image", image);
         chatListMap.add(map);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
@@ -237,7 +237,7 @@ public class ChatActivity extends AppCompatActivity {
             //add to datasource
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
-            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text, GeneralHelper.getDateTime(), ChatActivity.sender_flag,
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text,time, ChatActivity.sender_flag,
                     image));
             chatMsg_datasource.close();
 
@@ -247,7 +247,7 @@ public class ChatActivity extends AppCompatActivity {
             model.setSender_id(sender_id);
             model.setSender_name(sender_name);
             model.setLast_msg_content(text);
-            model.setLast_msg_date(GeneralHelper.getDateTime());
+            model.setLast_msg_date(time);
             model.setSender_img(image);
 
             dataSource.open();
@@ -276,22 +276,22 @@ public class ChatActivity extends AppCompatActivity {
         inputText.setText("");
     }
 
-    public static void addTextToListStatic(String text,int person,String image){
+    public static void addTextToListStatic(String text,int person,String image,String time){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
-        map.put("dateTime", GeneralHelper.getDateTime());
+        map.put("dateTime",time);
         map.put("image", image);
 //        System.out.println("image url on chatActivity " + image);
 
         chatListMap.add(map);
     }
 
-    public  void addTextToListNoRecord(String text,int person,String image){
+    public  void addTextToListNoRecord(String text,int person,String image,String time){
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
-        map.put("dateTime", GeneralHelper.getDateTime());
+        map.put("dateTime",time);
         map.put("image", image);
 //        System.out.println("image url on chatActivity " + image);
 
@@ -354,6 +354,7 @@ public class ChatActivity extends AppCompatActivity {
             ChatMsgDataSource dataSource=new ChatMsgDataSource(HomeActivity.getHome_context());
             dataSource.open();
             last_chat_id=dataSource.getLastConversationGlobalId(receiver_id);
+            dataSource.RemoveAlldataWithoutGlobalId(receiver_id);
             dataSource.close();
         }catch (Exception e){
             Log.i("CONVERSATION ",e.getMessage().toString());
@@ -381,12 +382,13 @@ public class ChatActivity extends AppCompatActivity {
                             model.setReceiver_img(sender_img);
                         }else{
                             model.setMsg_type(ChatActivity.sender_flag);
-                            model.setReceiver_name(HomeActivity.getCurrent_user().getFirstName());
+                            model.setReceiver_name("hello");
                             model.setReceiver_id(HomeActivity.getCurrent_user().getUser_id());
                             model.setReceiver_img(HomeActivity.user_img);
                         }
+                        System.out.println("Receiver name is "+model.getReceiver_name());
                         datesource.addNewMsg(model);
-                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img());
+                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img(),GeneralHelper.getLocalTime(model.getMsg_date()));
                         Log.i("Conversation ", "comes here");
                     }
 
@@ -430,15 +432,24 @@ public class ChatActivity extends AppCompatActivity {
             ArrayList<ChatMsg_model> chatsData= dataSource.getUnsyncMsgs(Integer.parseInt(sender_id));
             for(ChatMsg_model m:chatsData){
                 Conversation_msg_api item=new Conversation_msg_api();
+
                 item.setMsg_date(m.getMsg_date());
                 item.setMsg_content(m.getMsg_content());
                 item.setLocal_id(m.getMsg_id());
                 item.setReceiver_id(Integer.parseInt(m.getReceiver_id()));
-                request.addToList(item);
+                Log.i("duihua","id is "+item.getReceiver_id());
+                String receiverId=m.getReceiver_id();
+                if(!receiverId.equals(HomeActivity.getCurrent_user().getUser_id())){
+                    Log.i("duihua","id inside is "+item.getReceiver_id());
+                    request.addToList(item);
+
+                }
             }
             dataSource.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            Log.i("duihua","exception "+e.getMessage().toString());
+
         }
 
         if(request.getMessages().size()!=0) {

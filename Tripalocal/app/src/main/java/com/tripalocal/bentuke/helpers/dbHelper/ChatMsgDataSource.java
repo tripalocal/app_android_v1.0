@@ -118,7 +118,7 @@ public class ChatMsgDataSource{
         ArrayList<ChatMsg_model> reChats=new ArrayList<ChatMsg_model>();
 
         for(ChatMsg_model m:chats){
-            if(m.getGlobal_id().equals("0")){
+            if(m.getGlobal_id().equals("0") && !m.getReceiver_id().equals(HomeActivity.getCurrent_user().getUser_id())){
                 reChats.add(m);
             }
         }
@@ -132,6 +132,19 @@ public class ChatMsgDataSource{
 
     }
 
+    public void RemoveAlldataWithoutGlobalId(int receiverId){
+        List<ChatMsg_model> chats=getChatMsgs(receiverId);
+        ArrayList<ChatMsg_model> reChats=new ArrayList<ChatMsg_model>();
+
+        for(ChatMsg_model m:chats){
+            if(m.getGlobal_id().equals("0") && m.getReceiver_id().equals(HomeActivity.getCurrent_user().getUser_id())){
+//                reChats.add(m);
+                String whereClause = dbHelper.COLUMN_ID + "=?";
+                String[] whereArgs = new String[] {m.getMsg_id()+""};
+                database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
+            }
+        }
+    }
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
         ChatMsg_model model=new ChatMsg_model();

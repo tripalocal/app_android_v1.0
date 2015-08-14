@@ -56,7 +56,10 @@ public class ChatMsg_model {
         this.receiver_img=receiver_img;
         this.global_id=global_id;
     }
-    public ChatMsg_model(){}
+    public ChatMsg_model(){
+        this.global_id="0";
+
+    }
 
     public String getReceiver_img() {
         return receiver_img;

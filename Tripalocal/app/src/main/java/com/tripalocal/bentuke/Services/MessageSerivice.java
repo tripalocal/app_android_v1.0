@@ -190,7 +190,7 @@ public class MessageSerivice extends Service {
                                                             runOnUiThread(new Runnable() {
                                                                 public void run() {
                                                                     //update UI elements
-                                                                    ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag, map.get("image"));
+                                                                    ChatActivity.addTextToListStatic(msg_body, ChatActivity.receiver_flag, map.get("image"),GeneralHelper.getDateTime());
                                                                     ChatActivity.notifAdapterStatic();
                                                                     if(MsgListFragment.getAdapter()!=null) {
                                                                         MsgListFragment.getAdapter().refreshData();
@@ -215,7 +215,7 @@ public class MessageSerivice extends Service {
                                                     public void failure(RetrofitError error) {
                                                         GeneralHelper.closeLoadingProgress();
 
-                                                        System.out.println("ERROR MYTRIP :" + error + "\n Tooken is "
+                                                        System.out.println("ERROR test :" + error + "\n Tooken is "
                                                                 + HomeActivity.getCurrent_user().getLogin_token());
                                                     }
                                                 });
