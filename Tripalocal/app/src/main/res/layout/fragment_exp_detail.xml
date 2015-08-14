@@ -31,15 +31,16 @@
                     android:id="@+id/exp_detail_bg"
                     android:scaleType="centerCrop"/>
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/exp_detail_profile_image"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:layout_gravity="center|bottom"
-                        android:src="@drawable/profile_default"
-                        app:border_width="2dp"
-                        app:border_color="#ffffffff"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/exp_detail_profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/profile_default"
+                    app:border_width="2dp"
+                    app:border_color="#ffffffff"
+                    android:layout_gravity="center_horizontal|bottom" />
+
             </FrameLayout>
 
             <LinearLayout
@@ -80,6 +81,7 @@
                     android:gravity="center"
                     android:textStyle="normal"
                     android:text="@string/exp_reservation_cn"/>
+
             </LinearLayout>
 
             <TextView
