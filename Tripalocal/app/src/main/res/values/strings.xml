@@ -231,7 +231,7 @@
     <string name="password_error">You must enter the same passwords</string>
     <string name="verfication_code_error">Wrong code</string>
     <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
-    <string name="msg_content"> code (动态验证码)，请在一分钟内完成注册</string>
+    <string name="msg_content"> code (动态验证码)，请在60s内完成注册</string>
     <!--do not change the "code" here-->
     <string name="title_login_fragment">Login</string>
     <string name="title_signup_fragment">Signup</string>
