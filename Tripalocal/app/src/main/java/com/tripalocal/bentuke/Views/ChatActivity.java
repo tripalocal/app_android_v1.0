@@ -27,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
@@ -96,7 +97,6 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         initExtra();
-        initData();
        initComponenets();
             System.out.println("chat activity start");
           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -126,7 +126,7 @@ public class ChatActivity extends AppCompatActivity {
         chat_send_btn=(Button)findViewById(R.id.chat_send_btn);
         inputText=(EditText)findViewById(R.id.chat_input_text);
         setChatListener();
-//        initData();
+        initData();
 
         adapter=new ChatAdapter(this,chatListMap,layouts);
         chatListView.setAdapter(adapter);
@@ -142,14 +142,14 @@ public class ChatActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 //        finish();
-        updateServer();
         this.onBackPressed();
-
+//
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
+        updateServer();
 
         if(!notification_id.equals("")) {
             Intent intent = new Intent(this, HomeActivity.class);
@@ -237,6 +237,8 @@ public class ChatActivity extends AppCompatActivity {
             //add to datasource
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
+            System.out.println("msg date from addTextToList"+text);
+
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text,time, ChatActivity.sender_flag,
                     image));
             chatMsg_datasource.close();
@@ -320,7 +322,6 @@ public class ChatActivity extends AppCompatActivity {
             System.out.println("exception123:"+e.getMessage().toString());
         }finally {
             chatMsg_datasource1.close();
-
         }
         for(ChatMsg_model model :lists){
             HashMap<String,Object> map = new HashMap<String, Object>();
@@ -374,7 +375,7 @@ public class ChatActivity extends AppCompatActivity {
                         model.setGlobal_id(result.getId() + "");
 //                        model.setMsg_type();
                         model.setMsg_content(result.getMsg_content());
-                        model.setMsg_date(result.getMsg_date());
+                        model.setMsg_date(GeneralHelper.getLocalTime(result.getMsg_date()));
                        if((result.getSender_id()+"").equals(sender_id)) {
                             model.setMsg_type(ChatActivity.receiver_flag);
                             model.setReceiver_name(sender_name);
@@ -387,15 +388,18 @@ public class ChatActivity extends AppCompatActivity {
                             model.setReceiver_img(HomeActivity.user_img);
                         }
                         System.out.println("Receiver name is "+model.getReceiver_name());
+                        System.out.println("msg date from update chat" + model.getMsg_content());
                         datesource.addNewMsg(model);
-                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img(),GeneralHelper.getLocalTime(model.getMsg_date()));
+//                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img(),model.getMsg_date());
                         Log.i("Conversation ", "comes here");
                     }
 
                     datesource.close();
                 }catch (Exception e){
-                    Log.i("Conversation ", "Exception for the chatActivity" + e.getMessage().toString());
+                    Log.i("Conv" +
+                            "ersation ", "Exception for the chatActivity" + e.getMessage().toString());
                 }
+
                 notifAdapter();
                 GeneralHelper.closeLoadingProgress();
 
@@ -411,7 +415,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void updateServer() {
-
+    GeneralHelper.showLoadingProgress(this);
         final String tooken = HomeActivity.getCurrent_user().getLogin_token();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -437,10 +441,10 @@ public class ChatActivity extends AppCompatActivity {
                 item.setMsg_content(m.getMsg_content());
                 item.setLocal_id(m.getMsg_id());
                 item.setReceiver_id(Integer.parseInt(m.getReceiver_id()));
-                Log.i("duihua","id is "+item.getReceiver_id());
+                System.out.println("receiver id outside is " + m.getReceiver_id());
                 String receiverId=m.getReceiver_id();
-                if(!receiverId.equals(HomeActivity.getCurrent_user().getUser_id())){
-                    Log.i("duihua","id inside is "+item.getReceiver_id());
+                if(m.getMsg_type()==ChatActivity.sender_flag){
+                    System.out.println("receiver id inside is " + m.getReceiver_id());
                     request.addToList(item);
 
                 }
@@ -451,8 +455,10 @@ public class ChatActivity extends AppCompatActivity {
             Log.i("duihua","exception "+e.getMessage().toString());
 
         }
-
-        if(request.getMessages().size()!=0) {
+        Gson json=new Gson();
+        String test=json.toJson(request);
+        System.out.println("update request "+test);
+      if(request.getMessages().size()!=0) {
             ApiService apiService = restAdapter.create(ApiService.class);
             apiService.updateConversation(request, new Callback<ArrayList<Update_Conversation_Result>>() {
                 @Override
@@ -471,12 +477,14 @@ public class ChatActivity extends AppCompatActivity {
                         e.printStackTrace();
                         System.out.println("Msg update Exception here "+ e.getMessage().toString());
                     }
+                    GeneralHelper.closeLoadingProgress();
 
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     Log.i("Conversation ", "error is " + error.getMessage().toString());
+                    GeneralHelper.closeLoadingProgress();
                 }
             });
         }

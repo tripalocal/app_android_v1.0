@@ -92,7 +92,7 @@ public class ChatListDataSource {
             int global_id_int = Integer.parseInt(global_id);
             int global_id_int_local = Integer.parseInt(model.getGlobal_id());
             if (global_id_int > global_id_int_local) {
-                deleteChat(sender_id);
+//                deleteChat(sender_id);
                 return true;
             } else {
                 return false;

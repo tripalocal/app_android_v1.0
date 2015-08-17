@@ -134,17 +134,21 @@ public class ChatMsgDataSource{
 
     public void RemoveAlldataWithoutGlobalId(int receiverId){
         List<ChatMsg_model> chats=getChatMsgs(receiverId);
-        ArrayList<ChatMsg_model> reChats=new ArrayList<ChatMsg_model>();
 
         for(ChatMsg_model m:chats){
-            if(m.getGlobal_id().equals("0") && m.getReceiver_id().equals(HomeActivity.getCurrent_user().getUser_id())){
+            System.out.println("on the delete option ,global id is "+m.getGlobal_id() +
+            "and the receiver id is "+m.getReceiver_id());
+            if(m.getGlobal_id().equals("0") ){
 //                reChats.add(m);
                 String whereClause = dbHelper.COLUMN_ID + "=?";
                 String[] whereArgs = new String[] {m.getMsg_id()+""};
                 database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
+                System.out.println("delete record here ");
             }
         }
     }
+
+
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
         ChatMsg_model model=new ChatMsg_model();
