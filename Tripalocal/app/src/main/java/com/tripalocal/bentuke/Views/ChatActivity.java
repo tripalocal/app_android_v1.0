@@ -358,7 +358,7 @@ public class ChatActivity extends AppCompatActivity {
             ChatMsgDataSource dataSource=new ChatMsgDataSource(HomeActivity.getHome_context());
             dataSource.open();
             last_chat_id=dataSource.getLastConversationGlobalId(receiver_id);
-//            dataSource.RemoveAlldataWithoutGlobalId(receiver_id);
+            dataSource.RemoveAlldataWithoutGlobalId(receiver_id);
             dataSource.close();
         }catch (Exception e){
             Log.i("CONVERSATION ",e.getMessage().toString());
