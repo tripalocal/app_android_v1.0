@@ -399,6 +399,9 @@ public class ChatActivity extends AppCompatActivity {
 //                        addTextToListNoRecord(model.getMsg_content(), model.getMsg_type(), model.getReceiver_img(), model.getMsg_date());
                     }
 
+
+
+
                     
                     datesource.close();
                 }catch (Exception e){
