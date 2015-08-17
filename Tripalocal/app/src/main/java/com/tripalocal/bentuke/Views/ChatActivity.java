@@ -384,13 +384,13 @@ public class ChatActivity extends AppCompatActivity {
                             model.setReceiver_name(sender_name);
                             model.setReceiver_id(sender_id);
                             model.setReceiver_img(sender_img);
-                           addTextToListNoRecord(result.getMsg_content(),receiver_flag,sender_img,model.getMsg_date());
+//                           addTextToListNoRecord(result.getMsg_content(),receiver_flag,sender_img,model.getMsg_date());
                         }else{
                             model.setMsg_type(ChatActivity.sender_flag);
                             model.setReceiver_name(sender_name);
                             model.setReceiver_id(sender_id);
                             model.setReceiver_img(HomeActivity.user_img);
-                           addTextToListNoRecord(result.getMsg_content(), sender_flag, model.getReceiver_img(), model.getMsg_date());
+//                           addTextToListNoRecord(result.getMsg_content(), sender_flag, model.getReceiver_img(), model.getMsg_date());
 
                        }
                         System.out.println("Receiver name is " + model.getReceiver_name());
@@ -399,10 +399,6 @@ public class ChatActivity extends AppCompatActivity {
 //                        addTextToListNoRecord(model.getMsg_content(), model.getMsg_type(), model.getReceiver_img(), model.getMsg_date());
                     }
 
-
-
-
-                    
                     datesource.close();
                 }catch (Exception e){
                     Log.i("Conv" +
