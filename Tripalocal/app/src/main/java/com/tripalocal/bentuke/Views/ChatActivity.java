@@ -187,7 +187,9 @@ public class ChatActivity extends AppCompatActivity {
 
 
     public void onResume() {
+//        updateChat();
         super.onResume();
+
         System.out.println("start on resume method on chat Activity");
         MobclickAgent.onResume(this);       //统计时长
     }
@@ -208,7 +210,7 @@ public class ChatActivity extends AppCompatActivity {
                 String text = inputText.getText().toString();
                 if (!text.trim().equals("")) {
                     initExtra();
-                    addTextToList(text, sender_flag, sender_img,GeneralHelper.getDateTime());
+                    addTextToList(text, sender_flag, sender_img, GeneralHelper.getDateTime());
 //                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
@@ -282,7 +284,7 @@ public class ChatActivity extends AppCompatActivity {
         HashMap<String,Object> map=new HashMap<String,Object>();
         map.put("person", person);
         map.put("text", text);
-        map.put("dateTime",time);
+        map.put("dateTime", time);
         map.put("image", image);
 //        System.out.println("image url on chatActivity " + image);
 
@@ -335,6 +337,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
+
     public void updateChat(){
         GeneralHelper.showLoadingProgress(chatActivity_context);
         final String tooken = HomeActivity.getCurrent_user().getLogin_token();
@@ -381,25 +384,30 @@ public class ChatActivity extends AppCompatActivity {
                             model.setReceiver_name(sender_name);
                             model.setReceiver_id(sender_id);
                             model.setReceiver_img(sender_img);
+                           addTextToListNoRecord(result.getMsg_content(),receiver_flag,sender_img,model.getMsg_date());
                         }else{
                             model.setMsg_type(ChatActivity.sender_flag);
-                            model.setReceiver_name("hello");
-                            model.setReceiver_id(HomeActivity.getCurrent_user().getUser_id());
+                            model.setReceiver_name(sender_name);
+                            model.setReceiver_id(sender_id);
                             model.setReceiver_img(HomeActivity.user_img);
-                        }
-                        System.out.println("Receiver name is "+model.getReceiver_name());
+                           addTextToListNoRecord(result.getMsg_content(), sender_flag, model.getReceiver_img(), model.getMsg_date());
+
+                       }
+                        System.out.println("Receiver name is " + model.getReceiver_name());
                         System.out.println("msg date from update chat" + model.getMsg_content());
                         datesource.addNewMsg(model);
-//                        addTextToListNoRecord(model.getMsg_content(),model.getMsg_type(),model.getReceiver_img(),model.getMsg_date());
-                        Log.i("Conversation ", "comes here");
+//                        addTextToListNoRecord(model.getMsg_content(), model.getMsg_type(), model.getReceiver_img(), model.getMsg_date());
                     }
-
+                
                     datesource.close();
                 }catch (Exception e){
                     Log.i("Conv" +
                             "ersation ", "Exception for the chatActivity" + e.getMessage().toString());
                 }
+
 //                initData();
+                Log.i("Chat Size ",chatListMap.size()+"" );
+
                 notifAdapter();
                 GeneralHelper.closeLoadingProgress();
 

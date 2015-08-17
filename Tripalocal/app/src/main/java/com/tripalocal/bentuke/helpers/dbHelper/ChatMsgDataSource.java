@@ -67,7 +67,7 @@ public class ChatMsgDataSource{
             Log.i("Conversation ","add global id is "+model.getGlobal_id());
 
         }catch (Exception e){
-
+            System.out.println("insert exception here "+ e.getMessage().toString());
         }
 //        System.out.println("person type on add new msg");
 
