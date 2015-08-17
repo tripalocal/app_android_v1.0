@@ -355,7 +355,7 @@ public class ChatActivity extends AppCompatActivity {
             ChatMsgDataSource dataSource=new ChatMsgDataSource(HomeActivity.getHome_context());
             dataSource.open();
             last_chat_id=dataSource.getLastConversationGlobalId(receiver_id);
-            dataSource.RemoveAlldataWithoutGlobalId(receiver_id);
+//            dataSource.RemoveAlldataWithoutGlobalId(receiver_id);
             dataSource.close();
         }catch (Exception e){
             Log.i("CONVERSATION ",e.getMessage().toString());
@@ -399,7 +399,7 @@ public class ChatActivity extends AppCompatActivity {
                     Log.i("Conv" +
                             "ersation ", "Exception for the chatActivity" + e.getMessage().toString());
                 }
-
+//                initData();
                 notifAdapter();
                 GeneralHelper.closeLoadingProgress();
 
@@ -483,7 +483,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void failure(RetrofitError error) {
-                    Log.i("Conversation ", "error is " + error.getMessage().toString());
+                    Log.i("Conversation ", "errorc is " + error.getMessage().toString());
                     GeneralHelper.closeLoadingProgress();
                 }
             });

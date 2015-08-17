@@ -138,13 +138,13 @@ public class ChatMsgDataSource{
         for(ChatMsg_model m:chats){
             System.out.println("on the delete option ,global id is "+m.getGlobal_id() +
             "and the receiver id is "+m.getReceiver_id());
-            if(m.getGlobal_id().equals("0") ){
-//                reChats.add(m);
-                String whereClause = dbHelper.COLUMN_ID + "=?";
-                String[] whereArgs = new String[] {m.getMsg_id()+""};
-                database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
-                System.out.println("delete record here ");
-            }
+//            if(m.getGlobal_id().equals("0") ){
+////                reChats.add(m);
+//                String whereClause = dbHelper.COLUMN_ID + "=?";
+//                String[] whereArgs = new String[] {m.getMsg_id()+""};
+//                database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
+//                System.out.println("delete record here ");
+//            }
         }
     }
 
