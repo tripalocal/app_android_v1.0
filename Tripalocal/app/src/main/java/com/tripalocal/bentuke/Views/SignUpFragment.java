@@ -60,7 +60,6 @@ public class SignUpFragment extends Fragment {
     }
 
     public void signup(){
-        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
@@ -86,39 +85,46 @@ public class SignUpFragment extends Fragment {
         String first_name = edit_firstname.getText().toString();
         String last_name = edit_lastname.getText().toString();
 
-        apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
-            @Override
-            public void success(Login_Result result, Response response) {
-                GeneralHelper.closeLoadingProgress();
-                final Login_Result result1=result;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
-                        System.out.println("running here");
-                        HomeActivity.user_id=result1.getUser_id();
+        if( GeneralHelper.EmptyCheck(new String[]{email,pwd,first_name,last_name})
+
+        &&GeneralHelper.validateEmail(email) && GeneralHelper.validatePwd(pwd)
+               ) {
+            GeneralHelper.showLoadingProgress(getActivity());
+
+            apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
+                @Override
+                public void success(Login_Result result, Response response) {
+                    GeneralHelper.closeLoadingProgress();
+                    final Login_Result result1 = result;
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
+                            System.out.println("running here");
+                            HomeActivity.user_id = result1.getUser_id();
+                        }
+                    }).start();
+
+                    if (!cancelled) {
+                        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
+                        HomeActivity.getCurrent_user().setLoggedin(true);
+                        HomeActivity.getCurrent_user().setLogin_token(result.getToken());
+                        HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
+                        HomeActivity.saveData();
+                        HomeActivity.login_flag = true;
+                        Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
                     }
-                }).start();
-
-                if(!cancelled) {
-                    ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_signup_success));
-                    HomeActivity.getCurrent_user().setLoggedin(true);
-                    HomeActivity.getCurrent_user().setLogin_token(result.getToken());
-                    HomeActivity.getCurrent_user().setUser_id(result.getUser_id());
-                    HomeActivity.saveData();
-                    HomeActivity.login_flag = true;
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
                 }
-            }
 
-            @Override
-            public void failure(RetrofitError error) {
-            GeneralHelper.closeLoadingProgress();
-                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                //System.out.println("error = [" + error + "]");
-            }
-        });
+                @Override
+                public void failure(RetrofitError error) {
+                    GeneralHelper.closeLoadingProgress();
+                    ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
+                    //System.out.println("error = [" + error + "]");
+                }
+            });
+        }
     }
 
     public void onResume() {

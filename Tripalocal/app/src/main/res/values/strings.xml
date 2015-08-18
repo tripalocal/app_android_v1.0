@@ -168,6 +168,9 @@
     <string name="toast_signup_success">Successfully signed in</string>
     <string name="toast_signup_failure">Sign up failed</string>
     <string name="toast_searched_with">Searched with\u0020</string>
+    <string name="toast_invalid_email">Invalid Email</string>
+    <string name="toast_password_incorrect_format">Password must be 8-character long and contain at least one letter and one digit </string>
+    <string name="toast_empty_field">You can not have empty fields</string>
 
     <!--payement string-->
     <string name="alipay">Alipay</string>

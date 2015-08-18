@@ -106,7 +106,7 @@ public class GeneralHelper {
                     @Override
                     public void intercept(RequestFacade request) {
                         request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " +tooken_en);
+                        request.addHeader("Authorization", "Token " + tooken_en);
                     }
                 })
                 .build();
@@ -162,6 +162,35 @@ public class GeneralHelper {
         }
         return HomeActivity.getHome_context().getResources().getString(R.string.msg_just_now);
 
+    }
+
+    public static boolean validatePwd(String passwd){
+        String pattern = "(?=.*[0-9])(?=.*[a-zA-Z]).{8,}";
+        if(!passwd.matches(pattern)) {
+            ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.toast_password_incorrect_format));
+        }
+        return passwd.matches(pattern);
+    }
+
+    public static boolean validateEmail(String email){
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        boolean checkMail=m.matches();
+        if(!checkMail){
+            ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.toast_invalid_email));
+        }
+        return checkMail;
+    }
+
+    public static boolean EmptyCheck(String[] fields){
+        for(String s : fields){
+            if(s.trim().isEmpty()){
+                ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.toast_empty_field));
+                return false;
+            }
+        }
+        return true;
     }
 
 
