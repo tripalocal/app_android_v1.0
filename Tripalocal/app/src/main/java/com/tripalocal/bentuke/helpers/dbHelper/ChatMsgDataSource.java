@@ -59,12 +59,12 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_RECEIVER_NAME,model.getReceiver_name());
         values.put(dbHelper.COlUMN_MSG_TYPE,model.getMsg_type());
         values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());
-        values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
+        values.put(dbHelper.COLUMN_GLOBAL_ID, model.getGlobal_id());
 
-        System.out.println("msg date :"+model.getMsg_date());
+
         try {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
-            Log.i("Conversation ","add global id is "+model.getGlobal_id());
+            Log.i("chatConversation","added "+model.getMsg_content()+ " local id "+model.getMsg_id()+ " global id "+model.getGlobal_id());
 
         }catch (Exception e){
             System.out.println("insert exception here "+ e.getMessage().toString());
@@ -128,8 +128,13 @@ public class ChatMsgDataSource{
     public void UpdateGlobalId(int local_id,int global_id){
         ContentValues args = new ContentValues();
         args.put(dbHelper.COLUMN_GLOBAL_ID, global_id +"");
-        database.update(dbHelper.TABLE_NAME, args, dbHelper.COLUMN_ID+" =" + local_id, null);
+        try {
+            database.update(dbHelper.TABLE_NAME, args, dbHelper.COLUMN_ID + " =" + local_id, null);
+            Log.i("chatConversation", "update success " +local_id);
 
+        }catch (Exception e){
+            Log.i("chatConversation","update exception "+e.getMessage().toString());
+        }
     }
 
     public void RemoveAlldataWithoutGlobalId(int receiverId){
@@ -144,6 +149,11 @@ public class ChatMsgDataSource{
                 String[] whereArgs = new String[] {m.getMsg_id()+""};
                 database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
                 System.out.println("delete record here ");
+                Log.i("chatConversation", "deleted " + m.getMsg_content()+"local id is "+m.getMsg_id());
+
+            }else{
+                Log.i("chatConversation","undeleted "+m.getMsg_content()+ " local id "+m.getMsg_id()+ " global id "+m.getGlobal_id());
+
             }
         }
     }

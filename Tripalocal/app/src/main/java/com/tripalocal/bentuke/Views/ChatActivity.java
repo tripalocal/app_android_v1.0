@@ -234,6 +234,7 @@ public class ChatActivity extends AppCompatActivity {
         map.put("dateTime",time);
         map.put("image", image);
         chatListMap.add(map);
+        Log.i("testList ","general test "+text);
         ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
         try {
             //add to datasource
@@ -287,6 +288,7 @@ public class ChatActivity extends AppCompatActivity {
         map.put("dateTime", time);
         map.put("image", image);
 //        System.out.println("image url on chatActivity " + image);
+        Log.i("testList ","statis add Text to List "+text);
 
         chatListMap.add(map);
     }
@@ -476,7 +478,7 @@ public class ChatActivity extends AppCompatActivity {
                         ChatMsgDataSource dataSource=new ChatMsgDataSource(HomeActivity.getHome_context());
                         dataSource.open();
                         for(Update_Conversation_Result result : update_conversation_results){
-                            dataSource.UpdateGlobalId(result.getLocal_id(),result.getLocal_id());
+                            dataSource.UpdateGlobalId(result.getLocal_id(),result.getGlobal_id());
                             System.out.println("11local id is " + result.getLocal_id() + "global id is " + result.getGlobal_id());
 
                         }
