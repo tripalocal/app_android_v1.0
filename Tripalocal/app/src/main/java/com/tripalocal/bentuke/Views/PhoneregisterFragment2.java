@@ -74,7 +74,6 @@ public class PhoneregisterFragment2 extends Fragment {
 
 
     public void signupUser() {
-        GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
@@ -90,33 +89,37 @@ public class PhoneregisterFragment2 extends Fragment {
        final String password_s=password_1.getText().toString();
         String first_name_s=first_name.getText().toString();
         String last_name_s=last_name.getText().toString();
+        if( GeneralHelper.EmptyCheck(new String[]{email_s,password_s,first_name_s,last_name_s})
 
-        apiService.signupUser(new SignupRequest(email_s, password_s, first_name_s, last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
-            @Override
-            public void success(Login_Result result, Response response) {
-                GeneralHelper.closeLoadingProgress();
-                final Login_Result result1 = result;
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
-                        System.out.println("running here" + result1.getUser_id());
-                        HomeActivity.user_id = result1.getUser_id();
+                &&GeneralHelper.validateEmail(email_s) && GeneralHelper.validatePwd(password_s)
+                ) {
+            GeneralHelper.showLoadingProgress(getActivity());
+            apiService.signupUser(new SignupRequest(email_s, password_s, first_name_s, last_name_s, PhoneregisterActivity2.phone_no), new Callback<Login_Result>() {
+                @Override
+                public void success(Login_Result result, Response response) {
+                    GeneralHelper.closeLoadingProgress();
+                    final Login_Result result1 = result;
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
+                            System.out.println("running here" + result1.getUser_id());
+                            HomeActivity.user_id = result1.getUser_id();
 
-                    }
-                }).start();
-                loginUser(email_s, password_s);
+                        }
+                    }).start();
+                    loginUser(email_s, password_s);
 
-            }
+                }
 
-            @Override
-            public void failure(RetrofitError error) {
-                GeneralHelper.closeLoadingProgress();
-                ToastHelper.errorToast(getResources().getString(R.string.toast_signup_failure), getActivity());
+                @Override
+                public void failure(RetrofitError error) {
+                    GeneralHelper.closeLoadingProgress();
+                    ToastHelper.errorToast(getResources().getString(R.string.toast_signup_failure), getActivity());
 
-            }
-        });
-
+                }
+            });
+        }
     }
 
     public void loginUser(String username,String pwd){
