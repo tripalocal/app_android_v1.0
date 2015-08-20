@@ -37,7 +37,6 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
-import com.tripalocal.bentuke.helpers.MixPanelHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
@@ -185,10 +184,26 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
+
         if(settings_l.getBoolean("login", false)){
             getCurrent_user().setLogin_token(settings_l.getString("token", null));
             getCurrent_user().setLoggedin(true);
             getCurrent_user().setUser_id(settings_l.getString("user_id",null));
+            if(getCurrent_user().getUser_id()==null){
+                HomeActivity.getCurrent_user().setLogin_token(null);
+                HomeActivity.getCurrent_user().setLoggedin(false);
+                HomeActivity.getCurrent_user().setUser_id(null);
+                HomeActivity.setAccessToken(null);
+                 settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor_l = settings_l.edit();
+                editor_l.clear();
+                editor_l.apply();
+                HomeActivity.login_flag = true;
+                invalidateOptionsMenu();
+                MessageSerivice.isRunning = false;
+                MessageSerivice.connection.disconnect();
+            }
+
         }
 
         if(poi_data == null || db_poi_data == null){
