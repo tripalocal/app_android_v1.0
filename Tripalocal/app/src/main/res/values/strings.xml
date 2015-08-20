@@ -3,9 +3,7 @@
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/</string>
-    <!--<string name="server_url">http://adventure007.cloudapp.net/</string>-->
 
-    <!--http://adventure007.cloudapp.net-->
     <string name="version_language">Enlgish</string>
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
@@ -355,6 +353,6 @@
         <item>Cairns, Queensland</item>
         <item>Gold Coast, Queensland</item>
         <item>Hobart, Tasmania</item>
-        <item>Adelaide, south Australia</item>
+        <item>Adelaide, South Australia</item>
     </string-array>
 </resources>
