@@ -5,7 +5,7 @@
     <string name="server_url">https://www.tripalocal.com/</string>
     <!--<string name="server_url">http://adventure007.cloudapp.net/</string>-->
 
-    http://adventure007.cloudapp.net
+    <!--http://adventure007.cloudapp.net-->
     <string name="version_language">Enlgish</string>
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
@@ -318,6 +318,23 @@
     <string name="loading_dialog_text">Please Wait while loading...</string>
     <!--loading text finish-->
 
+
+    <!--mixpanel text start-->
+    <string name="mixpanel_token">c2510512c6cb4c34b4b32bd32a0cf866</string>
+    <string name="mixpanel_event_viewHomePage">viewed homepage</string>
+    <string name="mixpanel_event_viewSearchPage">viewed search page</string>
+
+    <string name="mixpanel_event_viewExperiencePage">viewed an experience</string>
+    <string name="mixpanel_event_viewCheckout">checkout</string>
+    <string name="mixpanel_event_completedPayment">completed payment</string>
+    <string name="mixpanel_event_changeNumberOfPeople">changed number of people</string>
+    <string name="mixpanel_perpoery_language_ch">中文 </string>
+    <string name="mixpanel_perpoery_language_en">English </string>
+    <string name="mixpanel_perpoery_device">Android</string>
+    <string name="mixpanel_event_signup">signed up via android app</string>
+    <string name="mixpanel_event_signin">signed in via android app</string>
+
+    <!--mixpanel text end-->
     <!-- others-->
     <string name="double_click_exit">Click again to exit the app</string>
     <!--others-->
