@@ -189,7 +189,7 @@ public class LoginFragment extends Fragment {
 
         String username = ((EditText) getActivity().findViewById(R.id.login_email)).getText().toString();
         String pwd = ((EditText) getActivity().findViewById(R.id.login_password)).getText().toString();
-
+       GeneralHelper.recordEmail(username);
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {

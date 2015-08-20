@@ -84,6 +84,7 @@ public class SignUpFragment extends Fragment {
         String pwd = edit_pwd.getText().toString();
         String first_name = edit_firstname.getText().toString();
         String last_name = edit_lastname.getText().toString();
+        GeneralHelper.recordEmail(email);
 
         if( GeneralHelper.EmptyCheck(new String[]{email,pwd,first_name,last_name})
 

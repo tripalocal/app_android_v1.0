@@ -130,11 +130,12 @@ public class PhoneregisterFragment2 extends Fragment {
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
+        GeneralHelper.recordEmail(username);
         apiService.loginUser(username, pwd, new Callback<Login_Result>() {
             @Override
             public void success(Login_Result result, Response response) {
                 try {
-                     Thread.sleep(5000);
+                    Thread.sleep(5000);
 
                     if (!cancelled) {
                         //set login
@@ -160,11 +161,12 @@ public class PhoneregisterFragment2 extends Fragment {
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     GeneralHelper.closeLoadingProgress();
 
                 }
             }
+
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();

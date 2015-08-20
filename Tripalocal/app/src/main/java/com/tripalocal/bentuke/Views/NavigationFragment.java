@@ -393,6 +393,7 @@ public class NavigationFragment extends Fragment {
                 GeneralHelper.closeLoadingProgress();
                 result = res;
                 prepareProfile(view);
+                GeneralHelper.recordEmail(result.getEmail());
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
             @Override

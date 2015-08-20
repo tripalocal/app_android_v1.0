@@ -3,10 +3,12 @@ package com.tripalocal.bentuke.helpers;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
+import com.google.gson.Gson;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.adapters.ApiService;
@@ -30,6 +32,8 @@ import retrofit.client.Response;
 public class GeneralHelper {
 
     public static ProgressDialog progress;
+    private static String prefernece_property="mixpanel_property";
+    private static String preference_email="email";
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
@@ -193,5 +197,19 @@ public class GeneralHelper {
         return true;
     }
 
+
+    public static String getEmail(){
+        SharedPreferences settings_l = HomeActivity.getHome_context().getSharedPreferences(prefernece_property, Context.MODE_PRIVATE);
+        return settings_l.getString(preference_email, null);
+    }
+
+
+    public static void recordEmail(String email){
+        SharedPreferences settings_l = HomeActivity.getHome_context().getSharedPreferences(prefernece_property, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings_l.edit();
+        editor.clear();
+        editor.putString(preference_email,email);
+        editor.apply();
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.Views;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
@@ -32,9 +33,11 @@ import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.helpers.MixPanelHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
@@ -65,6 +68,7 @@ import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+import org.json.JSONObject;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
@@ -99,6 +103,8 @@ public class HomeActivity extends AppCompatActivity {
     public static String user_img;
     public static boolean updatedWishMap=false;
     private static boolean doubleClick=false;
+    public static String user_email="";
+    public static Activity homeActivity;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -163,7 +169,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    Tripalocal.updatedChatList.add("test");
+//    Tripalocal.updatedChatList.add("test");
+
         super.onCreate(savedInstanceState);
         MobclickAgent.updateOnlineConfig(this);
         AnalyticsConfig.enableEncrypt(true);
@@ -192,6 +199,7 @@ public class HomeActivity extends AppCompatActivity {
         frag_manager = getSupportFragmentManager();
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
+
 //        if(login_flag){
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
 //        login_flag = false;
@@ -214,6 +222,8 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeActivityFragment()).commit();
         tpDrawer.setDrawerListener(tpDrawToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -235,6 +245,26 @@ public class HomeActivity extends AppCompatActivity {
         }
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
+
+        MixpanelAPI mixpanel =MixpanelAPI.getInstance(this, getResources().getString(R.string.mixpanel_token));
+//        mixpanel.identify(GeneralHelper.getEmail());
+        JSONObject people=new JSONObject();
+        String email =HomeActivity.user_email;
+        System.out.println("Email "+GeneralHelper.getEmail());
+        JSONObject props = new JSONObject();
+        try {
+            props.put("language", HomeActivity.getHome_context().getString(R.string.version_language));
+
+        }catch (Exception e){
+            System.out.println("mixpanel exception here "+e.getMessage().toString());
+        }
+        mixpanel.getPeople().identify(GeneralHelper.getEmail());
+        mixpanel.getPeople().set(people);
+        mixpanel.track("HomeActivity", props);
+
+
+        mixpanel.flush();
+        Log.i("mixpanel", "addEvenet success");
     }
 
     @Override

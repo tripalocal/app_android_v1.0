@@ -55,5 +55,6 @@ dependencies {
     // Optional for XMPP extensions support
     compile "org.igniterealtime.smack:smack-extensions:4.1.0-rc1"
     compile 'me.leolin:ShortcutBadger:1.1.2@aar'
-
+    compile "com.mixpanel.android:mixpanel-android:4.6.3"
+    compile "com.google.android.gms:play-services:3.1+"
 }
