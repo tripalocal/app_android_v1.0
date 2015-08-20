@@ -94,6 +94,8 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 }
             }
         });
+        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewSearchPage));
+
         return view;
     }
 

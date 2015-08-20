@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -54,6 +55,8 @@ public class PaymentSuccessFragment extends Fragment {
             }
         });
         setContent();
+        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_completedPayment));
+
         return view;
     }
 

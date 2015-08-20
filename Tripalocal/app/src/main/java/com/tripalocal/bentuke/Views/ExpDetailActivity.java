@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
@@ -42,6 +43,7 @@ public class ExpDetailActivity extends AppCompatActivity {
             }
         }
         setContentView(R.layout.activity_exp_detail);
+
     }
 
     @Override

@@ -224,7 +224,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        addMixPanelData();
+//        addMixPanelData();
         if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -250,27 +250,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void addMixPanelData(){
-        MixpanelAPI mixpanel =MixpanelAPI.getInstance(this, getResources().getString(R.string.mixpanel_token));
-        mixpanel.identify(GeneralHelper.getEmail());
-        JSONObject people=new JSONObject();
-        String email ="frankcf329@gmail.com";
-        System.out.println("Email "+GeneralHelper.getEmail());
-        JSONObject props = new JSONObject();
-        try {
-            props.put("language", HomeActivity.getHome_context().getString(R.string.version_language));
-
-        }catch (Exception e){
-            System.out.println("mixpanel exception here "+e.getMessage().toString());
-        }
-        mixpanel.getPeople().identify(GeneralHelper.getEmail());
-        mixpanel.getPeople().set(people);
-        mixpanel.track("123HomeActivity", props);
-
-
-        mixpanel.flush();
-        Log.i("mixpanel", "addEvenet success");
-    }
     @Override
     protected void onResume() {
         System.out.println("onresume");

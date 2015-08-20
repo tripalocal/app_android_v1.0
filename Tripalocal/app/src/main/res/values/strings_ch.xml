@@ -318,6 +318,23 @@
     <string name="loading_dialog_text">请耐心等候...</string>
     <!--loading text finish-->
 
+    <!--mixpanel text start-->
+    <string name="mixpanel_token">c2510512c6cb4c34b4b32bd32a0cf866</string>
+    <string name="mixpanel_event_viewHomePage">viewed homepage</string>
+    <string name="mixpanel_event_viewSearchPage">viewed search page</string>
+
+    <string name="mixpanel_event_viewExperiencePage">viewed an experience</string>
+    <string name="mixpanel_event_viewCheckout">checkout</string>
+    <string name="mixpanel_event_completedPayment">completed payment</string>
+    <string name="mixpanel_event_changeNumberOfPeople">changed number of people</string>
+    <string name="mixpanel_perpoery_language_ch">中文 </string>
+    <string name="mixpanel_perpoery_language_en">English </string>
+    <string name="mixpanel_perpoery_device">Android</string>
+    <string name="mixpanel_event_signup">signed up via android app</string>
+    <string name="mixpanel_event_signin">signed in via android app</string>
+
+    <!--mixpanel text end-->
+
     <!-- others-->
     <string name="double_click_exit">再按一次退出app</string>
     <!--others-->

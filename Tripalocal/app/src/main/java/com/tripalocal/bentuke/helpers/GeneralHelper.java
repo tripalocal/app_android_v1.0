@@ -5,14 +5,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.models.network.Profile_result;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -211,5 +215,24 @@ public class GeneralHelper {
         editor.putString(preference_email,email);
         editor.apply();
     }
+    public static void addMixPanelData(Activity ac,String event_name){
+        MixpanelAPI mixpanel =MixpanelAPI.getInstance(ac, ac.getResources().getString(R.string.mixpanel_token));
+        mixpanel.identify(GeneralHelper.getEmail());
+        JSONObject people=new JSONObject();
+//        System.out.println("Email "+GeneralHelper.getEmail());
+        JSONObject props = new JSONObject();
+        try {
+            props.put("language", HomeActivity.getHome_context().getString(R.string.version_language));
 
+        }catch (Exception e){
+            System.out.println("mixpanel exception here "+e.getMessage().toString());
+        }
+        mixpanel.getPeople().identify(GeneralHelper.getEmail());
+        mixpanel.getPeople().set(people);
+        mixpanel.track(event_name, props);
+
+
+        mixpanel.flush();
+        Log.i("mixpanel", "addEvenet success");
+    }
 }

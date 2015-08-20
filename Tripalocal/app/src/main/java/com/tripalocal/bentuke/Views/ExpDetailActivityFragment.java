@@ -222,6 +222,7 @@ public class ExpDetailActivityFragment extends Fragment {
         send_msg_btn.setEnabled(false);
 
         getExpDetails(ExpDetailActivity.position);
+        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewExperiencePage));
 
         return view;
     }

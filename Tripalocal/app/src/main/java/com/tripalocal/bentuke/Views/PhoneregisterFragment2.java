@@ -84,6 +84,8 @@ public class PhoneregisterFragment2 extends Fragment {
                     }
                 })
                 .build();
+        GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signup));
+
         ApiService apiService = restAdapter.create(ApiService.class);
        final String email_s=email.getText().toString();
        final String password_s=password_1.getText().toString();
@@ -123,6 +125,8 @@ public class PhoneregisterFragment2 extends Fragment {
     }
 
     public void loginUser(String username,String pwd){
+        GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signin));
+
         GeneralHelper.showLoadingProgress(getActivity());
 //        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
         RestAdapter restAdapter = new RestAdapter.Builder()

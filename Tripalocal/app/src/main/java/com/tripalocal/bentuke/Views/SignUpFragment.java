@@ -85,6 +85,7 @@ public class SignUpFragment extends Fragment {
         String first_name = edit_firstname.getText().toString();
         String last_name = edit_lastname.getText().toString();
         GeneralHelper.recordEmail(email);
+        GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signup));
 
         if( GeneralHelper.EmptyCheck(new String[]{email,pwd,first_name,last_name})
 

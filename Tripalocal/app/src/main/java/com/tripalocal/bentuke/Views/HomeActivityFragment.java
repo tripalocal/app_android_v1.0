@@ -2,6 +2,7 @@ package com.tripalocal.bentuke.Views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
 import com.tripalocal.bentuke.models.Tripalocal;
+
+import org.json.JSONObject;
 
 
 /**
@@ -137,8 +142,10 @@ public class HomeActivityFragment extends Fragment {
         });
         getActivity().setTitle(getResources().getString(R.string.app_name));
         getActivity().invalidateOptionsMenu();
-
+//        addMixPanelData();
+        GeneralHelper.addMixPanelData(this.getActivity(),this.getResources().getString(R.string.mixpanel_event_viewHomePage));
         return view;
+
     }
 
     public void displayListFrag2(int position) {

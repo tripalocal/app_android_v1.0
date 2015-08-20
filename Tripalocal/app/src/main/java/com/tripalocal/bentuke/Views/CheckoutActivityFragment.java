@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.Views;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -250,10 +251,12 @@ public class CheckoutActivityFragment extends Fragment {
         });
         np = (NumberPicker) view.findViewById(R.id.numberPicker1);
        // np.setWrapSelectorWheel(true);
+        final Activity ac=this.getActivity();
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 guests = newVal;
+
                 booking_guest_number.setText(String.valueOf(guests));
                 if (dy_price.length > 0) {
                     if (oldVal < newVal) {
@@ -281,8 +284,13 @@ public class CheckoutActivityFragment extends Fragment {
 
                 } else
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(price_i * guests) + " AUD");
+
+                GeneralHelper.addMixPanelData(ac, ac.getResources().getString(R.string.mixpanel_event_changeNumberOfPeople));
+
             }
-        });
+        }
+
+        );
 
         date_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -372,6 +380,8 @@ public class CheckoutActivityFragment extends Fragment {
                 }
             });
         }
+        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewCheckout));
+
         return view;
     }
 

@@ -150,6 +150,8 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginFBUser(){
+        GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signin));
+
         GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -179,6 +181,8 @@ public class LoginFragment extends Fragment {
 
 
     public void loginUser(){
+        GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signin));
+
         GeneralHelper.showLoadingProgress(getActivity());
 //        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
          RestAdapter restAdapter = new RestAdapter.Builder()
