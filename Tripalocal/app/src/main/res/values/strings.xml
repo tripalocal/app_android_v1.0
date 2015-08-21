@@ -57,7 +57,7 @@
     <string name="nav_profile_image">nav profile image</string>
     <string name="nav_my_account">My Account</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_mytrips">My trip</string>
+    <string name="navigation_mytrips">My Trip</string>
     <string name="navigation_wishlist">Wishlist</string>
     <string name="navigation_messages">Messages</string>
     <string name="navigation_myprofile">My Profile</string>
@@ -284,11 +284,11 @@
     <!--end youmeng page string-->
 
     <!--start message string-->
-    <string name="msg_send_msg">Send Message</string>
+    <string name="msg_send_msg">Send Messages</string>
     <!--the keyword re here should never be replaced-->
     <string name="msg_mins_to_now">re mins ago</string>
     <string name="msg_hrs_to_now">re hrs ago</string>
-    <string name="msg_hint"> Write  message...</string>
+    <string name="msg_hint"> Write a message...</string>
     <string name="msg_send_btn">Send</string>
     <!--do not change the keyword somebody here-->
     <string name="msg_chat_title">Conversations with somebody</string>
