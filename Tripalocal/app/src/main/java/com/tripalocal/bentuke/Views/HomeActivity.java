@@ -454,7 +454,7 @@ public class HomeActivity extends AppCompatActivity {
 
             this.doubleClick = true;
 //        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-            ToastHelper.shortToast("please double click ");
+            ToastHelper.shortToast(getResources().getString(R.string.double_click_exit));
             new Handler().postDelayed(new Runnable() {
 
                 @Override

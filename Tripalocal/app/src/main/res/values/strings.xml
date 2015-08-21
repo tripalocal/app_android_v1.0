@@ -334,7 +334,7 @@
 
     <!--mixpanel text end-->
     <!-- others-->
-    <string name="double_click_exit">Click again to exit the app</string>
+    <string name="double_click_exit">Click again to exit</string>
     <!--others-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
