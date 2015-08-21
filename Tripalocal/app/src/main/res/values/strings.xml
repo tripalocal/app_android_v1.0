@@ -87,7 +87,7 @@
     <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
-    <string name="checkout_title_placeholder">Add expenses</string>
+    <string name="checkout_title_placeholder"></string>
     <string name="exp_detail_view_all">View  All</string>
     <string name="exp_detail_log_in_msg">Please log in or sign up first</string>
 
