@@ -25,7 +25,7 @@
     <string name="title_activity_exp_list_actvity2">体验列表</string>
     <string name="title_activity_checkout">结账</string>
     <string name="title_activity_payment">付款</string>
-    <string name="title_activity_my_trip">我的体验</string>
+    <string name="title_activity_my_trip">我的预订</string>
     <string name="title_activity_my_profile">个人信息</string>
     <string name="title_activity_review">评论</string>
     <string name="title_activity_alipay">支付宝</string>
@@ -39,7 +39,7 @@
     <string name="my_trip_call">电话</string>
     <string name="my_trip_message">短信</string>
     <string name="my_trip_meetup_title">会合提示</string>
-    <string name="my_trip_myTrip">我的体验</string>
+    <string name="my_trip_myTrip">我的预订</string>
     <string name="my_trip_hint">您还没有预订过体验。</string>
     <string name="my_trip_explore">去首页逛逛</string>
     <string name="mytrip_date_format">yyyy-MM-dd</string>
@@ -56,9 +56,9 @@
     <string name="nav_profile_image">账户图片</string>
     <string name="nav_my_account">我的账户</string>
     <string name="navigation_home">首页</string>
-    <string name="navigation_mytrips">我的体验</string>
+    <string name="navigation_mytrips">我的预订</string>
     <string name="navigation_wishlist">兴趣列表</string>
-    <string name="navigation_messages">发信息</string>
+    <string name="navigation_messages">私信</string>
     <string name="navigation_myprofile">个人信息</string>
     <string name="nav_terms_of_service_link">服务条款</string>
     <string name="nav_privacy_policy">隐私政策</string>
@@ -185,7 +185,7 @@
     <string name="credit_no_hint">16个数字</string>
     <string name="drawer_open">展开</string>
     <string name="drawer_closed">收起</string>
-    <string name="view_in_my_trip">去我的体验里查看</string>
+    <string name="view_in_my_trip">去我的预订里查看</string>
     <string name="payment_success_text">你的预定请求已经成功发送给 somebody</string>
     <string name="payment_success_title">付款成功</string>
     <string name="credit_card_no_error">信用卡号码必须为12到16位的数字</string>
