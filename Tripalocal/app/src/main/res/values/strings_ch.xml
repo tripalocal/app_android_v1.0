@@ -336,7 +336,7 @@
     <!--mixpanel text end-->
 
     <!-- others-->
-    <string name="double_click_exit">再按一次退出app</string>
+    <string name="double_click_exit">再按一次退出本土客</string>
     <!--others-->
 
     <string-array name="db_cities_array">
