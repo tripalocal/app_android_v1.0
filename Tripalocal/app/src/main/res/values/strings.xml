@@ -14,7 +14,7 @@
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
     <string name="with">with</string>
-    <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Livability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
+    <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Liveability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
 
     <string name="action_login">Log In</string>
     <string name="action_search">Search</string>
@@ -123,7 +123,7 @@
     <string name="checkout_coupon_label">code</string>
     <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
     <string name="checkout_ok_tochange_text">It\'s OK to change your mind</string>
-    <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
+    <string name="checkout_disclaim_1">If you cancel at least 7 calendar days in advance, there is no cancellation fee.</string>
     <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
     <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
     <string name="checkout_refund_text">You can also view our\u0020</string>
