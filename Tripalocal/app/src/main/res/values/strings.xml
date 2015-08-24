@@ -4,9 +4,9 @@
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/</string>
 
-    <string name="version_language">Enlgish</string>
+    <string name="version_language">English</string>
     <string name="hello_world">Hello world!</string>
-    <string name="blank_fragment">Hmmm.. You have not saved any experiences yet!</string>
+    <string name="blank_fragment">Hmmm.. You have not saved any experience yet!</string>
     <string name="placeholder_content">Loading</string>
     <string name="gibber"> </string>
     <string name="slide_button">Start Now!</string>
@@ -14,7 +14,7 @@
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
     <string name="with">with</string>
-    <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Livability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
+    <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Liveability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
 
     <string name="action_login">Log In</string>
     <string name="action_search">Search</string>
@@ -26,7 +26,7 @@
     <string name="title_activity_exp_list_actvity2">Experience List</string>
     <string name="title_activity_checkout">Checkout</string>
     <string name="title_activity_payment">Payment</string>
-    <string name="title_activity_my_trip">My Trips</string>
+    <string name="title_activity_my_trip">My Trip</string>
     <string name="title_activity_my_profile">My Profile</string>
     <string name="title_activity_review">Reviews</string>
     <string name="title_activity_alipay">Alipay</string>
@@ -40,7 +40,7 @@
     <string name="my_trip_call">Call</string>
     <string name="my_trip_message">SMS</string>
     <string name="my_trip_meetup_title">Meet up instruction</string>
-    <string name="my_trip_myTrip">My Trips</string>
+    <string name="my_trip_myTrip">My Trip</string>
     <string name="my_trip_hint">When you book an experience, you\n will see your itinerary here.</string>
     <string name="my_trip_explore">Start Exploring</string>
     <string name="mytrip_date_format">dd-MM-yyyy</string>
@@ -57,7 +57,7 @@
     <string name="nav_profile_image">nav profile image</string>
     <string name="nav_my_account">My Account</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_mytrips">My trips</string>
+    <string name="navigation_mytrips">My Trip</string>
     <string name="navigation_wishlist">Wishlist</string>
     <string name="navigation_messages">Messages</string>
     <string name="navigation_myprofile">My Profile</string>
@@ -87,7 +87,7 @@
     <string name="from">from </string>
     <string name="dollar_placeholder">$</string>
     <string name="loading_title">Loading title</string>
-    <string name="checkout_title_placeholder">Add expenses</string>
+    <string name="checkout_title_placeholder"></string>
     <string name="exp_detail_view_all">View  All</string>
     <string name="exp_detail_log_in_msg">Please log in or sign up first</string>
 
@@ -123,7 +123,7 @@
     <string name="checkout_coupon_label">code</string>
     <string name="checkout_content_desc_pay_ok">pay_ok_to_change_image</string>
     <string name="checkout_ok_tochange_text">It\'s OK to change your mind</string>
-    <string name="checkout_disclaim_1">If you cancel at least 7 calendar dats in advance, there is no cancellation fee.</string>
+    <string name="checkout_disclaim_1">If you cancel at least 7 calendar days in advance, there is no cancellation fee.</string>
     <string name="checkout_disclaim_2">If you cancel between 3 and 6 calendar days in advance, you will be charge a 50% cancellation fee.</string>
     <string name="checkout_disclaim_3">If you cancel within 2 calendar days in advance, you will be charged a 100% cancellation fee.</string>
     <string name="checkout_refund_text">You can also view our\u0020</string>
@@ -183,7 +183,7 @@
     <string name="expire">Expire(mm/yy)</string>
     <string name="cvv">CVV</string>
     <string name="title_activity_creditcard">CreditCard Payment</string>
-    <string name="credit_no_hint">16 digits No</string>
+    <string name="credit_no_hint">16 digits No.</string>
     <string name="drawer_open">drawer open</string>
     <string name="drawer_closed">drawer closed</string>
     <string name="view_in_my_trip">View it in MyTrip</string>
@@ -207,10 +207,10 @@
     <!--end of payment string-->
 
     <!--dialog string-->
-    <string name="dialog_exit_app">Are u sure you want to exit Tripalocal?</string>
+    <string name="dialog_exit_app">Are you sure you want to exit Tripalocal?</string>
     <string name="dialog_option_yes">Yes</string>
     <string name="dialog_option_no">No</string>
-    <string name="dialog_delete_conversation">Are u sure you want to delete this conversation</string>
+    <string name="dialog_delete_conversation">Are you sure you want to delete this conversation</string>
     <string name="dialog_option_cancel">Cancel</string>
     <string name="dialog_option_delete">Delete</string>
 
@@ -231,7 +231,7 @@
     <string name="empty_field_error">You must complete all the empty field</string>
     <string name="password_error">You must enter the same passwords</string>
     <string name="verfication_code_error">Wrong code</string>
-    <string name="send_msg_failure">Fail to send msg, check you phone no again</string>
+    <string name="send_msg_failure">Failed to send the message, check your phone number again</string>
     <string name="msg_content"> code (动态验证码)，请在60s内完成注册</string>
     <!--do not change the "code" here-->
     <string name="title_login_fragment">Login</string>
@@ -284,11 +284,11 @@
     <!--end youmeng page string-->
 
     <!--start message string-->
-    <string name="msg_send_msg">Send Message</string>
+    <string name="msg_send_msg">Send Messages</string>
     <!--the keyword re here should never be replaced-->
     <string name="msg_mins_to_now">re mins ago</string>
     <string name="msg_hrs_to_now">re hrs ago</string>
-    <string name="msg_hint"> Write  message...</string>
+    <string name="msg_hint"> Write a message...</string>
     <string name="msg_send_btn">Send</string>
     <!--do not change the keyword somebody here-->
     <string name="msg_chat_title">Conversations with somebody</string>
@@ -308,12 +308,12 @@
     <string name="msg_list_no_2">to any host yet</string>
     <string name="msg_list_no_3">You can send message to any</string>
     <string name="msg_list_no_4">host on their experience page</string>
-    <string name="msg_connecting">Server error , pls try again in 1 min</string>
+    <string name="msg_connecting">Server error , please try again later</string>
     <!--end message string-->
 
     <!--loading text start-->
     <string name="loading_dialog_title">Loading.....</string>
-    <string name="loading_dialog_text">Please Wait while loading...</string>
+    <string name="loading_dialog_text">Please wait while loading...</string>
     <!--loading text finish-->
 
 
@@ -334,7 +334,7 @@
 
     <!--mixpanel text end-->
     <!-- others-->
-    <string name="double_click_exit">Click again to exit the app</string>
+    <string name="double_click_exit">Click again to exit</string>
     <!--others-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
