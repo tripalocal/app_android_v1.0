@@ -319,7 +319,7 @@
     <!--loading text finish-->
 
     <!--mixpanel text start-->
-    <string name="mixpanel_token">c2510512c6cb4c34b4b32bd32a0cf866</string>
+    <string name="mixpanel_token">f94e94414c9de0cc38874706d853c400</string>
     <string name="mixpanel_event_viewHomePage">viewed homepage</string>
     <string name="mixpanel_event_viewSearchPage">viewed search page</string>
 
