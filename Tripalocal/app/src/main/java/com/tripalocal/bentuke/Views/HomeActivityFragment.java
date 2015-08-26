@@ -61,13 +61,13 @@ public class HomeActivityFragment extends Fragment {
         TextView adelaidetxt = (TextView) view.findViewById(R.id.home_adelaide_text);
 
 
-        melb_txt.setText(HomeActivity.poi_data[0]);
-        syd_txt.setText(HomeActivity.poi_data[1]);
-        bris_txt.setText(HomeActivity.poi_data[2]);
-        cairnstxt.setText(HomeActivity.poi_data[3]);
-        goldcoasttxt.setText(HomeActivity.poi_data[4]);
-        hobart_txt.setText(HomeActivity.poi_data[5]);
-        adelaidetxt.setText(HomeActivity.poi_data[6]);
+        melb_txt.setText(HomeActivity.poi_data[0].split(",")[0]);
+        syd_txt.setText(HomeActivity.poi_data[1].split(",")[0]);
+        bris_txt.setText(HomeActivity.poi_data[2].split(",")[0]);
+        cairnstxt.setText(HomeActivity.poi_data[3].split(",")[0]);
+        goldcoasttxt.setText(HomeActivity.poi_data[4].split(",")[0]);
+        hobart_txt.setText(HomeActivity.poi_data[5].split(",")[0]);
+        adelaidetxt.setText(HomeActivity.poi_data[6].split(",")[0]);
 
 
         Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
