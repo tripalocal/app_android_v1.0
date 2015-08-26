@@ -26,18 +26,18 @@
         <!--android:layout_marginBottom="20dp">-->
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="290dp"
+        android:layout_height="150dp"
         android:id="@+id/imageView3"
         android:src="@drawable/homepagelogo_cn_new"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <LinearLayout
