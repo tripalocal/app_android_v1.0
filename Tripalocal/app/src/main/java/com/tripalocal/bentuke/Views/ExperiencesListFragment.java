@@ -53,7 +53,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             city_position = getArguments().getInt(ExperienceListAdapter.INT_EXTRA);
         if(city_position != 9999){
             displayListFrag(city_position);
-            getActivity().setTitle(HomeActivity.poi_data[city_position]);
+            getActivity().setTitle(HomeActivity.poi_data[city_position].split(":")[0]);
             ExperienceListAdapter.all_experiences.clear();
         }else{
             getActivity().setTitle(getResources().getString(R.string.your_wishlist));
@@ -120,7 +120,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                HomeActivity.db_poi_data[position],"0", keywords);
+                HomeActivity.db_poi_data[position],"0", "");
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)

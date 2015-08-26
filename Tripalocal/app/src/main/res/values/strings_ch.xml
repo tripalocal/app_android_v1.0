@@ -347,15 +347,27 @@
         <item>Goldcoast</item>
         <item>Hobart</item>
         <item>Adelaide</item>
+        <item>Darwin</item>
+        <item>Alice Springs</item>
+        <item>Christchurch</item>
+        <item>Queenstown</item>
+        <item>Auckland</item>
+        <item>Wellington</item>
     </string-array>
 
     <string-array name="poi_array">
-        <item>墨尔本, 维多利亚州</item>
-        <item>悉尼, 新南威尔士州</item>
-        <item>布里斯班, 昆士兰州</item>
-        <item>凯恩斯, 昆士兰州</item>
-        <item>黄金海岸, 昆士兰州</item>
-        <item>霍巴特, 塔斯马尼亚州</item>
-        <item>阿德莱德, 南澳</item>
+        <item>墨尔本, 维多利亚州:澳大利亚</item>
+        <item>悉尼, 新南威尔士州:澳大利亚</item>
+        <item>布里斯班, 昆士兰州:澳大利亚</item>
+        <item>凯恩斯, 昆士兰州:澳大利亚</item>
+        <item>黄金海岸, 昆士兰州:澳大利亚</item>
+        <item>霍巴特, 塔斯马尼亚州:澳大利亚</item>
+        <item>阿德莱德, 南澳:澳大利亚</item>
+        <item>达尔文, 北领地:新西兰</item>
+        <item>爱丽斯斯普林斯, 北领地:新西兰</item>
+        <item>基督城, 坎特伯雷:新西兰</item>
+        <item>皇后镇, 奥塔哥:新西兰</item>
+        <item>奥克兰, 奥克兰:新西兰</item>
+        <item>惠灵顿, 惠灵顿:新西兰</item>
     </string-array>
 </resources>

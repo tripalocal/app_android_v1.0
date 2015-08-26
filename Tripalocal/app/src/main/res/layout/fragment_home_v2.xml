@@ -131,6 +131,109 @@
             android:textStyle="bold"
             android:textSize="23sp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_darwin"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_darwin_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_alicesprings"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_alicesprings_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_christchurch"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_christchurch_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_queenstown"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_queenstown_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_auckland"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_auckland_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/home_wellington"
+            android:contentDescription="@string/home_bg_city_content_desc" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/home_wellington_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23sp" />
+    </RelativeLayout>
     <!--
     <RelativeLayout
         android:layout_width="fill_parent"
