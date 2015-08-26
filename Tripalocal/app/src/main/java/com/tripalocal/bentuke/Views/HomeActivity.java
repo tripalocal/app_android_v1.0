@@ -316,9 +316,21 @@ public class HomeActivity extends AppCompatActivity {
                 MatrixCursor cursor = new MatrixCursor(columns);
                 for (int i = 0; i < poi_data.length; i++) {
                     temp[0] = i;
-                    temp[1] = poi_data[i];
+                    temp[1] = poi_data[i].split(":")[0];
                     cursor.addRow(temp);
                 }
+//                String passing_data_temp[]=poi_data;
+//                String passing_data[]=new String[];
+                ArrayList<String> output=new ArrayList<String>();
+                for(String i :poi_data){
+                    if(!output.contains(i)){
+                        output.add(i);                    System.out.println("city " + output);
+
+                    }
+                }
+
+                String passingdata[]=output.toArray(new String[output.size()]);
+                System.out.println("query text is "+newText+"\n size is "+output.size());
                 getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
                 return true;
             }
