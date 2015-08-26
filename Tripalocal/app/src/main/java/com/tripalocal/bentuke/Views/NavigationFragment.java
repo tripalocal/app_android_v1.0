@@ -394,7 +394,7 @@ public class NavigationFragment extends Fragment {
                 result = res;
                 prepareProfile(view);
                 GeneralHelper.recordEmail(result.getEmail());
-                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
+//                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
             @Override
             public void failure(RetrofitError error) {
