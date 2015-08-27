@@ -64,6 +64,7 @@ row1=(TableRow)this.findViewById(R.id.row_num);
         divider1=(View)this.findViewById(R.id.divider_line_3);
         divider2=(View)this.findViewById(R.id.divider_line_4);
         divider3=(View)this.findViewById(R.id.divider_line_5);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
 
         setPaymentContentVisibility();
     }

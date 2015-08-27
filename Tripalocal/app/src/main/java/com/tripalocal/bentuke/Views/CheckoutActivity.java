@@ -44,7 +44,10 @@ public class CheckoutActivity extends AppCompatActivity {
                 position=temp;
             }
         }
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
         setContentView(R.layout.activity_checkout);
+
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FF9933CC'>Booking Details </font>"));
     }
 

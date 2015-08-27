@@ -101,6 +101,7 @@ public class ChatActivity extends AppCompatActivity {
             System.out.println("chat activity start");
           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
 
         updateChat();
 

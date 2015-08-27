@@ -14,6 +14,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
         setContentView(R.layout.activity_login);
     }
 

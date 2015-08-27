@@ -114,6 +114,8 @@ public class MyTriptmpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         if(wish_map.isEmpty() && settings.getBoolean("empty_check", false)) {
             Gson gson = new Gson();

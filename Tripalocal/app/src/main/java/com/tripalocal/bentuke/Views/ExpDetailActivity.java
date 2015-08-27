@@ -42,6 +42,8 @@ public class ExpDetailActivity extends AppCompatActivity {
                 position = intent.getIntExtra(INT_EXTRA,0);
             }
         }
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
         setContentView(R.layout.activity_exp_detail);
 
     }
