@@ -204,16 +204,20 @@ public class ExpDetailActivityFragment extends Fragment {
 
 
         host_more_btn = (Button) view.findViewById(R.id.exp_detail_host_view_more_btn);
+        host_info_more.setVisibility(View.GONE);
+
         host_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (host_info_less.getVisibility() == View.GONE) {
+                if (host_info_less.getMaxLines()!=6) {
+                    host_info_less.setMaxLines(6);
                     host_info_less.setVisibility(View.VISIBLE);
-                    host_info_more.setVisibility(View.GONE);
                     host_more_btn.setText(getResources().getString(R.string.view_more));
+
+
                 } else {
-                    host_info_less.setVisibility(View.GONE);
-                    host_info_more.setVisibility(View.VISIBLE);
+                    host_info_less.setVisibility(View.VISIBLE);
+                    host_info_less.setMaxLines(Integer.MAX_VALUE);
                     host_more_btn.setText(getResources().getString(R.string.view_less));
                 }
             }
