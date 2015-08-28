@@ -6,7 +6,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <!--<LinearLayout-->
             <!--android:orientation="horizontal"-->
@@ -25,11 +25,22 @@
 
         <!--</LinearLayout>-->
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/search_country"
+            android:textColor="@color/home_page_color"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp">
+            android:layout_margin="5dp">
 
             <ImageView
                 android:layout_width="35dp"

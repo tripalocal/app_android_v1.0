@@ -355,7 +355,7 @@
 
     <string-array name="poi_array">
         <item>Melbourne, Victoria:Australia</item>
-        <item>Sydney, NSW:Australia</item>
+        <item>Sydney, New South Wales:Australia</item>
         <item>Brisbane, Queensland:Australia</item>
         <item>Cairns, Queensland:Australia</item>
         <item>Gold Coast, Queensland:Australia</item>
@@ -363,9 +363,9 @@
         <item>Adelaide, South Australia:Australia</item>
         <item>Darwin, Northern Territory:Australia</item>
         <item>Alice Springs, Northern Territory:Australia</item>
-        <item>Christchurch, Canterbury:Australia</item>
-        <item>Queenstown, Otago:Australia</item>
-        <item>Auckland, Auckland:Australia</item>
-        <item>Wellington, Wellington:Australia</item>
+        <item>Christchurch, Canterbury:New Zealand</item>
+        <item>Queenstown, Otago:New Zealand</item>
+        <item>Auckland, Auckland:New Zealand</item>
+        <item>Wellington, Wellington:New Zealand</item>
     </string-array>
 </resources>
