@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.facebook.AccessToken;
@@ -104,6 +105,8 @@ public class HomeActivity extends AppCompatActivity {
     private static boolean doubleClick=false;
     public static String user_email="";
     public static Activity homeActivity;
+    private SearchView searchView;
+    private Menu menu;
 //    public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
@@ -173,7 +176,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         MobclickAgent.updateOnlineConfig(this);
         AnalyticsConfig.enableEncrypt(true);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         if(wish_map.isEmpty() && settings.getBoolean("empty_check", false)) {
             Gson gson = new Gson();
@@ -236,6 +239,7 @@ public class HomeActivity extends AppCompatActivity {
         };
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeActivityFragment()).commit();
         tpDrawer.setDrawerListener(tpDrawToggle);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -268,10 +272,17 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         System.out.println("onresume");
-        System.out.println("ArrayList count: "+Tripalocal.updatedChatList.size());
-
+        System.out.println("ArrayList count: " + Tripalocal.updatedChatList.size());
+        if(menu_ref!=null) {
+            searchView = getSearchView(menu_ref);
+            searchView.clearFocus();
+            searchView.setFocusable(false);
+        }
         super.onResume();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         invalidateOptionsMenu();
+
         if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -301,7 +312,11 @@ public class HomeActivity extends AppCompatActivity {
         if(menu_ref == null)
             menu_ref= menu;
 
-        SearchView searchView =  getSearchView(menu);
+        searchView =  getSearchView(menu);
+        searchView.setFocusable(false);
+        searchView.clearFocus();
+        searchView.onActionViewCollapsed();
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -373,6 +388,7 @@ public class HomeActivity extends AppCompatActivity {
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         searchView.setQueryHint(getResources().getString(R.string.search_hint));
@@ -381,6 +397,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
         if (id == R.id.action_login) {
             if(HomeActivity.getCurrent_user().isLoggedin()){
@@ -388,7 +405,7 @@ public class HomeActivity extends AppCompatActivity {
 //                HomeActivity.getCurrent_user().setLoggedin(false);
 //                HomeActivity.getCurrent_user().setUser_id(null);
 //                HomeActivity.setAccessToken(null);
-//                SharedPreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+//                SharedPFsreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
 //                SharedPreferences.Editor editor_l = settings_l.edit();
 //                editor_l.clear();
 //                editor_l.apply();
@@ -437,6 +454,15 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         saveData();
+        searchView=getSearchView(menu_ref);
+        searchView.setFocusable(false);
+        searchView.clearFocus();
+        invalidateOptionsMenu();
+        tpDrawer.clearFocus();
+        tpDrawToggle.onDrawerClosed(tpDrawer);
+        searchView.setIconified(false);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
         if(fragment_t instanceof HomeActivityFragment) {
 //            new AlertDialog.Builder(this)
