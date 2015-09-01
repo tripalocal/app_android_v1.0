@@ -215,6 +215,7 @@ public class ChatActivity extends AppCompatActivity {
 //                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
+                        chatManager=ChatManager.getInstanceFor(connection);
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
                         chat.sendMessage(text);
                         notifAdapter();
