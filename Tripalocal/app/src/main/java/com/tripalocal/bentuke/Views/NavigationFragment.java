@@ -79,11 +79,14 @@ public class NavigationFragment extends Fragment {
         Button loginBtn;
         view = inflater.inflate(R.layout.user_sidebar_navigation, container, false);
         initialContent(view);
+        logout_txt=(TextView)view.findViewById(R.id.nav_logout_text);
         if(HomeActivity.getCurrent_user().isLoggedin()) {
+            logout_txt.setVisibility(View.VISIBLE);
             getProfileDetails(view);
         }
         else
         {
+
 //            view = inflater.inflate(R.layout.default_navigation, container, false);
 //            loginBtn = (Button) view.findViewById(R.id.nav_normal_login);
 //            loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +97,8 @@ public class NavigationFragment extends Fragment {
 //                    drawer.closeDrawer(GravityCompat.START);
 //                }
 //            });
+            logout_txt.setVisibility(View.INVISIBLE);
+
             initNonLoginContent(view);
         }
 
@@ -199,6 +204,7 @@ public class NavigationFragment extends Fragment {
             }
         });
         logout_txt=(TextView)view.findViewById(R.id.nav_logout_text);
+
         logout_txt.setText(getResources().getString(R.string.logout));
         if(HomeActivity.getCurrent_user().isLoggedin()) {
             logout_txt.setOnClickListener(new View.OnClickListener() {
