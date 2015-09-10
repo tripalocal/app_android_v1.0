@@ -46,7 +46,7 @@ import java.util.ArrayList;
 
 public class NavigationFragment extends Fragment {
 
-    private static MyProfile_result result;
+    public static MyProfile_result result=null;
    // private static boolean my_profile = false;
 
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
