@@ -454,14 +454,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         saveData();
-        searchView=getSearchView(menu_ref);
-        searchView.setFocusable(false);
-        searchView.clearFocus();
-        invalidateOptionsMenu();
-        tpDrawer.clearFocus();
-        tpDrawToggle.onDrawerClosed(tpDrawer);
-        searchView.setIconified(false);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
 
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
         if(fragment_t instanceof HomeActivityFragment) {
