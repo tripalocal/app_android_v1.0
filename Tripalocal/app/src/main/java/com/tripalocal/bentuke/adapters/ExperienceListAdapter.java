@@ -61,7 +61,12 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         all_experiences.clear();
         for(Search_Result res : results)
         {
-            all_experiences.addAll(res.getExperiences());
+            if(current_city==100){
+                all_experiences.addAll(res.getHostExperiences());
+
+            }else {
+                all_experiences.addAll(res.getPrivateExperiences());
+            }
         }
     }
 

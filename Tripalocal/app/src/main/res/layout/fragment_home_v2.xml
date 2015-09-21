@@ -46,6 +46,22 @@
             android:textStyle="bold"
             android:textSize="23sp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+      >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/customer_itinerary_img"
+            android:contentDescription="@string/home_bg_city_content_desc"
+            android:src="@drawable/customitinerary_cn"
+            android:cropToPadding="true" />
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">

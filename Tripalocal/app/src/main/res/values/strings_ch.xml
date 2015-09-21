@@ -370,4 +370,7 @@
         <item>奥克兰, 奥克兰:新西兰</item>
         <item>惠灵顿, 惠灵顿:新西兰</item>
     </string-array>
+
+    <!--custom itinerary-->
+    <string name="custom_itinerary_title">Custom Itinerary</string>
 </resources>

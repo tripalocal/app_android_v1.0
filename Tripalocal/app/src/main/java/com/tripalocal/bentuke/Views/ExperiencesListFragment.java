@@ -53,7 +53,12 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             city_position = getArguments().getInt(ExperienceListAdapter.INT_EXTRA);
         if(city_position != 9999){
             displayListFrag(city_position);
-            getActivity().setTitle(HomeActivity.poi_data[city_position].split(":")[0]);
+            if(city_position==100) {
+                getActivity().setTitle(HomeActivity.getHome_context().getResources().getString(R.string.custom_itinerary_title));
+            }else{
+                getActivity().setTitle(HomeActivity.poi_data[city_position].split(":")[0]);
+
+            }
             ExperienceListAdapter.all_experiences.clear();
         }else{
             getActivity().setTitle(getResources().getString(R.string.your_wishlist));
@@ -119,8 +124,15 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         cal.add(Calendar.DAY_OF_MONTH,1);
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                HomeActivity.db_poi_data[position],"0", "");
+        String cityname="melbourne";
+        if(position==100){
+            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
+                    "melbourne","0", "");
+        }else{
+            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
+                    HomeActivity.db_poi_data[position],"0", "");
+        }
+
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)

@@ -14,19 +14,39 @@ public class Search_Result {
         private String date;
         private String city;
 
-        public Search_Result (ArrayList<Experience> exp, String City, String Date){
+    public Search_Result (ArrayList<Experience> exp, String City, String Date,String type){
             experiences = new ArrayList<>();
             if(exp.size() > 0){
                 this.experiences = exp;
             }
             this.city = City;
             this.date = Date;
+
         }
 
         public List<Experience> getExperiences() {
             return experiences;
         }
 
+    public List<Experience> getHostExperiences(){
+        ArrayList<Experience> explist=new ArrayList<Experience>();
+        for(Experience exp: experiences){
+            if(exp.getType().equals("Multi-hosts")){
+                explist.add(exp);
+            }
+        }
+        return explist;
+    }
+
+    public List<Experience> getPrivateExperiences(){
+        ArrayList<Experience> explist=new ArrayList<Experience>();
+        for(Experience exp: experiences){
+            if(!exp.getType().equals("Multi-hosts")){
+                explist.add(exp);
+            }
+        }
+        return explist;
+    }
         public void setExperiences(ArrayList<Experience> experiences) {
             this.experiences = experiences;
         }

@@ -368,4 +368,8 @@
         <item>Auckland, Auckland:New Zealand</item>
         <item>Wellington, Wellington:New Zealand</item>
     </string-array>
+
+
+    <!--custom itinerary-->
+    <string name="custom_itinerary_title">Custom Itinerary</string>
 </resources>

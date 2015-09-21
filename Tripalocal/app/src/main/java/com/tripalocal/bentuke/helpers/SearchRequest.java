@@ -9,7 +9,15 @@ public class SearchRequest {
     private String city;
     private String guest_number;
     private String keywords;
+    private String type;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public SearchRequest(String start_date, String end_date, String city, String guest_number, String keywords) {
         this.start_datetime = start_date;
@@ -17,6 +25,15 @@ public class SearchRequest {
         this.city = city;
         this.guest_number = guest_number;
         this.keywords = keywords;
+    }
+
+    public SearchRequest(String start_date, String end_date, String city, String guest_number, String keywords,String type) {
+        this.start_datetime = start_date;
+        this.end_datetime = end_date;
+        this.city = city;
+        this.guest_number = guest_number;
+        this.keywords = keywords;
+        this.type=type;
     }
 
     public String getKeywords() {
