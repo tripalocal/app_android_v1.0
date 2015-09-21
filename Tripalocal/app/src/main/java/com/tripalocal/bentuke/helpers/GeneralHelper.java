@@ -2,13 +2,19 @@ package com.tripalocal.bentuke.helpers;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
@@ -28,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Currency;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -281,5 +288,37 @@ public class GeneralHelper {
 
         @Override
         protected void onProgressUpdate(Void... values) {}
+    }
+
+
+    public static void openApp() {
+        String packageName="com.tencent.mm";
+        PackageInfo pi;
+        try {
+            pi = HomeActivity.getHome_context().getPackageManager().getPackageInfo(packageName, 0);
+            PackageManager pm = HomeActivity.getHome_context().getPackageManager();
+            Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+            resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+            resolveIntent.setPackage(pi.packageName);
+            List<ResolveInfo> apps = pm.queryIntentActivities(resolveIntent, 0);
+
+            ResolveInfo ri = apps.iterator().next();
+            if (ri != null ) {
+                String packageName2 = ri.activityInfo.packageName;
+                String className = ri.activityInfo.name;
+
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+                ComponentName cn = new ComponentName(packageName2, className);
+
+                intent.setComponent(cn);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.getHome_context().startActivity(intent);
+            }
+        }catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+//            Toast.makeText(HomeActivity.getHome_context(), "请先下载支付宝钱包", 0).show();
+        }
     }
 }

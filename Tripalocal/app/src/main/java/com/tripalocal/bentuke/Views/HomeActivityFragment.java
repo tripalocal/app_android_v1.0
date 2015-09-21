@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,11 +61,22 @@ public class HomeActivityFragment extends Fragment {
         ImageView queenstown=(ImageView)view.findViewById(R.id.home_queenstown);
         ImageView auckland=(ImageView)view.findViewById(R.id.home_auckland);
         ImageView wellington=(ImageView)view.findViewById(R.id.home_wellington);
-        //ImageView gc_vic = (ImageView) view.findViewById(R.id.home_greater_reg_vic);
+        ImageView custom_itinerary_img=(ImageView)view.findViewById(R.id.customer_itinerary_img);
+        ImageView wechat_img = (ImageView) view.findViewById(R.id.wechat_img);
         //ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
         //ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
 
 
+        if(HomeActivity.getHome_context().getResources().getString(R.string.version_language).equals("English")){
+            Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
+
+            custom_itinerary_img.setImageResource(R.drawable.customitinerary_en);
+            wechat_img.setImageResource(R.drawable.wechat_en);
+        }else{
+            custom_itinerary_img.setImageResource(R.drawable.customitinerary_cn);
+            wechat_img.setImageResource(R.drawable.wechat_cn);
+
+        }
         TextView melb_txt = (TextView) view.findViewById(R.id.home_melbourne_text);
         TextView syd_txt = (TextView) view.findViewById(R.id.home_sydney_text);
         TextView bris_txt = (TextView) view.findViewById(R.id.home_brisbane_text);
@@ -224,9 +236,25 @@ public class HomeActivityFragment extends Fragment {
 
             }
         });
+
+        custom_itinerary_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 100;
+                displayListFrag2(100);
+            }
+        });
+        wechat_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralHelper.openApp();
+            }
+        });
         getActivity().setTitle(getResources().getString(R.string.app_name));
         getActivity().invalidateOptionsMenu();
 //        addMixPanelData();
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         GeneralHelper.addMixPanelData(this.getActivity(),this.getResources().getString(R.string.mixpanel_event_viewHomePage));
         return view;
 
@@ -241,6 +269,8 @@ public class HomeActivityFragment extends Fragment {
     }
     public void onResume() {
         super.onResume();
+        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_home)); //统计页面
     }
     public void onPause() {
