@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
@@ -18,7 +19,13 @@ import com.tripalocal.bentuke.models.network.Profile_result;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Currency;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -38,6 +45,7 @@ public class GeneralHelper {
     public static ProgressDialog progress;
     private static String prefernece_property="mixpanel_property";
     private static String preference_email="email";
+    public static double currency_rate=5;
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
@@ -234,5 +242,44 @@ public class GeneralHelper {
 
         mixpanel.flush();
         Log.i("mixpanel", "addEvenet success");
+    }
+
+    public static void getCurrencyRate(){
+       new getCurrencyTask().execute();
+    }
+
+    private static class getCurrencyTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String from="AUD";
+                String to="CNY";
+                URL url = new URL("http://quote.yahoo.com/d/quotes.csv?f=l1&s=" + from + to + "=X");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+                String line = reader.readLine();
+                if (line.length() > 0) {
+
+//                    String result = String.format("%.2f", Double.parseDouble(line));
+                    GeneralHelper.currency_rate=Double.parseDouble(line);
+//                    System.out.println("currency now "+GeneralHelper.currency_rate);
+                }
+                reader.close();
+            } catch (IOException | NumberFormatException e) {
+                System.out.println(e.getMessage());
+            }
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(Void... values) {}
     }
 }

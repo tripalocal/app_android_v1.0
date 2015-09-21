@@ -263,6 +263,7 @@ public class HomeActivity extends AppCompatActivity {
 //            RetrieveWishListMap();
             getExperienceMap();
         }
+        GeneralHelper.getCurrencyRate();
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
 
@@ -279,6 +280,7 @@ public class HomeActivity extends AppCompatActivity {
             searchView.setFocusable(false);
         }
         super.onResume();
+       
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         invalidateOptionsMenu();
@@ -299,7 +301,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         System.out.println("oncreate and tooken is " + getAccessToken());
         if(checkLogin()){
-            System.out.println(HomeActivity.getCurrent_user().getUser_id()+" test login toke login token is "+HomeActivity.getCurrent_user().getLogin_token());
+            System.out.println(HomeActivity.getCurrent_user().getUser_id()+"test login toke login token is "+HomeActivity.getCurrent_user().getLogin_token());
 //            RetrieveWishListMap();
             getExperienceMap();
         }        MobclickAgent.onResume(this);
