@@ -22,6 +22,7 @@
     <item name="tripalocal_instance_book" type="color">#339999</item>
     <item name="msg_send" type="color">#c4eaea</item>
     <item name="grey" type="color">#CCCCCC</item>
+    <item name="home_grey" type="color">#f7f7f7</item>
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>
