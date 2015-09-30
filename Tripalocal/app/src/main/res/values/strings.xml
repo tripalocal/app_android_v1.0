@@ -64,6 +64,9 @@
     <string name="nav_terms_of_service_link">Terms of Service</string>
     <string name="nav_privacy_policy">Privacy Policy</string>
     <string name="nav_about_us">About Us</string>
+    <string name="nav_host_exp">Travel with Locals</string>
+    <string name="nav_local_exp">Local Experiences</string>
+    <string name="nav_itineraries">Itineraries</string>
 
     <string name="exp_list_per_person">AUD/person</string>
     <string name="exp_list_duration">hrs</string>

@@ -63,6 +63,9 @@
     <string name="nav_terms_of_service_link">服务条款</string>
     <string name="nav_privacy_policy">隐私政策</string>
     <string name="nav_about_us">关于我们</string>
+    <string name="nav_host_exp">旅游达人</string>
+    <string name="nav_local_exp">特色体验</string>
+    <string name="nav_itineraries">精品路线</string>
 
     <string name="exp_list_per_person">澳元/每人起</string>
     <string name="exp_list_duration">小时</string>

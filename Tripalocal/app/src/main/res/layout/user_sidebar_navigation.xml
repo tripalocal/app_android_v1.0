@@ -73,13 +73,94 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/nav_home_container"/>
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/host_exp_container"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/nav_home_container"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/group"
+                android:scaleType="fitXY"
+                android:id="@+id/" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:text="@string/nav_host_exp"
+                android:id="@+id/" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/local_exp_container"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/host_exp_container"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/location"
+                android:scaleType="fitXY"
+                android:id="@+id/" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:text="@string/nav_local_exp"
+                android:id="@+id/" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/itineraries_container"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@id/local_exp_container"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/path"
+                android:scaleType="fitXY"
+                android:id="@+id/" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="7dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:text="@string/nav_itineraries"
+                android:id="@+id/" />
+        </LinearLayout>
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nav_my_trips_container"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/nav_home_container"
+                android:layout_below="@id/itineraries_container"
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="35dp"
@@ -129,7 +210,6 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/nav_wishlist_container"
                 android:orientation="horizontal"
-               android:layout_alignParentStart="false"
                android:layout_marginBottom="20dp">
 
                <FrameLayout

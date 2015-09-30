@@ -53,7 +53,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Travel With Local"
+                    android:text="@string/nav_host_exp"
                     android:id="@+id/textView10"
                     android:textSize="14dp"
                     android:layout_marginTop="20dp"
@@ -63,7 +63,7 @@
                     android:layout_width="0dp"
                     android:layout_height="52dp"
                     android:id="@+id/imageView2"
-                    android:src="@drawable/home_travel_with_local"
+                    android:src="@drawable/host"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1" />
 
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Local Experience"
+                    android:text="@string/nav_local_exp"
                     android:id="@+id/textView11"
                     android:textSize="14dp"
                     android:layout_marginTop="20dp"
@@ -103,15 +103,15 @@
             <ImageView
                 android:layout_width="118dp"
                 android:layout_height="68dp"
-                android:id="@+id/imageView6"
-                android:src="@drawable/home_itineraries"
+                android:id="@+id/"
+                android:src="@drawable/path"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Intineraries"
+                android:text="@string/nav_itineraries"
                 android:id="@+id/textView12"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
