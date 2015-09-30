@@ -141,6 +141,15 @@ public class NavigationFragment extends Fragment {
                 Fragment loginFragment = new LoginFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
         });
+        view.findViewById(R.id.nav_itineraries).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new ItinerariesFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
+        });
+
     }
 
     public void initialContent(View view){
@@ -243,6 +252,14 @@ public class NavigationFragment extends Fragment {
 
         profile_img = (CircleImageView) view.findViewById(R.id.nav_drawer_host_profile_image);
         hostname = (TextView) view.findViewById(R.id.nav_drawer_host_name);
+        view.findViewById(R.id.nav_itineraries).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new ItinerariesFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
+        });
 
             view.findViewById(R.id.nav_my_trips_container).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -275,6 +292,7 @@ public class NavigationFragment extends Fragment {
                     drawerLayout.closeDrawers();
                 }
             });
+
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -339,6 +339,21 @@
     <!-- others-->
     <string name="double_click_exit">Click again to exit</string>
     <!--others-->
+
+    <!--itineraries string-->
+    <string name="itinerary_three_day_trip">3 Day Trip</string>
+    <string name="itinerary_seven_day_trip">7 Day Trip</string>
+    <string name="itinerary_ten_day_trip">10 Day Trip</string>
+    <string name="itinerary_one_acc"> Include one accommodation AU $</string>
+    <string name="itinerary_all_acc"> Include all accommodation AU $</string>
+    <string name="itinerary_melbourne_or_sydney">Melbourne or Sydney</string>
+    <string name="itinerary_melbourne_add_sydney">Melbourne + Sydney</string>
+    <string name="itinerary_melbourne_add_sydney_add_goldcoast">Melbourne + Sydney + Gold Coast</string>
+    <string name="itinerary_checkDetails">Check Details</string>
+    <string name="melbourne">Melbourne</string>
+    <string name="sydney">Sydney</string>
+
+    <!--end of itineraries string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

@@ -87,7 +87,7 @@
                 android:layout_height="35dp"
                 android:src="@drawable/group"
                 android:scaleType="fitXY"
-                android:id="@+id/" />
+            />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="25dp"
                 android:text="@string/nav_host_exp"
-                android:id="@+id/" />
+                 />
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +114,7 @@
                 android:layout_height="35dp"
                 android:src="@drawable/location"
                 android:scaleType="fitXY"
-                android:id="@+id/" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="25dp"
                 android:text="@string/nav_local_exp"
-                android:id="@+id/" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -141,7 +141,7 @@
                 android:layout_height="35dp"
                 android:src="@drawable/path"
                 android:scaleType="fitXY"
-                android:id="@+id/" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="25dp"
                 android:text="@string/nav_itineraries"
-                android:id="@+id/" />
+                android:id="@+id/nav_itineraries" />
         </LinearLayout>
 
         <LinearLayout

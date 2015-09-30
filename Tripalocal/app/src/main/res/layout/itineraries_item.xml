@@ -24,21 +24,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3 Day Trip"
+                android:text="@string/itinerary_three_day_trip"
                 android:id="@+id/textView24"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:textSize="30dp"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Melbourne or Sydney"
+                android:text="@string/itinerary_melbourne_or_sydney"
                 android:id="@+id/textView25"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginBottom="50dp"
                 android:textColor="@color/white"
-                />
+                android:textSize="14sp" />
+
         </FrameLayout>
 
         <LinearLayout
@@ -60,14 +62,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Include all accomdation from AU $"
-                    android:id="@+id/textView18" />
+                    android:text="@string/itinerary_one_acc"
+                    android:id="@+id/textView18"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="688"
-                    android:id="@+id/all_accomdation_price" />
+                    android:id="@+id/all_accomdation_price"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,10 +84,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Melbourne"
-                    android:id="@+id/textView20"
+                    android:text="@string/melbourne"
+                    android:id="@+id/three_mel_one"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,10 +100,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sydeney"
-                    android:id="@+id/textView22"
+                    android:text="@string/sydney"
+                    android:id="@+id/three_syn_one"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -117,9 +123,11 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Include One night accomdation from AU $"
+                    android:text="@string/itinerary_all_acc"
                     android:id="@+id/textView13"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -140,10 +148,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Melbourne"
-                    android:id="@+id/textView15"
+                    android:text="@string/melbourne"
+                    android:id="@+id/three_mel_all"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue"/>
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -155,10 +164,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sydeney"
-                    android:id="@+id/textView16"
+                    android:text="@string/sydney"
+                    android:id="@+id/three_syn_all"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue"/>
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -183,20 +193,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7 Day Trip"
+                android:text="@string/itinerary_seven_day_trip"
                 android:id="@+id/textView29"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:textSize="30dp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Melbourne + Sydney"
+                android:text="@string/itinerary_melbourne_add_sydney"
                 android:id="@+id/textView30"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginBottom="50dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </FrameLayout>
 
         <LinearLayout
@@ -216,16 +228,18 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Include One night accomdation from AU $"
+                    android:text="@string/itinerary_one_acc"
                     android:id="@+id/textView14"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="1822"
                     android:id="@+id/textView19"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -238,10 +252,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Details"
-                    android:id="@+id/textView23"
+                    android:text="@string/itinerary_checkDetails"
+                    android:id="@+id/seven_one"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -261,8 +276,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Include all accomdation from AU $"
-                    android:id="@+id/textView26" />
+                    android:text="@string/itinerary_all_acc"
+                    android:id="@+id/textView26"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -276,15 +292,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp" >
+                android:layout_marginBottom="20dp"
+                android:id="@+id/">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Details"
-                    android:id="@+id/textView28"
+                    android:text="@string/itinerary_checkDetails"
+                    android:id="@+id/seven_all"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -309,20 +327,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 Day Trip"
+                android:text="@string/itinerary_ten_day_trip"
                 android:id="@+id/textView34"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:textSize="30dp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Melbourne+Sydney+Gold Coast"
+                android:text="@string/itinerary_melbourne_add_sydney_add_goldcoast"
                 android:id="@+id/textView35"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginBottom="50dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </FrameLayout>
 
         <LinearLayout
@@ -342,16 +362,18 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Include One night accomdation from AU $"
+                    android:text="@string/itinerary_one_acc"
                     android:id="@+id/textView31"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="2632"
                     android:id="@+id/textView32"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -364,10 +386,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Details"
-                    android:id="@+id/textView33"
+                    android:text="@string/itinerary_checkDetails"
+                    android:id="@+id/ten_one"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -388,13 +411,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Include all accomdation from AU $"
-                    android:id="@+id/textView36" />
+                    android:id="@+id/textView36"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3993"
-                    android:id="@+id/textView37" />
+                    android:id="@+id/textView37"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -407,10 +432,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Details"
-                    android:id="@+id/textView38"
+                    android:text="@string/itinerary_checkDetails"
+                    android:id="@+id/ten_all"
                     android:layout_margin="5dp"
-                    android:textColor="@color/tripalocal_green_blue" />
+                    android:textColor="@color/tripalocal_green_blue"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>

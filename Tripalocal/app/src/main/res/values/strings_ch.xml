@@ -342,6 +342,22 @@
     <string name="double_click_exit">再按一次退出本土客</string>
     <!--others-->
 
+
+    <!--itineraries string-->
+    <string name="itinerary_three_day_trip">3日私人精品游</string>
+    <string name="itinerary_seven_day_trip">7日私人精品游</string>
+    <string name="itinerary_ten_day_trip">10日私人精品游</string>
+    <string name="itinerary_one_acc"> 包含一晚住宿 AU $</string>
+    <string name="itinerary_all_acc"> 包含全部住宿 AU $</string>
+    <string name="itinerary_melbourne_or_sydney">墨尔本 或 悉尼</string>
+    <string name="itinerary_melbourne_add_sydney">墨尔本 + 悉尼</string>
+    <string name="itinerary_melbourne_add_sydney_add_goldcoast">墨尔本 + 悉尼 + 黄金海岸</string>
+    <string name="itinerary_checkDetails">查看路线</string>
+    <string name="melbourne">墨尔本</string>
+    <string name="sydney">悉尼</string>
+
+    <!--end of itineraries string-->
+
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

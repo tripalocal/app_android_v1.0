@@ -38,6 +38,8 @@ import retrofit.client.Response;
 
 public class ItinerariesFragment extends Fragment {
 
+    public TextView three_mel_one,three_mel_all,three_syn_one,three_syn_all,seven_one,seven_all,ten_one,ten_all;
+    public static final String INT_EXTRA = "POSITION";
 
     public ItinerariesFragment() {
         // Required empty public constructor
@@ -48,7 +50,7 @@ public class ItinerariesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View view =  inflater.inflate(R.layout.itineraries_item, container, false);
-
+        initContent(view);
         getActivity().invalidateOptionsMenu();
         getActivity().setTitle(getResources().getString(R.string.nav_itineraries));
 
@@ -56,6 +58,41 @@ public class ItinerariesFragment extends Fragment {
     }
 
 
+    public void initContent(View view){
+        three_mel_one=(TextView)view.findViewById(R.id.three_mel_one);
+        three_mel_all=(TextView)view.findViewById(R.id.three_mel_all);
+        three_syn_one=(TextView)view.findViewById(R.id.three_syn_one);
+        three_syn_all=(TextView)view.findViewById(R.id.three_syn_all);
+        seven_one=(TextView)view.findViewById(R.id.seven_one);
+        seven_all=(TextView)view.findViewById(R.id.seven_all);
+        ten_one=(TextView)view.findViewById(R.id.ten_one);
+        ten_all=(TextView)view.findViewById(R.id.ten_all);
+
+        setActionListener(three_mel_one,651);
+        setActionListener(three_mel_all,701);
+        setActionListener(three_syn_one,661);
+        setActionListener(three_syn_all,711);
+        setActionListener(seven_one,681);
+        setActionListener(seven_all,731);
+        setActionListener(ten_one,691);
+        setActionListener(ten_all,771);
+
+
+    }
+
+    public void setActionListener(TextView text,int exp_id){
+        final int id=exp_id;
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.getHome_context(), ExpDetailActivity.class);
+                intent.putExtra(INT_EXTRA, id);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.getHome_context().startActivity(intent);
+            }
+        });
+
+    }
     public void onResume() {
         super.onResume();
 //        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
