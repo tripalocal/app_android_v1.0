@@ -26,10 +26,12 @@ public class SlideShowFragment2 extends Fragment {
         if((getResources().getString(R.string.version_language)).equals("Chinese")) {
 //            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_ch));
             img.setImageBitmap(
-                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn,300,300));
+                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn, 300, 300));
 //            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_en));
-            img.setImageBitmap(
-                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
+        }else{
+                img.setImageBitmap(
+                        GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
+
         }
         return view;    }
 }
