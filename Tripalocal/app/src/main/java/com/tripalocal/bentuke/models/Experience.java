@@ -16,7 +16,7 @@ public class Experience {
     private Boolean instant_booking;
     private String host;
     private String host_image;
-    private Integer duration;
+    private Double duration;
     private Integer id;
     private String description;
     private String language;
@@ -45,7 +45,7 @@ public class Experience {
         this.description = description;
     }
 
-    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Integer duration, Integer id, String description, String language,String photo_url) {
+    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Double duration, Integer id, String description, String language,String photo_url) {
         this.title = title;
         this.timeslots = timeslots;
         this.meetup_spot = meetup_spot;
@@ -61,7 +61,7 @@ public class Experience {
         this.photo_url=photo_url;
     }
 
-    public Experience(String title, Double price, String host_image, Integer duration, Integer id, String description, String language,String photo_url) {
+    public Experience(String title, Double price, String host_image, Double duration, Integer id, String description, String language,String photo_url) {
         this.title = title;
         this.price = price;
         this.host_image = host_image;
@@ -81,7 +81,7 @@ public class Experience {
         this.type = type;
     }
 
-    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Integer duration, Integer id, String description, String language,String photo_url,String type) {
+    public Experience(String title, List<Timeslot> timeslots, String meetup_spot, Double rate, Double price, Boolean instant_booking, String host, String host_image, Double duration, Integer id, String description, String language,String photo_url,String type) {
         this.title = title;
         this.timeslots = timeslots;
         this.meetup_spot = meetup_spot;
@@ -98,7 +98,7 @@ public class Experience {
         this.type=type;
     }
 
-    public Experience(String title, Double price, String host_image, Integer duration, Integer id, String description, String language,String photo_url,String type) {
+    public Experience(String title, Double price, String host_image, Double duration, Integer id, String description, String language,String photo_url,String type) {
         this.title = title;
         this.price = price;
         this.host_image = host_image;
@@ -173,11 +173,11 @@ public class Experience {
         this.host_image = hostImage;
     }
 
-    public Integer getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(Double duration) {
         this.duration = duration;
     }
 

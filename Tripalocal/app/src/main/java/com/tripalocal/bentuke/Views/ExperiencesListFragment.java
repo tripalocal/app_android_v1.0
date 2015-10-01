@@ -52,11 +52,14 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         if(getArguments() != null)
             city_position = getArguments().getInt(ExperienceListAdapter.INT_EXTRA);
         if(city_position != 9999){
-            displayListFrag(city_position);
+
             if(city_position==100) {
                 getActivity().setTitle(HomeActivity.getHome_context().getResources().getString(R.string.custom_itinerary_title));
+                displayListFrag(1);
+
             }else{
                 getActivity().setTitle(HomeActivity.poi_data[city_position].split(":")[0]);
+                displayListFrag(city_position);
 
             }
             ExperienceListAdapter.all_experiences.clear();
@@ -124,13 +127,12 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         cal.add(Calendar.DAY_OF_MONTH,1);
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String cityname="melbourne";
         if(position==100){
             req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
                     "melbourne","0", "");
         }else{
-            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                    HomeActivity.db_poi_data[position],"0", "");
+            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),HomeActivity.db_poi_data[position]
+                   ,"0", "");
         }
 
         ok_client = new OkHttpClient();
