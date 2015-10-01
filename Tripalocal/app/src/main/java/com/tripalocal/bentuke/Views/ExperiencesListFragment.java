@@ -41,6 +41,9 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     SearchRequest req_obj;
     private boolean loading = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
+    public static String exp_private="PRIVATE",exp_newPro="NEWPRODUCT";
+    public static String experience_type=exp_private;
+
     LinearLayoutManager LLM;
     ExperienceListAdapter adapter;
     public ExperiencesListFragment(){
@@ -127,13 +130,11 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         cal.add(Calendar.DAY_OF_MONTH,1);
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        if(position==100){
+
             req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                    "melbourne","0", "");
-        }else{
-            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),HomeActivity.db_poi_data[position]
-                   ,"0", "");
-        }
+                    HomeActivity.db_poi_data[position]
+                  ,"0", "",experience_type);
+
 
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()

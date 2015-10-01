@@ -61,7 +61,6 @@ public class HomeActivityFragment extends Fragment {
         ImageView queenstown=(ImageView)view.findViewById(R.id.home_queenstown);
         ImageView auckland=(ImageView)view.findViewById(R.id.home_auckland);
         ImageView wellington=(ImageView)view.findViewById(R.id.home_wellington);
-        ImageView custom_itinerary_img=(ImageView)view.findViewById(R.id.customer_itinerary_img);
         ImageView wechat_img = (ImageView) view.findViewById(R.id.wechat_img);
         //ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
         //ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
@@ -70,10 +69,8 @@ public class HomeActivityFragment extends Fragment {
         if(HomeActivity.getHome_context().getResources().getString(R.string.version_language).equals("English")){
             Glide.with(HomeActivity.getHome_context()).load(bg_urls[0]).centerCrop().crossFade().into(melb);
 
-            custom_itinerary_img.setImageResource(R.drawable.customitinerary_en);
             wechat_img.setImageResource(R.drawable.wechat_en);
         }else{
-            custom_itinerary_img.setImageResource(R.drawable.customitinerary_cn);
             wechat_img.setImageResource(R.drawable.wechat_cn);
 
         }
@@ -237,13 +234,7 @@ public class HomeActivityFragment extends Fragment {
             }
         });
 
-        custom_itinerary_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ExperienceListAdapter.current_city = 100;
-                displayListFrag2(100);
-            }
-        });
+
         wechat_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,6 +255,7 @@ public class HomeActivityFragment extends Fragment {
         Fragment exp_list_frag = new ExperiencesListFragment();
         Bundle args = new Bundle();
         args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
         exp_list_frag.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }

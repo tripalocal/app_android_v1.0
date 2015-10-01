@@ -149,6 +149,15 @@ public class NavigationFragment extends Fragment {
                 Fragment loginFragment = new ItinerariesFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
         });
+        view.findViewById(R.id.nav_host_exp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(1);
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
 
     }
 
@@ -270,6 +279,16 @@ public class NavigationFragment extends Fragment {
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
                 }
             });
+
+        view.findViewById(R.id.nav_host_exp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(1);
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -420,6 +439,7 @@ public class NavigationFragment extends Fragment {
                 GeneralHelper.recordEmail(result.getEmail());
 //                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
+
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
@@ -445,5 +465,13 @@ public class NavigationFragment extends Fragment {
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_navigation));
+    }
+
+    public void displayListFrag2(int position) {
+        Fragment exp_list_frag = new ExperiencesListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        exp_list_frag.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }
 }

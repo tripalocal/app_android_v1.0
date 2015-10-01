@@ -371,7 +371,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
-        if(fragment_t instanceof HomeActivityFragment) {
+        if(fragment_t instanceof ExperiencesListFragment
+
+
+                ) {
             return true;
         }else {
             return false;
