@@ -41,7 +41,7 @@ public class Search_Result {
     public List<Experience> getPrivateExperiences(){
         ArrayList<Experience> explist=new ArrayList<Experience>();
         for(Experience exp: experiences){
-            if(!exp.getType().equals("Multi-hosts")){
+            if(exp.getType().equals("Private")){
                 explist.add(exp);
             }
         }
@@ -50,6 +50,7 @@ public class Search_Result {
         public void setExperiences(ArrayList<Experience> experiences) {
             this.experiences = experiences;
         }
+
 
         public String getCity() {
             return city;
