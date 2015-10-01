@@ -124,7 +124,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="25dp"
                 android:text="@string/nav_local_exp"
-                />
+                android:id="@+id/nav_local_exp" />
         </LinearLayout>
 
         <LinearLayout
