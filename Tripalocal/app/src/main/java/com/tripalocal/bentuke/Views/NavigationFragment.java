@@ -158,7 +158,16 @@ public class NavigationFragment extends Fragment {
                 drawerLayout.closeDrawers();
             }
         });
-
+        view.findViewById(R.id.nav_local_exp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ExperienceListAdapter.current_city = 1;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                displayListFrag2(1);//change here
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
     }
 
     public void initialContent(View view){
@@ -201,8 +210,8 @@ public class NavigationFragment extends Fragment {
             public void onClick(View v) {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info="aboutus";
-                InfoFragment.title=getResources().getString(R.string.nav_about_us);
+                HomeActivity.webViewPage_info = "aboutus";
+                InfoFragment.title = getResources().getString(R.string.nav_about_us);
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
 
@@ -213,8 +222,8 @@ public class NavigationFragment extends Fragment {
             public void onClick(View v) {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
-                HomeActivity.webViewPage_info="termsofservice";
-                InfoFragment.title=getResources().getString(R.string.nav_terms_of_service_link);
+                HomeActivity.webViewPage_info = "termsofservice";
+                InfoFragment.title = getResources().getString(R.string.nav_terms_of_service_link);
 
                 Fragment info_fragment = new InfoFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, info_fragment).commit();
@@ -289,6 +298,17 @@ public class NavigationFragment extends Fragment {
                 drawerLayout.closeDrawers();
             }
         });
+
+        view.findViewById(R.id.nav_local_exp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ExperienceListAdapter.current_city = 1;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                displayListFrag2(1);//change here
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
             view.findViewById(R.id.nav_wishlist_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -356,11 +376,11 @@ public class NavigationFragment extends Fragment {
             @Override
             public void success(ArrayList<MsgListModel> msgListModels, Response response) {
                 try {
-                    Log.i("chat server test","step 1"+msgListModels.size());
+                    Log.i("chat server test", "step 1" + msgListModels.size());
                     chatList_db_source.open();
-                    for(MsgListModel model:msgListModels){
-                        if(chatList_db_source.checkSync(model.getSender_id()+"",model.getId()+"")){
-                            ChatList_model chatModel=new ChatList_model();
+                    for (MsgListModel model : msgListModels) {
+                        if (chatList_db_source.checkSync(model.getSender_id() + "", model.getId() + "")) {
+                            ChatList_model chatModel = new ChatList_model();
                             chatModel.setGlobal_id(model.getId() + "");
                             chatModel.setSender_img(model.getSender_image());
                             chatModel.setSender_id(model.getSender_id() + "");
@@ -369,36 +389,36 @@ public class NavigationFragment extends Fragment {
                             chatModel.setSender_name(model.getSender_name());
                             chatList_db_source.createNewChat(chatModel);
                             Log.i("messages count ", "das" + chatList_db_source.getChatList().size());
-                            Log.i("chat server test","step 2.1");
+                            Log.i("chat server test", "step 2.1");
 
 
                         }
-                        Log.i("chat server test","step 2");
+                        Log.i("chat server test", "step 2");
 
                     }
                     chatList_db_source.close();
                     Log.i("chat server test", "step 3");
 
-                }catch (Exception e){
-                    System.out.println("exception"+e.getMessage().toString());
+                } catch (Exception e) {
+                    System.out.println("exception" + e.getMessage().toString());
                     Log.i("chat server test", "step 4");
 
                 }
                 GeneralHelper.closeLoadingProgress();
-                if (MessageSerivice.connection!=null) {
+                if (MessageSerivice.connection != null) {
                     DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                     drawerLayout.closeDrawers();
 
                     Fragment exp_list_frag = new MsgListFragment();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
-                }else{
+                } else {
                     ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("fali on new service : "+error.getMessage().toString());
+                System.out.println("fali on new service : " + error.getMessage().toString());
                 GeneralHelper.closeLoadingProgress();
 //                if (MessageSerivice.connection!=null) {
 //                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);

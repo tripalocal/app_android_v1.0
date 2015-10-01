@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Tripalocal extends Application {
 
-    private static String serverUrl = "https://www.tripalocal.com.cn/";
+    private static String serverUrl = "https://tripalocal-static.s3.amazonaws.com/";
 
 
     public static String getServerUrl() {

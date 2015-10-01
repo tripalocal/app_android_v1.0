@@ -41,7 +41,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
     SearchRequest req_obj;
     private boolean loading = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
-    public static String exp_private="PRIVATE",exp_newPro="NEWPRODUCT";
+    public static String exp_private="experience",exp_newPro="NEWPRODUCT",exp_itinerary="ITINERARY";
     public static String experience_type=exp_private;
 
     LinearLayoutManager LLM;

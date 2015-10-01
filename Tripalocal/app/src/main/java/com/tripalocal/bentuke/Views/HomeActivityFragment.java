@@ -2,17 +2,20 @@ package com.tripalocal.bentuke.Views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
@@ -62,8 +65,40 @@ public class HomeActivityFragment extends Fragment {
         ImageView auckland=(ImageView)view.findViewById(R.id.home_auckland);
         ImageView wellington=(ImageView)view.findViewById(R.id.home_wellington);
         ImageView wechat_img = (ImageView) view.findViewById(R.id.wechat_img);
-        //ImageView gc_nsw = (ImageView) view.findViewById(R.id.home_greater_reg_nsw);
-        //ImageView gc_qld = (ImageView) view.findViewById(R.id.home_greater_reg_qld);
+        LinearLayout host_exp_btn=(LinearLayout)view.findViewById(R.id.host_exp_btn);
+        LinearLayout local_exp_btn=(LinearLayout)view.findViewById(R.id.local_exp_btn);
+        LinearLayout itinerary_btn=(LinearLayout)view.findViewById(R.id.itinerary_btn);
+
+        host_exp_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                displayListFrag2(1);
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        local_exp_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperienceListAdapter.current_city = 1;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                displayListFrag2(1);//change here
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        itinerary_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawers();
+                Fragment loginFragment = new ItinerariesFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            }
+        });
 
 
         if(HomeActivity.getHome_context().getResources().getString(R.string.version_language).equals("English")){
@@ -269,6 +304,7 @@ public class HomeActivityFragment extends Fragment {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_home));
     }
+
 
 
 }

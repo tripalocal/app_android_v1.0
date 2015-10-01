@@ -26,6 +26,7 @@ import retrofit.client.Response;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ExpDetailActivity;
+import com.tripalocal.bentuke.Views.ExperiencesListFragment;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
@@ -75,9 +76,15 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
         Experience exp_to_display = all_experiences.get(position);
-        System.out.println("exp list photo list : "+BASE_URL+""+exp_to_display.getPhoto_url());
+        System.out.println("exp host photo : " + BASE_URL + "" + exp_to_display.getHostImage());
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getPhoto_url()).fitCenter().into(holder.bannerImage);
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
+        if(ExperiencesListFragment.experience_type==ExperiencesListFragment.exp_private){
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
+            holder.profileImage.setVisibility(View.VISIBLE);
+
+        }else{
+            holder.profileImage.setVisibility(View.GONE);
+        }
         holder.bannerTxt.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         holder.titleTxt.setText(exp_to_display.getTitle());
         holder.infoTxt.setText(exp_to_display.getDescription());
