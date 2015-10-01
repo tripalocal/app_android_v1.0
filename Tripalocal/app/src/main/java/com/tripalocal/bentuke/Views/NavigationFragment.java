@@ -153,6 +153,8 @@ public class NavigationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ExperienceListAdapter.current_city = 1;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+
                 displayListFrag2(1);
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
@@ -293,6 +295,8 @@ public class NavigationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ExperienceListAdapter.current_city = 1;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+
                 displayListFrag2(1);
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
