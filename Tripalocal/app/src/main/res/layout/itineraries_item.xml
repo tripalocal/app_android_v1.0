@@ -410,7 +410,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Include all accomdation from AU $"
+                    android:text="@string/itinerary_all_acc"
                     android:id="@+id/textView36"
                     android:textSize="14sp" />
 
