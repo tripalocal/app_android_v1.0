@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/host_exp_container"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/nav_home_container"
                 android:orientation="horizontal">
@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/local_exp_container"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/host_exp_container"
                 android:orientation="horizontal">
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/itineraries_container"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/local_exp_container"
                 android:orientation="horizontal">
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nav_my_trips_container"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:layout_below="@id/itineraries_container"
                     android:orientation="horizontal">
@@ -193,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nav_wishlist_container"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:layout_below="@id/nav_my_trips_container"
                     android:orientation="horizontal">
@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nav_my_profile_container"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="25dp"
                     android:layout_below="@id/nav_wishlist_container"
                     android:orientation="horizontal">
@@ -241,7 +241,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nav_msg_list_container"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/nav_my_profile_container"
                 android:orientation="horizontal"
