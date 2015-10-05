@@ -35,8 +35,44 @@
                     android:text="@string/myprofile_placeholder_host_name"
                     android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="20dp" />
+                    android:layout_centerHorizontal="true" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linear_border_bot_top_white"
+                    android:layout_alignTop="@+id/nav_drawer_host_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="40dp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/nav_home_container"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="25dp"
+                            android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+
+                            <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/tripalocal"
+                                android:scaleType="fitXY" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="7dp"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="25dp"
+                                android:text="@string/navigation_home"/>
+
+                    </LinearLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -46,31 +82,7 @@
             android:layout_height="match_parent"
             android:layout_below="@id/nav_top_container"
             android:id="@+id/menu_item_1"
-            android:background="@drawable/linear_border_bot">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/nav_home_container"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="25dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/tripalocal"
-                        android:scaleType="fitXY" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="7dp"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="25dp"
-                        android:text="@string/navigation_home"/>
-                </LinearLayout>
+            android:background="@drawable/linear_border_bot_grey">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -270,6 +282,7 @@
                     android:text="@string/navigation_messages"/>
 
             </LinearLayout>
+
         </LinearLayout>
 
 
@@ -296,6 +309,7 @@
                     android:layout_marginLeft="25dp"
                     android:text="@string/nav_my_account"/>
             </LinearLayout>-->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
