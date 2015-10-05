@@ -113,7 +113,7 @@
                 android:src="@drawable/home_itineraries"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:id="@+id/" />
+             />
 
             <TextView
                 android:layout_width="wrap_content"
