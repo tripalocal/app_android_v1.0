@@ -39,8 +39,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/linear_border_right">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -105,7 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:id="@+id/itinerary_btn">
+            android:id="@+id/itinerary_btn"
+            android:background="@drawable/linear_border_left">
 
             <ImageView
                 android:layout_width="118dp"
@@ -113,7 +113,7 @@
                 android:src="@drawable/home_itineraries"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-             />
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
