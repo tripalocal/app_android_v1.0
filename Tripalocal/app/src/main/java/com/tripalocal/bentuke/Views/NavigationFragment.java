@@ -337,14 +337,14 @@ public class NavigationFragment extends Fragment {
             });
 
             view.findViewById(R.id.nav_my_profile_container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-                drawerLayout.closeDrawers();
-                Fragment exp_list_frag = new MyProfileActivityFragment();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
-            }
-        });
+                @Override
+                public void onClick(View view) {
+                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                    drawerLayout.closeDrawers();
+                    Fragment exp_list_frag = new MyProfileActivityFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
+                }
+            });
             view.findViewById(R.id.nav_msg_list_container).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -352,8 +352,12 @@ public class NavigationFragment extends Fragment {
 
                 }
             });
+        if(!result.getImage().isEmpty()){
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
 
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
+        }
+
+        System.out.println("profile image is "+result.getImage());
         hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
         HomeActivity.user_img=result.getImage();
 
