@@ -71,7 +71,8 @@
             <View style="@style/DividerLight"
                 android:id="@+id/nav_drawer_divider_2"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/nav_home_container"/>
+                android:layout_below="@+id/nav_home_container"
+                android:layout_marginBottom="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,8 +237,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="25dp"
             android:layout_below="@id/nav_my_profile_container"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -301,7 +301,8 @@
             android:id="@+id/nav_drawer_divider_3"
             android:layout_below="@+id/nav_msg_list_container"
             android:layout_alignRight="@+id/nav_msg_list_container"
-            android:layout_alignEnd="@+id/nav_msg_list_container" />
+            android:layout_alignEnd="@+id/nav_msg_list_container"
+            android:layout_marginTop="20dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
