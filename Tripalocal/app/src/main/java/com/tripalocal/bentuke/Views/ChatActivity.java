@@ -451,7 +451,8 @@ public class ChatActivity extends AppCompatActivity {
             for(ChatMsg_model m:chatsData){
                 Conversation_msg_api item=new Conversation_msg_api();
 
-                item.setMsg_date(m.getMsg_date());
+                item.setMsg_date(GeneralHelper.getUTCTime(m.getMsg_date()));
+
                 item.setMsg_content(m.getMsg_content());
                 item.setLocal_id(m.getMsg_id());
                 item.setReceiver_id(Integer.parseInt(m.getReceiver_id()));
