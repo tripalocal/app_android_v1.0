@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -314,8 +315,13 @@ public class ExpDetailActivityFragment extends Fragment {
 
         price_hours.setText(REAL_FORMATTER.format(exp_to_display.getExperience_duration()));
         info_title.setText(exp_to_display.getExperience_title());
-        info_less.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
-        info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
+        String exper_description=exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction();
+        String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
+         String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
+
+        info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+        info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+//        info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
         host_title.setText(Tripalocal.getFullName(exp_to_display.getHost_firstname(), exp_to_display.getHost_lastname()));
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
@@ -386,6 +392,8 @@ public class ExpDetailActivityFragment extends Fragment {
         map.put(getResources().getString(R.string.youmeng_event_item_expId),ExpDetailActivity.position+"");
         MobclickAgent.onEvent(getActivity().getApplicationContext(), getResources().getString(R.string.youmeng_event_title_viewExp), map);
     }
+
+
 
 
 }
