@@ -25,7 +25,8 @@
                     android:src="@drawable/profile_default"
                     android:layout_gravity="center"
                     app:border_width="2dp"
-                    app:border_color="@color/white" />
+                    app:border_color="@color/white"
+                    android:layout_alignParentEnd="false" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -57,8 +58,8 @@
                         android:layout_marginBottom="10dp">
 
                             <ImageView
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
                                 android:src="@drawable/tripalocal"
                                 android:scaleType="fitXY" />
 
@@ -94,8 +95,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:src="@drawable/group"
                     android:scaleType="fitXY"
                 />
@@ -121,8 +122,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:src="@drawable/location"
                     android:scaleType="fitXY"
                     />
@@ -148,8 +149,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:src="@drawable/path"
                     android:scaleType="fitXY"
                     />
@@ -174,11 +175,11 @@
                     android:layout_below="@id/itineraries_container"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
                         android:src="@drawable/calendar"
                         android:scaleType="fitXY"
-                        />
+                        android:id="@+id/" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -198,8 +199,8 @@
                     android:layout_below="@id/nav_my_trips_container"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
                         android:src="@drawable/heart_lg"
                         android:scaleType="fitXY"
                         />
@@ -222,11 +223,11 @@
                     android:layout_below="@id/nav_wishlist_container"
                     android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
                         android:src="@drawable/myprofile"
                         android:scaleType="fitXY"
-                        />
+                        android:id="@+id/" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,8 +253,8 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
                         android:src="@drawable/message"
                         android:scaleType="fitXY"
                         android:layout_gravity="center"
