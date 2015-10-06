@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -88,7 +90,8 @@ public class ExpDetailActivityFragment extends Fragment {
     TextView transport_info;
     TextView tickets_info;
     View review_container;
-
+    LinearLayout exp_reservation_with;
+    RelativeLayout exp_detail_host_profile_image_container;
 
 
     public ExpDetailActivityFragment() {
@@ -99,6 +102,51 @@ public class ExpDetailActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         updateYoumeng();
         View view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
+        initialComponenets(view);
+        initController();
+        getExpDetails(ExpDetailActivity.position);
+        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewExperiencePage));
+
+        return view;
+    }
+
+
+    public void getExpDetails(int exp_id){
+        GeneralHelper.showLoadingProgress(getActivity());
+        ok_client = new OkHttpClient();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(ok_client))
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        Gson gson = new Gson();
+        req = new request(exp_id);
+        apiService.getExpDetails(req, new Callback<Experience_Detail>() {
+            @Override
+            public void success(Experience_Detail experience_detail, Response response) {
+                GeneralHelper.closeLoadingProgress();
+                if (req.getExperience_id() > 0) {
+                    exp_to_display = experience_detail;
+                    fillDetails();
+                    request_to_book_btn.setEnabled(true);
+                    send_msg_btn.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
+                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
+            }
+        });
+
+    }
+
+    public void initialComponenets(View view){
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
         profileHostImage = (CircleImageView) view.findViewById(R.id.exp_detail_host_profile_image);
@@ -127,12 +175,21 @@ public class ExpDetailActivityFragment extends Fragment {
         tickets_info = (TextView) view.findViewById(R.id.exp_detail_grid_ticket_info);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
         send_msg_btn=(Button)view.findViewById(R.id.send_msg_btn);
+        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
+        review_container = view.findViewById(R.id.exp_detail_review_container);
+        review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
+        host_more_btn = (Button) view.findViewById(R.id.exp_detail_host_view_more_btn);
+        exp_reservation_with=(LinearLayout)view.findViewById(R.id.exp_reservation_with);
+        exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
+    }
+
+    public void initController(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(HomeActivity.getCurrent_user().isLoggedin()){
                     Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
-                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
+                    intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
@@ -177,7 +234,6 @@ public class ExpDetailActivityFragment extends Fragment {
 
             }
         });
-        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
         info_view_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,25 +248,23 @@ public class ExpDetailActivityFragment extends Fragment {
                 }
             }
         });
-        review_container = view.findViewById(R.id.exp_detail_review_container);
-        review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
+
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
-                    Intent intent = new Intent(getActivity().getApplicationContext(),ReviewActivity.class);
-                    startActivity(intent);
+                ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
+                Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
+                startActivity(intent);
             }
         });
 
 
-        host_more_btn = (Button) view.findViewById(R.id.exp_detail_host_view_more_btn);
         host_info_more.setVisibility(View.GONE);
 
         host_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (host_info_less.getMaxLines()!=6) {
+                if (host_info_less.getMaxLines() != 6) {
                     host_info_less.setMaxLines(6);
                     host_info_less.setVisibility(View.VISIBLE);
                     host_more_btn.setText(getResources().getString(R.string.view_more));
@@ -226,48 +280,17 @@ public class ExpDetailActivityFragment extends Fragment {
         request_to_book_btn.setEnabled(false);
         send_msg_btn.setEnabled(false);
 
-        getExpDetails(ExpDetailActivity.position);
-        GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewExperiencePage));
-
-        return view;
-    }
-
-
-    public void getExpDetails(int exp_id){
-        GeneralHelper.showLoadingProgress(getActivity());
-        ok_client = new OkHttpClient();
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setClient(new OkClient(ok_client))
-                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
-                .build();
-        ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
-        Gson gson = new Gson();
-        req = new request(exp_id);
-        apiService.getExpDetails(req, new Callback<Experience_Detail>() {
-            @Override
-            public void success(Experience_Detail experience_detail, Response response) {
-                GeneralHelper.closeLoadingProgress();
-                if(req.getExperience_id() > 0) {
-                    exp_to_display = experience_detail;
-                    fillDetails();
-                    request_to_book_btn.setEnabled(true);
-                    send_msg_btn.setEnabled(true);
-                }
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                GeneralHelper.closeLoadingProgress();
-
-                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
-            }
-        });
+        if(ExperiencesListFragment.experience_type==ExperiencesListFragment.exp_private){
+            exp_reservation_with.setVisibility(View.VISIBLE);
+            exp_detail_host_profile_image_container.setVisibility(View.VISIBLE);
+            profileImage.setVisibility(View.VISIBLE);
+        }else{
+            exp_reservation_with.setVisibility(View.GONE);
+            exp_detail_host_profile_image_container.setVisibility(View.GONE);
+            profileImage.setVisibility(View.GONE);
+        }
 
     }
-
     //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
     public void fillDetails(){
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);

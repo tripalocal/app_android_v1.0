@@ -95,6 +95,8 @@ public class HomeActivityFragment extends Fragment {
             public void onClick(View v) {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
+                ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
+
                 Fragment loginFragment = new ItinerariesFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
             }

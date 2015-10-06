@@ -23,6 +23,7 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
+import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.umeng.analytics.MobclickAgent;
@@ -146,6 +147,7 @@ public class NavigationFragment extends Fragment {
             public void onClick(View view) {
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
+                ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
                 Fragment loginFragment = new ItinerariesFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit(); }
         });
