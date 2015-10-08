@@ -159,7 +159,7 @@ public class LoginFragment extends Fragment {
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
 
-        apiService.loginFBUser(new LoginFBRequest(HomeActivity.getAccessToken()), new Callback<Login_Result>() {
+        apiService.loginFBUser(new LoginFBRequest(HomeActivity.getAccessToken().getToken()), new Callback<Login_Result>() {
             @Override
             public void success(Login_Result login_result, Response response) {
                 GeneralHelper.closeLoadingProgress();
