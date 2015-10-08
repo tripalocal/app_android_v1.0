@@ -154,7 +154,7 @@ public class NavigationFragment extends Fragment {
         view.findViewById(R.id.nav_host_exp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 0;
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
 
                 displayListFrag2(1);
@@ -165,9 +165,9 @@ public class NavigationFragment extends Fragment {
         view.findViewById(R.id.nav_local_exp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 0;
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
-                displayListFrag2(1);//change here
+                displayListFrag2(0);//change here
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
             }
@@ -296,10 +296,10 @@ public class NavigationFragment extends Fragment {
         view.findViewById(R.id.nav_host_exp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 0;
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
 
-                displayListFrag2(1);
+                displayListFrag2(0);
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
             }
@@ -308,9 +308,9 @@ public class NavigationFragment extends Fragment {
         view.findViewById(R.id.nav_local_exp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExperienceListAdapter.current_city = 1;
+                ExperienceListAdapter.current_city = 0;
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
-                displayListFrag2(1);//change here
+                displayListFrag2(0);//change here
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
             }
