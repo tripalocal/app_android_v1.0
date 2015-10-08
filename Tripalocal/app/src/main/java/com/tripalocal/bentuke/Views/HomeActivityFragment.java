@@ -72,8 +72,8 @@ public class HomeActivityFragment extends Fragment {
         host_exp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
-                displayListFrag2(1);
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0);
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
             }
@@ -82,11 +82,18 @@ public class HomeActivityFragment extends Fragment {
         local_exp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperienceListAdapter.current_city = 1;
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
-                displayListFrag2(1);//change here
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
+//                DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+//                drawerLayout.closeDrawers();
+//                ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
+//
+//                Fragment loginFragment = new ItinerariesFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+
             }
         });
 
@@ -293,6 +300,15 @@ public class HomeActivityFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(ExperienceListAdapter.INT_EXTRA, position);
         ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+        exp_list_frag.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
+    }
+
+    public void displayListFrag2(int position,String exp_type) {
+        Fragment exp_list_frag = new ExperiencesListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        ExperiencesListFragment.experience_type=exp_type;
         exp_list_frag.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }

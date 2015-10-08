@@ -32,80 +32,30 @@
                     android:id="@+id/exp_detail_bg"
                     android:scaleType="centerCrop"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/exp_detail_profile_image"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:src="@drawable/profile_default"
-                    app:border_width="2dp"
-                    app:border_color="#ffffffff"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/exp_detail_lang"
+                    android:layout_below="@id/exp_reservation_with"
+                    android:text="English"
+                    android:background="@color/white"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
                     android:layout_gravity="center_horizontal|bottom" />
 
             </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/exp_reservation_with"
-                android:layout_below="@id/exp_detail_top_part"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:background="@color/white"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_title"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:textStyle="normal"
-                    android:text="@string/exp_reservation"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_host_name"
-                    android:layout_toRightOf="@id/exp_detail_title"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:textStyle="normal"
-                    android:text=""/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_reservation_with_cn"
-                    android:layout_toRightOf="@id/exp_host_name"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:textStyle="normal"
-                    android:text="@string/exp_reservation_cn"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:id="@+id/exp_detail_lang"
-                android:layout_below="@id/exp_reservation_with"
-                android:text="English"
-                android:background="@color/white"
-                android:paddingBottom="10dp"
-                android:gravity="center"/>
 
             <RelativeLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_price_container"
-                android:layout_below="@id/exp_detail_lang"
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:gravity="center"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+                android:layout_below="@id/exp_detail_top_part">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,6 +114,7 @@
                     android:layout_marginLeft="3dp"
                     android:layout_below="@id/exp_detail_price_person_text"
                     android:layout_toRightOf="@id/exp_detail_price_person"/>
+
             </RelativeLayout>
 
             <!-- info on the experience-->
@@ -234,102 +185,15 @@
             </RelativeLayout>
 
             <!-- about the host-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/exp_detail_host_profile_image_container"
-                android:layout_below="@id/exp_detail_info_container"
-                android:paddingBottom="20dp"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_about_host_text"
-                    android:textSize="20sp"
-                    android:text="@string/exp_detail_about_the_host"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:password="false" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_about_host_title"
-                    android:layout_toRightOf="@id/exp_detail_about_host_text"
-                    android:textSize="20sp"
-                    android:text=""
-                    android:textStyle="bold"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:password="false" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/exp_detail_host_profile_image"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_below="@id/exp_detail_about_host_title"
-                    android:src="@drawable/profile_default"
-                    android:layout_gravity="center"
-                    app:border_width="2dp"
-                    app:border_color="#ffffffff" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_host_info_less"
-                    android:layout_below="@id/exp_detail_host_profile_image"
-                    android:textSize="16sp"
-                    android:text="@string/placeholder_content"
-                    android:maxLines="6"
-                    android:ellipsize="end"
-                    android:singleLine="false"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exp_detail_host_info_less"
-                    android:id="@+id/exp_detail_host_info_read_more_container">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="20dp"
-                        android:id="@+id/exp_detail_host_info_more"
-                        android:visibility="gone"/>
-                </FrameLayout>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/exp_detail_host_view_more_btn"
-                    android:layout_below="@id/exp_detail_host_info_read_more_container"
-                    android:background="@drawable/read_more_btn_shape_white"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/view_more"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"/>
-            </RelativeLayout>
             <!-- reviews-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/exp_detail_review_container"
-                android:layout_below="@id/exp_detail_host_profile_image_container"
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
-                android:background="@color/tripalocal_light_grey">
+                android:background="@color/tripalocal_light_grey"
+                android:layout_below="@id/exp_detail_info_container">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -480,24 +344,27 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:id="@+id/exp_detail_grid_food_icon"
+                    android:id="@+id/exp_detail_grid_transport_icon"
                     android:scaleType="fitXY"
-                    android:paddingBottom="10dp"
-                    android:src="@drawable/meals"/>
+                    android:paddingTop="10dp"
+                    android:src="@drawable/bus"/>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:paddingLeft="10dp"
-                    android:text="@string/exp_detail_food"
-                    android:id="@+id/exp_detail_grid_food_text"/>
+                    android:text="@string/exp_detail_pickup"
+                    android:id="@+id/exp_detail_grid_transport_text"/>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
                     android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
-                    android:text="@string/exp_detail_default_optional_expenses"
-                    android:id="@+id/exp_detail_grid_food_info"/>
+                    android:text="lkzfjjjjjjjjjjjjjzklf jsdl jlkf fjlkdas jslak djlksa djlkas djlks DJALSK DJALKS DJASKLDJ ASLKD JASKL DJKLAS DJLKASD JLAKSD JASLKD JSALKD JASLKD AS"
+                    android:id="@+id/exp_detail_pickup"/>
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -510,36 +377,40 @@
                     android:layout_width="wrap_content"
                     android:paddingTop="15dp"
                     android:paddingLeft="10dp"
-                    android:text="@string/exp_detail_tickets"
-                    android:id="@+id/exp_detail_grid_ticket_text"/>
+                    android:text="@string/exp_detail_included"
+                    android:id="@+id/dasds"/>
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
                     android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
-                    android:text="@string/exp_detail_default_optional_expenses"
-                    android:id="@+id/exp_detail_grid_ticket_info"/>
+                    android:text="lkzfjjjjjjjjjjjjjzklf jsdl jlkf fjlkdas jslak djlksa djlkas djlks DJALSK DJALKS DJASKLDJ ASLKD JASKL DJKLAS DJLKASD JLAKSD JASLKD JSALKD JASLKD AS"
+                    android:id="@+id/exp_detail_included"/>
+
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:id="@+id/exp_detail_grid_transport_icon"
+                    android:id="@+id/exp_detail_grid_food_icon"
                     android:scaleType="fitXY"
-                    android:paddingTop="10dp"
-                    android:src="@drawable/bus"/>
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/meals"/>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:paddingTop="15dp"
+                    android:paddingTop="10dp"
                     android:paddingLeft="10dp"
-                    android:text="@string/exp_detail_transport"
-                    android:id="@+id/exp_detail_grid_transport_text"/>
+                    android:text="@string/exp_detail_tips"
+                    android:id="@+id/exp_detail_grid_food_text"/>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
                     android:layout_gravity="fill_horizontal"
                     android:paddingTop="10dp"
                     android:text="@string/exp_detail_default_optional_expenses"
-                    android:id="@+id/exp_detail_grid_transport_info"/>
+                    android:id="@+id/exp_detail_tips"/>
+
             </GridLayout>
         </RelativeLayout>
     </ScrollView>
@@ -560,14 +431,6 @@
         android:textColor="@color/white"
             android:layout_weight="1" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/msg_send_msg"
-            android:id="@+id/send_msg_btn"
-            android:textColor="@color/tripalocal_green_blue"
-            android:background="@drawable/contact_btn_shape"
-            android:layout_weight="1" />
     </LinearLayout>
 
 </RelativeLayout>
