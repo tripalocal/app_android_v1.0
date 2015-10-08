@@ -377,7 +377,7 @@
                     android:layout_width="wrap_content"
                     android:paddingTop="15dp"
                     android:paddingLeft="10dp"
-                    android:text="jfslkfj"
+                    android:text="@string/exp_detail_included"
                     android:id="@+id/dasds"/>
                 <TextView
                     android:layout_height="wrap_content"
