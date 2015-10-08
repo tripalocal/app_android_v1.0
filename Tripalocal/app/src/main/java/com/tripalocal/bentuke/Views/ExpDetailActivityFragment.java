@@ -518,12 +518,13 @@ public class ExpDetailActivityFragment extends Fragment {
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
         {
+            System.out.println("lanugage is "+language[i]);
             switch(language[i]) {
                 case "english": l = "English";break;
                 case "mandarin": l += " / 中文";break;
             }
         }
-//        exp_detail_lang.setText(l);
+        exp_detail_lang.setText(l);
 
         //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
         //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;

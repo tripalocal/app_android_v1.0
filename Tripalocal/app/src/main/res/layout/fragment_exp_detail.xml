@@ -91,7 +91,7 @@
                 android:textSize="18sp"
                 android:id="@+id/exp_detail_lang"
                 android:layout_below="@id/exp_reservation_with"
-                android:text="i"
+                android:text="English"
                 android:background="@color/white"
                 android:paddingBottom="10dp"
                 android:gravity="center"/>
