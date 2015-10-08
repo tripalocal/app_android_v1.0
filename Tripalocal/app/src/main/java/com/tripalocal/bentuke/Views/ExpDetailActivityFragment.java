@@ -23,6 +23,7 @@ import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
+import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
 import com.umeng.analytics.MobclickAgent;
 
 import java.sql.SQLException;
@@ -55,11 +56,12 @@ public class ExpDetailActivityFragment extends Fragment {
 
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     private static Experience_Detail exp_to_display;
+    private static Local_Experience_Detail local_exp_to_display;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
     public static OkHttpClient ok_client;
 
     request req;
-    ImageView exp_bg;
+    ImageView exp_bg;//local
     CircleImageView profileImage;
     CircleImageView profileHostImage;
     TextView exp_host_name;
@@ -92,7 +94,7 @@ public class ExpDetailActivityFragment extends Fragment {
     View review_container;
     LinearLayout exp_reservation_with;
     RelativeLayout exp_detail_host_profile_image_container;
-
+    TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
 
     public ExpDetailActivityFragment() {
     }
@@ -101,10 +103,19 @@ public class ExpDetailActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         updateYoumeng();
-        View view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
-        initialComponenets(view);
-        initController();
-        getExpDetails(ExpDetailActivity.position);
+        View view;
+        if(ExperiencesListFragment.experience_type!=ExperiencesListFragment.exp_newPro) {
+             view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
+            initialComponenets(view);
+            initController();
+            getExpDetails(ExpDetailActivity.position);
+        }else{
+            view = inflater.inflate(R.layout.fragment_local_exp_detail, container, false);
+            initComponentLocal(view);
+            initControllerLocal();
+            getLocalExpDetails(ExpDetailActivity.position);
+        }
+
         GeneralHelper.addMixPanelData(this.getActivity(), this.getResources().getString(R.string.mixpanel_event_viewExperiencePage));
 
         return view;
@@ -146,6 +157,39 @@ public class ExpDetailActivityFragment extends Fragment {
 
     }
 
+    public void getLocalExpDetails(int exp_id){
+        GeneralHelper.showLoadingProgress(getActivity());
+        ok_client = new OkHttpClient();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(ok_client))
+                .setEndpoint(getActivity().getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        Gson gson = new Gson();
+        req = new request(exp_id);
+        apiService.getLocalExpDetails(req, new Callback<Local_Experience_Detail>() {
+            @Override
+            public void success(Local_Experience_Detail experience_detail, Response response) {
+                GeneralHelper.closeLoadingProgress();
+                if (req.getExperience_id() > 0) {
+                    local_exp_to_display = experience_detail;
+                    fillLocalDetails();
+                    request_to_book_btn.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
+                ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
+            }
+        });
+
+    }
     public void initialComponenets(View view){
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
@@ -183,6 +227,36 @@ public class ExpDetailActivityFragment extends Fragment {
         exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
     }
 
+
+    public void initComponentLocal(View view){
+        exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
+        profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
+        exp_detail_lang = (TextView) view.findViewById(R.id.exp_detail_lang);
+        price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
+        price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
+        info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
+        info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
+        info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
+        review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
+        reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
+        review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
+        review_content_less = (TextView) view.findViewById(R.id.exp_detail_review_content_less);
+        rating_str_1 = (ImageView) view.findViewById(R.id.exp_detail_review_star_1);
+        rating_str_2 = (ImageView) view.findViewById(R.id.exp_detail_review_star_2);
+        rating_str_3 = (ImageView) view.findViewById(R.id.exp_detail_review_star_3);
+        rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
+        rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
+        expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
+        exp_detail_included = (TextView) view.findViewById(R.id.exp_detail_included);
+        exp_detail_pickup = (TextView) view.findViewById(R.id.exp_detail_pickup);
+        exp_detail_tips = (TextView) view.findViewById(R.id.exp_detail_tips);
+        request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
+        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
+        review_container = view.findViewById(R.id.exp_detail_review_container);
+        review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
+        exp_reservation_with=(LinearLayout)view.findViewById(R.id.exp_reservation_with);
+        exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
+    }
     public void initController(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,13 +267,7 @@ public class ExpDetailActivityFragment extends Fragment {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     HomeActivity.getHome_context().startActivity(intent);
                 }else{
-                    /*
-                    getFragmentManager().beginTransaction().addToBackStack("login")
-                            .replace(R.id.detail_frag_container, new LoginFragment()).commit();
-                    Intent intent=new Intent(HomeActivity.getHome_context(),PhoneregisterActivity.class);
-                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    HomeActivity.getHome_context().startActivity(intent);*/
+
                     ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
             }
@@ -284,15 +352,62 @@ public class ExpDetailActivityFragment extends Fragment {
             exp_reservation_with.setVisibility(View.VISIBLE);
             exp_detail_host_profile_image_container.setVisibility(View.VISIBLE);
             profileImage.setVisibility(View.VISIBLE);
+            send_msg_btn.setVisibility(View.VISIBLE);
         }else{
             exp_reservation_with.setVisibility(View.GONE);
             exp_detail_host_profile_image_container.setVisibility(View.GONE);
             profileImage.setVisibility(View.GONE);
+            send_msg_btn.setVisibility(View.GONE);
         }
 
     }
+
+
+    public void initControllerLocal(){
+        request_to_book_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (HomeActivity.getCurrent_user().isLoggedin()) {
+                    Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
+                    intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    HomeActivity.getHome_context().startActivity(intent);
+                } else {
+
+                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+                }
+            }
+        });
+
+        info_view_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(info_less.getVisibility() == View.GONE){
+                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
+                    info_less.setVisibility(View.VISIBLE);
+                    info_more.setVisibility(View.GONE);
+                }else{
+                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
+                    info_less.setVisibility(View.GONE);
+                    info_more.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        review_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
+                Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        request_to_book_btn.setEnabled(false);
+
+    }
     //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
-    public void fillDetails(){
+     public void fillDetails(){
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
         int point =exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
@@ -340,7 +455,7 @@ public class ExpDetailActivityFragment extends Fragment {
         info_title.setText(exp_to_display.getExperience_title());
         String exper_description=exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction();
         String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
-         String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
+        String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
 
         info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
         info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
@@ -390,6 +505,95 @@ public class ExpDetailActivityFragment extends Fragment {
             tickets_info.setText(exp_to_display.getIncluded_ticket_detail());
         }
         getActivity().setTitle(exp_to_display.getExperience_title());
+    }
+
+
+
+    public void fillLocalDetails(){
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+        int point =local_exp_to_display.getExperience_images().size()-1;
+        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
+
+        String[] language = local_exp_to_display.getLanguage()!=null?local_exp_to_display.getLanguage().split(";"):new String[1];
+        String l= "";
+        for(int i=0;language!=null && i<language.length;i++)
+        {
+            switch(language[i]) {
+                case "english": l = "English";break;
+                case "mandarin": l += " / 中文";break;
+            }
+        }
+//        exp_detail_lang.setText(l);
+
+        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+        //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;
+        //if guest_number_max < 4 , show the price for group of size guest_number_max;
+        //if guest_number_min > 4, show the price for group of size guest_number_min
+
+        Float[] temp_dp = local_exp_to_display.getExperience_dynamic_price();
+        int min_number = local_exp_to_display.getExperience_guest_number_min();
+        int max_number = local_exp_to_display.getExperience_guest_number_max();
+
+        if(temp_dp.length > 0 && max_number >= min_number && temp_dp.length == max_number-min_number+1){
+            if (min_number <= 4 && max_number >= 4) {
+                if(max_number - min_number >= 3) {
+                    price_title.setText(REAL_FORMATTER.format(temp_dp[3]));
+                }
+                else {
+                    price_title.setText(REAL_FORMATTER.format(temp_dp[max_number - min_number]));
+                }
+            } else if (max_number < 4) {
+                price_title.setText(REAL_FORMATTER.format(temp_dp[max_number]));
+            } else if (min_number > 4) {
+                price_title.setText(REAL_FORMATTER.format(temp_dp[0]));
+            }
+        }else price_title.setText(REAL_FORMATTER.format(local_exp_to_display.getExperience_price()));
+
+
+        price_hours.setText(REAL_FORMATTER.format(local_exp_to_display.getExperience_duration()));
+        info_title.setText(local_exp_to_display.getTitle());
+        String exper_description=local_exp_to_display.getDescription()+"\n\n";
+        String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
+        String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
+
+        info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+        info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+
+        review_title.setText(String.valueOf(local_exp_to_display.getExperience_reviews().size()));
+        if(local_exp_to_display.getExperience_reviews().isEmpty()){
+            review_more_btn.setVisibility(View.INVISIBLE);
+        }
+        int rate = Math.round(local_exp_to_display.getExperience_rate());
+        if(rate < 5){
+            if(rate <=4){
+                rating_str_5.setVisibility(View.GONE);
+                if(rate <=3) {
+                    rating_str_4.setVisibility(View.GONE);
+                    if(rate <=2){
+                        rating_str_3.setVisibility(View.GONE);
+                        if(rate <=1){
+                            rating_str_2.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+        }
+        if(local_exp_to_display.getExperience_reviews().size() > 0){
+            ExperienceReview top_review  = local_exp_to_display.getExperience_reviews().get(0);
+            if(top_review.getReviewer_image().length() > 2)
+                Glide.with(HomeActivity.getHome_context()).load(BASE_URL+top_review.getReviewer_image()).fitCenter().into(reviewProfileImage);
+            review_username.setText(Tripalocal.getFullName(top_review.getReviewer_firstname(), top_review.getReviewer_lastname()));
+            review_content_less.setText(top_review.getReview_comment());
+        }else{
+            review_container.setVisibility(View.GONE);
+        }
+            exp_detail_tips.setText(local_exp_to_display.getTips());
+
+            exp_detail_included.setText(local_exp_to_display.getWhatsincluded());
+
+            exp_detail_pickup.setText(local_exp_to_display.getPickup_detail());
+
+        getActivity().setTitle(local_exp_to_display.getTitle());
     }
 
     public void onResume() {
