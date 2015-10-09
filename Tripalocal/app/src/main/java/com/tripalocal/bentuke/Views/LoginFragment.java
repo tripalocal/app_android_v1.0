@@ -163,9 +163,28 @@ public class LoginFragment extends Fragment {
             @Override
             public void success(Login_Result login_result, Response response) {
                 GeneralHelper.closeLoadingProgress();
+                InputMethodManager imm = (InputMethodManager)HomeActivity.getHome_context().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow( ((EditText) getActivity().findViewById(R.id.login_password)).getWindowToken(), 0);
+                //set login
+                HomeActivity.getCurrent_user().setLogin_token(login_result.getToken());
                 HomeActivity.getCurrent_user().setLoggedin(true);
                 HomeActivity.login_flag = true;
+                HomeActivity.getCurrent_user().setUser_id(login_result.getUser_id());
+                getActivity().invalidateOptionsMenu();
                 getActivity().onBackPressed();
+                ToastHelper.longToast(log_in_success);
+                HomeActivity.saveData();
+
+                if(!MessageSerivice.isRunning ){
+                    ChatActivity.sender_id="";
+                    MsgHelper.startMsgSerivice(HomeActivity.getHome_context());
+                }
+                if (HomeActivity.login_ch) {
+                    HomeActivity.login_ch = false;
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
                 ToastHelper.longToast(fb_log_in_success);
             }
 
