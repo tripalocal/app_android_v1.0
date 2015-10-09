@@ -131,7 +131,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/layout_header">
+                    android:id="@+id/layout_header"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -142,9 +144,9 @@
                         android:text="Cradle Coast Tours"
                         android:gravity="left"
                         android:password="false"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="20dp"
-                        android:paddingRight="20dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="10dp" />
 
                     <TextView
@@ -157,8 +159,8 @@
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="10dp" />
                 </LinearLayout>
 
@@ -168,20 +170,23 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:id="@+id/layout_overview"
-                    android:layout_below="@+id/layout_header">
+                    android:layout_below="@+id/layout_header"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
 
-                        android:text="Overview"
+                        android:text="@string/exp_local_overview"
                         android:gravity="left"
                         android:password="false"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="15dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="10dp" />
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -193,8 +198,8 @@
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
-                        android:paddingLeft = "20dp"
-                        android:paddingRight= "20dp"
+                        android:paddingLeft = "10dp"
+                        android:paddingRight= "10dp"
 
                         android:paddingBottom="20dp"
                         android:textColor="@color/home_page_color" />
@@ -206,19 +211,21 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:id="@+id/layout_highlights"
-                    android:layout_below="@+id/layout_overview" >
+                    android:layout_below="@+id/layout_overview"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView15"
                         android:textSize="16sp"
-                        android:text="Highlights"
+                        android:text="@string/exp_local_highlights"
                         android:gravity="left"
                         android:password="false"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="15dp"
-                        android:paddingRight="20dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="10dp" />
 
                     <TextView
@@ -231,8 +238,8 @@
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="20dp"
                         android:textColor="@color/home_page_color" />
                 </LinearLayout>
@@ -244,19 +251,21 @@
                     android:background="@drawable/linear_border_bot_grey"
                     android:id="@+id/layout_description"
                     android:layout_below="@+id/layout_highlights"
-                    android:nestedScrollingEnabled="false">
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView20"
                         android:textSize="16sp"
-                        android:text="Description"
+                        android:text="@string/exp_local_description"
                         android:gravity="left"
                         android:password="false"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="15dp"
-                        android:paddingRight="20dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="10dp" />
 
                     <TextView
@@ -269,8 +278,8 @@
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="20dp"
                         android:textColor="@color/home_page_color" />
                 </LinearLayout>
@@ -431,7 +440,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Schedule"
+                        android:text="@string/exp_local_schedule"
                         android:id="@+id/textView9"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -442,7 +451,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView16"
+                        android:id="@+id/view_schedule"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -455,12 +464,13 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                  >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tips"
+                        android:text="@string/exp_local_tips"
                         android:id="@+id/textView22"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -471,7 +481,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView23"
+                        android:id="@+id/view_tips"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -489,7 +499,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="What&apos;s included"
+                        android:text="@string/exp_local_whatincluded"
                         android:id="@+id/textView28"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -500,7 +510,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView33"
+                        android:id="@+id/view_included"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -518,7 +528,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pick up detail"
+                        android:text="@string/exp_local_pickup"
                         android:id="@+id/textView38"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -529,7 +539,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView39"
+                        android:id="@+id/view_pickup"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -547,7 +557,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Disclaimer"
+                        android:text="@string/exp_local_disclaimer"
                         android:id="@+id/textView40"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -558,7 +568,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView41"
+                        android:id="@+id/view_disclaimer"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -576,7 +586,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Refund Policy"
+                        android:text="@string/exp_local_refund"
                         android:id="@+id/textView42"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -587,7 +597,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView43"
+                        android:id="@+id/view_refund"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -605,7 +615,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Insurance"
+                        android:text="@string/exp_local_insurance"
                         android:id="@+id/textView44"
                         android:gravity="left"
                         android:textSize="18sp"
@@ -616,7 +626,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/textView45"
+                        android:id="@+id/view_insurance"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
@@ -631,7 +641,7 @@
                 android:id="@+id/exp_detail_add_expenses_title"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Other people also bought"
+                android:text="@string/exp_local_alsobought"
                 android:gravity="center"
                 android:padding="20dp"
                 android:password="false"

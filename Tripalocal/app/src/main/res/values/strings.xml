@@ -290,6 +290,21 @@
 
     <!--end youmeng page string-->
 
+
+    <!--start local exp strings-->
+    <string name="exp_local_overview">Overview</string>
+    <string name="exp_local_highlights">Highlights</string>
+    <string name="exp_local_description">Description</string>
+    <string name="exp_local_schedule">Schedule</string>
+    <string name="exp_local_tips">Tips</string>
+    <string name="exp_local_whatincluded">What is included</string>
+    <string name="exp_local_pickup">Pick up detail</string>
+    <string name="exp_local_disclaimer">Disclaimer</string>
+    <string name="exp_local_refund">Refund Policy</string>
+    <string name="exp_local_insurance">Insurance</string>
+    <string name="exp_local_alsobought">Other people also bought</string>
+
+    <!--end local exp strings-->
     <!--start message string-->
     <string name="msg_send_msg">Send Messages</string>
     <!--the keyword re here should never be replaced-->
