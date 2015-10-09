@@ -1,0 +1,661 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking_super_container">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:fontFamily="light"
+            tools:context="com.tripalocal.bentuke.Views.ExperienceDetail">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/exp_detail_top_part"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:id="@+id/exp_detail_bg"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:id="@+id/exp_detail_lang"
+                    android:layout_below="@id/exp_reservation_with"
+                    android:text="English"
+                    android:background="@color/white"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|bottom" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_price_container"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:layout_below="@id/exp_detail_top_part">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price1"
+                    android:textSize="16sp"
+                    android:text="@string/from"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_money_sign"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="3dp"
+                    android:text="@string/dollar_placeholder"
+                    android:layout_toRightOf="@id/exp_detail_price1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price2"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="3dp"
+                    android:text=""
+                    android:layout_toRightOf="@id/exp_detail_money_sign"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price_person_text"
+                    android:textSize="16sp"
+                    android:text="@string/exp_detail_per_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price_person_for"
+                    android:textSize="16sp"
+                    android:text="@string/exp_detail_per_person_for"
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price_person"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="3dp"
+                    android:text=""
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price_person_for"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_price_hour"
+                    android:textSize="16sp"
+                    android:text="@string/exp_detail_per_person_hour"
+                    android:layout_marginLeft="3dp"
+                    android:layout_below="@id/exp_detail_price_person_text"
+                    android:layout_toRightOf="@id/exp_detail_price_person"/>
+
+            </RelativeLayout>
+
+            <!-- info on the experience-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/exp_detail_price_container"
+                android:id="@+id/exp_detail_info_container"
+                android:paddingBottom="20dp"
+                android:background="@color/tripalocal_light_grey">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_header">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_detail_info_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Cradle Coast Tours"
+                        android:gravity="left"
+                        android:password="false"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_header"
+                        android:layout_below="@+id/exp_detail_info_title"
+                        android:textSize="16sp"
+                        android:text="7 hours ; English : Melbourne CEB"
+                        android:textAlignment="center"
+                        android:ellipsize="end"
+                        android:singleLine="false"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_overview"
+                    android:layout_below="@+id/layout_header">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+
+                        android:text="Overview"
+                        android:gravity="left"
+                        android:password="false"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/local_overview"
+                        android:layout_below="@id/exp_detail_info_title"
+                        android:textSize="15sp"
+                        android:text="local_overview"
+                        android:textAlignment="center"
+                        android:ellipsize="end"
+                        android:singleLine="false"
+                        android:paddingLeft = "20dp"
+                        android:paddingRight= "20dp"
+
+                        android:paddingBottom="20dp"
+                        android:textColor="@color/home_page_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_highlights"
+                    android:layout_below="@+id/layout_overview" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView15"
+                        android:textSize="16sp"
+                        android:text="Highlights"
+                        android:gravity="left"
+                        android:password="false"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/local_highlights"
+                        android:layout_below="@+id/textView15"
+                        android:textSize="15sp"
+                        android:text="fjsadklfjaslkfj aslkf jasklf jasfl asjkf "
+                        android:textAlignment="center"
+                        android:ellipsize="end"
+                        android:singleLine="false"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp"
+                        android:textColor="@color/home_page_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_description"
+                    android:layout_below="@+id/layout_highlights"
+                    android:nestedScrollingEnabled="false">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView20"
+                        android:textSize="16sp"
+                        android:text="Description"
+                        android:gravity="left"
+                        android:password="false"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/local_description"
+                        android:layout_below="@+id/textView20"
+                        android:textSize="15sp"
+                        android:text="fjsadklfjaslkfj aslkf jasklf jasfl asjkf "
+                        android:textAlignment="center"
+                        android:ellipsize="end"
+                        android:singleLine="false"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp"
+                        android:textColor="@color/home_page_color" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- about the host-->
+            <!-- reviews-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_review_container"
+                android:paddingBottom="20dp"
+                android:orientation="vertical"
+                android:background="@color/tripalocal_light_grey"
+                android:layout_below="@id/exp_detail_info_container"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_detail_review_title"
+                        android:layout_below="@id/exp_detail_host_info_less"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text=""
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:password="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/exp_detail_review_text"
+                        android:layout_below="@id/exp_detail_host_info_less"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="@string/exp_detail_reviews"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:password="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:id="@+id/exp_detail_review_stars_container">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:padding="20dp"
+                        android:id="@+id/exp_detail_review_star_1"
+                        android:background="@drawable/star_y"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:padding="20dp"
+                        android:id="@+id/exp_detail_review_star_2"
+                        android:background="@drawable/star_y"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:padding="20dp"
+                        android:id="@+id/exp_detail_review_star_3"
+                        android:background="@drawable/star_y"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:padding="20dp"
+                        android:id="@+id/exp_detail_review_star_4"
+                        android:background="@drawable/star_y"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:padding="20dp"
+                        android:id="@+id/exp_detail_review_star_5"
+                        android:background="@drawable/star_y"/>
+                </LinearLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/exp_detail_review_profile_image"
+                    android:paddingTop="30dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/profile_default"
+                    android:layout_gravity="center"
+                    app:border_width="2dp"
+                    app:border_color="#ffffffff"
+                    android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/exp_detail_review_reviewername"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_review_content_less"
+                    android:textSize="16sp"
+                    android:gravity="left"
+                    android:text="@string/no_review_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_review_view_more_btn"
+                    android:background="@drawable/read_more_btn_shape_white"
+                    android:layout_gravity="center"
+                    android:text="@string/exp_detail_view_all"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    />
+            </LinearLayout>
+            <!--end of reviews -->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:id="@+id/exp_detail_add_expenses_banner"
+                android:layout_below="@id/exp_detail_review_container"
+                android:background="@color/accent_material_light"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/exp_details_layout"
+                android:layout_below="@id/exp_detail_add_expenses_banner">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule"
+                        android:id="@+id/textView9"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView16"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tips"
+                        android:id="@+id/textView22"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView23"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="What&apos;s included"
+                        android:id="@+id/textView28"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView33"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pick up detail"
+                        android:id="@+id/textView38"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView39"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disclaimer"
+                        android:id="@+id/textView40"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView41"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Refund Policy"
+                        android:id="@+id/textView42"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView43"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Insurance"
+                        android:id="@+id/textView44"
+                        android:gravity="left"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="View"
+                        android:id="@+id/textView45"
+                        android:gravity="right"
+                        android:layout_gravity="right|center_vertical"
+                        android:textColor="@color/tripalocal_green_blue"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_add_expenses_title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Other people also bought"
+                android:gravity="center"
+                android:padding="20dp"
+                android:password="false"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/exp_details_layout" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+        android:id="@+id/exp_detail_booking_btn"
+        android:text="@string/exp_detail_request"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:background="@drawable/booking_btn_shape"
+        android:textColor="@color/white"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</RelativeLayout>

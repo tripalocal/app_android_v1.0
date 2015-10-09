@@ -94,7 +94,9 @@ public class ExpDetailActivityFragment extends Fragment {
     View review_container;
     LinearLayout exp_reservation_with;
     RelativeLayout exp_detail_host_profile_image_container;
+
     TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
+    TextView local_overview,local_description,local_highlights;
 
     public ExpDetailActivityFragment() {
     }
@@ -110,7 +112,7 @@ public class ExpDetailActivityFragment extends Fragment {
             initController();
             getExpDetails(ExpDetailActivity.position);
         }else{
-            view = inflater.inflate(R.layout.fragment_local_exp_detail, container, false);
+            view = inflater.inflate(R.layout.fragment_local_exp_detail_v2, container, false);
             initComponentLocal(view);
             initControllerLocal();
             getLocalExpDetails(ExpDetailActivity.position);
@@ -235,8 +237,8 @@ public class ExpDetailActivityFragment extends Fragment {
         price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
         price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
         info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
-        info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
-        info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
+//        info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
+//        info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
         review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
         reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
         review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
@@ -251,11 +253,14 @@ public class ExpDetailActivityFragment extends Fragment {
         exp_detail_pickup = (TextView) view.findViewById(R.id.exp_detail_pickup);
         exp_detail_tips = (TextView) view.findViewById(R.id.exp_detail_tips);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
-        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
+//        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
         review_container = view.findViewById(R.id.exp_detail_review_container);
         review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
         exp_reservation_with=(LinearLayout)view.findViewById(R.id.exp_reservation_with);
         exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
+        local_description=(TextView)view.findViewById(R.id.local_description);
+        local_overview=(TextView)view.findViewById(R.id.local_overview);
+        local_highlights=(TextView)view.findViewById(R.id.local_highlights);
     }
     public void initController(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
@@ -379,20 +384,20 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         });
 
-        info_view_more_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(info_less.getVisibility() == View.GONE){
-                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
-                    info_less.setVisibility(View.VISIBLE);
-                    info_more.setVisibility(View.GONE);
-                }else{
-                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
-                    info_less.setVisibility(View.GONE);
-                    info_more.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+//        info_view_more_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(info_less.getVisibility() == View.GONE){
+//                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
+//                    info_less.setVisibility(View.VISIBLE);
+//                    info_more.setVisibility(View.GONE);
+//                }else{
+//                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
+//                    info_less.setVisibility(View.GONE);
+//                    info_more.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
 
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -525,7 +530,6 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         }
         exp_detail_lang.setText(l);
-
         //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
         //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;
         //if guest_number_max < 4 , show the price for group of size guest_number_max;
@@ -556,9 +560,12 @@ public class ExpDetailActivityFragment extends Fragment {
         String exper_description=local_exp_to_display.getDescription()+"\n\n";
         String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
         String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
+        local_overview.setText(exper_description_line_2);
+        local_description.setText(exper_description_line_2);
+        local_highlights.setText(local_exp_to_display.getHighlights());
 
-        info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
-        info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+//        info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
+//        info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
 
         review_title.setText(String.valueOf(local_exp_to_display.getExperience_reviews().size()));
         if(local_exp_to_display.getExperience_reviews().isEmpty()){
