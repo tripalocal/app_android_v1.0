@@ -287,6 +287,22 @@
 
     <!--end youmeng page string-->
 
+
+    <!--start local exp strings-->
+    <string name="exp_local_overview">详细介绍</string>
+    <string name="exp_local_highlights">行程亮点</string>
+    <string name="exp_local_description">行程描述</string>
+    <string name="exp_local_schedule">行程安排</string>
+    <string name="exp_local_tips">提心提示</string>
+    <string name="exp_local_whatincluded">票价包括</string>
+    <string name="exp_local_pickup">接送详情</string>
+    <string name="exp_local_disclaimer">免责声明</string>
+    <string name="exp_local_refund">退款协议</string>
+    <string name="exp_local_insurance">保险</string>
+    <string name="exp_local_alsobought">你可能看兴趣的旅行</string>
+
+    <!--end local exp strings-->
+
     <!--start message string-->
     <string name="msg_send_msg">私信</string>
     <!--the keyword re here should never be replaced-->
