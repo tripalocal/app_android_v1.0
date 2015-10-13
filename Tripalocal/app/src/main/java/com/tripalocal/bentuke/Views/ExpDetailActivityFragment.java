@@ -95,7 +95,7 @@ public class ExpDetailActivityFragment extends Fragment {
     LinearLayout exp_reservation_with;
     RelativeLayout exp_detail_host_profile_image_container;
 
-    TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
+//    TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
     TextView local_overview,local_description,local_highlights;
 
     public ExpDetailActivityFragment() {
@@ -249,9 +249,9 @@ public class ExpDetailActivityFragment extends Fragment {
         rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
         rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
         expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
-        exp_detail_included = (TextView) view.findViewById(R.id.exp_detail_included);
-        exp_detail_pickup = (TextView) view.findViewById(R.id.exp_detail_pickup);
-        exp_detail_tips = (TextView) view.findViewById(R.id.exp_detail_tips);
+//        exp_detail_included = (TextView) view.findViewById(R.id.exp_detail_included);
+//        exp_detail_pickup = (TextView) view.findViewById(R.id.exp_detail_pickup);
+//        exp_detail_tips = (TextView) view.findViewById(R.id.exp_detail_tips);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
 //        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
         review_container = view.findViewById(R.id.exp_detail_review_container);
@@ -595,11 +595,11 @@ public class ExpDetailActivityFragment extends Fragment {
         }else{
             review_container.setVisibility(View.GONE);
         }
-            exp_detail_tips.setText(local_exp_to_display.getTips());
+//            exp_detail_tips.setText(local_exp_to_display.getTips());
 
-            exp_detail_included.setText(local_exp_to_display.getWhatsincluded());
+//            exp_detail_included.setText(local_exp_to_display.getWhatsincluded());
 
-            exp_detail_pickup.setText(local_exp_to_display.getPickup_detail());
+//            exp_detail_pickup.setText(local_exp_to_display.getPickup_detail());
 
         getActivity().setTitle(local_exp_to_display.getTitle());
     }

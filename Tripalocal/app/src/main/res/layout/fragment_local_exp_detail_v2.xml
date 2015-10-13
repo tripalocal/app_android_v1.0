@@ -428,7 +428,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/exp_details_layout"
-                android:layout_below="@id/exp_detail_add_expenses_banner">
+                android:layout_below="@id/exp_detail_add_expenses_banner"
+                android:background="@color/home_grey">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -459,6 +460,24 @@
                         android:layout_margin="10dp" />
                 </FrameLayout>
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/schedule_content_layout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/schedule_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -487,7 +506,26 @@
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
                         android:layout_margin="10dp" />
+
                 </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/tips_content_layout" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/tips_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -518,6 +556,24 @@
                         android:layout_margin="10dp" />
                 </FrameLayout>
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/included_content_layout" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/included_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -546,6 +602,24 @@
                         android:textSize="18sp"
                         android:layout_margin="10dp" />
                 </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/pickup_content_layout" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/pickup_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -576,6 +650,42 @@
                         android:layout_margin="10dp" />
                 </FrameLayout>
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/linearLayout2" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/textView16"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/disclaimer_content_layout" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/disclaimer_content"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -603,6 +713,7 @@
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
                         android:layout_margin="10dp" />
+
                 </FrameLayout>
 
                 <FrameLayout
@@ -635,18 +746,28 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/exp_detail_add_expenses_title"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="@string/exp_local_alsobought"
-                android:gravity="center"
-                android:padding="20dp"
-                android:password="false"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/exp_details_layout" />
+                android:layout_height="match_parent"
+                android:id="@+id/exp_also_like"
+                android:layout_below="@+id/exp_details_layout"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exp_detail_add_expenses_title"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="@string/exp_local_alsobought"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:password="false"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/exp_details_layout" />
+            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 
