@@ -22,7 +22,52 @@ public class Local_Experience_Detail {
         return pickup_detail;
     }
 
-    public Local_Experience_Detail(Integer experience_duration, Double experience_price, Float[] experience_dynamic_price, List<List<String>> available_date, List<ExperienceReview> experience_reviews, Integer experience_rate, List<AvailableOption> available_options, String experience_language, Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description, String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images) {
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    public String getDisclamier() {
+        return disclamier;
+    }
+
+    public void setDisclamier(String disclamier) {
+        this.disclamier = disclamier;
+    }
+
+    public String getRefund_policy() {
+        return refund_policy;
+    }
+
+    public void setRefund_policy(String refund_policy) {
+        this.refund_policy = refund_policy;
+    }
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
+    }
+
+    public Local_Experience_Detail(Integer experience_duration, Double experience_price, Float[] experience_dynamic_price,
+                                   List<List<String>> available_date, List<ExperienceReview> experience_reviews,
+                                   Integer experience_rate, List<AvailableOption> available_options, String experience_language,
+                                   Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description,
+                                   String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images
+                                ,String service,String schedule,String disclamier,String refund_policy,String insurance) {
         this.experience_duration = experience_duration;
         this.experience_price = experience_price;
         this.experience_dynamic_price = experience_dynamic_price;
@@ -41,6 +86,11 @@ public class Local_Experience_Detail {
         this.whatsincluded = whatsincluded;
         this.pickup_detail = pickup_detail;
         this.experience_images = experience_images;
+        this.service=service;
+        this.schedule=schedule;
+        this.disclamier=disclamier;
+        this.refund_policy=refund_policy;
+        this.insurance=insurance;
     }
 
     public void setPickup_detail(String pickup_detail) {
@@ -105,7 +155,9 @@ public class Local_Experience_Detail {
 
     private Integer experience_guest_number_min;
     private Integer experience_guest_number_max;
-    private String title,description,highlights,notice,tips,whatsincluded,pickup_detail;
+    private String title,description,highlights,notice,tips,whatsincluded,
+            pickup_detail,service,schedule,disclamier,
+    refund_policy,insurance;
 
     public ArrayList<String> getExperience_images() {
         return experience_images;

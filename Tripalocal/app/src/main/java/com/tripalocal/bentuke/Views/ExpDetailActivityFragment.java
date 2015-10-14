@@ -1,5 +1,6 @@
 package com.tripalocal.bentuke.Views;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -94,10 +96,14 @@ public class ExpDetailActivityFragment extends Fragment {
     View review_container;
     LinearLayout exp_reservation_with;
     RelativeLayout exp_detail_host_profile_image_container;
-
+    TextView btn_view_schedule,btn_view_tips,btn_view_include,btn_view_pickup,btn_view_disclaimer,
+            btn_view_refund,btn_view_insurance;
+    TextView tx_schedule,tx_tips,tx_include,tx_pickup,tx_disclaimer,tx_refund,tx_insurance;
 //    TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
     TextView local_overview,local_description,local_highlights;
-
+    LinearLayout layout_schedule,layout_tips,layout_include,layout_pickup,layout_disclaimer,layout_refund,layout_insurance;
+    FrameLayout layout_title_schedule,layout_title_tips,layout_title_include,layout_title_pickup,layout_title_disclaimer,
+            layout_title_refund,layout_title_insurance;
     public ExpDetailActivityFragment() {
     }
 
@@ -237,8 +243,6 @@ public class ExpDetailActivityFragment extends Fragment {
         price_title = (TextView) view.findViewById(R.id.exp_detail_price2);
         price_hours = (TextView) view.findViewById(R.id.exp_detail_price_person);
         info_title = (TextView) view.findViewById(R.id.exp_detail_info_title);
-//        info_less = (TextView) view.findViewById(R.id.exp_detail_info_content_less);
-//        info_more = (TextView) view.findViewById(R.id.exp_detail_info_content_more);
         review_title = (TextView) view.findViewById(R.id.exp_detail_review_title);
         reviewProfileImage = (CircleImageView) view.findViewById(R.id.exp_detail_review_profile_image);
         review_username = (TextView) view.findViewById(R.id.exp_detail_review_reviewername);
@@ -249,11 +253,7 @@ public class ExpDetailActivityFragment extends Fragment {
         rating_str_4 = (ImageView) view.findViewById(R.id.exp_detail_review_star_4);
         rating_str_5 = (ImageView) view.findViewById(R.id.exp_detail_review_star_5);
         expenses_banner_img = (ImageView) view.findViewById(R.id.exp_detail_add_expenses_banner);
-//        exp_detail_included = (TextView) view.findViewById(R.id.exp_detail_included);
-//        exp_detail_pickup = (TextView) view.findViewById(R.id.exp_detail_pickup);
-//        exp_detail_tips = (TextView) view.findViewById(R.id.exp_detail_tips);
         request_to_book_btn = (Button) view.findViewById(R.id.exp_detail_booking_btn);
-//        info_view_more_btn = (Button) view.findViewById(R.id.exp_detail_info_view_more_btn);
         review_container = view.findViewById(R.id.exp_detail_review_container);
         review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
         exp_reservation_with=(LinearLayout)view.findViewById(R.id.exp_reservation_with);
@@ -261,17 +261,51 @@ public class ExpDetailActivityFragment extends Fragment {
         local_description=(TextView)view.findViewById(R.id.local_description);
         local_overview=(TextView)view.findViewById(R.id.local_overview);
         local_highlights=(TextView)view.findViewById(R.id.local_highlights);
+
+        btn_view_schedule=(TextView)view.findViewById(R.id.btn_view_schedule);
+        btn_view_tips=(TextView)view.findViewById(R.id.btn_view_tips);
+        btn_view_include=(TextView)view.findViewById(R.id.btn_view_include);
+        btn_view_pickup=(TextView)view.findViewById(R.id.btn_view_pickup);
+        btn_view_disclaimer=(TextView)view.findViewById(R.id.btn_view_disclaimer);
+        btn_view_refund=(TextView)view.findViewById(R.id.btn_view_refund);
+        btn_view_insurance=(TextView)view.findViewById(R.id.btn_view_insurance);
+
+        tx_schedule=(TextView)view.findViewById(R.id.tx_schedule);
+        tx_tips=(TextView)view.findViewById(R.id.tx_tips);
+        tx_include=(TextView)view.findViewById(R.id.tx_include);
+        tx_pickup=(TextView)view.findViewById(R.id.tx_pickup);
+        tx_disclaimer=(TextView)view.findViewById(R.id.tx_disclaimer);
+        tx_refund=(TextView)view.findViewById(R.id.tx_refund);
+        tx_insurance=(TextView)view.findViewById(R.id.tx_insurance);
+
+        layout_schedule=(LinearLayout)view.findViewById(R.id.layout_schedule);
+        layout_tips=(LinearLayout)view.findViewById(R.id.layout_tips);
+        layout_include=(LinearLayout)view.findViewById(R.id.layout_include);
+        layout_pickup=(LinearLayout)view.findViewById(R.id.layout_pickup);
+        layout_disclaimer=(LinearLayout)view.findViewById(R.id.layout_disclaimer);
+        layout_refund=(LinearLayout)view.findViewById(R.id.layout_refund);
+        layout_insurance=(LinearLayout)view.findViewById(R.id.layout_insurance);
+
+
+        layout_title_schedule=(FrameLayout)view.findViewById(R.id.layout_title_schedule);
+        layout_title_tips=(FrameLayout)view.findViewById(R.id.layout_title_tips);
+        layout_title_include=(FrameLayout)view.findViewById(R.id.layout_title_include);
+        layout_title_pickup=(FrameLayout)view.findViewById(R.id.layout_title_pickup);
+        layout_title_disclaimer=(FrameLayout)view.findViewById(R.id.layout_title_disclaimer);
+        layout_title_refund=(FrameLayout)view.findViewById(R.id.layout_title_refund);
+        layout_title_insurance=(FrameLayout)view.findViewById(R.id.layout_title_insurance);
+
     }
     public void initController(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(HomeActivity.getCurrent_user().isLoggedin()){
+                if (HomeActivity.getCurrent_user().isLoggedin()) {
                     Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
                     intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     HomeActivity.getHome_context().startActivity(intent);
-                }else{
+                } else {
 
                     ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
@@ -384,20 +418,6 @@ public class ExpDetailActivityFragment extends Fragment {
             }
         });
 
-//        info_view_more_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(info_less.getVisibility() == View.GONE){
-//                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
-//                    info_less.setVisibility(View.VISIBLE);
-//                    info_more.setVisibility(View.GONE);
-//                }else{
-//                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
-//                    info_less.setVisibility(View.GONE);
-//                    info_more.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
 
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -410,8 +430,41 @@ public class ExpDetailActivityFragment extends Fragment {
 
         request_to_book_btn.setEnabled(false);
 
+        btn_view_schedule.setOnClickListener(new ViewBtnListener(layout_schedule, btn_view_schedule));
+        btn_view_tips.setOnClickListener(new ViewBtnListener(layout_tips,btn_view_tips));
+        btn_view_include.setOnClickListener(new ViewBtnListener(layout_include,btn_view_include));
+        btn_view_pickup.setOnClickListener(new ViewBtnListener(layout_pickup,btn_view_pickup));
+        btn_view_disclaimer.setOnClickListener(new ViewBtnListener(layout_disclaimer,btn_view_disclaimer));
+        btn_view_refund.setOnClickListener(new ViewBtnListener(layout_refund,btn_view_refund));
+        btn_view_insurance.setOnClickListener(new ViewBtnListener(layout_insurance, btn_view_insurance));
+
+
     }
-    //public void fillDetails(ImageView exp_bg, CircleImageView profileImage, CircleImageView profileHostImage, TextView exp_host_name, TextView price_title, TextView price_hours, final TextView info_less, final TextView info_more, TextView host_info_less, TextView review_title, CircleImageView reviewProfileImage, TextView review_username, TextView review_content_less, ImageView expenses_banner_img, Experience_Detail exp_to_display) {
+
+    private class ViewBtnListener implements View.OnClickListener{
+        LinearLayout layout_to_toggle;
+        TextView text_to_change;
+        ViewBtnListener(LinearLayout layout_to_toggle,TextView text_to_change){
+            this.layout_to_toggle=layout_to_toggle;
+            this.text_to_change=text_to_change;
+
+        }
+        @Override
+        public void onClick(View v) {
+            if(layout_to_toggle.getVisibility()==View.GONE){
+                layout_to_toggle.setVisibility(View.VISIBLE);
+                text_to_change.setText("Dismiss");
+            }else{
+                layout_to_toggle.setVisibility(View.GONE);
+                text_to_change.setText("View");
+
+            }
+        }
+    }
+
+    public void setAllDetailsGone(){
+        layout_schedule.setVisibility(View.GONE);
+    }
      public void fillDetails(){
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
         int point =exp_to_display.getExperience_images().size()-1;
@@ -563,10 +616,6 @@ public class ExpDetailActivityFragment extends Fragment {
         local_overview.setText(exper_description_line_2);
         local_description.setText(exper_description_line_2);
         local_highlights.setText(local_exp_to_display.getHighlights());
-
-//        info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
-//        info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
-
         review_title.setText(String.valueOf(local_exp_to_display.getExperience_reviews().size()));
         if(local_exp_to_display.getExperience_reviews().isEmpty()){
             review_more_btn.setVisibility(View.INVISIBLE);
@@ -595,15 +644,42 @@ public class ExpDetailActivityFragment extends Fragment {
         }else{
             review_container.setVisibility(View.GONE);
         }
-//            exp_detail_tips.setText(local_exp_to_display.getTips());
 
-//            exp_detail_included.setText(local_exp_to_display.getWhatsincluded());
 
-//            exp_detail_pickup.setText(local_exp_to_display.getPickup_detail());
+        tx_schedule.setText(local_exp_to_display.getSchedule());
+        removeEmptyField(layout_title_schedule, local_exp_to_display.getSchedule() + "");
+        tx_disclaimer.setText(local_exp_to_display.getDisclamier());
+        removeEmptyField(layout_title_disclaimer, local_exp_to_display.getDisclamier() + "");
+        if(local_exp_to_display.getDisclamier()==null) {
+        layout_title_disclaimer.setVisibility(View.GONE);
+        }
+        System.out.println("disclaimer is "+ local_exp_to_display.getDisclamier()+"12");
+
+        tx_include.setText(local_exp_to_display.getWhatsincluded());
+        removeEmptyField(layout_title_include, local_exp_to_display.getWhatsincluded()+"");
+
+        tx_insurance.setText(local_exp_to_display.getInsurance());
+        removeEmptyField(layout_title_insurance, local_exp_to_display.getInsurance()+"");
+
+        tx_pickup.setText(local_exp_to_display.getPickup_detail());
+        removeEmptyField(layout_title_pickup, local_exp_to_display.getPickup_detail()+"");
+
+        tx_refund.setText(local_exp_to_display.getRefund_policy());
+        removeEmptyField(layout_title_refund, local_exp_to_display.getRefund_policy()+"");
+
+        tx_tips.setText(local_exp_to_display.getTips());
+        removeEmptyField(layout_title_tips, local_exp_to_display.getTips()+"");
 
         getActivity().setTitle(local_exp_to_display.getTitle());
     }
 
+
+
+    public void removeEmptyField(FrameLayout layout,String text){
+        if(text.trim().equals("")){
+            layout.setVisibility(View.GONE);
+        }
+    }
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_expDetail)); //统计页面

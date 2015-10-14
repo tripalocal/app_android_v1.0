@@ -24,7 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:id="@+id/exp_detail_top_part"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -436,7 +437,8 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_schedule">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -452,12 +454,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_schedule"
+                        android:id="@+id/btn_view_schedule"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -467,13 +470,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/schedule_content_layout">
+                    android:id="@+id/layout_schedule"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Large Text"
-                        android:id="@+id/schedule_content"
+                        android:id="@+id/tx_schedule"
                         android:layout_margin="10dp"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -484,7 +488,8 @@
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                  >
+                    android:clickable="false"
+                    android:id="@+id/layout_title_tips">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -500,12 +505,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_tips"
+                        android:id="@+id/btn_view_tips"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
 
                 </FrameLayout>
 
@@ -516,13 +522,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/tips_content_layout" >
+                    android:id="@+id/layout_tips"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Large Text"
-                        android:id="@+id/tips_content"
+                        android:id="@+id/tx_tips"
                         android:layout_margin="10dp"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -532,7 +539,8 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_include">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -548,12 +556,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_included"
+                        android:id="@+id/btn_view_include"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -563,13 +572,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/included_content_layout" >
+                    android:id="@+id/layout_include"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Large Text"
-                        android:id="@+id/included_content"
+                        android:text="tx_include"
+                        android:id="@+id/tx_include"
                         android:layout_margin="10dp"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -579,7 +589,8 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_pickup">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -595,12 +606,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_pickup"
+                        android:id="@+id/btn_view_pickup"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -610,13 +622,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/pickup_content_layout" >
+                    android:id="@+id/layout_pickup"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Large Text"
-                        android:id="@+id/pickup_content"
+                        android:id="@+id/tx_pickup"
                         android:layout_margin="10dp"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -626,7 +639,8 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_disclaimer">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -642,12 +656,13 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_disclaimer"
+                        android:id="@+id/btn_view_disclaimer"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -657,31 +672,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/linearLayout2" >
+                    android:id="@+id/layout_disclaimer"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Large Text"
-                        android:id="@+id/textView16"
-                        android:layout_margin="10dp"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/linear_border_bot_grey"
-                    android:id="@+id/disclaimer_content_layout" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Large Text"
-                        android:id="@+id/disclaimer_content"
+                        android:id="@+id/tx_disclaimer"
                         android:layout_margin="10dp"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -691,7 +689,8 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_refund">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -707,21 +706,42 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_refund"
+                        android:id="@+id/btn_view_refund"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
 
                 </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_refund"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/tx_refund"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/linear_border_bot_grey"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp" >
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/layout_title_insurance">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -737,13 +757,35 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="View"
-                        android:id="@+id/view_insurance"
+                        android:id="@+id/btn_view_insurance"
                         android:gravity="right"
                         android:layout_gravity="right|center_vertical"
                         android:textColor="@color/tripalocal_green_blue"
                         android:textSize="18sp"
-                        android:layout_margin="10dp" />
+                        android:layout_margin="10dp"
+                        android:clickable="true" />
+
                 </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/linear_border_bot_grey"
+                    android:id="@+id/layout_insurance"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Large Text"
+                        android:id="@+id/tx_insurance"
+                        android:layout_margin="10dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
