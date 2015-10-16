@@ -17,6 +17,15 @@ public class Local_Experience_Detail {
     private Integer experience_rate;
     private List<AvailableOption> available_options = new ArrayList<AvailableOption>();
     private String experience_language;
+    private ArrayList<RelatedExperience> related_experiences;
+
+    public ArrayList<RelatedExperience> getRelated_experiences() {
+        return related_experiences;
+    }
+
+    public void setRelated_experiences(ArrayList<RelatedExperience> related_experiences) {
+        this.related_experiences = related_experiences;
+    }
 
     public String getPickup_detail() {
         return pickup_detail;
@@ -67,7 +76,8 @@ public class Local_Experience_Detail {
                                    Integer experience_rate, List<AvailableOption> available_options, String experience_language,
                                    Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description,
                                    String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images
-                                ,String service,String schedule,String disclamier,String refund_policy,String insurance) {
+                                ,String service,String schedule,String disclamier,String refund_policy,String insurance,
+                                   ArrayList<RelatedExperience> related_experiences) {
         this.experience_duration = experience_duration;
         this.experience_price = experience_price;
         this.experience_dynamic_price = experience_dynamic_price;
@@ -91,6 +101,7 @@ public class Local_Experience_Detail {
         this.disclamier=disclamier;
         this.refund_policy=refund_policy;
         this.insurance=insurance;
+        this.related_experiences=related_experiences;
     }
 
     public void setPickup_detail(String pickup_detail) {
@@ -255,4 +266,7 @@ public class Local_Experience_Detail {
     public void setExperience_guest_number_min(Integer experience_guest_number_min) {
         this.experience_guest_number_min = experience_guest_number_min;
     }
+
+
+
 }

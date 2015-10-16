@@ -7,12 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,12 +23,14 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.adapters.RelatedExpListAdapter;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.database.ChatMsg_model;
 import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
+import com.tripalocal.bentuke.models.exp_detail.RelatedExperience;
 import com.umeng.analytics.MobclickAgent;
 
 import java.sql.SQLException;
@@ -104,6 +109,13 @@ public class ExpDetailActivityFragment extends Fragment {
     LinearLayout layout_schedule,layout_tips,layout_include,layout_pickup,layout_disclaimer,layout_refund,layout_insurance;
     FrameLayout layout_title_schedule,layout_title_tips,layout_title_include,layout_title_pickup,layout_title_disclaimer,
             layout_title_refund,layout_title_insurance;
+
+    ImageView relatedExp_img_1,relatedExp_img_2,relatedExp_img_3;
+    TextView relatedExp_title_1,relatedExp_title_2,relatedExp_title_3,
+            relatedExp_price_1,relatedExp_price_2,relatedExp_price_3,
+            relatedExp_duration_1,relatedExp_duration_2,relatedExp_duration_3,
+            relatedExp_language_1,relatedExp_language_2,relatedExp_language_3;
+    LinearLayout related_exp_layout_1,related_exp_layout_2,related_exp_layout_3;
     public ExpDetailActivityFragment() {
     }
 
@@ -295,7 +307,30 @@ public class ExpDetailActivityFragment extends Fragment {
         layout_title_refund=(FrameLayout)view.findViewById(R.id.layout_title_refund);
         layout_title_insurance=(FrameLayout)view.findViewById(R.id.layout_title_insurance);
 
+        //initial related exp content
+        relatedExp_img_1=(ImageView)view.findViewById(R.id.relatedExp_img_1);
+        relatedExp_title_1=(TextView)view.findViewById(R.id.relatedExp_title_1);
+        relatedExp_price_1=(TextView)view.findViewById(R.id.relatedExp_price_1);
+        relatedExp_duration_1=(TextView)view.findViewById(R.id.relatedExp_duration_1);
+        relatedExp_language_1=(TextView)view.findViewById(R.id.relatedExp_language_1);
+        related_exp_layout_1=(LinearLayout)view.findViewById(R.id.related_exp_layout_1);
+
+        relatedExp_img_2=(ImageView)view.findViewById(R.id.relatedExp_img_2);
+        relatedExp_title_2=(TextView)view.findViewById(R.id.relatedExp_title_2);
+        relatedExp_price_2=(TextView)view.findViewById(R.id.relatedExp_price_2);
+        relatedExp_duration_2=(TextView)view.findViewById(R.id.relatedExp_duration_2);
+        relatedExp_language_2=(TextView)view.findViewById(R.id.relatedExp_language_2);
+        related_exp_layout_2=(LinearLayout)view.findViewById(R.id.related_exp_layout_2);
+
+        relatedExp_img_3=(ImageView)view.findViewById(R.id.relatedExp_img_3);
+        relatedExp_title_3=(TextView)view.findViewById(R.id.relatedExp_title_3);
+        relatedExp_price_3=(TextView)view.findViewById(R.id.relatedExp_price_3);
+        relatedExp_duration_3=(TextView)view.findViewById(R.id.relatedExp_duration_3);
+        relatedExp_language_3=(TextView)view.findViewById(R.id.relatedExp_language_3);
+        related_exp_layout_3=(LinearLayout)view.findViewById(R.id.related_exp_layout_3);
     }
+
+
     public void initController(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -653,28 +688,101 @@ public class ExpDetailActivityFragment extends Fragment {
         if(local_exp_to_display.getDisclamier()==null) {
         layout_title_disclaimer.setVisibility(View.GONE);
         }
-        System.out.println("disclaimer is "+ local_exp_to_display.getDisclamier()+"12");
+        System.out.println("disclaimer is " + local_exp_to_display.getDisclamier() + "12");
 
         tx_include.setText(local_exp_to_display.getWhatsincluded());
-        removeEmptyField(layout_title_include, local_exp_to_display.getWhatsincluded()+"");
+        removeEmptyField(layout_title_include, local_exp_to_display.getWhatsincluded() + "");
 
         tx_insurance.setText(local_exp_to_display.getInsurance());
-        removeEmptyField(layout_title_insurance, local_exp_to_display.getInsurance()+"");
+        removeEmptyField(layout_title_insurance, local_exp_to_display.getInsurance() + "");
 
         tx_pickup.setText(local_exp_to_display.getPickup_detail());
-        removeEmptyField(layout_title_pickup, local_exp_to_display.getPickup_detail()+"");
+        removeEmptyField(layout_title_pickup, local_exp_to_display.getPickup_detail() + "");
 
         tx_refund.setText(local_exp_to_display.getRefund_policy());
-        removeEmptyField(layout_title_refund, local_exp_to_display.getRefund_policy()+"");
+        removeEmptyField(layout_title_refund, local_exp_to_display.getRefund_policy() + "");
 
         tx_tips.setText(local_exp_to_display.getTips());
-        removeEmptyField(layout_title_tips, local_exp_to_display.getTips()+"");
+        removeEmptyField(layout_title_tips, local_exp_to_display.getTips() + "");
 
         getActivity().setTitle(local_exp_to_display.getTitle());
+        System.out.println("total number " + local_exp_to_display.getRelated_experiences().size());
+
+        final ArrayList<RelatedExperience> exp_list=local_exp_to_display.getRelated_experiences();
+        System.out.println("experience list here here " + exp_list.toString());
+        if(exp_list.size()>0) {
+
+            relatedExp_title_1.setText(exp_list.get(0).getTitle());
+            relatedExp_price_1.setText((int)exp_list.get(0).getPrice() + "");
+            relatedExp_duration_1.setText(exp_list.get(0).getDuration()+"");
+            relatedExp_language_1.setText(exp_list.get(0).getLanguage());
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(0).getImage()).fitCenter().into(relatedExp_img_1);
+            related_exp_layout_2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLocalExpDetails(exp_list.get(0).getId());
+//                    System.out.println("onclick listener starts here ");
+                }
+            });
+        }else{
+            related_exp_layout_1.setVisibility(View.GONE);
+        }
+        if(exp_list.size()>1) {
+            relatedExp_title_2.setText(exp_list.get(1).getTitle());
+            relatedExp_price_2.setText((int)exp_list.get(1).getPrice() + "");
+            relatedExp_duration_3.setText(exp_list.get(1).getDuration()+"");
+            relatedExp_language_2.setText(exp_list.get(1).getLanguage());
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(1).getImage()).fitCenter().into(relatedExp_img_2);
+            related_exp_layout_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLocalExpDetails(exp_list.get(1).getId());
+//                    System.out.println("onclick listener starts here ");
+                }
+            });
+        }else{
+            related_exp_layout_2.setVisibility(View.GONE);
+        }
+        if(exp_list.size()>2) {
+            relatedExp_title_3.setText(exp_list.get(2).getTitle());
+            relatedExp_price_3.setText((int)exp_list.get(2).getPrice() + "");
+            relatedExp_duration_3.setText(exp_list.get(2).getDuration()+"");
+            relatedExp_language_3.setText(exp_list.get(2).getLanguage());
+            Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(2).getImage()).fitCenter().into(relatedExp_img_3);
+            related_exp_layout_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLocalExpDetails(exp_list.get(2).getId());
+//                    System.out.println("onclick listener starts here ");
+                }
+            });
+        }else{
+            related_exp_layout_3.setVisibility(View.GONE);
+        }
     }
 
 
 
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
     public void removeEmptyField(FrameLayout layout,String text){
         if(text.trim().equals("")){
             layout.setVisibility(View.GONE);
