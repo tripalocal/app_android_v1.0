@@ -346,7 +346,7 @@ public class CheckoutActivityFragment extends Fragment {
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });
-        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
+//        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
         bookingBtn.setEnabled(false);
         if (CheckoutActivity.position != 999) {
             GeneralHelper.showLoadingProgress(getActivity());
