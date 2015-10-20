@@ -21,7 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/booking_top_part"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/linear_border_bot">
 
                 <ImageView
                     android:layout_width="0dp"
@@ -42,7 +43,7 @@
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:paddingLeft="15dp"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:id="@+id/booking_title"
                         android:text="@string/checkout_title_placeholder"/>
                     <LinearLayout
@@ -54,17 +55,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_duration"
-                            android:text=""/>
+                            android:text=""
+                            android:textSize="12sp" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_duration_text"
-                            android:text="@string/checkout_duration_placeholder"/>
+                            android:text="@string/checkout_duration_placeholder"
+                            android:textSize="12sp" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_language"
-                            android:text="@string/checkout_english"/>
+                            android:text="@string/checkout_english"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -302,7 +306,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/checkout_price_label"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:gravity="center"
                         android:textStyle="bold"/>
                 </TableRow>
@@ -415,7 +419,6 @@
                             android:layout_gravity="end"
                             android:layout_marginLeft="15dp"
 
-                            android:textColor="@color/tripalocal_green_blue"
                             android:hint="@string/checkout_coupon_label"
                             android:layout_marginBottom="10dp" />
                     </LinearLayout>
@@ -441,75 +444,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="20dp">
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:src="@drawable/money"
-                        android:contentDescription="@string/checkout_content_desc_pay_ok"/>
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="@string/checkout_ok_tochange_text"
-                        android:gravity="center"/>
-                </TableRow>
-                <TableRow
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_width="match_parent">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/checkout_disclaim_1"
-                        />
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="12dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/checkout_disclaim_2"/>
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="12dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/checkout_disclaim_3"
-                        />
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="40dp">
-                    <LinearLayout android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/checkout_refund_text"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/booking_refund_txt"
-                            android:textColor="@color/tripalocal_green_blue"
-                            android:clickable="true"
-                            />
-                    </LinearLayout>
-                </TableRow>
+
             </TableLayout>
         </RelativeLayout>
     </ScrollView>

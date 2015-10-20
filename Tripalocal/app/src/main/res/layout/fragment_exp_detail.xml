@@ -38,7 +38,7 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:src="@drawable/profile_default"
-                    app:border_width="2dp"
+                    app:border_width="4dp"
                     app:border_color="#ffffffff"
                     android:layout_gravity="center_horizontal|bottom" />
 
@@ -94,7 +94,8 @@
                 android:text="English"
                 android:background="@color/white"
                 android:paddingBottom="10dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_marginTop="-5dp" />
 
             <RelativeLayout
 
@@ -111,13 +112,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price1"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:text="@string/from"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_money_sign"
-                    android:textSize="36sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="3dp"
                     android:text="@string/dollar_placeholder"
@@ -126,23 +127,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price2"
-                    android:textSize="36sp"
+                    android:textSize="48sp"
                     android:textStyle="bold"
-                    android:layout_marginRight="3dp"
-                    android:text=""
-                    android:layout_toRightOf="@id/exp_detail_money_sign"/>
+                    android:layout_marginRight="10dp"
+                    android:text="423"
+                    android:layout_toRightOf="@id/exp_detail_money_sign"
+                    android:layout_marginTop="-5dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_person_text"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:text="@string/exp_detail_per_person_text"
                     android:layout_toRightOf="@id/exp_detail_price2"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_person_for"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:text="@string/exp_detail_per_person_for"
                     android:layout_below="@id/exp_detail_price_person_text"
                     android:layout_toRightOf="@id/exp_detail_price2"/>
@@ -150,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_person"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:layout_marginLeft="3dp"
                     android:text=""
                     android:layout_below="@id/exp_detail_price_person_text"
@@ -159,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/exp_detail_price_hour"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:text="@string/exp_detail_per_person_hour"
                     android:layout_marginLeft="3dp"
                     android:layout_below="@id/exp_detail_price_person_text"
@@ -230,7 +232,9 @@
                     android:layout_centerHorizontal="true"
                     android:text="@string/view_more"
                     android:paddingLeft="30dp"
-                    android:paddingRight="30dp"/>
+                    android:paddingRight="30dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/home_page_color" />
             </RelativeLayout>
 
             <!-- about the host-->
@@ -319,7 +323,9 @@
                     android:layout_centerHorizontal="true"
                     android:text="@string/view_more"
                     android:paddingLeft="30dp"
-                    android:paddingRight="30dp"/>
+                    android:paddingRight="30dp"
+                    android:textColor="@color/home_page_color"
+                    android:textSize="18sp" />
             </RelativeLayout>
             <!-- reviews-->
             <LinearLayout
@@ -444,7 +450,8 @@
                     android:text="@string/exp_detail_view_all"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
-                    />
+                    android:textColor="@color/home_page_color"
+                    android:textSize="18sp" />
             </LinearLayout>
             <!--end of reviews -->
             <ImageView
@@ -556,9 +563,9 @@
         android:text="@string/exp_detail_request"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
-        android:background="@drawable/booking_btn_shape"
-        android:textColor="@color/white"
-            android:layout_weight="1" />
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:background="@color/tripalocal_green_blue" />
 
         <Button
             android:layout_width="0dp"
@@ -566,8 +573,8 @@
             android:text="@string/msg_send_msg"
             android:id="@+id/send_msg_btn"
             android:textColor="@color/tripalocal_green_blue"
-            android:background="@drawable/contact_btn_shape"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@color/white" />
     </LinearLayout>
 
 </RelativeLayout>

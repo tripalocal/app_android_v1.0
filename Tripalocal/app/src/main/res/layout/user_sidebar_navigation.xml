@@ -13,7 +13,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/nav_top_container"
-                android:background="@drawable/linear_border_bot_grey">
+                android:background="@drawable/linear_border_bot_grey"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -52,10 +55,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/nav_home_container"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:layout_marginLeft="25dp"
                             android:orientation="horizontal"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="20dp">
 
                             <ImageView
                                 android:layout_width="27dp"

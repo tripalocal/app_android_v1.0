@@ -27,7 +27,8 @@
             android:id="@+id/home_melbourne_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp"
+            android:text="Melbourne" />
     </RelativeLayout>
 
     <LinearLayout
@@ -109,7 +110,7 @@
             android:clickable="true"
             android:id="@+id/itinerary_btn"
             android:background="@drawable/linear_border_left"
-            android:layout_weight="35">
+            android:layout_weight="40">
 
             <ImageView
                 android:layout_width="118dp"
@@ -145,7 +146,7 @@
             android:id="@+id/home_sydney_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -163,7 +164,7 @@
             android:id="@+id/home_brisbane_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -180,7 +181,7 @@
             android:id="@+id/home_cairns_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -197,7 +198,7 @@
             android:id="@+id/home_gold_coast_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -214,7 +215,7 @@
             android:id="@+id/home_hobart_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -231,7 +232,7 @@
             android:id="@+id/home_adelaide_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -249,7 +250,7 @@
             android:id="@+id/home_darwin_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -281,7 +282,7 @@
             android:id="@+id/home_alicesprings_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -298,7 +299,7 @@
             android:id="@+id/home_christchurch_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -315,7 +316,7 @@
             android:id="@+id/home_queenstown_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -332,7 +333,7 @@
             android:id="@+id/home_auckland_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -349,7 +350,7 @@
             android:id="@+id/home_wellington_text"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="23sp" />
+            android:textSize="35sp" />
     </RelativeLayout>
     <!--
     <RelativeLayout

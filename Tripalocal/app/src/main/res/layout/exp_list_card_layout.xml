@@ -64,8 +64,8 @@
                 android:id="@+id/exp_list_banner_txt"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="22sp"
-                android:text="" />
+                android:textSize="40sp"
+                android:text="241" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
                 android:text="@string/exp_list_per_person" />
         </LinearLayout>
         <ImageView
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:id="@+id/exp_list_wish_image"
             android:src="@drawable/heart_ldg"
             android:layout_gravity="right"
@@ -88,11 +88,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
+        android:textSize="18sp"
         android:padding="8dp"
         android:id="@+id/exp_list_title_txt"
-        android:text=""
-        android:textStyle="bold" />
+        android:text="title"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -101,12 +103,12 @@
         >
         <TextView
             android:layout_width="0dp"
-            android:layout_height="102dp"
+            android:layout_height="70dp"
             android:id="@+id/exp_list_info_txt"
-            android:text="z"
+            android:text="dsadddsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa"
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:maxLines="4"
             android:singleLine="false"
             android:ellipsize="end"
@@ -114,13 +116,14 @@
             android:layout_weight=".6"
             android:lineSpacingExtra="3dp"
 
-            />
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="-5dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/exp_list_profile_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/profile_default"
             app:border_width="2dp"
@@ -128,19 +131,21 @@
 
     </LinearLayout>
 
-    <View style="@style/Divider"/>
+    <View style="@style/Divider"
+        android:layout_marginTop="-10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:layout_marginBottom="10dp">
         <ImageView
             android:id="@+id/exp_list_small_wish"
             android:src="@drawable/heart_sw"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"/>
         <TextView
@@ -149,42 +154,46 @@
             android:layout_height="wrap_content"
             android:text=""
             android:paddingLeft="2dp"
-            />
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/exp_list_bullet_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bullet"
             android:paddingLeft="5dp"
-            />
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/exp_list_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"/>
+            android:paddingLeft="5dp"
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/exp_list_duration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exp_list_duration"
-            android:paddingLeft="2dp"/>
+            android:paddingLeft="2dp"
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/exp_list_bullet_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bullet"
             android:paddingLeft="5dp"
-            />
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/exp_list_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"/>
+            android:paddingLeft="5dp"
+            android:textSize="12sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/data_txt"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:textSize="12sp" />
     </LinearLayout>
     <!-- end of card-->
     </LinearLayout>
