@@ -88,13 +88,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="@dimen/txt_size_general_content"
         android:padding="8dp"
         android:id="@+id/exp_list_title_txt"
         android:text="title"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:textIsSelectable="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,7 +109,7 @@
             android:text="dsadddsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa"
             android:paddingLeft="8dp"
             android:paddingRight="6dp"
-            android:textSize="12sp"
+            android:textSize="@dimen/txt_size_exp_content"
             android:maxLines="4"
             android:singleLine="false"
             android:ellipsize="end"
@@ -154,46 +155,47 @@
             android:layout_height="wrap_content"
             android:text=""
             android:paddingLeft="2dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
         <TextView
             android:id="@+id/exp_list_bullet_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bullet"
             android:paddingLeft="5dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content"
+            android:textIsSelectable="false" />
         <TextView
             android:id="@+id/exp_list_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
         <TextView
             android:id="@+id/exp_list_duration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exp_list_duration"
             android:paddingLeft="2dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
         <TextView
             android:id="@+id/exp_list_bullet_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bullet"
             android:paddingLeft="5dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
         <TextView
             android:id="@+id/exp_list_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/data_txt"
             android:visibility="gone"
-            android:textSize="12sp" />
+            android:textSize="@dimen/txt_size_exp_content" />
     </LinearLayout>
     <!-- end of card-->
     </LinearLayout>

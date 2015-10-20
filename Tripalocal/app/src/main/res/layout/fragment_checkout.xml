@@ -56,19 +56,19 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_duration"
                             android:text=""
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/txt_size_exp_content" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_duration_text"
                             android:text="@string/checkout_duration_placeholder"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/txt_size_exp_content" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_language"
                             android:text="@string/checkout_english"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/txt_size_exp_content" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/booking_date_label"
                         android:text="@string/checkout_date"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/txt_size_general_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/booking_time_label"
                         android:text="@string/checkout_time"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/txt_size_general_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal" />
                 </TableRow>
@@ -137,7 +137,8 @@
                         android:layout_weight="1"
                         android:layout_marginRight="25dp"
                         android:layout_marginLeft="25dp"
-                        android:clickable="true" />
+                        android:clickable="true"
+                        android:textSize="@dimen/txt_size_general_content" />
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -158,7 +159,9 @@
                             android:text="@string/checkout_time_placeholder"
                             android:layout_gravity="end"
                             android:layout_marginLeft="20dp"
-                            android:paddingTop="6dp"/>
+                            android:paddingTop="6dp"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/txt_size_general_content" />
                     </LinearLayout>
                 </TableRow>
                 <TableRow
@@ -199,7 +202,8 @@
                             android:text="@string/checkout_time_placeholder"
                             android:layout_gravity="end"
                             android:layout_marginLeft="20dp"
-                            android:paddingTop="6dp"/>
+                            android:paddingTop="6dp"
+                            android:textSize="@dimen/txt_size_general_content" />
                     </LinearLayout>
                 </TableRow>
                 <TableRow
@@ -218,7 +222,8 @@
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
                         android:layout_marginRight="25dp"
-                        android:layout_marginLeft="25dp" />
+                        android:layout_marginLeft="25dp"
+                        android:textSize="@dimen/txt_size_general_content" />
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -272,7 +277,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/checkout_guests_label"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/txt_size_general_content"
                         android:gravity="center"
                         android:textStyle="bold"/>
                 </TableRow>
@@ -306,7 +311,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/checkout_price_label"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/txt_size_general_content"
                         android:gravity="center"
                         android:textStyle="bold"/>
                 </TableRow>
@@ -338,31 +343,37 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/booking_price_dollar_sign"
                                 android:text="@string/dollar_placeholder"
-                                android:gravity="start"/>
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/booking_price"
                                 android:text=""
-                                android:gravity="start"/>
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/booking_price_dollar_text"
                                 android:text="@string/checkout_price_dollar_text"
-                                android:gravity="start"/>
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/booking_guest_number"
                                 android:text=""
-                                android:gravity="start"/>
+                                android:gravity="start"
+                                android:textIsSelectable="false"
+                                android:textSize="@dimen/txt_size_general_content" />
                             <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/booking_price_per_person"
                             android:text="@string/checkout_price_pp"
-                            android:gravity="start"/>
+                            android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -372,7 +383,8 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginRight="15dp"
                                 android:textColor="@color/tripalocal_green_blue"
-                                android:gravity="end"/>
+                                android:gravity="end"
+                                android:textSize="@dimen/txt_size_general_content" />
                         </LinearLayout>
                         <View style="@style/DarkDivider"
                             android:layout_marginRight="20dp"
@@ -408,7 +420,7 @@
                             android:layout_gravity="center_vertical"
                             android:id="@+id/booking_price_coupon_txt"
                             android:text="Coupon"
-                            />
+                            android:textSize="@dimen/txt_size_general_content" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -420,7 +432,8 @@
                             android:layout_marginLeft="15dp"
 
                             android:hint="@string/checkout_coupon_label"
-                            android:layout_marginBottom="10dp" />
+                            android:layout_marginBottom="10dp"
+                            android:textSize="@dimen/txt_size_general_content" />
                     </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -440,7 +453,8 @@
                                 android:text="@string/checkout_refresh"
                                 android:id="@+id/refresh_code"
                                 android:background="@color/tripalocal_green_blue"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_size_general_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </TableRow>
