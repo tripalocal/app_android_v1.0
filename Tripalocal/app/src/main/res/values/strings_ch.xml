@@ -361,7 +361,14 @@
     <string name="double_click_exit">再按一次退出本土客</string>
     <!--others-->
 
+    <!--new changes-->
 
+    <string name="txt_from"></string>
+    <string name="txt_pp">\u0020 pp\u0020</string>
+    <string name="txt_qi">起</string>
+    <string name="txt_hrs">\u0020 hrs\u0020</string>
+
+    <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>
     <string name="itinerary_seven_day_trip">7日私人精品游</string>
