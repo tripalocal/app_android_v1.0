@@ -855,8 +855,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="From "
-                               />
+                                android:text="@string/txt_from"
+                                android:id="@+id/txt_from" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -876,15 +876,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" pp"
-                                />
+                                android:text="@string/txt_pp"
+                               />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" 起"
-                                />
+                                android:text="@string/txt_qi"
+                             />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -904,8 +904,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" hrs "
-                              />
+                                android:text="@string/txt_hrs"
+                               />
 
                             <TextView
                                 android:layout_width="wrap_content"

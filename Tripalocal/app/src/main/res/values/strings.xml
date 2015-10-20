@@ -372,7 +372,17 @@
     <string name="melbourne">Melbourne</string>
     <string name="sydney">Sydney</string>
 
+    <!--new changes-->
+
+    <string name="txt_from">From\u0020</string>
+    <string name="txt_pp">\u0020 pp\u0020</string>
+    <string name="txt_qi"></string>
+    <string name="txt_hrs">\u0020 hrs\u0020</string>
+
     <!--end of itineraries string-->
+
+
+    <!--start of local exp string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

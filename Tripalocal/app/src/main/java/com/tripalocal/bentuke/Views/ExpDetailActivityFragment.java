@@ -717,10 +717,15 @@ public class ExpDetailActivityFragment extends Fragment {
             relatedExp_duration_1.setText(exp_list.get(0).getDuration()+"");
             relatedExp_language_1.setText(exp_list.get(0).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(0).getImage()).fitCenter().into(relatedExp_img_1);
-            related_exp_layout_2.setOnClickListener(new View.OnClickListener() {
+            related_exp_layout_1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getLocalExpDetails(exp_list.get(0).getId());
+                    //host exp:
+                    ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                    ExpDetailActivity.position=exp_list.get(0).getId();
+                    Intent intent = getActivity().getIntent();
+                    getActivity().finish();
+                    startActivity(intent);
 //                    System.out.println("onclick listener starts here ");
                 }
             });
@@ -730,13 +735,20 @@ public class ExpDetailActivityFragment extends Fragment {
         if(exp_list.size()>1) {
             relatedExp_title_2.setText(exp_list.get(1).getTitle());
             relatedExp_price_2.setText((int)exp_list.get(1).getPrice() + "");
-            relatedExp_duration_3.setText(exp_list.get(1).getDuration()+"");
+            relatedExp_duration_2.setText(exp_list.get(1).getDuration()+"");
             relatedExp_language_2.setText(exp_list.get(1).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(1).getImage()).fitCenter().into(relatedExp_img_2);
-            related_exp_layout_1.setOnClickListener(new View.OnClickListener() {
+            related_exp_layout_2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getLocalExpDetails(exp_list.get(1).getId());
+
+//                    getLocalExpDetails(exp_list.get(1).getId());
+                    //local exp
+                    ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                    ExpDetailActivity.position=exp_list.get(1).getId();
+                    Intent intent = getActivity().getIntent();
+                    getActivity().finish();
+                    startActivity(intent);
 //                    System.out.println("onclick listener starts here ");
                 }
             });
