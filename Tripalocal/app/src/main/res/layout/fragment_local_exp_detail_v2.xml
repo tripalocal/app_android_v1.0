@@ -25,7 +25,7 @@
                 android:layout_height="200dp"
                 android:id="@+id/exp_detail_top_part"
                 android:background="@color/white"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="match_parent"
