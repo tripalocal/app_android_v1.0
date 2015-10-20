@@ -25,13 +25,14 @@
                 android:layout_height="200dp"
                 android:id="@+id/exp_detail_top_part"
                 android:background="@color/white"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
                     android:id="@+id/exp_detail_bg"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -970,8 +971,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="From "
-                                 />
+                                android:text="@string/txt_from"
+                                android:id="@+id/" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -998,8 +999,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" 起"
-                              />
+                                android:text="@string/txt_qi"
+                                android:id="@+id/" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -1019,8 +1020,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" hrs "
-                             />
+                                android:text="@string/txt_hrs"
+                                android:id="@+id/" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -1078,14 +1079,15 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="15dp">
+                            android:layout_marginTop="15dp"
+                            android:id="@+id/">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="From "
-                                 />
+                                android:text="@string/txt_from"
+                                android:id="@+id/" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -1112,7 +1114,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" 起"
+                                android:text="@string/txt_qi"
                                 android:id="@+id/textView47" />
 
                             <TextView
@@ -1133,7 +1135,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" hrs "
+                                android:text="@string/txt_hrs"
                                 android:id="@+id/textView43" />
 
                             <TextView
