@@ -1,7 +1,9 @@
 package com.tripalocal.bentuke.Views;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,12 +48,14 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
 
     LinearLayoutManager LLM;
     ExperienceListAdapter adapter;
+    public static FragmentActivity ac;
     public ExperiencesListFragment(){
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ac=getActivity();
         if(getArguments() != null)
             city_position = getArguments().getInt(ExperienceListAdapter.INT_EXTRA);
         if(city_position != 9999){
@@ -179,4 +183,6 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_expList));
     }
+
+
 }

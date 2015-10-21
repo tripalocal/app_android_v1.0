@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -23,6 +24,7 @@ import com.facebook.login.widget.LoginButton;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
+import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
 import com.tripalocal.bentuke.helpers.FragHelper;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.Login_Result;
@@ -40,7 +42,7 @@ public class ItinerariesFragment extends Fragment {
 
     public TextView three_mel_one,three_mel_all,three_syn_one,three_syn_all,seven_one,seven_all,ten_one,ten_all;
     public static final String INT_EXTRA = "POSITION";
-
+    public LinearLayout search_to_host_layout,search_to_local_layout;
     public ItinerariesFragment() {
         // Required empty public constructor
     }
@@ -57,7 +59,14 @@ public class ItinerariesFragment extends Fragment {
         return view;
     }
 
-
+    public void displayListFrag2(int position,String exp_type) {
+        Fragment exp_list_frag = new ExperiencesListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        ExperiencesListFragment.experience_type=exp_type;
+        exp_list_frag.setArguments(args);
+        ExperiencesListFragment.ac.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
+    }
     public void initContent(View view){
         three_mel_one=(TextView)view.findViewById(R.id.three_mel_one);
         three_mel_all=(TextView)view.findViewById(R.id.three_mel_all);
@@ -67,7 +76,26 @@ public class ItinerariesFragment extends Fragment {
         seven_all=(TextView)view.findViewById(R.id.seven_all);
         ten_one=(TextView)view.findViewById(R.id.ten_one);
         ten_all=(TextView)view.findViewById(R.id.ten_all);
+        search_to_host_layout=(LinearLayout)view.findViewById(R.id.search_to_host_layout_i);
+        search_to_local_layout=(LinearLayout)view.findViewById(R.id.search_to_local_layout_i);
+        search_to_local_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
 
+            }
+        });
+        search_to_host_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0, ExperiencesListFragment.exp_private);//change here
+            }
+        });
         setActionListener(three_mel_one,651);
         setActionListener(three_mel_all,701);
         setActionListener(three_syn_one,661);

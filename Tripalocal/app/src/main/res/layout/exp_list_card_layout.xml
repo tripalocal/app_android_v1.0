@@ -31,7 +31,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@drawable/linear_border_right">
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_host_layout">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -59,7 +60,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@drawable/linear_border_right">
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_local_layout">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -86,7 +88,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_gravity="center" >
+                android:layout_gravity="center"
+                android:id="@+id/search_to_itinerary_layout">
 
                 <ImageView
                     android:layout_width="50dp"

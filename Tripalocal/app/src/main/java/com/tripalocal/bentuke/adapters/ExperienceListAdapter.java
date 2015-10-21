@@ -2,6 +2,8 @@ package com.tripalocal.bentuke.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ExpDetailActivity;
 import com.tripalocal.bentuke.Views.ExperiencesListFragment;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.Views.ItinerariesFragment;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
@@ -51,10 +54,17 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     public static final String INT_EXTRA = "POSITION";
     public static int current_city = 0;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
-
-
+    private Context mContext;
+    public void displayListFrag2(int position,String exp_type) {
+        Fragment exp_list_frag = new ExperiencesListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        ExperiencesListFragment.experience_type=exp_type;
+        exp_list_frag.setArguments(args);
+        ExperiencesListFragment.ac.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
+    }
     public ExperienceListAdapter(Context applicationContext) {
-        //mContext = applicationContext;
+        mContext = applicationContext;
 
     }
 
@@ -131,6 +141,38 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.languageTxt.setText(l);
         holder.bannerContainer.setTag(exp_to_display.getId());
         holder.titleTxt.setTag(exp_to_display.getId());
+
+        //set onclick listener for the top search items btn
+        holder.search_to_host_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0,ExperiencesListFragment.exp_private);//change here
+            }
+        });
+
+        holder.search_to_local_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                ExperienceListAdapter.current_city = 0;
+                displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
+
+            }
+        });
+
+        holder.search_to_itinerary_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
+
+                Fragment loginFragment = new ItinerariesFragment();
+                ExperiencesListFragment.ac.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            }
+        });
     }
 
 
@@ -157,6 +199,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         public LinearLayout search_icon_bar;
         public ImageView search_host_img,search_local_img,search_itineraries_img;
         public TextView search_bar_host_txt,search_bar_local_txt,search_bar_itinerary_txt;
+        public LinearLayout search_to_local_layout,search_to_host_layout,search_to_itinerary_layout;
         public ListViewHolder(final View itemView) {
             super(itemView);
             bannerImage = (ImageView) itemView.findViewById(R.id.exp_list_banner_image);
@@ -180,6 +223,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             search_bar_host_txt=(TextView)itemView.findViewById(R.id.search_bar_host_txt);
             search_bar_local_txt=(TextView)itemView.findViewById(R.id.search_bar_local_txt);
             search_bar_itinerary_txt=(TextView)itemView.findViewById(R.id.search_bar_itinerary_txt);
+            search_to_local_layout=(LinearLayout)itemView.findViewById(R.id.search_to_local_layout);
+            search_to_host_layout=(LinearLayout)itemView.findViewById(R.id.search_to_host_layout);
+            search_to_itinerary_layout=(LinearLayout)itemView.findViewById(R.id.search_to_itinerary_layout);
 
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override

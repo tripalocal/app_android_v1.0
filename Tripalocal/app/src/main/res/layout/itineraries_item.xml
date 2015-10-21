@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:background="@color/white">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -26,7 +27,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@drawable/linear_border_right">
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_host_layout_i">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -54,7 +56,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@drawable/linear_border_right">
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_local_layout_i">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -81,7 +84,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_gravity="center" >
+                android:layout_gravity="center"
+                android:id="@+id/search_to_host_layout_it">
 
                 <ImageView
                     android:layout_width="50dp"
