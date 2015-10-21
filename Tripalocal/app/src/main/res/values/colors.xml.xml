@@ -23,7 +23,7 @@
     <item name="msg_send" type="color">#c4eaea</item>
     <item name="grey" type="color">#CCCCCC</item>
     <item name="home_grey" type="color">#f7f7f7</item>
-
+    <item name="black_grey" type="color">#999999</item>
     <integer-array name="androidcolors">
         <item>@color/blue</item>
         <item>@color/purple</item>

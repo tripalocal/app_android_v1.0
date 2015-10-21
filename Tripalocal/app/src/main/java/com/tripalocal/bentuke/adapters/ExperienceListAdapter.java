@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -85,6 +86,22 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         }else{
             holder.profileImage.setVisibility(View.GONE);
         }
+        if(position==0){
+            holder.search_icon_bar.setVisibility(View.VISIBLE);
+            if(ExperiencesListFragment.experience_type.equals(ExperiencesListFragment.exp_private)){
+                holder.search_host_img.setImageResource(R.drawable.local_o);
+                holder.search_local_img.setImageResource(R.drawable.hot);
+                holder.search_bar_host_txt.setTextColor(HomeActivity.getHome_context().getResources().getColor(R.color.tripalocal_green_blue));
+            }else if(ExperiencesListFragment.experience_type.equals(ExperiencesListFragment.exp_newPro)){
+                holder.search_host_img.setImageResource(R.drawable.local);
+                holder.search_local_img.setImageResource(R.drawable.hot_o);
+                holder.search_bar_local_txt.setTextColor(HomeActivity.getHome_context().getResources().getColor(R.color.tripalocal_green_blue));
+
+            }
+        }else{
+            holder.search_icon_bar.setVisibility(View.GONE);
+
+        }
         holder.bannerTxt.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         holder.titleTxt.setText(exp_to_display.getTitle());
         holder.infoTxt.setText(exp_to_display.getDescription());
@@ -137,8 +154,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         public ImageView bannerImage;
         public FrameLayout bannerContainer;
         public TextView dataTxt;
-
-
+        public LinearLayout search_icon_bar;
+        public ImageView search_host_img,search_local_img,search_itineraries_img;
+        public TextView search_bar_host_txt,search_bar_local_txt,search_bar_itinerary_txt;
         public ListViewHolder(final View itemView) {
             super(itemView);
             bannerImage = (ImageView) itemView.findViewById(R.id.exp_list_banner_image);
@@ -155,6 +173,14 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             languageTxt = (TextView) itemView.findViewById(R.id.exp_list_language);
             bannerContainer = (FrameLayout) itemView.findViewById(R.id.banner_container);
             bannerContainer.setOnClickListener(this);
+            search_icon_bar=(LinearLayout)itemView.findViewById(R.id.search_icon_bar);
+            search_host_img=(ImageView)itemView.findViewById(R.id.search_host_img);
+            search_local_img=(ImageView)itemView.findViewById(R.id.search_local_img);
+            search_itineraries_img=(ImageView)itemView.findViewById(R.id.search_itineraries_img);
+            search_bar_host_txt=(TextView)itemView.findViewById(R.id.search_bar_host_txt);
+            search_bar_local_txt=(TextView)itemView.findViewById(R.id.search_bar_local_txt);
+            search_bar_itinerary_txt=(TextView)itemView.findViewById(R.id.search_bar_itinerary_txt);
+
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
