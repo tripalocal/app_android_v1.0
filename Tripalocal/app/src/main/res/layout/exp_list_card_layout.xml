@@ -213,7 +213,8 @@
             android:lineSpacingExtra="3dp"
 
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="-5dp" />
+            android:layout_marginTop="-5dp"
+            android:layout_marginRight="10dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -223,7 +224,8 @@
             android:layout_marginRight="20dp"
             android:src="@drawable/profile_default"
             app:border_width="2dp"
-            app:border_color="#ffffff"/>
+            app:border_color="#ffffff"
+            android:layout_marginLeft="-10dp" />
 
     </LinearLayout>
 

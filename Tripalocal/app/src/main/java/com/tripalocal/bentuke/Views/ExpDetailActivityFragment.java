@@ -488,10 +488,10 @@ public class ExpDetailActivityFragment extends Fragment {
         public void onClick(View v) {
             if(layout_to_toggle.getVisibility()==View.GONE){
                 layout_to_toggle.setVisibility(View.VISIBLE);
-                text_to_change.setText("Dismiss");
+                text_to_change.setText(HomeActivity.getHome_context().getResources().getString(R.string.hide));
             }else{
                 layout_to_toggle.setVisibility(View.GONE);
-                text_to_change.setText("View");
+                text_to_change.setText(HomeActivity.getHome_context().getResources().getString(R.string.view));
 
             }
         }
