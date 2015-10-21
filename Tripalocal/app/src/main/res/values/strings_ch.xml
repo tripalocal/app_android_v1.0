@@ -367,7 +367,8 @@
     <string name="txt_pp">\u0020 pp\u0020</string>
     <string name="txt_qi">起</string>
     <string name="txt_hrs">\u0020 hrs\u0020</string>
-
+    <string name="view">显示</string>
+    <string name="hide">隐藏</string>
     <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>
@@ -383,6 +384,7 @@
     <string name="sydney">悉尼</string>
 
     <!--end of itineraries string-->
+
 
     <string-array name="db_cities_array">
         <item>Melbourne</item>
