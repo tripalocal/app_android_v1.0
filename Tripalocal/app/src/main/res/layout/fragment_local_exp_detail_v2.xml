@@ -31,8 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
                     android:id="@+id/exp_detail_bg"
-                    android:scaleType="centerCrop"
-                    android:visibility="invisible" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:layout_width="match_parent"
