@@ -21,6 +21,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
@@ -29,20 +30,33 @@ import com.tripalocal.bentuke.helpers.FragHelper;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.Login_Result;
 import com.tripalocal.bentuke.helpers.MsgHelper;
+import com.tripalocal.bentuke.helpers.SearchRequest;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.network.LoginFBRequest;
+import com.tripalocal.bentuke.models.network.Search_Result;
 import com.umeng.analytics.MobclickAgent;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 
 public class ItinerariesFragment extends Fragment {
+    SearchRequest req_obj;
 
     public TextView three_mel_one,three_mel_all,three_syn_one,three_syn_all,seven_one,seven_all,ten_one,ten_all;
     public static final String INT_EXTRA = "POSITION";
     public LinearLayout search_to_host_layout,search_to_local_layout;
+    public static OkHttpClient ok_client;
+
     public ItinerariesFragment() {
         // Required empty public constructor
     }
@@ -133,5 +147,48 @@ public class ItinerariesFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+
+    public void displayListFrag(){
+        GeneralHelper.showLoadingProgress(getActivity());
+        String keywords = getResources().getString(R.string.tags);
+        Calendar cal = new GregorianCalendar();
+        Date today = cal.getTime();
+        cal.add(Calendar.DAY_OF_MONTH,1);
+        Date tommorow = cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        int position=0;
+        req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
+                HomeActivity.db_poi_data[position]
+                ,"0", "",ExperiencesListFragment.exp_itinerary);
+
+
+        ok_client = new OkHttpClient();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(ok_client))
+                .setEndpoint(getResources().getString(R.string.server_url))
+                .build();
+        ApiService apiService = restAdapter.create(ApiService.class);
+//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
+            @Override
+            public void success(List<Search_Result> search_results, Response response) {
+                GeneralHelper.closeLoadingProgress();
+                ExperienceListAdapter.prepareSearchResults(search_results);
+                //System.out.println("search_results = " + search_results);
+                //ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
+//                rv.getAdapter().notifyDataSetChanged();
+                //FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
+            }
+            @Override
+            public void failure(RetrofitError error) {
+                GeneralHelper.closeLoadingProgress();
+
+                //System.out.println("HomeActivityFragment.failure");
+                //System.out.println("error = [" + error + "]");
+            }
+        });
     }
 }
