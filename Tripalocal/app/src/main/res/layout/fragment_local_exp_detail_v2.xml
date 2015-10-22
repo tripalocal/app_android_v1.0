@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:id="@+id/booking_super_container">
 
     <ScrollView
@@ -27,12 +28,15 @@
                 android:background="@color/white"
                 android:visibility="visible">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:id="@+id/exp_detail_bg"
-                    android:scaleType="centerCrop" />
 
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    custom:pager_animation="Accordion"
+                    custom:auto_cycle="true"
+                    custom:indicator_visibility="visible"
+                    custom:pager_animation_span="1100"
+                    android:layout_height="190dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

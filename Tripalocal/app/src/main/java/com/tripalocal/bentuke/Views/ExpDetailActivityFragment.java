@@ -20,6 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.Services.MessageSerivice;
@@ -58,8 +62,9 @@ import static com.tripalocal.bentuke.adapters.ExperienceListAdapter.INT_EXTRA;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ExpDetailActivityFragment extends Fragment {
+public class ExpDetailActivityFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
+    private SliderLayout mDemoSlider;
 
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
     private static Experience_Detail exp_to_display;
@@ -126,11 +131,13 @@ public class ExpDetailActivityFragment extends Fragment {
         View view;
         if(ExperiencesListFragment.experience_type!=ExperiencesListFragment.exp_newPro) {
              view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
+            mDemoSlider = (SliderLayout)view.findViewById(R.id.slider);
             initialComponenets(view);
             initController();
             getExpDetails(ExpDetailActivity.position);
         }else{
             view = inflater.inflate(R.layout.fragment_local_exp_detail_v2, container, false);
+            mDemoSlider = (SliderLayout) view.findViewById(R.id.slider);
             initComponentLocal(view);
             initControllerLocal();
             getLocalExpDetails(ExpDetailActivity.position);
@@ -141,6 +148,30 @@ public class ExpDetailActivityFragment extends Fragment {
         return view;
     }
 
+    public void updateImageGallery(ArrayList<String> url_list){
+//       ArrayList<String> url_list=new ArrayList<String>();
+//        url_list.add("http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
+//        url_list.add("http://tvfiles.alphacoders.com/100/hdclearart-10.png");
+//        url_list.add("http://cdn3.nflximg.net/images/3093/2043093.jpg");
+//        url_list.add( "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
+
+        for (String name : url_list) {
+            DefaultSliderView textSliderView = new DefaultSliderView(getActivity().getApplicationContext());
+            // initialize a SliderLayout
+            textSliderView
+                    .image(BASE_URL+name)
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            mDemoSlider.addSlider(textSliderView);
+        }
+        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+//        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mDemoSlider.setDuration(10000);
+        mDemoSlider.addOnPageChangeListener(this);
+    }
 
     public void getExpDetails(int exp_id){
         GeneralHelper.showLoadingProgress(getActivity());
@@ -476,6 +507,26 @@ public class ExpDetailActivityFragment extends Fragment {
 
     }
 
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView baseSliderView) {
+
+    }
+
     private class ViewBtnListener implements View.OnClickListener{
         LinearLayout layout_to_toggle;
         TextView text_to_change;
@@ -501,8 +552,10 @@ public class ExpDetailActivityFragment extends Fragment {
         layout_schedule.setVisibility(View.GONE);
     }
      public void fillDetails(){
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
-        int point =exp_to_display.getExperience_images().size()-1;
+//        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+         updateImageGallery(exp_to_display.getExperience_images());
+
+         int point =exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
@@ -603,7 +656,9 @@ public class ExpDetailActivityFragment extends Fragment {
 
 
     public void fillLocalDetails(){
-        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+//        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+        updateImageGallery(local_exp_to_display.getExperience_images());
+
         int point =local_exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
 
