@@ -372,8 +372,11 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     HomeActivity.getHome_context().startActivity(intent);
                 } else {
-
-                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getActivity().startActivity(intent);
+//                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
             }
         });
@@ -400,7 +403,10 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                     }
 
                 }else{
-
+                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                    intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getActivity().startActivity(intent);
                     ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
 

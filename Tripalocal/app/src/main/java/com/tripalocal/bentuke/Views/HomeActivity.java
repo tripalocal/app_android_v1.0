@@ -264,6 +264,7 @@ public class HomeActivity extends AppCompatActivity {
             getExperienceMap();
         }
         GeneralHelper.getCurrencyRate();
+        identifyExtra();
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
 
@@ -557,6 +558,18 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+
+    public  boolean identifyExtra(){
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            int commnad=extras.getInt(GeneralHelper.login_fragment_extra);
+            Fragment loginFragment = new LoginFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+
+            return true;
+        }
+        return false;
+    }
 
 
 

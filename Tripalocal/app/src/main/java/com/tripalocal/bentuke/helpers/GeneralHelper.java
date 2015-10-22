@@ -56,6 +56,7 @@ public class GeneralHelper {
     private static String prefernece_property="mixpanel_property";
     private static String preference_email="email";
     public static double currency_rate=5;
+    public static String login_fragment_extra="loginExtra";
     public static String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy/MM/dd/HH/mm/ss/SSSSSS", Locale.getDefault());
