@@ -94,7 +94,6 @@
                 android:id="@+id/local_exp_container"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/host_exp_container"
                 android:orientation="horizontal">
 
                 <ImageView
