@@ -118,31 +118,48 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/itinerary_img"
-                android:src="@drawable/static_itinerary_1" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_three_day_trip"
-                android:id="@+id/textView24"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="306dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/itinerary_img"
+                    android:src="@drawable/static_itinerary_1"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_melbourne_or_sydney"
-                android:id="@+id/textView25"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="50dp"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="306dp"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_three_day_trip"
+                    android:id="@+id/textView24"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="80dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_melbourne_or_sydney"
+                    android:id="@+id/textView25"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="50dp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
         </FrameLayout>
 
@@ -288,30 +305,41 @@
             android:layout_height="match_parent" >
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="306dp"
                 android:layout_height="200dp"
                 android:id="@+id/imageView9"
-                android:src="@drawable/static_itinerary_2" />
+                android:src="@drawable/static_itinerary_2"
+                android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_seven_day_trip"
-                android:id="@+id/textView29"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="305dp"
+                android:layout_height="200dp"
+                android:background="@color/opacity_dark"
+                android:layout_gravity="center_horizontal" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_melbourne_add_sydney"
-                android:id="@+id/textView30"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="50dp"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_seven_day_trip"
+                    android:id="@+id/textView29"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="80dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_melbourne_add_sydney"
+                    android:id="@+id/textView30"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="50dp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
         </FrameLayout>
 
         <LinearLayout
@@ -427,25 +455,34 @@
                 android:id="@+id/imageView6"
                 android:src="@drawable/static_itinerary_3" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_ten_day_trip"
-                android:id="@+id/textView34"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="305dp"
+                android:layout_height="200dp"
+                android:background="@color/opacity_dark"
+                android:layout_gravity="center_horizontal" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itinerary_melbourne_add_sydney_add_goldcoast"
-                android:id="@+id/textView35"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="50dp"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_ten_day_trip"
+                    android:id="@+id/textView34"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="80dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/itinerary_melbourne_add_sydney_add_goldcoast"
+                    android:id="@+id/textView35"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginBottom="50dp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </FrameLayout>
 
         <LinearLayout
