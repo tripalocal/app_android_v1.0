@@ -123,10 +123,52 @@
             </RelativeLayout>
 
             <!-- info on the experience-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/hurry_section"
+                android:background="@color/white"
+                android:layout_below="@+id/exp_detail_price_container"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="250dp"
+                    android:background="@drawable/linear_border_top">
+
+                    <ImageView
+                        android:layout_width="100px"
+                        android:layout_height="100px"
+                        android:id="@+id/imageView7"
+                        android:src="@drawable/hourglass"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp" />
+
+                    <TextView
+                        android:layout_width="272dp"
+                        android:layout_height="43dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Hurry, more than 80% of this tour has been booked within the next 6 months "
+                        android:id="@+id/textView49"
+                        android:textSize="13sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/exp_detail_price_container"
+                android:layout_below="@id/hurry_section"
                 android:id="@+id/exp_detail_info_container"
                 android:paddingBottom="20dp"
                 android:background="@color/tripalocal_light_grey">
