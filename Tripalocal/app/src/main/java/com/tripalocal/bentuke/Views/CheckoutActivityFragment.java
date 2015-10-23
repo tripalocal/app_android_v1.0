@@ -491,9 +491,9 @@ public class CheckoutActivityFragment extends Fragment {
             ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_times);
             date_spin.setAdapter(date_adapter);
             time_spin.setAdapter(time_adapter);
-            refund.setMovementMethod(LinkMovementMethod.getInstance());
+//            refund.setMovementMethod(LinkMovementMethod.getInstance());
             String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>" + getResources().getString(R.string.checkout_refund_link) + " </a>";
-            refund.setText(Html.fromHtml(text));
+//            refund.setText(Html.fromHtml(text));
         }
     }
 

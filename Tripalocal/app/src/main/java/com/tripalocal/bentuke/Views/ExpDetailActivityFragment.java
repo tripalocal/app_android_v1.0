@@ -668,7 +668,12 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     public void fillLocalDetails(){
 //        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
         updateImageGallery(local_exp_to_display.getExperience_images());
-        exp_popularity.setText("%"+getResources().getString(R.string.hurry_text).replace("changehere",Math.round(local_exp_to_display.getExperience_popularity())+""));
+        if(local_exp_to_display.getExperience_popularity()<50) {
+            exp_popularity.setText( getResources().getString(R.string.hurry_text).replace("changehere", "%50"));
+        }else{
+            exp_popularity.setText(getResources().getString(R.string.hurry_text).replace("changehere", "%80"));
+
+        }
         int point =local_exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
 
