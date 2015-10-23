@@ -12,13 +12,22 @@ public class Local_Experience_Detail {
     private Double experience_price;
     //private String experience_dynamic_price;
     private Float[] experience_dynamic_price;
+
+    public Float getExperience_popularity() {
+        return experience_popularity;
+    }
+
+    public void setExperience_popularity(Float experience_popularity) {
+        this.experience_popularity = experience_popularity;
+    }
+
     private List <List<String>> available_date = new ArrayList<List<String>>();
     private List <ExperienceReview> experience_reviews = new ArrayList<ExperienceReview>();
     private Integer experience_rate;
     private List<AvailableOption> available_options = new ArrayList<AvailableOption>();
     private String experience_language;
     private ArrayList<RelatedExperience> related_experiences;
-
+    private Float experience_popularity;
     public ArrayList<RelatedExperience> getRelated_experiences() {
         return related_experiences;
     }
@@ -77,7 +86,7 @@ public class Local_Experience_Detail {
                                    Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description,
                                    String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images
                                 ,String service,String schedule,String disclamier,String refund_policy,String insurance,
-                                   ArrayList<RelatedExperience> related_experiences) {
+                                   ArrayList<RelatedExperience> related_experiences,Float experience_popularity) {
         this.experience_duration = experience_duration;
         this.experience_price = experience_price;
         this.experience_dynamic_price = experience_dynamic_price;
@@ -102,6 +111,7 @@ public class Local_Experience_Detail {
         this.refund_policy=refund_policy;
         this.insurance=insurance;
         this.related_experiences=related_experiences;
+        this.experience_popularity=experience_popularity;
     }
 
     public void setPickup_detail(String pickup_detail) {

@@ -155,7 +155,7 @@
                         android:layout_height="43dp"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="@string/hurry_text"
-                        android:id="@+id/textView49"
+                        android:id="@+id/exp_popularity"
                         android:textSize="13sp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"

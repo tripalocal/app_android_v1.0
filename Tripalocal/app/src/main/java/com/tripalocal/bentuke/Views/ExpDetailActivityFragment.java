@@ -121,6 +121,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             relatedExp_duration_1,relatedExp_duration_2,relatedExp_duration_3,
             relatedExp_language_1,relatedExp_language_2,relatedExp_language_3;
     LinearLayout related_exp_layout_1,related_exp_layout_2,related_exp_layout_3;
+    TextView exp_popularity;
     public ExpDetailActivityFragment() {
     }
 
@@ -228,6 +229,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                     local_exp_to_display = experience_detail;
                     fillLocalDetails();
                     request_to_book_btn.setEnabled(true);
+                    System.out.println("urgent " + local_exp_to_display.getExperience_popularity());
                 }
 
             }
@@ -359,10 +361,12 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         relatedExp_duration_3=(TextView)view.findViewById(R.id.relatedExp_duration_3);
         relatedExp_language_3=(TextView)view.findViewById(R.id.relatedExp_language_3);
         related_exp_layout_3=(LinearLayout)view.findViewById(R.id.related_exp_layout_3);
+        exp_popularity=(TextView)view.findViewById(R.id.exp_popularity);
     }
 
 
     public void initController(){
+
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -664,7 +668,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     public void fillLocalDetails(){
 //        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
         updateImageGallery(local_exp_to_display.getExperience_images());
-
+        exp_popularity.setText("%"+getResources().getString(R.string.hurry_text).replace("changehere",Math.round(local_exp_to_display.getExperience_popularity())+""));
         int point =local_exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
 
