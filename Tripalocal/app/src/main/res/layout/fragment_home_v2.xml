@@ -15,20 +15,33 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_melbourne"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_melbourne_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:text="Melbourne" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_melbourne"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_melbourne_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:text="Melbourne" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
 
     <LinearLayout
@@ -134,123 +147,214 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_sydney"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:gravity="center"
-            android:id="@+id/home_sydney_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_sydney"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="center"
+                android:id="@+id/home_sydney_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_brisbane"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_brisbane_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_brisbane"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_brisbane_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_cairns"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_cairns_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_cairns"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_cairns_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_gold_coast"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_gold_coast_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_gold_coast"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_gold_coast_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_hobart"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_hobart_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_hobart"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_hobart_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_adelaide"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_adelaide_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_adelaide"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_adelaide_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_darwin"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_darwin_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_darwin"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_darwin_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -259,98 +363,174 @@
         android:layout_marginTop="-90dp"
         android:layout_marginBottom="-90dp">
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/wechat_img"
-            android:contentDescription="@string/home_bg_city_content_desc"
-            android:src="@drawable/wechat_cn" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/wechat_img"
+                android:contentDescription="@string/home_bg_city_content_desc"
+                android:src="@drawable/wechat_cn" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_alicesprings"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_alicesprings_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_alicesprings"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_alicesprings_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_christchurch"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_christchurch_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_christchurch"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_christchurch_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
+
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_queenstown"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_queenstown_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_queenstown"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_queenstown_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_auckland"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_auckland_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_auckland"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_auckland_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="300dp">
-        <ImageView
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/home_wellington"
-            android:contentDescription="@string/home_bg_city_content_desc" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:id="@+id/home_wellington_text"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/home_wellington"
+                android:contentDescription="@string/home_bg_city_content_desc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/home_wellington_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="35sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/opacity_dark"></LinearLayout>
+        </FrameLayout>
     </RelativeLayout>
     <!--
     <RelativeLayout
