@@ -139,22 +139,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="250dp"
-                    android:background="@drawable/linear_border_top">
+                    android:background="@drawable/linear_border_top"
+                    android:layout_marginLeft="40dp">
 
                     <ImageView
-                        android:layout_width="100px"
-                        android:layout_height="100px"
+                        android:layout_width="80px"
+                        android:layout_height="80px"
                         android:id="@+id/imageView7"
                         android:src="@drawable/hourglass"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="25dp"
                         android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:layout_width="272dp"
                         android:layout_height="43dp"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Hurry, more than 80% of this tour has been booked within the next 6 months "
+                        android:text="@string/hurry_text"
                         android:id="@+id/textView49"
                         android:textSize="13sp"
                         android:layout_marginLeft="10dp"

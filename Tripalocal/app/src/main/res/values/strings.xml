@@ -384,7 +384,7 @@
 
     <string name="view">View</string>
     <string name="hide">Hide</string>
-
+    <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
     <!--start of local exp string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>

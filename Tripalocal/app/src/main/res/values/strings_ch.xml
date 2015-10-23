@@ -369,6 +369,8 @@
     <string name="txt_hrs">\u0020 hrs\u0020</string>
     <string name="view">显示</string>
     <string name="hide">隐藏</string>
+    <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
+
     <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>
