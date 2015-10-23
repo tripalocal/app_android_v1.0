@@ -60,7 +60,36 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/linear_border_bot"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/local_exp_btn"
+                android:clickable="true"
+                android:background="@drawable/linear_border_bot">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_local_exp"
+                    android:id="@+id/textView11"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="2"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:id="@+id/imageView5"
+                    android:src="@drawable/home_local_experiences"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:clickable="true"
@@ -84,34 +113,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:id="@+id/local_exp_btn"
-                android:clickable="true">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nav_local_exp"
-                    android:id="@+id/textView11"
-                    android:textSize="14sp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="2"
-                    android:gravity="center" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:id="@+id/imageView5"
-                    android:src="@drawable/home_local_experiences"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>

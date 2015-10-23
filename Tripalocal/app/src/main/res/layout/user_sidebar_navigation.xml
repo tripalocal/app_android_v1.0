@@ -91,35 +91,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/host_exp_container"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="25dp"
-                android:layout_below="@id/nav_home_container"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:src="@drawable/group"
-                    android:scaleType="fitXY"
-                />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="7dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="25dp"
-                    android:text="@string/nav_host_exp"
-                    android:id="@+id/nav_host_exp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/local_exp_container"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/host_exp_container"
                 android:orientation="horizontal">
@@ -140,6 +113,33 @@
                     android:layout_marginLeft="25dp"
                     android:text="@string/nav_local_exp"
                     android:id="@+id/nav_local_exp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/host_exp_container"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_home_container"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/group"
+                    android:scaleType="fitXY"
+                />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_host_exp"
+                    android:id="@+id/nav_host_exp" />
             </LinearLayout>
 
             <LinearLayout

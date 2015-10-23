@@ -32,35 +32,6 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:background="@drawable/linear_border_right"
-                android:id="@+id/search_to_host_layout">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/search_host_img"
-                    android:src="@drawable/local"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nav_host_exp"
-                    android:id="@+id/search_bar_host_txt"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/txt_size_search_item"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/black_grey" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:background="@drawable/linear_border_right"
                 android:id="@+id/search_to_local_layout">
 
                 <ImageView
@@ -80,6 +51,35 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="10dp"
                     android:textSize="@dimen/txt_size_search_item"
+                    android:textColor="@color/black_grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_host_layout">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/search_host_img"
+                    android:src="@drawable/local"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_host_exp"
+                    android:id="@+id/search_bar_host_txt"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/txt_size_search_item"
+                    android:layout_marginBottom="10dp"
                     android:textColor="@color/black_grey" />
             </LinearLayout>
 

@@ -299,7 +299,7 @@ public class HomeActivityFragment extends Fragment {
         Fragment exp_list_frag = new ExperiencesListFragment();
         Bundle args = new Bundle();
         args.putInt(ExperienceListAdapter.INT_EXTRA, position);
-        ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+        ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
         exp_list_frag.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home").commit();
     }
