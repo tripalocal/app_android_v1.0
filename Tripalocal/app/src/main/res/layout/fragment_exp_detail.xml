@@ -138,7 +138,8 @@
                     android:layout_marginRight="10dp"
                     android:text="423"
                     android:layout_toRightOf="@id/exp_detail_money_sign"
-                    android:layout_marginTop="-5dp" />
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginLeft="10dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
