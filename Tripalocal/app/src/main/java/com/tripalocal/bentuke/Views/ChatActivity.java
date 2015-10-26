@@ -28,6 +28,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.parse.Parse;
+import com.parse.ParseObject;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
@@ -218,6 +220,13 @@ public class ChatActivity extends AppCompatActivity {
                         chatManager=ChatManager.getInstanceFor(connection);
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
                         chat.sendMessage(text);
+                        Parse.enableLocalDatastore(getApplicationContext());
+
+                        Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
+//need to be changed here/
+                        ParseObject testObject = new ParseObject("TestObject");
+                        testObject.put("foo", "bar");
+                        testObject.saveInBackground();
                         notifAdapter();
                     } catch (Exception e) {
                         System.out.println("errors here" + e.getMessage().toString());

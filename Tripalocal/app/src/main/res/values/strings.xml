@@ -385,6 +385,11 @@
     <string name="view">View</string>
     <string name="hide">Hide</string>
     <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
+
+    <!--parse parameters-->
+    <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
+    <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
+    <!--end of parse parameters-->
     <!--start of local exp string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>

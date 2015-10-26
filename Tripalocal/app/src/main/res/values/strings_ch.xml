@@ -370,7 +370,10 @@
     <string name="view">显示</string>
     <string name="hide">隐藏</string>
     <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
-
+    <!--parse parameters-->
+    <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
+    <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
+    <!--end of parse parameters-->
     <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>

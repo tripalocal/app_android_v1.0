@@ -35,6 +35,8 @@ import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.parse.Parse;
+import com.parse.ParseObject;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
@@ -265,6 +267,10 @@ public class HomeActivity extends AppCompatActivity {
         }
         GeneralHelper.getCurrencyRate();
         identifyExtra();
+
+
+// Enable Local Datastore.
+
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
 
