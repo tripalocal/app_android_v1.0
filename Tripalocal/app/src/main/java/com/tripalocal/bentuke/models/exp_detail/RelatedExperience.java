@@ -5,8 +5,8 @@ package com.tripalocal.bentuke.models.exp_detail;
  */
 public class RelatedExperience {
     public String image,title,dollarsign,language;
-    private int duration,id;
-    private double price;
+    private int id;
+    private double price,duration;
 
     public String getImage() {
         return image;
@@ -20,7 +20,7 @@ public class RelatedExperience {
         this.id = id;
     }
 
-    public RelatedExperience(int id,String image, String title, String dollarsign, String language, int duration, double price) {
+    public RelatedExperience(int id,String image, String title, String dollarsign, String language, double duration, double price) {
         this.image = image;
         this.title = title;
         this.dollarsign = dollarsign;
@@ -59,11 +59,11 @@ public class RelatedExperience {
         this.language = language;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 

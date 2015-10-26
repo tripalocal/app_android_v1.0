@@ -128,7 +128,12 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 holder.wishTxt.setText(R.string.save_to_wishlist);
             }
         }
-        holder.durationTxt.setText(exp_to_display.getDuration().toString());
+        try {
+            holder.durationTxt.setText(Integer.parseInt(exp_to_display.getDuration().toString()));
+        }catch (Exception e){
+            holder.durationTxt.setText(exp_to_display.getDuration().toString());
+
+        }
         String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)

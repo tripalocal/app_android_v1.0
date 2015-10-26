@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Local_Experience_Detail {
 
-    private Integer experience_duration;
+    private Double experience_duration;
     private Double experience_price;
     //private String experience_dynamic_price;
     private Float[] experience_dynamic_price;
@@ -80,7 +80,7 @@ public class Local_Experience_Detail {
         this.insurance = insurance;
     }
 
-    public Local_Experience_Detail(Integer experience_duration, Double experience_price, Float[] experience_dynamic_price,
+    public Local_Experience_Detail(Double experience_duration, Double experience_price, Float[] experience_dynamic_price,
                                    List<List<String>> available_date, List<ExperienceReview> experience_reviews,
                                    Integer experience_rate, List<AvailableOption> available_options, String experience_language,
                                    Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description,
@@ -192,11 +192,11 @@ public class Local_Experience_Detail {
 
 
 
-    public Integer getExperience_duration() {
+    public Double getExperience_duration() {
         return experience_duration;
     }
 
-    public void setExperience_duration(Integer experience_duration) {
+    public void setExperience_duration(Double experience_duration) {
         this.experience_duration = experience_duration;
     }
 

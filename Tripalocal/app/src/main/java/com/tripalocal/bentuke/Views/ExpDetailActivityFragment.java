@@ -237,7 +237,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
+            System.out.println("error exp detail :"+error.getMessage().toString());
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
@@ -784,7 +784,13 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
 
             relatedExp_title_1.setText(exp_list.get(0).getTitle());
             relatedExp_price_1.setText((int)exp_list.get(0).getPrice() + "");
-            relatedExp_duration_1.setText(exp_list.get(0).getDuration()+"");
+            try{
+                relatedExp_duration_1.setText(Integer.parseInt(exp_list.get(0).getDuration()+"")+"");
+            }catch (Exception e){
+                relatedExp_duration_1.setText(exp_list.get(0).getDuration()+"");
+
+            }
+
             relatedExp_language_1.setText(exp_list.get(0).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(0).getImage()).fitCenter().into(relatedExp_img_1);
             related_exp_layout_1.setOnClickListener(new View.OnClickListener() {
@@ -805,7 +811,12 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         if(exp_list.size()>1) {
             relatedExp_title_2.setText(exp_list.get(1).getTitle());
             relatedExp_price_2.setText((int)exp_list.get(1).getPrice() + "");
-            relatedExp_duration_2.setText(exp_list.get(1).getDuration()+"");
+            try{
+                relatedExp_duration_2.setText(Integer.parseInt(exp_list.get(1).getDuration()+"")+"");
+            }catch (Exception e){
+                relatedExp_duration_2.setText(exp_list.get(1).getDuration()+"");
+
+            }
             relatedExp_language_2.setText(exp_list.get(1).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(1).getImage()).fitCenter().into(relatedExp_img_2);
             related_exp_layout_2.setOnClickListener(new View.OnClickListener() {
@@ -828,7 +839,12 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         if(exp_list.size()>2) {
             relatedExp_title_3.setText(exp_list.get(2).getTitle());
             relatedExp_price_3.setText((int)exp_list.get(2).getPrice() + "");
-            relatedExp_duration_3.setText(exp_list.get(2).getDuration()+"");
+            try{
+                relatedExp_duration_3.setText(Integer.parseInt(exp_list.get(2).getDuration()+"")+"");
+            }catch (Exception e){
+                relatedExp_duration_3.setText(exp_list.get(2).getDuration()+"");
+
+            }
             relatedExp_language_3.setText(exp_list.get(2).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(2).getImage()).fitCenter().into(relatedExp_img_3);
             related_exp_layout_3.setOnClickListener(new View.OnClickListener() {
