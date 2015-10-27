@@ -33,10 +33,14 @@ import android.widget.ImageView;
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
+import com.parse.PushService;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
@@ -61,6 +65,7 @@ import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
@@ -70,6 +75,7 @@ import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import retrofit.Callback;
@@ -270,7 +276,33 @@ public class HomeActivity extends AppCompatActivity {
 
 
 // Enable Local Datastore.
+        Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
+//need to be changed here/
+        int id=141;
+        String username="dsfasd";
+        String message="test message";
+        String alertstr=username+":"+message;
+        LinkedList<String> channels = new LinkedList<String>();
+//        channels.add("ios-141");
+//        channels.add("Mets");
+//        ParseQuery<String> query =ParseQuery.getQuery("test");
+        ParsePush push = new ParsePush();
+        push.setChannels(channels);
+        push.setMessage("ios-141");
+//        push.setQuery();
 
+//        push.setChannel("iOS-"+id);
+//        push.setChannel("ios-132");
+        try {
+            JSONObject data = new JSONObject("{\"alert\": \""+alertstr+"\",\"badge\": \"Increment\"}");
+            push.setData(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        push.sendInBackground();
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
 
