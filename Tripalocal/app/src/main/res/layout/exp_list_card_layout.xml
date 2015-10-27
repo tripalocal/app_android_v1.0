@@ -35,8 +35,8 @@
                 android:id="@+id/search_to_local_layout">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:id="@+id/search_local_img"
                     android:src="@drawable/hot"
                     android:layout_weight="1"
@@ -64,8 +64,8 @@
                 android:id="@+id/search_to_host_layout">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:id="@+id/search_host_img"
                     android:src="@drawable/local"
                     android:layout_weight="1"
@@ -92,8 +92,8 @@
                 android:id="@+id/search_to_itinerary_layout">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
                     android:id="@+id/search_itineraries_img"
                     android:src="@drawable/iti"
                     android:layout_weight="1"
