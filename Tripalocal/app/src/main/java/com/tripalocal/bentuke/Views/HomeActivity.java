@@ -278,17 +278,19 @@ public class HomeActivity extends AppCompatActivity {
 // Enable Local Datastore.
         Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
 //need to be changed here/
-        int id=141;
-        String username="dsfasd";
+        ParseInstallation.getCurrentInstallation().saveInBackground();
+        int id=677;
+        String username="Frank";
         String message="test message";
         String alertstr=username+":"+message;
-        LinkedList<String> channels = new LinkedList<String>();
+        //LinkedList<String> channels = new LinkedList<String>();
+        String channels = "iOS-142";
 //        channels.add("ios-141");
 //        channels.add("Mets");
 //        ParseQuery<String> query =ParseQuery.getQuery("test");
         ParsePush push = new ParsePush();
-        push.setChannels(channels);
-        push.setMessage("ios-141");
+        push.setChannel(channels);
+        push.setMessage("test message");
 //        push.setQuery();
 
 //        push.setChannel("iOS-"+id);
