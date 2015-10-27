@@ -374,6 +374,13 @@
     <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
     <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
     <!--end of parse parameters-->
+
+
+    <!--customer service-->
+    <string name="customer_support_name">本土君</string>
+    <!--customer service-->
+
+
     <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>
