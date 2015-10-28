@@ -30,6 +30,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
@@ -62,6 +63,8 @@ import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -220,13 +223,19 @@ public class ChatActivity extends AppCompatActivity {
                         chatManager=ChatManager.getInstanceFor(connection);
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
                         chat.sendMessage(text);
-                        Parse.enableLocalDatastore(getApplicationContext());
-
                         Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
-//need to be changed here/
-                        ParseObject testObject = new ParseObject("TestObject");
-                        testObject.put("foo", "bar");
-                        testObject.saveInBackground();
+                        String username=sender_name;
+                        String message=text;
+                        String alertstr=username+":"+message;
+                        ParsePush push = new ParsePush();
+                        push.setChannel("iOS-" + sender_id);
+                        try {
+                            JSONObject data = new JSONObject("{\"alert\": \""+alertstr+"\",\"badge\": \"Increment\"}");
+                            push.setData(data);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        push.sendInBackground();
                         notifAdapter();
                     } catch (Exception e) {
                         System.out.println("errors here" + e.getMessage().toString());

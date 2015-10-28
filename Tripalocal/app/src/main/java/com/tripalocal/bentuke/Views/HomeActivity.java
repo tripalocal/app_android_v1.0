@@ -275,34 +275,7 @@ public class HomeActivity extends AppCompatActivity {
         identifyExtra();
 
 
-// Enable Local Datastore.
-        Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
-//need to be changed here/
-        int id=141;
-        String username="dsfasd";
-        String message="test message";
-        String alertstr=username+":"+message;
-        LinkedList<String> channels = new LinkedList<String>();
-//        channels.add("ios-141");
-//        channels.add("Mets");
-//        ParseQuery<String> query =ParseQuery.getQuery("test");
-        ParsePush push = new ParsePush();
-        push.setChannels(channels);
-        push.setMessage("ios-141");
-//        push.setQuery();
 
-//        push.setChannel("iOS-"+id);
-//        push.setChannel("ios-132");
-        try {
-            JSONObject data = new JSONObject("{\"alert\": \""+alertstr+"\",\"badge\": \"Increment\"}");
-            push.setData(data);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        push.sendInBackground();
         //start service for message
 //        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
 
