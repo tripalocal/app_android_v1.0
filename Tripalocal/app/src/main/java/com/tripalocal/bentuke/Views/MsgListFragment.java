@@ -38,7 +38,9 @@ public class MsgListFragment extends Fragment {
     private List<ChatList_model> messages;
     private ChatListDataSource chatList_db_source;
     private static MessageListAdapter adapter;
-    private static boolean isInitialise=false;
+    public static boolean isInitialise=false;
+    public static final int customer_support_id=5001;
+    public  static final String customer_supprt_img="img/tripalocal_custom_service_profile.png";
     public MsgListFragment() {
         // Required empty public constructor
     }
@@ -89,9 +91,24 @@ public class MsgListFragment extends Fragment {
         try {
             chatList_db_source.open();
             lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
+            boolean check_customer_support_exists=true;
+            for(ChatList_model model : lists){
+                if(model.getSender_id().equals(""+customer_support_id)){
+//                    String text,int person,String image,String time
+                    check_customer_support_exists=false;
+                }
+            }
+            if(check_customer_support_exists){
+                System.out.println("comming here ");
+                ChatActivity.addTextToListRecorded("WelCome!", getResources().getString(R.string.customer_support_name), customer_support_id, customer_supprt_img, "2015/11/11/12/12/12/3333");
+                lists.clear();
+                lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
+                System.out.println("last olne + "+lists.get(0).getSender_img());
+
+            }
             chatList_db_source.close();
         }catch (Exception e){
-            System.out.println("exception"+e.getMessage().toString());
+            System.out.println("exception123"+e.getMessage().toString());
         }
         for(ChatList_model model :lists){
             messages.add(model);

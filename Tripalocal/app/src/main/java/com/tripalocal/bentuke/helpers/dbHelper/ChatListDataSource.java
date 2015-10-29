@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 
@@ -50,14 +51,16 @@ public class ChatListDataSource {
     }
 
     public void createNewChat(ChatList_model model){
+
         Boolean checkReuslt=checkChat(model.getSender_id().trim());
         ContentValues values=new ContentValues();
-        values.put(dbHelper.COLUMN_LAST_MSG_CONTENT,model.getLast_msg_content());
+        values.put(dbHelper.COLUMN_LAST_MSG_CONTENT, model.getLast_msg_content());
         values.put(dbHelper.COLUMN_LAST_MSG_DATE,GeneralHelper.getUTCTime(model.getLast_msg_date()));
         values.put(dbHelper.COLUMN_SENDER_ID,model.getSender_id().trim().trim());
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
         values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
+        System.out.println("get sender images: "+model.getSender_img());
 //        if(checkReuslt) {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
 //        }else {
@@ -111,10 +114,17 @@ public class ChatListDataSource {
         Map<Date,ChatList_model> map=new HashMap<Date,ChatList_model>();
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,null,null,null,null,dbHelper.COLUMN_ID+" DESC");
         cursor.moveToFirst();
+        boolean hasCservice=false;
+        ChatList_model service_model=new ChatList_model();
         while(!cursor.isAfterLast()){
             ChatList_model model=cursorToChatList(cursor);
 //            chats.add(model);
-            map.put(GeneralHelper.getDateByString(model.getLast_msg_date()),model);
+            if(model.getSender_id().equals(MsgListFragment.customer_support_id)){
+                hasCservice=true;
+                service_model=model;
+            }else{
+                map.put(GeneralHelper.getDateByString(model.getLast_msg_date()), model);
+            }
             cursor.moveToNext();
         }
         Map<Date, ChatList_model> sortedMap = new TreeMap<Date, ChatList_model>(map);
@@ -122,7 +132,12 @@ public class ChatListDataSource {
             chats.add(m);
         }
         Collections.reverse(chats);
-
+        if(hasCservice) {
+            List<ChatList_model> return_list = new ArrayList<ChatList_model>();
+            return_list.add(service_model);
+            return_list.addAll(chats);
+            return return_list;
+        }
 //        chats= (List<ChatList_model>) sortedMap.values();
         cursor.close();
         Log.i("chatList", "total chats "+chats

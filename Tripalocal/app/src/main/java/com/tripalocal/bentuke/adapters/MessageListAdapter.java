@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
+import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
@@ -65,6 +66,8 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + image).fitCenter()
                     .into(msgViewHolder.imageView);
         }
+
+        System.out.println("here images:"+BASE_URL+image);
         String sender_name=messages.get(i).getSender_name();
         String sender_id=messages.get(i).getSender_id();
         msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
@@ -116,6 +119,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             System.out.println("on click goes here");
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
             intent.putExtra(ChatActivity.COL_SENDER_ID,id);
+            System.out.println(name + "'s id is " +id);
             intent.putExtra(ChatActivity.COL_SENDER_NAME, name);
             intent.putExtra(ChatActivity.COL_SENDER_IMG, image);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -134,7 +138,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         }
         @Override
         public boolean onLongClick(View v) {
-        System.out.println("on long click listener goes here");
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
             alertDialog.setTitle(HomeActivity.getHome_context().getResources().getString(R.string.dialog_delete_conversation));

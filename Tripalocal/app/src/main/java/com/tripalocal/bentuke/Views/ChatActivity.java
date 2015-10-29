@@ -220,17 +220,17 @@ public class ChatActivity extends AppCompatActivity {
 //                    System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
-                        chatManager=ChatManager.getInstanceFor(connection);
+                        chatManager = ChatManager.getInstanceFor(connection);
                         chat = chatManager.createChat(sender_id + "@" + getResources().getString(R.string.msg_server_nick_name));
                         chat.sendMessage(text);
                         Parse.initialize(getApplicationContext(), getResources().getString(R.string.parse_key_1), getResources().getString(R.string.parse_key_2));
-                        String username=sender_name;
-                        String message=text;
-                        String alertstr=username+":"+message;
+                        String username = sender_name;
+                        String message = text;
+                        String alertstr = username + ":" + message;
                         ParsePush push = new ParsePush();
                         push.setChannel("iOS-" + sender_id);
                         try {
-                            JSONObject data = new JSONObject("{\"alert\": \""+alertstr+"\",\"badge\": \"Increment\"}");
+                            JSONObject data = new JSONObject("{\"alert\": \"" + alertstr + "\",\"badge\": \"Increment\"}");
                             push.setData(data);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -283,8 +283,48 @@ public class ChatActivity extends AppCompatActivity {
             System.out.println("exception"+e.getMessage().toString());
         }
 //        System.out.println("add text to list end");
+    }
 
 
+    public static void addTextToListRecorded(String text,String sender_name,int person,String image,String time){
+        HashMap<String,Object> map=new HashMap<String,Object>();
+        map.put("person", person);
+        map.put("text", text);
+        map.put("dateTime",time);
+        map.put("image", image);
+        chatListMap.add(map);
+        Log.i("testList ","general test "+text);
+        ArrayList<ChatMsg_model> lists=new ArrayList<ChatMsg_model>();
+        try {
+            //add to datasource
+
+            ChatMsgDataSource chatMsg_datasource=new ChatMsgDataSource(HomeActivity.getHome_context());
+            chatMsg_datasource.open();
+            System.out.println("msg date from addTextToList"+text);
+
+            chatMsg_datasource.addNewMsg(new ChatMsg_model(person+"", sender_name, text,time, ChatActivity.sender_flag,
+                    image));
+            chatMsg_datasource.close();
+
+            //add to data list
+            ChatListDataSource dataSource=new ChatListDataSource(HomeActivity.getHome_context());
+            ChatList_model model=new ChatList_model();
+            model.setSender_id(person+"");
+            model.setSender_name(sender_name);
+            model.setLast_msg_content(text);
+            model.setLast_msg_date(time);
+            model.setSender_img(image);
+            System.out.println("images added here is "+image);
+
+            dataSource.open();
+            dataSource.createNewChat(model);
+            dataSource.close();
+//            initData();
+//            System.out.println("add text finish");
+        }catch (Exception e){
+            System.out.println("exception"+e.getMessage().toString());
+        }
+//        System.out.println("add text to list end");
     }
 
     public void notifAdapter(){
