@@ -118,23 +118,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/itinerary_img"
-                    android:src="@drawable/static_itinerary_1"
-                    android:layout_gravity="center_horizontal" />
-            </LinearLayout>
+                android:layout_height="250dp"
+                android:id="@+id/itinerary_img"
+                android:src="@drawable/static_itinerary_1"
+                android:layout_gravity="center_horizontal" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="250dp"
                 android:background="@color/opacity_dark"
                 android:layout_gravity="center_horizontal">
 
@@ -147,7 +141,7 @@
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="80dp" />
+                    android:layout_marginTop="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -160,7 +154,6 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
-
         </FrameLayout>
 
         <LinearLayout
@@ -305,18 +298,17 @@
             android:layout_height="match_parent" >
 
             <ImageView
-                android:layout_width="306dp"
-                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:id="@+id/imageView9"
-                android:src="@drawable/static_itinerary_2"
-                android:layout_gravity="center_horizontal" />
+                android:src="@drawable/static_itinerary_2" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:background="@color/opacity_dark"
-                android:layout_gravity="center_horizontal" >
+                android:layout_gravity="center" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -327,7 +319,7 @@
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="80dp" />
+                    android:layout_marginTop="100dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -338,8 +330,8 @@
                     android:layout_marginBottom="50dp"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
-            </LinearLayout>
 
+            </LinearLayout>
         </FrameLayout>
 
         <LinearLayout
@@ -451,14 +443,14 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:id="@+id/imageView6"
                 android:src="@drawable/static_itinerary_3" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:background="@color/opacity_dark"
                 android:layout_gravity="center_horizontal" >
 
