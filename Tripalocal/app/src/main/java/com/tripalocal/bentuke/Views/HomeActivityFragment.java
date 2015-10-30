@@ -73,6 +73,8 @@ public class HomeActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ExperienceListAdapter.current_city = 0;
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                displayListFrag2(0,ExperiencesListFragment.exp_private);//change here
                 displayListFrag2(0);
                 DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawers();
