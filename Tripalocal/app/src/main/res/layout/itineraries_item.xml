@@ -124,7 +124,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="306dp"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:id="@+id/itinerary_img"
                     android:src="@drawable/static_itinerary_1"
@@ -133,7 +133,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="306dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/opacity_dark"
                 android:layout_gravity="center_horizontal">
@@ -313,7 +313,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="305dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/opacity_dark"
                 android:layout_gravity="center_horizontal" >
@@ -450,14 +450,14 @@
             android:layout_height="match_parent" >
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:id="@+id/imageView6"
                 android:src="@drawable/static_itinerary_3" />
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="305dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@color/opacity_dark"
                 android:layout_gravity="center_horizontal" >
