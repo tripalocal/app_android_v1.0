@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fontFamily="light">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_top_container"
+                android:background="@drawable/linear_border_bot_grey"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/nav_drawer_host_profile_image"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/profile_default"
+                    android:layout_gravity="center"
+                    app:border_width="2dp"
+                    app:border_color="@color/white"
+                   />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nav_drawer_host_name"
+                    android:layout_below="@id/nav_drawer_host_profile_image"
+                    android:text="@string/myprofile_placeholder_host_name"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linear_border_bot_top_white"
+                    android:layout_alignTop="@+id/nav_drawer_host_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="40dp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/nav_home_container"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="25dp"
+                            android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+
+                            <ImageView
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:src="@drawable/tripalocal"
+                                android:scaleType="fitXY" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="7dp"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="25dp"
+                                android:text="@string/navigation_home"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/nav_top_container"
+            android:id="@+id/menu_item_1"
+            android:background="@drawable/linear_border_bot_grey">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/local_exp_container"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/location"
+                    android:scaleType="fitXY"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_local_exp"
+                    android:id="@+id/nav_local_exp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/host_exp_container"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_home_container"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/group"
+                    android:scaleType="fitXY"
+                />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_host_exp"
+                    android:id="@+id/nav_host_exp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/itineraries_container"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/local_exp_container"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/path"
+                    android:scaleType="fitXY"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_itineraries"
+                    android:id="@+id/nav_itineraries" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nav_my_trips_container"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_below="@id/itineraries_container"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:src="@drawable/calendar"
+                        android:scaleType="fitXY"
+                      />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="7dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="25dp"
+                        android:text="@string/navigation_mytrips"/>
+                </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nav_wishlist_container"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_below="@id/nav_my_trips_container"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:src="@drawable/heart_lg"
+                        android:scaleType="fitXY"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="7dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="25dp"
+                        android:text="@string/navigation_wishlist"/>
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_msg_list_container"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_wishlist_container"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:src="@drawable/message"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp"
+                        android:id="@+id/imageView8" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/notificaiotn_red_icon"
+                        android:src="@drawable/red_offline_icon"
+                        android:layout_gravity="left|top"
+                        android:layout_alignTop="@+id/nav_msg_list_container"
+                        android:layout_alignLeft="@+id/nav_msg_list_container"
+                        android:layout_alignStart="@+id/nav_msg_list_container" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/navigation_messages"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nav_my_profile_container"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_below="@id/nav_msg_list_container"
+                    android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+                    <ImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:src="@drawable/myprofile"
+                        android:scaleType="fitXY"
+                      />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="7dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="25dp"
+                        android:text="@string/navigation_myprofile"/>
+                </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nav_my_account_container"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/nav_my_profile_container"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/setting"
+                    android:scaleType="fitXY"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="7dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="25dp"
+                    android:text="@string/nav_my_account"/>
+            </LinearLayout>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_tos_txt"
+            android:clickable="true"
+            android:layout_below="@+id/menu_item_1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_privacy_txt"
+            android:layout_below="@id/nav_tos_txt"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_about_us_txt"
+            android:layout_below="@id/nav_privacy_txt"
+            android:clickable="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="35dp"
+            android:textStyle="bold"
+            android:id="@+id/nav_logout_text"
+            android:layout_below="@id/nav_about_us_txt"
+            android:clickable="true"
+            android:textColor="@color/tripalocal_green_blue"/>
+
+    </RelativeLayout>
+</ScrollView>

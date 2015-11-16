@@ -1,0 +1,81 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tripalocal.bentuke.Views.BlankFragment"
+    android:id="@+id/msg_send_card"
+    android:addStatesFromChildren="false">
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/msg_send_card"-->
+        <!-->-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_detail_bg"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_horizontal|bottom" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="16dp"
+                android:weightSum="1"
+                android:background="@drawable/msg_send_shape"
+                android:layout_marginRight="-10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="fgdsgdsddddddgdgdggdgsgsdgsgdgsdggsdggsdgsgdgsdggsdggsdgsgdgsdggsdggsdgsgdgsdggsdggsdgsgdgsdggsdggsdgsgdgsdggsdggsdgsgdgsdggsdggsdggdg"
+                    android:id="@+id/msg_content_send"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="0dp" />
+
+                <TextView
+                    android:layout_width="142dp"
+                    android:layout_height="0dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/msg_mins_to_now"
+                    android:id="@+id/msg_time_send"
+                    android:layout_weight="0.47"
+                    android:layout_gravity="bottom"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/msg_image_send"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:src="@drawable/profile_default"
+                app:border_width="2dp"
+                app:border_color="#ffffffff"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="150dp" />
+
+        </FrameLayout>
+    <!--</android.support.v7.widget.CardView>-->
+</RelativeLayout>

@@ -1,0 +1,301 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:fontFamily="light"
+    card_view:cardElevation="0dp"
+    card_view:cardMaxElevation="0dp"
+    card_view:contentPaddingLeft="-3dp"
+    card_view:contentPaddingRight="-3dp"
+    card_view:contentPaddingTop="-3dp"
+    card_view:contentPaddingBottom="-3dp"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:id="@+id/search_icon_bar">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_local_layout">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:id="@+id/search_local_img"
+                    android:src="@drawable/hot"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_local_exp"
+                    android:id="@+id/search_bar_local_txt"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="@dimen/txt_size_search_item"
+                    android:textColor="@color/black_grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/linear_border_right"
+                android:id="@+id/search_to_host_layout">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:id="@+id/search_host_img"
+                    android:src="@drawable/local"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_host_exp"
+                    android:id="@+id/search_bar_host_txt"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/txt_size_search_item"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/black_grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:id="@+id/search_to_itinerary_layout">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:id="@+id/search_itineraries_img"
+                    android:src="@drawable/iti"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_itineraries"
+                    android:id="@+id/search_bar_itinerary_txt"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="@dimen/txt_size_search_item"
+                    android:textColor="@color/black_grey" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/banner_container"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:id="@+id/exp_list_banner_image"
+            android:background="@color/background_floating_material_dark" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@color/opacity_dark">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_from"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="@string/from" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_dollar"
+                android:paddingLeft="2dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:text="@string/dollar_placeholder"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:text="241" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exp_list_banner_txt_per_person"
+                android:paddingLeft="2dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/exp_list_per_person" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:id="@+id/exp_list_wish_image"
+            android:src="@drawable/heart_ldg"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"/>
+    </FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_size_general_content"
+        android:padding="8dp"
+        android:id="@+id/exp_list_title_txt"
+        android:text="title"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:textIsSelectable="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:id="@+id/exp_list_info_txt"
+            android:text="dsadddsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa"
+            android:paddingLeft="8dp"
+            android:paddingRight="6dp"
+            android:textSize="@dimen/txt_size_exp_content"
+            android:maxLines="4"
+            android:singleLine="false"
+            android:ellipsize="end"
+            android:layout_gravity="left"
+            android:layout_weight=".6"
+            android:lineSpacingExtra="3dp"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginRight="10dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/exp_list_profile_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/profile_default"
+            app:border_width="2dp"
+            app:border_color="#ffffff"
+            android:layout_marginLeft="-10dp" />
+
+    </LinearLayout>
+
+    <View style="@style/Divider"
+        android:layout_marginTop="-10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:id="@+id/exp_list_small_wish"
+            android:src="@drawable/heart_sw"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:id="@+id/exp_list_wish_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingLeft="2dp"
+            android:textSize="@dimen/txt_size_exp_content" />
+        <TextView
+            android:id="@+id/exp_list_bullet_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bullet"
+            android:paddingLeft="5dp"
+            android:textSize="@dimen/txt_size_exp_content"
+            android:textIsSelectable="false" />
+        <TextView
+            android:id="@+id/exp_list_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:textSize="@dimen/txt_size_exp_content" />
+        <TextView
+            android:id="@+id/exp_list_duration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exp_list_duration"
+            android:paddingLeft="2dp"
+            android:textSize="@dimen/txt_size_exp_content" />
+        <TextView
+            android:id="@+id/exp_list_bullet_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bullet"
+            android:paddingLeft="5dp"
+            android:textSize="@dimen/txt_size_exp_content" />
+        <TextView
+            android:id="@+id/exp_list_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:textSize="@dimen/txt_size_exp_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/data_txt"
+            android:visibility="gone"
+            android:textSize="@dimen/txt_size_exp_content" />
+    </LinearLayout>
+
+        <!-- end of card-->
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

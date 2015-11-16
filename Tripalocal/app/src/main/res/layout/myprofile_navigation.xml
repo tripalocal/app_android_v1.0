@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking_super_container">
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffe5e5e5"
+        android:fontFamily="light">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_drawer_host_profile_image"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/profile_default"
+            android:layout_gravity="center"
+            app:border_width="2dp"
+            app:border_color="#ffffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_drawer_host_name"
+            android:layout_below="@id/nav_drawer_host_profile_image"
+            android:text="@string/myprofile_placeholder_host_name"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:id="@+id/nav_drawer_phone_img"
+            android:layout_below="@id/nav_drawer_host_name"
+            android:src="@drawable/phone"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_drawer_how_can_host_contact"
+            android:layout_below="@+id/nav_drawer_phone_img"
+            android:text="@string/myprofile_how_to_contact"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_drawer_local_no"
+            android:layout_below="@+id/nav_drawer_how_can_host_contact"
+            android:hint="@string/myprofile_local_number"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textColorHint="@color/tripalocal_hint"
+            android:textCursorDrawable="@null"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textSize="14sp"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_drawer_discalimer"
+            android:layout_below="@+id/nav_drawer_local_no"
+            android:text="@string/myprofile_number_explanation"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textSize="12sp"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</ScrollView>
+
+<Button
+android:id="@+id/my_profile_save_btn"
+android:text="@string/save_profile_btn"
+android:layout_alignParentBottom="true"
+android:layout_height="wrap_content"
+android:layout_width="match_parent"
+android:background="@drawable/booking_btn_shape"
+android:textColor="@color/white"/>
+
+    </RelativeLayout>

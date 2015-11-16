@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_trip_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/my_trip_tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:stretchColumns="*"
+        android:shrinkColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:id="@+id/my_trip_tableRow_images"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/my_trip_exp_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:contentDescription="@string/experience_image"
+                    android:scaleType="fitXY"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/my_trip_profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_gravity="bottom|center"
+                    android:src="@drawable/profile_default"
+                    app:border_width="4dp"
+                    app:border_color="@color/white"/>
+            </FrameLayout>
+         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:id="@+id/my_trip_tableRow_status">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/my_trip_booking_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"/>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:id="@+id/my_trip_tableRow_datetimeIcons">
+
+            <ImageView
+                android:id="@+id/my_trip_icon_date"
+                android:layout_width="0dip"
+                android:src="@drawable/calendar"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/my_trip_icon_time"
+                android:layout_width="0dip"
+                android:src="@drawable/time"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/my_trip_icon_group"
+                android:layout_width="0dip"
+                android:src="@drawable/group"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:id="@+id/my_trip_tableRow_datetime">
+
+            <TextView
+                android:id="@+id/my_trip_booking_date"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/my_trip_booking_time"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/my_trip_guest_number"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:id="@+id/my_trip_tableRow_exp_title">
+
+            <TextView
+                android:id="@+id/my_trip_exp_title"
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/my_trip_tableRow_host_name">
+
+            <TextView
+                android:id="@+id/my_trip_with_host"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/with"
+                android:paddingEnd="2dp"
+                android:paddingRight="2dp"
+                android:layout_weight="0.5"/>
+            <TextView
+                android:id="@+id/my_trip_host_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_weight="0.5"/>
+        </TableRow>
+
+        <TableRow
+        android:layout_width="match_parent"
+        android:id="@+id/my_trip_tableRow_host_phone">
+
+        <TextView
+            android:id="@+id/my_trip_host_phone_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:id="@+id/my_trip_tableRow_call">
+
+        <Button
+            android:id="@+id/my_trip_call_button"
+            android:text="@string/my_trip_call"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/my_trip_call_button_shape"
+            android:textColor="@color/tripalocal_green_blue"/>
+
+        <Button
+            android:id="@+id/my_trip_message_button"
+            android:text="@string/msg_send_msg"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/my_trip_message_button_shape"
+            android:textColor="@color/tripalocal_light_grey"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:id="@+id/my_trip_tableRow_meetup_title">
+
+        <TextView
+            android:text="@string/my_trip_meetup_title"
+            android:layout_marginTop="15dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:id="@+id/my_trip_tableRow_meetup_instruction">
+
+        <TextView
+            android:id="@+id/my_trip_meetup_instruction"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp"
+            android:layout_weight="1"/>
+    </TableRow>
+    </TableLayout>
+</ScrollView>

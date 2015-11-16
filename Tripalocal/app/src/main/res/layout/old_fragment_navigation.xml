@@ -1,0 +1,189 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+<FrameLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fontFamily="light"
+    android:background="#ffe5e5e5">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tripalocal.bentuke.Views.NavigationFragment"
+    android:background="@color/button_material_light">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nav_profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/profile_default"
+        app:border_width="2dp"
+        app:border_color="#ffffffff"
+        android:layout_marginBottom="30dp"
+        />
+    <View style="@style/Divider"
+        android:id="@+id/profile_divider_1"
+        />
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+        android:layout_below="@+id/nav_profile_image"
+        android:id="@+id/profile_middle_sect"
+    android:background="@color/white">
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:id="@+id/profile_group"
+        android:src="@drawable/group"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        />
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:id="@+id/profile_heart"
+            android:src="@drawable/heart_lr"
+            android:scaleType="fitXY"
+            android:layout_toRightOf="@+id/profile_group"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            />
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:id="@+id/profile_settings"
+            android:src="@drawable/time"
+            android:layout_toRightOf="@+id/profile_heart"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            />
+
+        <View style="@style/Divider"
+            android:id="@+id/profile_divider_2"
+            android:layout_below="@+id/profile_settings"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_how_can_host_contact"
+        android:layout_below="@+id/profile_middle_sect"
+        android:text="How can hosts contact you?"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_horizontal"
+        android:textSize="14sp"
+        android:padding="15dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_local_no"
+        android:layout_below="@+id/profile_how_can_host_contact"
+        android:text="Local Mobile Number"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+    <View style="@style/Divider"
+        android:id="@+id/profile_divider_3"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_below="@+id/profile_local_no"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_roaming_no"
+        android:layout_below="@+id/profile_divider_3"
+        android:text="Roaming Mobile Number"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_where_are_u_staying"
+        android:layout_below="@+id/profile_roaming_no"
+        android:text="Where are you staying?"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_horizontal"
+        android:textSize="14sp"
+        android:padding="15dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_Address_line_1"
+        android:layout_below="@+id/profile_where_are_u_staying"
+        android:text="Address Line 1"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+    <View style="@style/Divider"
+        android:id="@+id/profile_divider_4"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_below="@+id/profile_Address_line_1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_Address_line_2"
+        android:layout_below="@+id/profile_divider_4"
+        android:text="Address line 2"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+    <View style="@style/Divider"
+        android:id="@+id/profile_divider_5"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_below="@+id/profile_Address_line_2"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_Address_suburb"
+        android:layout_below="@+id/profile_divider_5"
+        android:text="Suburb"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+    <View style="@style/Divider"
+        android:id="@+id/profile_divider_6"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_below="@+id/profile_Address_suburb"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_Address_postcode"
+        android:layout_below="@+id/profile_Address_suburb"
+        android:text="Postcode"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"/>
+</RelativeLayout>
+    </FrameLayout>
+    </ScrollView>

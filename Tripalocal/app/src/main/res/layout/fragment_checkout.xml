@@ -1,0 +1,474 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/booking_super_container">
+
+    <ScrollView
+        android:id="@+id/my_trip_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="com.tripalocal.bentuke.Views.CheckoutActivityFragment"
+            android:background="@color/tripalocal_light_grey"
+            android:fontFamily="light"
+            android:layout_marginBottom="60dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/booking_top_part"
+                android:orientation="horizontal"
+                android:background="@drawable/linear_border_bot">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="85dp"
+                    android:layout_weight="0.4"
+                    android:id="@+id/booking_thumbnail"
+                    />
+                <!-- adde xpenses and info on saved lang duration -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="85dp"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical"
+                    android:background="@drawable/my_trip_status_cancelled_shape">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="15dp"
+                        android:textSize="12sp"
+                        android:id="@+id/booking_title"
+                        android:text="@string/checkout_title_placeholder"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:gravity="bottom">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_duration"
+                            android:text=""
+                            android:textSize="@dimen/txt_size_exp_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_duration_text"
+                            android:text="@string/checkout_duration_placeholder"
+                            android:textSize="@dimen/txt_size_exp_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_language"
+                            android:text="@string/checkout_english"
+                            android:textSize="@dimen/txt_size_exp_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/booking_top_part"
+                android:layout_marginTop="20dp"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+
+                <TableRow
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/calendar"
+                        android:id="@+id/booking_date_image"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:contentDescription="@string/checkout_date_content_desc" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/time"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/checkout_time_content_desc" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/booking_date_label"
+                        android:text="@string/checkout_date"
+                        android:textSize="@dimen/txt_size_general_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/booking_time_label"
+                        android:text="@string/checkout_time"
+                        android:textSize="@dimen/txt_size_general_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    android:id="@+id/booking_row_3"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/booking_date_txt1"
+                        android:background="@color/tripalocal_instance_book"
+                        android:text="@string/checkout_date_placeholder"
+                        android:padding="5dp"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:clickable="true"
+                        android:textSize="@dimen/txt_size_general_content" />
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:id="@+id/checkout_time_1_container"
+                        android:background="@color/tripalocal_instance_book"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:src="@drawable/instant_booking"
+                            android:layout_marginLeft="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_time_txt1"
+                            android:text="@string/checkout_time_placeholder"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="20dp"
+                            android:paddingTop="6dp"
+                            android:textIsSelectable="false"
+                            android:textSize="@dimen/txt_size_general_content" />
+                    </LinearLayout>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:id="@+id/booking_row_4"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/booking_date_txt2"
+                        android:text="@string/checkout_date_placeholder"
+                        android:background="@color/white"
+                        android:padding="5dp"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp" />
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:id="@+id/checkout_time_2_container"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:src="@drawable/instant_booking"
+                            android:layout_marginLeft="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_time_txt2"
+                            android:text="@string/checkout_time_placeholder"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="20dp"
+                            android:paddingTop="6dp"
+                            android:textSize="@dimen/txt_size_general_content" />
+                    </LinearLayout>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:id="@+id/booking_row_5"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/booking_date_txt3"
+                        android:text="@string/checkout_date_placeholder"
+                        android:background="@color/white"
+                        android:padding="5dp"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:textSize="@dimen/txt_size_general_content" />
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkout_time_3_container"
+                        android:layout_width="0dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:src="@drawable/instant_booking"
+                            android:layout_marginLeft="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_time_txt3"
+                            android:text="@string/checkout_time_placeholder"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="20dp"
+                            android:paddingTop="6dp"/>
+                    </LinearLayout>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="25dp">
+                    <Spinner
+                        android:id="@+id/booking_Select_Date_spinner"
+                        android:text="@string/checkout_select_date_label"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="0dp"
+                        android:popupBackground="@color/tripalocal_light_grey"
+                        android:layout_weight="1">
+                    </Spinner>
+
+                    <Spinner android:id="@+id/booking_Select_Time_spinner"
+                        android:text="@string/checkout_select_time_label"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="25dp">
+                    <TextView
+                        android:id="@+id/booking_guests_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/checkout_guests_label"
+                        android:textSize="@dimen/txt_size_general_content"
+                        android:gravity="center"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp">
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"/>
+                    <NumberPicker
+                        android:id="@+id/numberPicker1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="0.3"
+                        />
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp">
+                    <TextView
+                        android:id="@+id/booking_price_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/checkout_price_label"
+                        android:textSize="@dimen/txt_size_general_content"
+                        android:gravity="center"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_price_dollar_sign"
+                                android:text="@string/dollar_placeholder"
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_price"
+                                android:text=""
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_price_dollar_text"
+                                android:text="@string/checkout_price_dollar_text"
+                                android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/booking_guest_number"
+                                android:text=""
+                                android:gravity="start"
+                                android:textIsSelectable="false"
+                                android:textSize="@dimen/txt_size_general_content" />
+                            <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/booking_price_per_person"
+                            android:text="@string/checkout_price_pp"
+                            android:gravity="start"
+                                android:textSize="@dimen/txt_size_general_content" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/booking_price_total_amt_txt"
+                                android:text="@string/checkout_amount_placeholder"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:textColor="@color/tripalocal_green_blue"
+                                android:gravity="end"
+                                android:textSize="@dimen/txt_size_general_content" />
+                        </LinearLayout>
+                        <View style="@style/DarkDivider"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="15dp"
+                            android:id="@+id/booking_divider_1"
+                            />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/booking_price_coupon_container"
+                    android:background="@color/white"
+                    android:layout_marginBottom="40dp">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="30dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.7"
+                            android:layout_gravity="center_vertical"
+                            android:id="@+id/booking_price_coupon_txt"
+                            android:text="Coupon"
+                            android:textSize="@dimen/txt_size_general_content" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.8"
+                            android:id="@+id/booking_price_coupon_edit"
+                            android:gravity="center"
+                            android:layout_gravity="end"
+                            android:layout_marginLeft="15dp"
+
+                            android:hint="@string/checkout_coupon_label"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="@dimen/txt_size_general_content" />
+                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="25dp">
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.7"/>
+                            <Button
+                                android:layout_width="0dp"
+                                android:layout_height="31dp"
+                                android:layout_weight="0.6"
+                                android:layout_gravity="right"
+                                android:text="@string/checkout_refresh"
+                                android:id="@+id/refresh_code"
+                                android:background="@color/tripalocal_green_blue"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/txt_size_general_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/booking_bottom_Btn"
+        android:text="@string/checkout_proceed_to_payment"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/booking_btn_shape"
+        android:textColor="@color/white"/>
+</RelativeLayout>
