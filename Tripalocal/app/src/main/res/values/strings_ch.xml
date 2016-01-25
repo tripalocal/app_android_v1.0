@@ -293,13 +293,13 @@
     <string name="exp_local_highlights">行程亮点</string>
     <string name="exp_local_description">行程描述</string>
     <string name="exp_local_schedule">行程安排</string>
-    <string name="exp_local_tips">提心提示</string>
+    <string name="exp_local_tips">温馨提示</string>
     <string name="exp_local_whatincluded">票价包括</string>
     <string name="exp_local_pickup">接送详情</string>
     <string name="exp_local_disclaimer">免责声明</string>
     <string name="exp_local_refund">退款协议</string>
     <string name="exp_local_insurance">保险</string>
-    <string name="exp_local_alsobought">你可能看兴趣的旅行</string>
+    <string name="exp_local_alsobought">你可能感兴趣的旅行</string>
     <!--end local exp strings-->
 
     <!--start message string-->
@@ -357,13 +357,13 @@
 
     <!--new changes-->
     <string name="txt_from"></string>
-    <string name="txt_pp">\u0020pp</string>
+    <string name="txt_pp">\u0020每人</string>
     <string name="txt_qi">起</string>
-    <string name="txt_hrs">\u0020hrs</string>
+    <string name="txt_hrs">\u0020小时</string>
 	<string name="txt_dot">\u0020\u00B7\u0020</string>
     <string name="view">显示</string>
     <string name="hide">隐藏</string>
-    <string name="hurry_text">Hurry, more than % of this tour has been booked within the next 6 months </string>
+    <string name="hurry_text">赶紧, 6个月内超过 %的位置已经被预订了哦</string>
     <!--parse parameters-->
     <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
     <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
@@ -421,5 +421,5 @@
     </string-array>
 
     <!--custom itinerary-->
-    <string name="custom_itinerary_title">Custom Itinerary</string>
+    <string name="custom_itinerary_title">私人订制</string>
 </resources>
