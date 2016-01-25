@@ -29,7 +29,7 @@ public class NotificationHelper {
         mBuilder.setTicker(msg_detail);//notification msg on the top
         mBuilder.setSmallIcon(R.drawable.msg_notification_icon);
         mBuilder.setAutoCancel(true);//important here, when you start a notificaiotn from
-//        the service, it will not auto cancel, you must add this
+        //the service, it will not auto cancel, you must add this
         Intent intent=new Intent(context, ChatActivity.class);
         intent.putExtra(ChatActivity.COL_NOTIFICATION_ID,id);
         intent.putExtra(ChatActivity.COL_SENDER_ID,id);
@@ -39,20 +39,19 @@ public class NotificationHelper {
         stackBuilder.addParentStack(ChatActivity.class);
         stackBuilder.addNextIntent(intent);
         PendingIntent resultPendingIntent=stackBuilder.getPendingIntent(
-                Integer.parseInt(id),PendingIntent.FLAG_ONE_SHOT
+            Integer.parseInt(id),PendingIntent.FLAG_ONE_SHOT
         );
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager myNotificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-//        ChatActivity.sender_id=title;
-//        ChatActivity.sender_name=name;
-//        ChatActivity.sender_img=image;
+        //ChatActivity.sender_id=title;
+        //ChatActivity.sender_name=name;
+        //ChatActivity.sender_img=image;
         myNotificationManager.notify(Integer.parseInt(id), mBuilder.build());
-
     }
 
     public static void addBadge(){
         ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount++);
-        System.out.println("badges count " + badgeCount);
+        ////System.out.println("badges count " + badgeCount);
         haveNotifcation=true;
     }
 
@@ -62,7 +61,5 @@ public class NotificationHelper {
             ShortcutBadger.with(HomeActivity.getHome_context()).count(0);
             haveNotifcation = false;
         }
-
     }
-
 }

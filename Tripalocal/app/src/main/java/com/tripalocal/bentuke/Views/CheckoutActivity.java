@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tripalocal.bentuke.Services.MessageSerivice;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
@@ -18,7 +19,7 @@ import static com.tripalocal.bentuke.adapters.ExperienceListAdapter.INT_EXTRA;
 
 public class CheckoutActivity extends AppCompatActivity {
 
-    public static Experience_Detail experience_to_book;
+    public static AbstractExperience experience_to_book;
     public static int position = 999;
     public static String guest="";
     public static String date="";

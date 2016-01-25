@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Created by naveen on 5/5/2015.
  */
-public class Experience_Detail{
+public class Experience_Detail extends AbstractExperience{
 
     private Boolean included_ticket;
-    private Integer experience_duration;
+    private Double experience_duration;
     private Double experience_price;
     private String included_ticket_detail;
     //private String experience_dynamic_price;
@@ -38,7 +38,7 @@ public class Experience_Detail{
     private String host_id;
 
     public ArrayList<String> getExperience_images() {
-        return experience_images;
+        return (experience_images!=null)?experience_images:(new ArrayList<String>());
     }
 
     public void setExperience_images(ArrayList<String> experience_images) {
@@ -48,34 +48,31 @@ public class Experience_Detail{
     private ArrayList<String> experience_images;
 
     public String getHost_id() {
-        return host_id;
+        return (host_id!=null)?host_id:"";
     }
 
     public void setHost_id(String host_id) {
         this.host_id = host_id;
     }
 
-
-
-
     public Boolean isIncludedTicket() {
-        return included_ticket;
+        return (included_ticket!=null)?included_ticket:false;
     }
 
     public void setIncludedTicket(Boolean includedTicket) {
         this.included_ticket = includedTicket;
     }
 
-    public Integer getExperience_duration() {
-        return experience_duration;
+    public Double getDuration() {
+        return (experience_duration!=null)?experience_duration:0.0;
     }
 
-    public void setExperience_duration(Integer experience_duration) {
+    public void setDuration(Double experience_duration) {
         this.experience_duration = experience_duration;
     }
 
-    public Double getExperience_price() {
-        return experience_price;
+    public Double getPrice() {
+        return (experience_price != null)?experience_price:0.0;
     }
 
     public void setExperience_price(Double experience_price) {
@@ -83,7 +80,7 @@ public class Experience_Detail{
     }
 
     public String getIncluded_ticket_detail() {
-        return included_ticket_detail;
+        return (included_ticket_detail != null)?included_ticket_detail:"";
     }
 
     public void setIncluded_ticket_detail(String included_ticket_detail) {
@@ -91,7 +88,7 @@ public class Experience_Detail{
     }
 
     public Float[] getExperience_dynamic_price() {
-        return experience_dynamic_price;
+        return (experience_dynamic_price!=null)?experience_dynamic_price:(new Float[1]);
     }
 
     public void setExperience_dynamic_price(Float[] experience_dynamic_price) {
@@ -99,7 +96,7 @@ public class Experience_Detail{
     }
 
     public String getHost_bio() {
-        return host_bio;
+        return (host_bio != null)?host_bio:"";
     }
 
     public void setHost_bio(String host_bio) {
@@ -115,23 +112,23 @@ public class Experience_Detail{
     }
 
     public String getIncluded_food_detail() {
-        return included_food_detail;
+        return (included_food_detail != null)?included_food_detail:"";
     }
 
     public void setIncluded_food_detail(String included_food_detail) {
         this.included_food_detail = included_food_detail;
     }
 
-    public String getExperience_title() {
-        return experience_title;
+    public String getTitle() {
+        return (experience_title != null)?experience_title:"";
     }
 
-    public void setExperience_title(String experience_title) {
+    public void setTitle(String experience_title) {
         this.experience_title = experience_title;
     }
 
     public String getIncluded_transport_detail() {
-        return included_transport_detail;
+        return (included_transport_detail!=null)?included_transport_detail:"";
     }
 
     public void setIncluded_transport_detail(String included_transport_detail) {
@@ -139,7 +136,7 @@ public class Experience_Detail{
     }
 
     public String getExperience_meetup_spot() {
-        return experience_meetup_spot;
+        return (experience_meetup_spot!=null)?experience_meetup_spot:"";
     }
 
     public void setExperience_meetup_spot(String experience_meetup_spot) {
@@ -147,7 +144,7 @@ public class Experience_Detail{
     }
 
     public String getHost_image() {
-        return host_image;
+        return (host_image!=null)?host_image:"";
     }
 
     public void setHost_image(String host_image) {
@@ -155,7 +152,7 @@ public class Experience_Detail{
     }
 
     public String getExperience_description() {
-        return experience_description;
+        return (experience_description!=null)?experience_description:"";
     }
 
     public void setExperience_description(String experience_description) {
@@ -171,7 +168,7 @@ public class Experience_Detail{
     }
 
     public Boolean isIncludedTransport() {
-        return included_transport;
+        return (included_transport!=null)?included_transport:false;
     }
 
     public void setIncluded_transport(Boolean included_transport) {
@@ -179,7 +176,7 @@ public class Experience_Detail{
     }
 
     public Integer getExperience_rate() {
-        return experience_rate;
+        return (experience_rate!=null)?experience_rate:0;
     }
 
     public void setExperience_rate(Integer experience_rate) {
@@ -187,7 +184,7 @@ public class Experience_Detail{
     }
 
     public String getExperience_interaction() {
-        return experience_interaction;
+        return (experience_interaction!=null)?experience_interaction:"";
     }
 
     public void setExperience_interaction(String experience_interaction) {
@@ -203,7 +200,7 @@ public class Experience_Detail{
     }
 
     public String getExperience_dress() {
-        return experience_dress;
+        return (experience_dress!=null)?experience_dress:"";
     }
 
     public void setExperience_dress(String experience_dress) {
@@ -211,7 +208,7 @@ public class Experience_Detail{
     }
 
     public String getExperience_activity() {
-        return experience_activity;
+        return (experience_activity!=null)?experience_activity:"";
     }
 
     public void setExperience_activity(String experience_activity) {
@@ -219,7 +216,7 @@ public class Experience_Detail{
     }
 
     public String getHost_firstname() {
-        return host_firstname;
+        return (host_firstname!=null)?host_firstname:"";
     }
 
     public void setHost_firstname(String host_firstname) {
@@ -227,7 +224,7 @@ public class Experience_Detail{
     }
 
     public String getHost_lastname() {
-        return host_lastname;
+        return (host_lastname!=null)?host_lastname:"";
     }
 
     public void setHost_lastname(String host_lastname) {
@@ -235,20 +232,21 @@ public class Experience_Detail{
     }
 
     public Boolean isIncludedFood() {
-        return included_food;
+        return (included_food!=null)?included_food:false;
     }
 
     public void setIncluded_food(Boolean included_food) {
         this.included_food = included_food;
     }
 
-    public String getLanguage() {return experience_language;}
+    public String getLanguage() {
+        return experience_language!=null?experience_language:"";
+    }
 
     public void setLanguage(String language) {this.experience_language = language;}
 
-
     public Integer getExperience_guest_number_max() {
-        return experience_guest_number_max;
+        return (experience_guest_number_max!=null)?experience_guest_number_max:0;
     }
 
     public void setExperience_guest_number_max(Integer experience_guest_number_max) {
@@ -256,7 +254,7 @@ public class Experience_Detail{
     }
 
     public Integer getExperience_guest_number_min() {
-        return experience_guest_number_min;
+        return (experience_guest_number_min!=null)?experience_guest_number_min:0;
     }
 
     public void setExperience_guest_number_min(Integer experience_guest_number_min) {

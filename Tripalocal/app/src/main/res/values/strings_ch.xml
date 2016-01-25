@@ -7,7 +7,7 @@
     <string name="hello_world"></string>
     <string name="blank_fragment">您还没有保存任何体验</string>
     <string name="placeholder_content"></string>
-    <string name="gibber"> </string>
+    <string name="gibber"></string>
     <string name="sub_head_gibber"></string>
     <string name="bullet">\u2022</string>
     <string name="slide_button">立即出发</string>
@@ -210,6 +210,7 @@
 
     <!--do not change "somebody" when convert it to chinese-->
     <!--end of payment string-->
+
     <!--dialog string-->
     <string name="dialog_exit_app">确定退出本土客吗</string>
     <string name="dialog_option_yes">是</string>
@@ -287,7 +288,6 @@
 
     <!--end youmeng page string-->
 
-
     <!--start local exp strings-->
     <string name="exp_local_overview">详细介绍</string>
     <string name="exp_local_highlights">行程亮点</string>
@@ -300,7 +300,6 @@
     <string name="exp_local_refund">退款协议</string>
     <string name="exp_local_insurance">保险</string>
     <string name="exp_local_alsobought">你可能看兴趣的旅行</string>
-
     <!--end local exp strings-->
 
     <!--start message string-->
@@ -313,7 +312,6 @@
     <!--do not change the keyword somebody here-->
     <string name="msg_chat_title">正在与somebody对话</string>
     <string name="msg_list_title">对话列表</string>
-
     <string name="msg_server_name">54.149.42.196</string>
     <string name="msg_host">54.149.42.196</string>
     <string name="msg_server_nick_name">tripalocal.com</string>
@@ -330,9 +328,6 @@
     <string name="msg_list_no_3">面向任何领路人发送信息</string>
     <string name="msg_list_no_4"></string>
     <string name="msg_connecting">服务器问题，请1分钟之后再次尝试</string>
-
-    <!--msg configuration-->
-    <!--<String name="msg_server_address"></String>-->
     <!--end message string-->
 
     <!--loading text start-->
@@ -354,7 +349,6 @@
     <string name="mixpanel_perpoery_device">Android</string>
     <string name="mixpanel_event_signup">signed up via android app</string>
     <string name="mixpanel_event_signin">signed in via android app</string>
-
     <!--mixpanel text end-->
 
     <!-- others-->
@@ -362,26 +356,19 @@
     <!--others-->
 
     <!--new changes-->
-
     <string name="txt_from"></string>
-    <string name="txt_pp">\u0020 pp\u0020</string>
+    <string name="txt_pp">\u0020pp</string>
     <string name="txt_qi">起</string>
-    <string name="txt_hrs">\u0020 hrs\u0020</string>
+    <string name="txt_hrs">\u0020hrs</string>
+	<string name="txt_dot">\u0020\u00B7\u0020</string>
     <string name="view">显示</string>
     <string name="hide">隐藏</string>
-    <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
+    <string name="hurry_text">Hurry, more than % of this tour has been booked within the next 6 months </string>
     <!--parse parameters-->
     <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
     <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
     <!--end of parse parameters-->
 
-
-    <!--customer service-->
-    <string name="customer_support_name">本土君</string>
-    <!--customer service-->
-
-
-    <!--end of itineraries string-->
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3日私人精品游</string>
     <string name="itinerary_seven_day_trip">7日私人精品游</string>
@@ -394,10 +381,13 @@
     <string name="itinerary_checkDetails">查看路线</string>
     <string name="melbourne">墨尔本</string>
     <string name="sydney">悉尼</string>
-
     <!--end of itineraries string-->
 
+    <!--customer service-->
+    <string name="customer_support_name">本土君</string>
+    <!--customer service-->
 
+    <!--start of local exp string-->
     <string-array name="db_cities_array">
         <item>Melbourne</item>
         <item>Sydney</item>

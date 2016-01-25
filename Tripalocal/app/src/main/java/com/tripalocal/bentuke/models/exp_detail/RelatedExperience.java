@@ -52,7 +52,16 @@ public class RelatedExperience {
     }
 
     public String getLanguage() {
-        return language;
+        String l = "";
+        if(language!=null){
+            String lan[] = language.split(";");
+            for(int i=0;i<lan.length;i++)
+            {
+                l += lan[i].substring(0, 1).toUpperCase() + lan[i].substring(1)+"/";
+            }
+            l = l.substring(0,l.length()-1);
+        }
+        return l;
     }
 
     public void setLanguage(String language) {

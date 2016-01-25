@@ -359,7 +359,7 @@ public class NavigationFragment extends Fragment {
 
         }
 
-        System.out.println("profile image is "+result.getImage());
+        //System.out.println("profile image is "+result.getImage());
         hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
         HomeActivity.user_img=result.getImage();
 
@@ -410,7 +410,7 @@ public class NavigationFragment extends Fragment {
                     Log.i("chat server test", "step 3");
 
                 } catch (Exception e) {
-                    System.out.println("exception" + e.getMessage().toString());
+                    //System.out.println("exception" + e.getMessage().toString());
                     Log.i("chat server test", "step 4");
 
                 }
@@ -428,7 +428,7 @@ public class NavigationFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("fali on new service : " + error.getMessage().toString());
+                //System.out.println("fali on new service : " + error.getMessage().toString());
                 GeneralHelper.closeLoadingProgress();
 //                if (MessageSerivice.connection!=null) {
 //                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
@@ -473,7 +473,7 @@ public class NavigationFragment extends Fragment {
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-                //System.out.println("error = [" + error + "]");
+                ////System.out.println("error = [" + error + "]");
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
@@ -482,7 +482,7 @@ public class NavigationFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-        System.out.println("come to resume here ");
+        //System.out.println("come to resume here ");
         if(notification_red_icon!=null) {
             if (NotificationHelper.haveNotifcation) {
                 notification_red_icon.setVisibility(View.VISIBLE);

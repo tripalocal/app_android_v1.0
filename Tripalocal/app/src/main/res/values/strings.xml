@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">Tripalocal</string>
     <string name="facebook_app_id">595515750559076</string>
     <string name="server_url">https://www.tripalocal.com/</string>
@@ -8,11 +7,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="blank_fragment">Hmmm.. You have not saved any experience yet!</string>
     <string name="placeholder_content">Loading</string>
-    <string name="gibber"> </string>
-    <string name="slide_button">Start Now!</string>
-
+    <string name="gibber"></string>
     <string name="sub_head_gibber">Loading</string>
     <string name="bullet">\u2022</string>
+    <string name="slide_button">Start Now!</string>
+
     <string name="with">with</string>
     <string name="tags">Food&amp;wine,Education,History&amp;culture,Architecture,For couples,Photography worthy,Liveability research,Kids friendly,Outdoor&amp;nature,Shopping,Sports&amp;leisure,Host with car,Extreme fun,Events,Health&amp;beauty,Private group</string>
 
@@ -79,7 +78,6 @@
     <string name="exp_detail_tips">Tips:\u0020</string>
     <string name="exp_detail_pickup">Pickup Details:\u0020</string>
     <string name="exp_detail_included">What is included:\u0020</string>
-
     <string name="exp_detail_add_expenses_label">Additional Expenses</string>
     <string name="exp_detail_default_optional_expenses">Not included</string>
     <string name="view_more">Read More</string>
@@ -290,7 +288,6 @@
 
     <!--end youmeng page string-->
 
-
     <!--start local exp strings-->
     <string name="exp_local_overview">Overview</string>
     <string name="exp_local_highlights">Highlights</string>
@@ -303,8 +300,8 @@
     <string name="exp_local_refund">Refund Policy</string>
     <string name="exp_local_insurance">Insurance</string>
     <string name="exp_local_alsobought">Other people also bought</string>
-
     <!--end local exp strings-->
+
     <!--start message string-->
     <string name="msg_send_msg">Send Messages</string>
     <!--the keyword re here should never be replaced-->
@@ -338,7 +335,6 @@
     <string name="loading_dialog_text">Please wait while loading...</string>
     <!--loading text finish-->
 
-
     <!--mixpanel text start-->
     <string name="mixpanel_token">f94e94414c9de0cc38874706d853c400</string>
     <string name="mixpanel_event_viewHomePage">viewed homepage</string>
@@ -353,11 +349,25 @@
     <string name="mixpanel_perpoery_device">Android</string>
     <string name="mixpanel_event_signup">signed up via android app</string>
     <string name="mixpanel_event_signin">signed in via android app</string>
-
     <!--mixpanel text end-->
+
     <!-- others-->
     <string name="double_click_exit">Click again to exit</string>
     <!--others-->
+
+    <!--new changes-->
+    <string name="txt_from">From\u0020</string>
+    <string name="txt_pp">\u0020pp</string>
+    <string name="txt_qi"></string>
+    <string name="txt_hrs">\u0020hrs</string>
+    <string name="txt_dot">\u0020\u00B7\u0020</string>
+    <string name="view">View</string>
+    <string name="hide">Hide</string>
+    <string name="hurry_text">Hurry, more than % of this tour has been booked within the next 6 months </string>
+    <!--parse parameters-->
+    <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
+    <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
+    <!--end of parse parameters-->
 
     <!--itineraries string-->
     <string name="itinerary_three_day_trip">3 Day Trip</string>
@@ -371,26 +381,7 @@
     <string name="itinerary_checkDetails">Check Details</string>
     <string name="melbourne">Melbourne</string>
     <string name="sydney">Sydney</string>
-
-    <!--new changes-->
-
-    <string name="txt_from">From\u0020</string>
-    <string name="txt_pp">\u0020 pp\u0020</string>
-    <string name="txt_qi"></string>
-    <string name="txt_hrs">\u0020 hrs\u0020</string>
-
     <!--end of itineraries string-->
-
-
-    <string name="view">View</string>
-    <string name="hide">Hide</string>
-    <string name="hurry_text">Hurry, more than changehere of this tour has been booked within the next 6 months </string>
-
-    <!--parse parameters-->
-    <string name="parse_key_1">4cpQPEXEfrw12IJ8e4W8rz9ZpneQFVMUBsdzoU2s</string>
-    <string name="parse_key_2">mHQFpD0EeUxvVVmRokTuH5SUfXg7QJAE9whXylRn</string>
-
-    <!--end of parse parameters-->
 
     <!--customer service-->
     <string name="customer_support_name">Tripalocal</string>
@@ -413,7 +404,6 @@
         <item>Wellington</item>
     </string-array>
 
-
     <string-array name="poi_array">
         <item>Melbourne, Victoria:Australia</item>
         <item>Sydney, New South Wales:Australia</item>
@@ -429,7 +419,6 @@
         <item>Auckland, Auckland:New Zealand</item>
         <item>Wellington, Wellington:New Zealand</item>
     </string-array>
-
 
     <!--custom itinerary-->
     <string name="custom_itinerary_title">Custom Itinerary</string>

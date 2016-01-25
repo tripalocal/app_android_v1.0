@@ -35,7 +35,6 @@ public class ChatListDataSource {
             ChatList_db_Helper.COLUMN_SENDER_NAME,
             ChatList_db_Helper.COLUMN_SENDER_IMAGE,
             ChatList_db_Helper.COLUMN_GLOBAL_ID
-
     };
 
     public ChatListDataSource(Context context){
@@ -60,7 +59,7 @@ public class ChatListDataSource {
         values.put(dbHelper.COLUMN_SENDER_NAME,model.getSender_name());
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
         values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
-        System.out.println("get sender images: "+model.getSender_img());
+        //System.out.println("get sender images: "+model.getSender_img());
 //        if(checkReuslt) {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
 //        }else {
@@ -165,7 +164,6 @@ public class ChatListDataSource {
         model.setSender_name(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_NAME)));
         model.setSender_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENDER_IMAGE)));
         model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
-
         return model;
     }
 

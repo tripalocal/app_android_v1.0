@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by frank on 8/10/2015.
  */
-public class Local_Experience_Detail {
+public class Local_Experience_Detail extends AbstractExperience {
 
     private Double experience_duration;
     private Double experience_price;
@@ -80,6 +80,9 @@ public class Local_Experience_Detail {
         this.insurance = insurance;
     }
 
+    public Local_Experience_Detail(){
+    }
+
     public Local_Experience_Detail(Double experience_duration, Double experience_price, Float[] experience_dynamic_price,
                                    List<List<String>> available_date, List<ExperienceReview> experience_reviews,
                                    Integer experience_rate, List<AvailableOption> available_options, String experience_language,
@@ -119,7 +122,16 @@ public class Local_Experience_Detail {
     }
 
     public String getExperience_language() {
-        return experience_language;
+        String language = "";
+        if(experience_language!=null){
+            String lan[] = experience_language.split(";");
+            for(int i=0;i<lan.length;i++)
+            {
+                language += lan[i].substring(0, 1).toUpperCase() + lan[i].substring(1)+"/";
+            }
+            language = language.substring(0,language.length()-1);
+        }
+        return language;
     }
 
     public void setExperience_language(String experience_language) {
@@ -190,17 +202,15 @@ public class Local_Experience_Detail {
 
     private ArrayList<String> experience_images;
 
-
-
-    public Double getExperience_duration() {
+    public Double getDuration() {
         return experience_duration;
     }
 
-    public void setExperience_duration(Double experience_duration) {
+    public void setDuration(Double experience_duration) {
         this.experience_duration = experience_duration;
     }
 
-    public Double getExperience_price() {
+    public Double getPrice() {
         return experience_price;
     }
 
@@ -246,7 +256,6 @@ public class Local_Experience_Detail {
         this.experience_rate = experience_rate;
     }
 
-
     public List<AvailableOption> getAvailable_options() {
         return available_options;
     }
@@ -255,11 +264,9 @@ public class Local_Experience_Detail {
         this.available_options = available_options;
     }
 
-
     public String getLanguage() {return experience_language;}
 
     public void setLanguage(String language) {this.experience_language = language;}
-
 
     public Integer getExperience_guest_number_max() {
         return experience_guest_number_max;
@@ -277,6 +284,15 @@ public class Local_Experience_Detail {
         this.experience_guest_number_min = experience_guest_number_min;
     }
 
+    public String getHost_firstname()
+    {
+        //TODO
+        return "";
+    }
 
-
+    public String getHost_image()
+    {
+        //TODO
+        return "";
+    }
 }

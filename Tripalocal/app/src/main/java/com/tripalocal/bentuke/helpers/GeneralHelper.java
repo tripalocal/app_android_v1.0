@@ -102,11 +102,13 @@ public class GeneralHelper {
        return  date;
     }
     public static ProgressDialog showLoadingProgress(Activity activity){
-         progress = new ProgressDialog(activity);//MUST BE activity instrad of getApplicationContext
-//        progress.setTitle(HomeActivity.getHome_context().getResources().getString(R.string.loading_dialog_title));
-//        progress.setMessage(HomeActivity.getHome_context().getResources().getString(R.string.loading_dialog_text));
+        progress = new ProgressDialog(activity);//MUST BE activity instead of getApplicationContext
+        //progress.setTitle(HomeActivity.getHome_context().getResources().getString(R.string.loading_dialog_title));
+        //progress.setMessage(HomeActivity.getHome_context().getResources().getString(R.string.loading_dialog_text));
         try {
-            progress.show();
+            if(!progress.isShowing()) {
+                progress.show();
+            }
         } catch (WindowManager.BadTokenException e) {
 
         }
@@ -114,12 +116,15 @@ public class GeneralHelper {
         progress.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progress.setContentView(R.layout.progressdialog);
 
-//        progress.show();
-// To dismiss the dialog
+        //progress.show();
+        //To dismiss the dialog
         return progress;
     }
     public static void closeLoadingProgress(){
-        progress.dismiss();
+        if(progress.isShowing())
+        {
+            progress.dismiss();
+        }
     }
 
     public static HashMap<String,String> getProfile(String user_id)
@@ -147,15 +152,13 @@ public class GeneralHelper {
                 GeneralHelper.closeLoadingProgress();
                 map.put("name", result.getFirst_name() + " " + result.getLast_name());
                 map.put("image", result.getImage());
-                System.out.println("retrieve profile successfully" + result.getFirst_name() + result.getImage() + result.getLast_name() + "end");
+                //System.out.println("retrieve profile successfully" + result.getFirst_name() + result.getImage() + result.getLast_name() + "end");
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
-                System.out.println("ERROR MYTRIP :" + error + "\n Tooken is "
-                        + HomeActivity.getCurrent_user().getLogin_token());
+                //System.out.println("ERROR MYTRIP :" + error + "\n Tooken is " + HomeActivity.getCurrent_user().getLogin_token());
             }
         });
         return map;
@@ -238,13 +241,13 @@ public class GeneralHelper {
         MixpanelAPI mixpanel =MixpanelAPI.getInstance(ac, ac.getResources().getString(R.string.mixpanel_token));
         mixpanel.identify(GeneralHelper.getEmail());
         JSONObject people=new JSONObject();
-//        System.out.println("Email "+GeneralHelper.getEmail());
+//        //System.out.println("Email "+GeneralHelper.getEmail());
         JSONObject props = new JSONObject();
         try {
             props.put("language", HomeActivity.getHome_context().getString(R.string.version_language));
 
         }catch (Exception e){
-            System.out.println("mixpanel exception here "+e.getMessage().toString());
+            ////System.out.println("mixpanel exception here "+e.getMessage().toString());
         }
         mixpanel.getPeople().identify(GeneralHelper.getEmail());
         mixpanel.getPeople().set(people);
@@ -273,11 +276,11 @@ public class GeneralHelper {
 
 //                    String result = String.format("%.2f", Double.parseDouble(line));
                     GeneralHelper.currency_rate=Double.parseDouble(line);
-//                    System.out.println("currency now "+GeneralHelper.currency_rate);
+//                    //System.out.println("currency now "+GeneralHelper.currency_rate);
                 }
                 reader.close();
             } catch (IOException | NumberFormatException e) {
-                System.out.println(e.getMessage());
+                ////System.out.println(e.getMessage());
             }
             return "Executed";
         }

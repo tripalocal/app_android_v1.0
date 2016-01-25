@@ -102,7 +102,7 @@ public class SignUpFragment extends Fragment {
                         @Override
                         public void run() {
                             MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
-                            System.out.println("running here");
+                            //System.out.println("running here");
                             HomeActivity.user_id = result1.getUser_id();
                         }
                     }).start();
@@ -123,7 +123,7 @@ public class SignUpFragment extends Fragment {
                 public void failure(RetrofitError error) {
                     GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                    //System.out.println("error = [" + error + "]");
+                    ////System.out.println("error = [" + error + "]");
                 }
             });
         }

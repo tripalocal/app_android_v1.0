@@ -67,9 +67,9 @@ public class ChatMsgDataSource{
             Log.i("chatConversation","added "+model.getMsg_content()+ " local id "+model.getMsg_id()+ " global id "+model.getGlobal_id());
 
         }catch (Exception e){
-            System.out.println("insert exception here "+ e.getMessage().toString());
+            ////System.out.println("insert exception here "+ e.getMessage().toString());
         }
-//        System.out.println("person type on add new msg");
+            ////System.out.println("person type on add new msg");
 
     }
 
@@ -96,13 +96,13 @@ public class ChatMsgDataSource{
         List<ChatMsg_model> chats=new ArrayList<ChatMsg_model>();
         Map<Date,ChatMsg_model> map = new HashMap<Date,ChatMsg_model>();
 
-        System.out.println("sender id + " + receiverId);
+        ////System.out.println("sender id + " + receiverId);
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,null,null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatMsg_model model=cursorToChatMsg(cursor);
             map.put(GeneralHelper.getDateByString(model.getMsg_date()),model);
-//            chats.add(model);
+            //chats.add(model);
             cursor.moveToNext();
         }
         Map<Date, ChatMsg_model> sortedMap = new TreeMap<Date, ChatMsg_model>(map);
@@ -141,24 +141,19 @@ public class ChatMsgDataSource{
         List<ChatMsg_model> chats=getChatMsgs(receiverId);
 
         for(ChatMsg_model m:chats){
-            System.out.println("on the delete option ,global id is "+m.getGlobal_id() +
-            "and the receiver id is "+m.getReceiver_id());
+            ////System.out.println("on the delete option ,global id is "+m.getGlobal_id() + "and the receiver id is "+m.getReceiver_id());
             if(m.getGlobal_id().equals("0") ){
-//                reChats.add(m);
+                //reChats.add(m);
                 String whereClause = dbHelper.COLUMN_ID + "=?";
                 String[] whereArgs = new String[] {m.getMsg_id()+""};
                 database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
-                System.out.println("delete record here ");
-                Log.i("chatConversation", "deleted " + m.getMsg_content()+"local id is "+m.getMsg_id());
-
+                ////System.out.println("delete record here ");
+                //Log.i("chatConversation", "deleted " + m.getMsg_content()+"local id is "+m.getMsg_id());
             }else{
-                Log.i("chatConversation","undeleted "+m.getMsg_content()+ " local id "+m.getMsg_id()+ " global id "+m.getGlobal_id());
-
+               //Log.i("chatConversation","undeleted "+m.getMsg_content()+ " local id "+m.getMsg_id()+ " global id "+m.getGlobal_id());
             }
         }
     }
-
-
 
     public ChatMsg_model cursorToChatMsg(Cursor cursor){
         ChatMsg_model model=new ChatMsg_model();

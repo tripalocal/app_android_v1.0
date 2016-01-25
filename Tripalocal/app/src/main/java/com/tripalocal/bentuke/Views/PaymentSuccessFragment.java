@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.umeng.analytics.MobclickAgent;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -42,7 +43,7 @@ public class PaymentSuccessFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //System.out.println("this is a test");
+                ////System.out.println("this is a test");
 //                Fragment my_trip_fragment = new MyTripFragment();
 //                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
 //                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).commit();
@@ -61,7 +62,7 @@ public class PaymentSuccessFragment extends Fragment {
     }
 
     public void setContent(){
-        Experience_Detail exp=CheckoutActivity.experience_to_book;
+        AbstractExperience exp=CheckoutActivity.experience_to_book;
         String host_name=exp.getHost_firstname();
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp.getHost_image()).fitCenter().into(host_img);
         String message=getResources().getString(R.string.payment_success_text);

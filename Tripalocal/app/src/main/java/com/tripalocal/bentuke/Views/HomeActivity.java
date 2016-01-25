@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
             if(!settings_l.getBoolean("login", false)){
                 SharedPreferences.Editor editor_l = settings_l.edit();
                 editor_l.putString("token", getCurrent_user().getLogin_token());
-                System.out.println("check token on home activity" + getCurrent_user().getLogin_token());
+                //System.out.println("check token on home activity" + getCurrent_user().getLogin_token());
                 editor_l.putString("user_id", getCurrent_user().getUser_id());
                 editor_l.putBoolean("login", true);
                 editor_l.apply();
@@ -263,25 +263,21 @@ public class HomeActivity extends AppCompatActivity {
 
         }
         if(checkLogin()){
-            System.out.println("System login token is " + HomeActivity.getCurrent_user().getLogin_token());
-//            RetrieveWishListMap();
+            //System.out.println("System login token is " + HomeActivity.getCurrent_user().getLogin_token());
+            //RetrieveWishListMap();
             getExperienceMap();
         }
         GeneralHelper.getCurrencyRate();
         identifyExtra();
-
-
-
         //start service for message
-//        System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
-
+        //System.out.println("Date time showing here : "+GeneralHelper.getLocalTime("2015/11/08/06/42"));
     }
 
 
     @Override
     protected void onResume() {
-        System.out.println("onresume");
-        System.out.println("ArrayList count: " + Tripalocal.updatedChatList.size());
+        //System.out.println("onresume");
+        //System.out.println("ArrayList count: " + Tripalocal.updatedChatList.size());
         if(menu_ref!=null) {
             searchView = getSearchView(menu_ref);
             searchView.clearFocus();
@@ -305,15 +301,15 @@ public class HomeActivity extends AppCompatActivity {
         if(!MessageSerivice.isRunning && checkLogin()){
             ChatActivity.sender_id="";
             MsgHelper.startMsgSerivice(getHome_context());
-//            getProfile();
+            //getProfile();
         }
-        System.out.println("oncreate and tooken is " + getAccessToken());
+        //System.out.println("oncreate and tooken is " + getAccessToken());
         if(checkLogin()){
-            System.out.println(HomeActivity.getCurrent_user().getUser_id()+"test login toke login token is "+HomeActivity.getCurrent_user().getLogin_token());
-//            RetrieveWishListMap();
+            //System.out.println(HomeActivity.getCurrent_user().getUser_id()+"test login toke login token is "+HomeActivity.getCurrent_user().getLogin_token());
+            //RetrieveWishListMap();
             getExperienceMap();
-        }        MobclickAgent.onResume(this);
-
+        }
+        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -344,18 +340,18 @@ public class HomeActivity extends AppCompatActivity {
                     temp[1] = poi_data[i].split(":")[0];
                     cursor.addRow(temp);
                 }
-//                String passing_data_temp[]=poi_data;
-//                String passing_data[]=new String[];
+                //String passing_data_temp[]=poi_data;
+                //String passing_data[]=new String[];
                 ArrayList<String> output=new ArrayList<String>();
                 for(String i :poi_data){
                     if(!output.contains(i)){
-                        output.add(i);                    System.out.println("city " + output);
-
+                        output.add(i);
+                        //System.out.println("city " + output);
                     }
                 }
 
                 String passingdata[]=output.toArray(new String[output.size()]);
-                System.out.println("query text is "+newText+"\n size is "+output.size());
+                //System.out.println("query text is "+newText+"\n size is "+output.size());
                 getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
                 return true;
             }
@@ -379,10 +375,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
-        if(fragment_t instanceof ExperiencesListFragment
-
-
-                ) {
+        if(fragment_t instanceof ExperiencesListFragment) {
             return true;
         }else {
             return false;
@@ -394,7 +387,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         tpDrawToggle.syncState();
     }
-
 
     @NonNull
     private SearchView getSearchView(Menu menu) {
@@ -442,7 +434,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        //System.out.println("record text:" + restoredText);
+        ////System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             return false;
         }else{
@@ -514,9 +506,6 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             super.onBackPressed();
         }
-
-
-
     }
 
     public void onPause() {
@@ -524,7 +513,6 @@ public class HomeActivity extends AppCompatActivity {
         saveData();
         MobclickAgent.onPause(this);
     }
-
 
     public void getExperienceMap() {
         if (!updatedWishMap) {
@@ -545,26 +533,20 @@ public class HomeActivity extends AppCompatActivity {
             ApiService apiService = restAdapter.create(ApiService.class);
             apiService.RetrieveWishList(new Callback<ArrayList<Experience>>() {
                 @Override
-                public void success(
-                        ArrayList<Experience> experiences,
-                        Response response) {
-                    System.out.println("retrieve all experiences success" + experiences.size());
+                public void success(ArrayList<Experience> experiences,Response response) {
                     HomeActivity.wish_map.clear();
                     for (Experience exp : experiences) {
                         HomeActivity.wish_map.put(exp.getId() + "", exp);
-                        System.out.println("experience photo "+exp.getPhoto_url());
+                        //System.out.println("experience photo "+exp.getPhoto_url());
                     }
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    System.out.println("retrieve all experiences fail" + error.getMessage().toString());
-
                 }
             });
         }
     }
-
 
     public  boolean identifyExtra(){
         Bundle extras = getIntent().getExtras();
@@ -577,9 +559,4 @@ public class HomeActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
-
-
-
 }

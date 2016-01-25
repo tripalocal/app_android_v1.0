@@ -1,13 +1,10 @@
 package com.tripalocal.bentuke.Views;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,17 +24,12 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.Services.MessageSerivice;
-import com.tripalocal.bentuke.adapters.RelatedExpListAdapter;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
-import com.tripalocal.bentuke.models.database.ChatList_model;
-import com.tripalocal.bentuke.models.database.ChatMsg_model;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
 import com.tripalocal.bentuke.models.exp_detail.RelatedExperience;
 import com.umeng.analytics.MobclickAgent;
 
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +40,8 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ReviewAdapter;
@@ -80,6 +74,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     TextView exp_detail_lang;
     TextView price_title;
     TextView price_hours;
+    TextView exp_header;
     TextView info_title;
     TextView info_less;
     TextView info_more;
@@ -109,7 +104,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     TextView btn_view_schedule,btn_view_tips,btn_view_include,btn_view_pickup,btn_view_disclaimer,
             btn_view_refund,btn_view_insurance;
     TextView tx_schedule,tx_tips,tx_include,tx_pickup,tx_disclaimer,tx_refund,tx_insurance;
-//    TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
+    //TextView exp_detail_pickup,exp_detail_included,exp_detail_tips;
     TextView local_overview,local_description,local_highlights;
     LinearLayout layout_schedule,layout_tips,layout_include,layout_pickup,layout_disclaimer,layout_refund,layout_insurance;
     FrameLayout layout_title_schedule,layout_title_tips,layout_title_include,layout_title_pickup,layout_title_disclaimer,
@@ -131,7 +126,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         updateYoumeng();
         View view;
         if(ExperiencesListFragment.experience_type!=ExperiencesListFragment.exp_newPro) {
-             view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
+            view = inflater.inflate(R.layout.fragment_exp_detail, container, false);
             mDemoSlider = (SliderLayout)view.findViewById(R.id.slider);
             initialComponenets(view);
             initController();
@@ -150,11 +145,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     }
 
     public void updateImageGallery(ArrayList<String> url_list){
-//       ArrayList<String> url_list=new ArrayList<String>();
-//        url_list.add("http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-//        url_list.add("http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-//        url_list.add("http://cdn3.nflximg.net/images/3093/2043093.jpg");
-//        url_list.add( "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
         for (String name : url_list) {
             DefaultSliderView textSliderView = new DefaultSliderView(getActivity().getApplicationContext());
@@ -169,7 +159,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             mDemoSlider.addSlider(textSliderView);
         }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-//        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        //mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setDuration(10000);
         mDemoSlider.addOnPageChangeListener(this);
     }
@@ -183,30 +173,34 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        //ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         req = new request(exp_id);
-        apiService.getExpDetails(req, new Callback<Experience_Detail>() {
+        apiService.getExpDetails(req, new Callback<Object>() {
             @Override
-            public void success(Experience_Detail experience_detail, Response response) {
+            public void success(Object experience_detail, Response response) {
                 GeneralHelper.closeLoadingProgress();
                 if (req.getExperience_id() > 0) {
-                    exp_to_display = experience_detail;
+                    try
+                    {
+                        exp_to_display = new Gson().fromJson(new String(((TypedByteArray) response.getBody()).getBytes(), "UTF-8"), Experience_Detail.class);
+                    }
+                    catch(java.io.UnsupportedEncodingException ex)
+                    {
+                        exp_to_display = (Experience_Detail)experience_detail;
+                    }
                     fillDetails();
                     request_to_book_btn.setEnabled(true);
                     send_msg_btn.setEnabled(true);
                 }
-
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
-
     }
 
     public void getLocalExpDetails(int exp_id){
@@ -218,26 +212,29 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                 .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        //ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         req = new request(exp_id);
-        apiService.getLocalExpDetails(req, new Callback<Local_Experience_Detail>() {
+        apiService.getExpDetails(req, new Callback<Object>() {
             @Override
-            public void success(Local_Experience_Detail experience_detail, Response response) {
+            public void success(Object experience_detail, Response response) {
                 GeneralHelper.closeLoadingProgress();
                 if (req.getExperience_id() > 0) {
-                    local_exp_to_display = experience_detail;
+                    try {
+                        local_exp_to_display = new Gson().fromJson(new String(((TypedByteArray) response.getBody()).getBytes(), "UTF-8"), Local_Experience_Detail.class);
+                    } catch (java.io.UnsupportedEncodingException ex) {
+                        local_exp_to_display = (Local_Experience_Detail)experience_detail;
+                    }
                     fillLocalDetails();
                     request_to_book_btn.setEnabled(true);
-                    System.out.println("urgent " + local_exp_to_display.getExperience_popularity());
+                    //System.out.println("urgent " + local_exp_to_display.getExperience_popularity());
                 }
-
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-            System.out.println("error exp detail :"+error.getMessage().toString());
+                //System.out.println("error exp detail :"+error.getMessage().toString());
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
@@ -280,7 +277,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
     }
 
-
     public void initComponentLocal(View view){
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
@@ -303,6 +299,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         review_more_btn = (Button) view.findViewById(R.id.exp_detail_review_view_more_btn);
         exp_reservation_with=(LinearLayout)view.findViewById(R.id.exp_reservation_with);
         exp_detail_host_profile_image_container=(RelativeLayout)view.findViewById(R.id.exp_detail_host_profile_image_container);
+        exp_header = (TextView)view.findViewById((R.id.exp_header));
         local_description=(TextView)view.findViewById(R.id.local_description);
         local_overview=(TextView)view.findViewById(R.id.local_overview);
         local_highlights=(TextView)view.findViewById(R.id.local_highlights);
@@ -330,7 +327,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         layout_disclaimer=(LinearLayout)view.findViewById(R.id.layout_disclaimer);
         layout_refund=(LinearLayout)view.findViewById(R.id.layout_refund);
         layout_insurance=(LinearLayout)view.findViewById(R.id.layout_insurance);
-
 
         layout_title_schedule=(FrameLayout)view.findViewById(R.id.layout_title_schedule);
         layout_title_tips=(FrameLayout)view.findViewById(R.id.layout_title_tips);
@@ -364,9 +360,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         exp_popularity=(TextView)view.findViewById(R.id.exp_popularity);
     }
 
-
     public void initController(){
-
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -380,7 +374,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                     intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getActivity().startActivity(intent);
-//                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+                    //ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
                 }
             }
         });
@@ -388,53 +382,49 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         send_msg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(HomeActivity.getCurrent_user().isLoggedin()){
-                    if (MessageSerivice.connection!=null) {
-                        Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
-                        intent.putExtra(ChatActivity.COL_SENDER_NAME, exp_to_display.getHost_firstname());
-                        intent.putExtra(ChatActivity.COL_SENDER_IMG, exp_to_display.getHost_image());
-
-//                    ChatActivity
-                        HomeActivity.getHome_context().startActivity(intent); }else{
-                        ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
-                    }
-
-                }else{
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
+            if(HomeActivity.getCurrent_user().isLoggedin()){
+                if (MessageSerivice.connection!=null) {
+                    Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getActivity().startActivity(intent);
-                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+                    intent.putExtra(ChatActivity.COL_SENDER_ID,exp_to_display.getHost_id());
+                    intent.putExtra(ChatActivity.COL_SENDER_NAME, exp_to_display.getHost_firstname());
+                    intent.putExtra(ChatActivity.COL_SENDER_IMG, exp_to_display.getHost_image());
+
+                    //ChatActivity
+                    HomeActivity.getHome_context().startActivity(intent); }else{
+                    ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
                 }
-
-
+            }else{
+                Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(intent);
+                ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+            }
             }
         });
         info_view_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(info_less.getVisibility() == View.GONE){
-                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
-                    info_less.setVisibility(View.VISIBLE);
-                    info_more.setVisibility(View.GONE);
-                }else{
-                    info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
-                    info_less.setVisibility(View.GONE);
-                    info_more.setVisibility(View.VISIBLE);
-                }
+            if(info_less.getVisibility() == View.GONE){
+                info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_more));
+                info_less.setVisibility(View.VISIBLE);
+                info_more.setVisibility(View.GONE);
+            }else{
+                info_view_more_btn.setText(getActivity().getResources().getString(R.string.view_less));
+                info_less.setVisibility(View.GONE);
+                info_more.setVisibility(View.VISIBLE);
+            }
             }
         });
 
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
-                Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
-                startActivity(intent);
+            ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
+            Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
+            startActivity(intent);
             }
         });
 
@@ -444,17 +434,15 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         host_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (host_info_less.getMaxLines() != 6) {
-                    host_info_less.setMaxLines(6);
-                    host_info_less.setVisibility(View.VISIBLE);
-                    host_more_btn.setText(getResources().getString(R.string.view_more));
-
-
-                } else {
-                    host_info_less.setVisibility(View.VISIBLE);
-                    host_info_less.setMaxLines(Integer.MAX_VALUE);
-                    host_more_btn.setText(getResources().getString(R.string.view_less));
-                }
+            if (host_info_less.getMaxLines() != 6) {
+                host_info_less.setMaxLines(6);
+                host_info_less.setVisibility(View.VISIBLE);
+                host_more_btn.setText(getResources().getString(R.string.view_more));
+            } else {
+                host_info_less.setVisibility(View.VISIBLE);
+                host_info_less.setMaxLines(Integer.MAX_VALUE);
+                host_more_btn.setText(getResources().getString(R.string.view_less));
+            }
             }
         });
         request_to_book_btn.setEnabled(false);
@@ -471,23 +459,20 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             profileImage.setVisibility(View.GONE);
             send_msg_btn.setVisibility(View.GONE);
         }
-
     }
-
 
     public void initControllerLocal(){
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeActivity.getCurrent_user().isLoggedin()) {
-                    Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
-                    intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    HomeActivity.getHome_context().startActivity(intent);
-                } else {
-
-                    ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
-                }
+            if (HomeActivity.getCurrent_user().isLoggedin()) {
+                Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
+                intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.getHome_context().startActivity(intent);
+            } else {
+                ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+            }
             }
         });
 
@@ -495,9 +480,9 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
-                Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
-                startActivity(intent);
+            ReviewAdapter.reviewsList = (ArrayList<ExperienceReview>) exp_to_display.getExperience_reviews();
+            Intent intent = new Intent(getActivity().getApplicationContext(), ReviewActivity.class);
+            startActivity(intent);
             }
         });
 
@@ -510,28 +495,22 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         btn_view_disclaimer.setOnClickListener(new ViewBtnListener(layout_disclaimer,btn_view_disclaimer));
         btn_view_refund.setOnClickListener(new ViewBtnListener(layout_refund,btn_view_refund));
         btn_view_insurance.setOnClickListener(new ViewBtnListener(layout_insurance, btn_view_insurance));
-
-
     }
 
     @Override
     public void onPageScrolled(int i, float v, int i1) {
-
     }
 
     @Override
     public void onPageSelected(int i) {
-
     }
 
     @Override
     public void onPageScrollStateChanged(int i) {
-
     }
 
     @Override
     public void onSliderClick(BaseSliderView baseSliderView) {
-
     }
 
     private class ViewBtnListener implements View.OnClickListener{
@@ -540,8 +519,8 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         ViewBtnListener(LinearLayout layout_to_toggle,TextView text_to_change){
             this.layout_to_toggle=layout_to_toggle;
             this.text_to_change=text_to_change;
-
         }
+
         @Override
         public void onClick(View v) {
             if(layout_to_toggle.getVisibility()==View.GONE){
@@ -550,7 +529,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             }else{
                 layout_to_toggle.setVisibility(View.GONE);
                 text_to_change.setText(HomeActivity.getHome_context().getResources().getString(R.string.view));
-
             }
         }
     }
@@ -558,11 +536,11 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
     public void setAllDetailsGone(){
         layout_schedule.setVisibility(View.GONE);
     }
-     public void fillDetails(){
-//        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
-         updateImageGallery(exp_to_display.getExperience_images());
+    public void fillDetails(){
+        //Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+        updateImageGallery(exp_to_display.getExperience_images());
 
-         int point =exp_to_display.getExperience_images().size()-1;
+        int point =exp_to_display.getExperience_images().size()-1;
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getExperience_images().get(point)).fitCenter().into(expenses_banner_img);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileImage);
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHost_image()).fitCenter().into(profileHostImage);
@@ -572,14 +550,14 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
         {
-            switch(language[i]) {
+            switch(language[i].toLowerCase()) {
                 case "english": l = "English";break;
                 case "mandarin": l += " / 中文";break;
             }
         }
         exp_detail_lang.setText(l);
 
-        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;
         //if guest_number_max < 4 , show the price for group of size guest_number_max;
         //if guest_number_min > 4, show the price for group of size guest_number_min
@@ -601,18 +579,21 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             } else if (min_number > 4) {
                 price_title.setText(REAL_FORMATTER.format(temp_dp[0]));
             }
-        }else price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+        }
+        else
+        {
+            price_title.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
+        }
 
-
-        price_hours.setText(REAL_FORMATTER.format(exp_to_display.getExperience_duration()));
-        info_title.setText(exp_to_display.getExperience_title());
+        price_hours.setText(REAL_FORMATTER.format(exp_to_display.getDuration()));
+        info_title.setText(exp_to_display.getTitle());
         String exper_description=exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction();
         String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
         String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
 
         info_less.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
         info_more.setText(Html.fromHtml(exper_description_line_2), TextView.BufferType.SPANNABLE);
-//        info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
+        //info_more.setText(exp_to_display.getExperience_description()+"\n\n"+exp_to_display.getExperience_activity()+"\n\n"+exp_to_display.getExperience_interaction());
         host_title.setText(Tripalocal.getFullName(exp_to_display.getHost_firstname(), exp_to_display.getHost_lastname()));
         host_info_less.setText(exp_to_display.getHost_bio());
         host_info_more.setText(exp_to_display.getHost_bio());
@@ -657,18 +638,16 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         if(exp_to_display.isIncludedTicket()){
             tickets_info.setText(exp_to_display.getIncluded_ticket_detail());
         }
-        getActivity().setTitle(exp_to_display.getExperience_title());
+        getActivity().setTitle(exp_to_display.getTitle());
     }
 
-
-
     public void fillLocalDetails(){
-//        Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
+        //Glide.with(HomeActivity.getHome_context()).load(BASE_URL+local_exp_to_display.getExperience_images().get(0)).fitCenter().into(exp_bg);
         updateImageGallery(local_exp_to_display.getExperience_images());
         if(local_exp_to_display.getExperience_popularity()<50) {
-            exp_popularity.setText( getResources().getString(R.string.hurry_text).replace("changehere", "%50"));
+            exp_popularity.setText( getResources().getString(R.string.hurry_text).replace("%", "50%"));
         }else{
-            exp_popularity.setText(getResources().getString(R.string.hurry_text).replace("changehere", "%80"));
+            exp_popularity.setText(getResources().getString(R.string.hurry_text).replace("%", "80%"));
 
         }
         int point =local_exp_to_display.getExperience_images().size()-1;
@@ -678,14 +657,14 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
         {
-            System.out.println("lanugage is "+language[i]);
-            switch(language[i]) {
+            //System.out.println("lanugage is "+language[i]);
+            switch(language[i].toLowerCase()) {
                 case "english": l = "English";break;
                 case "mandarin": l += " / 中文";break;
             }
         }
         exp_detail_lang.setText(l);
-        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getExperience_price()));
+        //price_title.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         //if guest_number_min <= 4 && guest_number_max >= 4, show the price for group of size 4;
         //if guest_number_max < 4 , show the price for group of size guest_number_max;
         //if guest_number_min > 4, show the price for group of size guest_number_min
@@ -707,14 +686,31 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             } else if (min_number > 4) {
                 price_title.setText(REAL_FORMATTER.format(temp_dp[0]));
             }
-        }else price_title.setText(REAL_FORMATTER.format(local_exp_to_display.getExperience_price()));
+        }
+        else
+        {
+            price_title.setText(REAL_FORMATTER.format(local_exp_to_display.getPrice()));
+        }
 
-
-        price_hours.setText(REAL_FORMATTER.format(local_exp_to_display.getExperience_duration()));
+        Double hour = local_exp_to_display.getDuration();
+        String hour_string = "";
+        if(hour==hour.intValue())
+        {
+            hour_string = String.valueOf(hour.intValue());
+        }
+        else
+        {
+            hour_string = String.valueOf(hour);
+        }
+        price_hours.setText(hour_string);
         info_title.setText(local_exp_to_display.getTitle());
         String exper_description=local_exp_to_display.getDescription()+"\n\n";
         String exper_description_line=exper_description.replace("</strong>","</strong><br/>");
         String exper_description_line_2=exper_description_line.replace("<strong>","<br/><br/><strong>");
+        exp_header.setText(hour_string +
+                            getActivity().getResources().getString(R.string.txt_hrs) +
+                            getActivity().getResources().getString(R.string.txt_dot) +
+                            local_exp_to_display.getExperience_language());
         local_overview.setText(exper_description_line_2);
         local_description.setText(exper_description_line_2);
         local_highlights.setText(local_exp_to_display.getHighlights());
@@ -747,7 +743,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             review_container.setVisibility(View.GONE);
         }
 
-
         tx_schedule.setText(local_exp_to_display.getSchedule());
         removeEmptyField(layout_title_schedule, local_exp_to_display.getSchedule() + "");
         tx_disclaimer.setText(local_exp_to_display.getDisclamier());
@@ -755,7 +750,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         if(local_exp_to_display.getDisclamier()==null) {
         layout_title_disclaimer.setVisibility(View.GONE);
         }
-        System.out.println("disclaimer is " + local_exp_to_display.getDisclamier() + "12");
+        //System.out.println("disclaimer is " + local_exp_to_display.getDisclamier() + "12");
 
         tx_include.setText(local_exp_to_display.getWhatsincluded());
         removeEmptyField(layout_title_include, local_exp_to_display.getWhatsincluded() + "");
@@ -773,10 +768,10 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         removeEmptyField(layout_title_tips, local_exp_to_display.getTips() + "");
 
         getActivity().setTitle(local_exp_to_display.getTitle());
-        System.out.println("total number " + local_exp_to_display.getRelated_experiences().size());
+        ////System.out.println("total number " + local_exp_to_display.getRelated_experiences().size());
 
         final ArrayList<RelatedExperience> exp_list=local_exp_to_display.getRelated_experiences();
-        System.out.println("experience list here here " + exp_list.toString());
+        ////System.out.println("experience list here here " + exp_list.toString());
         if(exp_list.size()>0) {
 
             relatedExp_title_1.setText(exp_list.get(0).getTitle());
@@ -797,9 +792,10 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                     ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
                     ExpDetailActivity.position=exp_list.get(0).getId();
                     Intent intent = getActivity().getIntent();
+                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
                     getActivity().finish();
                     startActivity(intent);
-//                    System.out.println("onclick listener starts here ");
+                    //System.out.println("onclick listener starts here ");
                 }
             });
         }else{
@@ -808,26 +804,29 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         if(exp_list.size()>1) {
             relatedExp_title_2.setText(exp_list.get(1).getTitle());
             relatedExp_price_2.setText((int)exp_list.get(1).getPrice() + "");
-            try{
-                relatedExp_duration_2.setText(Integer.parseInt(exp_list.get(1).getDuration()+"")+"");
-            }catch (Exception e){
-                relatedExp_duration_2.setText(exp_list.get(1).getDuration()+"");
-
+            hour = exp_list.get(1).getDuration();
+            if(hour == hour.intValue())
+            {
+                relatedExp_duration_2.setText(String.valueOf(hour.intValue()));
+            }
+            else
+            {
+                relatedExp_duration_2.setText(String.valueOf(hour));
             }
             relatedExp_language_2.setText(exp_list.get(1).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(1).getImage()).fitCenter().into(relatedExp_img_2);
             related_exp_layout_2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-//                    getLocalExpDetails(exp_list.get(1).getId());
-                    //local exp
-                    ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
-                    ExpDetailActivity.position=exp_list.get(1).getId();
-                    Intent intent = getActivity().getIntent();
-                    getActivity().finish();
-                    startActivity(intent);
-//                    System.out.println("onclick listener starts here ");
+                //getLocalExpDetails(exp_list.get(1).getId());
+                //local exp
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+                ExpDetailActivity.position=exp_list.get(1).getId();
+                Intent intent = getActivity().getIntent();
+                intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
+                getActivity().finish();
+                startActivity(intent);
+                //System.out.println("onclick listener starts here ");
                 }
             });
         }else{
@@ -840,23 +839,20 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                 relatedExp_duration_3.setText(Integer.parseInt(exp_list.get(2).getDuration()+"")+"");
             }catch (Exception e){
                 relatedExp_duration_3.setText(exp_list.get(2).getDuration()+"");
-
             }
             relatedExp_language_3.setText(exp_list.get(2).getLanguage());
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL + exp_list.get(2).getImage()).fitCenter().into(relatedExp_img_3);
             related_exp_layout_3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getLocalExpDetails(exp_list.get(2).getId());
-//                    System.out.println("onclick listener starts here ");
+                getLocalExpDetails(exp_list.get(2).getId());
+                //System.out.println("onclick listener starts here ");
                 }
             });
         }else{
             related_exp_layout_3.setVisibility(View.GONE);
         }
     }
-
-
 
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
@@ -906,8 +902,4 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         map.put(getResources().getString(R.string.youmeng_event_item_expId),ExpDetailActivity.position+"");
         MobclickAgent.onEvent(getActivity().getApplicationContext(), getResources().getString(R.string.youmeng_event_title_viewExp), map);
     }
-
-
-
-
 }

@@ -12,6 +12,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
@@ -40,12 +41,10 @@ import com.tripalocal.bentuke.models.network.Credit_Request;
  */
 public class CreditCardActivity  extends AppCompatActivity {
     EditText card_no,card_month,card_year,card_cvv;
-    private Experience_Detail exp;//position is experience id
+    private AbstractExperience exp;//position is experience id
     private int exp_id;
     TableRow row1,row2,row3;
     View divider1,divider2,divider3;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class CreditCardActivity  extends AppCompatActivity {
         card_cvv=(EditText)this.findViewById(R.id.card_cvv);
         exp=CheckoutActivity.experience_to_book;
         exp_id=CheckoutActivity.position;
-row1=(TableRow)this.findViewById(R.id.row_num);
+        row1=(TableRow)this.findViewById(R.id.row_num);
         row2=(TableRow)this.findViewById(R.id.row_expire);
         row3=(TableRow)this.findViewById(R.id.row_ccv);
         divider1=(View)this.findViewById(R.id.divider_line_3);
@@ -157,9 +156,9 @@ row1=(TableRow)this.findViewById(R.id.row_num);
                     }
                 })
                 .build();
-//        System.out.println("token"+getUserToken()+"");
+//        //System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-        //System.out.println("create json"+createJson(no,month,year,cvv));
+        ////System.out.println("create json"+createJson(no,month,year,cvv));
 
        // apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
 Credit_Request request;
@@ -188,7 +187,7 @@ Credit_Request request;
 
                 String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
-                System.out.println(json);
+                //System.out.println(json);
 
             }
         });
@@ -204,11 +203,11 @@ Credit_Request request;
         Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
         List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
         itinerary_list.add(itenerary);
-//        System.out.println(cred_req);
+        //System.out.println(cred_req);
         Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
-        System.out.println("card no " + cred_req.getCard_number() + " month " + cred_req.getExpiration_month() +
-                "year " + cred_req.getExpiration_year() + " coupon" + cred_req.getCoupon() + " cvv" + cred_req.getCvv() +
-                "itenaray_no" + cred_req.getItinerary_string().size());
+        //System.out.println("card no " + cred_req.getCard_number() + " month " + cred_req.getExpiration_month() +
+        //        "year " + cred_req.getExpiration_year() + " coupon" + cred_req.getCoupon() + " cvv" + cred_req.getCvv() +
+        //       "itenaray_no" + cred_req.getItinerary_string().size());
 
         return cred_req;
     }
@@ -227,11 +226,11 @@ Credit_Request request;
         Credit_Request.ItineraryString itenerary = new Credit_Request.ItineraryString(id,date,time,Integer.parseInt(guest_num));
         List<Credit_Request.ItineraryString> itinerary_list = new ArrayList<>();
         itinerary_list.add(itenerary);
-//        System.out.println(cred_req);
+        //System.out.println(cred_req);
         Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
-        System.out.println("card no "+cred_req.getCard_number()+" month "+cred_req.getExpiration_month()+
-                "year "+cred_req.getExpiration_year()+" coupon"+cred_req.getCoupon()+" cvv"+cred_req.getCvv()+
-                "itenaray_no"+cred_req.getItinerary_string().size());
+        //System.out.println("card no "+cred_req.getCard_number()+" month "+cred_req.getExpiration_month()+
+        //"year "+cred_req.getExpiration_year()+" coupon"+cred_req.getCoupon()+" cvv"+cred_req.getCvv()+
+        //"itenaray_no"+cred_req.getItinerary_string().size());
 
         return cred_req;
     }
@@ -266,7 +265,7 @@ Credit_Request request;
             globalObj.put("coupon",coupon_text);
             s=globalObj.toString();
             s=s.replace("\\","");
-    //System.out.println("Coupon"+coupon_text);
+    ////System.out.println("Coupon"+coupon_text);
         }catch (Exception e){
         }
         return s;

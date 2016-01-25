@@ -63,11 +63,9 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             if(city_position==100) {
                 getActivity().setTitle(HomeActivity.getHome_context().getResources().getString(R.string.custom_itinerary_title));
                 displayListFrag(1);
-
             }else{
                 getActivity().setTitle(HomeActivity.poi_data[city_position].split(":")[0]);
                 displayListFrag(city_position);
-
             }
             ExperienceListAdapter.all_experiences.clear();
         }else{
@@ -81,9 +79,11 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         adapter=new ExperienceListAdapter(getActivity().getApplicationContext());
         rv.setAdapter(adapter);
         if(CheckoutActivity.experience_to_book != null)
+        {
             CheckoutActivity.experience_to_book = null;
+        }
         getActivity().invalidateOptionsMenu();
-                rv.setLayoutManager(LLM);
+        rv.setLayoutManager(LLM);
 
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -99,7 +99,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                         loading = false;
 //                        GeneralHelper.showLoadingProgress(getActivity());
 
-                        System.out.println("here comes to the end ");
+                        //System.out.println("here comes to the end ");
 //                        adapter.all_experiences.add();
 //                        displayListFrag(ExperienceListAdapter.current_city);
 
@@ -135,10 +135,9 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         Date tommorow = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-            req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                    HomeActivity.db_poi_data[position]
-                  ,"0", "",experience_type);
-
+        req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
+                HomeActivity.db_poi_data[position]
+              ,"0", "",experience_type);
 
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -147,7 +146,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 .setEndpoint(getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        //ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
             @Override
             public void success(List<Search_Result> search_results, Response response) {
@@ -161,7 +160,6 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
                 //System.out.println("HomeActivityFragment.failure");
                 //System.out.println("error = [" + error + "]");
             }
@@ -183,6 +181,4 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_expList));
     }
-
-
 }

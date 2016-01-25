@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +21,8 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
+import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
 import com.umeng.analytics.MobclickAgent;
 
 import java.text.DecimalFormat;
@@ -39,6 +39,8 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.ToastHelper;
@@ -84,7 +86,7 @@ public class CheckoutActivityFragment extends Fragment {
     static int time_sel = 0;
     static int np_sel = 0;
     static boolean coupon_status = false;
-    static Experience_Detail temp_detail_exp;
+    static AbstractExperience temp_detail_exp;
     private static View view_instance;
     private static DecimalFormat REAL_FORMATTER = new DecimalFormat("0");
     private static Float[] dy_price;
@@ -327,7 +329,7 @@ public class CheckoutActivityFragment extends Fragment {
                 CheckoutActivity.guest = booking_guest_number.getText().toString();
                 String time_arr[] = (time_spin.getSelectedItem().toString().split(":"));
                 int hour = Integer.parseInt(time_arr[0].charAt(0) + "") * 10 + Integer.parseInt(time_arr[0].charAt(1) + "");
-                int duration = temp_detail_exp.getExperience_duration();
+                int duration = temp_detail_exp.getDuration().intValue()+1;
                 int secondHour = hour + duration;
                 String secHourSt = secondHour / 10 + "" + secondHour % 10 + ":00";
                 CheckoutActivity.time = time_spin.getSelectedItem().toString() + "-" + secHourSt;
@@ -357,14 +359,37 @@ public class CheckoutActivityFragment extends Fragment {
                     .setEndpoint(getResources().getString(R.string.server_url))
                     .build();
             ApiService apiService = restAdapter.create(ApiService.class);
-//            ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+            //ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             req = new request(CheckoutActivity.position);
-            //System.out.println("Position is " + CheckoutActivity.position);
-            apiService.getExpDetails(req, new Callback<Experience_Detail>() {
+            ////System.out.println("Position is " + CheckoutActivity.position);
+            apiService.getExpDetails(req, new Callback<Object>() {
                 @Override
-                public void success(Experience_Detail experience_detail, Response response) {
+                public void success(Object experience, Response response) {
+                    AbstractExperience experience_detail;
                     if(req.getExperience_id()>0) {
+                        try
+                        {
+                            experience_detail = new Gson().fromJson(new String(((TypedByteArray) response.getBody()).getBytes(), "UTF-8"), Experience_Detail.class);
+                        }
+                        catch(java.io.UnsupportedEncodingException ex)
+                        {
+                            //TODO
+                            experience_detail = new Experience_Detail();
+                        }
+                        if(experience_detail.getTitle().isEmpty())
+                        {
+                            //local experience instead of travel with locals
+                            try
+                            {
+                                experience_detail = new Gson().fromJson(new String(((TypedByteArray) response.getBody()).getBytes(), "UTF-8"), Local_Experience_Detail.class);
+                            }
+                            catch(java.io.UnsupportedEncodingException ex)
+                            {
+                                //TODO
+                                experience_detail = new Local_Experience_Detail();
+                            }
+                        }
                         CheckoutActivity.experience_to_book = experience_detail;
                         updateDetails();
                         bookingBtn.setEnabled(true);
@@ -390,12 +415,19 @@ public class CheckoutActivityFragment extends Fragment {
         if (temp_detail_exp != null) {
             Glide.with(HomeActivity.getHome_context()).load(ExpDetailActivityFragment.BASE_URL +
                     "thumbnails/experiences/experience" + ExpDetailActivity.position + "_1.jpg").fitCenter().into(thumbnail);
-            title.setText(temp_detail_exp.getExperience_title());
-            duration.setText(temp_detail_exp.getExperience_duration().toString());
+            title.setText(temp_detail_exp.getTitle());
+            if(temp_detail_exp.getDuration().intValue() == temp_detail_exp.getDuration())
+            {
+                duration.setText(String.valueOf(temp_detail_exp.getDuration().intValue()));
+            }
+            else
+            {
+                duration.setText(temp_detail_exp.getDuration().toString());
+            }
             String[] language = temp_detail_exp.getLanguage() != null ? temp_detail_exp.getLanguage().split(";") : new String[1];
             String l = "";
             for (int i = 0; language != null && i < language.length; i++) {
-                switch (language[i]) {
+                switch (language[i].toLowerCase()) {
                     case "english":
                         l = "English";
                         break;
@@ -457,9 +489,9 @@ public class CheckoutActivityFragment extends Fragment {
                     guests = temp_detail_exp.getExperience_guest_number_min();
                 }
             } else {
-                //price_title.setText(REAL_FORMATTER.format(temp_detail_exp.getExperience_price()*1.44));
-                price_i = temp_detail_exp.getExperience_price();
-                price_s = REAL_FORMATTER.format(temp_detail_exp.getExperience_price());
+                //price_title.setText(REAL_FORMATTER.format(temp_detail_exp.getPrice()*1.44));
+                price_i = temp_detail_exp.getPrice();
+                price_s = REAL_FORMATTER.format(temp_detail_exp.getPrice());
                 guests = temp_detail_exp.getExperience_guest_number_min();
             }
             booking_price.setText(price_s);

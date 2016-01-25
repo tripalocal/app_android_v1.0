@@ -130,35 +130,35 @@ public class PhoneregisterFragment extends Fragment {
 
     public Boolean sendVerfiMsg(String code) {
         Boolean success=true;
-        //System.out.println("verification code is "+code);
+        ////System.out.println("verification code is "+code);
         verfication_code_confirm = code;
         String uri = getActivity().getResources().getString(R.string.phone_reg_server);//应用地址
         String account = getActivity().getResources().getString(R.string.phone_reg_username);//账号
         String pswd = getActivity().getResources().getString(R.string.phone_reg_pwd);;//密码
         String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
-        //System.out.println("phone no:" + mobiles);
+        ////System.out.println("phone no:" + mobiles);
         String content = getResources().getString(R.string.msg_content).replace("code",code);  //短信内容
         boolean needstatus = true;//是否需要状态报告，需要true，不需要false
         String product = null;//产品ID
         String extno = null;//扩展码
 
         try {
-            //System.out.println("start event");
+            ////System.out.println("start event");
             String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
             String[] returnCodeArray=(returnString.split("\n")[0]).split(",");
             String returnCode=returnCodeArray[1];
 
-//            System.out.println("return1 length:"+returnCode.length()+"return code:"+returnCode);
+//            //System.out.println("return1 length:"+returnCode.length()+"return code:"+returnCode);
             if(returnCode.equals("0")){
             }else{
                 success=false;
             }
-            //System.out.println("++++++++++++++");
+            ////System.out.println("++++++++++++++");
         } catch (Exception e) {
             e.printStackTrace();
             success=false;
         }
-        //System.out.println("end event");
+        ////System.out.println("end event");
         return success;
     }
 
@@ -173,7 +173,7 @@ public class PhoneregisterFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            //System.out.println("task finished");
+            ////System.out.println("task finished");
             if(result){
 //            invisibleButton(false);
                 confirm_btn.setEnabled(true);

@@ -99,16 +99,16 @@ public class MsgListFragment extends Fragment {
                 }
             }
             if(check_customer_support_exists){
-                System.out.println("comming here ");
+                //System.out.println("comming here ");
                 ChatActivity.addTextToListRecorded("WelCome!", getResources().getString(R.string.customer_support_name), customer_support_id, customer_supprt_img, "2015/11/11/12/12/12/3333");
                 lists.clear();
                 lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
-                System.out.println("last olne + "+lists.get(0).getSender_img());
+                //System.out.println("last olne + "+lists.get(0).getSender_img());
 
             }
             chatList_db_source.close();
         }catch (Exception e){
-            System.out.println("exception123"+e.getMessage().toString());
+            //System.out.println("exception123"+e.getMessage().toString());
         }
         for(ChatList_model model :lists){
             messages.add(model);

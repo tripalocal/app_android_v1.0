@@ -9,7 +9,7 @@ public class ExampleTest extends InstrumentationTestCase{
     public void test() throws Exception{
         final int expected=1;
         final int reality=5;
-        System.out.println("testing success");
+        //System.out.println("testing success");
         assertEquals(expected,reality);
     }
 

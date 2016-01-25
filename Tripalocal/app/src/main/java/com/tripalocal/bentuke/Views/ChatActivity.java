@@ -103,7 +103,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         initExtra();
        initComponenets();
-            System.out.println("chat activity start");
+            ////System.out.println("chat activity start");
           getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NotificationHelper.clearBadge();
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
@@ -196,7 +196,7 @@ public class ChatActivity extends AppCompatActivity {
 //        updateChat();
         super.onResume();
 
-        System.out.println("start on resume method on chat Activity");
+        ////System.out.println("start on resume method on chat Activity");
         MobclickAgent.onResume(this);       //统计时长
     }
     public void onPause() {
@@ -217,7 +217,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (!text.trim().equals("")) {
                     initExtra();
                     addTextToList(text, sender_flag, sender_img, GeneralHelper.getDateTime());
-//                    System.out.println("sender images shows here " + sender_img);
+//                    ////System.out.println("sender images shows here " + sender_img);
                     notifAdapter();
                     try {
                         chatManager = ChatManager.getInstanceFor(connection);
@@ -238,7 +238,7 @@ public class ChatActivity extends AppCompatActivity {
                         push.sendInBackground();
                         notifAdapter();
                     } catch (Exception e) {
-                        System.out.println("errors here" + e.getMessage().toString());
+                        ////System.out.println("errors here" + e.getMessage().toString());
                     }
                 }
             }
@@ -260,7 +260,7 @@ public class ChatActivity extends AppCompatActivity {
             //add to datasource
             chatMsg_datasource=new ChatMsgDataSource(getApplicationContext());
             chatMsg_datasource.open();
-            System.out.println("msg date from addTextToList"+text);
+            //////System.out.println("msg date from addTextToList"+text);
 
             chatMsg_datasource.addNewMsg(new ChatMsg_model(sender_id, sender_name, text,time, ChatActivity.sender_flag,
                     image));
@@ -278,11 +278,11 @@ public class ChatActivity extends AppCompatActivity {
             dataSource.open();
             dataSource.createNewChat(model);
             dataSource.close();
-//            System.out.println("add text finish");
+            //////System.out.println("add text finish");
         }catch (Exception e){
-            System.out.println("exception"+e.getMessage().toString());
+            //////System.out.println("exception"+e.getMessage().toString());
         }
-//        System.out.println("add text to list end");
+        ////////System.out.println("add text to list end");
     }
 
 
@@ -300,7 +300,7 @@ public class ChatActivity extends AppCompatActivity {
 
             ChatMsgDataSource chatMsg_datasource=new ChatMsgDataSource(HomeActivity.getHome_context());
             chatMsg_datasource.open();
-            System.out.println("msg date from addTextToList"+text);
+            ////System.out.println("msg date from addTextToList"+text);
 
             chatMsg_datasource.addNewMsg(new ChatMsg_model(person+"", sender_name, text,time, ChatActivity.sender_flag,
                     image));
@@ -314,17 +314,17 @@ public class ChatActivity extends AppCompatActivity {
             model.setLast_msg_content(text);
             model.setLast_msg_date(time);
             model.setSender_img(image);
-            System.out.println("images added here is "+image);
+            ////System.out.println("images added here is "+image);
 
             dataSource.open();
             dataSource.createNewChat(model);
             dataSource.close();
 //            initData();
-//            System.out.println("add text finish");
+//            ////System.out.println("add text finish");
         }catch (Exception e){
-            System.out.println("exception"+e.getMessage().toString());
+            ////System.out.println("exception"+e.getMessage().toString());
         }
-//        System.out.println("add text to list end");
+//        ////System.out.println("add text to list end");
     }
 
     public void notifAdapter(){
@@ -347,7 +347,7 @@ public class ChatActivity extends AppCompatActivity {
         map.put("text", text);
         map.put("dateTime", time);
         map.put("image", image);
-//        System.out.println("image url on chatActivity " + image);
+//        ////System.out.println("image url on chatActivity " + image);
         Log.i("testList ","statis add Text to List "+text);
 
         chatListMap.add(map);
@@ -359,7 +359,7 @@ public class ChatActivity extends AppCompatActivity {
         map.put("text", text);
         map.put("dateTime",time);
         map.put("image", image);
-//        System.out.println("image url on chatActivity " + image);
+//        ////System.out.println("image url on chatActivity " + image);
 
         chatListMap.add(map);
     }
@@ -381,16 +381,16 @@ public class ChatActivity extends AppCompatActivity {
         try {
             chatMsg_datasource1.open();
             lists =(ArrayList<ChatMsg_model>)chatMsg_datasource1.getChatMsgs(Integer.parseInt(sender_id));
-//            System.out.println("retrieve data succesffully");
+//            ////System.out.println("retrieve data succesffully");
         }catch (Exception e){
-            System.out.println("exception123:"+e.getMessage().toString());
+            ////System.out.println("exception123:"+e.getMessage().toString());
         }finally {
             chatMsg_datasource1.close();
         }
         for(ChatMsg_model model :lists){
             HashMap<String,Object> map = new HashMap<String, Object>();
             map.put("person", model.getMsg_type());
-            System.out.println("person type on initData" + model.getMsg_type());
+            ////System.out.println("person type on initData" + model.getMsg_type());
             map.put("text", model.getMsg_content());
             map.put("dateTime",model.getMsg_date());
             map.put("image",model.getReceiver_img());
@@ -457,8 +457,8 @@ public class ChatActivity extends AppCompatActivity {
                            addTextToListNoRecord(model.getMsg_content(),ChatActivity.sender_flag,model.getReceiver_img(),model.getMsg_date());
 
                        }
-                        System.out.println("Receiver name is " + model.getReceiver_name());
-                        System.out.println("msg date from update chat" + model.getMsg_content());
+                        ////System.out.println("Receiver name is " + model.getReceiver_name());
+                        ////System.out.println("msg date from update chat" + model.getMsg_content());
                         datesource.addNewMsg(model);
 //                        addTextToListNoRecord(model.getMsg_content(), model.getMsg_type(), model.getReceiver_img(), model.getMsg_date());
                     }
@@ -514,10 +514,10 @@ public class ChatActivity extends AppCompatActivity {
                 item.setMsg_content(m.getMsg_content());
                 item.setLocal_id(m.getMsg_id());
                 item.setReceiver_id(Integer.parseInt(m.getReceiver_id()));
-                System.out.println("receiver id outside is " + m.getReceiver_id());
+                ////System.out.println("receiver id outside is " + m.getReceiver_id());
                 String receiverId=m.getReceiver_id();
                 if(m.getMsg_type()==ChatActivity.sender_flag){
-                    System.out.println("receiver id inside is " + m.getReceiver_id());
+                    ////System.out.println("receiver id inside is " + m.getReceiver_id());
                     request.addToList(item);
 
                 }
@@ -530,7 +530,7 @@ public class ChatActivity extends AppCompatActivity {
         }
         Gson json=new Gson();
         String test=json.toJson(request);
-        System.out.println("update request "+test);
+        ////System.out.println("update request "+test);
       if(request.getMessages().size()!=0) {
             ApiService apiService = restAdapter.create(ApiService.class);
             apiService.updateConversation(request, new Callback<ArrayList<Update_Conversation_Result>>() {
@@ -542,13 +542,13 @@ public class ChatActivity extends AppCompatActivity {
                         dataSource.open();
                         for(Update_Conversation_Result result : update_conversation_results){
                             dataSource.UpdateGlobalId(result.getLocal_id(),result.getGlobal_id());
-                            System.out.println("11local id is " + result.getLocal_id() + "global id is " + result.getGlobal_id());
+                            ////System.out.println("11local id is " + result.getLocal_id() + "global id is " + result.getGlobal_id());
 
                         }
                         dataSource.close();
                     } catch (SQLException e) {
                         e.printStackTrace();
-                        System.out.println("Msg update Exception here "+ e.getMessage().toString());
+                        ////System.out.println("Msg update Exception here "+ e.getMessage().toString());
                     }
                     GeneralHelper.closeLoadingProgress();
 

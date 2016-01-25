@@ -73,7 +73,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             try {
                 dt = sdf.parse(result.getDatetime().substring(0, 20));
             } catch (ParseException pe) {
-                //System.out.println(pe.toString());
+                ////System.out.println(pe.toString());
             }
 
             sdf = new SimpleDateFormat(mContext.getResources().getString(R.string.mytrip_date_format));
@@ -110,7 +110,7 @@ public class MyTripAdapter extends RecyclerView.Adapter<MyTripAdapter.ListViewHo
             holder.status.setText(st);
             holder.meetupSpot.setText(result.getMeetupSpot());
             new ImageDownloader(holder.expImage).execute((mContext.getResources().getString(R.string.server_url) + "images/"+result.getExperience_photo()));
-//            System.out.println("Mytrip photo over there "+(mContext.getResources().getString(R.string.server_url) + "images/"+result.getExperience_photo());
+//            //System.out.println("Mytrip photo over there "+(mContext.getResources().getString(R.string.server_url) + "images/"+result.getExperience_photo());
             new ImageDownloader(holder.profileImage).execute(mContext.getResources().getString(R.string.server_url) + "images/"
                     + result.getHostImage());
 

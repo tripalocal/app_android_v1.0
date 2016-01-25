@@ -87,7 +87,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
         Experience exp_to_display = all_experiences.get(position);
-        System.out.println("exp host photo : " + BASE_URL + "" + exp_to_display.getHostImage());
+        ////System.out.println("exp host photo : " + BASE_URL + "" + exp_to_display.getHostImage());
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getPhoto_url()).fitCenter().into(holder.bannerImage);
         if(ExperiencesListFragment.experience_type==ExperiencesListFragment.exp_private){
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
@@ -128,17 +128,19 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 holder.wishTxt.setText(R.string.save_to_wishlist);
             }
         }
-        try {
-            holder.durationTxt.setText(Integer.parseInt(exp_to_display.getDuration().toString()));
-        }catch (Exception e){
+        if(exp_to_display.getDuration().intValue() == exp_to_display.getDuration())
+        {
+            holder.durationTxt.setText(Integer.toString(exp_to_display.getDuration().intValue()));
+        }
+        else
+        {
             holder.durationTxt.setText(exp_to_display.getDuration().toString());
-
         }
         String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
         String l= "";
         for(int i=0;language!=null && i<language.length;i++)
         {
-            switch(language[i]) {
+            switch(language[i].toLowerCase()) {
                 case "english": l = "English";break;
                 case "mandarin": l += " / 中文";break;
             }
@@ -317,12 +319,12 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         apiService.UpdateWishList(request, new Callback<Wishlist_Update_Result>() {
             @Override
             public void success(Wishlist_Update_Result wishlist_update_result, Response response) {
-                System.out.println("success" + wishlist_update_result.getAdded());
+                //System.out.println("success" + wishlist_update_result.getAdded());
             }
 
             @Override
             public void failure(RetrofitError error) {
-                System.out.println("failure" + error.getMessage().toString());
+                //System.out.println("failure" + error.getMessage().toString());
             }
         });
     }}

@@ -325,7 +325,7 @@ public class AlipayActivity extends AppCompatActivity {
                     }
                 })
                 .build();
-//        System.out.println("token"+getUserToken()+"");
+        //System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
         apiService.bookExperience(getCreditRequest(getOutTradeNo(), ""+0, ""+0, "ALIPAY"), new Callback<Booking_Result>() {
             @Override
@@ -338,10 +338,8 @@ public class AlipayActivity extends AppCompatActivity {
 
             @Override
             public void failure(RetrofitError error) {
-//                String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
+                //String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
-
-//
             }
         });
     }
@@ -369,8 +367,7 @@ public class AlipayActivity extends AppCompatActivity {
         String guest_num=CheckoutActivity.guest;
         try {
             JSONObject globalObj=new JSONObject();
-
-//            complie itinerary string
+            //complie itinerary string
             JSONArray itinerary_list=new JSONArray();
             JSONObject itinerary_string=new JSONObject();
             itinerary_string.put("id",id);
@@ -389,7 +386,6 @@ public class AlipayActivity extends AppCompatActivity {
             s=s.replace("\\","");
 
         }catch (Exception e){
-
         }
 
         return s;

@@ -105,7 +105,7 @@ public class LoginFragment extends Fragment {
                 "<a href='https://www.tripalocal.com/accounts/password/reset/'>";
 
         String forgot_pwd_text =link_string+getResources().getString(R.string.login_forget_password)+"</a>";
-        System.out.println(forgot_pwd_text);
+        //System.out.println(forgot_pwd_text);
         forgotBtn.setText(Html.fromHtml(forgot_pwd_text));
 //        forgotBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -203,21 +203,21 @@ public class LoginFragment extends Fragment {
         GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signin));
 
         GeneralHelper.showLoadingProgress(getActivity());
-//        ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
-         RestAdapter restAdapter = new RestAdapter.Builder()
+        //ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_contacting));
+        RestAdapter restAdapter = new RestAdapter.Builder()
                     .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setEndpoint(getActivity().getResources().getString(R.string.server_url))
                     .build();
-            ApiService apiService = restAdapter.create(ApiService.class);
+        ApiService apiService = restAdapter.create(ApiService.class);
 
         String username = ((EditText) getActivity().findViewById(R.id.login_email)).getText().toString();
         String pwd = ((EditText) getActivity().findViewById(R.id.login_password)).getText().toString();
-       GeneralHelper.recordEmail(username);
+        GeneralHelper.recordEmail(username);
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
                 public void success(Login_Result result, Response response) {
+                    GeneralHelper.closeLoadingProgress();
                     if(!cancelled) {
-
                         InputMethodManager imm = (InputMethodManager)HomeActivity.getHome_context().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow( ((EditText) getActivity().findViewById(R.id.login_password)).getWindowToken(), 0);
                         //set login
@@ -241,15 +241,13 @@ public class LoginFragment extends Fragment {
                             startActivity(intent);
                         }
                     }
-                    GeneralHelper.closeLoadingProgress();
-
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
                     GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(log_in_failed);
-                    //System.out.println("error = [" + error + "]");
+                    ////System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }
             });

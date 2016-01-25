@@ -67,7 +67,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
                     .into(msgViewHolder.imageView);
         }
 
-        System.out.println("here images:"+BASE_URL+image);
+        ////System.out.println("here images:"+BASE_URL+image);
         String sender_name=messages.get(i).getSender_name();
         String sender_id=messages.get(i).getSender_id();
         msgViewHolder.msg_sender.setOnClickListener(new msglistlistener(sender_name,sender_id,image));
@@ -116,17 +116,17 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         }
         @Override
         public void onClick(View view) {
-            System.out.println("on click goes here");
+            ////System.out.println("on click goes here");
             Intent intent = new Intent(HomeActivity.getHome_context(), ChatActivity.class);
             intent.putExtra(ChatActivity.COL_SENDER_ID,id);
-            System.out.println(name + "'s id is " +id);
+            ////System.out.println(name + "'s id is " +id);
             intent.putExtra(ChatActivity.COL_SENDER_NAME, name);
             intent.putExtra(ChatActivity.COL_SENDER_IMG, image);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             HomeActivity.getHome_context().startActivity(intent);
-            System.out.println("Onclick finish here");
+            ////System.out.println("Onclick finish here");
         }
     }
 
@@ -191,12 +191,12 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
             chatList_db_source.close();
         }catch (Exception e){
-            System.out.println("exception"+e.getMessage().toString());
+            ////System.out.println("exception"+e.getMessage().toString());
         }
         for(ChatList_model model :lists){
             messages.add(model);
         }
-//        NotificationHelper.clearBadge();
+        //NotificationHelper.clearBadge();
         adapter.notifyDataSetChanged();
     }
 }

@@ -177,7 +177,7 @@ public class ItinerariesFragment extends Fragment {
             public void success(List<Search_Result> search_results, Response response) {
                 GeneralHelper.closeLoadingProgress();
                 ExperienceListAdapter.prepareSearchResults(search_results);
-                //System.out.println("search_results = " + search_results);
+                ////System.out.println("search_results = " + search_results);
                 //ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
 //                rv.getAdapter().notifyDataSetChanged();
                 //FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
@@ -186,8 +186,8 @@ public class ItinerariesFragment extends Fragment {
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
 
-                //System.out.println("HomeActivityFragment.failure");
-                //System.out.println("error = [" + error + "]");
+                ////System.out.println("HomeActivityFragment.failure");
+                ////System.out.println("error = [" + error + "]");
             }
         });
     }

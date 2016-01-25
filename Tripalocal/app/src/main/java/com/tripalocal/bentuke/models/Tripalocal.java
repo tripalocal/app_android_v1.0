@@ -12,12 +12,19 @@ public class Tripalocal extends Application {
 
     private static String serverUrl = "https://tripalocal-static.s3.amazonaws.com/";
 
-
     public static String getServerUrl() {
         return serverUrl;
     }
     public static String getFullName(String firstName, String lastName)
     {
+        if(firstName == null)
+        {
+            firstName = "";
+        }
+        if(lastName == null)
+        {
+            lastName = "";
+        }
         if(firstName.matches("^[\\u0000-\\u0080]+$") && lastName.matches("^[\\u0000-\\u0080]+$"))
         {
             return Character.toUpperCase(firstName.charAt(0)) + firstName.substring(1) + " " + lastName.substring(0, 1).toUpperCase() + ".";

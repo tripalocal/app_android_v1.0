@@ -15,6 +15,7 @@ import com.tripalocal.bentuke.helpers.Login_Result;
 import com.tripalocal.bentuke.helpers.SearchRequest;
 import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.MyTrip;
+import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
 import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
 import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
@@ -61,10 +62,7 @@ public interface ApiService {
     void getSearchResults(@Body SearchRequest data_json, Callback<List<Search_Result>> cb);
 
     @POST("/service_experience/")
-    void getExpDetails(@Body request data_json, Callback<Experience_Detail> cb);
-
-    @POST("/service_experience/")
-    void getLocalExpDetails(@Body request data_json, Callback<Local_Experience_Detail> cb);
+    void getExpDetails(@Body request data_json, Callback<Object> cb);
 
     @FormUrlEncoded
     @POST("/service_login/")

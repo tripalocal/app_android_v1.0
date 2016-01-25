@@ -43,7 +43,7 @@
                     android:textSize="18sp"
                     android:id="@+id/exp_detail_lang"
                     android:layout_below="@id/exp_reservation_with"
-                    android:text="English"
+                    android:text=""
                     android:background="@color/white"
                     android:paddingBottom="10dp"
                     android:gravity="center"
@@ -84,7 +84,7 @@
                     android:textSize="36sp"
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"
-                    android:text="320"
+                    android:text=""
                     android:layout_toRightOf="@id/exp_detail_money_sign"
                     android:layout_marginLeft="10dp" />
                 <TextView
@@ -189,7 +189,7 @@
                         android:id="@+id/exp_detail_info_title"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="Cradle Coast Tours"
+                        android:text=""
                         android:gravity="left"
                         android:password="false"
                         android:paddingLeft="10dp"
@@ -203,7 +203,7 @@
                         android:id="@+id/exp_header"
                         android:layout_below="@+id/exp_detail_info_title"
                         android:textSize="16sp"
-                        android:text="7 hours ; English : Melbourne CEB"
+                        android:text=""
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
@@ -282,7 +282,7 @@
                         android:id="@+id/local_highlights"
                         android:layout_below="@+id/textView15"
                         android:textSize="15sp"
-                        android:text="fjsadklfjaslkfj aslkf jasklf jasfl asjkf "
+                        android:text=""
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
@@ -322,7 +322,7 @@
                         android:id="@+id/local_description"
                         android:layout_below="@+id/textView20"
                         android:textSize="15sp"
-                        android:text="fjsadklfjaslkfj aslkf jasklf jasfl asjkf "
+                        android:text=""
                         android:textAlignment="center"
                         android:ellipsize="end"
                         android:singleLine="false"
@@ -860,7 +860,7 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:background="@drawable/linear_border_bot"
                     android:id="@+id/related_exp_layout_1"
                     android:layout_marginLeft="10dp"
@@ -887,7 +887,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="This is a title"
+                            android:text=""
                             android:id="@+id/relatedExp_title_1"
                             android:textSize="15sp" />
 
@@ -916,7 +916,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="50"
+                                android:text=""
                                 android:id="@+id/relatedExp_price_1" />
 
                             <TextView
@@ -937,14 +937,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                  />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="2"
+                                android:text=""
                                 android:id="@+id/relatedExp_duration_1" />
 
                             <TextView
@@ -958,14 +958,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                  />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="English"
+                                android:text=""
                                 android:id="@+id/relatedExp_language_1" />
                         </LinearLayout>
 
@@ -1003,7 +1003,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="This is a title"
+                            android:text=""
                             android:id="@+id/relatedExp_title_2"
                             android:textSize="15sp" />
 
@@ -1031,14 +1031,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="50"
+                                android:text=""
                                 android:id="@+id/relatedExp_price_2" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" pp"
+                                android:text="@string/txt_pp"
                                 />
 
                             <TextView
@@ -1052,14 +1052,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                 />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="2"
+                                android:text=""
                                 android:id="@+id/relatedExp_duration_2" />
 
                             <TextView
@@ -1073,14 +1073,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                 />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="English"
+                                android:text=""
                                 android:id="@+id/relatedExp_language_2" />
                         </LinearLayout>
 
@@ -1117,7 +1117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="This is a title"
+                            android:text=""
                             android:id="@+id/relatedExp_title_3"
                             android:textSize="15sp" />
 
@@ -1146,14 +1146,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="50"
+                                android:text=""
                                 android:id="@+id/relatedExp_price_3" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" pp"
+                                android:text="@+id/txt_pp"
                                 android:id="@+id/textView33" />
 
                             <TextView
@@ -1167,14 +1167,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                 android:id="@+id/textView39" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="2"
+                                android:text=""
                                 android:id="@+id/relatedExp_duration_3" />
 
                             <TextView
@@ -1188,14 +1188,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text=" * "
+                                android:text="@string/txt_dot"
                                 android:id="@+id/textView45" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:text="English"
+                                android:text=""
                                 android:id="@+id/relatedExp_language_3" />
                         </LinearLayout>
 

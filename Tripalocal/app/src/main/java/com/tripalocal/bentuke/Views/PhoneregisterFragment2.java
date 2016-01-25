@@ -105,7 +105,7 @@ public class PhoneregisterFragment2 extends Fragment {
                         @Override
                         public void run() {
                             MsgHelper.registerUserXMPP(result1.getUser_id());//need id here
-                            System.out.println("running here" + result1.getUser_id());
+                            //System.out.println("running here" + result1.getUser_id());
                             HomeActivity.user_id = result1.getUser_id();
 
                         }
@@ -175,7 +175,7 @@ public class PhoneregisterFragment2 extends Fragment {
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
 //                ToastHelper.errorToast(log_in_failed);
-                //System.out.println("error = [" + error + "]");
+                ////System.out.println("error = [" + error + "]");
                 HomeActivity.getCurrent_user().setLoggedin(false);
             }
         });

@@ -97,7 +97,7 @@
                 android:textSize="18sp"
                 android:id="@+id/exp_detail_lang"
                 android:layout_below="@id/exp_reservation_with"
-                android:text="English"
+                android:text=""
                 android:background="@color/white"
                 android:paddingBottom="10dp"
                 android:gravity="center"
@@ -136,7 +136,7 @@
                     android:textSize="48sp"
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"
-                    android:text="423"
+                    android:text=""
                     android:layout_toRightOf="@id/exp_detail_money_sign"
                     android:layout_marginTop="-5dp"
                     android:layout_marginLeft="10dp" />

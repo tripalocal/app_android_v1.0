@@ -32,7 +32,7 @@ RelativeLayout background_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //System.out.println("oncreate go thererere");
+        ////System.out.println("oncreate go thererere");
         setContentView(R.layout.activity_slideshow);
         initialisePaging();
 
@@ -70,7 +70,7 @@ RelativeLayout background_layout;
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        //System.out.println("record text:" + restoredText);
+        ////System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("firsttime","no").apply();
             return false;
