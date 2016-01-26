@@ -41,9 +41,9 @@ public class Search_Result {
     public List<Experience> getPrivateExperiences(){
         ArrayList<Experience> explist=new ArrayList<Experience>();
         for(Experience exp: experiences){
-//            if(exp.getType().equals("Private")){
+//    if(exp.getType().equals("Private")){
                 explist.add(exp);
-//            }
+//    }
         }
         return explist;
     }

@@ -3,7 +3,7 @@ package com.tripalocal.bentuke.adapters;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
-import android.util.Log;
+//import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,37 +47,31 @@ public class TPSuggestionsAdapter extends CursorAdapter {
         search_country.setVisibility(View.VISIBLE);
         if(cursor.getPosition()==0){
             search_country.setText(data[(cursor.getPosition())].split(",")[1].split(":")[1]);
-
-            Log.i("search ","0 "+search_country.getText().toString()+"");
+            //Log.i("search ","0 "+search_country.getText().toString()+"");
         }else if(cursor.getPosition()==data.length-1){
             search_country.setVisibility(View.GONE);
-            Log.i("search ", "1 " + search_country.getText().toString() + "");
-
+            //Log.i("search ", "1 " + search_country.getText().toString() + "");
         }else{
             String country_pre=data[(cursor.getPosition()-1)].split(",")[1].split(":")[1];
             String country_cur=data[(cursor.getPosition())].split(",")[1].split(":")[1];
-//            String country_aft=data[(cursor.getPosition())+1].split(",")[1].split(":")[1];
-            Log.i("search ", "2.0 " + "previous"+country_pre+"cur "+country_cur+" "+search_country.getText().toString() + "");
+            //String country_aft=data[(cursor.getPosition())+1].split(",")[1].split(":")[1];
+            //Log.i("search ", "2.0 " + "previous"+country_pre+"cur "+country_cur+" "+search_country.getText().toString() + "");
 
             if(!country_pre.equals(country_cur)){
                 search_country.setText(data[(cursor.getPosition())].split(",")[1].split(":")[1]);
-                Log.i("search ", "2 " + "previous" + country_pre + "cur " + country_cur + " " + search_country.getText().toString() + "");
+                //Log.i("search ", "2 " + "previous" + country_pre + "cur " + country_cur + " " + search_country.getText().toString() + "");
 
             }else {
                 search_country.setVisibility(View.GONE);
-                Log.i("search ", "3 " + search_country.getText().toString() + "");
-
-
+                //Log.i("search ", "3 " + search_country.getText().toString() + "");
             }
         }
-//        View view = inflater.inflate(R.layout.search_item, viewGroup, false);
+        //View view = inflater.inflate(R.layout.search_item, viewGroup, false);
 
         text_city = (TextView) view.findViewById(R.id.search_city);
         text_state=(TextView)view.findViewById(R.id.search_state);
-        Log.i("city ", "data position " + cursor.getPosition() + " text" + data[(cursor.getPosition())].split(",")[0]+"");
+        //Log.i("city ", "data position " + cursor.getPosition() + " text" + data[(cursor.getPosition())].split(",")[0]+"");
         text_city.setText(data[(cursor.getPosition())].split(",")[0]);
         text_state.setText(data[(cursor.getPosition())].split(",")[1].split(":")[0]);
-
-
     }
 }

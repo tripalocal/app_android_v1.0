@@ -1,21 +1,14 @@
 package com.tripalocal.bentuke.Views;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,45 +16,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.MsgHelper;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatMsgDataSource;
-import com.tripalocal.bentuke.models.Tripalocal;
-import com.tripalocal.bentuke.models.database.ChatList_model;
-import com.tripalocal.bentuke.models.database.ChatMsg_model;
-import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
-import com.tripalocal.bentuke.models.network.Conversation_msg_api;
-import com.tripalocal.bentuke.models.network.MsgListModel;
-import com.tripalocal.bentuke.models.network.Profile_result;
-import com.tripalocal.bentuke.models.network.Update_Conversation_Request;
-import com.tripalocal.bentuke.models.network.Update_Conversation_Result;
-import com.tripalocal.bentuke.models.network.WishList_update_Request;
-import com.tripalocal.bentuke.models.network.Wishlist_Update_Result;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
-import java.lang.reflect.Array;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
@@ -71,18 +44,14 @@ import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
-import retrofit.client.OkClient;
 import retrofit.client.Response;
 
 import static com.tripalocal.bentuke.R.layout;
-
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -111,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
     public static Activity homeActivity;
     private SearchView searchView;
     private Menu menu;
-//    public static boolean
+    //public static boolean
     public static AccessToken getAccessToken() {
         return accessToken;
     }
@@ -175,7 +144,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//    Tripalocal.updatedChatList.add("test");
+//Tripalocal.updatedChatList.add("test");
 
         super.onCreate(savedInstanceState);
         MobclickAgent.updateOnlineConfig(this);
@@ -222,10 +191,10 @@ public class HomeActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(layout.activity_home);
 
-//        if(login_flag){
+//if(login_flag){
         getSupportFragmentManager().beginTransaction().add(R.id.nav_drawer_container, new NavigationFragment()).commit();
-//        login_flag = false;
-//        }
+//login_flag = false;
+//}
         tpDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
@@ -247,7 +216,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-//        addMixPanelData();
+//addMixPanelData();
         if(!checkFirstTime()){
             Intent intent =new Intent(getApplicationContext(), SlideShowActivtiy.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -406,20 +375,20 @@ public class HomeActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_login) {
             if(HomeActivity.getCurrent_user().isLoggedin()){
-//                HomeActivity.getCurrent_user().setLogin_token(null);
-//                HomeActivity.getCurrent_user().setLoggedin(false);
-//                HomeActivity.getCurrent_user().setUser_id(null);
-//                HomeActivity.setAccessToken(null);
-//                SharedPFsreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor_l = settings_l.edit();
-//                editor_l.clear();
-//                editor_l.apply();
-//                HomeActivity.login_flag = true;
-//                invalidateOptionsMenu();
-//                MessageSerivice.isRunning=false;
-//                MessageSerivice.connection.disconnect();
-////                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
-//                ToastHelper.shortToast(getResources().getString(R.string.logged_out));
+            //HomeActivity.getCurrent_user().setLogin_token(null);
+            //HomeActivity.getCurrent_user().setLoggedin(false);
+            //HomeActivity.getCurrent_user().setUser_id(null);
+            //HomeActivity.setAccessToken(null);
+            //SharedPFsreferences settings_l = getSharedPreferences(HomeActivity.PREFS_NAME_L, Context.MODE_PRIVATE);
+            //SharedPreferences.Editor editor_l = settings_l.edit();
+            //editor_l.clear();
+            //editor_l.apply();
+            //HomeActivity.login_flag = true;
+            //invalidateOptionsMenu();
+            //MessageSerivice.isRunning=false;
+            //MessageSerivice.connection.disconnect();
+            //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+            //ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
                         .replace(R.id.fragment_container, new LoginFragment()).commit();
@@ -434,13 +403,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        ////System.out.println("record text:" + restoredText);
+        //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             return false;
         }else{
             return true;
         }
-
     }
 
     public boolean checkLogin(){
@@ -463,24 +431,24 @@ public class HomeActivity extends AppCompatActivity {
 
         Fragment fragment_t = frag_manager.findFragmentById(R.id.fragment_container);
         if(fragment_t instanceof HomeActivityFragment) {
-//            new AlertDialog.Builder(this)
-//                    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
-//                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent = new Intent(Intent.ACTION_MAIN);
-//                            intent.addCategory(Intent.CATEGORY_HOME);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-//                            startActivity(intent);
-//                            MobclickAgent.onKillProcess(getApplicationContext());
-//                            finish();
-//                            System.exit(0);
-//                        }
-//                    })
-//                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                        }
-//                    })
-//                    .show();
+            //    new AlertDialog.Builder(this)
+            //    .setMessage(getApplicationContext().getResources().getString(R.string.dialog_exit_app))
+            //    .setPositiveButton(getApplicationContext().getResources().getString(R.string.dialog_option_yes), new DialogInterface.OnClickListener() {
+            //public void onClick(DialogInterface dialog, int which) {
+            //    Intent intent = new Intent(Intent.ACTION_MAIN);
+            //    intent.addCategory(Intent.CATEGORY_HOME);
+            //    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+            //    startActivity(intent);
+            //    MobclickAgent.onKillProcess(getApplicationContext());
+            //    finish();
+            //    System.exit(0);
+            //}
+            //    })
+            //    .setNegativeButton(getApplicationContext().getResources().getString(R.string.dialog_option_no), new DialogInterface.OnClickListener() {
+            //public void onClick(DialogInterface dialog, int which) {
+            //}
+            //    })
+            //    .show();
             if (doubleClick) {
                 finish();
 
@@ -489,7 +457,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             this.doubleClick = true;
-//        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
             ToastHelper.shortToast(getResources().getString(R.string.double_click_exit));
             new Handler().postDelayed(new Runnable() {
 
@@ -501,8 +469,6 @@ public class HomeActivity extends AppCompatActivity {
         }else if(fragment_t instanceof NoMsgFragment){
             Fragment home_fragment = new HomeActivityFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home_fragment).addToBackStack("home").commit();
-
-
         }else{
             super.onBackPressed();
         }
@@ -519,16 +485,16 @@ public class HomeActivity extends AppCompatActivity {
             updatedWishMap = true;
             final String tooken = HomeActivity.getCurrent_user().getLogin_token();
             RestAdapter restAdapter = new RestAdapter.Builder()
-                    .setLogLevel(RestAdapter.LogLevel.FULL)
-                    .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
-                    .setRequestInterceptor(new RequestInterceptor() {
-                        @Override
-                        public void intercept(RequestFacade request) {
-                            request.addHeader("Accept", "application/json");
-                            request.addHeader("Authorization", "Token " + tooken);
-                        }
-                    })
-                    .build();
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("Accept", "application/json");
+                        request.addHeader("Authorization", "Token " + tooken);
+                    }
+                })
+                .build();
 
             ApiService apiService = restAdapter.create(ApiService.class);
             apiService.RetrieveWishList(new Callback<ArrayList<Experience>>() {

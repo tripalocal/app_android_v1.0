@@ -13,7 +13,6 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-
         setContentView(R.layout.activity_review);
     }
 
@@ -27,6 +26,7 @@ public class ReviewActivity extends AppCompatActivity {
         super.onResume();
         MobclickAgent.onResume(this);       //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -219,14 +218,12 @@ public class MyTripFragment extends Fragment {
                 }
                 rv.setAdapter(new MyTripAdapter(HomeActivity.getHome_context()));
                 GeneralHelper.closeLoadingProgress();
-
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
-                ////System.out.println("ERROR MYTRIP :" + error);
+                //System.out.println("ERROR MYTRIP :" + error);
             }
         });
     }
@@ -245,7 +242,7 @@ public class MyTripFragment extends Fragment {
             }
             catch(ParseException pe)
             {
-                ////System.out.println(pe.toString());
+                //System.out.println(pe.toString());
             }
             if(dt.after(new Date()))
             {
@@ -257,10 +254,12 @@ public class MyTripFragment extends Fragment {
             }
         }
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_myTrip)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_myTrip));

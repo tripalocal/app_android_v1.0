@@ -48,7 +48,6 @@ public final class Base64 {
         }
         lookUpBase64Alphabet[62] = (char) '+';
         lookUpBase64Alphabet[63] = (char) '/';
-
     }
 
     private static boolean isWhiteSpace(char octect) {

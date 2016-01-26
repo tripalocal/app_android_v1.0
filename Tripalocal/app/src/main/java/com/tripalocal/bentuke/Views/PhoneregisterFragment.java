@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,7 +29,6 @@ public class PhoneregisterFragment extends Fragment {
     public PhoneregisterFragment() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +48,6 @@ public class PhoneregisterFragment extends Fragment {
             verfi_code_edit.setVisibility(View.VISIBLE);
             confirm_btn.setVisibility(View.VISIBLE);
         }
-
     }
 
     public void initView(View view) {
@@ -62,8 +59,7 @@ public class PhoneregisterFragment extends Fragment {
     }
 
     public void initControllers() {
-
-//        invisibleButton(true);
+        //invisibleButton(true);
         verfication_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +68,6 @@ public class PhoneregisterFragment extends Fragment {
                     verfication_btn.setEnabled(false);
                     verfication_btn.setBackgroundColor(getResources().getColor(R.color.grey));
                     new SendMsg().execute("");
-
-
                 }
             }
         });
@@ -82,12 +76,12 @@ public class PhoneregisterFragment extends Fragment {
             public void onClick(View v) {
                 phone_no_edit.clearFocus();
                 verfi_code_edit.clearFocus();
-//                getFragmentManager().beginTransaction().addToBackStack("login")
-//                        .replace(R.id.phone_reg_container, new LoginFragment()).commit();
-//                Intent intent=new Intent(getActivity().getApplicationContext(),PhoneregisterActivity.class);
-//                intent.putExtra("login_fragment",true);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                getActivity().getApplicationContext().startActivity(intent);
+                //getFragmentManager().beginTransaction().addToBackStack("login")
+                //.replace(R.id.phone_reg_container, new LoginFragment()).commit();
+                //Intent intent=new Intent(getActivity().getApplicationContext(),PhoneregisterActivity.class);
+                //intent.putExtra("login_fragment",true);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //getActivity().getApplicationContext().startActivity(intent);
                 Intent intent=new Intent(getActivity().getApplicationContext(),LoginActivity.class);
                 intent.putExtra("login_fragment",true);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -102,7 +96,6 @@ public class PhoneregisterFragment extends Fragment {
                 String phone_no = phone_no_edit.getText().toString();
                 String verification_code = verfi_code_edit.getText().toString();
 
-
                 if (verification_code.equals(verfication_code_confirm)) {
                     Intent intent = new Intent(getActivity().getApplicationContext(), PhoneregisterActivity2.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -111,11 +104,9 @@ public class PhoneregisterFragment extends Fragment {
                 }else{
                     ToastHelper.errorToast(getResources().getString(R.string.verfication_code_error), getActivity());
                 }
-
             }
         });
     }
-
 
     public boolean validationInput() {
         String phone_no_s = phone_no_edit.getText().toString();
@@ -127,81 +118,76 @@ public class PhoneregisterFragment extends Fragment {
         }
     }
 
-
     public Boolean sendVerfiMsg(String code) {
         Boolean success=true;
-        ////System.out.println("verification code is "+code);
+        //System.out.println("verification code is "+code);
         verfication_code_confirm = code;
         String uri = getActivity().getResources().getString(R.string.phone_reg_server);//应用地址
         String account = getActivity().getResources().getString(R.string.phone_reg_username);//账号
         String pswd = getActivity().getResources().getString(R.string.phone_reg_pwd);;//密码
         String mobiles = phone_no_edit.getText().toString();//手机号码，多个号码使用","分割
-        ////System.out.println("phone no:" + mobiles);
+        //System.out.println("phone no:" + mobiles);
         String content = getResources().getString(R.string.msg_content).replace("code",code);  //短信内容
         boolean needstatus = true;//是否需要状态报告，需要true，不需要false
         String product = null;//产品ID
         String extno = null;//扩展码
 
         try {
-            ////System.out.println("start event");
+            //System.out.println("start event");
             String returnString = HttpSender.batchSend(uri, account, pswd, mobiles, content, needstatus, product, extno);
             String[] returnCodeArray=(returnString.split("\n")[0]).split(",");
             String returnCode=returnCodeArray[1];
 
-//            //System.out.println("return1 length:"+returnCode.length()+"return code:"+returnCode);
+            //System.out.println("return1 length:"+returnCode.length()+"return code:"+returnCode);
             if(returnCode.equals("0")){
             }else{
                 success=false;
             }
-            ////System.out.println("++++++++++++++");
+            //System.out.println("++++++++++++++");
         } catch (Exception e) {
             e.printStackTrace();
             success=false;
         }
-        ////System.out.println("end event");
+        //System.out.println("end event");
         return success;
     }
 
-
     private class SendMsg extends AsyncTask<String, Void, Boolean> {
-
         @Override
         protected Boolean doInBackground(String... params) {
             return sendVerfiMsg(getVerificationCode());
-
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
-            ////System.out.println("task finished");
+            //System.out.println("task finished");
             if(result){
-//            invisibleButton(false);
+            //    invisibleButton(false);
                 confirm_btn.setEnabled(true);
 
-            new CountDownTimer(60000, 1000) {
+                new CountDownTimer(60000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
+                    }
 
-                public void onTick(long millisUntilFinished) {
-                    verfication_btn.setText(getResources().getString(R.string.verfi_countdown) + millisUntilFinished / 1000);
-                }
+                    public void onFinish() {
+                        verfication_btn.setText(getResources().getString(R.string.verfication_expire));
+                        verfication_btn.setEnabled(true);
+                        verfication_btn.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
 
-                public void onFinish() {
-                    verfication_btn.setText(getResources().getString(R.string.verfication_expire));
-                    verfication_btn.setEnabled(true);
-                    verfication_btn.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
+                        confirm_btn.setEnabled(false);
 
-                    confirm_btn.setEnabled(false);
-
-                }
-            }.start();}
+                    }
+                }.start();
+            }
             else{
                 ToastHelper.errorToast(getResources().getString(R.string.send_msg_failure),getActivity());
                 verfication_btn.setEnabled(true);
                 verfication_btn.setBackgroundColor(getResources().getColor(R.color.tripalocal_green_blue));
-
                 confirm_btn.setEnabled(false);
-
             }
         }
+
         @Override
         protected void onPreExecute() {
         }
@@ -210,7 +196,6 @@ public class PhoneregisterFragment extends Fragment {
         protected void onProgressUpdate(Void... values) {
         }
     }
-
 
     public String getVerificationCode() {
         String code = "";
@@ -221,18 +206,15 @@ public class PhoneregisterFragment extends Fragment {
         }
 
         return code;
-
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_phoneReg));
     }
-
-
-
-
 }

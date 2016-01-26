@@ -46,15 +46,12 @@ import com.tripalocal.bentuke.models.network.PayResult;
  */
 public class AlipayActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-
         setContentView(R.layout.activity_alipay);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,7 +74,6 @@ public class AlipayActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     //商户PID
     public static final String PARTNER = "2088911571600817";
@@ -107,8 +103,8 @@ public class AlipayActivity extends AppCompatActivity {
                     Log.d("result", resultStatus);
                     // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                     if (TextUtils.equals(resultStatus, "9000")) {
-//                        Toast.makeText(AlipayActivity.this, "支付成功",
-//                                Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AlipayActivity.this, "支付成功",
+                        //Toast.LENGTH_SHORT).show();
                         payByAlipay();
 
                     } else {
@@ -117,12 +113,9 @@ public class AlipayActivity extends AppCompatActivity {
                         if (TextUtils.equals(resultStatus, "8000")) {
                             ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
 
-
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
                             ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
-
-
                         }
                     }
                     break;
@@ -137,7 +130,6 @@ public class AlipayActivity extends AppCompatActivity {
             }
         };
     };
-
 
     /**
      * call alipay sdk pay. 调用SDK支付
@@ -206,7 +198,6 @@ public class AlipayActivity extends AppCompatActivity {
 
         Thread checkThread = new Thread(checkRunnable);
         checkThread.start();
-
     }
 
     /**
@@ -272,8 +263,6 @@ public class AlipayActivity extends AppCompatActivity {
 
         // 调用银行卡支付，需配置此参数，参与签名， 固定值 （需要签约《无线银行卡快捷支付》才能使用）
         // orderInfo += "&paymethod=\"expressGateway\"";
-
-
         return orderInfo;
     }
 
@@ -311,20 +300,18 @@ public class AlipayActivity extends AppCompatActivity {
         return "sign_type=\"RSA\"";
     }
 
-
-
     public void payByAlipay(){
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(getResources().getString(R.string.server_url))
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + getUserToken());
-                    }
-                })
-                .build();
+            .setLogLevel(RestAdapter.LogLevel.FULL)
+            .setEndpoint(getResources().getString(R.string.server_url))
+            .setRequestInterceptor(new RequestInterceptor() {
+                @Override
+                public void intercept(RequestFacade request) {
+                    request.addHeader("Accept", "application/json");
+                    request.addHeader("Authorization", "Token " + getUserToken());
+                }
+            })
+            .build();
         //System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
         apiService.bookExperience(getCreditRequest(getOutTradeNo(), ""+0, ""+0, "ALIPAY"), new Callback<Booking_Result>() {
@@ -343,7 +330,6 @@ public class AlipayActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private Credit_Request getCreditRequest(String no, String month, String year, String cvv) {
         String id=CheckoutActivity.position+"";

@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tripalocal.bentuke.Services.MessageSerivice;
-import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
@@ -77,7 +75,7 @@ public class ExpDetailActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
                 MessageSerivice.isRunning=false;
                 MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else
             getSupportFragmentManager().beginTransaction().addToBackStack("login")

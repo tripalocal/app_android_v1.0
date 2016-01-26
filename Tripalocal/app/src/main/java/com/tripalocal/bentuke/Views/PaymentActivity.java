@@ -14,8 +14,6 @@ import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.umeng.analytics.MobclickAgent;
 
 public class PaymentActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +22,9 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//
         return true;
     }
 
@@ -37,6 +33,7 @@ public class PaymentActivity extends AppCompatActivity {
         super.onStop();
         HomeActivity.saveData();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -59,7 +56,7 @@ public class PaymentActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
                 MessageSerivice.isRunning=false;
                 MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             } else
                 getSupportFragmentManager().beginTransaction().replace(R.id.payment_content, new LoginFragment()).commit();
@@ -72,6 +69,7 @@ public class PaymentActivity extends AppCompatActivity {
         super.onResume();
         MobclickAgent.onResume(this);       //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

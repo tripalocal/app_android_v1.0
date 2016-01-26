@@ -1,9 +1,7 @@
 package com.tripalocal.bentuke.models;
 
 import android.app.Application;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by YiHan on 2015/6/15.
@@ -35,8 +33,4 @@ public class Tripalocal extends Application {
         }
     }
     public static ArrayList<String> updatedChatList=new ArrayList<String>();
-
-
-
-
 }

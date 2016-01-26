@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
@@ -14,7 +12,6 @@ import com.tripalocal.bentuke.models.database.ChatMsg_model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +33,6 @@ public class ChatMsgDataSource{
             ChatMsg_db_Helper.COlUMN_MSG_TYPE,
             ChatMsg_db_Helper.COLUMN_RECEIVER_IMAGE,
             ChatMsg_db_Helper.COLUMN_GLOBAL_ID
-
     };
 
     public ChatMsgDataSource(Context context){
@@ -61,18 +57,14 @@ public class ChatMsgDataSource{
         values.put(dbHelper.COLUMN_RECEIVER_IMAGE,model.getReceiver_img());
         values.put(dbHelper.COLUMN_GLOBAL_ID, model.getGlobal_id());
 
-
         try {
             long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
-            Log.i("chatConversation","added "+model.getMsg_content()+ " local id "+model.getMsg_id()+ " global id "+model.getGlobal_id());
-
+            //Log.i("chatConversation","added "+model.getMsg_content()+ " local id "+model.getMsg_id()+ " global id "+model.getGlobal_id());
         }catch (Exception e){
-            ////System.out.println("insert exception here "+ e.getMessage().toString());
+            //System.out.println("insert exception here "+ e.getMessage().toString());
         }
-            ////System.out.println("person type on add new msg");
-
+        //System.out.println("person type on add new msg");
     }
-
 
     public int getLastConversationGlobalId(int receiverId){
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId
@@ -84,9 +76,9 @@ public class ChatMsgDataSource{
             int temp=Integer.parseInt(model.getGlobal_id());
             if(temp>last_conversation_id){
                 last_conversation_id=temp;
-                Log.i("Conversation ","global id inside is "+temp);
+                //Log.i("Conversation ","global id inside is "+temp);
             }
-            Log.i("Conversation ","global id outside is "+temp);
+            //Log.i("Conversation ","global id outside is "+temp);
 
             cursor.moveToNext();
         }
@@ -96,7 +88,7 @@ public class ChatMsgDataSource{
         List<ChatMsg_model> chats=new ArrayList<ChatMsg_model>();
         Map<Date,ChatMsg_model> map = new HashMap<Date,ChatMsg_model>();
 
-        ////System.out.println("sender id + " + receiverId);
+        //System.out.println("sender id + " + receiverId);
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,dbHelper.COLUMN_RECEIVER_ID+" = "+receiverId,null,null,null,null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
@@ -130,10 +122,10 @@ public class ChatMsgDataSource{
         args.put(dbHelper.COLUMN_GLOBAL_ID, global_id +"");
         try {
             database.update(dbHelper.TABLE_NAME, args, dbHelper.COLUMN_ID + " =" + local_id, null);
-            Log.i("chatConversation", "update success " +local_id);
+            //Log.i("chatConversation", "update success " +local_id);
 
         }catch (Exception e){
-            Log.i("chatConversation","update exception "+e.getMessage().toString());
+            //Log.i("chatConversation","update exception "+e.getMessage().toString());
         }
     }
 
@@ -141,13 +133,13 @@ public class ChatMsgDataSource{
         List<ChatMsg_model> chats=getChatMsgs(receiverId);
 
         for(ChatMsg_model m:chats){
-            ////System.out.println("on the delete option ,global id is "+m.getGlobal_id() + "and the receiver id is "+m.getReceiver_id());
+            //System.out.println("on the delete option ,global id is "+m.getGlobal_id() + "and the receiver id is "+m.getReceiver_id());
             if(m.getGlobal_id().equals("0") ){
                 //reChats.add(m);
                 String whereClause = dbHelper.COLUMN_ID + "=?";
                 String[] whereArgs = new String[] {m.getMsg_id()+""};
                 database.delete(dbHelper.TABLE_NAME,whereClause,whereArgs);
-                ////System.out.println("delete record here ");
+                //System.out.println("delete record here ");
                 //Log.i("chatConversation", "deleted " + m.getMsg_content()+"local id is "+m.getMsg_id());
             }else{
                //Log.i("chatConversation","undeleted "+m.getMsg_content()+ " local id "+m.getMsg_id()+ " global id "+m.getGlobal_id());
@@ -165,7 +157,7 @@ public class ChatMsgDataSource{
         model.setReceiver_img(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_RECEIVER_IMAGE)));
         model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
         model.setMsg_id(cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
-        Log.i("MESSAGE","retrieve msg id : "+cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
+        //Log.i("MESSAGE","retrieve msg id : "+cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_ID)));
         return model;
     }
 }

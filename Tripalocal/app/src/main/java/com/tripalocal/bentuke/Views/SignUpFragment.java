@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,7 +32,6 @@ public class SignUpFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,9 +48,8 @@ public class SignUpFragment extends Fragment {
         signupLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragHelper.replace(getFragmentManager(), new LoginFragment());
-//                view = inflater.inflate(R.layout.fragment_login, container, false);
-
+            FragHelper.replace(getFragmentManager(), new LoginFragment());
+            //view = inflater.inflate(R.layout.fragment_login, container, false);
             }
         });
         cancelled = false;
@@ -72,7 +69,7 @@ public class SignUpFragment extends Fragment {
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         //Login_Request log_req = new Login_Request("ravnav44@gmail.com" , "omegastar");
-       // Gson gson = new Gson();
+        // Gson gson = new Gson();
         //String log_json = gson.toJson(log_req);
 
         EditText edit_email = (EditText) getActivity().findViewById(R.id.signup_email);
@@ -87,10 +84,9 @@ public class SignUpFragment extends Fragment {
         GeneralHelper.recordEmail(email);
         GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signup));
 
-        if( GeneralHelper.EmptyCheck(new String[]{email,pwd,first_name,last_name})
-
-        &&GeneralHelper.validateEmail(email) && GeneralHelper.validatePwd(pwd)
-               ) {
+        if(GeneralHelper.EmptyCheck(new String[]{email,pwd,first_name,last_name}) &&
+            GeneralHelper.validateEmail(email) && GeneralHelper.validatePwd(pwd))
+        {
             GeneralHelper.showLoadingProgress(getActivity());
 
             apiService.signupUser(new SignupRequest(email, pwd, first_name, last_name), new Callback<Login_Result>() {
@@ -123,7 +119,7 @@ public class SignUpFragment extends Fragment {
                 public void failure(RetrofitError error) {
                     GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_signup_failure));
-                    ////System.out.println("error = [" + error + "]");
+                    //System.out.println("error = [" + error + "]");
                 }
             });
         }
@@ -133,6 +129,7 @@ public class SignUpFragment extends Fragment {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_signup)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_signup));

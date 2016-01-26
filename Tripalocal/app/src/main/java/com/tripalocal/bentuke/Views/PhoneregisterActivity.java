@@ -27,10 +27,10 @@ public class PhoneregisterActivity extends AppCompatActivity {
             Intent intent =new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            ////System.out.println("go there 1");
+            //System.out.println("go there 1");
         }
-        ////System.out.println("go there 2");
-//        getActionBar().hide();
+        //System.out.println("go there 2");
+        //getActionBar().hide();
         setContentView(R.layout.activity_phoneregister);
     }
 
@@ -48,9 +48,10 @@ public class PhoneregisterActivity extends AppCompatActivity {
             Intent intent =new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            ////System.out.println("go there 1");
+            //System.out.println("go there 1");
         }
     }
+
     public void backdoor(View view){
         Intent intent =new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -61,6 +62,7 @@ public class PhoneregisterActivity extends AppCompatActivity {
         SharedPreferences settings_l = getSharedPreferences(PREFS_NAME_L, Context.MODE_PRIVATE);
         return settings_l.getBoolean("login", false);
     }
+
     @Override
     public void onBackPressed(){
         new AlertDialog.Builder(this)

@@ -10,15 +10,12 @@ import com.tripalocal.bentuke.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
-
         setContentView(R.layout.activity_login);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -33,5 +30,4 @@ public class LoginActivity extends AppCompatActivity {
         super.onPause();
         MobclickAgent.onPause(this);
     }
-
 }

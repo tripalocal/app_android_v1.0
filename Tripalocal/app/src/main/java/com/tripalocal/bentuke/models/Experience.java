@@ -36,7 +36,6 @@ public class Experience {
     }
 
     public Experience(){
-
     }
 
     public Experience(String title, Integer id, String description) {
@@ -69,7 +68,6 @@ public class Experience {
         this.id = id;
         this.description = description;
         this.photo_url=photo_url;
-
         this.language = language;
     }
 

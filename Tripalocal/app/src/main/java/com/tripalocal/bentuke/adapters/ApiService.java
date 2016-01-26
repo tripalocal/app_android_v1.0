@@ -15,10 +15,6 @@ import com.tripalocal.bentuke.helpers.Login_Result;
 import com.tripalocal.bentuke.helpers.SearchRequest;
 import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.MyTrip;
-import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
-import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
-import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
-import com.tripalocal.bentuke.models.exp_detail.WishList_Retrieve_Result;
 import com.tripalocal.bentuke.models.exp_detail.request;
 import com.tripalocal.bentuke.models.network.Booking_Result;
 import com.tripalocal.bentuke.models.network.Conversation_Result;
@@ -90,11 +86,9 @@ public interface ApiService {
     @POST("/service_booking/")
     void bookExperience(@Body Credit_Request data, Callback<Booking_Result> response);
 
-    @POST("/service_booking/")
-    void bookAliPayExperience(@Body String data_json, Callback<String> response);
+    //@POST("/service_booking/")
+    //void bookAliPayExperience(@Body String data_json, Callback<String> response);
 
     @POST("/service_couponverification/")
     void verifyCouponCode(@Body String data_json, Callback<Coupon_Result> response);
-
-
 }

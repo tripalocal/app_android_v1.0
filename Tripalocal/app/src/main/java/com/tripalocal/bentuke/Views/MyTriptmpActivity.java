@@ -3,10 +3,8 @@ package com.tripalocal.bentuke.Views;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,7 +31,6 @@ import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.User;
 
 import static com.tripalocal.bentuke.R.layout;
-
 
 public class MyTriptmpActivity extends AppCompatActivity {
 
@@ -142,7 +139,6 @@ public class MyTriptmpActivity extends AppCompatActivity {
         homeFrag = new MyTripFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFrag).commit();
 
-
         tpDrawToggle = new ActionBarDrawerToggle(this, tpDrawer, R.string.drawer_open, R.string.drawer_closed){
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -175,52 +171,52 @@ public class MyTriptmpActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_home, menu);
-//        if(menu_ref == null)
-//            menu_ref= menu;
-//        if(getCurrent_user().isLoggedin()){
-//            menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
-//        }
-//        SearchView searchView =  getSearchView(menu);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                Object[] temp = new Object[]{0, "default"};
-//                String[] columns = new String[]{"_id", "poi"};
-//                MatrixCursor cursor = new MatrixCursor(columns);
-//                for (int i = 0; i < poi_data.length; i++) {
-//                    temp[0] = i;
-//                    temp[1] = poi_data[i];
-//                    cursor.addRow(temp);
-//                }
-//                getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
-//                return true;
-//            }
-//        });
-//        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
-//            @Override
-//            public boolean onSuggestionSelect(int position) {
-//                //ToastHelper.shortToast("sugg select "+position);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onSuggestionClick(int position) {
-//                //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
-//                Fragment exp_list_frag = new ExperiencesListFragment();
-//                Bundle args = new Bundle();
-//                args.putInt(ExperienceListAdapter.INT_EXTRA, position);
-//                exp_list_frag.setArguments(args);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
-//                return false;
-//            }
-//        });
+        //getMenuInflater().inflate(R.menu.menu_home, menu);
+        //if(menu_ref == null)
+        //    menu_ref= menu;
+        //if(getCurrent_user().isLoggedin()){
+        //    menu.findItem(R.id.action_login).setTitle(getResources().getString(R.string.logout));
+        //}
+        //SearchView searchView =  getSearchView(menu);
+        //searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        //    @Override
+        //    public boolean onQueryTextSubmit(String query) {
+        //ToastHelper.shortToast(getResources().getString(R.string.toast_search_submitted));
+        //return false;
+        //    }
+        //
+        //    @Override
+        //    public boolean onQueryTextChange(String newText) {
+        //Object[] temp = new Object[]{0, "default"};
+        //String[] columns = new String[]{"_id", "poi"};
+        //MatrixCursor cursor = new MatrixCursor(columns);
+        //for (int i = 0; i < poi_data.length; i++) {
+        //    temp[0] = i;
+        //    temp[1] = poi_data[i];
+        //    cursor.addRow(temp);
+        //}
+        //getSearchView(menu).setSuggestionsAdapter(new TPSuggestionsAdapter(getApplicationContext(), cursor, poi_data));
+        //return true;
+        //    }
+        //});
+        //searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+        //    @Override
+        //    public boolean onSuggestionSelect(int position) {
+        //ToastHelper.shortToast("sugg select "+position);
+        //return false;
+        //    }
+        //
+        //    @Override
+        //    public boolean onSuggestionClick(int position) {
+        //ToastHelper.shortToast("sugg click "+position +" : "+ db_poi_data[position]);
+        //Fragment exp_list_frag = new ExperiencesListFragment();
+        //Bundle args = new Bundle();
+        //args.putInt(ExperienceListAdapter.INT_EXTRA, position);
+        //exp_list_frag.setArguments(args);
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("home_sugg").commit();
+        //return false;
+        //    }
+        //});
         return false;
     }
 
@@ -229,7 +225,6 @@ public class MyTriptmpActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         tpDrawToggle.syncState();
     }
-
 
     @NonNull
     private SearchView getSearchView(Menu menu) {
@@ -258,7 +253,7 @@ public class MyTriptmpActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
                 MessageSerivice.isRunning=false;
                 MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             }else {
                 getSupportFragmentManager().beginTransaction().addToBackStack("login")
@@ -271,7 +266,6 @@ public class MyTriptmpActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     public void onPause() {
         super.onPause();

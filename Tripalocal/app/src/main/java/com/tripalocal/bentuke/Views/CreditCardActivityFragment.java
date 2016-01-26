@@ -28,7 +28,7 @@ public class CreditCardActivityFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_creditcard, container, false);
         price_aud_1=(TextView)view.findViewById(R.id.price_aud_1);
         price_aud_2=(TextView)view.findViewById(R.id.price_aud_2);
-//        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
+        //refund = (TextView) view.findViewById(R.id.booking_refund_txt);
 
         setText();
         return view;
@@ -39,19 +39,18 @@ public class CreditCardActivityFragment extends Fragment {
         price_aud_1.setText(CheckoutActivity.price_label_1);
         price_aud_2.setText(CheckoutActivity.price_label_2);
 
-//        refund.setMovementMethod(LinkMovementMethod.getInstance());
-//        String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
-//        refund.setText(Html.fromHtml(text));
+        //refund.setMovementMethod(LinkMovementMethod.getInstance());
+        //String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>"+getResources().getString(R.string.checkout_refund_link)+" </a>";
+        //refund.setText(Html.fromHtml(text));
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_creditCard)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_creditCard));
     }
-
-
-
 }

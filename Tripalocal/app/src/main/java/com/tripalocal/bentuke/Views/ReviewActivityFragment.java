@@ -17,7 +17,6 @@ import com.tripalocal.bentuke.adapters.ReviewAdapter;
  * A placeholder fragment containing a simple view.
  */
 public class ReviewActivityFragment extends Fragment {
-
     RecyclerView rv;
     public ReviewActivityFragment() {
     }
@@ -37,9 +36,9 @@ public class ReviewActivityFragment extends Fragment {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_review)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_review));
     }
-
 }

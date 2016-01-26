@@ -13,7 +13,6 @@ import com.umeng.analytics.MobclickAgent;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
 
 import static com.tripalocal.bentuke.adapters.ExperienceListAdapter.INT_EXTRA;
 
@@ -25,7 +24,7 @@ public class CheckoutActivity extends AppCompatActivity {
     public static String date="";
     public static String time="";
     public static String coupon="";
-//    public static String price="";
+    //public static String price="";
     public static String price_label_1="";
     public static String price_label_2="";
     public static String total_price="";
@@ -52,7 +51,6 @@ public class CheckoutActivity extends AppCompatActivity {
         //getSupportActionBar().setTitle(Html.fromHtml("<font color='#FF9933CC'>Booking Details </font>"));
     }
 
-
     //#FF5D5D5D -- grey
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,8 +60,6 @@ public class CheckoutActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -84,7 +80,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
                 MessageSerivice.isRunning=false;
                 MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                 ToastHelper.shortToast(getResources().getString(R.string.logged_out));
             } else
                 getSupportFragmentManager().beginTransaction().replace(R.id.checkout_fragment_container, new LoginFragment()).commit();
@@ -97,6 +93,7 @@ public class CheckoutActivity extends AppCompatActivity {
         super.onResume();
         MobclickAgent.onResume(this);       //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

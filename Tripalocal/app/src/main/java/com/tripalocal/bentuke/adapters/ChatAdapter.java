@@ -1,12 +1,10 @@
 package com.tripalocal.bentuke.adapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -15,8 +13,6 @@ import com.tripalocal.bentuke.Views.ChatActivity;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.Tripalocal;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +35,6 @@ public class ChatAdapter extends BaseAdapter{
         this.context = context;
         this.chatList = chatList;
         this.layout = layout;
-
     }
 
     @Override
@@ -69,10 +64,10 @@ public class ChatAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        ViewHolder holder=null;
+        ViewHolder holder;
         int who=(Integer)chatList.get(position).get("person");
 
-            convertView= LayoutInflater.from(context).inflate(layout[who],null);
+        convertView=LayoutInflater.from(context).inflate(layout[who],null)
 ;
         holder=new ViewHolder();
         if(who== ChatActivity.sender_flag){
@@ -82,9 +77,9 @@ public class ChatAdapter extends BaseAdapter{
             if(!HomeActivity.user_img.equals("") && HomeActivity.user_img!=null) {
                 Glide.with(HomeActivity.getHome_context()).load(BASE_URL + HomeActivity.user_img).fitCenter()
                         .into(holder.imageView);
-                ////System.out.println("comes here");
+                //System.out.println("comes here");
             }
-            ////System.out.println("my image on chatAdapter is "+HomeActivity.user_img+"end");
+            //System.out.println("my image on chatAdapter is "+HomeActivity.user_img+"end");
         }else{
             holder.textView=(TextView)convertView.findViewById(R.id.msg_content_receive);
             holder.dateTime_text=(TextView)convertView.findViewById(R.id.msg_time_receive);
@@ -94,7 +89,7 @@ public class ChatAdapter extends BaseAdapter{
                 Glide.with(HomeActivity.getHome_context()).load(BASE_URL + chatList.get(position).get("image")).fitCenter()
                         .into(holder.imageView);
             }
-            ////System.out.println("image on chatAdapter is " + chatList.get(position).get("image" + ""));
+            //System.out.println("image on chatAdapter is " + chatList.get(position).get("image" + ""));
         }
         String text=(String)chatList.get(position).get("text");
         String datetime_s=(String)chatList.get(position).get("dateTime");

@@ -1,40 +1,21 @@
 package com.tripalocal.bentuke.Views;
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.R;
-import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
-import com.tripalocal.bentuke.helpers.FragHelper;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
-import com.tripalocal.bentuke.helpers.Login_Result;
-import com.tripalocal.bentuke.helpers.MsgHelper;
 import com.tripalocal.bentuke.helpers.SearchRequest;
-import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.models.network.LoginFBRequest;
 import com.tripalocal.bentuke.models.network.Search_Result;
-import com.umeng.analytics.MobclickAgent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -98,7 +79,6 @@ public class ItinerariesFragment extends Fragment {
                 ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
                 ExperienceListAdapter.current_city = 0;
                 displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
-
             }
         });
         search_to_host_layout.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +98,6 @@ public class ItinerariesFragment extends Fragment {
         setActionListener(seven_all,731);
         setActionListener(ten_one,691);
         setActionListener(ten_all,771);
-
-
     }
 
     public void setActionListener(TextView text,int exp_id){
@@ -137,18 +115,17 @@ public class ItinerariesFragment extends Fragment {
     }
     public void onResume() {
         super.onResume();
-//        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
+        //MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
     public void onPause() {
         super.onPause();
-//        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
+        //MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
     }
 
     @Override
     public void onStop() {
         super.onStop();
     }
-
 
     public void displayListFrag(){
         GeneralHelper.showLoadingProgress(getActivity());
@@ -160,9 +137,7 @@ public class ItinerariesFragment extends Fragment {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         int position=0;
         req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                HomeActivity.db_poi_data[position]
-                ,"0", "",ExperiencesListFragment.exp_itinerary);
-
+                HomeActivity.db_poi_data[position],"0", "",ExperiencesListFragment.exp_itinerary);
 
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -171,23 +146,22 @@ public class ItinerariesFragment extends Fragment {
                 .setEndpoint(getResources().getString(R.string.server_url))
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
+        //ToastHelper.longToast(getResources().getString(R.string.toast_contacting));
         apiService.getSearchResults(req_obj, new Callback<List<Search_Result>>() {
             @Override
             public void success(List<Search_Result> search_results, Response response) {
                 GeneralHelper.closeLoadingProgress();
                 ExperienceListAdapter.prepareSearchResults(search_results);
-                ////System.out.println("search_results = " + search_results);
+                //System.out.println("search_results = " + search_results);
                 //ToastHelper.shortToast(getResources().getString(R.string.toast_showing_exp) + HomeActivity.poi_data[position]);
-//                rv.getAdapter().notifyDataSetChanged();
+                //rv.getAdapter().notifyDataSetChanged();
                 //FragHelper.replace(getSupportFragmentManager(), new ExperiencesListFragment(), R.id.exp_list_fragment_container);
             }
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
-                ////System.out.println("HomeActivityFragment.failure");
-                ////System.out.println("error = [" + error + "]");
+                //System.out.println("HomeActivityFragment.failure");
+                //System.out.println("error = [" + error + "]");
             }
         });
     }

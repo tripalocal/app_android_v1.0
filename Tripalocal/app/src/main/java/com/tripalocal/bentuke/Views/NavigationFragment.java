@@ -1,15 +1,11 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +19,6 @@ import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.NotificationHelper;
 import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
-import com.tripalocal.bentuke.models.Experience;
 import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.network.MsgListModel;
 import com.umeng.analytics.MobclickAgent;
@@ -37,21 +32,18 @@ import retrofit.client.Response;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
-import com.tripalocal.bentuke.helpers.FragHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.network.MyProfile_result;
 import com.tripalocal.bentuke.models.Tripalocal;
 
 import java.util.ArrayList;
 
-
 public class NavigationFragment extends Fragment {
 
     public static MyProfile_result result=null;
-   // private static boolean my_profile = false;
+    //private static boolean my_profile = false;
 
     public static final String BASE_URL = Tripalocal.getServerUrl() + "images/";
-
 
     private CircleImageView profile_img;
     private EditText localno;
@@ -62,7 +54,6 @@ public class NavigationFragment extends Fragment {
     TextView about_txt;
     TextView logout_txt;
     private static ImageView notification_red_icon;
-
 
     public NavigationFragment() {
         // Required empty public constructor
@@ -87,19 +78,17 @@ public class NavigationFragment extends Fragment {
         }
         else
         {
-
-//            view = inflater.inflate(R.layout.default_navigation, container, false);
-//            loginBtn = (Button) view.findViewById(R.id.nav_normal_login);
-//            loginBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    FragHelper.addReplace(HomeActivity.getFrag_manager(), new LoginFragment());
-//                    DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-//                    drawer.closeDrawer(GravityCompat.START);
-//                }
-//            });
+            //    view = inflater.inflate(R.layout.default_navigation, container, false);
+            //    loginBtn = (Button) view.findViewById(R.id.nav_normal_login);
+            //    loginBtn.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+            //    FragHelper.addReplace(HomeActivity.getFrag_manager(), new LoginFragment());
+            //    DrawerLayout drawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+            //    drawer.closeDrawer(GravityCompat.START);
+            //}
+            //    });
             logout_txt.setVisibility(View.INVISIBLE);
-
             initNonLoginContent(view);
         }
 
@@ -185,15 +174,15 @@ public class NavigationFragment extends Fragment {
             }
         });
         tos_txt = (TextView) view.findViewById(R.id.nav_tos_txt);
-//        tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        //tos_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String tos_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "termsofservice'>"+getResources().getString(R.string.nav_terms_of_service_link)+" </a>";
         tos_txt.setText(Html.fromHtml(tos_text_content));
         privacy_txt = (TextView) view.findViewById(R.id.nav_privacy_txt);
-//        privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        //privacy_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String priv_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "privacypolicy'>"+getResources().getString(R.string.nav_privacy_policy)+" </a>";
         privacy_txt.setText(Html.fromHtml(priv_text_content));
         about_txt = (TextView) view.findViewById(R.id.nav_about_us_txt);
-//        about_txt.setMovementMethod(LinkMovementMethod.getInstance());
+        //about_txt.setMovementMethod(LinkMovementMethod.getInstance());
         String about_text_content = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "aboutus'>"+getResources().getString(R.string.nav_about_us)+" </a>";
         about_txt.setText(Html.fromHtml(about_text_content));
         privacy_txt.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +243,7 @@ public class NavigationFragment extends Fragment {
                         getActivity().invalidateOptionsMenu();
                         MessageSerivice.isRunning = false;
                         MessageSerivice.connection.disconnect();
-//                ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
+                        //ExperiencesListFragment.rv.getAdapter().notifyDataSetChanged();
                         ToastHelper.shortToast(getResources().getString(R.string.logged_out));
                     } else {
                         getActivity().getSupportFragmentManager().beginTransaction().addToBackStack("login")
@@ -356,13 +345,11 @@ public class NavigationFragment extends Fragment {
             });
         if(!result.getImage().isEmpty()){
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL+result.getImage()).fitCenter().into(profile_img);
-
         }
 
         //System.out.println("profile image is "+result.getImage());
         hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
         HomeActivity.user_img=result.getImage();
-
     }
 
     public void updateDatabase() {
@@ -386,7 +373,7 @@ public class NavigationFragment extends Fragment {
             @Override
             public void success(ArrayList<MsgListModel> msgListModels, Response response) {
                 try {
-                    Log.i("chat server test", "step 1" + msgListModels.size());
+                    //Log.i("chat server test", "step 1" + msgListModels.size());
                     chatList_db_source.open();
                     for (MsgListModel model : msgListModels) {
                         if (chatList_db_source.checkSync(model.getSender_id() + "", model.getId() + "")) {
@@ -398,21 +385,17 @@ public class NavigationFragment extends Fragment {
                             chatModel.setLast_msg_date(model.getMsg_date());
                             chatModel.setSender_name(model.getSender_name());
                             chatList_db_source.createNewChat(chatModel);
-                            Log.i("messages count ", "das" + chatList_db_source.getChatList().size());
-                            Log.i("chat server test", "step 2.1");
-
-
+                            //Log.i("messages count ", "das" + chatList_db_source.getChatList().size());
+                            //Log.i("chat server test", "step 2.1");
                         }
-                        Log.i("chat server test", "step 2");
-
+                        //Log.i("chat server test", "step 2");
                     }
                     chatList_db_source.close();
-                    Log.i("chat server test", "step 3");
+                    //Log.i("chat server test", "step 3");
 
                 } catch (Exception e) {
                     //System.out.println("exception" + e.getMessage().toString());
-                    Log.i("chat server test", "step 4");
-
+                    //Log.i("chat server test", "step 4");
                 }
                 GeneralHelper.closeLoadingProgress();
                 if (MessageSerivice.connection != null) {
@@ -430,19 +413,19 @@ public class NavigationFragment extends Fragment {
             public void failure(RetrofitError error) {
                 //System.out.println("fali on new service : " + error.getMessage().toString());
                 GeneralHelper.closeLoadingProgress();
-//                if (MessageSerivice.connection!=null) {
-//                    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-//                    drawerLayout.closeDrawers();
-//
-//                    Fragment exp_list_frag = new MsgListFragment();
-//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
-//                }else{
-//                    ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
-//                }
+                //if (MessageSerivice.connection!=null) {
+                //    DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
+                //    drawerLayout.closeDrawers();
+                //
+                //    Fragment exp_list_frag = new MsgListFragment();
+                //    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, exp_list_frag).addToBackStack("navigation_my_profile").commit();
+                //}else{
+                //    ToastHelper.shortToast(getResources().getString(R.string.msg_connecting));
+                //}
             }
         });
-
     }
+
     public void getProfileDetails(final View view){
         GeneralHelper.showLoadingProgress(getActivity());
         //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
@@ -467,17 +450,16 @@ public class NavigationFragment extends Fragment {
                 result = res;
                 prepareProfile(view);
                 GeneralHelper.recordEmail(result.getEmail());
-//                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
+                //ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-                ////System.out.println("error = [" + error + "]");
+                //System.out.println("error = [" + error + "]");
                 ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
             }
         });
-
     }
 
     public void onResume() {

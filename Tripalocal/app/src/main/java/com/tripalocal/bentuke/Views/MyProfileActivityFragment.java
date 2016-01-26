@@ -55,7 +55,7 @@ public class MyProfileActivityFragment extends Fragment {
         return view;
     }
 
-   /* @Override
+    /* @Override
     public void onStop() {
         saveProfile();
         super.onStop();
@@ -64,17 +64,17 @@ public class MyProfileActivityFragment extends Fragment {
     private void saveProfile() {
         GeneralHelper.showLoadingProgress(getActivity());
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
-                .setRequestInterceptor(new RequestInterceptor() {
-                    @Override
-                    public void intercept(RequestFacade request) {
-                        request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
-                        //request.addHeader("Authorization", "Token " + temp_token);
-                    }
-                })
-                .build();
+            .setLogLevel(RestAdapter.LogLevel.FULL)
+            .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
+            .setRequestInterceptor(new RequestInterceptor() {
+                @Override
+                public void intercept(RequestFacade request) {
+                    request.addHeader("Accept", "application/json");
+                    request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+                    //request.addHeader("Authorization", "Token " + temp_token);
+                }
+            })
+            .build();
         ApiService apiService = restAdapter.create(ApiService.class);
         apiService.saveMyProfileDetails(new profileUpdateRequest(localno.getText().toString()), new Callback<MyProfile_result>() {
             @Override
@@ -93,37 +93,37 @@ public class MyProfileActivityFragment extends Fragment {
     }
 
     public void getProfileDetails(final View view){
-//        GeneralHelper.showLoadingProgress(getActivity());
-//        //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setLogLevel(RestAdapter.LogLevel.FULL)
-//                .setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
-//                        .setRequestInterceptor(new RequestInterceptor() {
-//                            @Override
-//                            public void intercept(RequestFacade request) {
-//                                request.addHeader("Accept", "application/json");
-//                                request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
-//                                //request.addHeader("Authorization", "Token " + temp_token);
-//                            }
-//                        })
-//                        .build();
-//
-//        ApiService apiService = restAdapter.create(ApiService.class);
-//        apiService.getMyProfileDetails(new Callback<MyProfile_result>() {
-//            @Override
-//            public void success(MyProfile_result res, Response response) {
-//                GeneralHelper.closeLoadingProgress();
-//                result = res;
-//                prepareProfile(view);
-//                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
-//            }
-//            @Override
-//            public void failure(RetrofitError error) {
-//                GeneralHelper.closeLoadingProgress();
-//                ////System.out.println("error = [" + error + "]");
-//                ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
-//            }
-//        });
+        //GeneralHelper.showLoadingProgress(getActivity());
+        //final String temp_token = "73487d0eb131a6822e08cd74612168cf6e0755dc";
+        //RestAdapter restAdapter = new RestAdapter.Builder()
+        //.setLogLevel(RestAdapter.LogLevel.FULL)
+        //.setEndpoint(getActivity().getResources().getString(R.string.server_url))// https://www.tripalocal.com
+        //.setRequestInterceptor(new RequestInterceptor() {
+        //    @Override
+        //    public void intercept(RequestFacade request) {
+        //request.addHeader("Accept", "application/json");
+        //request.addHeader("Authorization", "Token " + HomeActivity.getCurrent_user().getLogin_token());
+        //request.addHeader("Authorization", "Token " + temp_token);
+        //    }
+        //})
+        //.build();
+        //
+        //ApiService apiService = restAdapter.create(ApiService.class);
+        //apiService.getMyProfileDetails(new Callback<MyProfile_result>() {
+        //    @Override
+        //    public void success(MyProfile_result res, Response response) {
+        //GeneralHelper.closeLoadingProgress();
+        //result = res;
+        //prepareProfile(view);
+        //ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_success));
+        //    }
+        //    @Override
+        //    public void failure(RetrofitError error) {
+        //GeneralHelper.closeLoadingProgress();
+        //System.out.println("error = [" + error + "]");
+        //ToastHelper.shortToast(getActivity().getResources().getString(R.string.toast_profile_get_error));
+        //    }
+        //});
         if(NavigationFragment.result!=null){
             result=NavigationFragment.result;
             prepareProfile(view);
@@ -143,8 +143,8 @@ public class MyProfileActivityFragment extends Fragment {
             }
         });
 
-    Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
-    hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
+        Glide.with(HomeActivity.getHome_context()).load(NavigationFragment.BASE_URL+result.getImage()).fitCenter().into(profile_img);
+        hostname.setText(result.getFirst_name() + " " + result.getLast_name().substring(0, 1) + ".");
         HomeActivity.user_img=result.getImage();
         //System.out.println("setting images here "+HomeActivity.user_img+"\nimage 2"+result.getImage());
     }

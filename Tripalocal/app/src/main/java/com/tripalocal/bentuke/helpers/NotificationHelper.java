@@ -1,4 +1,5 @@
 package com.tripalocal.bentuke.helpers;
+
 import android.annotation.TargetApi;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -51,7 +52,7 @@ public class NotificationHelper {
 
     public static void addBadge(){
         ShortcutBadger.with(HomeActivity.getHome_context()).count(badgeCount++);
-        ////System.out.println("badges count " + badgeCount);
+        //System.out.println("badges count " + badgeCount);
         haveNotifcation=true;
     }
 

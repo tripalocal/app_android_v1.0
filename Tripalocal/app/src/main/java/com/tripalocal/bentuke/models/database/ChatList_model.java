@@ -78,5 +78,4 @@ public class ChatList_model {
     }
 
     private String sender_id,sender_name,last_msg_date,last_msg_content,sender_img,global_id;
-
 }

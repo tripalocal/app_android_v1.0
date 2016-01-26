@@ -87,8 +87,8 @@ public class Local_Experience_Detail extends AbstractExperience {
                                    List<List<String>> available_date, List<ExperienceReview> experience_reviews,
                                    Integer experience_rate, List<AvailableOption> available_options, String experience_language,
                                    Integer experience_guest_number_min, Integer experience_guest_number_max, String title, String description,
-                                   String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images
-                                ,String service,String schedule,String disclamier,String refund_policy,String insurance,
+                                   String highlights, String notice, String tips, String whatsincluded, String pickup_detail, ArrayList<String> experience_images,
+                                   String service,String schedule,String disclamier,String refund_policy,String insurance,
                                    ArrayList<RelatedExperience> related_experiences,Float experience_popularity) {
         this.experience_duration = experience_duration;
         this.experience_price = experience_price;
@@ -218,7 +218,6 @@ public class Local_Experience_Detail extends AbstractExperience {
         this.experience_price = experience_price;
     }
 
-
     public Float[] getExperience_dynamic_price() {
         return experience_dynamic_price;
     }
@@ -226,7 +225,6 @@ public class Local_Experience_Detail extends AbstractExperience {
     public void setExperience_dynamic_price(Float[] experience_dynamic_price) {
         this.experience_dynamic_price = experience_dynamic_price;
     }
-
 
     public List<List<String>> getAvailable_date() {
         return available_date;
@@ -236,8 +234,6 @@ public class Local_Experience_Detail extends AbstractExperience {
         this.available_date = available_date;
     }
 
-
-
     public List<ExperienceReview> getExperience_reviews() {
         return experience_reviews;
     }
@@ -245,8 +241,6 @@ public class Local_Experience_Detail extends AbstractExperience {
     public void setExperience_reviews(List<ExperienceReview> experience_reviews) {
         this.experience_reviews = experience_reviews;
     }
-
-
 
     public Integer getExperience_rate() {
         return experience_rate;

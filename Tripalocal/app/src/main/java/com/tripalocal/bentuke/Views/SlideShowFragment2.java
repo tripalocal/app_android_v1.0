@@ -24,14 +24,14 @@ public class SlideShowFragment2 extends Fragment {
         View view=(LinearLayout)inflater.inflate(R.layout.slideshow_fragment2,container,false);
         ImageView img=(ImageView)view.findViewById(R.id.img_slide_2);
         if((getResources().getString(R.string.version_language)).equals("Chinese")) {
-//            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_ch));
+            //img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_ch));
             img.setImageBitmap(
-                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn, 300, 300));
-//            img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_en));
+            GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn, 300, 300));
+            //img.setImageDrawable(getResources().getDrawable(R.drawable.slide2_en));
         }else{
-                img.setImageBitmap(
-                        GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
-
+            img.setImageBitmap(
+            GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
         }
-        return view;    }
+        return view;
+    }
 }

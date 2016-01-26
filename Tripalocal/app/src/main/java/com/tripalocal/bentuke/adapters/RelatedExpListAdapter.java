@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.tripalocal.bentuke.R;
-import com.tripalocal.bentuke.models.exp_detail.RelatedExperience;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ public class RelatedExpListAdapter extends BaseAdapter {
         exp_list.add("test");
         exp_list.add("test2");
         this.context=context;
-        ////System.out.println("exp list size "+exp_list.size());
+        //System.out.println("exp list size "+exp_list.size());
     }
     @Override
     public int getCount() {
@@ -43,19 +42,19 @@ public class RelatedExpListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         convertView= LayoutInflater.from(context).inflate(R.layout.msg_send_card,null);
-//        TextView relatedExp_price,relatedExp_duration,relatedExp_language;
-//        ImageView relatedExp_img;
-//        relatedExp_price=(TextView)convertView.findViewById(R.id.relatedExp_price);
-//        relatedExp_duration=(TextView)convertView.findViewById(R.id.relatedExp_duration);
-//        relatedExp_language=(TextView)convertView.findViewById(R.id.relatedExp_language);
-//        relatedExp_img=(ImageView)convertView.findViewById(R.id.relatedExp_img);
-//
-//        relatedExp_price.setText(exp_list.get(position).getPrice()+"");
-//        relatedExp_duration.setText(exp_list.get(position).getDuration()+"");
-//        relatedExp_language.setText(exp_list.get(position).getLanguage()+"");
-//        //System.out.println("price is " + exp_list.get(position).getPrice() + "");
-//        //System.out.println("duration is "+ exp_list.get(position).getDuration()+"");
-//        //System.out.println("language is "+ exp_list.get(position).getLanguage()+"");
+        //TextView relatedExp_price,relatedExp_duration,relatedExp_language;
+        //ImageView relatedExp_img;
+        //relatedExp_price=(TextView)convertView.findViewById(R.id.relatedExp_price);
+        //relatedExp_duration=(TextView)convertView.findViewById(R.id.relatedExp_duration);
+        //relatedExp_language=(TextView)convertView.findViewById(R.id.relatedExp_language);
+        //relatedExp_img=(ImageView)convertView.findViewById(R.id.relatedExp_img);
+
+        //relatedExp_price.setText(exp_list.get(position).getPrice()+"");
+        //relatedExp_duration.setText(exp_list.get(position).getDuration()+"");
+        //relatedExp_language.setText(exp_list.get(position).getLanguage()+"");
+        //System.out.println("price is " + exp_list.get(position).getPrice() + "");
+        //System.out.println("duration is "+ exp_list.get(position).getDuration()+"");
+        //System.out.println("language is "+ exp_list.get(position).getLanguage()+"");
 
         return convertView;
     }

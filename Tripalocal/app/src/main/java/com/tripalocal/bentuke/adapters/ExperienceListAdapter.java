@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -32,11 +31,8 @@ import com.tripalocal.bentuke.Views.ExpDetailActivity;
 import com.tripalocal.bentuke.Views.ExperiencesListFragment;
 import com.tripalocal.bentuke.Views.HomeActivity;
 import com.tripalocal.bentuke.Views.ItinerariesFragment;
-import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.helpers.ToastHelper;
-import com.tripalocal.bentuke.helpers.dbHelper.ChatListDataSource;
 import com.tripalocal.bentuke.models.Experience;
-import com.tripalocal.bentuke.models.database.ChatList_model;
 import com.tripalocal.bentuke.models.network.Search_Result;
 import com.tripalocal.bentuke.models.Tripalocal;
 import com.tripalocal.bentuke.models.network.WishList_update_Request;
@@ -65,16 +61,13 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     }
     public ExperienceListAdapter(Context applicationContext) {
         mContext = applicationContext;
-
     }
-
 
     public static void prepareSearchResults(List<Search_Result> results){
         all_experiences.clear();
         for(Search_Result res : results)
         {
-                all_experiences.addAll(res.getPrivateExperiences());
-
+            all_experiences.addAll(res.getPrivateExperiences());
         }
     }
 
@@ -87,12 +80,11 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
         Experience exp_to_display = all_experiences.get(position);
-        ////System.out.println("exp host photo : " + BASE_URL + "" + exp_to_display.getHostImage());
+        //System.out.println("exp host photo : " + BASE_URL + "" + exp_to_display.getHostImage());
         Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getPhoto_url()).fitCenter().into(holder.bannerImage);
-        if(ExperiencesListFragment.experience_type==ExperiencesListFragment.exp_private){
+        if(ExperiencesListFragment.experience_type.equals(ExperiencesListFragment.exp_private)){
             Glide.with(HomeActivity.getHome_context()).load(BASE_URL+exp_to_display.getHostImage()).fitCenter().into(holder.profileImage);
             holder.profileImage.setVisibility(View.VISIBLE);
-
         }else{
             holder.profileImage.setVisibility(View.GONE);
         }
@@ -106,11 +98,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                 holder.search_host_img.setImageResource(R.drawable.local);
                 holder.search_local_img.setImageResource(R.drawable.hot_o);
                 holder.search_bar_local_txt.setTextColor(HomeActivity.getHome_context().getResources().getColor(R.color.tripalocal_green_blue));
-
             }
         }else{
             holder.search_icon_bar.setVisibility(View.GONE);
-
         }
         holder.bannerTxt.setText(REAL_FORMATTER.format(exp_to_display.getPrice()));
         holder.titleTxt.setText(exp_to_display.getTitle());
@@ -138,7 +128,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         }
         String[] language = exp_to_display.getLanguage()!=null?exp_to_display.getLanguage().split(";"):new String[1];
         String l= "";
-        for(int i=0;language!=null && i<language.length;i++)
+        for(int i=0; i<language.length;i++)
         {
             switch(language[i].toLowerCase()) {
                 case "english": l = "English";break;
@@ -153,35 +143,32 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         holder.search_to_host_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
-                ExperienceListAdapter.current_city = 0;
-                displayListFrag2(0,ExperiencesListFragment.exp_private);//change here
+            ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+            ExperienceListAdapter.current_city = 0;
+            displayListFrag2(0,ExperiencesListFragment.exp_private);//change here
             }
         });
 
         holder.search_to_local_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
-                ExperienceListAdapter.current_city = 0;
-                displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
-
+            ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_newPro;
+            ExperienceListAdapter.current_city = 0;
+            displayListFrag2(0,ExperiencesListFragment.exp_newPro);//change here
             }
         });
 
         holder.search_to_itinerary_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
-                ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
+            ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+            ExperiencesListFragment.experience_type= ExperiencesListFragment.exp_itinerary;
 
-                Fragment loginFragment = new ItinerariesFragment();
-                ExperiencesListFragment.ac.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
+            Fragment loginFragment = new ItinerariesFragment();
+            ExperiencesListFragment.ac.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).addToBackStack("loginFragment").commit();
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
@@ -190,7 +177,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
         public TextView bannerTxt;
         public TextView titleTxt;
         public TextView infoTxt;
@@ -237,39 +223,38 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             wishimage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (HomeActivity.getCurrent_user().isLoggedin()) {
-                        String test = dataTxt.getText().toString();
-                        //if (HomeActivity.wish_list.contains(test)) {
-                        if (HomeActivity.wish_map.containsKey(test)) {
-                            wishimage.setImageResource(R.drawable.heart_ldg);
-                            smallwishimage.setImageResource(R.drawable.heart_sw);
-                            wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
-                            //HomeActivity.wish_list.remove(test);
-                            HomeActivity.wish_map.remove(test);
-                            updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_true);
+                if (HomeActivity.getCurrent_user().isLoggedin()) {
+                    String test = dataTxt.getText().toString();
+                    //if (HomeActivity.wish_list.contains(test)) {
+                    if (HomeActivity.wish_map.containsKey(test)) {
+                        wishimage.setImageResource(R.drawable.heart_ldg);
+                        smallwishimage.setImageResource(R.drawable.heart_sw);
+                        wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_save));
+                        //HomeActivity.wish_list.remove(test);
+                        HomeActivity.wish_map.remove(test);
+                        updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_true);
 
-                            ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
-                        } else {
-                            wishimage.setImageResource(R.drawable.heart_lr);
-                            smallwishimage.setImageResource(R.drawable.heart_sr);
-                            wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
-                            //HomeActivity.wish_list.add(test);
-                            Experience exp = getExperience(Integer.parseInt(test));
-                            if(exp != null)
-                            {
-                                HomeActivity.wish_map.put(test, exp);
-                                updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_false);
-                                ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
-
-                            }
-                            else{
-                                ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.wishlist_error));
-                            }
+                        ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_removed));
+                    } else {
+                        wishimage.setImageResource(R.drawable.heart_lr);
+                        smallwishimage.setImageResource(R.drawable.heart_sr);
+                        wishTxt.setText(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
+                        //HomeActivity.wish_list.add(test);
+                        Experience exp = getExperience(Integer.parseInt(test));
+                        if(exp != null)
+                        {
+                            HomeActivity.wish_map.put(test, exp);
+                            updateListMap(Integer.parseInt(HomeActivity.getCurrent_user().getUser_id()), Integer.parseInt(test), WishList_update_Request.added_false);
+                            ToastHelper.shortToast(HomeActivity.getHome_context().getString(R.string.wishlist_saved));
+                        }
+                        else{
+                            ToastHelper.errorToast(HomeActivity.getHome_context().getString(R.string.wishlist_error));
                         }
                     }
-                    else{
-                        ToastHelper.warnToast(HomeActivity.getHome_context().getString(R.string.wish_log_in_msg));
-                    }
+                }
+                else{
+                    ToastHelper.warnToast(HomeActivity.getHome_context().getString(R.string.wish_log_in_msg));
+                }
                 }
             });
         }
@@ -283,7 +268,6 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             return null;
         }
 
-
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.getHome_context(), ExpDetailActivity.class);
@@ -293,11 +277,9 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         }
     }
 
-
     public static void updateListMap(int user_id,int experience_id,String added) {
 
-        final HashMap<String, String> map = new HashMap<String, String>();
-        final String tooken = HomeActivity.getCurrent_user().getLogin_token();
+        final String token = HomeActivity.getCurrent_user().getLogin_token();
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(HomeActivity.getHome_context().getResources().getString(R.string.server_url))//https://www.tripalocal.com
@@ -305,7 +287,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
                     @Override
                     public void intercept(RequestFacade request) {
                         request.addHeader("Accept", "application/json");
-                        request.addHeader("Authorization", "Token " + tooken);
+                        request.addHeader("Authorization", "Token " + token);
                         request.addHeader("Content-Type", "application/json");
                     }
                 })

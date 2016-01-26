@@ -18,7 +18,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import com.tripalocal.bentuke.R;
 
 import com.tripalocal.bentuke.models.Tripalocal;
-import com.tripalocal.bentuke.models.exp_detail.Experience_Detail;
 
 /**
  * Created by user on 15/06/2015.
@@ -43,14 +42,14 @@ public class PaymentSuccessFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ////System.out.println("this is a test");
-//                Fragment my_trip_fragment = new MyTripFragment();
-//                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
-//                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).commit();
+                //System.out.println("this is a test");
+                //Fragment my_trip_fragment = new MyTripFragment();
+                //HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commit();
+                //HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).commit();
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), MyTriptmpActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commitAllowingStateLoss();
+                //HomeActivity.getFrag_manager().beginTransaction().replace(R.id.fragment_container, my_trip_fragment).addToBackStack("navigation_my_trip").commitAllowingStateLoss();
 
                 getActivity().getApplicationContext().startActivity(intent);
             }
@@ -69,14 +68,14 @@ public class PaymentSuccessFragment extends Fragment {
         message=message.replace("somebody",host_name);
         payment_success.setText(message);
     }
+
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_payment_success)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_payment_success));
     }
-
-
 }

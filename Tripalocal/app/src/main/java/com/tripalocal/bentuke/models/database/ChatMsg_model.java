@@ -58,7 +58,6 @@ public class ChatMsg_model {
     }
     public ChatMsg_model(){
         this.global_id="0";
-
     }
 
     public String getReceiver_img() {
@@ -70,7 +69,6 @@ public class ChatMsg_model {
     }
 
     public String getMsg_date() {
-
         return msg_date;
     }
 
@@ -97,5 +95,4 @@ public class ChatMsg_model {
     }
 
     private int msg_id,msg_type;
-
 }

@@ -9,7 +9,6 @@ public class Timeslot {
     private Boolean instantBooking;
     private Integer availableSeat;
 
-
     public String getTimeString() {
         return timeString;
     }
@@ -33,5 +32,4 @@ public class Timeslot {
     public void setAvailableSeat(Integer availableSeat) {
         this.availableSeat = availableSeat;
     }
-
 }

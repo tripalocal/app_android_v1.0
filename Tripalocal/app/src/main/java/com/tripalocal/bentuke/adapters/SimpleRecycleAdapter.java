@@ -46,7 +46,6 @@ public class SimpleRecycleAdapter extends RecyclerView.Adapter<SimpleRecycleAdap
         simpleViewHolder.itemView.setTag(i);
     }
 
-
     public SimpleRecycleAdapter(HomeActivityFragment frag) {
         super();
         HomeFrag = frag;

@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,7 +79,6 @@ public class LoginFragment extends Fragment {
             public void onSuccess(LoginResult loginResult) {
                 HomeActivity.setAccessToken(loginResult.getAccessToken());
                 //HomeActivity.setCurrent_userid("9900"); //id for FB login
-
                 loginFBUser();
             }
 
@@ -98,7 +96,7 @@ public class LoginFragment extends Fragment {
         });
 
         TextView forgotBtn = (TextView) view.findViewById(R.id.login_forgot_pwd);
-//        TextView textView =(TextView)findViewById(R.id.textView);
+        //TextView textView =(TextView)findViewById(R.id.textView);
         forgotBtn.setClickable(true);
         forgotBtn.setMovementMethod(LinkMovementMethod.getInstance());
         String link_string=(getResources().getString(R.string.version_language).equals("Chinese"))?"<a href='https://www.tripalocal.com/cn/accounts/password/reset/'>":
@@ -107,12 +105,12 @@ public class LoginFragment extends Fragment {
         String forgot_pwd_text =link_string+getResources().getString(R.string.login_forget_password)+"</a>";
         //System.out.println(forgot_pwd_text);
         forgotBtn.setText(Html.fromHtml(forgot_pwd_text));
-//        forgotBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_service_down));
-//            }
-//        });
+        //forgotBtn.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //ToastHelper.warnToast(getActivity().getResources().getString(R.string.toast_service_down));
+        //    }
+        //});
         Button loginBtn = (Button) view.findViewById(R.id.normal_login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +118,6 @@ public class LoginFragment extends Fragment {
                 loginUser();
             }
         });
-
 
         Button sign_up_btn = (Button) view.findViewById(R.id.login_signup);
         sign_up_btn.setOnClickListener(new View.OnClickListener() {
@@ -198,7 +195,6 @@ public class LoginFragment extends Fragment {
         });
     }
 
-
     public void loginUser(){
         GeneralHelper.addMixPanelData(getActivity(), getActivity().getString(R.string.mixpanel_event_signin));
 
@@ -212,6 +208,11 @@ public class LoginFragment extends Fragment {
 
         String username = ((EditText) getActivity().findViewById(R.id.login_email)).getText().toString();
         String pwd = ((EditText) getActivity().findViewById(R.id.login_password)).getText().toString();
+        if(!(GeneralHelper.EmptyCheck(new String[]{username,pwd}) && GeneralHelper.validatePwd(pwd)))
+        {
+            GeneralHelper.closeLoadingProgress();
+            return;
+        }
         GeneralHelper.recordEmail(username);
             apiService.loginUser(username, pwd, new Callback<Login_Result>() {
                 @Override
@@ -247,7 +248,7 @@ public class LoginFragment extends Fragment {
                 public void failure(RetrofitError error) {
                     GeneralHelper.closeLoadingProgress();
                     ToastHelper.errorToast(log_in_failed);
-                    ////System.out.println("error = [" + error + "]");
+                    //System.out.println("error = [" + error + "]");
                     HomeActivity.getCurrent_user().setLoggedin(false);
                 }
             });

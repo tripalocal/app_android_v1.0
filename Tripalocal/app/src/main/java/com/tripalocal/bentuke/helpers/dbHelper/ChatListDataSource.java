@@ -4,14 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+//import android.util.Log;
 
 import com.tripalocal.bentuke.Views.MsgListFragment;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
 import com.tripalocal.bentuke.models.database.ChatList_model;
-
-import org.jivesoftware.smack.chat.Chat;
-import org.w3c.dom.Comment;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,12 +26,12 @@ public class ChatListDataSource {
     private SQLiteDatabase database;
     private ChatList_db_Helper dbHelper;
     private String[] allColumns={
-      ChatList_db_Helper.COLUMN_LAST_MSG_CONTENT,
-            ChatList_db_Helper.COLUMN_LAST_MSG_DATE,
-            ChatList_db_Helper.COLUMN_SENDER_ID,
-            ChatList_db_Helper.COLUMN_SENDER_NAME,
-            ChatList_db_Helper.COLUMN_SENDER_IMAGE,
-            ChatList_db_Helper.COLUMN_GLOBAL_ID
+        ChatList_db_Helper.COLUMN_LAST_MSG_CONTENT,
+        ChatList_db_Helper.COLUMN_LAST_MSG_DATE,
+        ChatList_db_Helper.COLUMN_SENDER_ID,
+        ChatList_db_Helper.COLUMN_SENDER_NAME,
+        ChatList_db_Helper.COLUMN_SENDER_IMAGE,
+        ChatList_db_Helper.COLUMN_GLOBAL_ID
     };
 
     public ChatListDataSource(Context context){
@@ -60,29 +57,28 @@ public class ChatListDataSource {
         values.put(dbHelper.COLUMN_SENDER_IMAGE,model.getSender_img());
         values.put(dbHelper.COLUMN_GLOBAL_ID,model.getGlobal_id());
         //System.out.println("get sender images: "+model.getSender_img());
-//        if(checkReuslt) {
-            long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
-//        }else {
-//            long insertId = database.update(dbHelper.TABLE_NAME, values, " " + dbHelper.COLUMN_SENDER_ID + "= ? ", new String[]{model.getSender_id()});
-//        Cursor cursor=database.query(dbHelper.TABLE_NAME);
-//        }
-        Log.i("chatList","new Chat created");
+        //if(checkReuslt) {
+        long insertId = database.insert(dbHelper.TABLE_NAME, null, values);
+        //}else {
+        //long insertId = database.update(dbHelper.TABLE_NAME, values, " " + dbHelper.COLUMN_SENDER_ID + "= ? ", new String[]{model.getSender_id()});
+        //Cursor cursor=database.query(dbHelper.TABLE_NAME);
+        //}
+        //Log.i("chatList","new Chat created");
     }
 
     public ArrayList<String> getAllUnsyncChat(){
         ArrayList<String> chats=new ArrayList<String>();
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,
-                dbHelper.COLUMN_GLOBAL_ID+" = 0 ",null,null,null,null);        cursor.moveToFirst();
+                dbHelper.COLUMN_GLOBAL_ID+" = 0 ",null,null,null,null);
+        cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             ChatList_model model=cursorToChatList(cursor);
-//            chats.add(model);
+            //chats.add(model);
            chats.add(model.getSender_id());
             cursor.moveToNext();
         }
-       cursor.close();
-        Log.i("chatList", "all unsync senders "+chats
-                .size());
-
+        cursor.close();
+        //Log.i("chatList", "all unsync senders "+chats.size());
         return chats;
     }
 
@@ -94,7 +90,7 @@ public class ChatListDataSource {
             int global_id_int = Integer.parseInt(global_id);
             int global_id_int_local = Integer.parseInt(model.getGlobal_id());
             if (global_id_int > global_id_int_local) {
-//                deleteChat(sender_id);
+                //deleteChat(sender_id);
                 return true;
             } else {
                 return false;
@@ -117,7 +113,7 @@ public class ChatListDataSource {
         ChatList_model service_model=new ChatList_model();
         while(!cursor.isAfterLast()){
             ChatList_model model=cursorToChatList(cursor);
-//            chats.add(model);
+            //chats.add(model);
             if(model.getSender_id().equals(MsgListFragment.customer_support_id)){
                 hasCservice=true;
                 service_model=model;
@@ -137,16 +133,15 @@ public class ChatListDataSource {
             return_list.addAll(chats);
             return return_list;
         }
-//        chats= (List<ChatList_model>) sortedMap.values();
+        //chats= (List<ChatList_model>) sortedMap.values();
         cursor.close();
-        Log.i("chatList", "total chats "+chats
-        .size());
+        //Log.i("chatList", "total chats "+chats.size());
 
         return chats;
     }
 
     public boolean checkChat(String sender_id){
-//        List<ChatList_model> models=new ArrayList<ChatList_model>();
+        //List<ChatList_model> models=new ArrayList<ChatList_model>();
         Cursor cursor=database.query(dbHelper.TABLE_NAME,allColumns,
                 dbHelper.COLUMN_SENDER_ID+" = '"+sender_id+"'",null,null,null,null);
         if(cursor.getCount()!=0){
@@ -166,7 +161,6 @@ public class ChatListDataSource {
         model.setGlobal_id(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_GLOBAL_ID)));
         return model;
     }
-
 }
 
 

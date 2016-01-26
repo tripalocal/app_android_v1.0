@@ -31,10 +31,8 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
             COLUMN_GLOBAL_ID+" TEXT NOT NULL, "+
             COLUMN_LAST_MSG_DATE+ " TEXT NOT NULL);";
 
-
     public ChatList_db_Helper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -45,7 +43,5 @@ public class ChatList_db_Helper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DATABASE_CREATE);
-
     }
-
 }

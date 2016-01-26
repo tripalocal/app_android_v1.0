@@ -25,7 +25,6 @@ import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.helpers.GeneralHelper;
-import com.tripalocal.bentuke.models.exp_detail.AbstractExperience;
 import com.tripalocal.bentuke.models.exp_detail.Local_Experience_Detail;
 import com.tripalocal.bentuke.models.exp_detail.RelatedExperience;
 import com.umeng.analytics.MobclickAgent;
@@ -238,8 +237,8 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
                 ToastHelper.errorToast(getActivity().getResources().getString(R.string.toast_error));
             }
         });
-
     }
+
     public void initialComponenets(View view){
         exp_bg = (ImageView) view.findViewById(R.id.exp_detail_bg);
         profileImage = (CircleImageView) view.findViewById(R.id.exp_detail_profile_image);
@@ -364,18 +363,18 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         request_to_book_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HomeActivity.getCurrent_user().isLoggedin()) {
-                    Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
-                    intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    HomeActivity.getHome_context().startActivity(intent);
-                } else {
-                    Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
-                    intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getActivity().startActivity(intent);
-                    //ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
-                }
+            if (HomeActivity.getCurrent_user().isLoggedin()) {
+                Intent intent = new Intent(HomeActivity.getHome_context(), CheckoutActivity.class);
+                intent.putExtra(INT_EXTRA, ExpDetailActivity.position);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                HomeActivity.getHome_context().startActivity(intent);
+            } else {
+                Intent intent = new Intent(getActivity().getApplicationContext(), HomeActivity.class);
+                intent.putExtra(GeneralHelper.login_fragment_extra, 1);//login in
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(intent);
+                //ToastHelper.warnToast(getResources().getString(R.string.exp_detail_log_in_msg));
+            }
             }
         });
 
@@ -404,6 +403,7 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             }
             }
         });
+
         info_view_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -427,7 +427,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             startActivity(intent);
             }
         });
-
 
         host_info_more.setVisibility(View.GONE);
 
@@ -475,7 +474,6 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             }
             }
         });
-
 
         review_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -768,19 +766,17 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
         removeEmptyField(layout_title_tips, local_exp_to_display.getTips() + "");
 
         getActivity().setTitle(local_exp_to_display.getTitle());
-        ////System.out.println("total number " + local_exp_to_display.getRelated_experiences().size());
+        //System.out.println("total number " + local_exp_to_display.getRelated_experiences().size());
 
         final ArrayList<RelatedExperience> exp_list=local_exp_to_display.getRelated_experiences();
-        ////System.out.println("experience list here here " + exp_list.toString());
+        //System.out.println("experience list here here " + exp_list.toString());
         if(exp_list.size()>0) {
-
             relatedExp_title_1.setText(exp_list.get(0).getTitle());
             relatedExp_price_1.setText((int)exp_list.get(0).getPrice() + "");
             try{
                 relatedExp_duration_1.setText(Integer.parseInt(exp_list.get(0).getDuration()+"")+"");
             }catch (Exception e){
                 relatedExp_duration_1.setText(exp_list.get(0).getDuration()+"");
-
             }
 
             relatedExp_language_1.setText(exp_list.get(0).getLanguage());
@@ -788,14 +784,14 @@ public class ExpDetailActivityFragment extends Fragment implements BaseSliderVie
             related_exp_layout_1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //host exp:
-                    ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
-                    ExpDetailActivity.position=exp_list.get(0).getId();
-                    Intent intent = getActivity().getIntent();
-                    intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
-                    getActivity().finish();
-                    startActivity(intent);
-                    //System.out.println("onclick listener starts here ");
+                //host exp:
+                ExperiencesListFragment.experience_type=ExperiencesListFragment.exp_private;
+                ExpDetailActivity.position=exp_list.get(0).getId();
+                Intent intent = getActivity().getIntent();
+                intent.putExtra(INT_EXTRA,ExpDetailActivity.position);
+                getActivity().finish();
+                startActivity(intent);
+                //System.out.println("onclick listener starts here ");
                 }
             });
         }else{

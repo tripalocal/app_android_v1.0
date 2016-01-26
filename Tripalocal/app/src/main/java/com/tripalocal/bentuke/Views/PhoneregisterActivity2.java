@@ -14,8 +14,8 @@ import com.tripalocal.bentuke.helpers.ToastHelper;
 //import android
 
 public class PhoneregisterActivity2 extends AppCompatActivity {
-
     public static String phone_no="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,6 @@ public class PhoneregisterActivity2 extends AppCompatActivity {
             }
         }
         setContentView(R.layout.activity_phoneregister_2);
-
     }
 
     @Override
@@ -50,6 +49,7 @@ public class PhoneregisterActivity2 extends AppCompatActivity {
         super.onResume();
         MobclickAgent.onResume(this);       //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);

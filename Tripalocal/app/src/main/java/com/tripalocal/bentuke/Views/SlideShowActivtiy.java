@@ -32,13 +32,12 @@ RelativeLayout background_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ////System.out.println("oncreate go thererere");
+        //System.out.println("oncreate go thererere");
         setContentView(R.layout.activity_slideshow);
         initialisePaging();
-
-//        getSupportActionBar().hide();
-
+        //getSupportActionBar().hide();
     }
+
     private void initialisePaging(){
         List<Fragment> fragments=new Vector<Fragment>();
         fragments.add(Fragment.instantiate(this, SlideShowFragment1.class.getName()));
@@ -50,7 +49,8 @@ RelativeLayout background_layout;
     }
 
     public void afterSlide(View view){
-        if(checkFirstTime()){
+        if(checkFirstTime())
+        {
             Intent intent;
             if((getResources().getString(R.string.version_language)).equals("Chinese")) {
                  intent = new Intent(getApplicationContext(), PhoneregisterActivity.class);
@@ -59,38 +59,33 @@ RelativeLayout background_layout;
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else {
-                Intent intent = new Intent(this, HomeActivity.class);
-
+        }
+        else
+        {
+            Intent intent = new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }
 
-
     public Boolean checkFirstTime(){
         String restoredText = PreferenceManager.getDefaultSharedPreferences(this).getString("firsttime", null);
-        ////System.out.println("record text:" + restoredText);
+        //System.out.println("record text:" + restoredText);
         if (restoredText == null) {
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("firsttime","no").apply();
             return false;
         }else{
             return true;
         }
-
     }
 
     public void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);       //统计时长
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
     }
-
-
-
-
-
 }

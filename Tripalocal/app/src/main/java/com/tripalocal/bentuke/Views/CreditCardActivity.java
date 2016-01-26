@@ -84,7 +84,6 @@ public class CreditCardActivity  extends AppCompatActivity {
             divider1.setVisibility(View.VISIBLE);
             divider2.setVisibility(View.VISIBLE);
             divider3.setVisibility(View.VISIBLE);
-
         }
     }
 
@@ -156,23 +155,23 @@ public class CreditCardActivity  extends AppCompatActivity {
                     }
                 })
                 .build();
-//        //System.out.println("token"+getUserToken()+"");
+        //System.out.println("token"+getUserToken()+"");
         ApiService apiService = restAdapter.create(ApiService.class);
-        ////System.out.println("create json"+createJson(no,month,year,cvv));
+        //System.out.println("create json"+createJson(no,month,year,cvv));
 
-       // apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
-Credit_Request request;
+        //apiService.bookExperience(createJson(no,month,year,cvv), new Callback<String>() {
+        Credit_Request request;
         if(CheckoutActivity.total_price.equals("0")) {
             request=getCreditRequest_Zero();
         }else{
              request = getCreditRequest(no, month, year, cvv);
-
         }
         //apiService.bookExperience(getCreditRequest(no,month,year,cvv), new Callback<String>() {
+
         apiService.bookExperience(request, new Callback<Booking_Result>() {
             @Override
             public void success(Booking_Result message, Response response) {
-//                ToastHelper.errorToast("Success");
+                //ToastHelper.errorToast("Success");
                 GeneralHelper.closeLoadingProgress();
 
                 updateYoumeng();
@@ -188,7 +187,6 @@ Credit_Request request;
                 String json =  new String(((TypedByteArray)error.getResponse().getBody()).getBytes());
                 ToastHelper.errorToast(getResources().getString(R.string.payment_failure));
                 //System.out.println(json);
-
             }
         });
     }
@@ -206,7 +204,7 @@ Credit_Request request;
         //System.out.println(cred_req);
         Credit_Request cred_req = new Credit_Request(no,Integer.parseInt(month),Integer.parseInt("20"+year),Integer.parseInt(cvv),coupon_code,itinerary_list);
         //System.out.println("card no " + cred_req.getCard_number() + " month " + cred_req.getExpiration_month() +
-        //        "year " + cred_req.getExpiration_year() + " coupon" + cred_req.getCoupon() + " cvv" + cred_req.getCvv() +
+        //"year " + cred_req.getExpiration_year() + " coupon" + cred_req.getCoupon() + " cvv" + cred_req.getCvv() +
         //       "itenaray_no" + cred_req.getItinerary_string().size());
 
         return cred_req;
@@ -247,7 +245,7 @@ Credit_Request request;
         try {
             JSONObject globalObj=new JSONObject();
 
-//            complie itinerary string
+            //complie itinerary string
             JSONArray itinerary_list=new JSONArray();
             JSONObject itinerary_string=new JSONObject();
             itinerary_string.put("id",id);
@@ -265,7 +263,7 @@ Credit_Request request;
             globalObj.put("coupon",coupon_text);
             s=globalObj.toString();
             s=s.replace("\\","");
-    ////System.out.println("Coupon"+coupon_text);
+            //System.out.println("Coupon"+coupon_text);
         }catch (Exception e){
         }
         return s;
@@ -295,8 +293,4 @@ Credit_Request request;
         map.put(getResources().getString(R.string.youmeng_event_item_paymentMethod), getResources().getString(R.string.youmeng_event_item_creditCardPayment));
         MobclickAgent.onEvent(this.getApplicationContext(), getResources().getString(R.string.youmeng_event_title_payment), map);
     }
-
-
 }
-
-

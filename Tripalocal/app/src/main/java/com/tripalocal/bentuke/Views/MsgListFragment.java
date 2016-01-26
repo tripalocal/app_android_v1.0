@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,8 +29,6 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MsgListFragment extends Fragment {
-
-
     private RecyclerView mRecyclerView;
     private static RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -94,7 +91,7 @@ public class MsgListFragment extends Fragment {
             boolean check_customer_support_exists=true;
             for(ChatList_model model : lists){
                 if(model.getSender_id().equals(""+customer_support_id)){
-//                    String text,int person,String image,String time
+                    //String text,int person,String image,String time
                     check_customer_support_exists=false;
                 }
             }
@@ -104,7 +101,6 @@ public class MsgListFragment extends Fragment {
                 lists.clear();
                 lists =(ArrayList<ChatList_model>)chatList_db_source.getChatList();
                 //System.out.println("last olne + "+lists.get(0).getSender_img());
-
             }
             chatList_db_source.close();
         }catch (Exception e){
@@ -116,18 +112,17 @@ public class MsgListFragment extends Fragment {
         NotificationHelper.clearBadge();
     }
 
-
-
     public void onResume() {
         super.onResume();
         initializeData();
-//        checkValidate();
+        //checkValidate();
         adapter.notifyDataSetChanged();
-//        MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
+        //MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_login)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
-//        MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
+        //MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_login));
     }
 
     public void checkValidate(){

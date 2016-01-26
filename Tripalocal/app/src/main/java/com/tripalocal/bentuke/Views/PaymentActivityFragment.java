@@ -17,10 +17,10 @@ import com.tripalocal.bentuke.R;
  * A placeholder fragment containing a simple view.
  */
 public class PaymentActivityFragment extends Fragment{
-
-     TextView alipay_checkout;
+    TextView alipay_checkout;
     TextView creditCard_checkout;
     Button btn;
+
     public PaymentActivityFragment() {
     }
 
@@ -49,14 +49,14 @@ public class PaymentActivityFragment extends Fragment{
                 }
 
         });
-                return view;
-
+        return view;
     }
 
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart(getActivity().getResources().getString(R.string.youmeng_fragment_payment)); //统计页面
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd(getActivity().getResources().getString(R.string.youmeng_fragment_payment));

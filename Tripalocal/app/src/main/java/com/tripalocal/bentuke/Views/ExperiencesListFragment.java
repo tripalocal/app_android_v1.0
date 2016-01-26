@@ -1,6 +1,5 @@
 package com.tripalocal.bentuke.Views;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -31,9 +30,7 @@ import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.adapters.ApiService;
 import com.tripalocal.bentuke.adapters.ExperienceListAdapter;
 import com.tripalocal.bentuke.helpers.SearchRequest;
-import com.tripalocal.bentuke.helpers.ToastHelper;
 import com.tripalocal.bentuke.models.network.Search_Result;
-
 
 public class ExperiencesListFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -97,15 +94,12 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
                 if (loading) {
                     if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                         loading = false;
-//                        GeneralHelper.showLoadingProgress(getActivity());
-
+                        //GeneralHelper.showLoadingProgress(getActivity());
                         //System.out.println("here comes to the end ");
-//                        adapter.all_experiences.add();
-//                        displayListFrag(ExperienceListAdapter.current_city);
-
+                        //adapter.all_experiences.add();
+                        //displayListFrag(ExperienceListAdapter.current_city);
                         //prepare for paging also need to modify this method.
                     }
-
                 }
             }
         });
@@ -136,8 +130,7 @@ public class ExperiencesListFragment extends Fragment implements AdapterView.OnI
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         req_obj = new SearchRequest(dateFormat.format(tommorow), dateFormat.format(tommorow),
-                HomeActivity.db_poi_data[position]
-              ,"0", "",experience_type);
+                HomeActivity.db_poi_data[position],"0", "",experience_type);
 
         ok_client = new OkHttpClient();
         RestAdapter restAdapter = new RestAdapter.Builder()

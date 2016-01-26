@@ -2,14 +2,12 @@ package com.tripalocal.bentuke.helpers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Services.MessageSerivice;
 import com.tripalocal.bentuke.Views.HomeActivity;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
-import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jivesoftware.smackx.iqregister.AccountManager;
@@ -38,7 +36,7 @@ public class MsgHelper {
             AccountManager accountManager=AccountManager.getInstance(connection);
             accountManager.createAccount(userId,userId);
         }catch(Exception e){
-            ////System.out.println("connection error:"+e.getMessage().toString());
+            //System.out.println("connection error:"+e.getMessage().toString());
         }finally{
             connection.disconnect();
         }
@@ -49,7 +47,7 @@ public class MsgHelper {
             MessageSerivice.username=HomeActivity.getCurrent_user().getUser_id();
             Intent intent = new Intent(context, MessageSerivice.class);
             context.startService(intent);
-//            //System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
+            //System.out.println("user id is "+HomeActivity.getCurrent_user().getUser_id());
         }
     }
 }

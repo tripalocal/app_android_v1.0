@@ -96,8 +96,7 @@ public class CheckoutActivityFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
         view_instance=view;
         datetimeMap=new HashMap<String,ArrayList<String>>();
@@ -118,62 +117,60 @@ public class CheckoutActivityFragment extends Fragment {
         booking_date_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (date_sel != 0) {
-                    if (date_sel == 1) {
-                        booking_date_2.setBackgroundResource(R.color.white);
-                        time_container_2.setBackgroundResource(R.color.white);
-                    } else {
-                        booking_date_3.setBackgroundResource(R.color.white);
-                        time_container_3.setBackgroundResource(R.color.white);
-                    }
-                    booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
-                    date_sel = 0;
-                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
+            if (date_sel != 0) {
+                if (date_sel == 1) {
+                    booking_date_2.setBackgroundResource(R.color.white);
+                    time_container_2.setBackgroundResource(R.color.white);
+                } else {
+                    booking_date_3.setBackgroundResource(R.color.white);
+                    time_container_3.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
-
+                booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                date_sel = 0;
+                np.setMaxValue(temp_detail_exp.getAvailable_options().get(0).getAvailable_seat());
+            }
+            checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
             }
         });
         booking_date_2 = (TextView) view.findViewById(R.id.booking_date_txt2);
         booking_date_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (date_sel != 1) {
-                    if (date_sel == 2) {
-                        booking_date_3.setBackgroundResource(R.color.white);
-                        time_container_3.setBackgroundResource(R.color.white);
-                    } else {
-                        booking_date_1.setBackgroundResource(R.color.white);
-                        time_container_1.setBackgroundResource(R.color.white);
-                    }
-                    booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
-                    date_sel = 1;
-                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
+            if (date_sel != 1) {
+                if (date_sel == 2) {
+                    booking_date_3.setBackgroundResource(R.color.white);
+                    time_container_3.setBackgroundResource(R.color.white);
+                } else {
+                    booking_date_1.setBackgroundResource(R.color.white);
+                    time_container_1.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
+                booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                date_sel = 1;
+                np.setMaxValue(temp_detail_exp.getAvailable_options().get(1).getAvailable_seat());
+            }
+            checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
             }
         });
         booking_date_3 = (TextView) view.findViewById(R.id.booking_date_txt3);
         booking_date_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (date_sel != 2) {
-                    if (date_sel == 0) {
-                        booking_date_1.setBackgroundResource(R.color.white);
-                        time_container_1.setBackgroundResource(R.color.white);
-                    } else {
-                        booking_date_2.setBackgroundResource(R.color.white);
-                        time_container_2.setBackgroundResource(R.color.white);
-                    }
-                    booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
-                    date_sel = 2;
-                    np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
+            if (date_sel != 2) {
+                if (date_sel == 0) {
+                    booking_date_1.setBackgroundResource(R.color.white);
+                    time_container_1.setBackgroundResource(R.color.white);
+                } else {
+                    booking_date_2.setBackgroundResource(R.color.white);
+                    time_container_2.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
-
+                booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                date_sel = 2;
+                np.setMaxValue(temp_detail_exp.getAvailable_options().get(2).getAvailable_seat());
+            }
+            checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
             }
         });
         booking_time_1 = (TextView) view.findViewById(R.id.booking_time_txt1);
@@ -182,59 +179,56 @@ public class CheckoutActivityFragment extends Fragment {
         time_container_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (time_sel != 0) {
-                    if (time_sel == 1) {
-                        booking_date_2.setBackgroundResource(R.color.white);
-                        time_container_2.setBackgroundResource(R.color.white);
-                    } else {
-                        booking_date_3.setBackgroundResource(R.color.white);
-                        time_container_3.setBackgroundResource(R.color.white);
-                    }
-                    booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_sel = 0;
+            if (time_sel != 0) {
+                if (time_sel == 1) {
+                    booking_date_2.setBackgroundResource(R.color.white);
+                    time_container_2.setBackgroundResource(R.color.white);
+                } else {
+                    booking_date_3.setBackgroundResource(R.color.white);
+                    time_container_3.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
-
+                booking_date_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_container_1.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_sel = 0;
+            }
+            checkDateInst(booking_date_1.getText().toString(), booking_time_1.getText().toString());
             }
         });
 
         time_container_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (time_sel != 1) {
-                    if (time_sel == 2) {
-                        booking_date_3.setBackgroundResource(R.color.white);
-                        time_container_3.setBackgroundResource(R.color.white);
-                    } else {
-                        booking_date_1.setBackgroundResource(R.color.white);
-                        time_container_1.setBackgroundResource(R.color.white);
-                    }
-                    time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
-                    booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_sel = 1;
+            if (time_sel != 1) {
+                if (time_sel == 2) {
+                    booking_date_3.setBackgroundResource(R.color.white);
+                    time_container_3.setBackgroundResource(R.color.white);
+                } else {
+                    booking_date_1.setBackgroundResource(R.color.white);
+                    time_container_1.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
-
+                time_container_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                booking_date_2.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_sel = 1;
+            }
+            checkDateInst(booking_date_2.getText().toString(), booking_time_2.getText().toString());
             }
         });
         time_container_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (time_sel != 2) {
-                    if (time_sel == 0) {
-                        booking_date_1.setBackgroundResource(R.color.white);
-                        time_container_1.setBackgroundResource(R.color.white);
-                    } else {
-                        time_container_2.setBackgroundResource(R.color.white);
-                        booking_date_2.setBackgroundResource(R.color.white);
-                    }
-                    booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
-                    time_sel = 2;
+            if (time_sel != 2) {
+                if (time_sel == 0) {
+                    booking_date_1.setBackgroundResource(R.color.white);
+                    time_container_1.setBackgroundResource(R.color.white);
+                } else {
+                    time_container_2.setBackgroundResource(R.color.white);
+                    booking_date_2.setBackgroundResource(R.color.white);
                 }
-                checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
-
+                booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
+                time_sel = 2;
+            }
+            checkDateInst(booking_date_3.getText().toString(), booking_time_3.getText().toString());
             }
         });
 
@@ -276,23 +270,19 @@ public class CheckoutActivityFragment extends Fragment {
                                 np_sel--;
                             else
                                 np_sel = 0;
-
                         }
                     }
                     price_i = Double.valueOf(dy_price[np_sel]);
                     price_s = REAL_FORMATTER.format(dy_price[np_sel]);
                     booking_price.setText(price_s);
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(dy_price[np_sel] * guests) + " AUD");
-
-                } else
+                }
+                else {
                     booking_price_and_person_amt.setText("$ " + REAL_FORMATTER.format(price_i * guests) + " AUD");
-
+                }
                 GeneralHelper.addMixPanelData(ac, ac.getResources().getString(R.string.mixpanel_event_changeNumberOfPeople));
-
             }
-        }
-
-        );
+        });
 
         date_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -300,14 +290,14 @@ public class CheckoutActivityFragment extends Fragment {
                 String key=date_spin.getItemAtPosition(position).toString();
                 ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, datetimeMap.get(key));
                 time_spin.setAdapter(time_adapter);
-//                checkDateSpin();
-
+                //checkDateSpin();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
         time_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
@@ -325,7 +315,7 @@ public class CheckoutActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CheckoutActivity.date = date_spin.getSelectedItem().toString();
-//                CheckoutActivity.time=time_spin.getSelectedItem().toString();
+                //CheckoutActivity.time=time_spin.getSelectedItem().toString();
                 CheckoutActivity.guest = booking_guest_number.getText().toString();
                 String time_arr[] = (time_spin.getSelectedItem().toString().split(":"));
                 int hour = Integer.parseInt(time_arr[0].charAt(0) + "") * 10 + Integer.parseInt(time_arr[0].charAt(1) + "");
@@ -348,7 +338,7 @@ public class CheckoutActivityFragment extends Fragment {
                 getActivity().getApplicationContext().startActivity(intent);
             }
         });
-//        refund = (TextView) view.findViewById(R.id.booking_refund_txt);
+        //refund = (TextView) view.findViewById(R.id.booking_refund_txt);
         bookingBtn.setEnabled(false);
         if (CheckoutActivity.position != 999) {
             GeneralHelper.showLoadingProgress(getActivity());
@@ -362,7 +352,7 @@ public class CheckoutActivityFragment extends Fragment {
             //ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
             Gson gson = new Gson();
             req = new request(CheckoutActivity.position);
-            ////System.out.println("Position is " + CheckoutActivity.position);
+            //System.out.println("Position is " + CheckoutActivity.position);
             apiService.getExpDetails(req, new Callback<Object>() {
                 @Override
                 public void success(Object experience, Response response) {
@@ -459,7 +449,7 @@ public class CheckoutActivityFragment extends Fragment {
             dy_price = temp_detail_exp.getExperience_dynamic_price();
             if (dy_price.length > 0) {
                 if (temp_detail_exp.getExperience_guest_number_min() <= 4 &&
-                        temp_detail_exp.getExperience_guest_number_max() >= 4) {
+                    temp_detail_exp.getExperience_guest_number_max() >= 4) {
 
                     int min_number = temp_detail_exp.getExperience_guest_number_min();
                     int max_number = temp_detail_exp.getExperience_guest_number_max();
@@ -523,12 +513,11 @@ public class CheckoutActivityFragment extends Fragment {
             ArrayAdapter<String> time_adapter = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_tp, temp_times);
             date_spin.setAdapter(date_adapter);
             time_spin.setAdapter(time_adapter);
-//            refund.setMovementMethod(LinkMovementMethod.getInstance());
+            //refund.setMovementMethod(LinkMovementMethod.getInstance());
             String text = "<a href='" + getActivity().getResources().getString(R.string.server_url) + "refundpolicy'>" + getResources().getString(R.string.checkout_refund_link) + " </a>";
-//            refund.setText(Html.fromHtml(text));
+            // refund.setText(Html.fromHtml(text));
         }
     }
-
 
     public void refresh_code() {
         GeneralHelper.showLoadingProgress(getActivity());
@@ -544,13 +533,13 @@ public class CheckoutActivityFragment extends Fragment {
                 })
                 .build();
         ApiService apiService = restAdapter.create(ApiService.class);
-//        ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
+        //ToastHelper.longToast(getActivity().getResources().getString(R.string.toast_contacting));
         Gson gson = new Gson();
         Calendar cal = new GregorianCalendar();
         Date today = cal.getTime();
         String datearr1[] = (temp_detail_exp.getAvailable_options().get(date_sel).getDate_string()).split("/");
         String date1 = datearr1[2] + "/" + datearr1[1] + "/" + datearr1[0];
-        ////{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
+        //{"coupon":"aasfsaf","id":"20","date":"2015/06/17","time":"4:00 - 6:00","guest_number":2}
         Coupon_Request req = new Coupon_Request(coupon_code.getText().toString(), String.valueOf(ExpDetailActivity.position),
                 date1,
                 temp_detail_exp.getAvailable_options().get(date_sel).getTime_string(),
@@ -568,16 +557,13 @@ public class CheckoutActivityFragment extends Fragment {
                     coupon_status = true;
                 } else {
                     GeneralHelper.closeLoadingProgress();
-
                     ToastHelper.errorToast(getResources().getString(R.string.checkout_invalidCoupon));
                 }
-
             }
 
             @Override
             public void failure(RetrofitError error) {
                 GeneralHelper.closeLoadingProgress();
-
                 ToastHelper.longToast(getResources().getString(R.string.server_error));
             }
         });
@@ -589,19 +575,15 @@ public class CheckoutActivityFragment extends Fragment {
         if(datetimeMap.containsKey(date)){
             date_spin.setSelection(getIndex(date_spin,date));
             time_spin.setSelection(getIndex(time_spin,time));
-
         }
-//        int count = 0;
-//        for (HashMap<String,Array>) {
-//            if (option.getDate_string().equals(date) && option.getTime_string().equals(time)) {
-//                date_spin.setSelection(count);
-//                time_spin.setSelection(count);
-//
-//            }
-//
-//            count++;
-//        }
-
+        //int count = 0;
+        //for (HashMap<String,Array>) {
+        //     if (option.getDate_string().equals(date) && option.getTime_string().equals(time)) {
+        //  date_spin.setSelection(count);
+        //  time_spin.setSelection(count);
+        //      }
+        //      count++;
+        //}
     }
 
     public void checkDateSpin() {
@@ -628,7 +610,6 @@ public class CheckoutActivityFragment extends Fragment {
             booking_date_3.setBackgroundResource(R.color.tripalocal_instance_book);
             booking_time_3.setBackgroundResource(R.color.tripalocal_instance_book);
             time_container_3.setBackgroundResource(R.color.tripalocal_instance_book);
-
         }
     }
 

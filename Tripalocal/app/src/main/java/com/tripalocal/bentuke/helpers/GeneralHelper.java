@@ -14,12 +14,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 import com.tripalocal.bentuke.R;
 import com.tripalocal.bentuke.Views.HomeActivity;
@@ -32,9 +28,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
-import java.util.Currency;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -143,7 +137,6 @@ public class GeneralHelper {
                 })
                 .build();
 
-
         ApiService apiService = restAdapter.create(ApiService.class);
 
         apiService.getPublicProfile(user_id, new Callback<Profile_result>() {
@@ -163,7 +156,6 @@ public class GeneralHelper {
         });
         return map;
     }
-
 
     public static String getTimeClp(String dateTime){
         String datetimeR_arr[]=dateTime.split("/");
@@ -191,7 +183,6 @@ public class GeneralHelper {
             return gap+" "+HomeActivity.getHome_context().getResources().getString(R.string.msg_mins_ago);
         }
         return HomeActivity.getHome_context().getResources().getString(R.string.msg_just_now);
-
     }
 
     public static boolean validatePwd(String passwd){
@@ -223,12 +214,10 @@ public class GeneralHelper {
         return true;
     }
 
-
     public static String getEmail(){
         SharedPreferences settings_l = HomeActivity.getHome_context().getSharedPreferences(prefernece_property, Context.MODE_PRIVATE);
         return settings_l.getString(preference_email, null);
     }
-
 
     public static void recordEmail(String email){
         SharedPreferences settings_l = HomeActivity.getHome_context().getSharedPreferences(prefernece_property, Context.MODE_PRIVATE);
@@ -237,25 +226,25 @@ public class GeneralHelper {
         editor.putString(preference_email,email);
         editor.apply();
     }
+
     public static void addMixPanelData(Activity ac,String event_name){
         MixpanelAPI mixpanel =MixpanelAPI.getInstance(ac, ac.getResources().getString(R.string.mixpanel_token));
         mixpanel.identify(GeneralHelper.getEmail());
         JSONObject people=new JSONObject();
-//        //System.out.println("Email "+GeneralHelper.getEmail());
+        //System.out.println("Email "+GeneralHelper.getEmail());
         JSONObject props = new JSONObject();
         try {
             props.put("language", HomeActivity.getHome_context().getString(R.string.version_language));
 
         }catch (Exception e){
-            ////System.out.println("mixpanel exception here "+e.getMessage().toString());
+            //System.out.println("mixpanel exception here "+e.getMessage().toString());
         }
         mixpanel.getPeople().identify(GeneralHelper.getEmail());
         mixpanel.getPeople().set(people);
         mixpanel.track(event_name, props);
 
-
         mixpanel.flush();
-        Log.i("mixpanel", "addEvenet success");
+        //Log.i("mixpanel", "addEvenet success");
     }
 
     public static void getCurrencyRate(){
@@ -273,21 +262,19 @@ public class GeneralHelper {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
                 String line = reader.readLine();
                 if (line.length() > 0) {
-
-//                    String result = String.format("%.2f", Double.parseDouble(line));
+                    //String result = String.format("%.2f", Double.parseDouble(line));
                     GeneralHelper.currency_rate=Double.parseDouble(line);
-//                    //System.out.println("currency now "+GeneralHelper.currency_rate);
+                    //System.out.println("currency now "+GeneralHelper.currency_rate);
                 }
                 reader.close();
             } catch (IOException | NumberFormatException e) {
-                ////System.out.println(e.getMessage());
+                //System.out.println(e.getMessage());
             }
             return "Executed";
         }
 
         @Override
         protected void onPostExecute(String result) {
-
         }
 
         @Override
@@ -296,7 +283,6 @@ public class GeneralHelper {
         @Override
         protected void onProgressUpdate(Void... values) {}
     }
-
 
     public static void openApp() {
         String packageName="com.tencent.mm";
@@ -324,31 +310,30 @@ public class GeneralHelper {
                 HomeActivity.getHome_context().startActivity(intent);
             }
         }catch (PackageManager.NameNotFoundException e) {
-            // TODO Auto-generated catch block
-//            Toast.makeText(HomeActivity.getHome_context(), "请先下载支付宝钱包", 0).show();
+            //TODO Auto-generated catch block
+            //Toast.makeText(HomeActivity.getHome_context(), "请先下载支付宝钱包", 0).show();
         }
     }
-
 
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
                                                          int reqWidth, int reqHeight) {
 
-        // First decode with inJustDecodeBounds=true to check dimensions
+        //First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
 
-        // Calculate inSampleSize
+        //Calculate inSampleSize
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 
-        // Decode bitmap with inSampleSize set
+        //Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
+        //Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;

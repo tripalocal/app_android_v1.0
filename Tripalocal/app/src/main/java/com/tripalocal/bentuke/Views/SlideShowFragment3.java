@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.tripalocal.bentuke.R;
-import com.tripalocal.bentuke.helpers.GeneralHelper;
 
 /**
  * Created by Frank on 5/08/2015.
@@ -22,12 +21,12 @@ public class SlideShowFragment3 extends Fragment {
         View view=(LinearLayout)inflater.inflate(R.layout.slideshow_fragment3,container,false);
         ImageView img=(ImageView)view.findViewById(R.id.img_slide_3);
         if((getResources().getString(R.string.version_language)).equals("Chinese")) {
-//            img.setImageBitmap(
-//                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn, 300, 300));
+            //img.setImageBitmap(
+            //GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_cn, 300, 300));
             img.setImageDrawable(getResources().getDrawable(R.drawable.slide3_cn));
         }else{
-//            img.setImageBitmap(
-//                    GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
+            //img.setImageBitmap(
+            //GeneralHelper.decodeSampledBitmapFromResource(getResources(), R.drawable.slide2_en, 300, 300));
             img.setImageDrawable(getResources().getDrawable(R.drawable.slide3_en));
         }
         return view;
